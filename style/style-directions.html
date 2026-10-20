@@ -1,0 +1,787 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sky and Leaves Styles</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;700;800&family=Spectral:ital,wght@0,300;0,400;1,400&display=swap">
+<style>
+/* Layout: a compact control bar over one 16:9 stage. The shell stays neutral; each style owns the stage completely. */
+:root{
+  --bg:#ebebe8; --panel:#f6f6f3; --fg:#1b1c1e; --muted:#5b5e64; --line:#d2d3cf;
+  --on:#1b1c1e; --onfg:#f6f6f3; --focus:#2f5bff;
+  --ui:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#111214; --panel:#1b1c1f; --fg:#ebebe8; --muted:#a2a5ab; --line:#303237; --on:#ebebe8; --onfg:#111214; --focus:#7b9bff; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111214; --panel:#1b1c1f; --fg:#ebebe8; --muted:#a2a5ab; --line:#303237; --on:#ebebe8; --onfg:#111214; --focus:#7b9bff; color-scheme:dark}
+html,body{height:100%}
+body{background:var(--bg);color:var(--fg);font-family:var(--ui);padding-left:max(16px, env(safe-area-inset-left,0px));padding-right:max(16px, env(safe-area-inset-right,0px))}
+.shell{max-width:1560px;margin:0 auto;padding-block:14px 20px;display:flex;flex-direction:column;gap:12px}
+.bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 20px}
+.brand{font-size:15px;font-weight:600;letter-spacing:.01em;min-width:0}
+.brand span{font-weight:400;color:var(--muted)}
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.group{display:flex;flex-wrap:wrap;gap:3px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:3px}
+.group button,.fs{font:500 14px/1 var(--ui);color:var(--fg);background:transparent;border:0;border-radius:7px;padding:9px 12px;cursor:pointer}
+.group button[aria-pressed="true"]{background:var(--on);color:var(--onfg)}
+.fs{border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:12px 14px}
+button:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.wrap{position:relative;width:100%;aspect-ratio:16/9;max-width:100%;margin:0 auto;border-radius:12px;overflow:hidden;background:#000;box-shadow:0 18px 40px -26px rgba(0,0,0,.55)}
+.wrap:fullscreen{border-radius:0;width:100vw;height:100vh;max-width:none;aspect-ratio:auto}
+.stage{position:absolute;left:0;top:0;width:1600px;height:900px;transform-origin:0 0}
+#cv{position:absolute;left:0;top:0;width:1600px;height:900px;display:block}
+.note{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 24px;font-size:15px;line-height:1.5;color:var(--muted)}
+.note p{margin:0;max-width:78ch;min-width:0}
+.note b{color:var(--fg);font-weight:600}
+.keys{font-size:13px;white-space:nowrap}
+
+/* ---------- slide text, per style ---------- */
+.ov{position:absolute;inset:0;pointer-events:none}
+.ov>*{position:absolute;margin:0}
+.ov .hit{pointer-events:auto}
+.ov .h1,.ov .h2{text-wrap:balance}
+
+.t-obs{color:#e9eef7}
+.t-obs .kicker{font:500 17px/1 "IBM Plex Mono",ui-monospace,Menlo,monospace;letter-spacing:.34em;text-transform:uppercase;color:#7d93b6}
+.t-obs .h1,.t-obs .h2{font-family:Archivo,"Helvetica Neue",Arial,sans-serif;font-stretch:112%;font-weight:300;letter-spacing:-.012em}
+.t-obs .h1{font-size:80px;line-height:1.04}
+.t-obs .h1 span{color:#8fa6c8}
+.t-obs .h2{font-size:56px;line-height:1.08}
+.t-obs .sub{font:400 28px/1.35 Archivo,"Helvetica Neue",Arial,sans-serif;color:#94a8c6}
+.t-obs .formula{display:flex;flex-direction:column;align-items:flex-end;gap:8px;font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+.t-obs .formula b{font-weight:400;font-size:40px;color:#e9eef7}
+.t-obs .formula span{font-size:19px;color:#7d93b6}
+.t-obs .cap{font:400 25px/1.42 Archivo,"Helvetica Neue",Arial,sans-serif;color:#a9b9d2}
+.t-obs .seg{display:flex;gap:8px}
+.t-obs .seg button{font:500 15px/1 "IBM Plex Mono",ui-monospace,Menlo,monospace;letter-spacing:.14em;text-transform:uppercase;color:#cfdaeb;background:transparent;border:1px solid rgba(190,210,240,.38);border-radius:999px;padding:13px 20px;cursor:pointer}
+.t-obs .seg button[aria-pressed="true"]{background:#e9eef7;color:#08101f;border-color:#e9eef7}
+
+.t-plate{color:#1f2a3a}
+/* Plate is sized for a lecture hall: on a 13.3-inch slide, titles ≈ 40–50 pt, body ≈ 23 pt, nothing below 18 pt */
+.t-plate .kicker{font:600 24px/1 "IBM Plex Sans","Helvetica Neue",Arial,sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#5d6777}
+.t-plate .h1,.t-plate .h2{font-family:Spectral,Georgia,serif;font-weight:300;letter-spacing:-.008em}
+.t-plate .h1{font-size:84px;line-height:1.08}
+.t-plate .h1 i{font-weight:400}
+.t-plate .h2{font-size:68px;line-height:1.08}
+.t-plate .sub{font:italic 400 40px/1.3 Spectral,Georgia,serif;color:#3f4a5a}
+.t-plate .fig{font:italic 400 34px/1.25 Spectral,Georgia,serif;color:#1f2a3a;text-align:center}
+.t-plate .fig span{font:400 30px/1.25 "IBM Plex Sans","Helvetica Neue",Arial,sans-serif;color:#3f4a5a;margin-left:12px}
+.t-plate .formula{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.t-plate .formula b{font:400 62px/1 Spectral,Georgia,serif}
+.t-plate .formula span{font:400 30px/1 "IBM Plex Sans","Helvetica Neue",Arial,sans-serif;color:#3f4a5a}
+.t-plate .cap{font:400 38px/1.33 "IBM Plex Sans","Helvetica Neue",Arial,sans-serif;color:#2c3646}
+.t-plate .seg{display:flex;border:2px solid #1f2a3a}
+.t-plate .seg button{font:500 26px/1 "IBM Plex Sans","Helvetica Neue",Arial,sans-serif;color:#1f2a3a;background:#f2f3ee;border:0;border-left:2px solid #1f2a3a;padding:16px 24px;cursor:pointer}
+.t-plate .seg button:first-child{border-left:0}
+.t-plate .seg button + button{border-left:2px solid #1f2a3a}
+.t-plate .seg button[aria-pressed="true"]{background:#1f2a3a;color:#f2f3ee}
+
+.t-studio{color:#0f1b3d}
+.t-studio .kicker{font:700 17px/1 "Plus Jakarta Sans","Helvetica Neue",Arial,sans-serif;color:#33437a;background:#fff;border-radius:999px;padding:12px 20px;box-shadow:0 6px 18px rgba(30,50,110,.12)}
+.t-studio .h1,.t-studio .h2{font-family:"Plus Jakarta Sans","Helvetica Neue",Arial,sans-serif;font-weight:800;letter-spacing:-.028em}
+.t-studio .h1{font-size:76px;line-height:1.04}
+.t-studio .h1 span{color:#55658f}
+.t-studio .h2{font-size:54px;line-height:1.08}
+.t-studio .sub{font:500 27px/1.4 "Plus Jakarta Sans","Helvetica Neue",Arial,sans-serif;color:#4a5878}
+.t-studio .formula{display:flex;flex-direction:column;align-items:flex-end;gap:8px;background:#fff;border-radius:20px;padding:18px 24px;box-sizing:border-box;box-shadow:0 10px 30px rgba(30,50,110,.12)}
+.t-studio .formula b{font:800 38px/1 "Plus Jakarta Sans","Helvetica Neue",Arial,sans-serif}
+.t-studio .formula span{font:500 17px/1 "Plus Jakarta Sans","Helvetica Neue",Arial,sans-serif;color:#55658f}
+.t-studio .cap{font:500 24px/1.45 "Plus Jakarta Sans","Helvetica Neue",Arial,sans-serif;color:#33415f}
+.t-studio .seg{display:flex;gap:4px;background:#fff;border-radius:999px;padding:5px;box-shadow:0 8px 24px rgba(30,50,110,.14)}
+.t-studio .seg button{font:700 16px/1 "Plus Jakarta Sans","Helvetica Neue",Arial,sans-serif;color:#33437a;background:transparent;border:0;border-radius:999px;padding:13px 20px;cursor:pointer}
+.t-studio .seg button[aria-pressed="true"]{background:#0f1b3d;color:#fff}
+.ov .seg button:focus-visible{outline:3px solid #2f5bff;outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div class="shell">
+  <div class="bar">
+    <div class="brand">Sky and leaves <span>· three style directions, same three slides</span></div>
+    <div class="controls">
+      <div class="group" id="styles" role="group" aria-label="Style">
+        <button id="st-obs" data-style="obs" aria-pressed="false">Observatory</button>
+        <button id="st-plate" data-style="plate" aria-pressed="true">Plate</button>
+        <button id="st-studio" data-style="studio" aria-pressed="false">Studio</button>
+      </div>
+      <div class="group" id="slides" role="group" aria-label="Slide">
+        <button id="sl-0" data-slide="0" aria-pressed="true">1 · Question</button>
+        <button id="sl-1" data-slide="1" aria-pressed="false">2 · Light primer</button>
+        <button id="sl-2" data-slide="2" aria-pressed="false">3 · Live animation</button>
+      </div>
+      <button class="fs" id="fs" type="button">Full screen</button>
+    </div>
+  </div>
+  <div class="wrap" id="wrap">
+    <div class="stage" id="stage">
+      <canvas id="cv" aria-label="Slide illustration"></canvas>
+      <div class="ov" id="ov"></div>
+    </div>
+  </div>
+  <div class="note">
+    <p id="blurb"></p>
+    <p class="keys">← → slides · S style · Space pauses the animation</p>
+  </div>
+</div>
+
+<script>
+(() => {
+'use strict';
+const W = 1600, H = 900;
+const $ = s => document.querySelector(s);
+const wrap = $('#wrap'), stage = $('#stage'), cv = $('#cv'), ctx = cv.getContext('2d'), ov = $('#ov');
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let K = 1, fontsReady = 0, cacheKey = '', paused = false;
+const cache = document.createElement('canvas');
+const state = { style: 'plate', slide: 0 };
+
+/* ---------------- helpers ---------------- */
+function mulberry(a) { return function () { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+const rgba = (c, a = 1) => `rgba(${c[0] | 0},${c[1] | 0},${c[2] | 0},${a})`;
+const lin = v => { v /= 255; return v <= 0.04045 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); };
+const enc = v => { v = Math.max(0, Math.min(1, v)); return 255 * (v <= 0.0031308 ? 12.92 * v : 1.055 * Math.pow(v, 1 / 2.4) - 0.055); };
+const KEYS = [[380, '#7a00e6'], [400, '#7a00e6'], [430, '#4b00ff'], [450, '#1f2cff'], [470, '#0070ff'], [490, '#00b8ff'], [500, '#00dcd0'], [520, '#00f060'], [550, '#7cf000'], [570, '#e8f000'], [580, '#ffd000'], [600, '#ff8a00'], [620, '#ff4a00'], [650, '#ff1a00'], [700, '#ee0000'], [780, '#cc0000']]
+  .map(([l, h]) => [l, [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16))]);
+function spec(nm) {
+  if (nm <= KEYS[0][0]) return KEYS[0][1];
+  for (let i = 1; i < KEYS.length; i++) if (nm <= KEYS[i][0]) { const [l0, c0] = KEYS[i - 1], [l1, c1] = KEYS[i]; const f = (nm - l0) / (l1 - l0); return c0.map((v, k) => v + (c1[k] - v) * f); }
+  return KEYS[KEYS.length - 1][1];
+}
+const vis = nm => Math.max(0, Math.min(1, (nm - 380) / 45, (750 - nm) / 60));
+const mixc = (a, b, f) => a.map((v, i) => v + (b[i] - v) * f);
+function rr(c, x, y, w, h, r) { c.beginPath(); c.moveTo(x + r, y); c.arcTo(x + w, y, x + w, y + h, r); c.arcTo(x + w, y + h, x, y + h, r); c.arcTo(x, y + h, x, y, r); c.arcTo(x, y, x + w, y, r); c.closePath(); }
+function circ(c, x, y, r) { c.beginPath(); c.arc(x, y, r, 0, Math.PI * 2); }
+function glow(c, x, y, r, col, a) { const g = c.createRadialGradient(x, y, 0, x, y, r); g.addColorStop(0, rgba(col, a)); g.addColorStop(1, rgba(col, 0)); c.fillStyle = g; circ(c, x, y, r); c.fill(); }
+function txt(c, s, x, y, font, col, align = 'left') { c.font = font; c.fillStyle = col; c.textAlign = align; c.textBaseline = 'alphabetic'; c.fillText(s, x, y); }
+const F = {
+  mono: (w, s) => `${w} ${s}px "IBM Plex Mono", ui-monospace, Menlo, monospace`,
+  arch: (w, s) => `${w} ${s}px Archivo, "Helvetica Neue", Arial, sans-serif`,
+  serifI: s => `italic 400 ${s}px Spectral, Georgia, serif`,
+  plex: (w, s) => `${w} ${s}px "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif`,
+  jak: (w, s) => `${w} ${s}px "Plus Jakarta Sans", "Helvetica Neue", Arial, sans-serif`,
+};
+const INK = '#1f2a3a', INKS = '#4c5768';
+let grainCanvas = null;
+function grain(c) {
+  if (!grainCanvas) {
+    grainCanvas = document.createElement('canvas'); grainCanvas.width = grainCanvas.height = 160;
+    const g = grainCanvas.getContext('2d'), id = g.createImageData(160, 160), r = mulberry(7);
+    for (let i = 0; i < id.data.length; i += 4) { const v = r(); id.data[i] = id.data[i + 1] = id.data[i + 2] = v < 0.5 ? 20 : 255; id.data[i + 3] = Math.floor(r() * 22); }
+    g.putImageData(id, 0, 0);
+  }
+  return c.createPattern(grainCanvas, 'repeat');
+}
+function arrow(c, x0, y0, x1, y1, head, col, w) {
+  const a = Math.atan2(y1 - y0, x1 - x0);
+  c.strokeStyle = col; c.fillStyle = col; c.lineWidth = w; c.lineCap = 'round';
+  c.beginPath(); c.moveTo(x0, y0); c.lineTo(x1 - Math.cos(a) * head * 0.6, y1 - Math.sin(a) * head * 0.6); c.stroke();
+  c.beginPath(); c.moveTo(x1, y1); c.lineTo(x1 - Math.cos(a - 0.42) * head, y1 - Math.sin(a - 0.42) * head); c.lineTo(x1 - Math.cos(a + 0.42) * head, y1 - Math.sin(a + 0.42) * head); c.closePath(); c.fill();
+}
+
+/* ---------------- shared shapes ---------------- */
+function leafShape(c, L, Wd) {
+  c.beginPath(); c.moveTo(-L / 2, 0);
+  c.bezierCurveTo(-L * 0.3, -Wd * 0.95, L * 0.16, -Wd * 0.82, L / 2, 0);
+  c.bezierCurveTo(L * 0.16, Wd * 0.82, -L * 0.3, Wd * 0.95, -L / 2, 0); c.closePath();
+}
+function leafVeins(c, L, Wd, col, w) {
+  c.strokeStyle = col; c.lineCap = 'round'; c.lineWidth = w;
+  c.beginPath(); c.moveTo(-L / 2, 0); c.quadraticCurveTo(0, -Wd * 0.05, L / 2 - 6, 0); c.stroke();
+  c.lineWidth = w * 0.55;
+  for (let i = 1; i <= 7; i++) {
+    const x = -L / 2 + L * i / 8.4, reach = Wd * 0.7 * Math.sin(Math.PI * Math.min(0.95, i / 8.4 + 0.08));
+    for (const s of [-1, 1]) { c.beginPath(); c.moveTo(x, -Wd * 0.03); c.quadraticCurveTo(x + L * 0.05, s * reach * 0.5, x + L * 0.12, s * reach); c.stroke(); }
+  }
+}
+function petiole(c, L, Wd, col, w) { c.strokeStyle = col; c.lineWidth = w; c.lineCap = 'round'; c.beginPath(); c.moveTo(-L / 2, 0); c.quadraticCurveTo(-L / 2 - L * 0.08, Wd * 0.04, -L / 2 - L * 0.15, Wd * 0.14); c.stroke(); }
+
+const STARS = (() => { const r = mulberry(3); return Array.from({ length: 260 }, () => ({ x: r() * W, y: r() * H, s: r() < 0.07 ? 1.7 : 0.6 + r() * 0.7, a: 0.15 + r() * 0.6 })); })();
+
+/* ================= STYLE: Observatory ================= */
+function bgObs(c) {
+  const g = c.createLinearGradient(0, 0, 0, H); g.addColorStop(0, '#03060d'); g.addColorStop(1, '#0a1528');
+  c.fillStyle = g; c.fillRect(0, 0, W, H);
+  for (const s of STARS) { c.fillStyle = `rgba(210,225,255,${s.a})`; circ(c, s.x, s.y, s.s); c.fill(); }
+}
+function spikes(c, x, y, L) {
+  c.save(); c.globalCompositeOperation = 'lighter';
+  for (const [a, l, w] of [[0, L, 2], [Math.PI / 2, L, 2], [Math.PI / 4, L * 0.42, 1.1], [-Math.PI / 4, L * 0.42, 1.1]]) {
+    for (const sg of [1, -1]) {
+      const ex = x + Math.cos(a) * l * sg, ey = y + Math.sin(a) * l * sg, g = c.createLinearGradient(x, y, ex, ey);
+      g.addColorStop(0, 'rgba(255,246,230,0.9)'); g.addColorStop(1, 'rgba(255,246,230,0)');
+      c.strokeStyle = g; c.lineWidth = w; c.beginPath(); c.moveTo(x, y); c.lineTo(ex, ey); c.stroke();
+    }
+  }
+  c.restore();
+}
+function sunObs(c, x, y, s) {
+  c.save(); c.globalCompositeOperation = 'lighter';
+  glow(c, x, y, 300 * s, [255, 226, 190], 0.26); glow(c, x, y, 80 * s, [255, 246, 232], 0.85);
+  c.restore(); spikes(c, x, y, 230 * s);
+  c.fillStyle = '#ffffff'; circ(c, x, y, 9 * s); c.fill();
+}
+function coverObs(c) {
+  bgObs(c);
+  // parallel sunlight, very faint
+  c.save(); c.globalCompositeOperation = 'lighter';
+  const dir = [-0.83, 0.56], perp = [0.56, 0.83];
+  for (let i = -3; i <= 3; i++) {
+    const ox = 1440 + perp[0] * i * 30, oy = 150 + perp[1] * i * 30, ex = ox + dir[0] * 820, ey = oy + dir[1] * 820;
+    const g = c.createLinearGradient(ox, oy, ex, ey); g.addColorStop(0, 'rgba(255,240,220,0)'); g.addColorStop(0.2, 'rgba(255,240,220,0.09)'); g.addColorStop(1, 'rgba(255,240,220,0)');
+    c.strokeStyle = g; c.lineWidth = 1.2; c.beginPath(); c.moveTo(ox, oy); c.lineTo(ex, ey); c.stroke();
+  }
+  c.restore();
+  // planet and its thin atmosphere, lit from the upper right
+  const cx = 760, cy = 2400, R = 1720;
+  const g = c.createRadialGradient(cx + 400, cy - R, 200, cx, cy, R); g.addColorStop(0, '#13305a'); g.addColorStop(0.5, '#0a1a33'); g.addColorStop(1, '#040912');
+  c.fillStyle = g; circ(c, cx, cy, R); c.fill();
+  // atmosphere ring on its own layer, then faded toward the night side (left)
+  const ring = document.createElement('canvas'); ring.width = c.canvas.width; ring.height = c.canvas.height;
+  const q = ring.getContext('2d'); q.setTransform(K, 0, 0, K, 0, 0);
+  const rg = q.createRadialGradient(cx, cy, R - 3, cx, cy, R + 95);
+  rg.addColorStop(0, 'rgba(205,228,255,0.95)'); rg.addColorStop(0.07, 'rgba(140,190,255,0.75)'); rg.addColorStop(0.35, 'rgba(70,130,255,0.28)'); rg.addColorStop(1, 'rgba(30,80,220,0)');
+  q.fillStyle = rg; q.beginPath(); q.arc(cx, cy, R + 95, 0, Math.PI * 2); q.arc(cx, cy, R - 3, 0, Math.PI * 2, true); q.fill('evenodd');
+  q.globalCompositeOperation = 'destination-in';
+  const fade = q.createLinearGradient(-100, 0, 1600, 0); fade.addColorStop(0, 'rgba(0,0,0,0.1)'); fade.addColorStop(0.5, 'rgba(0,0,0,0.35)'); fade.addColorStop(1, 'rgba(0,0,0,1)');
+  q.fillStyle = fade; q.fillRect(0, 0, W, H);
+  c.save(); c.setTransform(1, 0, 0, 1, 0, 0); c.globalCompositeOperation = 'lighter'; c.drawImage(ring, 0, 0); c.restore();
+  // backlit leaf
+  c.save(); c.translate(1150, 470); c.rotate(-0.42);
+  const L = 520, Wd = 200;
+  c.save(); c.globalCompositeOperation = 'lighter'; c.shadowColor = 'rgba(130,230,90,0.55)'; c.shadowBlur = 60 * K;
+  leafShape(c, L, Wd); c.fillStyle = 'rgba(60,140,40,0.35)'; c.fill(); c.restore();
+  petiole(c, L, Wd, '#4f9a3a', 7);
+  leafShape(c, L, Wd);
+  const lg = c.createRadialGradient(L * 0.12, -Wd * 0.12, 8, 0, 0, L * 0.62);
+  lg.addColorStop(0, '#e2ffa8'); lg.addColorStop(0.32, '#97de55'); lg.addColorStop(0.72, '#3f9a2e'); lg.addColorStop(1, '#174f19');
+  c.fillStyle = lg; c.fill();
+  c.save(); leafShape(c, L, Wd); c.clip(); leafVeins(c, L, Wd, 'rgba(240,255,205,0.6)', 4.5); c.restore();
+  leafShape(c, L, Wd); c.strokeStyle = 'rgba(225,255,170,0.85)'; c.lineWidth = 2; c.stroke();
+  c.restore();
+  sunObs(c, 1440, 150, 1);
+}
+
+/* ================= STYLE: Plate ================= */
+function bgPlate(c) { c.fillStyle = '#f2f3ee'; c.fillRect(0, 0, W, H); c.fillStyle = grain(c); c.fillRect(0, 0, W, H); }
+function leafInk(c, x, y, L, Wd, rot) {
+  c.save(); c.translate(x, y); c.rotate(rot);
+  const r = mulberry(11);
+  for (let i = 0; i < 5; i++) {
+    c.save(); c.translate((r() - 0.5) * 7, (r() - 0.5) * 7); leafShape(c, L * (0.97 + r() * 0.05), Wd * (0.95 + r() * 0.08));
+    c.fillStyle = i < 2 ? 'rgba(118,170,88,0.30)' : 'rgba(64,132,66,0.20)'; c.fill(); c.restore();
+  }
+  leafShape(c, L, Wd); c.strokeStyle = 'rgba(56,112,58,0.28)'; c.lineWidth = 7; c.stroke();
+  c.save(); leafShape(c, L, Wd); c.clip(); leafVeins(c, L, Wd, 'rgba(31,42,58,0.85)', 1.8); c.restore();
+  petiole(c, L, Wd, INK, 2.2);
+  leafShape(c, L, Wd); c.strokeStyle = INK; c.lineWidth = 2.1; c.stroke();
+  c.restore();
+}
+function inkSun(c, x, y, r) {
+  glow(c, x, y, r * 3.2, [255, 250, 232], 0.75);
+  c.fillStyle = '#fff6d8'; circ(c, x, y, r); c.fill(); c.strokeStyle = INK; c.lineWidth = 1.5; c.stroke();
+  c.lineWidth = 1.3; c.lineCap = 'round';
+  for (let i = 0; i < 16; i++) { const a = i * Math.PI / 8, l = i % 2 ? 0.45 : 0.75; c.beginPath(); c.moveTo(x + Math.cos(a) * r * 1.35, y + Math.sin(a) * r * 1.35); c.lineTo(x + Math.cos(a) * r * (1.35 + l), y + Math.sin(a) * r * (1.35 + l)); c.stroke(); }
+}
+function coverPlate(c) {
+  bgPlate(c);
+  c.strokeStyle = INK; c.lineWidth = 1.6; c.strokeRect(40, 40, W - 80, H - 80); c.lineWidth = 0.8; c.strokeRect(50, 50, W - 100, H - 100);
+  // each figure is drawn at r = 196 around its own centre, then scaled to fit under the larger title
+  const A = { x: 0, y: 0, r: 196 }, B = { x: 0, y: 0, r: 196 };
+  c.save(); c.translate(520, 598); c.scale(0.86, 0.86);
+  c.save(); circ(c, A.x, A.y, A.r); c.clip();
+  const g = c.createLinearGradient(0, A.y - A.r, 0, A.y + A.r);
+  [[0, '#5f86c4'], [0.35, '#7fa2d6'], [0.6, '#a6c1e6'], [0.8, '#cfdcee'], [1, '#e6ecf0']].forEach(([o, col]) => g.addColorStop(o, col));
+  c.fillStyle = g; c.fillRect(A.x - A.r, A.y - A.r, 2 * A.r, 2 * A.r); c.fillStyle = grain(c); c.fillRect(A.x - A.r, A.y - A.r, 2 * A.r, 2 * A.r);
+  inkSun(c, A.x - 62, A.y - 92, 19);
+  c.beginPath(); c.moveTo(A.x - A.r, A.y + 122); c.bezierCurveTo(A.x - 120, A.y + 88, A.x - 40, A.y + 132, A.x + 40, A.y + 112);
+  c.bezierCurveTo(A.x + 110, A.y + 96, A.x + 160, A.y + 120, A.x + A.r, A.y + 104); c.lineTo(A.x + A.r, A.y + A.r); c.lineTo(A.x - A.r, A.y + A.r); c.closePath();
+  c.fillStyle = '#c4ccb6'; c.fill(); c.strokeStyle = INK; c.lineWidth = 1.5; c.stroke();
+  c.restore(); circ(c, A.x, A.y, A.r); c.strokeStyle = INK; c.lineWidth = 2.4; c.stroke();
+  c.restore();
+  c.save(); c.translate(1080, 598); c.scale(0.86, 0.86);
+  c.save(); circ(c, B.x, B.y, B.r); c.clip();
+  c.fillStyle = '#eef1e8'; c.fillRect(B.x - B.r, B.y - B.r, 2 * B.r, 2 * B.r);
+  for (let i = 0; i < 3; i++) { const sx = B.x - 168 + i * 34, sy = B.y - 150 - i * 22; arrow(c, sx, sy, sx + 54, sy + 72, 12, INK, 1.5); }
+  leafInk(c, B.x + 16, B.y + 26, 300, 116, -0.55);
+  c.restore(); circ(c, B.x, B.y, B.r); c.strokeStyle = INK; c.lineWidth = 2.4; c.stroke();
+  c.restore();
+}
+
+/* ================= STYLE: Studio ================= */
+function bgStudio(c) { const g = c.createLinearGradient(0, 0, 0, H); g.addColorStop(0, '#e8f0fc'); g.addColorStop(1, '#fbfcf9'); c.fillStyle = g; c.fillRect(0, 0, W, H); }
+function floorShadow(c, x, y, rx, ry, a) { c.save(); c.translate(x, y); c.scale(1, ry / rx); const g = c.createRadialGradient(0, 0, 0, 0, 0, rx); g.addColorStop(0, `rgba(20,36,70,${a})`); g.addColorStop(1, 'rgba(20,36,70,0)'); c.fillStyle = g; circ(c, 0, 0, rx); c.fill(); c.restore(); }
+function smoothPoly(c, pts, s, x, y) {
+  c.beginPath();
+  const P = pts.map(([u, v]) => [x + u * s, y + v * s]);
+  const m = (a, b) => [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
+  let st = m(P[P.length - 1], P[0]); c.moveTo(st[0], st[1]);
+  for (let i = 0; i < P.length; i++) { const n = m(P[i], P[(i + 1) % P.length]); c.quadraticCurveTo(P[i][0], P[i][1], n[0], n[1]); }
+  c.closePath();
+}
+function globe3D(c, x, y, r) {
+  floorShadow(c, x, y + r + 46, r * 1.05, 26, 0.22);
+  glow(c, x, y, r * 1.28, [120, 175, 255], 0.5);
+  const g = c.createRadialGradient(x - r * 0.35, y - r * 0.42, r * 0.08, x, y, r);
+  g.addColorStop(0, '#8fc0ff'); g.addColorStop(0.5, '#3473d8'); g.addColorStop(1, '#0f3477');
+  c.fillStyle = g; circ(c, x, y, r); c.fill();
+  c.save(); circ(c, x, y, r); c.clip();
+  // cloud bands following the sphere's curvature
+  for (const [v, h, a] of [[-0.62, 0.07, 0.55], [-0.38, 0.05, 0.4], [-0.08, 0.06, 0.5], [0.22, 0.045, 0.35], [0.48, 0.06, 0.45], [0.7, 0.05, 0.3]]) {
+    const yy = y + v * r, half = Math.sqrt(Math.max(0, 1 - v * v)) * r;
+    c.save(); c.translate(x, yy); c.scale(1, h * r / half || 1);
+    const cg = c.createRadialGradient(0, 0, 0, 0, 0, half); cg.addColorStop(0, `rgba(255,255,255,${a})`); cg.addColorStop(0.7, `rgba(255,255,255,${a * 0.45})`); cg.addColorStop(1, 'rgba(255,255,255,0)');
+    c.fillStyle = cg; circ(c, 0, 0, half); c.fill(); c.restore();
+  }
+  const sh = c.createRadialGradient(x + r * 0.55, y + r * 0.5, 0, x + r * 0.55, y + r * 0.5, r * 1.3);
+  sh.addColorStop(0, 'rgba(4,14,40,0.55)'); sh.addColorStop(1, 'rgba(4,14,40,0)'); c.fillStyle = sh; c.fillRect(x - r, y - r, 2 * r, 2 * r);
+  const sp = c.createRadialGradient(x - r * 0.42, y - r * 0.48, 0, x - r * 0.42, y - r * 0.48, r * 0.6);
+  sp.addColorStop(0, 'rgba(255,255,255,0.7)'); sp.addColorStop(1, 'rgba(255,255,255,0)'); c.fillStyle = sp; c.fillRect(x - r, y - r, 2 * r, 2 * r);
+  c.restore();
+  circ(c, x, y, r); c.strokeStyle = 'rgba(205,230,255,0.9)'; c.lineWidth = 2.5; c.stroke();
+}
+function leaf3D(c, x, y, L, Wd, rot) {
+  floorShadow(c, x + 10, y + Wd * 1.55, L * 0.5, 30, 0.2);
+  c.save(); c.translate(x, y); c.rotate(rot);
+  c.save(); c.shadowColor = 'rgba(20,60,30,0.25)'; c.shadowBlur = 40 * K; c.shadowOffsetY = 26 * K; leafShape(c, L, Wd); c.fillStyle = '#4c9a46'; c.fill(); c.restore();
+  petiole(c, L, Wd, '#3f7f3a', 8);
+  c.save(); leafShape(c, L, Wd); c.clip();
+  let g = c.createLinearGradient(0, -Wd, 0, 0); g.addColorStop(0, '#b3e785'); g.addColorStop(1, '#6cbd51'); c.fillStyle = g; c.fillRect(-L, -Wd * 2, 2 * L, Wd * 2);
+  g = c.createLinearGradient(0, 0, 0, Wd); g.addColorStop(0, '#3f9139'); g.addColorStop(1, '#25672a'); c.fillStyle = g; c.fillRect(-L, 0, 2 * L, Wd * 2);
+  leafVeins(c, L, Wd, 'rgba(232,255,205,0.6)', 4);
+  const sp = c.createRadialGradient(-L * 0.08, -Wd * 0.36, 0, -L * 0.08, -Wd * 0.36, L * 0.3);
+  sp.addColorStop(0, 'rgba(255,255,255,0.45)'); sp.addColorStop(1, 'rgba(255,255,255,0)'); c.fillStyle = sp; c.fillRect(-L, -Wd, 2 * L, 2 * Wd);
+  c.restore();
+  leafShape(c, L, Wd); c.strokeStyle = 'rgba(22,70,30,0.35)'; c.lineWidth = 2; c.stroke();
+  c.restore();
+}
+function glossBall(c, x, y, r, hi, mid, lo) {
+  const g = c.createRadialGradient(x - r * 0.35, y - r * 0.4, r * 0.05, x, y, r);
+  g.addColorStop(0, hi); g.addColorStop(0.45, mid); g.addColorStop(1, lo); c.fillStyle = g; circ(c, x, y, r); c.fill();
+}
+function airCube(c, cx, cy, s) {
+  const k = 0.866;
+  const T = [[cx, cy - s], [cx + k * s, cy - s / 2], [cx, cy], [cx - k * s, cy - s / 2]];
+  const Lf = [T[3], T[2], [cx, cy + s], [cx - k * s, cy + s / 2]];
+  const Rf = [T[2], T[1], [cx + k * s, cy + s / 2], [cx, cy + s]];
+  const poly = pts => { c.beginPath(); pts.forEach(([x, y], i) => i ? c.lineTo(x, y) : c.moveTo(x, y)); c.closePath(); };
+  floorShadow(c, cx, cy + s + 40, s * 1.15, 30, 0.22);
+  // faces: glass tinted by the scattered sky light
+  c.save(); c.shadowColor = 'rgba(40,90,200,0.35)'; c.shadowBlur = 60 * K; poly([T[0], T[1], Rf[2], Rf[3], Lf[3], T[3]]); c.fillStyle = '#5b8fe6'; c.fill(); c.restore();
+  let g = c.createLinearGradient(Lf[3][0], Lf[0][1], Lf[2][0], Lf[2][1]); g.addColorStop(0, '#8db8ff'); g.addColorStop(1, '#4a7fe0'); poly(Lf); c.fillStyle = g; c.fill();
+  g = c.createLinearGradient(Rf[0][0], Rf[0][1], Rf[2][0], Rf[2][1]); g.addColorStop(0, '#3f6fd2'); g.addColorStop(1, '#22479e'); poly(Rf); c.fillStyle = g; c.fill();
+  g = c.createLinearGradient(T[3][0], T[0][1], T[1][0], T[2][1]); g.addColorStop(0, '#e6f0ff'); g.addColorStop(1, '#a9c9ff'); poly(T); c.fillStyle = g; c.fill();
+  // molecules seen through the glass
+  const r = mulberry(31), face = (F, u, v) => { const [a, b, , d] = F; return [a[0] + (b[0] - a[0]) * u + (d[0] - a[0]) * v, a[1] + (b[1] - a[1]) * u + (d[1] - a[1]) * v]; };
+  for (const [F, hi, mid, lo] of [[Lf, '#ffffff', '#c9dcff', '#7f9fdd'], [Rf, '#f2f6ff', '#9db8ee', '#5672b8'], [T, '#ffffff', '#e2ecff', '#9db8ee']]) {
+    for (let i = 0; i < 7; i++) {
+      const [x, y] = face(F, 0.15 + r() * 0.7, 0.15 + r() * 0.7), an = r() * Math.PI, d = s * 0.035;
+      for (const sg of [-1, 1]) glossBall(c, x + sg * Math.cos(an) * d, y + sg * Math.sin(an) * d * 0.6, s * 0.032, hi, mid, lo);
+    }
+  }
+  // glass edges and a highlight
+  c.strokeStyle = 'rgba(255,255,255,0.85)'; c.lineWidth = 2.5; c.lineJoin = 'round';
+  poly([T[0], T[1], Rf[2], Rf[3], Lf[3], T[3]]); c.stroke();
+  c.lineWidth = 1.5; c.strokeStyle = 'rgba(255,255,255,0.6)'; c.beginPath(); c.moveTo(T[3][0], T[3][1]); c.lineTo(T[2][0], T[2][1]); c.lineTo(T[1][0], T[1][1]); c.moveTo(T[2][0], T[2][1]); c.lineTo(cx, cy + s); c.stroke();
+  // a beam of sunlight entering the top face
+  c.save(); c.globalAlpha = 0.85; const bg = c.createLinearGradient(cx - s * 0.8, cy - s * 1.2, cx - s * 0.2, cy - s * 0.6);
+  bg.addColorStop(0, 'rgba(255,248,225,0)'); bg.addColorStop(1, 'rgba(255,248,225,0.95)');
+  c.fillStyle = bg; c.beginPath(); c.moveTo(cx - s * 0.85, cy - s * 1.12); c.lineTo(cx - s * 0.68, cy - s * 1.22); c.lineTo(cx - s * 0.05, cy - s * 0.62); c.lineTo(cx - s * 0.35, cy - s * 0.5); c.closePath(); c.fill(); c.restore();
+}
+function coverStudio(c) {
+  bgStudio(c);
+  glow(c, 470, 650, 460, [200, 220, 255], 0.6); glow(c, 1160, 500, 420, [214, 240, 204], 0.65);
+  airCube(c, 480, 620, 178);
+  leaf3D(c, 1160, 480, 480, 186, -0.4);
+}
+
+/* ================= Slide 2: light primer ================= */
+const PX = nm => 160 + (nm - 300) * 2.56;
+const ROWS = [{ nm: 450, y: 300, name: 'blue', b: 0 }, { nm: 550, y: 392, name: 'green', b: 1 }, { nm: 650, y: 484, name: 'red', b: 2 }];
+const PCOL = {
+  obs: [[110, 150, 255], [130, 250, 120], [255, 100, 74]],
+  plate: [[35, 80, 230], [42, 150, 58], [222, 54, 30]],
+  studio: [[40, 95, 240], [46, 168, 70], [236, 70, 40]],
+};
+function strip(c, S, x0, x1, y, h) {
+  const g = c.createLinearGradient(x0, 0, x1, 0);
+  for (let nm = 300; nm <= 800; nm += 10) {
+    const o = (nm - 300) / 500, v = vis(nm), col = spec(nm);
+    let out;
+    if (S.id === 'obs') out = rgba(col.map(q => q * Math.pow(v, 0.7)));
+    else if (S.id === 'plate') out = rgba(mixc(mixc(col, [242, 243, 238], 0.12), [43, 50, 64], 1 - Math.pow(v, 0.6)));
+    else out = rgba(mixc(col, [214, 222, 234], 1 - Math.pow(v, 0.6)));
+    g.addColorStop(o, out);
+  }
+  if (S.id === 'obs') {
+    c.save(); c.globalCompositeOperation = 'lighter'; c.globalAlpha = 0.35; c.fillStyle = g; c.fillRect(x0, y - 8, x1 - x0, h + 16); c.restore();
+    c.fillStyle = g; c.fillRect(x0, y, x1 - x0, h);
+    c.strokeStyle = 'rgba(160,180,215,0.35)'; c.lineWidth = 1; c.setLineDash([3, 5]); c.strokeRect(x0, y, x1 - x0, h); c.setLineDash([]);
+  } else if (S.id === 'plate') {
+    c.fillStyle = g; c.fillRect(x0, y, x1 - x0, h); c.fillStyle = grain(c); c.fillRect(x0, y, x1 - x0, h);
+    c.strokeStyle = INK; c.lineWidth = 1.4; c.strokeRect(x0, y, x1 - x0, h);
+  } else {
+    c.save(); c.shadowColor = 'rgba(30,50,110,0.18)'; c.shadowBlur = 18 * K; c.shadowOffsetY = 8 * K; rr(c, x0, y, x1 - x0, h, h / 2); c.fillStyle = g; c.fill(); c.restore();
+    c.save(); rr(c, x0, y, x1 - x0, h, h / 2); c.clip(); const hl = c.createLinearGradient(0, y, 0, y + h); hl.addColorStop(0, 'rgba(255,255,255,0.35)'); hl.addColorStop(0.5, 'rgba(255,255,255,0)'); c.fillStyle = hl; c.fillRect(x0, y, x1 - x0, h); c.restore();
+  }
+}
+function bracket(c, S, xa, xb, y, name, range, idx) {
+  const cx = (xa + xb) / 2;
+  if (S.id === 'studio') {
+    c.save(); c.shadowColor = 'rgba(30,50,110,0.14)'; c.shadowBlur = 16 * K; c.shadowOffsetY = 6 * K;
+    rr(c, xa, y - 20, xb - xa, 40, 20); c.fillStyle = idx ? '#ddf2d4' : '#e1e9ff'; c.fill(); c.restore();
+    c.font = F.jak(800, 20); const w1 = c.measureText(name + '  ').width; c.font = F.jak(500, 20); const w2 = c.measureText(range).width;
+    const sx = cx - (w1 + w2) / 2; txt(c, name + '  ', sx, y + 7, F.jak(800, 20), idx ? '#1f4a26' : '#1d2b5c'); txt(c, range, sx + w1, y + 7, F.jak(500, 20), idx ? '#2f6b37' : '#3a4c85');
+    return;
+  }
+  const col = S.id === 'obs' ? 'rgba(200,215,240,0.75)' : INK;
+  c.strokeStyle = col; c.lineWidth = S.id === 'obs' ? 1.4 : 1.6;
+  c.beginPath(); c.moveTo(xa, y - 12); c.lineTo(xa, y); c.lineTo(xb, y); c.lineTo(xb, y - 12); c.stroke();
+  if (S.id === 'obs') { txt(c, `${name.toUpperCase()}   ${range}`, cx, y + 30, F.mono(500, 17), '#b4c3db', 'center'); }
+  else {
+    c.font = F.serifI(34); const w1 = c.measureText(name + '  ').width; c.font = F.plex(400, 30); const w2 = c.measureText(range).width;
+    const sx = cx - (w1 + w2) / 2; txt(c, name + '  ', sx, y + 40, F.serifI(34), INK); txt(c, range, sx + w1, y + 40, F.plex(400, 30), INKS);
+  }
+}
+function primerStatic(c, S) {
+  S.bg(c);
+  if (S.id === 'studio') glow(c, 800, 470, 760, [214, 228, 255], 0.55);
+  // energy arrow
+  const ax = 104, col = S.id === 'obs' ? 'rgba(200,215,240,0.8)' : S.id === 'plate' ? INK : '#33437a';
+  arrow(c, ax, 500, ax, 286, 14, col, S.id === 'studio' ? 3 : 1.6);
+  c.save(); c.translate(ax - 22, 393); c.rotate(-Math.PI / 2);
+  txt(c, 'more energy per photon', 0, S.id === 'plate' ? -4 : 0, S.id === 'obs' ? F.mono(500, 15) : S.id === 'plate' ? F.serifI(30) : F.jak(700, 17), S.id === 'obs' ? '#8fa6c8' : S.id === 'plate' ? INKS : '#4a5878', 'center');
+  c.restore();
+  // drop lines from each wave to the axis
+  for (const r of ROWS) {
+    const x = PX(r.nm);
+    c.strokeStyle = S.id === 'obs' ? 'rgba(170,190,225,0.35)' : S.id === 'plate' ? 'rgba(31,42,58,0.55)' : 'rgba(51,67,122,0.35)';
+    c.lineWidth = 1.2; c.setLineDash([4, 6]); c.beginPath(); c.moveTo(x, r.y + 22); c.lineTo(x, 598); c.stroke(); c.setLineDash([]);
+  }
+  strip(c, S, PX(300), PX(800), 604, 34);
+  const P = S.id === 'plate';
+  const tf = S.id === 'obs' ? F.mono(400, 18) : P ? F.plex(400, 30) : F.jak(600, 18);
+  const tc = S.id === 'obs' ? '#8fa6c8' : P ? INKS : '#55658f';
+  for (let nm = 300; nm <= 800; nm += 100) txt(c, nm === 800 ? '800 nm' : String(nm), PX(nm), P ? 676 : 666, tf, tc, 'center');
+  const lf = S.id === 'obs' ? F.mono(500, 16) : P ? F.serifI(30) : F.jak(700, 17);
+  txt(c, S.id === 'obs' ? 'ULTRAVIOLET' : 'ultraviolet', PX(340), P ? 588 : 590, lf, tc, 'center');
+  txt(c, S.id === 'obs' ? 'INFRARED' : 'infrared', PX(775), P ? 588 : 590, lf, tc, 'center');
+  bracket(c, S, PX(380), PX(750), P ? 704 : 712, 'Visible to us', '380–750 nm', 0);
+  bracket(c, S, PX(400), PX(700), P ? 774 : 782, 'PAR, the light plants use', '400–700 nm', 1);
+}
+function primerDyn(c, S, t) {
+  for (const r of ROWS) {
+    const x0 = 160, x1 = PX(r.nm) - 14, lam = r.nm * 0.11, k = 2 * Math.PI / lam, col = PCOL[S.id][r.b];
+    c.beginPath();
+    for (let x = x0; x <= x1; x += 2) { const env = Math.min(1, (x - x0) / 140); const y = r.y + 24 * env * Math.sin(k * (x - 70 * t)); x === x0 ? c.moveTo(x, y) : c.lineTo(x, y); }
+    if (S.id === 'obs') { c.save(); c.globalCompositeOperation = 'lighter'; c.strokeStyle = rgba(col, 0.16); c.lineWidth = 9; c.stroke(); c.strokeStyle = rgba(col, 1); c.lineWidth = 2.6; c.stroke(); c.restore(); }
+    else if (S.id === 'plate') { c.strokeStyle = rgba(col, 1); c.lineWidth = 3.4; c.lineJoin = 'round'; c.stroke(); }
+    else { c.save(); c.translate(0, 7); c.strokeStyle = 'rgba(20,40,90,0.10)'; c.lineWidth = 10; c.stroke(); c.restore(); c.strokeStyle = rgba(col, 1); c.lineWidth = 9; c.lineCap = 'round'; c.stroke(); c.strokeStyle = 'rgba(255,255,255,0.5)'; c.lineWidth = 2.6; c.stroke(); }
+    const px = PX(r.nm), E = (1239.84 / r.nm).toFixed(2);
+    if (S.id === 'obs') {
+      c.save(); c.globalCompositeOperation = 'lighter'; glow(c, px, r.y, 40, col, 0.6); c.restore(); c.fillStyle = '#fff'; circ(c, px, r.y, 5.5); c.fill();
+      txt(c, `${r.nm} nm`, px + 30, r.y + 8, F.mono(500, 24), '#e9eef7'); c.font = F.mono(500, 24); const w = c.measureText(`${r.nm} nm`).width;
+      txt(c, `${E} eV`, px + 30 + w + 18, r.y + 8, F.mono(400, 22), '#8fa6c8');
+    } else if (S.id === 'plate') {
+      c.fillStyle = rgba(col, 1); circ(c, px, r.y, 12); c.fill(); c.strokeStyle = INK; c.lineWidth = 2; c.stroke();
+      txt(c, `${r.nm} nm`, px + 30, r.y + 12, F.plex(600, 36), INK); c.font = F.plex(600, 36); const w = c.measureText(`${r.nm} nm`).width;
+      txt(c, `${r.name}, ${E} eV`, px + 30 + w + 14, r.y + 12, F.serifI(36), INKS);
+    } else {
+      const g = c.createRadialGradient(px - 5, r.y - 6, 1, px, r.y, 15); g.addColorStop(0, '#ffffff'); g.addColorStop(0.35, rgba(col, 1)); g.addColorStop(1, rgba(col.map(v => v * 0.55), 1));
+      c.save(); c.shadowColor = 'rgba(20,40,90,0.25)'; c.shadowBlur = 10 * K; c.shadowOffsetY = 4 * K; c.fillStyle = g; circ(c, px, r.y, 15); c.fill(); c.restore();
+      c.font = F.jak(800, 21); const t1 = `${r.nm} nm`, w1 = c.measureText(t1 + '   ').width; c.font = F.jak(500, 21); const w2 = c.measureText(`${E} eV`).width;
+      c.save(); c.shadowColor = 'rgba(30,50,110,0.13)'; c.shadowBlur = 14 * K; c.shadowOffsetY = 5 * K; rr(c, px + 28, r.y - 22, w1 + w2 + 36, 44, 22); c.fillStyle = '#fff'; c.fill(); c.restore();
+      txt(c, t1, px + 46, r.y + 7, F.jak(800, 21), '#0f1b3d'); txt(c, `${E} eV`, px + 46 + w1, r.y + 7, F.jak(500, 21), '#55658f');
+    }
+  }
+}
+
+/* ================= Slide 3: live scattering ================= */
+const SIM = { x0: 360, x1: 1220, y0: 240, y1: 760, cy: 500, band: 46, v: 300, R: 13 };
+const BANDS = [{ nm: 450, tau: 0.8 }, { nm: 550, tau: 0.36 }, { nm: 650, tau: 0.18 }];
+const BL = [[59, 108, 255], [108, 240, 90], [255, 74, 46]].map(c => c.map(lin));
+const sim = { mols: [], pk: [], fl: [], fs: [0, 0, 0], mode: 'noon', mm: 0, spawn: 0, rng: mulberry(5) };
+(function makeMols() {
+  const r = mulberry(21);
+  for (const set of [0, 1]) for (let i = 0; i < 34; i++) {
+    const x = SIM.x0 + 30 + (i + (set ? 0.5 : 0) + (r() - 0.5) * 0.6) * (SIM.x1 - SIM.x0 - 60) / 34;
+    sim.mols.push({ x, y: SIM.cy - SIM.band + r() * 2 * SIM.band, a: r() * Math.PI, ph: r() * 6.28, set, hot: 0 });
+  }
+  const gx = 12, gy = 3;
+  for (const [ya, yb] of [[SIM.y0 + 64, SIM.cy - SIM.band - 16], [SIM.cy + SIM.band + 16, SIM.y1 - 34]])
+    for (let i = 0; i < gx; i++) for (let j = 0; j < gy; j++)
+      sim.mols.push({ x: SIM.x0 + 40 + (i + 0.2 + r() * 0.6) * (SIM.x1 - SIM.x0 - 80) / gx, y: ya + (j + 0.2 + r() * 0.6) * (yb - ya) / gy, a: r() * Math.PI, ph: r() * 6.28, set: 2, hot: 0 });
+})();
+const expected = (b, mode) => 1 - Math.exp(-BANDS[b].tau * (mode === 'sunset' ? 6 : 1));
+// a packet meets about 0.22 molecules of a set per molecule placed, so this matches the optical depths above
+function pFor(b) { const n = sim.mode === 'sunset' ? 68 : 34, hits = n * 0.22; return 1 - Math.exp(-BANDS[b].tau * (sim.mode === 'sunset' ? 6 : 1) / hits); }
+function initAcc() { for (let b = 0; b < 3; b++) sim.fs[b] = expected(b, sim.mode); }
+function scatterDir(r) { for (;;) { const th = r() * Math.PI * 2, cs = Math.cos(th); if (Math.abs(cs) > 0.88) continue; if (r() * 2 <= 1 + cs * cs) return [cs, Math.sin(th)]; } }
+function step(dt) {
+  const r = sim.rng;
+  sim.mm += ((sim.mode === 'sunset' ? 1 : 0) - sim.mm) * Math.min(1, dt * 4);
+  sim.spawn += dt * 22;
+  while (sim.spawn >= 1) { sim.spawn--; sim.pk.push({ x: 178, y: SIM.cy + (r() * 2 - 1) * SIM.band, dx: 1, dy: 0, b: (r() * 3) | 0, s: 0, d: 0 }); }
+  // swatches show the computed result for this path, easing when the mode changes
+  for (let b = 0; b < 3; b++) sim.fs[b] += (expected(b, sim.mode) - sim.fs[b]) * Math.min(1, dt * 1.6);
+  const P = [pFor(0), pFor(1), pFor(2)], sunset = sim.mode === 'sunset';
+  for (const p of sim.pk) {
+    const mv = SIM.v * dt, px = p.x; p.x += p.dx * mv; p.y += p.dy * mv;
+    if (p.s) { p.d += mv; continue; }
+    if (p.x > SIM.x0 && px < SIM.x1) {
+      for (const m of sim.mols) {
+        if (m.set === 2 || (m.set === 1 && !sunset)) continue;
+        if (m.x > px && m.x <= p.x && Math.abs(m.y - p.y) < SIM.R) {
+          if (r() < P[p.b]) { const d = scatterDir(r); p.dx = d[0]; p.dy = d[1]; p.s = 1; p.x = m.x; p.y = m.y; m.hot = 1; sim.fl.push({ x: m.x, y: m.y, b: p.b, u: 0 }); }
+          break;
+        }
+      }
+    }
+  }
+  sim.pk = sim.pk.filter(p => p.x > -80 && p.x < (p.s ? W + 80 : 1392) && p.y > -80 && p.y < H + 80 && p.d < 380);
+  for (const f of sim.fl) f.u += dt / 0.5; sim.fl = sim.fl.filter(f => f.u < 1);
+  for (const m of sim.mols) m.hot = Math.max(0, m.hot - dt * 2.5);
+}
+function mixColor(w) { let R = 0, G = 0, B = 0; for (let i = 0; i < 3; i++) { R += w[i] * BL[i][0]; G += w[i] * BL[i][1]; B += w[i] * BL[i][2]; } const m = Math.max(R, G, B, 1e-6); return [enc(R / m), enc(G / m), enc(B / m)]; }
+
+function sunStatic(c, S, x, y) {
+  if (S.id === 'obs') { sunObs(c, x, y, 0.62); txt(c, 'SUNLIGHT', x, y + 92, F.mono(500, 16), '#cfdaeb', 'center'); txt(c, 'all colours', x, y + 118, F.arch(400, 20), '#8fa6c8', 'center'); }
+  else if (S.id === 'plate') { inkSun(c, x, y, 30); txt(c, 'Sunlight', x, y + 104, F.serifI(36), INK, 'center'); txt(c, 'all colours', x, y + 140, F.plex(400, 30), INKS, 'center'); }
+  else {
+    glow(c, x, y, 120, [255, 214, 120], 0.55);
+    const g = c.createRadialGradient(x - 12, y - 14, 3, x, y, 40); g.addColorStop(0, '#fffbe8'); g.addColorStop(0.45, '#ffd56b'); g.addColorStop(1, '#ff9b2e');
+    c.fillStyle = g; circ(c, x, y, 40); c.fill();
+    pill(c, x, y + 92, 'Sunlight', 'all colours');
+  }
+}
+function pill(c, x, y, a, b) {
+  c.font = F.jak(800, 18); const w1 = c.measureText(a + (b ? '  ' : '')).width; c.font = F.jak(500, 18); const w2 = b ? c.measureText(b).width : 0;
+  const w = w1 + w2 + 34;
+  c.save(); c.shadowColor = 'rgba(30,50,110,0.14)'; c.shadowBlur = 14 * K; c.shadowOffsetY = 5 * K; rr(c, x - w / 2, y - 20, w, 40, 20); c.fillStyle = '#fff'; c.fill(); c.restore();
+  txt(c, a + (b ? '  ' : ''), x - w / 2 + 17, y + 6, F.jak(800, 18), '#0f1b3d'); if (b) txt(c, b, x - w / 2 + 17 + w1, y + 6, F.jak(500, 18), '#55658f');
+}
+function lab2(c, S, x, y, a, b) {
+  if (S.id === 'obs') { txt(c, a.toUpperCase(), x, y, F.mono(500, 16), '#cfdaeb', 'center'); txt(c, b, x, y + 28, F.arch(400, 21), '#8fa6c8', 'center'); }
+  else if (S.id === 'plate') { txt(c, a, x, y + 8, F.serifI(36), INK, 'center'); txt(c, b, x, y + 44, F.plex(400, 30), INKS, 'center'); }
+  else { txt(c, a, x, y, F.jak(800, 20), '#0f1b3d', 'center'); txt(c, b, x, y + 27, F.jak(500, 18), '#55658f', 'center'); }
+}
+function simStatic(c, S) {
+  S.bg(c);
+  const { x0, x1, y0, y1 } = SIM;
+  if (S.id === 'obs') {
+    c.fillStyle = 'rgba(40,70,130,0.16)'; rr(c, x0, y0, x1 - x0, y1 - y0, 26); c.fill();
+    c.strokeStyle = 'rgba(150,180,230,0.28)'; c.lineWidth = 1.5; c.stroke();
+    txt(c, 'AIR MOLECULES · HUGELY MAGNIFIED', x0 + 24, y0 + 38, F.mono(500, 15), '#8fa6c8');
+  } else if (S.id === 'plate') {
+    c.strokeStyle = INK; c.lineWidth = 1.3; c.strokeRect(x0, y0, x1 - x0, y1 - y0);
+    c.lineWidth = 1.6; for (const [x, y, sx, sy] of [[x0, y0, 1, 1], [x1, y0, -1, 1], [x0, y1, 1, -1], [x1, y1, -1, -1]]) { c.beginPath(); c.moveTo(x - sx * 14, y); c.lineTo(x + sx * 18, y); c.moveTo(x, y - sy * 14); c.lineTo(x, y + sy * 18); c.stroke(); }
+    txt(c, 'Air molecules, greatly magnified', x0 + 24, y0 + 46, F.serifI(34), INK);
+  } else {
+    glow(c, 800, 500, 760, [214, 228, 255], 0.5);
+    c.save(); c.shadowColor = 'rgba(30,50,110,0.13)'; c.shadowBlur = 40 * K; c.shadowOffsetY = 18 * K; rr(c, x0, y0, x1 - x0, y1 - y0, 30); c.fillStyle = 'rgba(255,255,255,0.62)'; c.fill(); c.restore();
+    rr(c, x0, y0, x1 - x0, y1 - y0, 30); c.strokeStyle = 'rgba(255,255,255,0.95)'; c.lineWidth = 2; c.stroke();
+    pill(c, x0 + 170, y0, 'Air molecules', 'hugely magnified');
+  }
+  sunStatic(c, S, 140, SIM.cy);
+  lab2(c, S, 1430, 370, 'Scattered sideways', S.id === 'plate' ? 'the sky’s colour' : 'the colour of the sky');
+  lab2(c, S, 1430, 590, 'Gets through', S.id === 'plate' ? 'the Sun’s colour' : 'the colour of the Sun');
+}
+function molecule(c, S, m, t, a) {
+  const x = m.x + 1.3 * Math.sin(t * 2 + m.ph), y = m.y + 1.3 * Math.cos(t * 1.7 + m.ph), an = m.a + 0.18 * Math.sin(t * 0.8 + m.ph);
+  const dx = Math.cos(an) * 7, dy = Math.sin(an) * 7;
+  if (S.id === 'obs') {
+    c.strokeStyle = `rgba(170,190,230,${0.45 * a})`; c.lineWidth = 2; c.beginPath(); c.moveTo(x - dx, y - dy); c.lineTo(x + dx, y + dy); c.stroke();
+    c.fillStyle = `rgba(175,195,235,${0.62 * a})`; circ(c, x - dx, y - dy, 5.5); c.fill(); circ(c, x + dx, y + dy, 5.5); c.fill();
+    if (m.hot > 0) { c.save(); c.globalCompositeOperation = 'lighter'; glow(c, x, y, 26, [200, 220, 255], 0.5 * m.hot); c.restore(); }
+  } else if (S.id === 'plate') {
+    c.globalAlpha = a; c.strokeStyle = INK; c.lineWidth = 1.8; c.beginPath(); c.moveTo(x - dx * 1.15, y - dy * 1.15); c.lineTo(x + dx * 1.15, y + dy * 1.15); c.stroke();
+    c.fillStyle = m.hot > 0 ? '#fffbe6' : '#f7f8f4'; for (const s of [-1, 1]) { circ(c, x + s * dx * 1.15, y + s * dy * 1.15, 7.2); c.fill(); c.stroke(); }
+    c.globalAlpha = 1;
+  } else {
+    c.globalAlpha = a;
+    for (const s of [-1, 1]) {
+      const sx = x + s * dx, sy = y + s * dy, g = c.createRadialGradient(sx - 3, sy - 3, 0.5, sx, sy, 8.5);
+      g.addColorStop(0, '#ffffff'); g.addColorStop(0.45, '#b6c6e6'); g.addColorStop(1, '#5d70a0'); c.fillStyle = g; circ(c, sx, sy, 8.5); c.fill();
+    }
+    if (m.hot > 0) { c.strokeStyle = `rgba(47,91,255,${0.6 * m.hot})`; c.lineWidth = 2; circ(c, x, y, 18); c.stroke(); }
+    c.globalAlpha = 1;
+  }
+}
+function packet(c, S, p) {
+  const nm = BANDS[p.b].nm, lam = nm * 0.065, L = 50, A = 4.8;
+  let a = p.s ? Math.max(0, 1 - p.d / 380) : 1;
+  if (p.x < 210) a *= Math.max(0, (p.x - 178) / 32);
+  if (!p.s && p.x > 1300) a *= Math.max(0, (1392 - p.x) / 92);
+  if (a <= 0.01) return;
+  const col = PCOL[S.id][p.b];
+  c.save(); c.translate(p.x, p.y); c.rotate(Math.atan2(p.dy, p.dx));
+  c.beginPath(); for (let i = 0; i <= 14; i++) { const x = -L + L * i / 14, y = A * Math.sin(Math.PI * i / 14) * Math.sin(2 * Math.PI * x / lam); i ? c.lineTo(x, y) : c.moveTo(x, y); }
+  c.lineCap = 'round'; c.lineJoin = 'round';
+  if (S.id === 'obs') { c.globalCompositeOperation = 'lighter'; c.strokeStyle = rgba(col, 0.18 * a); c.lineWidth = 7; c.stroke(); c.strokeStyle = rgba(col, 0.95 * a); c.lineWidth = 2.2; c.stroke(); }
+  else if (S.id === 'plate') { c.strokeStyle = rgba(col, 0.95 * a); c.lineWidth = 3.2; c.stroke(); }
+  else { c.strokeStyle = rgba(col, 0.92 * a); c.lineWidth = 4.6; c.stroke(); c.strokeStyle = `rgba(255,255,255,${0.5 * a})`; c.lineWidth = 1.4; c.stroke(); }
+  c.restore();
+}
+function simDraw(c, S, t) {
+  const fs = sim.fs;
+  const scol = mixColor(fs), tcol = mixColor(fs.map(f => 1 - f));
+  const amt = Math.min(1, (fs[0] + fs[1] + fs[2]) / 2), { x0, x1, y0, y1 } = SIM;
+  if (S.id === 'obs') { c.save(); c.globalCompositeOperation = 'lighter'; c.save(); rr(c, x0, y0, x1 - x0, y1 - y0, 26); c.clip(); glow(c, (x0 + x1) / 2, SIM.cy, 560, scol, 0.22 * amt); c.restore(); c.restore(); }
+  else if (S.id === 'plate') { c.fillStyle = rgba(scol, 0.18 * amt); c.fillRect(x0, y0, x1 - x0, y1 - y0); }
+  else { c.save(); rr(c, x0, y0, x1 - x0, y1 - y0, 30); c.clip(); glow(c, (x0 + x1) / 2, SIM.cy, 620, scol, 0.3 * amt); c.restore(); }
+  for (const m of sim.mols) { const a = m.set === 1 ? sim.mm : 1; if (a > 0.02) molecule(c, S, m, t, a); }
+  for (const f of sim.fl) {
+    const col = PCOL[S.id][f.b];
+    c.save(); if (S.id === 'obs') c.globalCompositeOperation = 'lighter';
+    c.strokeStyle = rgba(col, 0.85 * (1 - f.u)); c.lineWidth = S.id === 'plate' ? 1.5 : 2; circ(c, f.x, f.y, 8 + 22 * f.u); c.stroke(); c.restore();
+  }
+  for (const p of sim.pk) packet(c, S, p);
+  // swatches
+  const sx = 1340, sy = 240, sw = 180, sh = 96, dx = 1430, dy = SIM.cy, dr = 46;
+  if (S.id === 'obs') {
+    c.save(); c.globalCompositeOperation = 'lighter'; glow(c, sx + sw / 2, sy + sh / 2, 150, scol, 0.25); glow(c, dx, dy, 140, tcol, 0.4); c.restore();
+    rr(c, sx, sy, sw, sh, 14); c.fillStyle = rgba(scol, 0.92); c.fill();
+    c.fillStyle = rgba(tcol); circ(c, dx, dy, dr); c.fill();
+  } else if (S.id === 'plate') {
+    c.fillStyle = rgba(scol); c.fillRect(sx, sy, sw, sh); c.fillStyle = grain(c); c.fillRect(sx, sy, sw, sh); c.strokeStyle = INK; c.lineWidth = 1.5; c.strokeRect(sx, sy, sw, sh);
+    c.fillStyle = rgba(tcol); circ(c, dx, dy, dr); c.fill(); c.strokeStyle = INK; c.lineWidth = 1.6; c.stroke();
+  } else {
+    c.save(); c.shadowColor = 'rgba(30,50,110,0.18)'; c.shadowBlur = 24 * K; c.shadowOffsetY = 10 * K; rr(c, sx, sy, sw, sh, 20); c.fillStyle = rgba(scol); c.fill(); c.restore();
+    c.save(); rr(c, sx, sy, sw, sh, 20); c.clip(); const hl = c.createLinearGradient(0, sy, 0, sy + sh); hl.addColorStop(0, 'rgba(255,255,255,0.4)'); hl.addColorStop(0.55, 'rgba(255,255,255,0)'); c.fillStyle = hl; c.fillRect(sx, sy, sw, sh); c.restore();
+    glow(c, dx, dy, 110, tcol, 0.45);
+    const g = c.createRadialGradient(dx - 14, dy - 16, 2, dx, dy, dr); g.addColorStop(0, '#ffffff'); g.addColorStop(0.4, rgba(tcol)); g.addColorStop(1, rgba(tcol.map(v => v * 0.75)));
+    c.save(); c.shadowColor = 'rgba(30,50,110,0.2)'; c.shadowBlur = 20 * K; c.shadowOffsetY = 8 * K; c.fillStyle = g; circ(c, dx, dy, dr); c.fill(); c.restore();
+  }
+}
+
+/* ================= styles ================= */
+const STY = {
+  obs: { id: 'obs', cls: 't-obs', bg: bgObs, cover: coverObs, blurb: '<b>Observatory.</b> Dark and luminous, like a planetarium show or a NASA visualization. Light glows against space; labels are thin and technical. Strongest for animation and a dimmed lecture hall. Weakest on paper.' },
+  plate: { id: 'plate', cls: 't-plate', bg: bgPlate, cover: coverPlate, blurb: '<b>Plate</b> (chosen). Light paper and precise ink drawing, like a figure plate in a science journal; prints well for the student PDF. Text is sized for a lecture hall: on a standard slide, titles about 40 pt, body about 23 pt, nothing below 18 pt.' },
+  studio: { id: 'studio', cls: 't-studio', bg: bgStudio, cover: coverStudio, blurb: '<b>Studio.</b> Soft 3D objects with depth, gloss and shadow, closest to Smart Biology. The most produced and modern look; each new slide needs the most illustration work.' },
+};
+const ORDER = ['obs', 'plate', 'studio'];
+const TXT = {
+  noon: 'Midday: a short path through air. Blue scatters sideways most, so the sky is blue and the Sun looks white.',
+  sunset: 'Sunset: a much longer path. Blue and green scatter away, so the light that reaches you is orange-red.',
+};
+
+function overlay() {
+  const st = state.style, sl = state.slide; let h = '';
+  if (st === 'plate') {
+    if (sl === 0) h = `<p class="kicker" style="left:110px;top:84px">Plate I · Light, air and leaves</p>
+      <h1 class="h1" style="left:106px;top:126px;width:1390px">Why is the sky <i>blue</i>,<br>and why are leaves <i>green</i>?</h1>
+      <p class="sub" style="left:110px;top:318px;width:1300px">Two everyday colours, one story about light.</p>
+      <p class="fig" style="left:220px;top:784px;width:600px">Fig. 1<span>The noon sky</span></p>
+      <p class="fig" style="left:780px;top:784px;width:600px">Fig. 2<span>A leaf in sunlight</span></p>`;
+    else if (sl === 1) h = `<h2 class="h2" style="left:92px;top:50px;width:960px">Light is a mix of wavelengths.</h2>
+      <p class="sub" style="left:96px;top:134px;width:1000px">Shorter waves carry more energy in each photon.</p>
+      <div class="formula" style="left:1050px;top:52px;width:454px"><b><i>E</i> = <i>hc</i> / <i>λ</i></b><span>≈ 1240 eV·nm ÷ λ</span></div>
+      <p class="fig" style="left:96px;top:836px;width:1400px;text-align:left">Fig. 3<span>Each wave is drawn to scale.</span></p>`;
+    else h = `<h2 class="h2" style="left:92px;top:48px;width:960px">Air scatters blue light most</h2>
+      <div class="seg hit" style="right:96px;top:56px" role="group" aria-label="Animation controls">
+        <button id="m-noon" data-mode="noon" aria-pressed="${sim.mode === 'noon'}">Midday</button>
+        <button id="m-sunset" data-mode="sunset" aria-pressed="${sim.mode === 'sunset'}">Sunset</button>
+        <button id="m-pause" data-act="pause" aria-pressed="${paused}">${paused ? 'Play' : 'Pause'}</button>
+      </div>
+      <p class="cap" style="left:96px;top:778px;width:1230px">${TXT[sim.mode]}</p>`;
+  } else if (sl === 0) {
+    const o = st === 'obs';
+    h = `<p class="kicker" style="left:96px;top:${o ? 118 : 96}px">${o ? 'Light · air · leaves' : 'Lecture · light, air and leaves'}</p>
+      <h1 class="h1" style="left:93px;top:${o ? 160 : 150}px;width:900px">Why is the sky blue?<br><span>Why are leaves green?</span></h1>
+      <p class="sub" style="left:96px;top:${o ? 384 : 352}px;width:760px">Two everyday colours, one story about light.</p>`;
+  } else if (sl === 1) {
+    h = `<h2 class="h2" style="left:93px;top:60px;width:1000px">Light is a mix of wavelengths.</h2>
+      <p class="sub" style="left:96px;top:136px;width:1000px">Shorter waves carry more energy in each photon.</p>
+      <div class="formula" style="left:1150px;top:62px;width:354px"><b><i>E</i> = <i>hc</i> / <i>λ</i></b><span>≈ 1240 eV·nm ÷ λ</span></div>`;
+  } else {
+    h = `<h2 class="h2" style="left:93px;top:56px;width:1000px">Air scatters blue light most</h2>
+      <div class="seg hit" style="right:96px;top:62px" role="group" aria-label="Animation controls">
+        <button id="m-noon" data-mode="noon" aria-pressed="${sim.mode === 'noon'}">Midday</button>
+        <button id="m-sunset" data-mode="sunset" aria-pressed="${sim.mode === 'sunset'}">Sunset</button>
+        <button id="m-pause" data-act="pause" aria-pressed="${paused}">${paused ? 'Play' : 'Pause'}</button>
+      </div>
+      <p class="cap" style="left:96px;top:796px;width:1180px">${TXT[sim.mode]}</p>`;
+  }
+  ov.className = 'ov ' + STY[st].cls; ov.innerHTML = h;
+  $('#blurb').innerHTML = STY[st].blurb;
+  for (const b of document.querySelectorAll('#styles button')) b.setAttribute('aria-pressed', String(b.dataset.style === st));
+  for (const b of document.querySelectorAll('#slides button')) b.setAttribute('aria-pressed', String(+b.dataset.slide === sl));
+}
+
+/* ================= sizing and loop ================= */
+function resize() {
+  const fs = document.fullscreenElement === wrap;
+  if (!fs) {
+    const bar = $('.bar').getBoundingClientRect().height, note = $('.note').getBoundingClientRect().height;
+    const availH = Math.max(200, innerHeight - bar - note - 64);
+    wrap.style.maxWidth = Math.max(280, Math.floor(availH * 16 / 9)) + 'px';
+  } else wrap.style.maxWidth = '';
+  const cw = wrap.clientWidth, ch = wrap.clientHeight, s = Math.min(cw / W, ch / H);
+  stage.style.transform = `translate(${(cw - W * s) / 2}px,${(ch - H * s) / 2}px) scale(${s})`;
+  const dpr = Math.min(2, window.devicePixelRatio || 1);
+  K = s * dpr;
+  const bw = Math.max(1, Math.round(W * K)), bh = Math.max(1, Math.round(H * K));
+  if (cv.width !== bw || cv.height !== bh) { cv.width = bw; cv.height = bh; }
+  cacheKey = '';
+}
+function buildCache(S) {
+  cache.width = cv.width; cache.height = cv.height;
+  const c = cache.getContext('2d'); c.setTransform(K, 0, 0, K, 0, 0); c.clearRect(0, 0, W, H);
+  if (state.slide === 0) S.cover(c); else if (state.slide === 1) primerStatic(c, S); else simStatic(c, S);
+}
+let last = performance.now(), T = 0;
+function frame(now) {
+  const dt = Math.min(0.05, Math.max(0, (now - last) / 1000)); last = now;
+  const S = STY[state.style];
+  const key = state.style + state.slide + ':' + cv.width + 'x' + cv.height + ':' + fontsReady;
+  if (key !== cacheKey) { buildCache(S); cacheKey = key; }
+  ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, cv.width, cv.height); ctx.drawImage(cache, 0, 0);
+  ctx.setTransform(K, 0, 0, K, 0, 0);
+  if (state.slide === 1) { if (!RM) T += dt; primerDyn(ctx, S, T); }
+  else if (state.slide === 2) { if (!paused) { step(dt); T += dt; } simDraw(ctx, S, T); }
+  requestAnimationFrame(frame);
+}
+
+/* ================= events ================= */
+function setStyle(s) { state.style = s; cacheKey = ''; overlay(); }
+function setSlide(i) { state.slide = (i + 3) % 3; cacheKey = ''; overlay(); }
+$('#styles').addEventListener('click', e => { const b = e.target.closest('button'); if (b) setStyle(b.dataset.style); });
+$('#slides').addEventListener('click', e => { const b = e.target.closest('button'); if (b) setSlide(+b.dataset.slide); });
+ov.addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  if (b.dataset.mode) { sim.mode = b.dataset.mode; }
+  else if (b.dataset.act === 'pause') { paused = !paused; }
+  overlay(); const again = document.getElementById(b.id); if (again) again.focus();
+});
+$('#fs').addEventListener('click', () => {
+  if (document.fullscreenElement) { document.exitFullscreen().catch(() => {}); return; }
+  if (wrap.requestFullscreen) wrap.requestFullscreen().catch(() => {});
+});
+document.addEventListener('fullscreenchange', resize);
+document.addEventListener('keydown', e => {
+  if (e.target.closest && e.target.closest('input,textarea')) return;
+  if (e.key === 'ArrowRight' || e.key === 'PageDown') { setSlide(state.slide + 1); e.preventDefault(); }
+  else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { setSlide(state.slide - 1); e.preventDefault(); }
+  else if (e.key === 's' || e.key === 'S') setStyle(ORDER[(ORDER.indexOf(state.style) + 1) % 3]);
+  else if (e.key === ' ' && state.slide === 2) { paused = !paused; overlay(); e.preventDefault(); }
+});
+new ResizeObserver(resize).observe(document.body);
+addEventListener('resize', resize);
+
+// deep link: #obs, #plate2, #studio3 ...
+const m = /^#(obs|plate|studio)([123])?(s)?$/.exec(location.hash);
+if (m) { state.style = m[1]; if (m[2]) state.slide = +m[2] - 1; if (m[3]) { sim.mode = 'sunset'; sim.mm = 1; } }
+initAcc();
+for (let i = 0; i < 360; i++) step(1 / 60);
+const faces = ['500 20px "IBM Plex Mono"', '400 20px "IBM Plex Mono"', '300 20px Archivo', '400 20px Archivo', 'italic 400 20px Spectral', '300 20px Spectral', '400 20px "IBM Plex Sans"', '600 20px "IBM Plex Sans"', '500 20px "Plus Jakarta Sans"', '700 20px "Plus Jakarta Sans"', '800 20px "Plus Jakarta Sans"'];
+Promise.all(faces.map(f => document.fonts.load(f).catch(() => null))).then(() => { fontsReady++; });
+document.fonts.ready.then(() => { fontsReady++; });
+overlay(); resize(); requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>

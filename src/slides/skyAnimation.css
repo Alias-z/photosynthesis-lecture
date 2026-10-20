@@ -1,0 +1,35 @@
+/* Yesterday's guided animation, unchanged in look. Scoped to .sky-anim so it does not touch the Plate slides.
+   The host is 1778 x 1000 px and scaled by 0.9 so it fills the 1600 x 900 slide. */
+.sky-anim {
+  --bg: #12142a;
+  --ink: #f3f1ea;
+  --muted: #b9bdd6;
+  --dot: #3a3e6e;
+  --gold: #f6e6bd;
+  --ui: "Nunito", "Segoe UI", system-ui, sans-serif;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1778px;
+  height: 1000px;
+  transform: scale(0.9);
+  transform-origin: 0 0;
+  box-sizing: border-box;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--ui);
+  padding: 18px 16px 28px;
+  color-scheme: dark;
+}
+.sky-anim .wrap { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
+.sky-anim h1 { font-weight: 800; font-size: 32px; margin: 0; }
+.sky-anim .stage { position: relative; width: 100%; max-width: 100%; aspect-ratio: 16 / 9; border-radius: 14px; overflow: hidden; background: #1b1d3b; }
+.sky-anim .stage canvas { display: block; width: 100%; height: 100%; cursor: pointer; }
+.sky-anim .under { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 18px; align-items: start; }
+.sky-anim .dots { display: flex; gap: 8px; padding-top: 8px; }
+.sky-anim .dots button { width: 14px; height: 14px; border-radius: 50%; border: 0; padding: 0; background: var(--dot); cursor: pointer; position: relative; overflow: hidden; }
+.sky-anim .dots button[aria-current="true"] { background: #5a5f9a; }
+.sky-anim .dots button i { position: absolute; inset: 0; background: var(--gold); transform-origin: left; transform: scaleX(0); }
+.sky-anim .dots button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.sky-anim .say { margin: 0; font-size: 24px; line-height: 1.4; font-weight: 700; min-height: 2.8em; max-width: 60ch; text-wrap: pretty; }
+.sky-anim .fine { margin: 0; font-size: 13px; color: var(--muted); }

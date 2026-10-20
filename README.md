@@ -1,14 +1,29 @@
 # Photosynthesis lecture, ETH Zurich
 
 Slides and animations for the lecture "Why is the sky blue, and why are leaves green?".
-The whole deck is plain HTML: open any file in a browser, no build step.
+Written in TypeScript, served with Vite.
+
+## Run it
+
+```bash
+npm install
+npm run dev
+```
+
+Then open http://localhost:5174. Arrow keys or Page Up/Down change slides, `F` toggles full screen, and a Contents jumper appears when the mouse reaches the left edge. `npm run build` type-checks and writes a static copy to `dist/`.
 
 ## Files
 
 | File | What it is |
 |---|---|
-| `style/plate-slides.html` | The chosen **Plate** style: three sample slides (title, figure, live demo). Arrow keys change slides, `F` toggles full screen, and a Contents jumper appears when the mouse reaches the left edge. |
-| `style/style-directions.html` | The three directions that were compared (Observatory, Plate, Studio), for reference. |
+| `src/main.ts` | The viewer: fits the 1600 × 900 slide to the window, page number, Contents jumper, keys, swipe. |
+| `src/styles.css` | Viewer and slide text styles. |
+| `src/slide.ts` | What a slide provides to the viewer. |
+| `src/slides/title.ts` | 1. Why is the sky blue, and why are leaves green? |
+| `src/slides/wavelengths.ts` | 2. Light is a mix of wavelengths. |
+| `src/slides/scattering.ts` | 3. Air scatters blue light most (live demo: Midday, Sunset, Pause). |
+| `src/slides/skyAnimation.ts`, `.css` | 4. Yesterday's seven-step animation, unchanged. On this slide the arrow keys step through its beats first; Space pauses. |
+| `src/lib/` | Shared canvas drawing, colour and ink-figure helpers. |
 
 ## Plate style
 

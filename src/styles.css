@@ -1,0 +1,46 @@
+/* Viewer: one slide at a time, fitted to the window. Arrow keys or a swipe change slides; the Contents jumper hides at the left edge. */
+:root{
+  --ground:#dcded6; --paper:#f2f3ee; --ink:#1f2a3a; --ink2:#3f4a5a; --rule:#bfc6c8;
+  --serif:Spectral, Georgia, "Times New Roman", serif; --sans:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+  color-scheme:light;
+}
+html,body{height:100%}
+html{background:var(--ground)}
+body{background:var(--ground);color:var(--ink);font-family:var(--sans);padding-left:max(16px, env(safe-area-inset-left,0px));padding-right:max(16px, env(safe-area-inset-right,0px));padding-block:16px;box-sizing:border-box;overflow:hidden}
+.deck-wrap{position:relative;width:100%;height:100%}
+.deck-wrap:fullscreen{background:var(--ground)}
+.deck-stage{position:absolute;left:0;top:0;width:1600px;height:900px;transform-origin:0 0;box-shadow:0 0 0 1px rgba(31,42,58,.35),0 18px 40px -24px rgba(31,42,58,.45);background:var(--paper)}
+.deck-stage>canvas{position:absolute;left:0;top:0;width:1600px;height:900px;display:block}
+.ov{position:absolute;inset:0;pointer-events:none;color:var(--ink)}
+.ov>*{position:absolute;margin:0}
+.ov .hit{pointer-events:auto}
+.ov .h1,.ov .h2{font-family:var(--serif);font-weight:300;letter-spacing:-.008em;text-wrap:balance}
+.ov .h1{font-size:84px;line-height:1.08}
+.ov .h1 i{font-weight:400}
+.ov .h2{font-size:68px;line-height:1.08}
+.ov .sub{font:italic 400 40px/1.3 var(--serif);color:var(--ink2)}
+.ov .fig{font:italic 400 34px/1.25 var(--serif);text-align:center}
+.ov .fig span{font:400 30px/1.25 var(--sans);color:var(--ink2);margin-left:12px}
+.ov .formula{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.ov .formula b{font:400 62px/1 var(--serif)}
+.ov .formula span{font:400 30px/1 var(--sans);color:var(--ink2)}
+.ov .cap{font:400 38px/1.33 var(--sans);color:#2c3646}
+.ov .pg{font:400 30px/1 var(--sans);color:var(--ink2);font-variant-numeric:tabular-nums}
+.ov .seg{display:flex;border:2px solid var(--ink)}
+.ov .seg button{font:500 30px/1 var(--sans);color:var(--ink);background:var(--paper);border:0;padding:16px 24px;cursor:pointer}
+.ov .seg button+button{border-left:2px solid var(--ink)}
+.ov .seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.ov button:focus-visible{outline:3px solid var(--ink);outline-offset:4px}
+/* hidden contents jumper: a hover strip on the left edge; the tab slides in only when the pointer reaches it */
+.ov .jump{left:0;top:0;width:120px;height:900px}
+.ov .jump .tab{position:absolute;left:0;top:400px;display:flex;align-items:center;gap:14px;font:500 30px/1 var(--sans);color:var(--ink);background:var(--paper);border:2px solid var(--ink);border-left:0;padding:18px 24px 18px 20px;cursor:pointer;opacity:0;transform:translateX(-100%);transition:transform .18s ease-out,opacity .18s ease-out}
+.ov .jump:hover .tab,.ov .jump:focus-within .tab,.ov .jump.open .tab{opacity:1;transform:none}
+.ov .jump .menu{position:absolute;left:0;top:484px;display:flex;flex-direction:column;min-width:760px;background:var(--paper);border:2px solid var(--ink);border-left:0}
+.ov .jump .menu button{display:flex;gap:26px;align-items:baseline;font:400 30px/1.2 var(--sans);color:var(--ink);text-align:left;background:transparent;border:0;border-top:1px solid var(--rule);padding:18px 26px;cursor:pointer}
+.ov .jump .menu button:first-child{border-top:0}
+.ov .jump .menu button span{font-variant-numeric:tabular-nums;color:var(--ink2);min-width:1.2em}
+.ov .jump .menu button[aria-current="true"]{background:var(--ink);color:var(--paper)}
+.ov .jump .menu button[aria-current="true"] span{color:var(--paper)}
+@media (hover:none){.ov .jump .tab{opacity:.9;transform:none}}
+@media (prefers-reduced-motion:reduce){.ov .jump .tab{transition:none}}
+[hidden]{display:none!important}

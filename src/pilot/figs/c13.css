@@ -1,0 +1,90 @@
+/* Slide C13 figure styles, scoped under .theme-editorial and prefixed .fc13- */
+
+/* Equation terms in the L01 colours: light amber, water and O₂ blue, carbon brown; operators quiet. */
+.theme-editorial .fig text.fc13-eq{font-weight:600;letter-spacing:-.005em}
+.theme-editorial .fig text.fc13-l,.theme-editorial .fig .fc13-l{fill:#a5670a}
+.theme-editorial .fig text.fc13-w,.theme-editorial .fig .fc13-w{fill:#2a62a0}
+.theme-editorial .fig text.fc13-c,.theme-editorial .fig .fc13-c{fill:#7a4a20}
+.theme-editorial .fig text.fc13-o{fill:#8a877d;font-weight:400}
+.theme-editorial .fig .fc13-sb{font-size:68%;baseline-shift:-.24em}
+
+/* Text. */
+.theme-editorial .fig text.fc13-band{font-size:22px;font-weight:600;letter-spacing:.09em;fill:#141413}
+.theme-editorial .fig .fc13-band-s{font-size:20px;font-weight:400;letter-spacing:0;fill:#6b6a64}
+.theme-editorial .fig text.fc13-hook{font:italic 400 25px Newsreader,Georgia,serif;fill:#3d3d3a}
+.theme-editorial .fig text.fc13-term{font-size:25px;font-weight:600}
+.theme-editorial .fig text.fc13-badge-t{font-size:15px;font-weight:700;fill:#6b6a64}
+.theme-editorial .fig text.fc13-num-t{font-size:17px;font-weight:700;fill:#fffdf8}
+.theme-editorial .fc13-badge{fill:#f0eee6;stroke:#c9c6bb;stroke-width:1.2}
+.theme-editorial .fc13-num{fill:#3d3d3a}
+
+/* Arrows and guides. */
+.theme-editorial .fc13-ar{fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fc13-ar-l{stroke:#e39a12}.theme-editorial .fc13-hd-l{fill:#e39a12}
+.theme-editorial .fc13-ar-w{stroke:#3f7fc0}.theme-editorial .fc13-hd-w{fill:#3f7fc0}
+.theme-editorial .fc13-ar-c{stroke:#8b5a2b}.theme-editorial .fc13-hd-c{fill:#8b5a2b}
+.theme-editorial .fc13-ar-k{stroke:#3d3d3a}.theme-editorial .fc13-hd-k{fill:#3d3d3a}
+.theme-editorial .fc13-ar-g{stroke:#8a877d}.theme-editorial .fc13-hd-g{fill:#8a877d}
+.theme-editorial .fc13-ar.fc13-thin{stroke-width:1.8;stroke-dasharray:6 6}
+
+.theme-editorial .fc13-ar.fc13-flow-mid{stroke-width:3.4;stroke-dasharray:9 7}
+.theme-editorial .fc13-ar.fc13-flow-thin{stroke-width:2}
+.theme-editorial .fc13-lead{fill:none;stroke:#b9b5aa;stroke-width:1.4;stroke-dasharray:3 5}
+.theme-editorial .fc13-zone{fill:none;stroke:#a8a59a;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fc13-zoom{fill:none;stroke:#3d3d3a;stroke-width:1.8}
+.theme-editorial .fc13-zoomline{fill:none;stroke:#b9b5aa;stroke-width:1.2;stroke-dasharray:3 5}
+
+/* Panels. */
+.theme-editorial .fc13-card{fill:#fffdf8;stroke:#e0ddd2;stroke-width:1.4}
+.theme-editorial .fc13-cell{fill:#fbf8ef;stroke:#c9b789;stroke-width:2}
+.theme-editorial .fc13-lens{fill:#fffdf8;stroke:#8a877d;stroke-width:1.8}
+
+/* Atoms and molecules (L01 code: carbon brown, water oxygen blue). */
+.theme-editorial .fc13-ow{fill:#9fc3e8;stroke:#2f6aa8;stroke-width:1.4}
+.theme-editorial .fc13-hw{fill:#fffdf8;stroke:#7ea6d0;stroke-width:1.3}
+.theme-editorial .fc13-cb{fill:#8b5a2b;stroke:#5e3b19;stroke-width:1.4}
+.theme-editorial .fc13-oc{fill:#ead7c0;stroke:#b08b63;stroke-width:1.3}
+.theme-editorial .fc13-ring{fill:#f1e4d5;stroke:#8b5a2b;stroke-width:2.2;stroke-linejoin:round}
+.theme-editorial .fc13-bond{fill:none;stroke:#8b5a2b;stroke-width:2.6;stroke-linecap:round}
+.theme-editorial .fc13-suc-dot{fill:#f1e4d5;stroke:#8b5a2b;stroke-width:2}
+
+/* Plant, grain, starch and bread. */
+.theme-editorial .fc13-loaf{fill:#e3ad66;stroke:#a8672a;stroke-width:2;stroke-linejoin:round}
+.theme-editorial .fc13-cut{fill:none;stroke:#a8672a;stroke-width:2;stroke-linecap:round}
+.theme-editorial .fc13-grain{fill:#e9c77a;stroke:#a8803a;stroke-width:1.4}
+.theme-editorial .fc13-awn{fill:none;stroke:#c2a35e;stroke-width:1.3;stroke-linecap:round}
+.theme-editorial .fc13-stem{fill:none;stroke:#a8933f;stroke-width:5;stroke-linecap:round}
+.theme-editorial .fc13-node{fill:#8f7c34}
+.theme-editorial .fc13-blade{fill:#cfe0b8;stroke:#7d9a54;stroke-width:1.8;stroke-linejoin:round}
+.theme-editorial .fc13-bran{fill:#d9b06a;stroke:#9a7232;stroke-width:1.8}
+.theme-editorial .fc13-endo{fill:#fbf3df;stroke:#d8c08a;stroke-width:1}
+.theme-editorial .fc13-crease{fill:none;stroke:#b08a48;stroke-width:1.6}
+.theme-editorial .fc13-embryo{fill:#e8cf8e;stroke:#a8803a;stroke-width:1.2}
+.theme-editorial .fc13-granule{fill:#fffdf8;stroke:#c9b789;stroke-width:1}
+.theme-editorial .fc13-amy{fill:#f7f0dc;stroke:#b8a46b;stroke-width:2}
+.theme-editorial .fc13-starch{fill:#fffdf8;stroke:#a8a59a;stroke-width:1.6}
+.theme-editorial .fc13-starch-in{fill:none;stroke:#c9c6bb;stroke-width:1.2}
+.theme-editorial .fc13-chl{fill:#d3e7c3;stroke:#6f9a5a;stroke-width:1.8}
+.theme-editorial .fc13-thy{fill:#a9cf8f;stroke:#6f9a5a;stroke-width:1.2}
+.theme-editorial .fc13-sieve{fill:#f3ead0;stroke:#b8a46b;stroke-width:1.8}
+.theme-editorial .fc13-plate{fill:none;stroke:#b8a46b;stroke-width:2;stroke-dasharray:3 3}
+.theme-editorial .fc13-sun{fill:#f6c64a;stroke:#e39a12;stroke-width:1.6}
+.theme-editorial .fc13-ray{fill:none;stroke:#e39a12;stroke-width:2.2;stroke-linecap:round}
+
+/* Course map. */
+.theme-editorial .fc13-line{fill:none;stroke-width:7;stroke-linecap:round}
+.theme-editorial .fc13-line-1{stroke:#8fb07a}.theme-editorial .fc13-line-2{stroke:#c9a27a}
+.theme-editorial .fc13-stop{fill:#fffdf8;stroke:#3d3d3a;stroke-width:2.2}
+
+/* Shipping analogy. */
+.theme-editorial .fc13-bld{fill:#fffdf8;stroke:#8a877d;stroke-width:1.8;stroke-linejoin:round}
+.theme-editorial .fc13-panel{fill:none;stroke:#e39a12;stroke-width:4;stroke-linecap:round}
+.theme-editorial .fc13-door{fill:#ece9df;stroke:#8a877d;stroke-width:1.4}
+.theme-editorial .fc13-pkg{fill:#f1e4d5;stroke:#8b5a2b;stroke-width:1.6}
+.theme-editorial .fc13-tape{fill:none;stroke:#8b5a2b;stroke-width:1.4}
+.theme-editorial .fc13-pallet{fill:#fffdf8;stroke:#a8a59a;stroke-width:1.4}
+.theme-editorial .fc13-flow-big{fill:none;stroke:#8b5a2b;stroke-width:6;stroke-linecap:round}
+
+/* The reaction arrow of the equation, with light written over it (as fl01-eq-ar on slide 1). */
+.theme-editorial .fc13-eq-ar{fill:none;stroke:#3d3d3a;stroke-linecap:round}
+.theme-editorial .fc13-eq-hd{fill:#3d3d3a}

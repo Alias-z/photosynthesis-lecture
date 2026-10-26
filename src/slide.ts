@@ -1,11 +1,24 @@
 // What a slide can provide to the viewer.
 import type { Ctx } from './lib/canvas';
+import type { ContextTopic } from './lib/context';
 
 export interface Slide {
   /** Name shown in the Contents jumper. */
   title: string;
   /** 'canvas' slides draw on the shared 1600 x 900 canvas; 'sky' is yesterday's animation in its own layer. */
   kind: 'canvas' | 'sky';
+  /** Teaching time for a newly drafted slide. Existing slides retain planner timing. */
+  minutes?: number;
+  /** Visible on the slide until the lecturer reviews this proposal. */
+  reviewStatus?: 'unreviewed';
+  /** Original version available through the viewer's Backup / Return button. */
+  backup?: Slide;
+  /** Optional teaching animation opened over the static slide. */
+  animation?: 'sky';
+  /** Discussion explanations and linked sources, kept off the teaching canvas. */
+  context?: ContextTopic[];
+  /** Optional vertical position for the backup button, in slide pixels. */
+  backupButtonTop?: number;
   /** Drawn once into a cached layer (background, static figure). */
   drawStatic?(c: Ctx): void;
   /** Drawn every frame on top of the cached layer. */

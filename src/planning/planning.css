@@ -1,0 +1,40 @@
+:root{font-family:"IBM Plex Sans",Arial,sans-serif;color:#1f2a3a;background:#f2f3ee;color-scheme:light;font-synthesis:none}
+*{box-sizing:border-box}
+body{margin:0}
+main{max-width:1160px;margin:0 auto;padding:40px 30px 64px}
+h1,h2{font-family:Spectral,Georgia,serif;font-weight:400;line-height:1.15}
+h1{font-size:42px;margin:0 0 12px}
+.page-header>p{margin:8px 0;font-size:17px;line-height:1.5}
+nav{display:flex;gap:24px;margin:22px 0 18px}
+a{color:inherit;text-underline-offset:4px}
+.page-header .planning-note,.page-header .save-state{font-size:14px;color:#53606b}
+.lecture{margin-top:44px;scroll-margin-top:20px}
+.lecture-header{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;margin-bottom:16px}
+h2{font-size:32px;margin:0}
+.agreement-count{margin:8px 0 0;color:#53606b;font-size:14px}
+.time-summary{text-align:right;display:flex;flex-direction:column;gap:6px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.time-summary strong{font-weight:500;font-size:22px}
+.time-summary span{color:#53606b;font-size:14px}
+.time-summary .over-budget{color:#9f3324;font-weight:500}
+table{border-collapse:collapse;width:100%;table-layout:fixed}
+th{text-align:left;font-size:14px;font-weight:500}
+thead th{padding:12px 10px;border-block:1px solid #bac2c1;color:#53606b}
+td{border-bottom:1px solid #d5dad6;padding:17px 10px;vertical-align:top}
+.agree-column{width:76px}
+.minutes-column{width:96px}
+.slot-column{width:118px}
+.agree-cell{padding-top:21px;text-align:center}
+input[type="checkbox"]{width:21px;height:21px;accent-color:#1f2a3a;cursor:pointer;margin:0}
+h3{font-size:18px;line-height:1.4;font-weight:500;margin:0 0 7px}
+.plan-number{font-size:13px;font-weight:400;color:#53606b;margin-right:7px;font-variant-numeric:tabular-nums}
+.content-cell p{font-size:16px;line-height:1.5;margin:0}
+.content-cell .row-note{font-size:13px;color:#53606b;margin-top:8px}
+input[type="number"]{width:74px;border:1px solid #b9c1bf;border-radius:0;background:#fcfcf9;color:inherit;padding:8px 6px;font:400 17px/1.2 "IBM Plex Sans",Arial,sans-serif;font-variant-numeric:tabular-nums}
+input:focus-visible,a:focus-visible{outline:2px solid #1f2a3a;outline-offset:3px}
+.slot-cell{font-size:13px;line-height:1.4;color:#53606b;font-variant-numeric:tabular-nums;white-space:nowrap;padding-top:25px}
+tfoot th{padding:22px 10px;font-size:16px}
+tfoot td{border-bottom:1px solid #bac2c1;padding-top:16px}
+.page-footer{border-top:1px solid #bac2c1;margin-top:40px;padding-top:18px;color:#53606b;font-size:14px;line-height:1.5;max-width:900px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:700px){main{padding:28px 18px 48px}h1{font-size:34px}h2{font-size:28px}.agree-column{width:57px}.minutes-column{width:80px}.slot-column{width:105px}td,thead th{padding-inline:7px}.content-cell p{font-size:15px}h3{font-size:17px}input[type="number"]{width:64px}.time-summary strong{font-size:20px}}
+@media(max-width:470px){main{padding-inline:12px}.lecture-header{align-items:flex-start}h2{font-size:25px}.agree-column{width:45px}.slot-column,.slot-cell{display:none}.minutes-column{width:72px}th{font-size:12px}.content-cell p{font-size:14px}h3{font-size:16px}.plan-number{display:block}nav{gap:18px}}

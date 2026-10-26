@@ -1,0 +1,115 @@
+/* Slide C04b figure styles, scoped under .theme-editorial and prefixed .fc04b- */
+/* Inks: ink = day route (solid), indigo = night route (dashed), orange = Pᵢ (dashed), brown = sucrose in the phloem,
+   purple = triose-phosphate translocator and the TPU limit (as Ap in the FvCB figures). */
+
+.theme-editorial .fig text.fc04b-b,.theme-editorial .fig tspan.fc04b-b{font-weight:600;fill:#141413}
+.theme-editorial .fig tspan.fc04b-map{fill:#a9532f;font-style:italic;font-weight:400}
+.theme-editorial .fig tspan.fc04b-tpu{fill:#6e4f9c}
+.theme-editorial .fig text.fc04b-grey{fill:#6b6a64}
+.theme-editorial .fig text.fc04b-night{fill:#3f4f86}
+.theme-editorial .fig text.fc04b-pi{fill:#a85a14}
+.theme-editorial .fig text.fc04b-tpu{fill:#6e4f9c}
+.theme-editorial .fig text.fc04b-brown{fill:#7a4a2a}
+.theme-editorial .fig text.fc04b-clay{fill:#a9532f}
+.theme-editorial .fig text.fc04b-dim{fill:#a8a59a}
+.theme-editorial .fig text.fc04b-w{fill:#fffdf8}
+.theme-editorial .fig text.fc04b-map{fill:#a9532f;font-style:italic}
+.theme-editorial .fig text.fc04b-pt{font-size:15px;font-weight:700;fill:#5a3510}
+.theme-editorial .fig text.fc04b-h{font-size:24px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fc04b-eq{font-size:30px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fc04b-eq.fc04b-dim{fill:#b9b5aa}
+.theme-editorial .fig text.fc04b-big{font-size:30px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fc04b-rubp{font-size:15px;font-weight:700;fill:#141413}
+.theme-editorial .fig text.num-t{font-size:17px;font-weight:700;fill:#fffdf8}
+.theme-editorial .fc04b text.atom-t{font-size:14px}
+
+/* arrows */
+.theme-editorial .fc04b-ar{fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fc04b-k-ink{stroke:#3d3d3a}.theme-editorial .fc04b-hd-ink{fill:#3d3d3a}
+.theme-editorial .fc04b-k-night{stroke:#4a5b93;stroke-dasharray:8 6}.theme-editorial .fc04b-hd-night{fill:#4a5b93}
+.theme-editorial .fc04b-k-pi{stroke:#c7742b;stroke-dasharray:6 6}.theme-editorial .fc04b-hd-pi{fill:#c7742b}
+.theme-editorial .fc04b-k-sug{stroke:#8a5a3c;stroke-width:3.2}.theme-editorial .fc04b-hd-sug{fill:#8a5a3c}
+.theme-editorial .fc04b-k-grey{stroke:#a8a59a}.theme-editorial .fc04b-hd-grey{fill:#a8a59a}
+.theme-editorial .fc04b-k-tpu{stroke:#7a5aa6}.theme-editorial .fc04b-hd-tpu{fill:#7a5aa6}
+.theme-editorial .fc04b-ar.fc04b-thin{stroke-width:1.8}
+.theme-editorial .fc04b-ar.fc04b-faint{opacity:.45}
+
+/* cells, compartments and membranes */
+.theme-editorial .fc04b-cell{fill:#fbf8ef;stroke:#a8a59a;stroke-width:1.8}
+.theme-editorial .fc04b-cp{fill:#e4efd8;stroke:#6f9a5a;stroke-width:1.8}
+.theme-editorial .fc04b-cp-in{fill:none;stroke:#6f9a5a;stroke-width:1.1}
+.theme-editorial .fc04b-gr{fill:#b9d3a3;stroke:#6f9a5a;stroke-width:1}
+.theme-editorial .fc04b-cyc{fill:none;stroke:#6b6a64;stroke-width:2.4}
+.theme-editorial .fc04b-cyc-off{fill:none;stroke:#b9b5aa;stroke-width:2.2;stroke-dasharray:5 6}
+.theme-editorial .fc04b-rubp{fill:#fffdf8;stroke:#3d3d3a;stroke-width:1.6}
+.theme-editorial .fc04b-day{fill:#fbf1d9}
+.theme-editorial .fc04b-nightbg{fill:#e7ebf3}
+.theme-editorial .fc04b-panel{fill:#fffdf8;stroke:#c9c6bb;stroke-width:1.4}
+.theme-editorial .fc04b-wall{fill:#d9d5c9;stroke:#a8a59a;stroke-width:1.2}
+
+/* molecules */
+.theme-editorial .fc04b-bond{fill:none;stroke:#3d3d3a;stroke-width:3;stroke-linecap:round}
+.theme-editorial .fc04b-p{fill:#f3a65f;stroke:#c7742b;stroke-width:1.3}
+.theme-editorial .fc04b-ring{fill:#fffdf8;stroke:#3d3d3a;stroke-width:2;stroke-linejoin:round}
+.theme-editorial .fc04b-ring-f{fill:#fbe7cf;stroke:#3d3d3a;stroke-width:2;stroke-linejoin:round}
+.theme-editorial .fc04b-ring-link{fill:none;stroke:#3d3d3a;stroke-width:2}
+.theme-editorial .fc04b-st{fill:#f6efdc;stroke:#b8a46b;stroke-width:1.8}
+.theme-editorial .fc04b-st-ring{fill:none;stroke:#d2c08b;stroke-width:1.3}
+.theme-editorial .fc04b-st-ghost{fill:none;stroke:#b8a46b;stroke-width:1.4;stroke-dasharray:5 5}
+.theme-editorial .fc04b-hil{fill:#b8a46b}
+
+/* transporters */
+.theme-editorial .fc04b-tpt{fill:#e3d9f2;stroke:#7a5aa6;stroke-width:1.6}
+.theme-editorial .fc04b-mex{fill:#e9e6dc;stroke:#8a877d;stroke-width:1.6}
+.theme-editorial .fc04b-sweet{fill:#f7e3b5;stroke:#c98a3a;stroke-width:1.6}
+.theme-editorial .fc04b-sut{fill:#dce9f6;stroke:#4f7cac;stroke-width:1.6}
+
+/* phloem and plant */
+.theme-editorial .fc04b-tube{fill:#f6eee2;stroke:#8a6a4a;stroke-width:1.8}
+.theme-editorial .fc04b-plate{fill:none;stroke:#8a6a4a;stroke-width:1.6;stroke-dasharray:4 4}
+.theme-editorial .fc04b-stem{fill:none;stroke:#6f9a5a;stroke-width:7;stroke-linecap:round}
+.theme-editorial .fc04b-phl{fill:none;stroke:#8a5a3c;stroke-width:3;stroke-linecap:round}
+.theme-editorial .fc04b-leaf{fill:#cfe3bd;stroke:#6f9a5a;stroke-width:1.6}
+.theme-editorial .fc04b-vein{fill:none;stroke:#6f9a5a;stroke-width:1.4}
+.theme-editorial .fc04b-root{fill:none;stroke:#a08a6a;stroke-width:3;stroke-linecap:round}
+.theme-editorial .fc04b-ground{fill:none;stroke:#a8a59a;stroke-width:1.6}
+.theme-editorial .fc04b-fruit{fill:#eab08c;stroke:#b5562f;stroke-width:1.6}
+.theme-editorial .fc04b-zoom{fill:none;stroke:#8a877d;stroke-width:1.4;stroke-dasharray:5 5}
+.theme-editorial .fc04b-lens{fill:none;stroke:#3d3d3a;stroke-width:2}
+
+/* sun, moon */
+.theme-editorial .fc04b-sun{fill:#f6c453;stroke:#d08f12;stroke-width:1.4}
+.theme-editorial .fc04b-ray{fill:none;stroke:#d08f12;stroke-width:2.2;stroke-linecap:round}
+.theme-editorial .fc04b-moon{fill:#c9d1e8;stroke:#4a5b93;stroke-width:1.6}
+
+/* crates (analogy) */
+.theme-editorial .fc04b-crate{fill:#fbe3d3;stroke:#c7742b;stroke-width:1.6}
+.theme-editorial .fc04b-crate-e{fill:#fffdf8;stroke:#c7742b;stroke-width:1.6;stroke-dasharray:4 3}
+.theme-editorial .fc04b-machine{fill:#ece9df;stroke:#8a877d;stroke-width:1.6}
+.theme-editorial .fc04b-stop{fill:none;stroke:#a9532f;stroke-width:3;stroke-linecap:round}
+
+/* ATP synthase (shared vocabulary: purple head, blue stalk) */
+.theme-editorial .fc04b-atp-h{fill:#d9d3f0;stroke:#8c84c4;stroke-width:1.5}
+.theme-editorial .fc04b-atp-s{fill:#d6e5f3;stroke:#6a8fb5;stroke-width:1.5}
+
+/* plots and dials */
+.theme-editorial .fc04b-cv{fill:none;stroke:#3d3d3a;stroke-width:4;stroke-linejoin:round;stroke-linecap:round}
+.theme-editorial .fc04b-cv-early{fill:none;stroke:#d97757;stroke-width:4;stroke-dasharray:11 8;stroke-linejoin:round;stroke-linecap:round}
+.theme-editorial .fc04b-lightbar{fill:#fbe7b0;stroke:#d9b45a;stroke-width:1.2}
+.theme-editorial .fc04b-darkbar{fill:#4a4f63;stroke:#4a4f63;stroke-width:1.2}
+.theme-editorial .fc04b-band{fill:#efe3bf;stroke:#b8a46b;stroke-width:1.6}
+.theme-editorial .fc04b-dial{fill:#fffdf8;stroke:#a8a59a;stroke-width:1.6}
+.theme-editorial .fc04b-dayhalf{fill:#fbf1d9}
+.theme-editorial .fc04b-nighthalf{fill:#e7ebf3}
+.theme-editorial .fc04b-tick{fill:none;stroke:#8a877d;stroke-width:1.6}
+.theme-editorial .fc04b-eqbox{fill:#fbeee6;stroke:#d97757;stroke-width:1.8}
+.theme-editorial .fc04b-guide{fill:none;stroke:#c9c6bb;stroke-width:1.4;stroke-dasharray:3 5}
+.theme-editorial .fc04b-tile{fill:#fffdf8;stroke:#c9c6bb;stroke-width:1.4}
+.theme-editorial .fc04b-tile-day{fill:#fbf1d9;stroke:#e3cf9a;stroke-width:1.4}
+.theme-editorial .fc04b-tile-night{fill:#e7ebf3;stroke:#b8c1d9;stroke-width:1.4}
+.theme-editorial .fc04b-faint{opacity:.45}
+
+/* The reaction arrow of the equation, with light written over it (as fl01-eq-ar on slide 1), dimmed like its terms. */
+.theme-editorial .fc04b-rx{fill:none;stroke:#b9b5aa;stroke-width:2.1;stroke-linecap:round}
+.theme-editorial .fc04b-rxh{fill:#b9b5aa}
+.theme-editorial .fig text.fc04b-rxl{font-size:22px;font-weight:600;fill:#d9b26a}

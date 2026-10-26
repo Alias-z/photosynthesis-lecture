@@ -1,0 +1,143 @@
+/* Slide L14 figure styles, scoped under .theme-editorial and prefixed .fl14- */
+
+/* text */
+.theme-editorial .fig text.fl14-hb{font-size:26px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fl14-h{font-size:23px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fl14-l{font-size:22px;fill:#3d3d3a}
+.theme-editorial .fig text.fl14-s{font-size:18px;fill:#6b6a64}
+.theme-editorial .fig text.fl14-m{font:italic 400 25px Newsreader,Georgia,serif;fill:#6b6a64}
+.theme-editorial .fig text.fl14-ax{font-size:20px;fill:#6b6a64}
+.theme-editorial .fig text.fl14-in{font-size:19px;font-weight:600;fill:#3d3d3a}
+.theme-editorial .fig text.fl14-nt{font-size:17px;font-weight:700;fill:#fffdf8}
+.theme-editorial .fig text.fl14-yr{font-size:24px;font-weight:700;fill:#141413}
+.theme-editorial .fig text.fl14-c-clay{fill:#a9532f}
+.theme-editorial .fig text.fl14-c-green{fill:#3f6b35}
+.theme-editorial .fig text.fl14-c-orange{fill:#b75f12}
+.theme-editorial .fig text.fl14-c-grey{fill:#6b6a64}
+.theme-editorial .fig text.fl14-c-blue{fill:#3d6a99}
+.theme-editorial .fig text.fl14-c-amber{fill:#9a6a08}
+.theme-editorial .fig text.fl14-ht{font-size:13px;font-weight:700;fill:#3d6a99}
+
+/* arrows: one ink per meaning */
+.theme-editorial .fl14-ar{fill:none;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fl14-k-ink{stroke:#3d3d3a}.theme-editorial .fl14-hd-ink{fill:#3d3d3a}
+.theme-editorial .fl14-k-green{stroke:#4f7f3f}.theme-editorial .fl14-hd-green{fill:#4f7f3f}
+.theme-editorial .fl14-k-grey{stroke:#8a877d}.theme-editorial .fl14-hd-grey{fill:#8a877d}
+.theme-editorial .fl14-k-clay{stroke:#d97757}.theme-editorial .fl14-hd-clay{fill:#d97757}
+.theme-editorial .fl14-k-amber{stroke:#e39a12}.theme-editorial .fl14-hd-amber{fill:#e39a12}
+.theme-editorial .fl14-k-blue{stroke:#4f7cac}.theme-editorial .fl14-hd-blue{fill:#4f7cac}
+.theme-editorial .fl14-k-orange{stroke:#e07a1f}.theme-editorial .fl14-hd-orange{fill:#e07a1f}
+.theme-editorial .fl14-k-red{stroke:#c8361e}.theme-editorial .fl14-hd-red{fill:#c8361e}
+.theme-editorial .fl14-dash{stroke-dasharray:8 7}
+.theme-editorial .fl14-dot{stroke-dasharray:2 6}
+.theme-editorial .fl14-thin{stroke-width:2}
+.theme-editorial .fl14-heat{fill:none;stroke:#8a877d;stroke-width:2.6;stroke-linecap:round}
+
+/* excitation energy: amber glow */
+.theme-editorial .fl14-g0{stop-color:#f6c453;stop-opacity:.95}
+.theme-editorial .fl14-g1{stop-color:#f6c453;stop-opacity:.45}
+.theme-editorial .fl14-g2{stop-color:#f6c453;stop-opacity:0}
+.theme-editorial .fl14-exc{fill:#f0a316;stroke:#c98410;stroke-width:1.2}
+
+/* proteins and pigments */
+.theme-editorial .fl14-lhc{fill:#e6f0dc;stroke:#8fb07a;stroke-width:1.8}
+.theme-editorial .fl14-psbs{fill:#f8e27c;stroke:#c9a92a;stroke-width:1.8}
+.theme-editorial .fl14-enz{fill:#ece6f4;stroke:#9a86bf;stroke-width:1.6}
+.theme-editorial .fl14-d1{fill:#5f8f4b;stroke:#3f6b35;stroke-width:1.4}
+.theme-editorial .fl14-d1-bad{fill:#e9c9b8;stroke:#c0442a;stroke-width:1.6;stroke-dasharray:4 3}
+.theme-editorial .fl14-crack{fill:none;stroke:#c0442a;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+.theme-editorial .fl14-ftsh{fill:#e2ded3;stroke:#8a877d;stroke-width:1.8}
+.theme-editorial .fl14-x-v{fill:none;stroke:#d4b11c;stroke-width:3.2;stroke-linejoin:round;stroke-linecap:round}
+.theme-editorial .fl14-x-a{fill:none;stroke:#e39a12;stroke-width:3.2;stroke-linejoin:round;stroke-linecap:round}
+.theme-editorial .fl14-x-z{fill:none;stroke:#d9631f;stroke-width:3.4;stroke-linejoin:round;stroke-linecap:round}
+.theme-editorial .fl14-ring-v{fill:#fbf3c9;stroke:#d4b11c;stroke-width:2}
+.theme-editorial .fl14-ring-a{fill:#fdebc6;stroke:#e39a12;stroke-width:2}
+.theme-editorial .fl14-ring-z{fill:#fde0cc;stroke:#d9631f;stroke-width:2}
+.theme-editorial .fl14-epox{fill:#f4cc4f;stroke:#b8902a;stroke-width:1.2}
+
+/* cards, frames, numbers */
+.theme-editorial .fl14-card{fill:#fffdf8;stroke:#c9c6bb;stroke-width:1.5}
+.theme-editorial .fl14-card-warm{fill:#fdf6f1;stroke:#e3b39c;stroke-width:1.5}
+.theme-editorial .fl14-frame{fill:none;stroke:#a8a59a;stroke-width:1.8;stroke-dasharray:11 8}
+.theme-editorial .fl14-num{fill:#3d3d3a}
+.theme-editorial .fl14-lumen{fill:#eaf0f7}
+.theme-editorial .fl14-lumen-acid{fill:#f6e3dc}
+.theme-editorial .fl14-rule{fill:none;stroke:#c9c6bb;stroke-width:1.4}
+
+/* plots */
+.theme-editorial .fl14-axis{fill:none;stroke:#8a877d;stroke-width:1.6}
+.theme-editorial .fl14-curve{fill:none;stroke:#3d3d3a;stroke-width:4;stroke-linejoin:round;stroke-linecap:round}
+.theme-editorial .fl14-curve-vpz{fill:none;stroke:#4f7f3f;stroke-width:3.4;stroke-dasharray:10 8;stroke-linecap:round}
+.theme-editorial .fl14-curve-dmg{fill:none;stroke:#c0442a;stroke-width:4;stroke-linecap:round}
+.theme-editorial .fl14-curve-rep{fill:none;stroke:#4f7f3f;stroke-width:4;stroke-linecap:round}
+.theme-editorial .fl14-lag{fill:#f3d9cb;opacity:.85}
+.theme-editorial .fl14-loss{fill:#f3d9cb}
+.theme-editorial .fl14-sun{fill:#f6d27a;stroke:#d9a520;stroke-width:1.4}
+.theme-editorial .fl14-shade{fill:#d9d6cb;stroke:#a8a59a;stroke-width:1.4}
+
+/* the mill (analogy) */
+.theme-editorial .fl14-water{fill:#d6e6f2}
+.theme-editorial .fl14-water-o{fill:none;stroke:#6a8fb5;stroke-width:2}
+.theme-editorial .fl14-streak{fill:none;stroke:#8fb3d3;stroke-width:1.6;stroke-linecap:round}
+.theme-editorial .fl14-wall{fill:none;stroke:#6b6a64;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fl14-wood{fill:#e3c79a;stroke:#9a7647;stroke-width:1.8}
+.theme-editorial .fl14-wood-o{fill:none;stroke:#9a7647;stroke-width:3}
+.theme-editorial .fl14-latch{fill:#d9631f;stroke:#9b3e1e;stroke-width:1.4}
+
+/* zoom lenses */
+.theme-editorial .fl14-lens{fill:#fffdf8;stroke:none}.theme-editorial .fl14-lens-o{fill:none;stroke:#8a877d;stroke-width:2.4}
+.theme-editorial .fl14-leaf{fill:#9cc47e;stroke:#5f8f4b;stroke-width:2}
+.theme-editorial .fl14-vein{fill:none;stroke:#5f8f4b;stroke-width:1.6}
+.theme-editorial .fl14-chl{fill:#cfe3bd;stroke:#6f9a5a;stroke-width:2}
+.theme-editorial .fl14-granum{fill:#7fae68;stroke:#5f8f4b;stroke-width:1}
+.theme-editorial .fl14-zoom{fill:none;stroke:#a8a59a;stroke-width:1.4;stroke-dasharray:4 4}
+
+/* scorecard and icons */
+.theme-editorial .fl14-up{fill:#4f7f3f}
+.theme-editorial .fl14-flat{fill:#fffdf8;stroke:#6b6a64;stroke-width:2.4}
+.theme-editorial .fl14-down{fill:#c0442a}
+.theme-editorial .fl14-icon{fill:#f0eee6;stroke:#c9c6bb;stroke-width:1.5}
+.theme-editorial .fl14-sunfill{fill:#f6c453;stroke:#d9a520;stroke-width:2}
+.theme-editorial .fl14-ray{fill:none;stroke:#d9a520;stroke-width:3;stroke-linecap:round}
+
+/* L14 additions: fluorescence signal, instruments, spectra */
+.theme-editorial .fl14-fl{fill:none;stroke:#c8361e;stroke-width:4;stroke-linejoin:round;stroke-linecap:round}
+.theme-editorial .fl14-fl-fill{fill:#f6c9bd;stroke:#c8361e;stroke-width:2}
+.theme-editorial .fl14-bar-fl{fill:#e8826c;stroke:#c8361e;stroke-width:1.6}
+.theme-editorial .fl14-ref{fill:none;stroke:#c8361e;stroke-width:1.6;stroke-dasharray:6 6}
+.theme-editorial .fl14-abs{fill:#dfe9d3;stroke:#6f9a5a;stroke-width:2.4}
+.theme-editorial .fl14-dark{fill:#3d3d3a}
+.theme-editorial .fl14-darkband{fill:#4a4944}
+.theme-editorial .fl14-act{fill:#f6d27a;stroke:#d9a520;stroke-width:1.4}
+.theme-editorial .fl14-flash{fill:#fffdf8;stroke:#d9a520;stroke-width:2}
+.theme-editorial .fl14-clip{fill:#5b5a55;stroke:#3d3d3a;stroke-width:1.6}
+.theme-editorial .fl14-sat{fill:#e2ded3;stroke:#6b6a64;stroke-width:1.8}
+.theme-editorial .fl14-panel{fill:#7e9cbf;stroke:#4f6f94;stroke-width:1.4}
+.theme-editorial .fl14-canopy{fill:#9cc47e;stroke:#5f8f4b;stroke-width:1.8}
+.theme-editorial .fl14-ground{fill:none;stroke:#a8a59a;stroke-width:2}
+.theme-editorial .fl14-rc-off{fill:#ecebe4;stroke:#a8a59a;stroke-width:1.8}
+.theme-editorial .fl14-stop{fill:#3d3d3a;stroke:#141413;stroke-width:1.4}
+.theme-editorial .fl14-valve{fill:#fffdf8;stroke:#3d3d3a;stroke-width:2}
+.theme-editorial .fl14-tank{fill:none;stroke:#6b6a64;stroke-width:3;stroke-linejoin:round}
+.theme-editorial .fl14-drop{fill:#c8361e}
+.theme-editorial .fl14-cup{fill:#fdf1ec;stroke:#c8361e;stroke-width:1.6}
+.theme-editorial .fl14-eq-light{fill:#9a6a08}
+.theme-editorial .fig text.fl14-eq{font-size:30px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fl14-eqc{fill:#8a4a1c}
+.theme-editorial .fig text.fl14-eqw{fill:#3d6a99}
+.theme-editorial .fig text.fl14-eql{fill:#b07a00}
+.theme-editorial .fl14-eqbox{fill:#fdf1ec;stroke:#c8361e;stroke-width:1.6}
+.theme-editorial .fl14-eqbox-g{fill:#eef4e8;stroke:#6f9a5a;stroke-width:1.6}
+.theme-editorial .fl14-vis{stroke:none}
+.theme-editorial .fl14-w-grey{fill:none;stroke:#a9a59a;stroke-linecap:round}
+.theme-editorial .fl14-w-red{fill:none;stroke:#c8361e;stroke-linecap:round}
+.theme-editorial .fl14-f-grey{fill:#a9a59a}.theme-editorial .fl14-f-red{fill:#c8361e}.theme-editorial .fl14-f-green{fill:#7fae68}
+
+/* Real subscripts for F_o, F_m, F_v, F_s and Φ_PSII: in figures (tspan) and in the page text (sub). */
+.theme-editorial .fig .fl14-sb{font-size:68%;baseline-shift:-.24em}
+.theme-editorial .fl14-sub{font-size:.68em;line-height:0;vertical-align:-.22em}
+.theme-editorial .fl14-nw{white-space:nowrap}
+/* 14G: the equation with light written over the arrow. */
+.theme-editorial .fig text.fl14-eqo{font-size:22px;font-weight:600;fill:#b07a00}
+.theme-editorial .fl14-eqar{fill:none;stroke:#141413;stroke-width:2.4}
+.theme-editorial .fl14-eqhd{fill:#141413}

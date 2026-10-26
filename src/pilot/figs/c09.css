@@ -1,0 +1,46 @@
+/* Slide C09 figure styles, scoped under .theme-editorial and prefixed .fc09-. The cells, organelles and routes come
+   from the C08 kit (.fc08-), which C09 figures also carry. */
+.theme-editorial .fc09-l14{fill:none;stroke:#c0442a;stroke-width:3}
+.theme-editorial .fig text.fc09-l14t{fill:#b8321c;font-weight:600}
+
+/* stacked bar */
+.theme-editorial .fc09-seg{fill:#cfe7e2;stroke:#237a72;stroke-width:1.6}
+.theme-editorial .fc09-seg-rest{fill:#ece9df;stroke:#8a877d;stroke-width:1.4}
+.theme-editorial .fc09-time{fill:none;stroke:#8a877d;stroke-width:1.6}
+
+/* shuttle-bus analogy */
+.theme-editorial .fc09-road{fill:none;stroke:#e6e2d6;stroke-width:38;stroke-linejoin:round}
+.theme-editorial .fc09-roadc{fill:none;stroke:#fffdf8;stroke-width:2.4;stroke-dasharray:12 12}
+.theme-editorial .fc09-bus{fill:#fffdf8;stroke:#237a72;stroke-width:2.6}
+.theme-editorial .fc09-bus-full{fill:#e3f1ee}
+.theme-editorial .fc09-win{fill:#f6f4ee;stroke:#a8a59a;stroke-width:1.2}
+.theme-editorial .fc09-wheel{fill:#3d3d3a}
+.theme-editorial .fc09-pump{fill:#fbe3d3;stroke:#d97757;stroke-width:2}
+.theme-editorial .fc09-stop{fill:#3d3d3a}
+
+/* cost graph */
+.theme-editorial .fc09-c3{fill:none;stroke:#a9532f;stroke-width:4.2;stroke-linecap:round}
+.theme-editorial .fc09-c4{fill:none;stroke:#237a72;stroke-width:4.2;stroke-linecap:round}
+.theme-editorial .fc09-guide{fill:none;stroke:#a8a59a;stroke-width:1.6;stroke-dasharray:5 6}
+.theme-editorial .fc09-band-c3{fill:#fbeee6}
+.theme-editorial .fc09-band-c4{fill:#e6f2ef}
+.theme-editorial .fc09-pt{fill:#141413}
+
+/* close-ups and zones */
+.theme-editorial .fc09-close{fill:#eef4e4;stroke:#6f9a5a;stroke-width:2}
+.theme-editorial .fc09-zone-m{fill:#eef4e4;stroke:#9cbd88;stroke-width:1.6}
+.theme-editorial .fc09-zone-b{fill:#dce8c9;stroke:#5f8a4a;stroke-width:3}
+.theme-editorial .fc09-ep{fill:#fbfaf5;stroke:#b9b5aa;stroke-width:1.2}
+.theme-editorial .fc09-zoom{fill:none;stroke:#6b6a64;stroke-width:1.8;stroke-dasharray:6 5}
+.theme-editorial .fc09-leader{fill:none;stroke:#8a877d;stroke-width:1.4}
+.theme-editorial .fc09-lead-dot{fill:#3d3d3a}
+
+/* checklist */
+.theme-editorial .fc09-ok{fill:none;stroke:#237a72;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fc09-okc{fill:#e3f1ee;stroke:#237a72;stroke-width:1.6}
+.theme-editorial .fc09-noc{fill:#fbeee6;stroke:#c0442a;stroke-width:1.6}
+.theme-editorial .fc09-gap{fill:#fffdf8;stroke:none}
+
+/* four-step panels are drawn at 0.97 scale; enlarge their text so it still renders at 22 px (labels) and 20 px (tags) */
+.theme-editorial .fig .fc09-g97 text.sm{font-size:22.7px}
+.theme-editorial .fig .fc09-g97 text.tag-t{font-size:20.6px}

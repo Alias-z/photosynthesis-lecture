@@ -1,0 +1,89 @@
+/* Slide L08 figure styles, scoped under .theme-editorial and prefixed .fl08- */
+/* excitation */
+.theme-editorial .fl08-g0{stop-color:#f6b42c;stop-opacity:.9}
+.theme-editorial .fl08-g1{stop-color:#f8c75a;stop-opacity:.45}
+.theme-editorial .fl08-g2{stop-color:#f8c75a;stop-opacity:0}
+.theme-editorial .fl08-gc{fill:#f0a316;stroke:#fffdf8;stroke-width:1.5}
+.theme-editorial .fl08-hop{fill:none;stroke:#dd960f;stroke-width:3;stroke-dasharray:.5 7;stroke-linecap:round}
+.theme-editorial .fl08-hd{fill:#dd960f}
+.theme-editorial .fl08-flash{fill:#f0a316;stroke:#c98a1a;stroke-width:1.6;stroke-linejoin:round}
+/* pigments, charges, the Mn₄CaO₅ cluster and tyrosine */
+.theme-editorial .fl08-chl{fill:#3f6b45;stroke:#2f5a36;stroke-width:1}
+.theme-editorial .fl08-ant{fill:#e6efdb;stroke:#8fb07a;stroke-width:1.6}
+.theme-editorial .fl08-qp{fill:#fffdf8;stroke:#c8361e;stroke-width:2.2}
+.theme-editorial .fig text.fl08-qt{font-weight:700;fill:#c8361e}
+.theme-editorial .fl08-mn{fill:#8c7aa8;stroke:#5d4d7a;stroke-width:1.4}
+.theme-editorial .fl08-ca{fill:#a9cfae;stroke:#5d8f63;stroke-width:1.4}
+.theme-editorial .fl08-bond{fill:none;stroke:#8a877d;stroke-width:2}
+.theme-editorial .fig text.fl08-mnt{font-size:15px;font-weight:700;fill:#fffdf8}
+.theme-editorial .fig text.fl08-cat{font-size:15px;font-weight:700;fill:#2f5a36}
+.theme-editorial .fl08-tyr{fill:#fbe3d3;stroke:#d97757;stroke-width:1.8}
+/* labelled oxygen */
+.theme-editorial .fl08-o18{fill:#b8862a;stroke:#3d3d3a;stroke-width:3}
+.theme-editorial .fig text.fl08-o18t{font-size:15px;font-weight:700;fill:#fffdf8}
+/* text colours */
+.theme-editorial .fig text.fl08-e{fill:#c8361e;font-weight:700}
+.theme-editorial .fig text.fl08-red{fill:#b8321c}
+.theme-editorial .fig text.fl08-clay{fill:#a9532f}
+.theme-editorial .fig text.fl08-grn{fill:#2f5a36}
+.theme-editorial .fig text.fl08-blue{fill:#3d6a99}
+.theme-editorial .fig text.fl08-mut{fill:#6b6a64}
+.theme-editorial .fig text.fl08-b{font-weight:600;fill:#141413}
+.theme-editorial .fig text.fl08-note{font:italic 400 24px Newsreader,Georgia,serif;fill:#6b6a64}
+.theme-editorial .fig text.fl08-s{font-size:27px;font-weight:700;fill:#141413}
+.theme-editorial .fig text.fl08-eq{font-size:26px;fill:#8a877d}
+.theme-editorial .fig text.fl08-eqb{font-size:30px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fl08-op{font-size:30px;fill:#6b6a64}
+.theme-editorial .fig text.fl08-big{font-size:34px;font-weight:600;fill:#3d3d3a}
+/* panels and rules */
+.theme-editorial .fl08-panel{fill:#fffdf8;stroke:#c9c6bb;stroke-width:1.4}
+.theme-editorial .fl08-rule{fill:none;stroke:#d8d5cb;stroke-width:1.2}
+.theme-editorial .fl08-lumen{fill:#eaf1f8}
+/* S-state clock */
+.theme-editorial .fl08-node{fill:#fffdf8;stroke:#8c7aa8;stroke-width:2.4}
+.theme-editorial .fl08-node-dark{fill:#f1ecf8;stroke:#8c7aa8;stroke-width:2.4;stroke-dasharray:6 4}
+.theme-editorial .fl08-arc{fill:none;stroke:#3d3d3a;stroke-width:2.6;stroke-linecap:round}
+.theme-editorial .fl08-arc-dark{fill:none;stroke:#3d3d3a;stroke-width:2.6;stroke-dasharray:3 6;stroke-linecap:round}
+/* flask */
+.theme-editorial .fl08-glass{fill:none;stroke:#6b6a64;stroke-width:2.6;stroke-linejoin:round}
+.theme-editorial .fl08-liquid{fill:#e4eef0}
+.theme-editorial .fl08-alga{fill:#8fb07a;stroke:#5f8a4b;stroke-width:1}
+.theme-editorial .fl08-bub{fill:#fffdf8;stroke:#6a8fb5;stroke-width:1.8}
+/* bars */
+.theme-editorial .fl08-bar{fill:#9cbfdf;stroke:#4f7cac;stroke-width:1.4}
+.theme-editorial .fl08-bar-pk{fill:#4f7cac;stroke:#3d6a99;stroke-width:1.4}
+/* equation arcs */
+.theme-editorial .fl08-arc-w{fill:none;stroke:#4f7cac;stroke-width:3;stroke-linecap:round}
+.theme-editorial .fl08-arc-c{fill:none;stroke:#a9532f;stroke-width:3;stroke-linecap:round;stroke-dasharray:9 6}
+.theme-editorial .fl08-hd-w{fill:#4f7cac}.theme-editorial .fl08-hd-c{fill:#a9532f}
+.theme-editorial .fl08-strike{fill:none;stroke:#a8a59a;stroke-width:2}
+/* vending machine */
+.theme-editorial .fl08-vm{fill:#eef1f4;stroke:#5a5852;stroke-width:2.4}
+.theme-editorial .fl08-sign{fill:#f1ecf8;stroke:#8c7aa8;stroke-width:1.8}
+.theme-editorial .fl08-win{fill:#3d3d3a}
+.theme-editorial .fl08-lamp-on{fill:#f6c84a;stroke:#c98a1a;stroke-width:1.6}
+.theme-editorial .fl08-slot{fill:#3d3d3a}
+.theme-editorial .fl08-coin{fill:#f6c84a;stroke:#b07208;stroke-width:2}
+.theme-editorial .fl08-tray{fill:#d8d5cb;stroke:#5a5852;stroke-width:2}
+.theme-editorial .fl08-lead{fill:none;stroke:#a8a59a;stroke-width:1.4}
+/* redox ladder */
+.theme-editorial .fl08-band-w{fill:#dce9f6;stroke:#4f7cac;stroke-width:1.6}
+.theme-editorial .fl08-lvl{fill:none;stroke:#2f5a36;stroke-width:5;stroke-linecap:round}
+/* misconception */
+.theme-editorial .fl08-x{fill:none;stroke:#d97757;stroke-width:9;stroke-linecap:round}
+/* zoom out and timeline */
+.theme-editorial .fl08-lens{fill:#fffdf8;stroke:#a8a59a;stroke-width:1.6}
+.theme-editorial .fl08-cyano{fill:#cfe3c0;stroke:#5f8a4b;stroke-width:2}
+.theme-editorial .fl08-thyl{fill:none;stroke:#5f8a4b;stroke-width:1.6}
+.theme-editorial .fl08-sea{fill:#cfe0ee;stroke:#6a8fb5;stroke-width:1.6}
+.theme-editorial .fl08-land{fill:#c8d8a8;stroke:#8fae6a;stroke-width:1.2}
+.theme-editorial .fl08-air{fill:none;stroke:#9cbfdf;stroke-width:10;opacity:.6}
+.theme-editorial .fl08-seg0{fill:#ece9df;stroke:#a8a59a;stroke-width:1.4}
+.theme-editorial .fl08-seg1{fill:#dce9f6;stroke:#4f7cac;stroke-width:1.4}
+.theme-editorial .fl08-hatch{stroke:#4f7cac;stroke-width:2}
+.theme-editorial .fig text.fl08-ot{font-size:15px;font-weight:700;fill:#5a4a1a}
+.theme-editorial .fig text.fl08-ct{font-size:15px;font-weight:700;fill:#fffdf8}
+.theme-editorial .fig text.fl08-ht{font-size:15px;font-weight:700;fill:#3d6a99}
+
+/* Small keys for abbreviations and notation. */
+.theme-editorial .fig text.fl08-key{font-size:17px;fill:#6b6a64}

@@ -1,0 +1,28 @@
+/* Slide 6 figure styles, scoped under .theme-editorial and prefixed .f6- */
+.theme-editorial .f6-pa{fill:#3f6b45}
+.theme-editorial .f6-pb{fill:#e3efd6;stroke:#6f9a5a;stroke-width:2}
+.theme-editorial .fig text.f6-pt{font-weight:700}
+.theme-editorial .fig text.f6-pt-a{fill:#fffdf8}
+.theme-editorial .fig text.f6-pt-b{fill:#3f6b45}
+.theme-editorial .f6-ant{fill:#e6efdb;stroke:#8fb07a;stroke-width:1.6}
+.theme-editorial .f6-core{fill:#d3e7c3;stroke:#6f9a5a;stroke-width:1.6}
+.theme-editorial .f6-hop{fill:none;stroke:#dd960f;stroke-width:3;stroke-dasharray:.5 7;stroke-linecap:round}
+.theme-editorial .f6-hop-u{fill:none;stroke:#fffdf8;stroke-width:8;stroke-linecap:round;opacity:.7}
+.theme-editorial .f6-hd{fill:#dd960f}
+.theme-editorial .f6-g0{stop-color:#f6b42c;stop-opacity:.9}
+.theme-editorial .f6-g1{stop-color:#f8c75a;stop-opacity:.45}
+.theme-editorial .f6-g2{stop-color:#f8c75a;stop-opacity:0}
+.theme-editorial .f6-gc{fill:#f0a316;stroke:#fffdf8;stroke-width:1.5}
+.theme-editorial .f6-rc{stroke-width:2.6}
+.theme-editorial .f6-terrain{fill:#f1ebdc}
+.theme-editorial .f6-ground{fill:none;stroke:#b9ab84;stroke-width:2.4;stroke-linejoin:round}
+.theme-editorial .fig text.f6-amb{fill:#a86c06}
+.theme-editorial .fig text.f6-red,.theme-editorial .fig tspan.f6-red{fill:#c8361e}
+.theme-editorial .fig tspan.f6-amb{fill:#a86c06}
+.theme-editorial .fig text.f6-blue{fill:#2350e6}
+.theme-editorial .fig text.f6-la{fill:#2f5a36}
+.theme-editorial .fig text.f6-lb{fill:#5b8747}
+.theme-editorial .fig text.f6-mut{fill:#6b6a64}
+.theme-editorial .fig text.f6-mg{font-size:16px;font-weight:600}
+.theme-editorial .fig text.f6-grp{font-size:23px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.f6-note{font:italic 400 26px Newsreader,Georgia,serif;fill:#6b6a64}

@@ -1,0 +1,71 @@
+/* Slide L07 figure styles, scoped under .theme-editorial and prefixed .fl07- */
+/* excitation: amber glow and dotted hops (never an electron) */
+.theme-editorial .fl07-g0{stop-color:#f6b42c;stop-opacity:.9}
+.theme-editorial .fl07-g1{stop-color:#f8c75a;stop-opacity:.45}
+.theme-editorial .fl07-g2{stop-color:#f8c75a;stop-opacity:0}
+.theme-editorial .fl07-gc{fill:#f0a316;stroke:#fffdf8;stroke-width:1.5}
+.theme-editorial .fl07-hop{fill:none;stroke:#dd960f;stroke-width:3;stroke-dasharray:.5 7;stroke-linecap:round}
+.theme-editorial .fl07-hd{fill:#dd960f}
+/* pigments, acceptors and charges */
+.theme-editorial .fl07-chl{fill:#3f6b45;stroke:#2f5a36;stroke-width:1}
+.theme-editorial .fl07-acc{fill:#fffdf8;stroke:#8a877d;stroke-width:2}
+.theme-editorial .fl07-ant{fill:#e6efdb;stroke:#8fb07a;stroke-width:1.6}
+.theme-editorial .fl07-qp{fill:#fffdf8;stroke:#c8361e;stroke-width:2.2}
+.theme-editorial .fl07-qm{fill:#fffdf8;stroke:#4f7cac;stroke-width:2.2}
+.theme-editorial .fig text.fl07-qt{font-weight:700}
+.theme-editorial .fig text.fl07-qt-p{fill:#c8361e}
+.theme-editorial .fig text.fl07-qt-m{fill:#3d6a99}
+.theme-editorial .fl07-rc{fill:#fffdf8;stroke:#d97757;stroke-width:2.4}
+.theme-editorial .fig text.fl07-rct{font-weight:700;fill:#a9532f}
+/* text colours */
+.theme-editorial .fig text.fl07-e{fill:#c8361e;font-weight:700}
+.theme-editorial .fig text.fl07-red{fill:#b8321c}
+.theme-editorial .fig text.fl07-amb{fill:#a86c06}
+.theme-editorial .fig text.fl07-mut{fill:#6b6a64}
+.theme-editorial .fig text.fl07-grn{fill:#2f5a36}
+.theme-editorial .fig text.fl07-blue{fill:#3d6a99}
+.theme-editorial .fig text.fl07-b{font-weight:600;fill:#141413}
+.theme-editorial .fig text.fl07-note{font:italic 400 24px Newsreader,Georgia,serif;fill:#6b6a64}
+.theme-editorial .fig text.fl07-num{font-size:18px;font-weight:700;fill:#fffdf8}
+.theme-editorial .fig text.fl07-eq{font-size:28px;fill:#8a877d}
+.theme-editorial .fig text.fl07-light{font-size:28px;font-weight:700;fill:#b07208}
+.theme-editorial .fig text.fl07-big{font-size:27px;font-weight:600;fill:#141413}
+/* panels, rules, membranes */
+.theme-editorial .fl07-panel{fill:#fffdf8;stroke:#c9c6bb;stroke-width:1.4}
+.theme-editorial .fl07-rule{fill:none;stroke:#d8d5cb;stroke-width:1.2}
+.theme-editorial .fl07-numc{fill:#3d3d3a}
+.theme-editorial .fl07-memb{fill:#efe2c0;stroke:#c9b789;stroke-width:1}
+.theme-editorial .fl07-lumen{fill:#eaf1f8}
+.theme-editorial .fl07-fade{opacity:.42}
+/* zoom lenses */
+.theme-editorial .fl07-lens{fill:#fffdf8;stroke:#a8a59a;stroke-width:1.6}
+.theme-editorial .fl07-zl{fill:none;stroke:#a8a59a;stroke-width:1.3;stroke-dasharray:4 4}
+.theme-editorial .fl07-zb{fill:none;stroke:#3d3d3a;stroke-width:1.8}
+.theme-editorial .fl07-leaf{fill:#a9c793;stroke:#5f8a4b;stroke-width:2}
+.theme-editorial .fl07-vein{fill:none;stroke:#5f8a4b;stroke-width:1.4;stroke-linecap:round}
+.theme-editorial .fl07-cell{fill:#f4f7ee;stroke:#a9bd94;stroke-width:2}
+.theme-editorial .fl07-cp{fill:#7fa866;stroke:#5f8a4b;stroke-width:1}
+.theme-editorial .fl07-env{fill:#eef4e6;stroke:#6f9a5a;stroke-width:2}
+.theme-editorial .fl07-env2{fill:none;stroke:#6f9a5a;stroke-width:1.2}
+.theme-editorial .fl07-gr{fill:#6f9a5a;stroke:#4f7a3c;stroke-width:.8}
+.theme-editorial .fl07-lam{fill:none;stroke:#8fb07a;stroke-width:3;stroke-linecap:round}
+/* solar-cell analogy */
+.theme-editorial .fl07-n{fill:#dce9f6;stroke:#6a8fb5;stroke-width:1.4}
+.theme-editorial .fl07-p{fill:#f6e6d2;stroke:#c98a3a;stroke-width:1.4}
+.theme-editorial .fl07-junc{fill:none;stroke:#3d3d3a;stroke-width:1.6;stroke-dasharray:6 5}
+.theme-editorial .fl07-contact{fill:#5a5852}
+.theme-editorial .fl07-wire{fill:none;stroke:#5a5852;stroke-width:2.6;stroke-linejoin:round}
+.theme-editorial .fl07-lamp{fill:#fff3c4;stroke:#5a5852;stroke-width:2}
+.theme-editorial .fl07-fil{fill:none;stroke:#c98a1a;stroke-width:1.8}
+/* timeline and pool */
+.theme-editorial .fl07-lane{fill:none;stroke:#c9c6bb;stroke-width:2}
+.theme-editorial .fl07-pool{fill:#f6efd9;stroke:#b8a46b;stroke-width:1.6}
+.theme-editorial .fl07-edot{fill:#c8361e}
+/* spectra */
+.theme-editorial .fl07-trace{fill:none;stroke:#3f6b45;stroke-width:3.6;stroke-linejoin:round;stroke-linecap:round}
+.theme-editorial .fl07-zero{fill:none;stroke:#b9b5aa;stroke-width:1.2;stroke-dasharray:5 5}
+.theme-editorial .fl07-dip{fill:#3f6b45;opacity:.12}
+.theme-editorial .fl07-flash{fill:#f0a316;stroke:#c98a1a;stroke-width:1.6;stroke-linejoin:round}
+
+/* Abbreviation keys (PQ, PC, Fd, b₆f, *). */
+.theme-editorial .fig text.fl07-key{font-size:17px;fill:#6b6a64}

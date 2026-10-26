@@ -1,0 +1,41 @@
+/* Slide L02 figure styles, scoped under .theme-editorial and prefixed .fl02- (shared parts come from s2.css) */
+
+/* A pale under-stroke for waves laid on the photograph. */
+.theme-editorial .fl02-halo.f2-w{stroke:#fffdf8;stroke-width:8.5;opacity:.82}
+
+/* Panels, lenses and close-up discs. */
+.theme-editorial .fl02-panel-air{fill:#edf2f9}
+.theme-editorial .fl02-panel-leaf{fill:#eef4e7}
+.theme-editorial .fl02-zoom{stroke-width:2}
+.theme-editorial .fl02-zoom-air{fill:#eef3fa;stroke:#b9c9e2}
+.theme-editorial .fl02-zoom-leaf{fill:#f2f6ec;stroke:#bcd0a8}
+.theme-editorial .fl02-lens{fill:#fffdf8}
+.theme-editorial .fl02-lens-rim{fill:none;stroke:#fffdf8;stroke-width:6}
+.theme-editorial .fl02-chl{fill:#d3e7c3;stroke:#6f9a5a;stroke-width:2}
+.theme-editorial .fl02-thy{fill:#b9d7a2;stroke:#6f9a5a;stroke-width:1.4}
+.theme-editorial .fl02-op{fill:#fffdf8;stroke:#c9c6bb;stroke-width:1.6}
+.theme-editorial .fl02-flow{fill:none;stroke:#a8a59a;stroke-width:2.2;stroke-dasharray:2 6;stroke-linecap:round}
+
+/* What reaches the eye, as three bars in spectral order. */
+.theme-editorial .fl02-bar-b{fill:#2350e6}.theme-editorial .fl02-bar-g{fill:#2a963a}.theme-editorial .fl02-bar-r{fill:#c8361e}
+
+/* Not this / but this. */
+.theme-editorial .fl02-cell{fill:#fffdf8;stroke:#e3e0d6;stroke-width:1.4}
+.theme-editorial .fl02-cell-no{fill:#f6f1ea;stroke-dasharray:6 6}
+.theme-editorial .fl02-no{fill:#fbeee6;stroke:#c0442a;stroke-width:2}
+.theme-editorial .fl02-no-p{fill:none;stroke:#c0442a;stroke-width:3.2;stroke-linecap:round}
+.theme-editorial .fl02-ok{fill:#e9f0e1;stroke:#5b8747;stroke-width:2}
+.theme-editorial .fl02-ok-p{fill:none;stroke:#3f6b45;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+
+/* Step numbers. */
+.theme-editorial .fl02-num{fill:#3d3d3a}
+
+/* Text. */
+.theme-editorial .fig text.fl02-verb{font:italic 400 34px Newsreader,Georgia,serif;fill:#3d3d3a}
+.theme-editorial .fig .fl02-verb-b{font-style:normal;font-weight:500;fill:#141413}
+.theme-editorial .fig text.fl02-head{font-size:25px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fl02-mini{font-size:16px;fill:#6b6a64}
+.theme-editorial .fig text.fl02-num-t{font-size:17px;font-weight:700;fill:#fffdf8}
+
+/* Round 2: one drawn wavelength marked crest to crest. */
+.theme-editorial .fl02-lam{fill:none;stroke:#3d3d3a;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}

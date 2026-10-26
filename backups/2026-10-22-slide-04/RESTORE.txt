@@ -1,0 +1,24 @@
+SLIDE 4 BACKUP — 22 October 2026
+
+scattering.ts is an exact copy of the original Midday/Sunset/Pause scattering
+animation. preview.png shows the original slide before adding backup access.
+The original source remains unchanged at src/slides/scattering.ts.
+
+SHA-256 of scattering.ts:
+4624db154ba8f9b3f41acd104e2db6047cf2fd5a5892de8fccbf6f35b8cea7dd
+
+Open slide 4 and click Backup to view the original animation. Click Return or
+press Escape to return to the photon energy and scattering brief.
+
+Future approved content changes belong in src/slides/scatteringReview.ts.
+Keep src/slides/scattering.ts intact so the Backup button retains the original.
+
+To restore the original as the main slide, replace the scatteringReviewSlide
+import in src/main.ts with:
+
+import { scatteringSlide } from './slides/scattering';
+
+Then replace only scatteringReviewSlide in the SLIDES array with scatteringSlide.
+Keep the other entries intact.
+
+If src/slides/scattering.ts is ever changed, first restore it from this copy.

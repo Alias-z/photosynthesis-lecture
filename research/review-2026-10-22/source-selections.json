@@ -1,0 +1,444 @@
+[
+  {
+    "id": "johnson2025",
+    "doi": "10.1038/s41580-025-00847-y",
+    "use": "Thylakoid architecture, electron transfer and regulation. Use corrected publication; correction DOI 10.1038/s41580-025-00877-6.",
+    "basis": "Previously checked project research notes and linked source; retained as established background."
+  },
+  {
+    "id": "liu2026",
+    "doi": "10.1146/annurev-biophys-021424-011156",
+    "use": "Current structural review of antenna and photosystem assemblies.",
+    "basis": "Previously checked project research notes and linked source; retained as established background."
+  },
+  {
+    "id": "insitu2026",
+    "doi": "10.1038/s41586-026-10847-3",
+    "use": "Native membrane organisation differs from isolated assemblies; no new subunit list for students.",
+    "basis": "Previously checked project research notes and linked source; retained as established background."
+  },
+  {
+    "id": "npq2025",
+    "doi": "10.1093/plcell/koaf240",
+    "use": "qE, PsbS and zeaxanthin; molecular account remains a working model.",
+    "basis": "Publisher or Europe PMC abstract and metadata checked this pass; no claim of a full-paper appraisal."
+  },
+  {
+    "id": "npq2026",
+    "doi": "10.1038/s41467-026-74992-z",
+    "use": "Arabidopsis study assigns most quenching to LHCII under its conditions, not a universal percentage.",
+    "basis": "Publisher abstract, introduction and opening results checked."
+  },
+  {
+    "id": "atpase2018",
+    "doi": "10.1126/science.aat4318",
+    "use": "c14 chloroplast ATP synthase supports the structural 14 H+/3 ATP assumption.",
+    "basis": "Previously checked project research notes and linked source; retained as established background."
+  },
+  {
+    "id": "atpase2025",
+    "doi": "10.1093/pcp/pcaf100",
+    "use": "Plastid ATP synthase regulation and diversification.",
+    "basis": "Previously checked project research notes and linked source; retained as established background."
+  },
+  {
+    "id": "water2023",
+    "doi": "10.1038/s41586-023-06038-z",
+    "use": "Structural water-oxidation intermediates; not every O–O bond-forming detail is settled.",
+    "basis": "Previously checked project research notes and linked source; retained as established background."
+  },
+  {
+    "id": "psii2026",
+    "doi": "10.1111/tpj.70925",
+    "use": "Current PSII review connects the oxygen-evolving complex to aerobic life.",
+    "basis": "Publisher or Europe PMC abstract and metadata checked this pass; no claim of a full-paper appraisal."
+  },
+  {
+    "id": "fluorescence2013",
+    "doi": "10.1093/jxb/ert208",
+    "use": "Maximum/operating PSII yield and fluorescence-derived ETR assumptions.",
+    "basis": "Previously checked project research notes and linked source; retained as established background."
+  },
+  {
+    "id": "farred2020",
+    "doi": "10.1111/pce.13730",
+    "use": "Far-red contributes with shorter wavelengths; PAR is a convention, not an absolute cutoff.",
+    "basis": "Previously checked project research notes and linked source; retained as established background."
+  },
+  {
+    "id": "green2009",
+    "doi": "10.1093/pcp/pcp034",
+    "use": "Green penetration under strong white light, not universal superiority over red.",
+    "basis": "Previously checked project research notes and linked source; retained as established background."
+  },
+  {
+    "id": "farred2024",
+    "doi": "10.1146/annurev-physchem-090722-125847",
+    "use": "Review of far-red oxygenic photosynthesis.",
+    "basis": "Previously checked project research notes and linked source; retained as established background."
+  },
+  {
+    "id": "history2020",
+    "doi": "10.1093/aob/mcz171",
+    "use": "Discovery sequence and established mechanisms; selected vignettes also link original experiments.",
+    "basis": "Previously checked project research notes and linked source; retained as established background."
+  },
+  {
+    "id": "chlorophyllHistory2024",
+    "doi": "10.1007/s11120-024-01081-x",
+    "use": "Naming/isolation of chlorophyll; instructor reserve.",
+    "basis": "Previously checked project research notes and linked source; retained as established background."
+  },
+  {
+    "id": "kautskyHistory2025",
+    "doi": "10.32615/ps.2025.007",
+    "use": "1931 fluorescence transient; fluorescence is not a direct assimilation meter.",
+    "basis": "Previously checked project research notes and linked source; retained as established background."
+  },
+  {
+    "id": "rayleigh1871",
+    "doi": "10.1080/14786447108640452",
+    "use": "Wavelength dependence of scattering, distinct from photon energy.",
+    "basis": "Previously checked project research notes and linked source; retained as established background."
+  },
+  {
+    "id": "einstein1905",
+    "doi": "10.1002/andp.19053220607",
+    "use": "Light quanta; acknowledge Planck's earlier quantisation without another obligatory portrait.",
+    "basis": "Previously checked project research notes and linked source; retained as established background."
+  },
+  {
+    "id": "emerson1932",
+    "doi": "10.1085/jgp.15.4.391",
+    "use": "Many chlorophylls share a photosynthetic unit; separate from enhancement.",
+    "basis": "Previously checked project research notes and linked source; retained as established background."
+  },
+  {
+    "id": "hill1937",
+    "doi": "10.1038/139881a0",
+    "use": "Isolated chloroplasts evolve O2 with an electron acceptor, separating this from CO2 assimilation.",
+    "basis": "Previously checked project research notes and linked source; retained as established background."
+  },
+  {
+    "id": "hill1960",
+    "doi": "10.1038/186136a0",
+    "use": "Two light reactions in the historical electron-transfer scheme.",
+    "basis": "Previously checked project research notes and linked source; retained as established background."
+  },
+  {
+    "id": "mitchell1961",
+    "doi": "10.1038/191144a0",
+    "use": "Chemiosmotic coupling.",
+    "basis": "Previously checked project research notes and linked source; retained as established background."
+  },
+  {
+    "id": "jagendorf1966",
+    "doi": "10.1073/pnas.55.1.170",
+    "use": "Acid-base transition drives ATP formation in darkness.",
+    "basis": "Previously checked project research notes and linked source; retained as established background."
+  },
+  {
+    "id": "mccree1972",
+    "doi": "10.1016/0002-1571(71)90022-7",
+    "use": "Absorptance, action spectrum and quantum yield differ. Retain the existing bibliographic record.",
+    "basis": "Previously checked project research notes and linked source; retained as established background."
+  },
+  {
+    "id": "blackman1905",
+    "doi": "10.1093/oxfordjournals.aob.a089000",
+    "use": "Light saturation and downstream limitation.",
+    "basis": "Previously checked project research notes and linked source; retained as established background."
+  },
+  {
+    "id": "croce2014",
+    "doi": "10.1038/nchembio.1555",
+    "use": "Pigment organisation, complementarity and excitation transfer.",
+    "basis": "Previously agreed LHC context and linked review.",
+    "title": "Natural strategies for photosynthetic light harvesting",
+    "authors": "Croce & van Amerongen",
+    "year": 2014,
+    "journal": "Nature Chemical Biology"
+  },
+  {
+    "id": "lhcii2013",
+    "doi": "10.1007/s11120-013-9824-3",
+    "use": "LHCII example: 8 a + 6 b per monomer.",
+    "basis": "Previously agreed LHC context and linked review.",
+    "title": "Light harvesting in photosystem II",
+    "authors": "van Amerongen & Croce",
+    "year": 2013,
+    "journal": "Photosynthesis Research"
+  },
+  {
+    "id": "lhci2013",
+    "doi": "10.1007/s11120-013-9838-x",
+    "use": "PSI antenna and red forms; ratio alone does not explain red absorption.",
+    "basis": "Previously agreed LHC context and linked review.",
+    "title": "Light-harvesting in photosystem I",
+    "authors": "Croce & van Amerongen",
+    "year": 2013,
+    "journal": "Photosynthesis Research"
+  },
+  {
+    "id": "croce2020",
+    "doi": "10.1126/science.aay2058",
+    "use": "Structures and spectra of photosynthetic antennas.",
+    "basis": "Previously agreed LHC context and linked review.",
+    "title": "Light harvesting in oxygenic photosynthesis: Structural biology meets spectroscopy",
+    "authors": "Croce & van Amerongen",
+    "year": 2020,
+    "journal": "Science"
+  },
+  {
+    "id": "kromdijk2022",
+    "doi": "10.1111/jipb.13206",
+    "use": "Route families and protection; add 2025–2026 evidence. Applications excluded.",
+    "basis": "Previously checked project research notes and linked source; retained as established background.",
+    "title": "Here comes the sun: How optimization of photosynthetic light reactions can boost crop yields",
+    "authors": "Walter & Kromdijk",
+    "year": 2022,
+    "journal": "Journal of Integrative Plant Biology"
+  },
+  {
+    "id": "kramer2011",
+    "doi": "10.1104/pp.110.166652",
+    "use": "Supply, demand and alternative-route accounting.",
+    "basis": "Previously checked project research notes and linked source; retained as established background.",
+    "title": "The importance of energy balance in improving photosynthetic productivity",
+    "authors": "Kramer & Evans",
+    "year": 2011,
+    "journal": "Plant Physiology"
+  },
+  {
+    "id": "ndh2017",
+    "doi": "10.1074/jbc.M116.770792",
+    "use": "Approximately two extra pumped H+ per electron through NDH.",
+    "basis": "Previous notes; primary abstract/results checked.",
+    "title": "The higher plant plastid NAD(P)H dehydrogenase-like complex (NDH) is a high efficiency proton pump that increases ATP production by cyclic electron flow",
+    "authors": "Strand, Fisher & Kramer",
+    "year": 2017,
+    "journal": "Journal of Biological Chemistry"
+  },
+  {
+    "id": "asada1999",
+    "doi": "10.1146/annurev.arplant.50.1.601",
+    "use": "Classical water–water cycle and ROS detoxification.",
+    "basis": "Previously checked project research notes and linked source; retained as established background.",
+    "title": "The water-water cycle in chloroplasts: Scavenging of active oxygens and dissipation of excess photons",
+    "authors": "Asada",
+    "year": 1999,
+    "journal": "Annual Review of Plant Physiology and Plant Molecular Biology"
+  },
+  {
+    "id": "degen2026",
+    "doi": "10.1038/s41477-026-02374-w",
+    "use": "Maintained ATP pools despite lower pmf challenge obligatory ATP top-up; pool is not flux.",
+    "basis": "Publisher or Europe PMC abstract and metadata checked this pass; no claim of a full-paper appraisal."
+  },
+  {
+    "id": "pgr52026",
+    "doi": "10.1016/j.bbabio.2026.149596",
+    "use": "PGR5-dependent ATP synthase regulation proposed; online May 2026, November issue.",
+    "basis": "Publisher or Europe PMC abstract and metadata checked this pass; no claim of a full-paper appraisal."
+  },
+  {
+    "id": "flv2025",
+    "doi": "10.1111/ppl.70453",
+    "use": "Heterologous moss FLV in tobacco tests route competition; not a native flowering-plant route.",
+    "basis": "Publisher or Europe PMC abstract and metadata checked this pass; no claim of a full-paper appraisal."
+  },
+  {
+    "id": "c4energy2026",
+    "doi": "10.1093/plphys/kiag146",
+    "use": "Flaveria knockdowns connect cyclic routes to energy balance and PSI protection, not a universal measured ATP yield.",
+    "basis": "Publisher or Europe PMC abstract and metadata checked this pass; no claim of a full-paper appraisal."
+  },
+  {
+    "id": "yin2021",
+    "doi": "10.1111/pce.14070",
+    "use": "Requested review marks 40 years of FvCB; distinguish route assumptions, demand and model J.",
+    "basis": "Earlier notes on sections 3.1–3.4/Figure 2; abstract/metadata rechecked."
+  },
+  {
+    "id": "sharkey2024",
+    "doi": "10.1093/plphys/kiad601",
+    "use": "CBB products feed sucrose, starch and wider biosynthesis.",
+    "basis": "Publisher or Europe PMC abstract and metadata checked this pass; no claim of a full-paper appraisal."
+  },
+  {
+    "id": "redox2024",
+    "doi": "10.1093/pcp/pcae013",
+    "use": "Redox activation links carbon enzymes and electron transport; 'dark' does not mean nocturnal.",
+    "basis": "Publisher or Europe PMC abstract and metadata checked this pass; no claim of a full-paper appraisal."
+  },
+  {
+    "id": "photoresp2024",
+    "doi": "10.1111/pce.14949",
+    "use": "Photorespiratory energy demand changes when metabolites leave the canonical network.",
+    "basis": "Publisher or Europe PMC abstract and metadata checked this pass; no claim of a full-paper appraisal."
+  },
+  {
+    "id": "c1flux2025",
+    "doi": "10.1038/s41477-025-02091-w",
+    "use": "Arabidopsis isotope-flux evidence links photorespiration to C1 metabolism; avoid universal percentages.",
+    "basis": "Publisher or Europe PMC abstract and metadata checked this pass; no claim of a full-paper appraisal."
+  },
+  {
+    "id": "rubisco2024",
+    "doi": "10.1073/pnas.2321050121",
+    "use": "Angiosperm evidence against a completely frozen Rubisco narrative.",
+    "basis": "Primary abstract and main results checked."
+  },
+  {
+    "id": "rubisco2025",
+    "doi": "10.1038/s41586-024-08455-0",
+    "use": "Bacterial Form II landscape in engineered E. coli, not plant Rubisco; instructor reserve.",
+    "basis": "Abstract and experimental enzyme system checked."
+  },
+  {
+    "id": "tribulus2024",
+    "doi": "10.1111/pce.15069",
+    "use": "Sage-group study of graded bundle-sheath GDC allocation and C2 physiology.",
+    "basis": "Publisher or Europe PMC abstract and metadata checked this pass; no claim of a full-paper appraisal."
+  },
+  {
+    "id": "blepharis2025",
+    "doi": "10.1111/nph.70426",
+    "use": "Current Sage-group C3/proto-Kranz/C2/C4 case study; no inevitable ladder for all lineages.",
+    "basis": "Publisher summary/introduction and indexed abstract checked."
+  },
+  {
+    "id": "c2reg2025",
+    "doi": "10.1038/s44319-025-00461-1",
+    "use": "Regulatory reuse of an existing bundle-sheath programme in Brassicaceae C2 evolution.",
+    "basis": "Publisher or Europe PMC abstract and metadata checked this pass; no claim of a full-paper appraisal."
+  },
+  {
+    "id": "cbbcam2024",
+    "doi": "10.1016/j.semcdb.2023.07.013",
+    "use": "CBB in C4 and CAM; online 2023, volume 2024.",
+    "basis": "Publisher or Europe PMC abstract and metadata checked this pass; no claim of a full-paper appraisal."
+  },
+  {
+    "id": "cam2026",
+    "doi": "10.1093/jxb/erag161",
+    "use": "Expert View on C4-CAM Portulaca; optional qualification to rigid categories.",
+    "basis": "Publisher or Europe PMC abstract and metadata checked this pass; no claim of a full-paper appraisal."
+  },
+  {
+    "id": "respiration2026",
+    "doi": "10.1111/pce.70216",
+    "use": "RL is non-photorespiratory CO2 release in the light, not necessarily exclusively mitochondrial; online 2025, volume 2026.",
+    "basis": "Publisher or Europe PMC abstract and metadata checked this pass; no claim of a full-paper appraisal."
+  },
+  {
+    "id": "fvcb2025",
+    "doi": "10.1093/insilicoplants/diaf014",
+    "use": "Carboxylation-capacity and net-A minimum formulations can differ, especially below compensation or under TPU assumptions.",
+    "basis": "Publisher abstract and opening equations read.",
+    "title": "Widely used variants of the Farquhar–von Caemmerer–Berry model can cause errors in parameter estimation",
+    "authors": "Lochocki & McGrath",
+    "year": 2025,
+    "journal": "in silico Plants"
+  },
+  {
+    "id": "fvcbHistory2025",
+    "doi": "10.1007/s00425-025-04834-7",
+    "use": "Authors' retrospective explains biochemical limitation and model simplicity.",
+    "basis": "Full main text through key findings read; its ATP discussion does not override modern c14 structure.",
+    "title": "A perspective: A biochemical model of photosynthetic CO2 assimilation in leaves of C3 species (Planta 149, 78–90)",
+    "authors": "von Caemmerer, Berry & Farquhar",
+    "year": 2025,
+    "journal": "Planta"
+  },
+  {
+    "id": "sage2012",
+    "doi": "10.1146/annurev-arplant-042811-105511",
+    "use": "Photorespiratory CO2 recapture framework, supplemented by recent lineage studies.",
+    "basis": "Publisher abstract checked.",
+    "title": "Photorespiration and the Evolution of C4 Photosynthesis",
+    "authors": "Sage, Sage & Kocacinar",
+    "year": 2012,
+    "journal": "Annual Review of Plant Biology"
+  },
+  {
+    "id": "water1941",
+    "doi": "10.1021/ja01848a512",
+    "use": "Stable oxygen-isotope tracing identifies water as evolved O2 source.",
+    "basis": "Original metadata and historical account checked; full original not appraised this pass.",
+    "title": "Heavy Oxygen (O18) as a Tracer in the Study of Photosynthesis",
+    "authors": "Ruben, Randall, Kamen & Hyde",
+    "year": 1941,
+    "journal": "Journal of the American Chemical Society"
+  },
+  {
+    "id": "kok1970",
+    "doi": "10.1111/j.1751-1097.1970.tb06017.x",
+    "use": "Flash oxygen pattern supports accumulation of four oxidizing equivalents.",
+    "basis": "Publisher abstract checked.",
+    "title": "Cooperation of charges in photosynthetic O2 evolution—I. A linear four step mechanism",
+    "authors": "Kok, Forbush & McGloin",
+    "year": 1970,
+    "journal": "Photochemistry and Photobiology"
+  },
+  {
+    "id": "bassham1954",
+    "doi": "10.1021/ja01636a012",
+    "use": "Carbon tracing and acceptor regeneration; acknowledge Benson and Bassham.",
+    "basis": "Original metadata/archived report and Sharkey historical review checked.",
+    "title": "The Path of Carbon in Photosynthesis. XXI. The Cyclic Regeneration of Carbon Dioxide Acceptor",
+    "authors": "Bassham, Benson, Kay, Harris, Wilson & Calvin",
+    "year": 1954,
+    "journal": "Journal of the American Chemical Society"
+  },
+  {
+    "id": "oxygenase1971",
+    "doi": "10.1016/0006-291X(71)90475-X",
+    "use": "O2-dependent phosphoglycolate from purified soybean Rubisco.",
+    "basis": "Primary abstract checked.",
+    "title": "Phosphoglycolate production catalyzed by ribulose diphosphate carboxylase",
+    "authors": "Bowes, Ogren & Hageman",
+    "year": 1971,
+    "journal": "Biochemical and Biophysical Research Communications"
+  },
+  {
+    "id": "gdc1988",
+    "doi": "10.1007/BF00393064",
+    "use": "Bundle-sheath GDC localisation connects to C2 function.",
+    "basis": "Indexed primary abstract checked.",
+    "title": "Glycine decarboxylase is confined to the bundle-sheath cells of leaves of C3–C4 intermediate species",
+    "authors": "Hylton, Rawsthorne, Smith, Jones & Woolhouse",
+    "year": 1988,
+    "journal": "Planta"
+  },
+  {
+    "id": "hatch1966",
+    "doi": "10.1042/bj1010103",
+    "use": "Rapid label in C4 acids reveals the additional concentrating route.",
+    "basis": "Primary abstract checked.",
+    "title": "Photosynthesis by sugar-cane leaves. A new carboxylation reaction and the pathway of sugar formation",
+    "authors": "Hatch & Slack",
+    "year": 1966,
+    "journal": "Biochemical Journal"
+  },
+  {
+    "id": "fvcb1980",
+    "doi": "10.1007/BF00386231",
+    "use": "Original C3 steady-state model.",
+    "basis": "Original metadata and authors' retrospective checked, not a fresh full reading.",
+    "title": "A biochemical model of photosynthetic CO2 assimilation in leaves of C3 species",
+    "authors": "Farquhar, von Caemmerer & Berry",
+    "year": 1980,
+    "journal": "Planta"
+  },
+  {
+    "id": "walker2026",
+    "doi": "10.1007/s00425-026-04961-9",
+    "use": "Metabolic-context perspective; not an independent experiment.",
+    "basis": "Full main text read. Species for Gashu study taken from its primary paper: Arabidopsis.",
+    "title": "Understanding plant resilience by putting photosynthesis and photorespiration in the metabolic context",
+    "authors": "Walker & Schroeder",
+    "year": 2026,
+    "journal": "Planta"
+  }
+]

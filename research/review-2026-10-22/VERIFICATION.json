@@ -1,0 +1,20 @@
+{
+  "verified_at_utc": "2026-10-22T22:30:44.923320+00:00",
+  "typecheck_and_production_build": "passed",
+  "browser_entries_checked": 27,
+  "browser_entry_failures": 0,
+  "review_note_persistence": "verified across reload; temporary note cleared",
+  "source_filter": "verified with Blepharis",
+  "evidence_panel": "expanded and visually inspected",
+  "user_approvals_written": 0,
+  "original_files_checked": 33,
+  "original_files_changed": [],
+  "lecture_totals_with_questions": {
+    "light": 45,
+    "carbon": 45
+  },
+  "new_contexts": 21,
+  "previously_approved_contexts_preserved": 6,
+  "new_proposals_default_status": "not-yet-approved",
+  "zotero": "save queue only; collection reads timed out before any save click"
+}

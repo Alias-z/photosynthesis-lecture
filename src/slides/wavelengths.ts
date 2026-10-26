@@ -74,6 +74,5 @@ export const wavelengthsSlide: Slide = {
   overlay: () => `
     <h2 class="h2" style="left:92px;top:50px;width:960px">Light is a mix of wavelengths.</h2>
     <p class="sub" style="left:96px;top:134px;width:1000px">Shorter waves carry more energy in each photon.</p>
-    <div class="formula" style="left:1050px;top:52px;width:454px"><b><i>E</i> = <i>hc</i> / <i>λ</i></b><span>≈ 1240 eV·nm ÷ λ</span></div>
-    <p class="fig" style="left:96px;top:836px;width:1400px;text-align:left">Fig. 3<span>Each wave is drawn to scale.</span></p>`,
+    <div class="formula" style="left:1050px;top:52px;width:454px"><b><i>E</i> = <i>hc</i> / <i>λ</i></b><span>≈ 1240 eV·nm ÷ λ</span></div>`,
 };

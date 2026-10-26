@@ -1,0 +1,48 @@
+/* Slide C07 figure styles, scoped under .theme-editorial and prefixed .fc07- (text and organelles come from c06.css). */
+
+.theme-editorial .fc07 text.fc07-vt{font-size:17px;font-weight:600;fill:#86691c}
+.theme-editorial .fc07 text.fc07-ct{font-size:17px;fill:#6b6a64}
+.theme-editorial .fc07 text.fc07-big{font-size:44px;font-weight:600;fill:#141413}
+
+/* cells, veins, leaf tissue */
+.theme-editorial .fc07-cell{stroke-width:1.6}
+.theme-editorial .fc07-cell-m{fill:#fffdf8;stroke:#b9b5aa}
+.theme-editorial .fc07-cell-bs{fill:#f3f6ec;stroke:#7f9a6c;stroke-width:2}
+.theme-editorial .fc07-vein{fill:#f3ead0;stroke:#b8a46b;stroke-width:1.6}
+.theme-editorial .fc07-vessel{fill:#fffdf8;stroke:#c9b789;stroke-width:1.2}
+.theme-editorial .fc07-dot-chl{fill:#a9c793;stroke:#6f9a5a;stroke-width:.8}
+.theme-editorial .fc07-blade{fill:#f6f8f1;stroke:#9cb98a;stroke-width:1.6}
+.theme-editorial .fc07-leaf{fill:#cfe3bd;stroke:#6f9a5a;stroke-width:2}
+.theme-editorial .fc07-midrib{fill:none;stroke:#6f9a5a;stroke-width:2}
+.theme-editorial .fc07-cut{fill:none;stroke:#3d3d3a;stroke-width:2.4;stroke-dasharray:6 5}
+.theme-editorial .fc07-panel{fill:#fffdf8;stroke:#e3dfd3;stroke-width:1.4}
+.theme-editorial .fc07-zoom{fill:none;stroke:#a8a59a;stroke-width:1.4;stroke-dasharray:4 5}
+.theme-editorial .fc07-zoombox{fill:none;stroke:#6b6a64;stroke-width:1.8}
+
+/* CO₂ paths: caught (clay, solid) or leaving (grey, dashed) */
+.theme-editorial .fc07-ray{fill:none;stroke-width:2.6;stroke-linecap:round}
+.theme-editorial .fc07-ray-in{stroke:#d97757}
+.theme-editorial .fc07-ray-out{stroke:#8a877d;stroke-dasharray:7 6}
+.theme-editorial .fc07-reach{fill:#fbf9f3;stroke:#c9c6bb;stroke-width:1.4;stroke-dasharray:4 5}
+.theme-editorial .fc07-lead{fill:none;stroke:#a9532f;stroke-width:1.6;stroke-dasharray:3 4}
+
+/* refixed-share bar */
+.theme-editorial .fc07-bar-out{fill:#ece9df;stroke:#a8a59a;stroke-width:1.2}
+.theme-editorial .fc07-bar-in{fill:#86b46a;stroke:#4f7f3f;stroke-width:1.2}
+.theme-editorial .fc07-bar-range{fill:#c6dcb4;stroke:#4f7f3f;stroke-width:1.2;stroke-dasharray:4 3}
+
+/* analogy */
+.theme-editorial .fc07-room{fill:#fbf9f3;stroke:#a8a59a;stroke-width:1.6}
+.theme-editorial .fc07-inner{fill:#eef4e6;stroke:#7f9a6c;stroke-width:1.8}
+.theme-editorial .fc07-pipe{fill:#d8d4c8;stroke:#8a877d;stroke-width:1.4}
+.theme-editorial .fc07-drop{fill:#e7a084;stroke:#a9532f;stroke-width:1}
+.theme-editorial .fc07-bucket{fill:#a9c793;stroke:#4f7f3f;stroke-width:1.8;stroke-linejoin:round}
+.theme-editorial .fc07-drain{fill:#6b6a64}
+
+/* tree */
+.theme-editorial .fc07-rail{fill:none;stroke:#8a877d;stroke-width:3;stroke-linecap:round}
+.theme-editorial .fc07-br{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fc07-br-c3{stroke:#8a877d;stroke-width:3.2}
+.theme-editorial .fc07-br-c2{stroke:#d97757;stroke-width:4;stroke-dasharray:9 6}
+.theme-editorial .fc07-br-c4{stroke:#4f7f3f;stroke-width:5.5}
+.theme-editorial .fc07-star{fill:#f0a316;stroke:#9a6a06;stroke-width:1.2}

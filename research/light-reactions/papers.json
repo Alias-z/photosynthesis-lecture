@@ -1,0 +1,1088 @@
+{
+  "checked_at_utc": "2026-10-21T11:50:00+00:00",
+  "scope": "Light-reaction lecture: history and current science; instructor review pending.",
+  "selection_policy": "Exclude predatory and questionable journals. Prefer established subject journals and major reviews; assess article evidence separately from journal reputation.",
+  "counts": {
+    "papers": 29,
+    "verified_pdfs": 25
+  },
+  "papers": [
+    {
+      "doi": "10.1038/s41580-025-00847-y",
+      "title": "Structure, regulation and assembly of the photosynthetic electron transport chain",
+      "authors": [
+        {
+          "given": "Matthew P.",
+          "family": "Johnson"
+        }
+      ],
+      "citation_label": "Johnson",
+      "citation_year": 2025,
+      "journal": "Nature Reviews Molecular Cell Biology",
+      "volume": "26",
+      "issue": "9",
+      "pages_or_article": "667-690",
+      "doi_url": "https://doi.org/10.1038/s41580-025-00847-y",
+      "section": "Current reviews",
+      "article_role": "Review",
+      "teaching_relevance": "Overall framework for electron transport, regulation, and assembly. Use the corrected version; the publisher fixed a concentration unit.",
+      "date_note": null,
+      "zotero_item_key": "MMBUEKUF",
+      "zotero_collection_key": "LHLJBVYZ",
+      "pdf_status": "verified_local_pdf",
+      "journal_selection": "Established scholarly journal; no predatory or questionable venue selected."
+    },
+    {
+      "doi": "10.1146/annurev-biophys-021424-011156",
+      "title": "Structures of Photosynthetic Supramolecular Complexes",
+      "authors": [
+        {
+          "given": "Zhenfeng",
+          "family": "Liu"
+        },
+        {
+          "given": "Xin",
+          "family": "You"
+        },
+        {
+          "given": "Mei",
+          "family": "Li"
+        },
+        {
+          "given": "Sen-Fang",
+          "family": "Sui"
+        }
+      ],
+      "citation_label": "Liu et al.",
+      "citation_year": 2026,
+      "journal": "Annual Review of Biophysics",
+      "volume": "55",
+      "issue": "1",
+      "pages_or_article": "415-441",
+      "doi_url": "https://doi.org/10.1146/annurev-biophys-021424-011156",
+      "section": "Current reviews",
+      "article_role": "Review",
+      "teaching_relevance": "Current structural overview of photosynthetic supramolecular assemblies, useful when drawing complexes and excitation pathways.",
+      "date_note": null,
+      "zotero_item_key": "NFGGFHKI",
+      "zotero_collection_key": "LHLJBVYZ",
+      "pdf_status": "verified_local_pdf",
+      "journal_selection": "Established scholarly journal; no predatory or questionable venue selected."
+    },
+    {
+      "doi": "10.1093/plcell/koaf240",
+      "title": "Nonphotochemical quenching in plants: Mechanisms and mysteries",
+      "authors": [
+        {
+          "given": "Herbert",
+          "family": "van Amerongen"
+        },
+        {
+          "given": "Roberta",
+          "family": "Croce"
+        }
+      ],
+      "citation_label": "van Amerongen & Croce",
+      "citation_year": 2025,
+      "journal": "The Plant Cell",
+      "volume": "37",
+      "issue": "11",
+      "pages_or_article": "koaf240",
+      "doi_url": "https://doi.org/10.1093/plcell/koaf240",
+      "section": "Current reviews",
+      "article_role": "Review",
+      "teaching_relevance": "Evidence-led discussion of qE mechanisms and uncertainties. Its proposed antenna-switch model should be labelled as a working model.",
+      "date_note": null,
+      "zotero_item_key": "5KPX3YCI",
+      "zotero_collection_key": "LHLJBVYZ",
+      "pdf_status": "verified_local_pdf",
+      "journal_selection": "Established scholarly journal; no predatory or questionable venue selected."
+    },
+    {
+      "doi": "10.1016/j.jmb.2023.168407",
+      "title": "Photosystem II Subunit S (PsbS): A Nano Regulator of Plant Photosynthesis",
+      "authors": [
+        {
+          "given": "Willem",
+          "family": "Marulanda Valencia"
+        },
+        {
+          "given": "Anjali",
+          "family": "Pandit"
+        }
+      ],
+      "citation_label": "Marulanda Valencia & Pandit",
+      "citation_year": 2024,
+      "journal": "Journal of Molecular Biology",
+      "volume": "436",
+      "issue": "5",
+      "pages_or_article": "168407",
+      "doi_url": "https://doi.org/10.1016/j.jmb.2023.168407",
+      "section": "Current reviews",
+      "article_role": "Review",
+      "teaching_relevance": "Focused account of PsbS structure, proton sensing, and unresolved interactions. Publisher text/abstract checked; no local PDF saved.",
+      "date_note": "2024 issue; first online in December 2023.",
+      "zotero_item_key": "JK9RHNTS",
+      "zotero_collection_key": "LHLJBVYZ",
+      "pdf_status": "no_pdf_saved_at_verification",
+      "journal_selection": "Established scholarly journal; no predatory or questionable venue selected."
+    },
+    {
+      "doi": "10.1042/bst20253087",
+      "title": "Mechanisms underpinning natural variation in non-photochemical quenching kinetics",
+      "authors": [
+        {
+          "given": "Katarzyna",
+          "family": "Glowacka"
+        }
+      ],
+      "citation_label": "Glowacka",
+      "citation_year": 2025,
+      "journal": "Biochemical Society Transactions",
+      "volume": "53",
+      "issue": "05",
+      "pages_or_article": "1237-1248",
+      "doi_url": "https://doi.org/10.1042/bst20253087",
+      "section": "Current reviews",
+      "article_role": "Review",
+      "teaching_relevance": "Useful for PsbS, VDE, ZEP, and NPQ kinetics. Use the mechanistic sections; crop-engineering and environmental material are outside this lecture.",
+      "date_note": null,
+      "zotero_item_key": "PFMX85N2",
+      "zotero_collection_key": "LHLJBVYZ",
+      "pdf_status": "verified_local_pdf",
+      "journal_selection": "Established scholarly journal; no predatory or questionable venue selected."
+    },
+    {
+      "doi": "10.1146/annurev-physchem-090722-125847",
+      "title": "Oxygenic Photosynthesis in Far-Red Light: Strategies and Mechanisms",
+      "authors": [
+        {
+          "given": "Eduard",
+          "family": "Elias"
+        },
+        {
+          "given": "Thomas J.",
+          "family": "Oliver"
+        },
+        {
+          "given": "Roberta",
+          "family": "Croce"
+        }
+      ],
+      "citation_label": "Elias et al.",
+      "citation_year": 2024,
+      "journal": "Annual Review of Physical Chemistry",
+      "volume": "75",
+      "issue": "1",
+      "pages_or_article": "231-256",
+      "doi_url": "https://doi.org/10.1146/annurev-physchem-090722-125847",
+      "section": "Current reviews",
+      "article_role": "Review",
+      "teaching_relevance": "Far-red oxygenic photosynthesis across organisms. Distinguish specialized pigment systems from the far-red synergy found in ordinary crop leaves.",
+      "date_note": null,
+      "zotero_item_key": "XXYR4JDT",
+      "zotero_collection_key": "LHLJBVYZ",
+      "pdf_status": "verified_local_pdf",
+      "journal_selection": "Established scholarly journal; no predatory or questionable venue selected."
+    },
+    {
+      "doi": "10.1093/pcp/pcaf100",
+      "title": "Evolution and regulatory diversification of plastid F1FO-ATP synthase",
+      "authors": [
+        {
+          "given": "Kaori",
+          "family": "Kohzuma"
+        },
+        {
+          "given": "Sota",
+          "family": "Muraoka"
+        },
+        {
+          "given": "Minoru",
+          "family": "Kumazawa"
+        },
+        {
+          "given": "Kentaro",
+          "family": "Ifuku"
+        }
+      ],
+      "citation_label": "Kohzuma et al.",
+      "citation_year": 2025,
+      "journal": "Plant and Cell Physiology",
+      "volume": "66",
+      "issue": "11",
+      "pages_or_article": "1619-1632",
+      "doi_url": "https://doi.org/10.1093/pcp/pcaf100",
+      "section": "Current reviews",
+      "article_role": "Review",
+      "teaching_relevance": "Plastid ATP synthase structure and regulatory diversity, including the chloroplast rotor and redox control.",
+      "date_note": null,
+      "zotero_item_key": "DEFUQFU7",
+      "zotero_collection_key": "LHLJBVYZ",
+      "pdf_status": "verified_local_pdf",
+      "journal_selection": "Established scholarly journal; no predatory or questionable venue selected."
+    },
+    {
+      "doi": "10.1038/s41586-026-10847-3",
+      "title": "In situ structures of plant photosystem supercomplexes",
+      "authors": [
+        {
+          "given": "Jiao",
+          "family": "Li"
+        },
+        {
+          "given": "Eduard",
+          "family": "Elias"
+        },
+        {
+          "given": "Kai",
+          "family": "Zhang"
+        },
+        {
+          "given": "Roberta",
+          "family": "Croce"
+        },
+        {
+          "given": "Jiapeng",
+          "family": "Zhu"
+        }
+      ],
+      "citation_label": "Li et al.",
+      "citation_year": 2026,
+      "journal": "Nature",
+      "volume": "657",
+      "issue": "8133",
+      "pages_or_article": "1094-1103",
+      "doi_url": "https://doi.org/10.1038/s41586-026-10847-3",
+      "section": "Recent primary studies",
+      "article_role": "Primary research",
+      "teaching_relevance": "Native rice chloroplast structures retain additional LHCII trimers lost in purification. A strong recent example of why membrane context matters.",
+      "date_note": "Published online 29 July 2026; September 2026 issue.",
+      "zotero_item_key": "7TU9NFS3",
+      "zotero_collection_key": "LHLJBVYZ",
+      "pdf_status": "verified_local_pdf",
+      "journal_selection": "Established scholarly journal; no predatory or questionable venue selected."
+    },
+    {
+      "doi": "10.1038/s41586-023-06038-z",
+      "title": "Structural evidence for intermediates during O2 formation in photosystem II",
+      "authors": [
+        {
+          "given": "Asmit",
+          "family": "Bhowmick"
+        },
+        {
+          "given": "Rana",
+          "family": "Hussein"
+        },
+        {
+          "given": "Isabel",
+          "family": "Bogacz"
+        },
+        {
+          "given": "Philipp S.",
+          "family": "Simon"
+        },
+        {
+          "given": "Mohamed",
+          "family": "Ibrahim"
+        },
+        {
+          "given": "Ruchira",
+          "family": "Chatterjee"
+        },
+        {
+          "given": "Margaret D.",
+          "family": "Doyle"
+        },
+        {
+          "given": "Mun Hon",
+          "family": "Cheah"
+        },
+        {
+          "given": "Thomas",
+          "family": "Fransson"
+        },
+        {
+          "given": "Petko",
+          "family": "Chernev"
+        },
+        {
+          "given": "In-Sik",
+          "family": "Kim"
+        },
+        {
+          "given": "Hiroki",
+          "family": "Makita"
+        },
+        {
+          "given": "Medhanjali",
+          "family": "Dasgupta"
+        },
+        {
+          "given": "Corey J.",
+          "family": "Kaminsky"
+        },
+        {
+          "given": "Miao",
+          "family": "Zhang"
+        },
+        {
+          "given": "Julia",
+          "family": "Gätcke"
+        },
+        {
+          "given": "Stephanie",
+          "family": "Haupt"
+        },
+        {
+          "given": "Isabela I.",
+          "family": "Nangca"
+        },
+        {
+          "given": "Stephen M.",
+          "family": "Keable"
+        },
+        {
+          "given": "A. Orkun",
+          "family": "Aydin"
+        },
+        {
+          "given": "Kensuke",
+          "family": "Tono"
+        },
+        {
+          "given": "Shigeki",
+          "family": "Owada"
+        },
+        {
+          "given": "Leland B.",
+          "family": "Gee"
+        },
+        {
+          "given": "Franklin D.",
+          "family": "Fuller"
+        },
+        {
+          "given": "Alexander",
+          "family": "Batyuk"
+        },
+        {
+          "given": "Roberto",
+          "family": "Alonso-Mori"
+        },
+        {
+          "given": "James M.",
+          "family": "Holton"
+        },
+        {
+          "given": "Daniel W.",
+          "family": "Paley"
+        },
+        {
+          "given": "Nigel W.",
+          "family": "Moriarty"
+        },
+        {
+          "given": "Fikret",
+          "family": "Mamedov"
+        },
+        {
+          "given": "Paul D.",
+          "family": "Adams"
+        },
+        {
+          "given": "Aaron S.",
+          "family": "Brewster"
+        },
+        {
+          "given": "Holger",
+          "family": "Dobbek"
+        },
+        {
+          "given": "Nicholas K.",
+          "family": "Sauter"
+        },
+        {
+          "given": "Uwe",
+          "family": "Bergmann"
+        },
+        {
+          "given": "Athina",
+          "family": "Zouni"
+        },
+        {
+          "given": "Johannes",
+          "family": "Messinger"
+        },
+        {
+          "given": "Jan",
+          "family": "Kern"
+        },
+        {
+          "given": "Junko",
+          "family": "Yano"
+        },
+        {
+          "given": "Vittal K.",
+          "family": "Yachandra"
+        }
+      ],
+      "citation_label": "Bhowmick et al.",
+      "citation_year": 2023,
+      "journal": "Nature",
+      "volume": "617",
+      "issue": "7961",
+      "pages_or_article": "629-636",
+      "doi_url": "https://doi.org/10.1038/s41586-023-06038-z",
+      "section": "Recent primary studies",
+      "article_role": "Primary research",
+      "teaching_relevance": "Time-resolved structural evidence for intermediates during oxygen formation; connects the Kok cycle with modern experimental snapshots.",
+      "date_note": null,
+      "zotero_item_key": "QDH7HIT8",
+      "zotero_collection_key": "LHLJBVYZ",
+      "pdf_status": "verified_local_pdf",
+      "journal_selection": "Established scholarly journal; no predatory or questionable venue selected."
+    },
+    {
+      "doi": "10.1093/jxb/erad428",
+      "title": "Proton Gradient Regulation 5 is required to avoid photosynthetic oscillations during light transitions",
+      "authors": [
+        {
+          "given": "Gustaf E",
+          "family": "Degen"
+        },
+        {
+          "given": "Federica",
+          "family": "Pastorelli"
+        },
+        {
+          "given": "Matthew P",
+          "family": "Johnson"
+        }
+      ],
+      "citation_label": "Degen et al.",
+      "citation_year": 2024,
+      "journal": "Journal of Experimental Botany",
+      "volume": "75",
+      "issue": "3",
+      "pages_or_article": "947-961",
+      "doi_url": "https://doi.org/10.1093/jxb/erad428",
+      "section": "Recent primary studies",
+      "article_role": "Primary research",
+      "teaching_relevance": "Tests PGR5-dependent regulation and oscillations during light transitions. Useful evidence for energy balancing without asserting a settled molecular FQR identity.",
+      "date_note": "2024 issue; first online 28 October 2023.",
+      "zotero_item_key": "LKN5WND3",
+      "zotero_collection_key": "LHLJBVYZ",
+      "pdf_status": "verified_local_pdf",
+      "journal_selection": "Established scholarly journal; no predatory or questionable venue selected."
+    },
+    {
+      "doi": "10.1093/jxb/ert208",
+      "title": "Chlorophyll fluorescence analysis: a guide to good practice and understanding some new applications",
+      "authors": [
+        {
+          "given": "E.H.",
+          "family": "Murchie"
+        },
+        {
+          "given": "T.",
+          "family": "Lawson"
+        }
+      ],
+      "citation_label": "Murchie & Lawson",
+      "citation_year": 2013,
+      "journal": "Journal of Experimental Botany",
+      "volume": "64",
+      "issue": "13",
+      "pages_or_article": "3983-3998",
+      "doi_url": "https://doi.org/10.1093/jxb/ert208",
+      "section": "Methodological and conceptual foundations",
+      "article_role": "Methods review",
+      "teaching_relevance": "Practical basis for distinguishing dark-adapted maximum PSII efficiency, operating efficiency, estimated electron transport, and carbon assimilation.",
+      "date_note": null,
+      "zotero_item_key": "2JU3SP7R",
+      "zotero_collection_key": "LHLJBVYZ",
+      "pdf_status": "verified_local_pdf",
+      "journal_selection": "Established scholarly journal; no predatory or questionable venue selected."
+    },
+    {
+      "doi": "10.1111/pce.13730",
+      "title": "Far‐red photons have equivalent efficiency to traditional photosynthetic photons: Implications for redefining photosynthetically active radiation",
+      "authors": [
+        {
+          "given": "Shuyang",
+          "family": "Zhen"
+        },
+        {
+          "given": "Bruce",
+          "family": "Bugbee"
+        }
+      ],
+      "citation_label": "Zhen & Bugbee",
+      "citation_year": 2020,
+      "journal": "Plant, Cell &amp; Environment",
+      "volume": "43",
+      "issue": "5",
+      "pages_or_article": "1259-1272",
+      "doi_url": "https://doi.org/10.1111/pce.13730",
+      "section": "Methodological and conceptual foundations",
+      "article_role": "Primary research",
+      "teaching_relevance": "Far-red efficiency measured with shorter-wavelength illumination. Read the illumination context before repeating the title as a general statement.",
+      "date_note": null,
+      "zotero_item_key": "MS34UD7Q",
+      "zotero_collection_key": "LHLJBVYZ",
+      "pdf_status": "verified_local_pdf",
+      "journal_selection": "Established scholarly journal; no predatory or questionable venue selected."
+    },
+    {
+      "doi": "10.1093/pcp/pcp034",
+      "title": "Green Light Drives Leaf Photosynthesis More Efficiently than Red Light in Strong White Light: Revisiting the Enigmatic Question of Why Leaves are Green",
+      "authors": [
+        {
+          "given": "Ichiro",
+          "family": "Terashima"
+        },
+        {
+          "given": "Takashi",
+          "family": "Fujita"
+        },
+        {
+          "given": "Takeshi",
+          "family": "Inoue"
+        },
+        {
+          "given": "Wah Soon",
+          "family": "Chow"
+        },
+        {
+          "given": "Riichi",
+          "family": "Oguchi"
+        }
+      ],
+      "citation_label": "Terashima et al.",
+      "citation_year": 2009,
+      "journal": "Plant and Cell Physiology",
+      "volume": "50",
+      "issue": "4",
+      "pages_or_article": "684-697",
+      "doi_url": "https://doi.org/10.1093/pcp/pcp034",
+      "section": "Methodological and conceptual foundations",
+      "article_role": "Primary research",
+      "teaching_relevance": "Green-light penetration and photosynthesis under strong white light; supports a more accurate explanation of green leaves.",
+      "date_note": null,
+      "zotero_item_key": "QY8DD3NB",
+      "zotero_collection_key": "LHLJBVYZ",
+      "pdf_status": "verified_local_pdf",
+      "journal_selection": "Established scholarly journal; no predatory or questionable venue selected."
+    },
+    {
+      "doi": "10.1126/science.aat4318",
+      "title": "Structure, mechanism, and regulation of the chloroplast ATP synthase",
+      "authors": [
+        {
+          "given": "Alexander",
+          "family": "Hahn"
+        },
+        {
+          "given": "Janet",
+          "family": "Vonck"
+        },
+        {
+          "given": "Deryck J.",
+          "family": "Mills"
+        },
+        {
+          "given": "Thomas",
+          "family": "Meier"
+        },
+        {
+          "given": "Werner",
+          "family": "Kühlbrandt"
+        }
+      ],
+      "citation_label": "Hahn et al.",
+      "citation_year": 2018,
+      "journal": "Science",
+      "volume": "360",
+      "issue": "6389",
+      "pages_or_article": "eaat4318",
+      "doi_url": "https://doi.org/10.1126/science.aat4318",
+      "section": "Methodological and conceptual foundations",
+      "article_role": "Primary research",
+      "teaching_relevance": "Chloroplast ATP synthase structure and rotation-linked regulation. Full text also exists in PMC7116070; no Zotero PDF was saved.",
+      "date_note": null,
+      "zotero_item_key": "HKHKSH4B",
+      "zotero_collection_key": "LHLJBVYZ",
+      "pdf_status": "no_pdf_saved_at_verification",
+      "journal_selection": "Established scholarly journal; no predatory or questionable venue selected."
+    },
+    {
+      "doi": "10.1093/aob/mcz171",
+      "title": "Photosynthesis: basics, history and modelling",
+      "authors": [
+        {
+          "given": "Alexandrina",
+          "family": "Stirbet"
+        },
+        {
+          "given": "Dušan",
+          "family": "Lazár"
+        },
+        {
+          "given": "Ya",
+          "family": "Guo"
+        },
+        {
+          "given": "Govindjee",
+          "family": "Govindjee"
+        }
+      ],
+      "citation_label": "Stirbet et al.",
+      "citation_year": 2020,
+      "journal": "Annals of Botany",
+      "volume": "126",
+      "issue": "4",
+      "pages_or_article": "511-537",
+      "doi_url": "https://doi.org/10.1093/aob/mcz171",
+      "section": "Historical syntheses",
+      "article_role": "Historical and conceptual review",
+      "teaching_relevance": "A map to original discoveries and their interpretation. Useful background rather than a substitute for current mechanistic reviews.",
+      "date_note": "2020 issue; first online 13 December 2019.",
+      "zotero_item_key": "52QT8MTQ",
+      "zotero_collection_key": "LHLJBVYZ",
+      "pdf_status": "verified_local_pdf",
+      "journal_selection": "Established scholarly journal; no predatory or questionable venue selected."
+    },
+    {
+      "doi": "10.1007/s11120-024-01081-x",
+      "title": "On the Pelletier and Caventou (1817, 1818) papers on chlorophyll and beyond",
+      "authors": [
+        {
+          "given": "Govindjee",
+          "family": "Govindjee"
+        },
+        {
+          "given": "Alexandrina",
+          "family": "Stirbet"
+        },
+        {
+          "given": "Jonathan S.",
+          "family": "Lindsey"
+        },
+        {
+          "given": "Hugo",
+          "family": "Scheer"
+        }
+      ],
+      "citation_label": "Govindjee et al.",
+      "citation_year": 2024,
+      "journal": "Photosynthesis Research",
+      "volume": "160",
+      "issue": "1",
+      "pages_or_article": "55-60",
+      "doi_url": "https://doi.org/10.1007/s11120-024-01081-x",
+      "section": "Historical syntheses",
+      "article_role": "Historical article with translations",
+      "teaching_relevance": "English translations of the 1817/1818 chlorophyll reports, with a chronology of pigment chemistry.",
+      "date_note": null,
+      "zotero_item_key": "93G6MU95",
+      "zotero_collection_key": "LHLJBVYZ",
+      "pdf_status": "verified_local_pdf",
+      "journal_selection": "Established scholarly journal; no predatory or questionable venue selected."
+    },
+    {
+      "doi": "10.32615/ps.2025.007",
+      "title": "Hans Kautsky's groundbreaking discovery(ies) in 1931, its scientific environment, and the ensuing developments",
+      "authors": [
+        {
+          "given": "U.",
+          "family": "SCHREIBER"
+        },
+        {
+          "given": "H.K.",
+          "family": "LICHTENTHALER"
+        }
+      ],
+      "citation_label": "Schreiber & Lichtenthaler",
+      "citation_year": 2025,
+      "journal": "Photosynthetica",
+      "volume": "63",
+      "issue": "1",
+      "pages_or_article": "28-36",
+      "doi_url": "https://doi.org/10.32615/ps.2025.007",
+      "section": "Historical syntheses",
+      "article_role": "Historical note / letter",
+      "teaching_relevance": "Commented translation of Kautsky and Hirsch and a distinction between fluorescence observations and the original mistaken interpretation.",
+      "date_note": null,
+      "zotero_item_key": "T4N9894Q",
+      "zotero_collection_key": "LHLJBVYZ",
+      "pdf_status": "verified_local_pdf",
+      "journal_selection": "Established scholarly journal; no predatory or questionable venue selected."
+    },
+    {
+      "doi": "10.1080/14786447108640452",
+      "title": "XV. On the light from the sky, its polarization and colour",
+      "authors": [
+        {
+          "given": "J.W.",
+          "family": "Strutt"
+        }
+      ],
+      "citation_label": "Strutt",
+      "citation_year": 1871,
+      "journal": "The London, Edinburgh, and Dublin Philosophical Magazine and Journal of Science",
+      "volume": "41",
+      "issue": "271",
+      "pages_or_article": "107-120",
+      "doi_url": "https://doi.org/10.1080/14786447108640452",
+      "section": "Historical primary papers",
+      "article_role": "Historical primary research",
+      "teaching_relevance": "The wavelength dependence of small-particle scattering; read its original particle-cloud context before telling the modern sky story.",
+      "date_note": "Original publication 1871; a modern digital publication date is not the discovery year.",
+      "zotero_item_key": "ZXNYCWN5",
+      "zotero_collection_key": "LHLJBVYZ",
+      "pdf_status": "verified_local_pdf",
+      "journal_selection": "Established scholarly journal; no predatory or questionable venue selected."
+    },
+    {
+      "doi": "10.1002/andp.19053220607",
+      "title": "Über einen die Erzeugung und Verwandlung des Lichtes betreffenden heuristischen Gesichtspunkt",
+      "authors": [
+        {
+          "given": "A.",
+          "family": "Einstein"
+        }
+      ],
+      "citation_label": "Einstein",
+      "citation_year": 1905,
+      "journal": "Annalen der Physik",
+      "volume": "322",
+      "issue": "6",
+      "pages_or_article": "132-148",
+      "doi_url": "https://doi.org/10.1002/andp.19053220607",
+      "section": "Historical primary papers",
+      "article_role": "Historical theoretical paper",
+      "teaching_relevance": "Einstein on light quanta. Pair with Planck history and distinguish photoelectric emission from chlorophyll excitation.",
+      "date_note": "Original publication 1905; the later online date is digitization metadata.",
+      "zotero_item_key": "B3XZN24S",
+      "zotero_collection_key": "LHLJBVYZ",
+      "pdf_status": "verified_local_pdf",
+      "journal_selection": "Established scholarly journal; no predatory or questionable venue selected."
+    },
+    {
+      "doi": "10.1098/rstl.1852.0022",
+      "title": "XXX. On the change of refrangibility of light",
+      "authors": [
+        {
+          "given": "George Gabriel",
+          "family": "Stokes"
+        }
+      ],
+      "citation_label": "Stokes",
+      "citation_year": 1852,
+      "journal": "Philosophical Transactions of the Royal Society of London",
+      "volume": null,
+      "issue": "142",
+      "pages_or_article": "463-562",
+      "doi_url": "https://doi.org/10.1098/rstl.1852.0022",
+      "section": "Historical primary papers",
+      "article_role": "Historical primary research",
+      "teaching_relevance": "Wavelength-changing emission, including quinine and leaf-green solutions; useful for the fluorescence story.",
+      "date_note": null,
+      "zotero_item_key": "NTEIQ7CA",
+      "zotero_collection_key": "LHLJBVYZ",
+      "pdf_status": "verified_local_pdf",
+      "journal_selection": "Established scholarly journal; no predatory or questionable venue selected."
+    },
+    {
+      "doi": "10.1085/jgp.15.4.391",
+      "title": "A separation of the reactions in photosynthesis by means of intermittent light",
+      "authors": [
+        {
+          "given": "Robert",
+          "family": "Emerson"
+        },
+        {
+          "given": "William",
+          "family": "Arnold"
+        }
+      ],
+      "citation_label": "Emerson & Arnold",
+      "citation_year": 1932,
+      "journal": "Journal of General Physiology",
+      "volume": "15",
+      "issue": "4",
+      "pages_or_article": "391-420",
+      "doi_url": "https://doi.org/10.1085/jgp.15.4.391",
+      "section": "Historical primary papers",
+      "article_role": "Historical primary research",
+      "teaching_relevance": "Intermittent-light experiments that separated fast photochemistry from slower processes and helped develop the photosynthetic-unit concept.",
+      "date_note": null,
+      "zotero_item_key": "7MFEBME6",
+      "zotero_collection_key": "LHLJBVYZ",
+      "pdf_status": "verified_local_pdf",
+      "journal_selection": "Established scholarly journal; no predatory or questionable venue selected."
+    },
+    {
+      "doi": "10.1038/139881a0",
+      "title": "Oxygen Evolved by Isolated Chloroplasts",
+      "authors": [
+        {
+          "given": "R.",
+          "family": "HILL"
+        }
+      ],
+      "citation_label": "Hill",
+      "citation_year": 1937,
+      "journal": "Nature",
+      "volume": "139",
+      "issue": "3525",
+      "pages_or_article": "881-882",
+      "doi_url": "https://doi.org/10.1038/139881a0",
+      "section": "Historical primary papers",
+      "article_role": "Historical primary research",
+      "teaching_relevance": "Oxygen evolution from isolated chloroplasts using artificial acceptors; a vivid route into partial reactions and electron flow.",
+      "date_note": null,
+      "zotero_item_key": "4XKI7SNR",
+      "zotero_collection_key": "LHLJBVYZ",
+      "pdf_status": "verified_local_pdf",
+      "journal_selection": "Established scholarly journal; no predatory or questionable venue selected."
+    },
+    {
+      "doi": "10.1038/186136a0",
+      "title": "Function of the Two Cytochrome Components in Chloroplasts: A Working Hypothesis",
+      "authors": [
+        {
+          "given": "R.",
+          "family": "HILL"
+        },
+        {
+          "given": "FAY",
+          "family": "BENDALL"
+        }
+      ],
+      "citation_label": "Hill & Bendall",
+      "citation_year": 1960,
+      "journal": "Nature",
+      "volume": "186",
+      "issue": "4719",
+      "pages_or_article": "136-137",
+      "doi_url": "https://doi.org/10.1038/186136a0",
+      "section": "Historical primary papers",
+      "article_role": "Historical hypothesis paper",
+      "teaching_relevance": "A foundational working hypothesis behind the Z scheme. Do not present the modern chain as fully established by this one paper.",
+      "date_note": null,
+      "zotero_item_key": "PAGLPRCG",
+      "zotero_collection_key": "LHLJBVYZ",
+      "pdf_status": "verified_local_pdf",
+      "journal_selection": "Established scholarly journal; no predatory or questionable venue selected."
+    },
+    {
+      "doi": "10.1038/191144a0",
+      "title": "Coupling of Phosphorylation to Electron and Hydrogen Transfer by a Chemi-Osmotic type of Mechanism",
+      "authors": [
+        {
+          "given": "PETER",
+          "family": "MITCHELL"
+        }
+      ],
+      "citation_label": "Mitchell",
+      "citation_year": 1961,
+      "journal": "Nature",
+      "volume": "191",
+      "issue": "4784",
+      "pages_or_article": "144-148",
+      "doi_url": "https://doi.org/10.1038/191144a0",
+      "section": "Historical primary papers",
+      "article_role": "Historical hypothesis paper",
+      "teaching_relevance": "Chemiosmotic coupling: an electrochemical gradient as the intermediate between electron transfer and phosphorylation.",
+      "date_note": null,
+      "zotero_item_key": "NU9AHWZI",
+      "zotero_collection_key": "LHLJBVYZ",
+      "pdf_status": "verified_local_pdf",
+      "journal_selection": "Established scholarly journal; no predatory or questionable venue selected."
+    },
+    {
+      "doi": "10.1073/pnas.55.1.170",
+      "title": "ATP formation caused by acid-base transition of spinach chloroplasts.",
+      "authors": [
+        {
+          "given": "A T",
+          "family": "Jagendorf"
+        },
+        {
+          "given": "E",
+          "family": "Uribe"
+        }
+      ],
+      "citation_label": "Jagendorf & Uribe",
+      "citation_year": 1966,
+      "journal": "Proceedings of the National Academy of Sciences",
+      "volume": "55",
+      "issue": "1",
+      "pages_or_article": "170-177",
+      "doi_url": "https://doi.org/10.1073/pnas.55.1.170",
+      "section": "Historical primary papers",
+      "article_role": "Historical primary research",
+      "teaching_relevance": "Acid–base transitions drive transient ATP formation in chloroplast preparations in darkness: a direct, memorable experiment for coupling.",
+      "date_note": null,
+      "zotero_item_key": "UWBQVF5G",
+      "zotero_collection_key": "LHLJBVYZ",
+      "pdf_status": "verified_local_pdf",
+      "journal_selection": "Established scholarly journal; no predatory or questionable venue selected."
+    },
+    {
+      "doi": "10.1038/386299a0",
+      "title": "Direct observation of the rotation of F1-ATPase",
+      "authors": [
+        {
+          "given": "Hiroyuki",
+          "family": "Noji"
+        },
+        {
+          "given": "Ryohei",
+          "family": "Yasuda"
+        },
+        {
+          "given": "Masasuke",
+          "family": "Yoshida"
+        },
+        {
+          "given": "Kazuhiko",
+          "family": "Kinosita"
+        }
+      ],
+      "citation_label": "Noji et al.",
+      "citation_year": 1997,
+      "journal": "Nature",
+      "volume": "386",
+      "issue": "6622",
+      "pages_or_article": "299-302",
+      "doi_url": "https://doi.org/10.1038/386299a0",
+      "section": "Historical primary papers",
+      "article_role": "Primary research",
+      "teaching_relevance": "Direct observation of F1 rotation with a fluorescent actin marker. The experiment was powered by ATP hydrolysis.",
+      "date_note": null,
+      "zotero_item_key": "5CZIHGW3",
+      "zotero_collection_key": "LHLJBVYZ",
+      "pdf_status": "verified_local_pdf",
+      "journal_selection": "Established scholarly journal; no predatory or questionable venue selected."
+    },
+    {
+      "doi": "10.1016/0002-1571(71)90022-7",
+      "title": "The action spectrum, absorptance and quantum yield of photosynthesis in crop plants",
+      "authors": [
+        {
+          "given": "K.J.",
+          "family": "McCree"
+        }
+      ],
+      "citation_label": "McCree",
+      "citation_year": 1971,
+      "journal": "Agricultural Meteorology",
+      "volume": "9",
+      "issue": null,
+      "pages_or_article": "191-216",
+      "doi_url": "https://doi.org/10.1016/0002-1571(71)90022-7",
+      "section": "Historical primary papers",
+      "article_role": "Primary research",
+      "teaching_relevance": "Crop action spectra, absorptance, and quantum yield. A foundation for wavelength accounting, rather than a current review.",
+      "date_note": "Crossref/publisher record uses 1971; the work is also frequently cited as 1972. Identify it by DOI.",
+      "zotero_item_key": "SFFJ75FJ",
+      "zotero_collection_key": "LHLJBVYZ",
+      "pdf_status": "no_pdf_saved_at_verification",
+      "journal_selection": "Established scholarly journal; no predatory or questionable venue selected."
+    },
+    {
+      "doi": "10.1093/oxfordjournals.aob.a089000",
+      "title": "Optima and Limiting Factors",
+      "authors": [
+        {
+          "given": "F. F.",
+          "family": "BLACKMAN"
+        }
+      ],
+      "citation_label": "Blackman",
+      "citation_year": 1905,
+      "journal": "Annals of Botany",
+      "volume": "os-19",
+      "issue": "2",
+      "pages_or_article": "281-296",
+      "doi_url": "https://doi.org/10.1093/oxfordjournals.aob.a089000",
+      "section": "Historical primary papers",
+      "article_role": "Historical conceptual paper",
+      "teaching_relevance": "The limiting-factor framework for the final light-response-curve discussion.",
+      "date_note": null,
+      "zotero_item_key": "Y66I3CLR",
+      "zotero_collection_key": "LHLJBVYZ",
+      "pdf_status": "verified_local_pdf",
+      "journal_selection": "Established scholarly journal; no predatory or questionable venue selected."
+    },
+    {
+      "doi": "10.1016/j.jphotobiol.2025.113312",
+      "title": "Cyclic electron transport pathways around photosystems I and II: Working together",
+      "authors": [
+        {
+          "given": "Vladimir",
+          "family": "Lysenko"
+        },
+        {
+          "given": "Ya",
+          "family": "Guo"
+        },
+        {
+          "given": "Maria",
+          "family": "Ignatova"
+        },
+        {
+          "given": "Ekaterina",
+          "family": "Tarik"
+        },
+        {
+          "given": "Veronica",
+          "family": "Aslanyan"
+        },
+        {
+          "given": "Tatyana",
+          "family": "Varduny"
+        },
+        {
+          "given": "Anastasia",
+          "family": "Toptunova"
+        },
+        {
+          "given": "Pavel",
+          "family": "Plyaka"
+        },
+        {
+          "given": "Evgeniya",
+          "family": "Kirichenko"
+        },
+        {
+          "given": "Pavel",
+          "family": "Dmitriev"
+        },
+        {
+          "given": "Vladimir",
+          "family": "Krasnov"
+        }
+      ],
+      "citation_label": "Lysenko et al.",
+      "citation_year": 2026,
+      "journal": "Journal of Photochemistry and Photobiology B: Biology",
+      "volume": "274",
+      "issue": null,
+      "pages_or_article": "113312",
+      "doi_url": "https://doi.org/10.1016/j.jphotobiol.2025.113312",
+      "section": "Instructor-only research debate",
+      "article_role": "Review / critical interpretation",
+      "teaching_relevance": "Challenges quantitative assignments of PSI versus PSII cyclic transport and inhibitor specificity. Its stronger conclusions are not a settled replacement for the standard teaching framework.",
+      "date_note": "January 2026 volume; DOI includes 2025. No precise first-online date asserted here.",
+      "zotero_item_key": "HZ5PWQB9",
+      "zotero_collection_key": "LHLJBVYZ",
+      "pdf_status": "no_pdf_saved_at_verification",
+      "journal_selection": "Established scholarly journal; no predatory or questionable venue selected."
+    }
+  ]
+}

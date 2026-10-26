@@ -1,0 +1,47 @@
+/* Slide L05 figure styles, scoped under .theme-editorial and prefixed .fl05- (the reused drawings keep their .f5- classes) */
+.theme-editorial .fig text.fl05-mute{fill:#6b6a64}
+.theme-editorial .fig text.fl05-clay{fill:#a9532f}
+.theme-editorial .fig text.fl05-ev{fill:#2f5a36}
+/* absorption vs action */
+.theme-editorial .fl05-act{stroke:#3d3d3a}
+/* colour wheel */
+.theme-editorial .fl05-wheel-bg{fill:#fbfaf6}
+.theme-editorial .fl05-wheel-edge{fill:none;stroke:#d8d5cb;stroke-width:1.2}
+/* leaf in sunlight */
+.theme-editorial .fl05-sun{fill:#f8d878;stroke:#e0a52a;stroke-width:2}
+.theme-editorial .fl05-sunray{fill:none;stroke:#e0a52a;stroke-width:2.4;stroke-linecap:round}
+.theme-editorial .fl05-leaf{stroke:#4f7f3f;stroke-width:1.8;stroke-linejoin:round}
+.theme-editorial .fl05-leaf-under{fill:#4a7a3a}
+.theme-editorial .fl05-vein{fill:none;stroke:#e9f2dc;stroke-width:2.4;stroke-linecap:round;opacity:.9}
+.theme-editorial .fl05-vein-s{stroke-width:1.4;opacity:.7}
+.theme-editorial .fl05-stalk{fill:none;stroke:#5f8a4b;stroke-width:5;stroke-linecap:round}
+.theme-editorial .fl05-lead{fill:none;stroke:#8a877d;stroke-width:1.4}
+/* equation */
+.theme-editorial .fig text.fl05-eq{font-size:32px;font-weight:500;fill:#2b2a27}
+.theme-editorial .fig tspan.fl05-eq-c{fill:#9b3e1e}
+.theme-editorial .fig tspan.fl05-eq-w{fill:#3d6a99}
+.theme-editorial .fig text.fl05-eq-l{fill:#a86c06;font-weight:600}
+.theme-editorial .fl05-lightbox{fill:#fdf1d6;stroke:#f0a316;stroke-width:2}
+.theme-editorial .fl05-fan{fill:none;stroke:#e0b45a;stroke-width:1.6;stroke-dasharray:4 5}
+/* crops */
+.theme-editorial .fl05-myth-chip{fill:#fbeee6;stroke:#d97757;stroke-width:1.4}
+.theme-editorial .fl05-ev-chip{fill:#e9f0e1;stroke:#788c5d;stroke-width:1.4}
+.theme-editorial .fig text.fl05-strike{text-decoration:line-through;text-decoration-color:#c0442a;text-decoration-thickness:3px;fill:#6b6a64}
+.theme-editorial .fl05-lamp{stroke:#3d3d3a;stroke-width:1.4}
+.theme-editorial .fl05-lamp-r{fill:#c8361e}.theme-editorial .fl05-lamp-g{fill:#2a963a}.theme-editorial .fl05-lamp-b{fill:#2350e6}
+.theme-editorial .fl05-cone{stroke:none;opacity:.08}
+.theme-editorial .fl05-cone-r{fill:#c8361e}.theme-editorial .fl05-cone-g{fill:#2a963a}.theme-editorial .fl05-cone-b{fill:#2350e6}
+.theme-editorial .fig text.fl05-c-r{fill:#c8361e}.theme-editorial .fig text.fl05-c-g{fill:#23802f}.theme-editorial .fig text.fl05-c-b{fill:#2350e6}
+.theme-editorial .fl05-stem{fill:none;stroke:#5f8a4b;stroke-width:4;stroke-linecap:round}
+.theme-editorial .fl05-plant-leaf{fill:#7fa866;stroke:#5f8a4b;stroke-width:1.4}
+.theme-editorial .fl05-pot{fill:#d9b49a;stroke:#a87d5f;stroke-width:1.6;stroke-linejoin:round}
+.theme-editorial .fl05-pot-rim{fill:#e4c3ab;stroke:#a87d5f;stroke-width:1.6}
+.theme-editorial .fig text.fl05-approx{font-size:46px;font-weight:300;fill:#3d3d3a}
+/* tube vs leaf */
+.theme-editorial .fl05-glass{fill:#e7f1dd;stroke:#9fb59a;stroke-width:2}
+.theme-editorial .fl05-mol{fill:#5f8a4b}
+.theme-editorial .fl05-leafbox{fill:#fbfaf4;stroke:#c9c6bb;stroke-width:1.4}
+.theme-editorial .fl05-opp{fill:none;stroke:#3d3d3a;stroke-width:2;stroke-dasharray:6 6}
+.theme-editorial .fl05-opp-end{fill:#3d3d3a}
+/* round 2: pigment names over the coverage bars, in their card colours */
+.theme-editorial .fig text.fl05-who{font-weight:600}

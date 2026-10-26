@@ -1,0 +1,23 @@
+{
+  "src/planning/lightBasics.ts": "8313cfc35ab2347383c1b168772598f7e4e3ba9417bf1b12c4da9242604e54eb",
+  "src/planning/lightHarvesting.ts": "4ad07fb526e883037d814c0d1b8ae976b60cefe1f42c866f9e96fe63c56414fb",
+  "src/planning/main.ts": "6168e6abc4d603deb83baa54554aeaf923389ff17660bc768224800973d6c549",
+  "src/planning/opening.ts": "fbe585c393cff586f21fc9c643231a9498dac8848153a343d354ffc9d278b110",
+  "src/planning/photonScattering.ts": "46abf62a7d94ae74922798b7dd82eaf359ed07e570522bb76d403a06b6eb4300",
+  "src/planning/pigments.ts": "396c97796dbaea17245f240d7f809ab184ba9a571d06158969fe04fd637eff0e",
+  "src/planning/plan.ts": "d86bf2ff5d84a37de1c10750e60ed03cb87af48b16863afc907472451d79e62f",
+  "src/planning/planning.css": "76859bcc279b29d625eaa95869a8bc5dea4944ae75fb6ee9dbca90b8286f8e87",
+  "src/planning/skyLeaf.ts": "de6ae85a24ec488d565a8c8e141b7a36a808038c5523bfd7796f5341ab0e5834",
+  "src/planning/timing.ts": "57994b1efe1d6af96e1ca77745218ab7ea69f425674b2444e8652aed9b3b9665",
+  "src/slides/brief.ts": "6862fef1139981a93fa59cfe0f9e4b35afbd4b3ccd06250a9a7f68916ed0ea82",
+  "src/slides/lightBasics.ts": "76e20bd39fb1bccd7ee8ff6519364ec2a44631228bcbdad67cc146f9a2b382ef",
+  "src/slides/lightHarvesting.ts": "73749c681a48276b0e27197f6f4bb3e460ffc7caad9ae8710bab0499eb73e19a",
+  "src/slides/overview.ts": "d2abc3562b206aa25f12f5c67204b1add4b055fa1536463a7719b83c52ea613b",
+  "src/slides/pigments.ts": "470c766026a854ab498ca609570562e92de67ec381665097a5203dab7ec55c94",
+  "src/slides/scattering.ts": "4624db154ba8f9b3f41acd104e2db6047cf2fd5a5892de8fccbf6f35b8cea7dd",
+  "src/slides/scatteringReview.ts": "b51f842ee04e3645e3813ec9c75b7f1cc01ba105aa47a7c89629735db7de2995",
+  "src/slides/skyAnimation.css": "69582e4d564aa90e3045c5d847bce1a0a0f547e4a2d9bbaa074d2a21f3783567",
+  "src/slides/skyAnimation.ts": "ad7784233cd46634a34ff4b9ab8ddd481ba0ab32178a368f8bc716d6619100af",
+  "src/slides/title.ts": "caab498e18416568461c712518d132fb847f145cd2cc23389aa0e64d2036d107",
+  "src/slides/wavelengths.ts": "5924274248678831df05a146ea870ed3e427dab8ea3a16ba319664fffd5da713"
+}

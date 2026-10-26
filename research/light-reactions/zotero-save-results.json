@@ -1,0 +1,479 @@
+{
+  "verified_at_utc": "2026-10-21T11:50:00+00:00",
+  "library": "My Library",
+  "library_api_prefix": "/api/users/0",
+  "collection_name": "Photosynthesis",
+  "collection_key": "LHLJBVYZ",
+  "save_method": "Official Zotero Connector; trusted browser clicks in background tabs",
+  "counts": {
+    "selected": 29,
+    "added": 29,
+    "already_present": 0,
+    "duplicate_dois_in_collection": 0,
+    "verified_pdfs": 25,
+    "without_saved_pdf": 4
+  },
+  "results": [
+    {
+      "doi": "10.1038/s41580-025-00847-y",
+      "item_key": "MMBUEKUF",
+      "status": "added",
+      "matching_records_in_collection": 1,
+      "collection_membership_verified": true,
+      "pdf_status": "verified_local_pdf",
+      "attachments": [
+        {
+          "attachment_key": "PJQ8JNBL",
+          "filename": "2025-Johnson-Structure, regulation and assembly of the photosynthetic electron transport chain.pdf",
+          "file_exists": true,
+          "bytes": 6098896,
+          "pdf_signature_valid": true
+        }
+      ]
+    },
+    {
+      "doi": "10.1146/annurev-biophys-021424-011156",
+      "item_key": "NFGGFHKI",
+      "status": "added",
+      "matching_records_in_collection": 1,
+      "collection_membership_verified": true,
+      "pdf_status": "verified_local_pdf",
+      "attachments": [
+        {
+          "attachment_key": "4GG5UGRY",
+          "filename": "2026-Liu-Structures of Photosynthetic Supramolecular Complexes.pdf",
+          "file_exists": true,
+          "bytes": 20943829,
+          "pdf_signature_valid": true
+        }
+      ]
+    },
+    {
+      "doi": "10.1093/plcell/koaf240",
+      "item_key": "5KPX3YCI",
+      "status": "added",
+      "matching_records_in_collection": 1,
+      "collection_membership_verified": true,
+      "pdf_status": "verified_local_pdf",
+      "attachments": [
+        {
+          "attachment_key": "WSCDN7XS",
+          "filename": "2025-van Amerongen-Nonphotochemical quenching in plants Mechanisms and mysteries.pdf",
+          "file_exists": true,
+          "bytes": 1495459,
+          "pdf_signature_valid": true
+        }
+      ]
+    },
+    {
+      "doi": "10.1016/j.jmb.2023.168407",
+      "item_key": "JK9RHNTS",
+      "status": "added",
+      "matching_records_in_collection": 1,
+      "collection_membership_verified": true,
+      "pdf_status": "no_pdf_saved_at_verification",
+      "attachments": []
+    },
+    {
+      "doi": "10.1042/bst20253087",
+      "item_key": "PFMX85N2",
+      "status": "added",
+      "matching_records_in_collection": 1,
+      "collection_membership_verified": true,
+      "pdf_status": "verified_local_pdf",
+      "attachments": [
+        {
+          "attachment_key": "CWGVP6B9",
+          "filename": "2025-Glowacka-Mechanisms underpinning natural variation in non-photochemical quenching kinetics.pdf",
+          "file_exists": true,
+          "bytes": 2634431,
+          "pdf_signature_valid": true
+        }
+      ]
+    },
+    {
+      "doi": "10.1146/annurev-physchem-090722-125847",
+      "item_key": "XXYR4JDT",
+      "status": "added",
+      "matching_records_in_collection": 1,
+      "collection_membership_verified": true,
+      "pdf_status": "verified_local_pdf",
+      "attachments": [
+        {
+          "attachment_key": "9MH5JF3Z",
+          "filename": "2024-Elias-Oxygenic Photosynthesis in Far-Red Light Strategies and Mechanisms.pdf",
+          "file_exists": true,
+          "bytes": 10929317,
+          "pdf_signature_valid": true
+        }
+      ]
+    },
+    {
+      "doi": "10.1093/pcp/pcaf100",
+      "item_key": "DEFUQFU7",
+      "status": "added",
+      "matching_records_in_collection": 1,
+      "collection_membership_verified": true,
+      "pdf_status": "verified_local_pdf",
+      "attachments": [
+        {
+          "attachment_key": "GKQKA9MR",
+          "filename": "2025-Kohzuma-Evolution and regulatory diversification of plastid F1FO-ATP synthase.pdf",
+          "file_exists": true,
+          "bytes": 4017591,
+          "pdf_signature_valid": true
+        }
+      ]
+    },
+    {
+      "doi": "10.1038/s41586-026-10847-3",
+      "item_key": "7TU9NFS3",
+      "status": "added",
+      "matching_records_in_collection": 1,
+      "collection_membership_verified": true,
+      "pdf_status": "verified_local_pdf",
+      "attachments": [
+        {
+          "attachment_key": "B7UY4TQP",
+          "filename": "2026-Li-In situ structures of plant photosystem supercomplexes.pdf",
+          "file_exists": true,
+          "bytes": 77710553,
+          "pdf_signature_valid": true
+        }
+      ]
+    },
+    {
+      "doi": "10.1038/s41586-023-06038-z",
+      "item_key": "QDH7HIT8",
+      "status": "added",
+      "matching_records_in_collection": 1,
+      "collection_membership_verified": true,
+      "pdf_status": "verified_local_pdf",
+      "attachments": [
+        {
+          "attachment_key": "FN3MAZI7",
+          "filename": "2023-Bhowmick-Structural evidence for intermediates during O2 formation in photosystem II.pdf",
+          "file_exists": true,
+          "bytes": 11091572,
+          "pdf_signature_valid": true
+        }
+      ]
+    },
+    {
+      "doi": "10.1093/jxb/erad428",
+      "item_key": "LKN5WND3",
+      "status": "added",
+      "matching_records_in_collection": 1,
+      "collection_membership_verified": true,
+      "pdf_status": "verified_local_pdf",
+      "attachments": [
+        {
+          "attachment_key": "6WF833YB",
+          "filename": "2024-Degen-Proton Gradient Regulation 5 is required to avoid photosynthetic oscillations during light transitions.pdf",
+          "file_exists": true,
+          "bytes": 6172692,
+          "pdf_signature_valid": true
+        }
+      ]
+    },
+    {
+      "doi": "10.1093/jxb/ert208",
+      "item_key": "2JU3SP7R",
+      "status": "added",
+      "matching_records_in_collection": 1,
+      "collection_membership_verified": true,
+      "pdf_status": "verified_local_pdf",
+      "attachments": [
+        {
+          "attachment_key": "H23U6HPQ",
+          "filename": "2013-Murchie-Chlorophyll fluorescence analysis a guide to good practice and understanding some new applications.pdf",
+          "file_exists": true,
+          "bytes": 2952832,
+          "pdf_signature_valid": true
+        }
+      ]
+    },
+    {
+      "doi": "10.1111/pce.13730",
+      "item_key": "MS34UD7Q",
+      "status": "added",
+      "matching_records_in_collection": 1,
+      "collection_membership_verified": true,
+      "pdf_status": "verified_local_pdf",
+      "attachments": [
+        {
+          "attachment_key": "M6CUS6LM",
+          "filename": "2020-Zhen-Far-red photons have equivalent efficiency to traditional photosynthetic photons Implications for redefining photosynthetically active radiation.pdf",
+          "file_exists": true,
+          "bytes": 3088664,
+          "pdf_signature_valid": true
+        }
+      ]
+    },
+    {
+      "doi": "10.1093/pcp/pcp034",
+      "item_key": "QY8DD3NB",
+      "status": "added",
+      "matching_records_in_collection": 1,
+      "collection_membership_verified": true,
+      "pdf_status": "verified_local_pdf",
+      "attachments": [
+        {
+          "attachment_key": "GICJFFF7",
+          "filename": "2009-Terashima-Green Light Drives Leaf Photosynthesis More Efficiently than Red Light in Strong White Light Revisiting the Enigmatic Question of Why Leaves are Green.pdf",
+          "file_exists": true,
+          "bytes": 1297447,
+          "pdf_signature_valid": true
+        }
+      ]
+    },
+    {
+      "doi": "10.1126/science.aat4318",
+      "item_key": "HKHKSH4B",
+      "status": "added",
+      "matching_records_in_collection": 1,
+      "collection_membership_verified": true,
+      "pdf_status": "no_pdf_saved_at_verification",
+      "attachments": []
+    },
+    {
+      "doi": "10.1093/aob/mcz171",
+      "item_key": "52QT8MTQ",
+      "status": "added",
+      "matching_records_in_collection": 1,
+      "collection_membership_verified": true,
+      "pdf_status": "verified_local_pdf",
+      "attachments": [
+        {
+          "attachment_key": "MCIACB9T",
+          "filename": "2020-Stirbet-Photosynthesis basics, history and modelling.pdf",
+          "file_exists": true,
+          "bytes": 2853746,
+          "pdf_signature_valid": true
+        }
+      ]
+    },
+    {
+      "doi": "10.1007/s11120-024-01081-x",
+      "item_key": "93G6MU95",
+      "status": "added",
+      "matching_records_in_collection": 1,
+      "collection_membership_verified": true,
+      "pdf_status": "verified_local_pdf",
+      "attachments": [
+        {
+          "attachment_key": "49TW5HNJ",
+          "filename": "2024-Govindjee-On the Pelletier and Caventou (1817, 1818) papers on chlorophyll and beyond.pdf",
+          "file_exists": true,
+          "bytes": 824480,
+          "pdf_signature_valid": true
+        }
+      ]
+    },
+    {
+      "doi": "10.32615/ps.2025.007",
+      "item_key": "T4N9894Q",
+      "status": "added",
+      "matching_records_in_collection": 1,
+      "collection_membership_verified": true,
+      "pdf_status": "verified_local_pdf",
+      "attachments": [
+        {
+          "attachment_key": "N4ICJI84",
+          "filename": "2025-Schreiber-Hans Kautsky's groundbreaking discovery(ies) in 1931, its scientific environment, and the ensuing developments.pdf",
+          "file_exists": true,
+          "bytes": 1589539,
+          "pdf_signature_valid": true
+        }
+      ]
+    },
+    {
+      "doi": "10.1080/14786447108640452",
+      "item_key": "ZXNYCWN5",
+      "status": "added",
+      "matching_records_in_collection": 1,
+      "collection_membership_verified": true,
+      "pdf_status": "verified_local_pdf",
+      "attachments": [
+        {
+          "attachment_key": "36EYZG7I",
+          "filename": "1871-Strutt-XV. On the light from the sky, its polarization and colour.pdf",
+          "file_exists": true,
+          "bytes": 873814,
+          "pdf_signature_valid": true
+        }
+      ]
+    },
+    {
+      "doi": "10.1002/andp.19053220607",
+      "item_key": "B3XZN24S",
+      "status": "added",
+      "matching_records_in_collection": 1,
+      "collection_membership_verified": true,
+      "pdf_status": "verified_local_pdf",
+      "attachments": [
+        {
+          "attachment_key": "93XGKH32",
+          "filename": "1905-Einstein-Über einen die Erzeugung und Verwandlung des Lichtes betreffenden heuristischen Gesichtspunkt.pdf",
+          "file_exists": true,
+          "bytes": 735055,
+          "pdf_signature_valid": true
+        }
+      ]
+    },
+    {
+      "doi": "10.1098/rstl.1852.0022",
+      "item_key": "NTEIQ7CA",
+      "status": "added",
+      "matching_records_in_collection": 1,
+      "collection_membership_verified": true,
+      "pdf_status": "verified_local_pdf",
+      "attachments": [
+        {
+          "attachment_key": "4RGVFCH2",
+          "filename": "1852-Stokes-XXX. On the change of refrangibility of light.pdf",
+          "file_exists": true,
+          "bytes": 27130188,
+          "pdf_signature_valid": true
+        }
+      ]
+    },
+    {
+      "doi": "10.1085/jgp.15.4.391",
+      "item_key": "7MFEBME6",
+      "status": "added",
+      "matching_records_in_collection": 1,
+      "collection_membership_verified": true,
+      "pdf_status": "verified_local_pdf",
+      "attachments": [
+        {
+          "attachment_key": "NKGT5JSB",
+          "filename": "1932-Emerson-A SEPARATION OF THE REACTIONS IN PHOTOSYNTHESIS BY MEANS OF INTERMITTENT LIGHT.pdf",
+          "file_exists": true,
+          "bytes": 1307469,
+          "pdf_signature_valid": true
+        }
+      ]
+    },
+    {
+      "doi": "10.1038/139881a0",
+      "item_key": "4XKI7SNR",
+      "status": "added",
+      "matching_records_in_collection": 1,
+      "collection_membership_verified": true,
+      "pdf_status": "verified_local_pdf",
+      "attachments": [
+        {
+          "attachment_key": "JTF9VLE3",
+          "filename": "1937-Hill-Oxygen Evolved by Isolated Chloroplasts.pdf",
+          "file_exists": true,
+          "bytes": 2688540,
+          "pdf_signature_valid": true
+        }
+      ]
+    },
+    {
+      "doi": "10.1038/186136a0",
+      "item_key": "PAGLPRCG",
+      "status": "added",
+      "matching_records_in_collection": 1,
+      "collection_membership_verified": true,
+      "pdf_status": "verified_local_pdf",
+      "attachments": [
+        {
+          "attachment_key": "HBZK7FQ3",
+          "filename": "1960-Hill-Function of the Two Cytochrome Components in Chloroplasts A Working Hypothesis.pdf",
+          "file_exists": true,
+          "bytes": 675094,
+          "pdf_signature_valid": true
+        }
+      ]
+    },
+    {
+      "doi": "10.1038/191144a0",
+      "item_key": "NU9AHWZI",
+      "status": "added",
+      "matching_records_in_collection": 1,
+      "collection_membership_verified": true,
+      "pdf_status": "verified_local_pdf",
+      "attachments": [
+        {
+          "attachment_key": "8VTW99KD",
+          "filename": "1961-Mitchell-Coupling of Phosphorylation to Electron and Hydrogen Transfer by a Chemi-Osmotic type of Mechanism.pdf",
+          "file_exists": true,
+          "bytes": 7566583,
+          "pdf_signature_valid": true
+        }
+      ]
+    },
+    {
+      "doi": "10.1073/pnas.55.1.170",
+      "item_key": "UWBQVF5G",
+      "status": "added",
+      "matching_records_in_collection": 1,
+      "collection_membership_verified": true,
+      "pdf_status": "verified_local_pdf",
+      "attachments": [
+        {
+          "attachment_key": "9I3EU679",
+          "filename": "1966-Jagendorf-ATP formation caused by acid-base transition of spinach chloroplasts..pdf",
+          "file_exists": true,
+          "bytes": 1129314,
+          "pdf_signature_valid": true
+        }
+      ]
+    },
+    {
+      "doi": "10.1038/386299a0",
+      "item_key": "5CZIHGW3",
+      "status": "added",
+      "matching_records_in_collection": 1,
+      "collection_membership_verified": true,
+      "pdf_status": "verified_local_pdf",
+      "attachments": [
+        {
+          "attachment_key": "G3QFICWL",
+          "filename": "1997-Noji-Direct observation of the rotation of F1-ATPase.pdf",
+          "file_exists": true,
+          "bytes": 3618428,
+          "pdf_signature_valid": true
+        }
+      ]
+    },
+    {
+      "doi": "10.1016/0002-1571(71)90022-7",
+      "item_key": "SFFJ75FJ",
+      "status": "added",
+      "matching_records_in_collection": 1,
+      "collection_membership_verified": true,
+      "pdf_status": "no_pdf_saved_at_verification",
+      "attachments": []
+    },
+    {
+      "doi": "10.1093/oxfordjournals.aob.a089000",
+      "item_key": "Y66I3CLR",
+      "status": "added",
+      "matching_records_in_collection": 1,
+      "collection_membership_verified": true,
+      "pdf_status": "verified_local_pdf",
+      "attachments": [
+        {
+          "attachment_key": "NUSUBSRD",
+          "filename": "1905-BLACKMAN-Optima and Limiting Factors.pdf",
+          "file_exists": true,
+          "bytes": 1467568,
+          "pdf_signature_valid": true
+        }
+      ]
+    },
+    {
+      "doi": "10.1016/j.jphotobiol.2025.113312",
+      "item_key": "HZ5PWQB9",
+      "status": "added",
+      "matching_records_in_collection": 1,
+      "collection_membership_verified": true,
+      "pdf_status": "no_pdf_saved_at_verification",
+      "attachments": []
+    }
+  ]
+}

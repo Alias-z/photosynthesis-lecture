@@ -1,0 +1,86 @@
+/* Slide C06 figure styles, scoped under .theme-editorial and prefixed .fc06- (C07 reuses the organelle parts). */
+
+/* text */
+.theme-editorial .fc06 text.fc06-b{font-size:22px;font-weight:600;fill:#141413}
+.theme-editorial .fc06 text.fc06-h{font-size:25px;font-weight:600;fill:#141413}
+.theme-editorial .fc06 text.fc06-s{font-size:22px;fill:#3d3d3a}
+.theme-editorial .fc06 text.fc06-in{font-size:18px;font-weight:600;fill:#141413}
+.theme-editorial .fc06 text.fc06-n{font-size:17px;fill:#6b6a64}
+.theme-editorial .fc06 text.fc06-it{font:italic 400 24px Newsreader,Georgia,serif;fill:#6b6a64}
+.theme-editorial .fc06 text.fc06-pl{font-size:30px;font-weight:600;fill:#141413}
+.theme-editorial .fc06 text.fc06-eq{font-size:34px;font-weight:500;fill:#141413}
+
+.theme-editorial .fc06 .fc06-sub{font-size:22px}
+.theme-editorial .fc06 text.fc06-pr,.theme-editorial .fc06 text.fc06-pl.fc06-pr{fill:#a9532f}
+.theme-editorial .fc06 text.fc06-chl-t{fill:#3f6b35}
+.theme-editorial .fc06 text.fc06-per-t{fill:#86691c}
+.theme-editorial .fc06 text.fc06-mit-t{fill:#9b4527}
+.theme-editorial .fc06 text.fc06-off{fill:#a8a59a}
+.theme-editorial .fc06 text.atom-t{font-size:14px;fill:#5a4a1a}
+.theme-editorial .fc06 text.atom-t-C{fill:#fff}
+.theme-editorial .fc06 text.atom-t-N{fill:#1f3d66}
+.theme-editorial .fc06 text.num-t{font-size:18px;font-weight:700;fill:#fffdf8}
+.theme-editorial .fc06 text.tag-t{fill:#2b2a27}
+
+/* atoms and carbon skeletons */
+.theme-editorial .fc06 .atom-N{fill:#bcd0ec;stroke:#4f7cac}
+.theme-editorial .fc06-bond{fill:none;stroke:#3d3d3a;stroke-width:3;stroke-linecap:round}
+.theme-editorial .fc06-bond-pr{stroke:#d97757}
+.theme-editorial .fc06-sb{fill:none;stroke:#8a877d;stroke-width:4;stroke-linecap:round}
+
+/* organelles */
+.theme-editorial .fc06-chl{fill:#e6f0dc;stroke:#6f9a5a;stroke-width:2}
+.theme-editorial .fc06-chl-in{fill:none;stroke:#a9c793;stroke-width:1.2}
+.theme-editorial .fc06-gra{fill:#a9c793;stroke:#6f9a5a;stroke-width:.8}
+.theme-editorial .fc06-per{fill:#f8f2de;stroke:#b8a46b;stroke-width:2}
+.theme-editorial .fc06-core{fill:#ece0b4;stroke:#c9b789;stroke-width:1}
+.theme-editorial .fc06-mit{fill:#fbebe2;stroke:#c0785a;stroke-width:2}
+.theme-editorial .fc06-mit-off{fill:#fffdf8;stroke:#c0785a;stroke-dasharray:5 4}
+.theme-editorial .fc06-cri{fill:none;stroke:#e1ad95;stroke-width:2.4;stroke-linecap:round}
+.theme-editorial .fc06-faded{opacity:.38}
+.theme-editorial .ar.fc06-faded{opacity:.38}
+
+/* cards, rules, highlights */
+.theme-editorial .fc06-card{fill:#fffdf8;stroke:#e3dfd3;stroke-width:1.4}
+.theme-editorial .fc06-card-chl{fill:#f3f8ee;stroke:#c7dbb6}
+.theme-editorial .fc06-card-per{fill:#fbf8ec;stroke:#e3d6a8}
+.theme-editorial .fc06-card-mit{fill:#fdf4ef;stroke:#ebc6b4}
+.theme-editorial .fc06-card-pr{fill:#fdf6f1;stroke:#e3b39c}
+.theme-editorial .fc06-hl{fill:#fbe7dc;stroke:#d97757;stroke-width:1.4}
+.theme-editorial .fc06-brace{fill:none;stroke:#3d3d3a;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fc06-block{fill:none;stroke:#b8321c;stroke-width:4.5;stroke-linecap:round}
+.theme-editorial .fc06-gone{fill:none;stroke:#a8a59a;stroke-width:1.6;stroke-dasharray:5 5}
+
+/* analogy */
+.theme-editorial .fc06-belt{fill:#ece9df;stroke:#a8a59a;stroke-width:1.5}
+.theme-editorial .fc06-brick{fill:#5a5955;stroke:#2b2a27;stroke-width:1.2}
+.theme-editorial .fc06-brick-pr{fill:#e7a084;stroke:#a9532f}
+.theme-editorial .fc06-shed{stroke-width:1.8;stroke-linejoin:round}
+.theme-editorial .fc06-shed-chl{fill:#f0f6ea;stroke:#6f9a5a}
+.theme-editorial .fc06-shed-per{fill:#faf6e6;stroke:#b8a46b}
+.theme-editorial .fc06-shed-mit{fill:#fcf0ea;stroke:#c0785a}
+.theme-editorial .fc06-chim{fill:#e9e6dc;stroke:#8a877d;stroke-width:1.6}
+.theme-editorial .fc06-meter{fill:#fffdf8;stroke:#3d3d3a;stroke-width:2}
+.theme-editorial .fc06-needle{fill:none;stroke:#c8361e;stroke-width:3;stroke-linecap:round}
+
+/* plants */
+.theme-editorial .fc06-leaf{fill:#86b46a;stroke:#4f7f3f;stroke-width:1.4}
+.theme-editorial .fc06-leaf-sick{fill:#dcd99a;stroke:#a3a05a}
+.theme-editorial .fc06-pot{fill:#e2d6c1;stroke:#a8957a;stroke-width:1.6;stroke-linejoin:round}
+.theme-editorial .fc06-soil{fill:#8f7a5d}
+
+/* graph */
+.theme-editorial .fc06-cv-c{stroke:#3d3d3a;stroke-width:4}
+.theme-editorial .fc06-cv-a{stroke:#d97757;stroke-width:4}
+.theme-editorial .fc06-area{fill:#fbe7dc}
+.theme-editorial .fc06-guide{fill:none;stroke:#c9c6bb;stroke-width:1.4;stroke-dasharray:4 5}
+.theme-editorial .fc06-asym{fill:none;stroke:#a8a59a;stroke-width:1.6;stroke-dasharray:6 6}
+.theme-editorial .fc06-dot{fill:#fffdf8;stroke:#141413;stroke-width:2.4}
+.theme-editorial .fc06-lead{fill:none;stroke:#8a877d;stroke-width:1.6;stroke-dasharray:3 4}
+.theme-editorial .fc06-area-k{fill:#ece9df}
+.theme-editorial .fig .fc06-low{font-size:68%;baseline-shift:-.24em}
+
+/* The reaction arrow of the equation, with light written over it (as fl01-eq-ar on slide 1). */
+.theme-editorial .fc06-rx{fill:none;stroke:#3d3d3a;stroke-width:2.4;stroke-linecap:round}
+.theme-editorial .fc06-rxh{fill:#3d3d3a}
+.theme-editorial .fc06 text.fc06-rxl{font-size:22px;font-weight:600;fill:#a5670a}

@@ -1,7 +1,13 @@
 # Photosynthesis lecture, ETH Zurich
 
-Slides and animations for the lecture "Why is the sky blue, and why are leaves green?".
-Written in TypeScript, served with Vite.
+Slides and animations for two 45-minute lectures, written in TypeScript and served with Vite.
+Slides 1–6 are text-box content/display briefs for Claude to turn into variants. Slide 2 keeps its original title. The original wavelength and scattering animations remain in their source files, with dated backups and previews under `backups/`. The seven-step sky animation opens from slide 4, unchanged. Scope future changes to the slide the lecturer explicitly selects.
+
+Slides 7–27 now contain the overnight research drafts directly in the lecture, as requested on 23 October 2026. Each is visibly marked **UNREVIEWED**, with its own time estimate and Context button containing the full explanation, history, evidence, illustration proposals and linked references. The original six slides remain agreed. New animation ideas are proposals, not implemented animations.
+
+Workflow: discuss and explain the context with sources first. The lecturer confirms what will be taught. Then develop the slide prompt and any animation around the key take-home messages. Work one slide at a time. Save the discussion and references together under **Context**. Do not turn unconfirmed discussion into slide content or an animation.
+
+Context is a scientific explanation the lecturer can deliver, focused on the slide's central concepts and biological meaning, with mechanisms, qualifications and sources where needed. Match its depth to the slide; keep it distinct from a display prompt, layout proposal or teaching instructions.
 
 ## Run it
 
@@ -10,7 +16,27 @@ npm install
 npm run dev
 ```
 
-Then open http://localhost:5174. Arrow keys or Page Up/Down change slides, `F` toggles full screen, and a Contents jumper appears when the mouse reaches the left edge. `npm run build` type-checks and writes a static copy to `dist/`.
+Then open http://localhost:5174. The ‹ › arrows next to the page number, the arrow keys or Page Up/Down change slides, `F` toggles full screen, and a Contents jumper appears when the mouse reaches the left edge. `npm run build` type-checks and writes a static copy to `dist/`.
+
+Each slide shows its estimated teaching time beside the page number. Slides 1–6 use the planning tab's values and update when those values change. Slides 7–27 use the new research draft estimates. The draft sequence allocates 43 minutes plus 2 minutes for questions to each lecture.
+
+Slide 1's **Context** button holds the opening explanation and its source, confirmed by the lecturer on 22 October 2026. Its one-minute introduction connects solar energy and carbon assimilation through ATP and NADPH, using the colour of life and bread as the everyday connections.
+
+Slide 2's **Context** button holds the detailed explanation of sky colour, sunset and green leaves, confirmed on 22 October 2026, with its sources. These background notes support the subsequent mechanism slides; the question-led opening retains its one-minute estimate.
+
+Slide 3's **Context** button holds the solar-spectrum explanation confirmed on 22 October 2026: human vision (approximately 380–780 nm), conventional PAR (400–700 nm), the conditional far-red contribution and brief biological connections for UV, infrared and microwaves. The extended discussion of human-vision evolution was dropped. The static display prompt and two-minute estimate are retained.
+
+Slide 4's **Context** button holds the explanation confirmed on 22 October 2026: photon energy versus intensity, molecular Rayleigh scattering and the longer atmospheric path at sunset, with linked sources. Its portrait display brief and three-minute estimate are retained; visual variants remain for review.
+
+On slides 3 and 4, **Backup** opens the original animation in the same viewer. **Return** or Escape brings back the current slide. Changing slides leaves the backup view. Slide 4's source and preview are saved in `backups/2026-10-22-slide-04/`.
+
+On slide 4, **Animation** opens the original seven-step blue-sky/sunset sequence over the slide. **Close** or Escape returns; arrow keys step through the animation. The animation stops while hidden. It is no longer a separate slide 5. Slide 4's default three-minute estimate includes its two-minute animation slot. Printing hides the animation and its button, keeping the static slide.
+
+Slide 5 is the pigment brief, **Why are leaves green?** Its four-minute slot focuses on pigment absorption and green leaf colour. Its lecture context was confirmed on 22 October 2026. **Context** replaces the separate References button and opens the confirmed pigment explanation and sources first, followed by the recorded LHC explanation and linked papers. The LHC context is also available on slide 6. Close or Escape returns to the slide. The panel stays open when returning from a paper tab, and is hidden when printing. The same text and sources are exported to `CLAUDE_HANDOFF.txt`. PAR is contextual; green-light use and algal pigments are supporting examples.
+
+Slide 6 is **Light-harvesting complexes**, a three-minute prompt slide with its own Context button. Its context and display/animation brief were confirmed on 22 October 2026. It begins with chlorophyll a/b differences, then compares LHCII/LHCI organisation and pigment ratios before distinguishing excitation transfer from charge separation. The 20–30-second animation is specified in the prompt for a later visual variant.
+
+The earlier topic planner remains at http://localhost:5174/planning.html with its saved agreement boxes and time edits. It predates the new 27-slide draft sequence. The complete new sequence is in the lecture itself; http://localhost:5174/review.html retains the research review notes.
 
 ## Files
 
@@ -19,65 +45,29 @@ Then open http://localhost:5174. Arrow keys or Page Up/Down change slides, `F` t
 | `src/main.ts` | The viewer: fits the 1600 × 900 slide to the window, page number, Contents jumper, keys, swipe. |
 | `src/styles.css` | Viewer and slide text styles. |
 | `src/slide.ts` | What a slide provides to the viewer. |
-| `src/slides/title.ts` | 1. Why is the sky blue, and why are leaves green? |
-| `src/slides/wavelengths.ts` | 2. Light is a mix of wavelengths. |
-| `src/slides/scattering.ts` | 3. Air scatters blue light most (live demo: Midday, Sunset, Pause). |
-| `src/slides/skyAnimation.ts`, `.css` | 4. Yesterday's seven-step animation, unchanged. On this slide the arrow keys step through its beats first; Space pauses. |
+| `src/planning/opening.ts` | Opening brief, confirmed context and source for slide 1. |
+| `src/planning/skyLeaf.ts` | Slide 2 brief, confirmed scientific context and sources, with its original title. |
+| `src/planning/lightBasics.ts` | Slide 3 brief, confirmed lecture context and sources, before scattering. |
+| `src/planning/photonScattering.ts` | Slide 4 brief, confirmed lecture context and sources; the existing seven-step sky/sunset animation opens separately. |
+| `src/planning/pigments.ts` | Slide 5 brief, confirmed pigment context, linked papers and handoff notes. |
+| `src/planning/lightHarvesting.ts` | Slide 6 approved brief, context and linked papers, shared by Context and the handoff. |
+| `src/lib/context.ts` | Context types and the shared explanation/source renderer. |
+| `planning.html`, `src/planning/plan.ts`, `main.ts`, `planning.css` | Separate overall planning page, with topic agreement and timing. |
+| `src/slides/brief.ts` | 1. The opening as plain text boxes. |
+| `CLAUDE_HANDOFF.txt` | The agreed workflow, six selected briefs, context explanations and linked papers for Claude. Regenerate with `npm run briefs:export` after editing them. |
+| `LECTURE_OUTLINE.md` | The lecture sequence, scope and timing the briefs follow. |
+| `src/slides/title.ts` | 2. Why is the sky blue, and why are leaves green? |
+| `src/slides/lightBasics.ts` | 3. The solar spectrum as a text brief. |
+| `src/slides/wavelengths.ts` | Original wavelength animation, retained unchanged. See the backup folder for restoration instructions. |
+| `src/slides/scatteringReview.ts` | 4. Photon energy and scattering as a text brief, with Backup/Return access. |
+| `src/slides/pigments.ts` | 5. Why are leaves green? Text brief with a Context control. |
+| `src/slides/lightHarvesting.ts` | 6. Light-harvesting complexes. Approved text brief with Context and a three-minute estimate. |
+| `src/slides/researchDrafts.ts` | 7–27. New unreviewed briefs, timing and full Context notes loaded from the research bundle. |
+| `research/review-2026-10-22/drafts.json`, `review-data.json` | Editable proposals and generated source bundle. Run `python3 research/review-2026-10-22/build_review.py` after editing the proposal data. |
+| `src/slides/scattering.ts` | Original Midday/Sunset/Pause scattering demo, retained unchanged. |
+| `src/slides/skyAnimation.ts`, `.css` | The original seven-step animation, unchanged, opened by slide 4's Animation button. Arrow keys step through its beats and Space pauses. |
 | `src/lib/` | Shared canvas drawing, colour and ink-figure helpers. |
 
-## Plate style
+## Style
 
-Paper and ink, like a figure plate in a science journal. Colour is used only for light.
-
-### Slides
-
-- 1600 × 900 px canvas, scaled to the screen. On a 13.3-inch slide, pt = px × 0.6.
-- One title per slide. No part labels or running headers.
-- Navigation: page number bottom right; Contents jumper hidden at the left edge.
-- Title slide: double-ruled ink frame, question as title, two numbered figure plates.
-- Figure slide: title, optional subtitle, one figure with labels on it, `Fig. n` caption.
-- Live demo slide: title, word buttons (Midday, Sunset, Pause) in an ink box, one caption.
-
-### Type
-
-| Use | Face | Size |
-|---|---|---|
-| Cover question | Spectral Light, key words italic | 50 pt (84 px) |
-| Slide title | Spectral Light | 41 pt (68 px) |
-| Subtitle | Spectral Italic | 24 pt (40 px) |
-| Caption, body | IBM Plex Sans | 23 pt (38 px) |
-| Figure labels | Plex Sans SemiBold + Spectral Italic | 22 pt (36 px) |
-| Figure numbers | Spectral Italic + Plex Sans | 20 / 18 pt |
-| Ticks, page number, controls | IBM Plex Sans | 18 pt (30 px), the minimum |
-
-### Colour
-
-| Token | Hex | Use |
-|---|---|---|
-| Paper | `#F2F3EE` | slide ground (with a faint grain) |
-| Figure paper | `#EEF1E8` | inside figure plates |
-| Ink | `#1F2A3A` | text, lines |
-| Ink, soft | `#3F4A5A` | second lines, ticks, page number |
-| Sky wash | `#5F86C4` → `#E6ECF0` | drawings only |
-| Leaf wash | `#76AA58` | drawings only, two thin layers |
-| Ground | `#C4CCB6` | drawings only |
-| Sun wash | `#FFF6D8` | the Sun's disc |
-| Light 450 nm | `#2350E6` | blue light only |
-| Light 550 nm | `#2A963A` | green light only |
-| Light 650 nm | `#DE361E` | red light only |
-
-The spectrum strip is the only full rainbow and darkens below 380 nm and above 750 nm. Text is never coloured.
-
-### Drawing
-
-Ink outlines 1.5–2.4 px, figure circles 2.4 px, light waves 3.2–3.4 px, dashed guides 1.2 px.
-Labels sit on the drawing, never in a legend.
-
-### Motion
-
-- Light moves at one steady speed; all colours travel together.
-- A scatter is a thin ring that fades in half a second.
-- Results (swatches, percentages) are computed and stay still while you talk.
-- The lecturer steps through; no sound.
-
-Typefaces: Spectral and IBM Plex Sans (Google Fonts).
+Plate style: paper and ink, colour only for light. All slide rules (content, layout, type, colour, drawing, motion) are in [STYLE_GUIDE.md](STYLE_GUIDE.md).

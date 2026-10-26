@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "typecheck": "tsc --noEmit",
+    "briefs:export": "node scripts/export-briefs.mjs",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview"
   },

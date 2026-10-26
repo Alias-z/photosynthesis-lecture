@@ -1,0 +1,100 @@
+/* Slide L11 figure styles, scoped under .theme-editorial and prefixed .fl11- */
+
+/* text */
+.theme-editorial .fl11 text.fl11-h{font-size:23px;font-weight:600;fill:#141413}
+.theme-editorial .fl11 text.fl11-b{font-size:27px;font-weight:600;fill:#141413}
+.theme-editorial .fl11 text.fl11-l{font-size:22px;fill:#3d3d3a}
+.theme-editorial .fl11 text.fl11-s{font-size:18px;fill:#6b6a64}
+.theme-editorial .fl11 text.fl11-it{font:italic 400 24px Newsreader,Georgia,serif;fill:#6b6a64}
+.theme-editorial .fl11 text.fl11-in{font-size:21px;font-weight:600;fill:#141413}
+.theme-editorial .fl11 text.fl11-ht{font-size:14px;font-weight:700;fill:#3d6a99}
+.theme-editorial .fl11 text.fl11-nt{font-size:18px;font-weight:700;fill:#fffdf8}
+.theme-editorial .fl11 text.fl11-e{font-size:19px;font-weight:700;fill:#b8321c}
+.theme-editorial .fl11 text.fl11-off{fill:#a8a59a}
+.theme-editorial .fl11 text.fl11-c-lin{fill:#b8301b}
+.theme-editorial .fl11 text.fl11-c-cyc{fill:#6b3fa0}
+.theme-editorial .fl11 text.fl11-c-oxy{fill:#17766a}
+.theme-editorial .fl11 text.fl11-c-h{fill:#3d6a99}
+.theme-editorial .fl11 text.fl11-c-green{fill:#3f6b35}
+.theme-editorial .fl11 text.fl11-c-clay{fill:#a9532f}
+.theme-editorial .fl11 text.fl11-c-amber{fill:#9a6a06}
+.theme-editorial .fl11 text.atom-t{font-size:14px}
+
+/* electron routes: one ink and one dash pattern per route, named wherever drawn */
+.theme-editorial .fl11-r{fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fl11-r-lin{stroke:#c8361e;stroke-dasharray:12 7}
+.theme-editorial .fl11-r-cyc{stroke:#7a4fb0;stroke-dasharray:15 6 1 6}
+.theme-editorial .fl11-r-oxy{stroke:#1f8a7a;stroke-dasharray:4 6}
+.theme-editorial .fl11-r-h{stroke:#4f7cac;stroke-width:4.5;stroke-dasharray:.5 10}
+.theme-editorial .fl11-r-k{stroke:#3d3d3a;stroke-width:2.6}
+.theme-editorial .fl11-r-g{stroke:#8a877d;stroke-width:2.4}
+.theme-editorial .fl11-hd-lin{fill:#c8361e}.theme-editorial .fl11-hd-cyc{fill:#7a4fb0}
+.theme-editorial .fl11-hd-oxy{fill:#1f8a7a}.theme-editorial .fl11-hd-h{fill:#4f7cac}
+.theme-editorial .fl11-hd-k{fill:#3d3d3a}.theme-editorial .fl11-hd-g{fill:#8a877d}
+
+/* solid route bands (route map, fat arrows) */
+.theme-editorial .fl11-band{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fl11-band-lin{stroke:#c8361e}.theme-editorial .fl11-band-cyc{stroke:#7a4fb0}
+.theme-editorial .fl11-band-oxy{stroke:#1f8a7a}.theme-editorial .fl11-band-k{stroke:#8a877d}
+.theme-editorial .fl11-fill-lin{fill:#c8361e}.theme-editorial .fl11-fill-cyc{fill:#7a4fb0}
+.theme-editorial .fl11-fill-oxy{fill:#1f8a7a}.theme-editorial .fl11-fill-k{fill:#8a877d}
+.theme-editorial .fl11-tint-lin{fill:#fbe7e1;stroke:#c8361e;stroke-width:1.6}
+.theme-editorial .fl11-tint-cyc{fill:#efe7f7;stroke:#7a4fb0;stroke-width:1.6}
+.theme-editorial .fl11-tint-oxy{fill:#e2f2ef;stroke:#1f8a7a;stroke-width:1.6}
+.theme-editorial .fl11-off{fill:#f6f5f0;stroke:#c9c6bb;stroke-width:1.6;stroke-dasharray:5 5}
+
+/* stations, cards, parts */
+.theme-editorial .fl11-stop{fill:#fffdf8;stroke:#3d3d3a;stroke-width:2.4}
+.theme-editorial .fl11-card{fill:#fffdf8;stroke:#e3dfd3;stroke-width:1.4}
+.theme-editorial .fl11-ant{fill:#e7f1de;stroke:#9cbd88;stroke-width:1.5}
+.theme-editorial .fl11-lumen{fill:#eaf1f8}
+.theme-editorial .fl11-num{fill:#3d3d3a}
+.theme-editorial .fl11-axis{fill:none;stroke:#8a877d;stroke-width:1.6}
+.theme-editorial .fl11-tick{fill:none;stroke:#8a877d;stroke-width:1.4}
+.theme-editorial .fl11-guide{fill:none;stroke:#c9c6bb;stroke-width:1.4;stroke-dasharray:3 5}
+.theme-editorial .fl11-zoom{fill:#e9e6dc;opacity:.55}
+.theme-editorial .fl11-zoombox{fill:none;stroke:#6b6a64;stroke-width:1.6}
+.theme-editorial .fl11-brake{fill:#a9532f}
+.theme-editorial .fl11-shield{fill:#e9f0e1;stroke:#4f7f3f;stroke-width:2.4;stroke-linejoin:round}
+.theme-editorial .fl11-tick-ok{fill:none;stroke:#4f7f3f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fl11-cross{fill:none;stroke:#a8a59a;stroke-width:3.4;stroke-linecap:round}
+.theme-editorial .fl11-leaf{fill:#9cc47f;stroke:#4f7f3f;stroke-width:2}
+.theme-editorial .fl11-vein{fill:none;stroke:#4f7f3f;stroke-width:1.6}
+.theme-editorial .fl11-chl{fill:#e3efd6;stroke:#6f9a5a;stroke-width:2}
+.theme-editorial .fl11-gran{fill:#8fb87a;stroke:#4f7f3f;stroke-width:1}
+.theme-editorial .fl11-lam{fill:none;stroke:#6f9a5a;stroke-width:3;stroke-linecap:round}
+.theme-editorial .fl11-mem{fill:#f1e4c6;stroke:#c9b789;stroke-width:1.2}
+
+/* bars (supply vs demand) */
+.theme-editorial .fl11-bar{fill:#fbe3d3;stroke:#d97757;stroke-width:1.8}
+.theme-editorial .fl11-bar-need{fill:#f3efe6;stroke:#8a877d;stroke-width:1.8}
+.theme-editorial .fl11-gap{fill:#fffdf8;stroke:#d97757;stroke-width:2;stroke-dasharray:6 5}
+.theme-editorial .fl11-target{fill:none;stroke:#3d3d3a;stroke-width:1.8;stroke-dasharray:8 6}
+.theme-editorial .fl11-bar-wt{fill:#8a877d}
+.theme-editorial .fl11-bar-mut{fill:#fffdf8;stroke:#a9532f;stroke-width:2}
+.theme-editorial .fl11-hatch{fill:none;stroke:#d9a28a;stroke-width:1.6}
+
+/* railway (analogy) */
+.theme-editorial .fl11-sleep{fill:none;stroke:#cbbb92;stroke-width:24;stroke-dasharray:4 9}
+.theme-editorial .fl11-rail{fill:none;stroke:#5f5c55;stroke-width:12;stroke-linecap:butt;stroke-linejoin:round}
+.theme-editorial .fl11-bed{fill:none;stroke-width:7;stroke-linejoin:round}
+.theme-editorial .fl11-bed-k{stroke:#f3efe6}.theme-editorial .fl11-bed-lin{stroke:#f6cfc4}
+.theme-editorial .fl11-bed-cyc{stroke:#ddcdee}.theme-editorial .fl11-bed-oxy{stroke:#c4e6df}
+.theme-editorial .fl11-wagon{fill:#fffdf8;stroke-width:2.4}
+.theme-editorial .fl11-wagon-k{stroke:#3d3d3a}.theme-editorial .fl11-wagon-lin{stroke:#c8361e}
+.theme-editorial .fl11-wagon-cyc{stroke:#7a4fb0}.theme-editorial .fl11-wagon-oxy{stroke:#1f8a7a}
+.theme-editorial .fl11-wheel{fill:#3d3d3a}
+.theme-editorial .fl11-shed-ps{fill:#d3e7c3;stroke:#6f9a5a;stroke-width:2}
+.theme-editorial .fl11-shed-b6f{fill:#f7d6a6;stroke:#c98a3a;stroke-width:2}
+.theme-editorial .fl11-buffer{fill:#3d3d3a}
+.theme-editorial .fl11-lever{fill:none;stroke:#3d3d3a;stroke-width:3;stroke-linecap:round}
+
+/* light strip (fluctuating light) */
+.theme-editorial .fl11-lo{fill:#f3efe6;stroke:#c9c6bb;stroke-width:1}
+.theme-editorial .fl11-hi{fill:#f6c453;stroke:#d99a1c;stroke-width:1}
+.theme-editorial .fl11-wt{fill:none;stroke:#3f6b35;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fl11-mut{fill:none;stroke:#a9532f;stroke-width:4;stroke-dasharray:10 6;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fl11-heat{fill:none;stroke:#8a877d;stroke-width:2.6;stroke-linecap:round}
+.theme-editorial .fl11-exc{fill:#f0a316;stroke:#c98410;stroke-width:1.2}
+.theme-editorial .fl11-lit-light{fill:#fdf1d0;stroke:#e39a12;stroke-width:1.6}
+.theme-editorial .fl11-lit-water{fill:#dce9f6;stroke:#4f7cac;stroke-width:1.6}

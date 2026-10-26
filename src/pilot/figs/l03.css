@@ -1,0 +1,92 @@
+/* Slide L03 figure styles, scoped under .theme-editorial and prefixed .fl03- */
+
+/* text */
+.theme-editorial .fig text.fl03-h{font-size:25px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fl03-b{font-size:22px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fl03-s{font-size:22px;fill:#3d3d3a}
+.theme-editorial .fig text.fl03-in{font-size:19px;font-weight:500;fill:#3d3d3a}
+.theme-editorial .fig text.fl03-in-w{fill:#fffdf8;font-weight:600}
+.theme-editorial .fig text.fl03-tk{font-size:20px;fill:#6b6a64}
+.theme-editorial .fig text.fl03-tiny{font-size:16px;fill:#6b6a64}
+.theme-editorial .fig text.fl03-note{font:italic 400 25px Newsreader,Georgia,serif;fill:#6b6a64}
+.theme-editorial .fig text.fl03-par{fill:#a9532f}
+.theme-editorial .fig text.fl03-fr{fill:#8e2316}
+.theme-editorial .fig text.fl03-num{font-size:18px;font-weight:700;fill:#fffdf8}
+.theme-editorial .fig text.fl03-eq{font-size:30px;fill:#a8a59a}
+.theme-editorial .fig text.fl03-eq-c{fill:#a08672}
+.theme-editorial .fig text.fl03-eq-w{fill:#8fa6bd}
+.theme-editorial .fig text.fl03-eq-l{fill:#141413;font-weight:600}
+.theme-editorial .fig text.fl03-plus-t{font-size:26px;font-weight:700;fill:#8e2316}
+
+/* scales and brackets */
+.theme-editorial .fl03-em1{fill:#e8e6dc}.theme-editorial .fl03-em2{fill:#dcd9ce}
+.theme-editorial .fl03-sep{stroke:#faf9f5;stroke-width:2}
+.theme-editorial .fl03-tick,.theme-editorial .fl03-axis{fill:none;stroke:#8a877d;stroke-width:1.6}
+.theme-editorial .fl03-br{fill:none;stroke:#3d3d3a;stroke-width:1.8}
+.theme-editorial .fl03-br-par{stroke:#a9532f;stroke-width:2.8}
+.theme-editorial .fl03-br-fr{stroke:#8e2316;stroke-width:2.4;stroke-dasharray:6 5}
+.theme-editorial .fl03-zoom{fill:#e6e1d2;opacity:.5}
+.theme-editorial .fl03-zline{fill:none;stroke:#a8a59a;stroke-width:1.4;stroke-dasharray:5 5}
+.theme-editorial .fl03-win{fill:none;stroke:#3d3d3a;stroke-width:2}
+.theme-editorial .fl03-box{fill:#fbfaf6;stroke:#d8d4c7;stroke-width:1.4}
+.theme-editorial .fl03-lead{fill:none;stroke:#8a877d;stroke-width:1.5}
+.theme-editorial .fl03-dot{fill:#3d3d3a}
+
+/* light */
+.theme-editorial .fl03-sun{fill:#f7c948;stroke:#e3a51c;stroke-width:2}
+.theme-editorial .fl03-ray{fill:none;stroke:#e3a51c;stroke-width:3;stroke-linecap:round}
+.theme-editorial .fl03-beam{fill:none;stroke:#fffbea;stroke-linecap:round}
+.theme-editorial .fl03-beam-o{fill:none;stroke:#d9cfae;stroke-linecap:round}
+.theme-editorial .fl03-prism{fill:#e9f0f3;fill-opacity:.92;stroke:#7f95a3;stroke-width:2.2;stroke-linejoin:round}
+.theme-editorial .fl03-inray{fill:none;stroke:#fffbea;stroke-width:5;stroke-linecap:round;opacity:.9}
+.theme-editorial .fl03-fanbg{fill:#efe9d8;opacity:.55}
+.theme-editorial .fl03-fanray{fill:none;stroke-width:3;stroke-linecap:round;opacity:.9}
+.theme-editorial .fl03-w{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fl03-w-dash{stroke-dasharray:7 5}
+.theme-editorial .fl03-ph{stroke:#fffdf8;stroke-width:1.5}
+.theme-editorial .fl03-ph-o{fill:#fffdf8;stroke-width:2.4}
+.theme-editorial .fl03-curve{fill:none;stroke:#3d3d3a;stroke-width:2.6;stroke-linejoin:round}
+
+/* objects */
+.theme-editorial .fl03-eyeball{fill:#fffdf8;stroke:#3d3d3a;stroke-width:2.2;stroke-linejoin:round}
+.theme-editorial .fl03-iris{fill:#8a877d}.theme-editorial .fl03-pupil{fill:#141413}
+.theme-editorial .fl03-leaf{fill:#cfe3b4;stroke:#6f9a5a;stroke-width:2;stroke-linejoin:round}
+.theme-editorial .fl03-vein{fill:none;stroke:#8fb07a;stroke-width:1.6;stroke-linecap:round}
+.theme-editorial .fl03-stalk{fill:none;stroke:#6f9a5a;stroke-width:3;stroke-linecap:round}
+.theme-editorial .fl03-shield{fill:#ece8f6;stroke:#7d6fa8;stroke-width:2.2;stroke-linejoin:round}
+.theme-editorial .fl03-shield-t{fill:none;stroke:#7d6fa8;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fl03-heat{fill:none;stroke:#8a877d;stroke-width:2.4;stroke-linecap:round}
+.theme-editorial .fl03-thermo{fill:#fffdf8;stroke:#8a877d;stroke-width:2}
+.theme-editorial .fl03-thermo-in{fill:#d97757}
+.theme-editorial .fl03-bowl{fill:#e9e6dc;stroke:#8a877d;stroke-width:2;stroke-linejoin:round}
+.theme-editorial .fl03-drop{fill:#dce9f6;stroke:#4f7cac;stroke-width:1.8}
+.theme-editorial .fl03-numc{fill:#3d3d3a}
+.theme-editorial .fl03-tile{fill:#fbfaf6;stroke:#e1ddd0;stroke-width:1.2}
+.theme-editorial .fl03-plus{fill:#fbeee6;stroke:#8e2316;stroke-width:2}
+.theme-editorial .fl03-gate{fill:#f6e7d6;opacity:.55}
+.theme-editorial .fl03-gate-l{fill:none;stroke:#a9532f;stroke-width:2.6;stroke-linejoin:round}
+.theme-editorial .fl03-display{fill:#fffdf8;stroke:#c9c6bb;stroke-width:1.5}
+.theme-editorial .fl03-pill{fill:#fbe3b0;stroke:#f0a316;stroke-width:2.4}
+.theme-editorial .fl03-key{fill:#fbfaf6;stroke:#e1ddd0;stroke-width:1.2}
+
+/* bars (schematic result) */
+.theme-editorial .fl03-bar{fill:#dce6d0;stroke:#788c5d;stroke-width:1.6}
+.theme-editorial .fl03-gain{fill:#a9c793;stroke:#5f8a4b;stroke-width:1.6}
+.theme-editorial .fl03-chipbg{fill:#e8e6dc}
+
+/* leaf cross-section */
+.theme-editorial .fl03-epi{fill:#f4f8ee;stroke:#a9bd94;stroke-width:1.6}
+.theme-editorial .fl03-epiline{fill:none;stroke:#c7d6b6;stroke-width:1.2}
+.theme-editorial .fl03-pal{fill:#e3eed6;stroke:#a9bd94;stroke-width:1.2}
+.theme-editorial .fl03-spg{fill:#ecf3e3;stroke:#b8c9a6;stroke-width:1.1}
+.theme-editorial .fl03-chl{fill:#7fa866}
+.theme-editorial .fl03-exc{fill:#f0a316}
+
+/* Engelmann */
+.theme-editorial .fl03-bug{fill:#3d3d3a}
+.theme-editorial .fl03-alga{fill:#bcd7a3;stroke:#5f8a4b;stroke-width:1.6}
+.theme-editorial .fl03-alga-c{fill:none;stroke:#4f7a3c;stroke-width:2}
+.theme-editorial .fl03-hist{fill:#8a877d;opacity:.75}
+
+/* round 2 combinations */
+.theme-editorial .fl03-hist-faint{fill:#fffdf8;fill-opacity:.3;stroke:#3d3d3a;stroke-opacity:.6;stroke-width:1.4}

@@ -1,0 +1,91 @@
+/* Slide C01 figure styles, scoped under .theme-editorial and prefixed .fc01- */
+
+/* Subscripts and text colours. Equation terms keep the L01 code: light amber, water and O₂ blue, carbon brown. */
+.theme-editorial .fig .fc01-sb{font-size:68%;baseline-shift:-.24em}
+.theme-editorial .fig text.fc01-eq{font-weight:600}
+.theme-editorial .fc01-eqar{fill:none;stroke:#8a877d;stroke-linecap:round}
+.theme-editorial .fc01-eqhd{fill:#8a877d}
+.theme-editorial .fig text.fc01-l{fill:#a5670a}
+.theme-editorial .fig text.fc01-w{fill:#2a62a0}
+.theme-editorial .fig text.fc01-c,.theme-editorial .fig text.fc01-ct{fill:#7a4a20}
+.theme-editorial .fig text.fc01-o{fill:#8a877d;font-weight:400}
+.theme-editorial .fig text.fc01-g{fill:#3f6b2c}
+.theme-editorial .fig text.fc01-clay{fill:#a9532f}
+.theme-editorial .fig text.fc01-mute{fill:#6b6a64}
+.theme-editorial .fig text.fc01-e{fill:#c8361e;font-weight:700}
+.theme-editorial .fig text.fc01-dark{fill:#141413;font-weight:600}
+.theme-editorial .fig text.fc01-paper{fill:#faf9f5}
+.theme-editorial .fig text.fc01-band{font-size:23px;font-weight:600;letter-spacing:.09em;fill:#141413}
+.theme-editorial .fig text.fc01-big{font-size:46px;font-weight:600;fill:#7a4a20}
+
+/* Arrows in the extra inks. */
+.theme-editorial .fc01-ar{fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fc01-ar-g{stroke:#4f8a3a}.theme-editorial .fc01-hd-g{fill:#4f8a3a}
+.theme-editorial .fc01-ar-c{stroke:#8b5a2b}.theme-editorial .fc01-hd-c{fill:#8b5a2b}
+.theme-editorial .fc01-ar-w{stroke:#3f7fc0}.theme-editorial .fc01-hd-w{fill:#3f7fc0}
+.theme-editorial .fc01-ar-k{stroke:#8a877d}.theme-editorial .fc01-hd-k{fill:#8a877d}
+.theme-editorial .fc01-ar.fc01-trx{stroke-dasharray:3 6;stroke-width:3.4}
+.theme-editorial .fc01-ar.fc01-thick{stroke-width:4.4}
+.theme-editorial .ar.fc01-cyc{stroke-width:3}
+.theme-editorial .ar.fc01-cyc-off{stroke:#a8a59a;stroke-width:3;stroke-dasharray:6 7}
+
+/* Molecules and shapes. */
+.theme-editorial .fc01-bond{fill:none;stroke:#3d3d3a;stroke-width:3;stroke-linecap:round}
+.theme-editorial .fc01-tri{fill:#fffdf8;stroke:#3d3d3a;stroke-width:1.8;stroke-linejoin:round}
+.theme-editorial .fc01-tri-out{fill:#fbeee6;stroke:#d97757}
+.theme-editorial .fc01-disc{fill:#d3e7c3;stroke:#6f9a5a;stroke-width:1.4}
+.theme-editorial .fc01-sun{fill:#f6c453;stroke:#d99a12;stroke-width:1.4}
+.theme-editorial .fc01-sun-ray{fill:none;stroke:#e3a21a;stroke-width:2.4;stroke-linecap:round}
+.theme-editorial .fc01-moon{fill:#d9dbe6;stroke:#7d8199;stroke-width:1.4}
+
+/* a · links */
+.theme-editorial .fc01-grid{fill:none;stroke:#e4e1d6;stroke-width:1.2;stroke-dasharray:3 6}
+.theme-editorial .fc01-grid0{stroke:#c9c6bb;stroke-dasharray:none}
+
+/* d · plant */
+.theme-editorial .fc01-soil{fill:#efe4cf;stroke:#d9c7a3;stroke-width:1.2}
+.theme-editorial .fc01-root{fill:none;stroke:#a8865a;stroke-width:2.6;stroke-linecap:round}
+.theme-editorial .fc01-stem{fill:none;stroke:#5f8a45;stroke-width:5;stroke-linecap:round}
+.theme-editorial .fc01-leaf{fill:#cfe3bd;stroke:#5f8a45;stroke-width:1.8}
+.theme-editorial .fc01-vein{fill:none;stroke:#5f8a45;stroke-width:1.4}
+.theme-editorial .fc01-strike{fill:none;stroke:#a9532f;stroke-width:2.6;stroke-linecap:round}
+
+/* e · day and night */
+.theme-editorial .fc01-day{fill:#fffdf8;stroke:#e3dfd2;stroke-width:1.4}
+.theme-editorial .fc01-night{fill:#ecebe6;stroke:#d6d3c8;stroke-width:1.4}
+.theme-editorial .fc01-chip{stroke-width:1.8}
+.theme-editorial .fc01-chip-on{fill:#e9f0e1;stroke:#6f9a5a}
+.theme-editorial .fc01-chip-off{fill:#f7f6f2;stroke:#a8a59a;stroke-dasharray:6 5}
+.theme-editorial .fc01-trxbox{fill:#e9f0e1;stroke:#4f8a3a;stroke-width:1.8}
+.theme-editorial .fc01-oxbox{fill:#fffdf8;stroke:#7d8199;stroke-width:1.8}
+.theme-editorial .fc01-cp12{fill:none;stroke:#7d8199;stroke-width:1.6;stroke-dasharray:3 5}
+
+/* f · fuel and key */
+.theme-editorial .fc01-pump{fill:#eef4e7;stroke:#6f9a5a;stroke-width:1.8}
+.theme-editorial .fc01-pipe{fill:#ece9df;stroke:#a8a59a;stroke-width:1.6}
+.theme-editorial .fc01-cable{fill:none;stroke:#4f8a3a;stroke-width:2.6;stroke-dasharray:3 6;stroke-linecap:round}
+.theme-editorial .fc01-key{fill:#f6c453;stroke:#a5670a;stroke-width:1.6;stroke-linejoin:round}
+.theme-editorial .fc01-key-off{fill:#e4e1d6;stroke:#a8a59a}
+.theme-editorial .fc01-keyhole{fill:#fffdf8}
+.theme-editorial .fc01-gear{fill:#ece9df;stroke:#8a877d;stroke-width:1.8;stroke-linejoin:round}
+.theme-editorial .fc01-gear-off{fill:#f2f1ec;stroke:#b9b5aa;stroke-dasharray:5 5}
+.theme-editorial .fc01-hub{fill:#fffdf8;stroke:#c9c6bb;stroke-width:1.4}
+.theme-editorial .fc01-lock{fill:#3d3d3a}
+.theme-editorial .fc01-cross{fill:none;stroke:#a9532f;stroke-width:3;stroke-linecap:round}
+
+/* h · timeline */
+.theme-editorial .fc01-lightband{fill:#fdf1cf;stroke:#e3c46a;stroke-width:1.2}
+.theme-editorial .fc01-darkband{fill:#6b6e80}
+.theme-editorial .fc01-guide{fill:none;stroke:#c9c6bb;stroke-width:1.4;stroke-dasharray:4 6}
+.theme-editorial .fc01-curve{fill:none;stroke:#4f8a3a;stroke-width:4;stroke-linejoin:round;stroke-linecap:round}
+.theme-editorial .fc01-fix{fill:#f1e4d5;stroke:#8b5a2b;stroke-width:1.4}
+
+/* i · panels */
+.theme-editorial .fc01-panel{fill:#fffdf8;stroke:#e3dfd2;stroke-width:1.4}
+
+/* j · icons */
+.theme-editorial .fc01-toggle{fill:#e9f0e1;stroke:#4f8a3a;stroke-width:1.8}
+.theme-editorial .fc01-knob{fill:#4f8a3a}
+
+/* small "schematic" mark and source credits */
+.theme-editorial .fig text.fc01-cr{font:italic 400 17px Newsreader,Georgia,serif;fill:#6b6a64}

@@ -1,0 +1,63 @@
+/* Slide L10 figure styles, scoped under .theme-editorial and prefixed .fl10-. Shared parts (.fl09-) come from l09.css. */
+.theme-editorial .fig text.fl10-plus{font-size:26px;font-weight:700;fill:#3d6a99}
+.theme-editorial .fig text.fl10-minus{font-size:26px;font-weight:700;fill:#8a877d}
+.theme-editorial .fig text.fl10-ghost{font:italic 400 22px Newsreader,Georgia,serif;fill:#a8a59a}
+.theme-editorial .fig text.fl10-grey{fill:#a8a59a}
+.theme-editorial .fig text.fl10-ht{font-size:19px;font-weight:700;fill:#3d6a99}
+
+/* 10b rotary motor */
+.theme-editorial .fl10-c-bg{fill:#c4d8ec;stroke:#6a8fb5;stroke-width:1.6}
+.theme-editorial .fl10-c{fill:#d6e5f3;stroke:#6a8fb5;stroke-width:1.2}
+.theme-editorial .fl10-a{fill:#e4e0f2;stroke:#8c84c4;stroke-width:1.6}
+.theme-editorial .fl10-gamma{fill:#d6e5f3;stroke:#6a8fb5;stroke-width:1.6}
+.theme-editorial .fl10-arm{fill:none;stroke:#b3acd9;stroke-width:14;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fl10-spin{fill:none;stroke:#3d3d3a;stroke-width:2.4}
+
+/* 10c dam */
+.theme-editorial .fl10-res{fill:#dce8f4}
+.theme-editorial .fl10-res.fl10-low{fill:#eaf1f8}
+.theme-editorial .fl10-surf{fill:none;stroke:#8fb0d0;stroke-width:2}
+.theme-editorial .fl10-dam{fill:#ebe5d5;stroke:#a8a59a;stroke-width:1.6}
+.theme-editorial .fl10-pipe{fill:#f3efe4;stroke:#a8a59a;stroke-width:1.4}
+.theme-editorial .fl10-blade{fill:none;stroke:#8c84c4;stroke-width:6;stroke-linecap:round}
+.theme-editorial .fl10-hub{fill:#d9d3f0;stroke:#8c84c4;stroke-width:1.6}
+.theme-editorial .fl10-house{fill:#efe9f8;stroke:#8c84c4;stroke-width:1.6}
+.theme-editorial .fl10-shaft{fill:none;stroke:#8c84c4;stroke-width:4}
+.theme-editorial .fl10-pipe2{fill:none;stroke:#c9c6bb;stroke-width:12;stroke-linejoin:round}
+.theme-editorial .fl10-pump{fill:#fffdf8;stroke:#8a877d;stroke-width:1.6}
+.theme-editorial .fl10-dim{fill:none;stroke:#3d3d3a;stroke-width:1.6}
+.theme-editorial .fl10-dimdot{fill:none;stroke:#8fb0d0;stroke-width:1.4;stroke-dasharray:3 5}
+
+/* 10d acid bath */
+.theme-editorial .fl10-glass{fill:none;stroke:#8a877d;stroke-width:2.4;stroke-linecap:round}
+.theme-editorial .fl10-liq{stroke:none}
+.theme-editorial .fl10-acid{fill:#f8dfd2}.theme-editorial .fl10-base{fill:#e2ecf6}
+.theme-editorial .fl10-ves{fill:#eaf1f8;stroke:#e6d4a6;stroke-width:10}
+.theme-editorial .fl10-moon{fill:#8a877d}
+
+/* 10e pH and pmf */
+.theme-editorial .fl10-ruler{fill:#fffdf8;stroke:#a8a59a;stroke-width:1.4}
+.theme-editorial .fl10-myth{fill:#f3e2da;stroke:none}
+.theme-editorial .fl10-tick{fill:none;stroke:#8a877d;stroke-width:1.6}
+.theme-editorial .fl10-mark{fill:#4f7cac;stroke:#fffdf8;stroke-width:2}
+.theme-editorial .fl10-dph{fill:#c4d8ec;stroke:#6a8fb5;stroke-width:1.6}
+.theme-editorial .fl10-dpsi-top{fill:#d9d3f0;stroke:none}
+.theme-editorial .fl10-cut{fill:none;stroke:#3d3d3a;stroke-width:1.4;stroke-dasharray:4 4}
+.theme-editorial .fl10-dph-line{fill:none;stroke:#6a8fb5;stroke-width:1.6}
+.theme-editorial .fl10-range{fill:none;stroke:#3d3d3a;stroke-width:1.6;stroke-dasharray:5 5}
+
+/* 10f, 10g, 10h, 10j */
+.theme-editorial .fl10-split{fill:none;stroke:#c9c6bb;stroke-width:1.4;stroke-dasharray:3 6}
+.theme-editorial .fl10-memz{fill:#f6eedb}
+.theme-editorial .fl10-site{fill:#fffdf8;stroke:#c98a3a;stroke-width:2}
+.theme-editorial .fl10-card{fill:#fffdf8;stroke:#c9c6bb;stroke-width:1.4}
+.theme-editorial .fl10-band{fill:#f1e4c6;stroke:#c9b789;stroke-width:1.4}
+.theme-editorial .fl10-door{fill:#f7d6a6;stroke:#c98a3a;stroke-width:1.8}
+
+/* 10i coupled arrows */
+.theme-editorial .fl10-faded{fill:#f3f1ea;stroke:#c9c6bb;stroke-width:1.4}
+.theme-editorial .fl10-hbox{fill:#eaf1f8;stroke:#8fb0d0;stroke-width:1.4}
+.theme-editorial .fl10-down{fill:none;stroke:#4f7cac;stroke-width:10;stroke-linecap:round}
+.theme-editorial .fl10-up{fill:none;stroke:#d97757;stroke-width:10;stroke-linecap:round}
+.theme-editorial .fl10-gear{fill:#fffdf8;stroke:#8c84c4;stroke-width:2;stroke-dasharray:6 4}
+.theme-editorial .fl10-couple{fill:none;stroke:#8c84c4;stroke-width:2;stroke-dasharray:4 5}

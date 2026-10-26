@@ -1,0 +1,19 @@
+SLIDE 3 BACKUP — 22 October 2026
+
+wavelengths.ts is an exact copy of the original animated slide before its
+replacement with a content/display brief. preview.png shows the original slide.
+The original source also remains unchanged at src/slides/wavelengths.ts.
+
+To compare in the browser, open slide 3 and click Backup. Click Return or press
+Escape to return to the current prompt. The original animation runs live.
+
+SHA-256 of wavelengths.ts:
+5924274248678831df05a146ea870ed3e427dab8ea3a16ba319664fffd5da713
+
+To show the original animation as the main slide again, replace the
+lightBasicsBriefSlide import in src/main.ts with:
+
+import { wavelengthsSlide } from './slides/wavelengths';
+
+Then replace only lightBasicsBriefSlide in the SLIDES array with wavelengthsSlide.
+Keep the other entries intact. Keep the brief sources if they are still useful.

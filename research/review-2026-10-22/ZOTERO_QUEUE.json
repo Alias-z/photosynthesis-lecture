@@ -1,0 +1,160 @@
+{
+  "checked": "2026-10-23",
+  "collection": "Photosynthesis",
+  "collection_key": "LHLJBVYZ",
+  "library": "My Library",
+  "library_prefix": "/api/users/0",
+  "tab_mode": "background",
+  "status": "blocked_before_save",
+  "checks": {
+    "connector_ping": "HTTP 200, Zotero 10.0.6",
+    "collection_list": "HTTP 200; destination found",
+    "selected_target": "Photosynthesis selected; editable and files_editable",
+    "collection_items": "Initial request did not return; bounded limit=1 retry timed out after 8 seconds",
+    "native_app": "Zotero UI inspection timed out",
+    "save_clicks": 0
+  },
+  "next_step": "Read the collection and deduplicate by DOI before any Connector save; preserve background tabs and verify parent records and PDF files. Do not treat queued papers as absent or already saved.",
+  "papers": [
+    {
+      "source_id": "npq2026",
+      "doi": "10.1038/s41467-026-74992-z",
+      "url": "https://doi.org/10.1038/s41467-026-74992-z",
+      "status": "not_attempted",
+      "pdf_status": "unverified"
+    },
+    {
+      "source_id": "psii2026",
+      "doi": "10.1111/tpj.70925",
+      "url": "https://doi.org/10.1111/tpj.70925",
+      "status": "not_attempted",
+      "pdf_status": "unverified"
+    },
+    {
+      "source_id": "degen2026",
+      "doi": "10.1038/s41477-026-02374-w",
+      "url": "https://doi.org/10.1038/s41477-026-02374-w",
+      "status": "not_attempted",
+      "pdf_status": "unverified"
+    },
+    {
+      "source_id": "pgr52026",
+      "doi": "10.1016/j.bbabio.2026.149596",
+      "url": "https://doi.org/10.1016/j.bbabio.2026.149596",
+      "status": "not_attempted",
+      "pdf_status": "unverified"
+    },
+    {
+      "source_id": "flv2025",
+      "doi": "10.1111/ppl.70453",
+      "url": "https://doi.org/10.1111/ppl.70453",
+      "status": "not_attempted",
+      "pdf_status": "unverified"
+    },
+    {
+      "source_id": "c4energy2026",
+      "doi": "10.1093/plphys/kiag146",
+      "url": "https://doi.org/10.1093/plphys/kiag146",
+      "status": "not_attempted",
+      "pdf_status": "unverified"
+    },
+    {
+      "source_id": "sharkey2024",
+      "doi": "10.1093/plphys/kiad601",
+      "url": "https://doi.org/10.1093/plphys/kiad601",
+      "status": "not_attempted",
+      "pdf_status": "unverified"
+    },
+    {
+      "source_id": "redox2024",
+      "doi": "10.1093/pcp/pcae013",
+      "url": "https://doi.org/10.1093/pcp/pcae013",
+      "status": "not_attempted",
+      "pdf_status": "unverified"
+    },
+    {
+      "source_id": "photoresp2024",
+      "doi": "10.1111/pce.14949",
+      "url": "https://doi.org/10.1111/pce.14949",
+      "status": "not_attempted",
+      "pdf_status": "unverified"
+    },
+    {
+      "source_id": "c1flux2025",
+      "doi": "10.1038/s41477-025-02091-w",
+      "url": "https://doi.org/10.1038/s41477-025-02091-w",
+      "status": "not_attempted",
+      "pdf_status": "unverified"
+    },
+    {
+      "source_id": "rubisco2024",
+      "doi": "10.1073/pnas.2321050121",
+      "url": "https://doi.org/10.1073/pnas.2321050121",
+      "status": "not_attempted",
+      "pdf_status": "unverified"
+    },
+    {
+      "source_id": "tribulus2024",
+      "doi": "10.1111/pce.15069",
+      "url": "https://doi.org/10.1111/pce.15069",
+      "status": "not_attempted",
+      "pdf_status": "unverified"
+    },
+    {
+      "source_id": "blepharis2025",
+      "doi": "10.1111/nph.70426",
+      "url": "https://doi.org/10.1111/nph.70426",
+      "status": "not_attempted",
+      "pdf_status": "unverified"
+    },
+    {
+      "source_id": "c2reg2025",
+      "doi": "10.1038/s44319-025-00461-1",
+      "url": "https://doi.org/10.1038/s44319-025-00461-1",
+      "status": "not_attempted",
+      "pdf_status": "unverified"
+    },
+    {
+      "source_id": "cbbcam2024",
+      "doi": "10.1016/j.semcdb.2023.07.013",
+      "url": "https://doi.org/10.1016/j.semcdb.2023.07.013",
+      "status": "not_attempted",
+      "pdf_status": "unverified"
+    },
+    {
+      "source_id": "cam2026",
+      "doi": "10.1093/jxb/erag161",
+      "url": "https://doi.org/10.1093/jxb/erag161",
+      "status": "not_attempted",
+      "pdf_status": "unverified"
+    },
+    {
+      "source_id": "respiration2026",
+      "doi": "10.1111/pce.70216",
+      "url": "https://doi.org/10.1111/pce.70216",
+      "status": "not_attempted",
+      "pdf_status": "unverified"
+    },
+    {
+      "source_id": "fvcb2025",
+      "doi": "10.1093/insilicoplants/diaf014",
+      "url": "https://doi.org/10.1093/insilicoplants/diaf014",
+      "status": "not_attempted",
+      "pdf_status": "unverified"
+    },
+    {
+      "source_id": "fvcbHistory2025",
+      "doi": "10.1007/s00425-025-04834-7",
+      "url": "https://doi.org/10.1007/s00425-025-04834-7",
+      "status": "not_attempted",
+      "pdf_status": "unverified"
+    },
+    {
+      "source_id": "walker2026",
+      "doi": "10.1007/s00425-026-04961-9",
+      "url": "https://doi.org/10.1007/s00425-026-04961-9",
+      "status": "not_attempted",
+      "pdf_status": "unverified"
+    }
+  ]
+}

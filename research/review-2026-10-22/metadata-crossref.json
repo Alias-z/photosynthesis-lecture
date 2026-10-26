@@ -1,0 +1,986 @@
+[
+  {
+    "id": "croce2014",
+    "doi": "10.1038/nchembio.1555",
+    "title": "Natural strategies for photosynthetic light harvesting",
+    "author": [
+      {
+        "given": "Roberta",
+        "family": "Croce",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Herbert",
+        "family": "van Amerongen",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "container": [
+      "Nature Chemical Biology"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2014,
+          6,
+          17
+        ]
+      ]
+    },
+    "published-online": {
+      "date-parts": [
+        [
+          2014,
+          6,
+          17
+        ]
+      ]
+    }
+  },
+  {
+    "id": "lhcii2013",
+    "doi": "10.1007/s11120-013-9824-3",
+    "title": "Light harvesting in photosystem II",
+    "author": [
+      {
+        "given": "Herbert",
+        "family": "van Amerongen",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Roberta",
+        "family": "Croce",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "container": [
+      "Photosynthesis Research"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2013,
+          4,
+          18
+        ]
+      ]
+    },
+    "published-online": {
+      "date-parts": [
+        [
+          2013,
+          4,
+          18
+        ]
+      ]
+    }
+  },
+  {
+    "id": "lhci2013",
+    "doi": "10.1007/s11120-013-9838-x",
+    "title": "Light-harvesting in photosystem I",
+    "author": [
+      {
+        "given": "Roberta",
+        "family": "Croce",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Herbert",
+        "family": "van Amerongen",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "container": [
+      "Photosynthesis Research"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2013,
+          5,
+          4
+        ]
+      ]
+    },
+    "published-online": {
+      "date-parts": [
+        [
+          2013,
+          5,
+          4
+        ]
+      ]
+    }
+  },
+  {
+    "id": "croce2020",
+    "error": "HTTP Error 429: Too Many Requests"
+  },
+  {
+    "id": "kromdijk2022",
+    "doi": "10.1111/jipb.13206",
+    "title": "Here comes the sun: How optimization of photosynthetic light reactions can boost crop yields",
+    "author": [
+      {
+        "ORCID": "https://orcid.org/0000-0001-6230-9626",
+        "authenticated-orcid": false,
+        "given": "Julia",
+        "family": "Walter",
+        "sequence": "first",
+        "affiliation": [
+          {
+            "name": "Department of Plant Sciences University of Cambridge Cambridge CB2 3EA UK"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0003-4423-4100",
+        "authenticated-orcid": false,
+        "given": "Johannes",
+        "family": "Kromdijk",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Department of Plant Sciences University of Cambridge Cambridge CB2 3EA UK"
+          },
+          {
+            "name": "Carl R Woese Institute for Genomic Biology University of Illinois Urbana‐Champaign Urbana Illinois 61801 USA"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "container": [
+      "Journal of Integrative Plant Biology"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2022,
+          2
+        ]
+      ]
+    },
+    "published-online": {
+      "date-parts": [
+        [
+          2022,
+          2,
+          26
+        ]
+      ]
+    }
+  },
+  {
+    "id": "kramer2011",
+    "doi": "10.1104/pp.110.166652",
+    "title": "The Importance of Energy Balance in Improving Photosynthetic Productivity\n ",
+    "author": [
+      {
+        "given": "David M.",
+        "family": "Kramer",
+        "sequence": "first",
+        "affiliation": [
+          {
+            "name": "Biochemistry and Molecular Biology and Department of Energy-Plant Research Laboratory, Michigan State University, East Lansing, Michigan 48824 (D.M.K.); Plant Science Division, Research School of Biology, Australian National University, Canberra, Australian Capital Territory 0200, Australia (J.R.E.)"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "John R.",
+        "family": "Evans",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Biochemistry and Molecular Biology and Department of Energy-Plant Research Laboratory, Michigan State University, East Lansing, Michigan 48824 (D.M.K.); Plant Science Division, Research School of Biology, Australian National University, Canberra, Australian Capital Territory 0200, Australia (J.R.E.)"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "container": [
+      "Plant Physiology"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2010,
+          11,
+          15
+        ]
+      ]
+    },
+    "published-online": {
+      "date-parts": [
+        [
+          2010,
+          11,
+          15
+        ]
+      ]
+    }
+  },
+  {
+    "id": "ndh2017",
+    "doi": "10.1074/jbc.M116.770792",
+    "title": "The higher plant plastid NAD(P)H dehydrogenase-like complex (NDH) is a high efficiency proton pump that increases ATP production by cyclic electron flow",
+    "author": [
+      {
+        "given": "Deserah D.",
+        "family": "Strand",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Nicholas",
+        "family": "Fisher",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "David M.",
+        "family": "Kramer",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "container": [
+      "Journal of Biological Chemistry"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2017,
+          7
+        ]
+      ]
+    },
+    "published-online": null
+  },
+  {
+    "id": "asada1999",
+    "error": "HTTP Error 429: Too Many Requests"
+  },
+  {
+    "id": "fvcb2025",
+    "doi": "10.1093/insilicoplants/diaf014",
+    "title": "Widely Used Variants of the Farquhar-von-Caemmerer-Berry Model Can Cause Errors in Parameter Estimation",
+    "author": [
+      {
+        "ORCID": "https://orcid.org/0000-0002-4912-9783",
+        "authenticated-orcid": false,
+        "given": "Edward B",
+        "family": "Lochocki",
+        "sequence": "first",
+        "affiliation": [
+          {
+            "name": "Carl R. Woese Institute for Genomic Biology, University of Illinois, Urbana–Champaign , Urbana, IL ,",
+            "place": [
+              "USA"
+            ]
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0002-7025-3906",
+        "authenticated-orcid": false,
+        "given": "Justin M",
+        "family": "McGrath",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Carl R. Woese Institute for Genomic Biology, University of Illinois, Urbana–Champaign , Urbana, IL ,",
+            "place": [
+              "USA"
+            ]
+          },
+          {
+            "name": "Plant Biology Department, University of Illinois, Urbana–Champaign , Urbana, IL ,",
+            "place": [
+              "USA"
+            ]
+          },
+          {
+            "name": "USDA ARS Global Change and Photosynthesis Research Unit , Urbana, IL ,",
+            "place": [
+              "USA"
+            ]
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "container": [
+      "in silico Plants"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2025,
+          8,
+          22
+        ]
+      ]
+    },
+    "published-online": {
+      "date-parts": [
+        [
+          2025,
+          8,
+          22
+        ]
+      ]
+    }
+  },
+  {
+    "id": "fvcbHistory2025",
+    "doi": "10.1007/s00425-025-04834-7",
+    "title": "A perspective: A biochemical model of photosynthetic CO2 assimilation in leaves of C3 species (Planta 149, 78–90)",
+    "author": [
+      {
+        "ORCID": "https://orcid.org/0000-0002-8366-2071",
+        "authenticated-orcid": false,
+        "given": "Susanne",
+        "family": "von Caemmerer",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Joseph A.",
+        "family": "Berry",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Graham D.",
+        "family": "Farquhar",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "container": [
+      "Planta"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2025,
+          10,
+          6
+        ]
+      ]
+    },
+    "published-online": {
+      "date-parts": [
+        [
+          2025,
+          10,
+          6
+        ]
+      ]
+    }
+  },
+  {
+    "id": "sage2012",
+    "doi": "10.1146/annurev-arplant-042811-105511",
+    "title": "Photorespiration and the Evolution of C<sub>4</sub>Photosynthesis",
+    "author": [
+      {
+        "given": "Rowan F.",
+        "family": "Sage",
+        "sequence": "first",
+        "affiliation": [
+          {
+            "name": "Department of Ecology and Evolutionary Biology, University of Toronto, Toronto, Ontario M5S3B2, Canada;"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Tammy L.",
+        "family": "Sage",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Department of Ecology and Evolutionary Biology, University of Toronto, Toronto, Ontario M5S3B2, Canada;"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Ferit",
+        "family": "Kocacinar",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Faculty of Forestry, Kahramanmaraş Sütçü İmam University, 46100 Kahramanmaraş, Turkey"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "container": [
+      "Annual Review of Plant Biology"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2012,
+          6,
+          2
+        ]
+      ]
+    },
+    "published-online": null
+  },
+  {
+    "id": "water1941",
+    "doi": "10.1021/ja01848a512",
+    "title": "Heavy Oxygen (O<sup>18</sup>) as a Tracer in the Study of Photosynthesis",
+    "author": [
+      {
+        "given": "Samuel",
+        "family": "Ruben",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Merle",
+        "family": "Randall",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Martin",
+        "family": "Kamen",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "James Logan",
+        "family": "Hyde",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "container": [
+      "Journal of the American Chemical Society"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          1941,
+          3
+        ]
+      ]
+    },
+    "published-online": {
+      "date-parts": [
+        [
+          2002,
+          5,
+          1
+        ]
+      ]
+    }
+  },
+  {
+    "id": "kok1970",
+    "doi": "10.1111/j.1751-1097.1970.tb06017.x",
+    "title": "COOPERATION OF CHARGES IN PHOTOSYNTHETIC O\n                    <sub>2</sub>\n                    EVOLUTION–I. A LINEAR FOUR STEP MECHANISM",
+    "author": [
+      {
+        "given": "BESSEL",
+        "family": "KOK",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "BLISS",
+        "family": "FORBUSH",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "MARION",
+        "family": "McGLOIN",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "container": [
+      "Photochemistry and Photobiology"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          1970,
+          6
+        ]
+      ]
+    },
+    "published-online": {
+      "date-parts": [
+        [
+          2008,
+          1,
+          2
+        ]
+      ]
+    }
+  },
+  {
+    "id": "bassham1954",
+    "doi": "10.1021/ja01636a012",
+    "title": "The Path of Carbon in Photosynthesis. XXI. The Cyclic Regeneration of Carbon Dioxide Acceptor<sup>1</sup>",
+    "author": [
+      {
+        "given": "J. A.",
+        "family": "Bassham",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "A. A.",
+        "family": "Benson",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Lorel D.",
+        "family": "Kay",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Anne Z.",
+        "family": "Harris",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "A. T.",
+        "family": "Wilson",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "M.",
+        "family": "Calvin",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "container": [
+      "Journal of the American Chemical Society"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          1954,
+          4
+        ]
+      ]
+    },
+    "published-online": {
+      "date-parts": [
+        [
+          2002,
+          5,
+          1
+        ]
+      ]
+    }
+  },
+  {
+    "id": "oxygenase1971",
+    "error": "HTTP Error 429: Too Many Requests"
+  },
+  {
+    "id": "gdc1988",
+    "doi": "10.1007/BF00393064",
+    "title": "Glycine decarboxylase is confined to the bundle-sheath cells of leaves of C3?C4 intermediate species",
+    "author": [
+      {
+        "given": "Christopher M.",
+        "family": "Hylton",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Stephen",
+        "family": "Rawsthorne",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Alison M.",
+        "family": "Smith",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "D. Alan",
+        "family": "Jones",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Harold W.",
+        "family": "Woolhouse",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "container": [
+      "Planta"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          1988,
+          10
+        ]
+      ]
+    },
+    "published-online": null
+  },
+  {
+    "id": "hatch1966",
+    "doi": "10.1042/bj1010103",
+    "title": "Photosynthesis by sugar-cane leaves. A new carboxylation reaction and the pathway of sugar formation",
+    "author": [
+      {
+        "given": "MD",
+        "family": "Hatch",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "CR",
+        "family": "Slack",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "container": [
+      "Biochemical Journal"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          1966,
+          10,
+          1
+        ]
+      ]
+    },
+    "published-online": null
+  },
+  {
+    "id": "fvcb1980",
+    "doi": "10.1007/BF00386231",
+    "title": "A biochemical model of photosynthetic CO2 assimilation in leaves of C3 species",
+    "author": [
+      {
+        "given": "G. D.",
+        "family": "Farquhar",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "S.",
+        "family": "von Caemmerer",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "J. A.",
+        "family": "Berry",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "container": [
+      "Planta"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          1980,
+          6
+        ]
+      ]
+    },
+    "published-online": null
+  },
+  {
+    "id": "walker2026",
+    "error": "HTTP Error 429: Too Many Requests"
+  }
+]

@@ -1,0 +1,45 @@
+/* Slide 2 figure styles, scoped under .theme-editorial and prefixed .f2- */
+
+/* Light as colour: a wave in its own colour. */
+.theme-editorial .f2-w{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .f2-wb{stroke:#2350e6}.theme-editorial .f2-hb{fill:#2350e6}
+.theme-editorial .f2-wg{stroke:#2a963a}.theme-editorial .f2-hg{fill:#2a963a}
+.theme-editorial .f2-wr{stroke:#c8361e}.theme-editorial .f2-hr{fill:#c8361e}
+.theme-editorial .f2-w.f2-faint{stroke-width:2;opacity:.75}
+
+/* Cards and pointers laid on the photograph. */
+.theme-editorial .f2-card{fill:#fffdf8;fill-opacity:.95}
+.theme-editorial .f2-lead{fill:none;stroke:#fffdf8;stroke-width:2.2;stroke-linecap:round}
+.theme-editorial .f2-lead-sh{fill:none;stroke:#1f2a3a;stroke-opacity:.25;stroke-width:4.6;stroke-linecap:round}
+.theme-editorial .f2-ring{fill:none;stroke:#fffdf8;stroke-width:3}
+.theme-editorial .f2-ring-sh{fill:none;stroke:#1f2a3a;stroke-opacity:.25;stroke-width:5.4}
+.theme-editorial .f2-ring-dot{fill:#fffdf8}
+.theme-editorial .f2-strip{fill:#fffdf8;fill-opacity:.7}
+
+/* Illustrated parts. */
+.theme-editorial .f2-sun{fill:#f7c948;stroke:#e3a51c;stroke-width:2}
+.theme-editorial .f2-ray{fill:none;stroke:#e3a51c;stroke-width:3;stroke-linecap:round}
+.theme-editorial .f2-leaf{fill:#cfe3b4;stroke:#6f9a5a;stroke-width:2;stroke-linejoin:round}
+.theme-editorial .f2-vein{fill:none;stroke:#8fb07a;stroke-width:1.6;stroke-linecap:round}
+.theme-editorial .f2-stalk{fill:none;stroke:#6f9a5a;stroke-width:3;stroke-linecap:round}
+.theme-editorial .f2-eyeball{fill:#fffdf8;stroke:#3d3d3a;stroke-width:2.2;stroke-linejoin:round}
+.theme-editorial .f2-iris{fill:#8a877d}.theme-editorial .f2-pupil{fill:#141413}.theme-editorial .f2-glint{fill:#fffdf8}
+.theme-editorial .f2-atom-N{fill:#e4e2ea;stroke:#8f8aa3}.theme-editorial .f2-atom-O{fill:#f4cc4f;stroke:#b8902a}
+.theme-editorial .f2-exc{fill:#f0a316}
+.theme-editorial .f2-div{fill:none;stroke:#c9c6bb;stroke-width:1.4;stroke-dasharray:2 6;stroke-linecap:round}
+.theme-editorial .f2-curve{fill:none;stroke:#3d3d3a;stroke-width:2;stroke-linejoin:round}
+.theme-editorial .f2-base{fill:none;stroke:#8a877d;stroke-width:1.4}
+.theme-editorial .f2-qdot{fill:#141413}
+
+/* Text. */
+.theme-editorial .fig text.f2-h{font-size:27px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.f2-s{font-size:22px;fill:#3d3d3a}
+.theme-editorial .fig text.f2-cap{font-size:23px;fill:#3d3d3a}
+.theme-editorial .fig .f2-cap-b,.theme-editorial .fig .f2-tag-b,.theme-editorial .fig .f2-ans-b{font-weight:600;fill:#141413}
+.theme-editorial .fig text.f2-tag{font-size:22px;fill:#3d3d3a}
+.theme-editorial .fig text.f2-axis{font-size:17px;fill:#6b6a64}
+.theme-editorial .fig text.f2-atom-t{font-size:15px;font-weight:700;fill:#3d3d3a}
+.theme-editorial .fig text.f2-q{font:italic 400 27px Newsreader,Georgia,serif;fill:#6b6a64}
+.theme-editorial .fig text.f2-qmark{font:600 26px Newsreader,Georgia,serif;fill:#fffdf8}
+.theme-editorial .fig text.f2-ans{font-size:26px;fill:#141413}
+.theme-editorial .fig text.f2-qbig{font:500 84px Newsreader,Georgia,serif;fill:#141413}

@@ -1,0 +1,78 @@
+/* Slide L01 figure styles, scoped under .theme-editorial and prefixed .fl01- */
+
+/* Equation terms: light amber, water and O₂ blue, carbon brown; operators quiet. */
+.theme-editorial .fig text.fl01-eq{font-weight:600;letter-spacing:-.005em}
+.theme-editorial .fig text.fl01-l,.theme-editorial .fig .fl01-l{fill:#a5670a}
+.theme-editorial .fig text.fl01-w,.theme-editorial .fig .fl01-w{fill:#2a62a0}
+.theme-editorial .fig text.fl01-c,.theme-editorial .fig .fl01-c{fill:#7a4a20}
+.theme-editorial .fig text.fl01-o{fill:#8a877d;font-weight:400}
+.theme-editorial .fig text.fl01-dark{fill:#3d3d3a}
+.theme-editorial .fig .fl01-sb{font-size:68%;baseline-shift:-.24em}
+
+/* Arrows and guides. */
+.theme-editorial .fl01-ar{fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fl01-ar-l{stroke:#e39a12}.theme-editorial .fl01-hd-l{fill:#e39a12}
+.theme-editorial .fl01-ar-w{stroke:#3f7fc0}.theme-editorial .fl01-hd-w{fill:#3f7fc0}
+.theme-editorial .fl01-ar-c{stroke:#8b5a2b}.theme-editorial .fl01-hd-c{fill:#8b5a2b}
+.theme-editorial .fl01-ar-k{stroke:#3d3d3a}.theme-editorial .fl01-hd-k{fill:#3d3d3a}
+.theme-editorial .fl01-ar.fl01-main{stroke-width:3.2}
+.theme-editorial .fl01-ar.fl01-loop{stroke:#8a877d;stroke-width:2.2}
+.theme-editorial .fl01-ar.fl01-cyc{stroke-width:3}
+.theme-editorial .fl01-ar.fl01-handover{stroke-width:3.2}
+.theme-editorial .fl01-ar.fl01-axis{stroke:#8a877d;stroke-width:1.8}
+.theme-editorial .fl01-brk{fill:none;stroke:#a8a59a;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fl01-link{fill:none;stroke:#3d3d3a;stroke-width:2.2;stroke-dasharray:6 6}
+.theme-editorial .fl01-level{fill:none;stroke:#c9c6bb;stroke-width:1.4;stroke-dasharray:3 6}
+.theme-editorial .fl01-cutline{fill:none;stroke:#c9c6bb;stroke-width:1.4;stroke-dasharray:2 7;stroke-linecap:round}
+.theme-editorial .fl01-e{fill:none;stroke:#c8361e;stroke-width:2.6;stroke-dasharray:7 5;stroke-linecap:round}
+
+/* Icons. */
+.theme-editorial .fl01-drop{fill:#d4e5f6;stroke:#3f7fc0;stroke-width:2}
+.theme-editorial .fl01-ow{fill:#9fc3e8;stroke:#2f6aa8;stroke-width:1.4}
+.theme-editorial .fl01-hw{fill:#fffdf8;stroke:#7ea6d0;stroke-width:1.3}
+.theme-editorial .fl01-cb{fill:#8b5a2b;stroke:#5e3b19;stroke-width:1.4}
+.theme-editorial .fl01-oc{fill:#ead7c0;stroke:#b08b63;stroke-width:1.3}
+.theme-editorial .fl01-bond{fill:none;stroke:#5e3b19;stroke-width:3}
+.theme-editorial .fl01-ring{fill:#f1e4d5;stroke:#8b5a2b;stroke-width:2.6;stroke-linejoin:round}
+.theme-editorial .fl01-loaf{fill:#e3ad66;stroke:#a8672a;stroke-width:2;stroke-linejoin:round}
+.theme-editorial .fl01-cut{fill:none;stroke:#a8672a;stroke-width:2;stroke-linecap:round}
+.theme-editorial .fl01-grain{fill:#e9c77a;stroke:#a8803a;stroke-width:1.4}
+.theme-editorial .fl01-awn{fill:none;stroke:#c2a35e;stroke-width:1.3;stroke-linecap:round}
+.theme-editorial .fl01-stem{fill:none;stroke:#a8933f;stroke-width:3;stroke-linecap:round}
+.theme-editorial .fl01-batt{fill:#fffdf8;stroke:#3d3d3a;stroke-width:2}
+.theme-editorial .fl01-batt-nub{fill:#3d3d3a}
+.theme-editorial .fl01-cell{fill:#f0a316}
+.theme-editorial .fl01-thy{fill:#c5dfb0;stroke:#6f9a5a;stroke-width:1.6}
+.theme-editorial .fl01-env{fill:#f3f6ec;stroke:#7d9a64;stroke-width:2}
+.theme-editorial .fl01-env-in{fill:none;stroke:#a9bf94;stroke-width:1.4}
+
+/* Panels and rows. */
+.theme-editorial .fl01-panel{fill:#fffdf8;stroke:#e0ddd2;stroke-width:1.4}
+.theme-editorial .fl01-station{stroke-width:1.6}
+.theme-editorial .fl01-st-1{fill:#eef4e7;stroke:#c3d6b0}.theme-editorial .fl01-st-2{fill:#f5ede3;stroke:#dcc8b0}
+.theme-editorial .fl01-row{stroke:none}
+.theme-editorial .fl01-row-1{fill:#f6f1e3}.theme-editorial .fl01-row-2{fill:#f3ece4}
+.theme-editorial .fl01-none{fill:#c9c6bb}
+.theme-editorial .fl01-pill{fill:#fffdf8;stroke:#d8d4c8;stroke-width:1.4}
+.theme-editorial .fl01-num{fill:#3d3d3a}
+
+/* Text. */
+.theme-editorial .fig text.fl01-band{font-size:24px;font-weight:600;letter-spacing:.09em;fill:#141413}
+.theme-editorial .fig .fl01-band-s{font-size:21px;font-weight:400;letter-spacing:0;fill:#6b6a64}
+.theme-editorial .fig text.fl01-txt{font-size:24px;fill:#3d3d3a}
+.theme-editorial .fig text.fl01-b{font-weight:600;fill:#141413}
+.theme-editorial .fig text.fl01-hook{font:italic 400 27px Newsreader,Georgia,serif;fill:#3d3d3a}
+.theme-editorial .fig text.fl01-word{font:400 80px Newsreader,Georgia,serif;letter-spacing:-.01em;fill:#141413}
+.theme-editorial .fig text.fl01-gloss{font:italic 400 23px Newsreader,Georgia,serif;fill:#6b6a64}
+.theme-editorial .fig text.fl01-name{font-size:22px;fill:#6b6a64}
+.theme-editorial .fig text.fl01-name.fl01-dark{fill:#3d3d3a}
+.theme-editorial .fig text.fl01-term{font-size:25px;font-weight:600}
+.theme-editorial .fig text.fl01-plus{font-size:30px;fill:#8a877d}
+.theme-editorial .fig text.fl01-cell-t{font-size:22px;fill:#3d3d3a}
+.theme-editorial .fig text.fl01-q{font-size:24px;fill:#3d3d3a}
+.theme-editorial .fig text.fl01-num-t{font-size:17px;font-weight:700;fill:#fffdf8}
+.theme-editorial .fig text.fl01-e-t{font-size:22px;font-weight:700;fill:#c8361e}
+/* The equation's reaction arrow, with light written over it. */
+.theme-editorial .fl01-eq-ar{fill:none;stroke:#3d3d3a;stroke-linecap:round}
+.theme-editorial .fl01-eq-hd{fill:#3d3d3a}
+.theme-editorial .fig text.fl01-eq-light{font-weight:600}

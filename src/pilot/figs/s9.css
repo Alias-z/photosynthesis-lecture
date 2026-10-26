@@ -1,0 +1,45 @@
+/* Slide 9 figure styles, scoped under .theme-editorial and prefixed .f9- */
+.theme-editorial .f9 text.atom-t{font-size:15px}
+.theme-editorial .f9 text.f9-e{fill:#b8321c;font-weight:700}
+.theme-editorial .f9 text.f9-ht{font-size:15px;font-weight:700;fill:#3d6a99}
+.theme-editorial .f9 text.f9-b{font-weight:600;fill:#141413}
+.theme-editorial .f9 text.f9-it{font:italic 400 24px Newsreader,Georgia,serif;fill:#6b6a64}
+.theme-editorial .f9 text.f9-num-t{font-size:18px;font-weight:700;fill:#fffdf8}
+.theme-editorial .f9 text.f9-blue{fill:#3d6a99}
+.theme-editorial .f9 text.f9-amber{fill:#b07208}
+.theme-editorial .f9 text.f9-e-in{font-size:22px;font-weight:700;fill:#b8321c}
+
+.theme-editorial .f9-ant{fill:#e7f1de;stroke:#9cbd88;stroke-width:1.5}
+.theme-editorial .f9-fe{fill:none;stroke:#c8361e;stroke-width:4;stroke-dasharray:11 7;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .f9-fe.f9-thin{stroke-width:2.8;stroke-dasharray:8 6}
+.theme-editorial .f9-fh{fill:none;stroke:#4f7cac;stroke-width:4.5;stroke-dasharray:.5 10;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .f9-fh.f9-thin{stroke-width:3.4;stroke-dasharray:.5 8}
+.theme-editorial .f9-hd-e{fill:#c8361e}.theme-editorial .f9-hd-h{fill:#4f7cac}.theme-editorial .f9-hd-k{fill:#3d3d3a}
+.theme-editorial .f9-k{fill:none;stroke:#3d3d3a;stroke-width:2.4;stroke-linecap:round}
+.theme-editorial .f9-lumen{fill:#eaf1f8}
+.theme-editorial .f9-num{fill:#3d3d3a}
+.theme-editorial .f9-div{fill:none;stroke:#c9c6bb;stroke-width:1.4;stroke-dasharray:2 6}
+
+/* 9B lifts and dam */
+.theme-editorial .f9-shaft{fill:#eef5e7;stroke:#6f9a5a;stroke-width:2}
+.theme-editorial .f9-rail{fill:none;stroke:#b7d1a6;stroke-width:1.4}
+.theme-editorial .f9-car{fill:#fffdf8;stroke:#6f9a5a;stroke-width:2}
+.theme-editorial .f9-chute{fill:none;stroke:#e6dcc3;stroke-width:22;stroke-linecap:round}
+.theme-editorial .f9-ground{fill:none;stroke:#b9b5aa;stroke-width:2}
+.theme-editorial .f9-res{fill:#dce8f4}
+.theme-editorial .f9-res-lo{fill:#eaf1f8}
+.theme-editorial .f9-surf{fill:none;stroke:#8fb0d0;stroke-width:2}
+.theme-editorial .f9-dam{fill:#ebe5d5;stroke:#a8a59a;stroke-width:1.6}
+.theme-editorial .f9-paddle{fill:#f7d6a6;stroke:#c98a3a;stroke-width:1.6}
+
+/* 9C axis */
+.theme-editorial .f9-axis{fill:none;stroke:#8a877d;stroke-width:1.8}
+
+/* 9D machine casing: a membrane ring */
+.theme-editorial .f9-case{fill:#fffdf8;stroke:#f1e4c6;stroke-width:24}
+.theme-editorial .f9-case-dots{fill:none;stroke:#d8c79c;stroke-width:9;stroke-dasharray:0 13;stroke-linecap:round}
+.theme-editorial .f9-row{fill:none;stroke:#e3dfd3;stroke-width:1.4}
+/* own note style: the shared .note class is hidden in the solo screenshot view */
+.theme-editorial .f9 text.f9-note{font:italic 400 26px Newsreader,Georgia,serif;fill:#6b6a64}
+.theme-editorial .f9-key-e{fill:none;stroke:#c8361e;stroke-width:4;stroke-dasharray:11 7;stroke-linecap:round}
+.theme-editorial .f9-key-h{fill:none;stroke:#4f7cac;stroke-width:4.5;stroke-dasharray:.5 10;stroke-linecap:round}

@@ -1,0 +1,29 @@
+/* Figure gallery: a grid of variants per slide with multi-select and notes. */
+#gallery{max-width:1680px;margin:0 auto;padding:24px 24px 80px}
+.g-top{position:sticky;top:0;z-index:5;display:flex;align-items:flex-end;justify-content:space-between;gap:20px;padding:14px 0 12px;background:var(--ground)}
+.g-top h1{margin:0;font:400 32px/1.2 Newsreader,Georgia,serif}
+.g-top p{margin:6px 0 0;font-size:15px;color:var(--ink2)}
+.g-status{font-size:14px;color:var(--ink2);white-space:nowrap}
+.g-slide{margin-top:34px}
+.g-slide h2{margin:0 0 12px;font:500 20px/1.3 var(--sans)}
+.g-slide h2 span{color:var(--ink2);font-weight:400;margin-right:6px}
+.g-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.g-card{background:#faf9f5;border-radius:14px;box-shadow:0 0 0 1px rgba(31,42,58,.14);overflow:hidden;transition:box-shadow .15s}
+.g-card.picked{box-shadow:0 0 0 3px #a9532f}
+.g-open{display:block;width:100%;padding:10px;border:0;cursor:zoom-in;background:#faf9f5;user-select:none}
+.g-open .fig{margin:0;aspect-ratio:4/3}
+.g-lead .g-open .fig{aspect-ratio:16/9}
+.g-open .fig svg{display:block;width:100%;height:100%}
+.g-pick{display:flex;align-items:center;gap:8px;padding:8px 12px 12px;font-size:14px;color:var(--ink);cursor:pointer}
+.g-pick input{width:18px;height:18px;accent-color:#a9532f}
+.g-anim{margin-left:auto;font-size:12px;padding:2px 8px;border-radius:999px;background:#fbe3d3;color:#8a4126}
+.g-note{display:block;width:100%;box-sizing:border-box;margin-top:12px;padding:10px 12px;font:15px/1.4 var(--sans);border:1px solid #c9c6bb;border-radius:10px;background:#fffdf8;resize:vertical}
+.g-modal{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;background:rgba(30,30,28,.72)}
+.g-modal[hidden]{display:none}
+.g-stage{position:relative;flex:1;margin:20px 20px 0;overflow:hidden;user-select:none}
+.g-stage .plate{position:absolute;top:0;width:1600px;height:900px;transform-origin:0 0;box-shadow:0 20px 40px -20px rgba(0,0,0,.5)}
+.g-bar{display:flex;align-items:center;gap:18px;padding:12px 20px;color:#f3f1ea;font-size:15px}
+.g-bar .g-pick{color:#f3f1ea;padding:0}
+.g-modal-name{flex:1}
+.g-close{font:500 15px/1 var(--sans);padding:9px 16px;border:1px solid #c9c6bb;border-radius:8px;background:transparent;color:#f3f1ea;cursor:pointer}
+.g-draft{margin-left:10px;font:italic 400 14px/1 var(--sans);color:#8a877d}

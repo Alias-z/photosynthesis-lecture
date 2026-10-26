@@ -1,0 +1,46 @@
+/* Slide C5 figure styles, scoped under .theme-editorial and prefixed .fc5- */
+
+/* FvCB limitation colours: Ac Rubisco (teal), Aj electron transport (blue), Ap triose-phosphate use (purple). */
+.theme-editorial .fc5 text.fc5-c{fill:#2c7a6a}
+.theme-editorial .fc5 text.fc5-j{fill:#3d6a99}
+.theme-editorial .fc5 text.fc5-p{fill:#7a5aa6}
+.theme-editorial .fc5 text.fc5-pr,.theme-editorial .fc5 .fc5-pr-t{fill:#a9532f}
+.theme-editorial .fc5 text.lab-b{fill:#141413}
+.theme-editorial .fc5 text.lab-b.fc5-c{fill:#2c7a6a}
+.theme-editorial .fc5 text.lab-b.fc5-j{fill:#3d6a99}
+.theme-editorial .fc5 text.lab-b.fc5-p{fill:#7a5aa6}
+.theme-editorial .fc5 text.lab-b.fc5-pr{fill:#a9532f}
+
+.theme-editorial .fc5-br{fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fc5-br-c{stroke:#2c7a6a}.theme-editorial .fc5-br-j{stroke:#3d6a99}.theme-editorial .fc5-br-p{stroke:#7a5aa6}
+
+.theme-editorial .fc5-bond{fill:none;stroke:#3d3d3a;stroke-width:3;stroke-linecap:round}
+.theme-editorial .fc5-bond-pr{stroke:#d97757}
+
+/* wheel */
+.theme-editorial .fc5-track{fill:none;stroke:#ebe7dc;stroke-width:18}
+
+/* doors */
+.theme-editorial .fc5-door{fill:#fffdf8;stroke:#8a877d;stroke-width:1.6}
+
+/* valves and the response curve */
+.theme-editorial .fc5-band{stroke:none}
+.theme-editorial .fc5-band-c{fill:#e3f0eb}.theme-editorial .fc5-band-j{fill:#e6eef7}.theme-editorial .fc5-band-p{fill:#efe9f7}
+.theme-editorial .fc5-pipe{fill:#f3f0e7;stroke:#a8a59a;stroke-width:1.6}
+.theme-editorial .fc5-stem{fill:none;stroke:#6b6a64;stroke-width:3;stroke-linecap:round}
+.theme-editorial .fc5-valve{stroke-width:2;stroke-linejoin:round}
+.theme-editorial .fc5-valve-c{fill:#bfe0d6;stroke:#2c7a6a}.theme-editorial .fc5-valve-j{fill:#c9daee;stroke:#3d6a99}.theme-editorial .fc5-valve-p{fill:#dccff0;stroke:#7a5aa6}
+.theme-editorial .fc5-cv-c{stroke:#2c7a6a;stroke-width:4.2}.theme-editorial .fc5-cv-j{stroke:#3d6a99;stroke-width:4.2}.theme-editorial .fc5-cv-p{stroke:#7a5aa6;stroke-width:4.2}
+.theme-editorial .curve.fc5-ghost{stroke-width:2;stroke-dasharray:6 7;opacity:.55}
+
+/* assembly line */
+.theme-editorial .fc5-belt{fill:#ece9df;stroke:#a8a59a;stroke-width:1.5}
+.theme-editorial .fc5-roller{fill:#fffdf8;stroke:#a8a59a;stroke-width:1.3}
+.theme-editorial .fc5-box{fill:#fffdf8;stroke:#a8a59a;stroke-width:1.4}
+.theme-editorial .fc5-box-out{fill:#fbeee6;stroke:#d97757}
+.theme-editorial .fc5 text.fc5-note{font:italic 400 22px Newsreader,Georgia,serif;fill:#6b6a64}
+.theme-editorial .fc5 text.pl.fc5-pr{fill:#a9532f}
+.theme-editorial .fc5-gone{fill:none;stroke:#a8a59a;stroke-width:1.6;stroke-dasharray:5 5}
+.theme-editorial .fc5-chev{fill:none;stroke:#a8a59a;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fc5-hopper{fill:#f3f0e7;stroke:#a8a59a;stroke-width:1.5;stroke-linejoin:round}
+.theme-editorial .fc5 text.fc5-flow{fill:#6b6a64}

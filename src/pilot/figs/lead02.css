@@ -1,0 +1,22 @@
+/* Slide 2 lead page, scoped under .theme-editorial and prefixed .fld02- (sun, leaf and eye styles come from s2.css) */
+
+/* White sunlight: the warm glow around a shaft's white core. */
+.theme-editorial .fld02-glow{fill:#f2c94c;fill-opacity:.55}
+.theme-editorial .fld02-glow-sky{fill:#fffdf6;fill-opacity:.7}
+.theme-editorial .fld02-core{fill:#fffdf6}
+
+/* Scene parts. */
+.theme-editorial .fld02-seam{fill:none;stroke:#c9c6bb;stroke-width:1.6;stroke-dasharray:2 8;stroke-linecap:round}
+.theme-editorial .fld02-dash{fill:none;stroke:#a8a59a;stroke-width:2.6;stroke-dasharray:3 10;stroke-linecap:round}
+.theme-editorial .fld02-box{fill:#2b2a27}
+.theme-editorial .fld02-out{fill:none;stroke-width:6;stroke-linecap:round}
+.theme-editorial .fld02-out-b{stroke:#2350e6}
+.theme-editorial .fld02-out-g{stroke:#2a963a}
+
+/* Text. */
+.theme-editorial .lead-fig text.fld02-prompt{font-size:30px;fill:#6b6a64}
+.theme-editorial .lead-fig text.fld02-lab{font-size:28px;fill:#3d3d3a}
+.theme-editorial .lead-fig text.fld02-lab-w{font-size:28px;font-weight:600;fill:#fffdf8}
+.theme-editorial .lead-fig text.fld02-credit{font-size:16px;fill:#8a877d}
+.theme-editorial .lead-fig text.fld02-qm{font-family:Newsreader,Georgia,serif;font-weight:500;fill:#8a877d}
+.theme-editorial .lead-fig text.fld02-qm-w{fill:#fffdf8}

@@ -1,0 +1,62 @@
+/* Slide C04 figure styles, scoped under .theme-editorial and prefixed .fc04- (shared parts come from c03.css). */
+
+/* Equation terms, coloured as in L01: carbon brown, water and O₂ blue, light amber; operators quiet. */
+.theme-editorial .fig text.fc04-eq{font-size:30px;font-weight:600}
+.theme-editorial .fig text.fc04-c{fill:#7a4a20}
+.theme-editorial .fig text.fc04-w{fill:#2a62a0}
+.theme-editorial .fig text.fc04-l{fill:#a5670a}
+.theme-editorial .fig text.fc04-o{fill:#8a877d;font-weight:400}
+.theme-editorial .fig text.fc04-ghost-t{fill:#8a877d}
+.theme-editorial .fc04-book{fill:none;stroke:#a9532f;stroke-width:2;stroke-dasharray:7 6}
+
+/* Sugars */
+.theme-editorial .fc04-ring{fill:#f1e4d5;stroke:#8b5a2b;stroke-width:2.2;stroke-linejoin:round}
+.theme-editorial .fc04-link{fill:none;stroke:#8b5a2b;stroke-width:3;stroke-linecap:round}
+.theme-editorial .fc04-ghost{fill:#f3f1ea;stroke:#b0ada3;stroke-dasharray:6 5}
+.theme-editorial .fc04-cyc{fill:none;stroke:#3d3d3a;stroke-width:3;stroke-linecap:round}
+
+/* Counted costs: ATP discs, NADPH squares */
+.theme-editorial .fc04-atp{fill:#f3b48f;stroke:#c7663a;stroke-width:1.4}
+.theme-editorial .fc04-nadph{fill:#a9c6e6;stroke:#3d6a99;stroke-width:1.4}
+.theme-editorial .fc04-tray{fill:#f6f3ea;stroke:#d8d4c8;stroke-width:1.2}
+.theme-editorial .fc04-fresh{fill:none;stroke:#a9532f;stroke-width:1.8;stroke-dasharray:4 4}
+.theme-editorial .fc04-base{fill:none;stroke:#8a877d;stroke-width:1.6}
+
+/* Price tag */
+.theme-editorial .fc04-card{fill:#fffdf8;stroke:#a8a59a;stroke-width:1.6;stroke-linejoin:round}
+.theme-editorial .fc04-hole{fill:#f0eee6;stroke:#a8a59a;stroke-width:1.4}
+.theme-editorial .fc04-string{fill:none;stroke:#8a877d;stroke-width:1.6}
+
+/* Leaf, cell, chloroplast */
+.theme-editorial .fc04-leaf{fill:#cfe2bd;stroke:#5f8f4a;stroke-width:1.8;stroke-linejoin:round}
+.theme-editorial .fc04-vein{fill:none;stroke:#5f8f4a;stroke-width:1.6}
+.theme-editorial .fc04-cell{fill:#f5f8ee;stroke:#7d9a64;stroke-width:1.6}
+.theme-editorial .fc04-env{fill:#f3f6ec;stroke:#7d9a64;stroke-width:2}
+.theme-editorial .fc04-env-in{fill:none;stroke:#a9bf94;stroke-width:1.4}
+.theme-editorial .fc04-thy{fill:#c5dfb0;stroke:#6f9a5a;stroke-width:1.3}
+.theme-editorial .fc04-thylakoid{fill:#d3e7c3;stroke:#6f9a5a;stroke-width:1.8}
+.theme-editorial .fc04-grain{fill:#fffdf8;stroke:#a8a59a;stroke-width:1.6}
+.theme-editorial .fc04-grain-in{fill:none;stroke:#c9c6bb;stroke-width:1.2}
+.theme-editorial .fc04-sun{fill:#fbe3a6;stroke:#e39a12;stroke-width:1.8}
+.theme-editorial .fc04-ray{fill:none;stroke:#e39a12;stroke-width:2.4;stroke-linecap:round}
+.theme-editorial .fc04-myth{fill:#f3f1ea;stroke:#d8d4c8;stroke-width:1.4;stroke-dasharray:8 6}
+.theme-editorial .ar.fc04-faded{stroke:#b0ada3}
+
+/* Engine analogy */
+.theme-editorial .fc04-station{fill:#fdf6e3;stroke:#c9a64a;stroke-width:1.6}
+.theme-editorial .fc04-pipe{fill:none;stroke-width:10;stroke-linecap:round}
+.theme-editorial .fc04-pipe-a{stroke:#f3b48f}.theme-editorial .fc04-pipe-b{stroke:#a9c6e6;stroke-dasharray:18 6}
+.theme-editorial .fc04-engine{fill:#ece9df;stroke:#8a877d;stroke-width:1.8}
+.theme-editorial .fc04-gear{fill:#fffdf8;stroke:#6b6a64;stroke-width:1.6}
+.theme-editorial .fc04-hub{fill:#d8d4c8;stroke:#6b6a64;stroke-width:1.4}
+.theme-editorial .fc04-brick{fill:#fbeee6;stroke:#d97757;stroke-width:1.6}
+
+/* Scope */
+.theme-editorial .fc04-bound{fill:#fffdf8;stroke:#a9532f;stroke-width:2;stroke-dasharray:9 7}
+.theme-editorial .fc04-extra{fill:#f6f3ea;stroke:#d8d4c8;stroke-width:1.4}
+.theme-editorial .fc04-pump{fill:#e6eef7;stroke:#3d6a99;stroke-width:1.6;stroke-linejoin:round}
+
+/* The reaction arrow of the equation, with light written over it (as fl01-eq-ar on slide 1). */
+.theme-editorial .fc04-rx{fill:none;stroke:#3d3d3a;stroke-linecap:round}
+.theme-editorial .fc04-rxh{fill:#3d3d3a}
+.theme-editorial .fig text.fc04-rxl{font-size:22px;font-weight:600}

@@ -1,0 +1,214 @@
+{
+  "verified_at_utc": "2026-10-21T12:18:24+00:00",
+  "library": "My Library",
+  "collection_name": "Photosynthesis",
+  "collection_key": "LHLJBVYZ",
+  "counts": {
+    "selected": 9,
+    "added": 6,
+    "already_present": 3,
+    "verified_pdfs": 8,
+    "without_saved_pdf": 1
+  },
+  "results": [
+    {
+      "doi": "10.1111/pce.14070",
+      "title": "Evolution of a biochemical model of steady‐state photosynthesis",
+      "journal": "Plant, Cell & Environment",
+      "citation_year": 2021,
+      "role": "Invited review",
+      "relevance": "Core requested source: Section 3 and Figure 2 connect alternative electron routes with FvCB stoichiometry. This is the 40-year review.",
+      "zotero_status": "already_present",
+      "item_key": "UP76JVDM",
+      "collection_key": "LHLJBVYZ",
+      "collection_verified": true,
+      "matching_records": 1,
+      "pdf_status": "verified",
+      "attachments": [
+        {
+          "attachment_key": "ADWJB3PA",
+          "filename": "2021-Yin-2021-Evolution of a biochemical model of steady-state photosynthesis.pdf",
+          "file_exists": true,
+          "bytes": 9631105,
+          "pdf_signature_valid": true
+        }
+      ]
+    },
+    {
+      "doi": "10.1111/j.1365-3040.2004.01224.x",
+      "title": "Extension of a biochemical model for the generalized stoichiometry of electron transport limited C3 photosynthesis",
+      "journal": "Plant, Cell & Environment",
+      "citation_year": 2004,
+      "role": "Generalized model paper",
+      "relevance": "Original formulation distinguishing PSI flux, PSII flux, alternative sinks, and ATP- versus reductant-limited expressions.",
+      "zotero_status": "added",
+      "item_key": "35X5XULX",
+      "collection_key": "LHLJBVYZ",
+      "collection_verified": true,
+      "matching_records": 1,
+      "pdf_status": "verified",
+      "attachments": [
+        {
+          "attachment_key": "GSH4XYBU",
+          "filename": "2004-Yin-Extension of a biochemical model for the generalized stoichiometry of electron transport limited C3 photosynthesis.pdf",
+          "file_exists": true,
+          "bytes": 288994,
+          "pdf_signature_valid": true
+        }
+      ]
+    },
+    {
+      "doi": "10.1111/j.1365-3040.2012.02490.x",
+      "title": "Mathematical review of the energy transduction stoichiometries of C4 leaf photosynthesis under limiting light",
+      "journal": "Plant, Cell & Environment",
+      "citation_year": 2012,
+      "role": "Mathematical review/model",
+      "relevance": "C4 energy accounting and the consequences of different coupling assumptions. Its inferred h value is model-dependent.",
+      "zotero_status": "added",
+      "item_key": "T2KX36FT",
+      "collection_key": "LHLJBVYZ",
+      "collection_verified": true,
+      "matching_records": 1,
+      "pdf_status": "verified",
+      "attachments": [
+        {
+          "attachment_key": "LVQ77JPR",
+          "filename": "2012-Yin-Mathematical review of the energy transduction stoichiometries of C4 leaf photosynthesis under limiting light.pdf",
+          "file_exists": true,
+          "bytes": 340396,
+          "pdf_signature_valid": true
+        }
+      ]
+    },
+    {
+      "doi": "10.1104/pp.110.166652",
+      "title": "The Importance of Energy Balance in Improving Photosynthetic Productivity",
+      "journal": "Plant Physiology",
+      "citation_year": 2011,
+      "role": "Review",
+      "relevance": "Compares coupling assumptions and routes that can alter chloroplast energy balance. Used for energetic mechanisms, not crop-engineering content.",
+      "zotero_status": "added",
+      "item_key": "RRPFGH7C",
+      "collection_key": "LHLJBVYZ",
+      "collection_verified": true,
+      "matching_records": 1,
+      "pdf_status": "verified",
+      "attachments": [
+        {
+          "attachment_key": "NTLHGP9P",
+          "filename": "2011-Kramer-The Importance of Energy Balance in Improving Photosynthetic Productivity.pdf",
+          "file_exists": true,
+          "bytes": 504771,
+          "pdf_signature_valid": true
+        }
+      ]
+    },
+    {
+      "doi": "10.1074/jbc.m116.770792",
+      "title": "The higher plant plastid NAD(P)H dehydrogenase-like complex (NDH) is a high efficiency proton pump that increases ATP production by cyclic electron flow",
+      "journal": "Journal of Biological Chemistry",
+      "citation_year": 2017,
+      "role": "Primary research",
+      "relevance": "Evidence that NDH adds proton pumping to cyclic flow; supports the route comparison. Publisher full text checked, but no PDF saved in Zotero.",
+      "zotero_status": "added",
+      "item_key": "3AKSISHH",
+      "collection_key": "LHLJBVYZ",
+      "collection_verified": true,
+      "matching_records": 1,
+      "pdf_status": "no_pdf_yet",
+      "attachments": []
+    },
+    {
+      "doi": "10.1038/s41477-026-02374-w",
+      "title": "Disequilibrium between chloroplast proton motive force and ATP levels in Arabidopsis",
+      "journal": "Nature Plants",
+      "citation_year": 2026,
+      "role": "Primary research / Brief Communication",
+      "relevance": "New ATP-biosensor evidence requires caution with compulsory ATP-deficit explanations; see the energy notes for interpretive limits.",
+      "zotero_status": "added",
+      "item_key": "5YT82KVH",
+      "collection_key": "LHLJBVYZ",
+      "collection_verified": true,
+      "matching_records": 1,
+      "pdf_status": "verified",
+      "attachments": [
+        {
+          "attachment_key": "KBSIY26Y",
+          "filename": "2026-Degen-Disequilibrium between chloroplast proton motive force and ATP levels in Arabidopsis.pdf",
+          "file_exists": true,
+          "bytes": 5650531,
+          "pdf_signature_valid": true
+        }
+      ]
+    },
+    {
+      "doi": "10.1038/s41477-026-02399-1",
+      "title": "Rethinking ATP balance in photosynthesis",
+      "journal": "Nature Plants",
+      "citation_year": 2026,
+      "role": "News & Views",
+      "relevance": "Interpretation of the preceding study; useful context, not a separate experimental confirmation.",
+      "zotero_status": "added",
+      "item_key": "5XRVG9KD",
+      "collection_key": "LHLJBVYZ",
+      "collection_verified": true,
+      "matching_records": 1,
+      "pdf_status": "verified",
+      "attachments": [
+        {
+          "attachment_key": "GEWZ42KK",
+          "filename": "2026-Yadav-Rethinking ATP balance in photosynthesis.pdf",
+          "file_exists": true,
+          "bytes": 928720,
+          "pdf_signature_valid": true
+        }
+      ]
+    },
+    {
+      "doi": "10.1111/pce.14949",
+      "title": "Re‐evaluating the energy balance of the many routes of carbon flow through and from photorespiration",
+      "journal": "Plant, Cell & Environment",
+      "citation_year": 2024,
+      "role": "Review",
+      "relevance": "Canonical photorespiratory energy demand and how endogenous carbon exits change the account. Engineering extensions stay outside the lecture.",
+      "zotero_status": "already_present",
+      "item_key": "4FWPGSF4",
+      "collection_key": "LHLJBVYZ",
+      "collection_verified": true,
+      "matching_records": 1,
+      "pdf_status": "verified",
+      "attachments": [
+        {
+          "attachment_key": "P6CIVHEU",
+          "filename": "2024-Walker-Re-evaluating the energy balance of the many routes of carbon flow through and from photorespiration.pdf",
+          "file_exists": true,
+          "bytes": 1898982,
+          "pdf_signature_valid": true
+        }
+      ]
+    },
+    {
+      "doi": "10.1111/nph.19982",
+      "title": "Chloroplast NADH dehydrogenase‐like complex‐mediated cyclic electron flow is the main electron transport route in C4 bundle sheath cells",
+      "journal": "New Phytologist",
+      "citation_year": 2024,
+      "role": "Primary research",
+      "relevance": "Cell-specific evidence for NDH-mediated cyclic flow in Flaveria bidentis bundle-sheath cells; cautions against extending Arabidopsis conclusions to all C4 cells.",
+      "zotero_status": "already_present",
+      "item_key": "ZMKDRAHF",
+      "collection_key": "LHLJBVYZ",
+      "collection_verified": true,
+      "matching_records": 1,
+      "pdf_status": "verified",
+      "attachments": [
+        {
+          "attachment_key": "WDUXLQLT",
+          "filename": "2024-Ermakova-Chloroplast NADH dehydrogenase-like complex-mediated cyclic electron flow is the main electron transport route in C4 bundle sheath cells.pdf",
+          "file_exists": true,
+          "bytes": 2365252,
+          "pdf_signature_valid": true
+        }
+      ]
+    }
+  ]
+}

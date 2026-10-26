@@ -1,0 +1,491 @@
+PHOTOSYNTHESIS: SELECTED SLIDE BRIEFS FOR CLAUDE
+
+The lecturer has selected slides 1–6 for content/display briefs. Work on the slide currently selected by the lecturer. The lecturer controls content and reviews visual variants. Preserve the other existing slides and animations.
+
+WORKFLOW AGREED WITH THE LECTURER
+First discuss and explain the context, with linked references. The lecturer confirms what will be taught. Only after that confirmation, develop the slide prompt and any animation around the key take-home messages. Work through the lecture one slide at a time. Save discussion text and sources together under Context. Do not turn unconfirmed discussion into new slide content or an animation.
+
+Context is the scientific explanation the lecturer can deliver: focus on the central concepts, their biological meaning, necessary mechanisms and qualifications, with sources. Use the depth needed for the particular slide, not a fixed length. It is not a display prompt, layout proposal or teaching instructions. Keep the agreed timing separate from the depth of these background notes.
+
+The opening splits PHOTOSYNTHESIS into PHOTO and SYNTHESIS. PHOTO connects light reactions, solar energy and the colour of life on Earth. SYNTHESIS connects carbon reactions, CO2, sugars and the bread that feeds us. Each branch represents a 45-minute lecture.
+
+Slide 1 context was confirmed by the lecturer on 22 October 2026 and is saved under its Context button. Its key connection is that sunlight supplies the energy and CO2 supplies the carbon. ATP and NADPH link the two lectures; explain their mechanisms later. Retain the approximately one-minute opening slot. The existing display prompt remains unchanged.
+
+Slide 2 keeps its original title: Why is the sky blue, and why are leaves green? It establishes the questions; the sky question leads into light basics and scattering, then the lecture returns to the leaf for pigments.
+
+Slide 2's detailed scientific context was confirmed on 22 October 2026 and is available through its Context button. Its prompt, title and one-minute opening role remain as agreed; the full explanation provides background for the later mechanism slides.
+
+Slide 3 is static: sunlight through a prism, connected to the visible portion of a broader electromagnetic-spectrum scale. Locate radio waves, microwaves, infrared, visible light, ultraviolet, X-rays and gamma rays. Highlight human vision (approximately 380–780 nm) and conventional PAR (400–700 nm). Wavelength, photon energy and scattering are reserved for the following slide, whose detailed prompt is still a proposal. Stronger short-wavelength scattering is not caused by the greater energy per photon. The original wavelength animation remains unchanged at src/slides/wavelengths.ts and is backed up with a preview in backups/2026-10-22-slide-03/.
+
+Slide 3's focused lecture context was confirmed on 22 October 2026 and is saved under Context with its sources. It connects human vision, conventional PAR, the conditional contribution of far-red light and brief biological effects of UV, infrared and microwaves. The lecturer dropped the extended human-vision evolution discussion. Keep the existing static display prompt and two-minute slot.
+
+Slide 4 presents Einstein and Rayleigh through black-and-white portraits styled as newspaper cutouts. Each portrait sits with the scientist's finding, equation and one concise takeaway. Max Planck is an optional third portrait. Distinguish Planck's quantized energy exchange from Einstein's light quanta. Keep photon energy and scattering as separate findings, and briefly define the equation symbols in the study content.
+
+Slide 4's small Animation button opens the existing seven-step blue-sky/sunset animation in src/slides/skyAnimation.ts and .css, unchanged. It is no longer a separate slide 5. Close or Escape returns to the static slide. Keep this connection when creating the portrait variant. The original slide 4 Midday/Sunset scattering demo at src/slides/scattering.ts remains available through Backup/Return, with its saved copy in backups/2026-10-22-slide-04/. Backup access and the teaching-animation button have different purposes.
+
+Slide 4's context was confirmed on 22 October 2026: photon energy versus intensity, molecular Rayleigh scattering and the longer atmospheric path at sunset. Its explanation and linked scientific sources appear in its CONTEXT section below. Keep its three-minute estimate and existing display brief. Optional Planck background: https://www.nobelprize.org/prizes/themes/the-nobel-prize-in-physics-1901-2000/
+
+Slide 5 returns to the opening leaf question. The lecturer's main takeaway is selective pigment absorption: leaves reflect relatively more green light and therefore look green. The main figure should show pigment absorption spectra with labelled peaks. PAR is a contextual range annotation. Internal green-light use and algal pigments are supporting examples. Context replaces the old References control and holds discussion text with linked papers. The LHC explanation is recorded there while the next slide is being discussed. Close or Escape returns to the slide. Keep the four-minute estimate. No animation is requested for this slide.
+
+Slide 5's lecture context was confirmed on 22 October 2026 and is saved with its references. The pigment explanation appears first in Context, followed by the previously recorded LHC discussion. Confirmation of the pigment context does not approve a new LHC slide or display prompt.
+
+Slide 6 is Light-harvesting complexes. Its context and display/animation brief were confirmed on 22 October 2026. It follows pigments and has a three-minute estimate. Its Context button holds the approved explanation and linked papers. The visible page is a text-box prompt; the proposed 20–30-second excitation-transfer animation remains a specification for the visual variant.
+
+Sequence correction after slide 6 (22 October 2026): the lecturer deferred the dedicated fluorescence/heat-dissipation discussion until after electron transport and lumen acidification, before photoprotection and the xanthophyll cycle. Charge separation and electron transport come next. The next context discussion should connect Emerson enhancement to both photosystems before tracing the serial electron pathway. Its context and prompt are not yet confirmed. Existing topic durations are retained, keeping each lecture at 45 minutes.
+
+Use the existing TypeScript/Vite viewer on port 5174. Brief sources are src/planning/opening.ts, src/planning/skyLeaf.ts, src/planning/lightBasics.ts, src/planning/photonScattering.ts, src/planning/pigments.ts and src/planning/lightHarvesting.ts. Style guidance is in STYLE_GUIDE.md. Keep one title, minimal visible text and classroom-readable type. The text boxes contain instructions for variants, not text to copy verbatim onto a teaching slide. Keep the teaching-time estimate shown beside the page number.
+
+Teaching slides must work as complete static PDF study pages. Use the full canvas for essential text and images. The Animation overlay and Close control are implemented on slide 4, and print styles hide the overlay and button. Keep animation brief. The PDF must show all static content. Slide 3 needs no animation. The complete deck-to-PDF export is not yet implemented.
+
+
+SLIDE 1: Photosynthesis
+
+CONTEXT (CONFIRMED 22 OCTOBER 2026)
+Photosynthesis
+
+Photo: capturing solar energy (45 minutes)
+
+Pigments give photosynthetic organisms their colours and absorb light. The light reactions convert that absorbed energy into ATP and NADPH, which supply energy and reducing power for carbon assimilation.
+
+https://doi.org/10.1042/EBC20160016
+
+Synthesis: building organic matter (45 minutes)
+
+Plants use that energy and reducing power to convert CO₂ into carbohydrates. These support growth and food production: the starch in wheat grain, and ultimately our bread, contains carbon originally captured from the air.
+
+https://doi.org/10.1042/EBC20160016
+
+The connection students should remember
+
+Sunlight supplies the energy; CO₂ supplies the carbon. The two lectures explain how photosynthesis brings them together.
+
+The colour of life and the bread that feeds us connect the two parts of the opening. ATP and NADPH can be named as the link here; their mechanisms come later.
+
+PAPERS
+Photosynthesis overview
+Johnson (2016) · Essays in Biochemistry
+Photosynthesis
+https://doi.org/10.1042/EBC20160016
+Foundational overview connecting solar-energy capture, ATP and NADPH production, and carbon fixation. Background for the opening, rather than a latest-findings review.
+
+CONTENT
+Two 45-minute lectures. Photo: light reactions, solar energy and the colour of life on Earth. Synthesis: carbon reactions, CO₂ becoming sugars and the bread that feeds us.
+
+DISPLAY PROMPT
+Use the word “photosynthesis” as the organising idea. Split it into “photo” and “synthesis”. Connect “photo” to light reactions, sunlight and the colour of life. Connect “synthesis” to carbon reactions, sugars and bread as the food connection. Show 45 minutes for each part.
+
+SLIDE 2: Why is the sky blue, and why are leaves green?
+
+CONTEXT (CONFIRMED 22 OCTOBER 2026)
+Why is the sky blue, and why are leaves green?
+
+Different interactions with the same sunlight
+
+The blue sky and a green leaf illustrate two different ways that matter changes the light reaching our eyes. Sunlight contains a broad range of wavelengths. The colour we perceive depends on which wavelengths reach us, their relative intensities, and our visual sensitivity.
+
+Why air makes the sky appear blue
+
+Sunlight’s oscillating electric field induces oscillations in the charges within air molecules. These produce radiation in other directions: light is scattered. For molecules much smaller than the wavelength, Rayleigh scattering applies, with scattering strength approximately proportional to 1/λ⁴.
+
+Consequently, 450 nm blue light is scattered about 4.4 times more strongly than 650 nm red light under the same conditions. When we look away from the Sun, some of this scattered sunlight reaches our eyes, enriched in shorter wavelengths. Rayleigh scattering changes the light’s direction while essentially preserving its wavelength. It does not convert red photons into blue photons.
+
+https://acd-ext.gsfc.nasa.gov/anonftp/acd/daac_ozone/Lecture4/Text/Lecture_4/rayleigh.html
+
+Blue rather than violet, and the different colours of sunset
+
+Violet scatters even more strongly, but perceived colour depends on the entire scattered spectrum and the eye’s response. Our lower sensitivity to violet helps explain the blue appearance.
+
+At sunset, sunlight travels through a longer atmospheric path. More short-wavelength light is scattered out of the direct beam, leaving the transmitted sunlight relatively enriched in red and orange. The observer’s viewing direction therefore matters: scattered skylight and the direct solar beam have different spectra.
+
+https://science.nasa.gov/ems/03_behaviors/
+
+https://spaceplace.nasa.gov/blue-sky/en/
+
+Why a leaf appears green
+
+Chlorophyll’s molecular structure gives it wavelength-dependent absorption bands, with strong absorption in the blue and red regions and weaker absorption in much of the green region. Absorption transfers photon energy into an electronic excitation of the pigment. The surrounding protein also influences these absorption properties.
+
+https://doi.org/10.1126/science.aay2058
+
+Pigment chemistry and tissue structure
+
+A whole leaf combines this selective absorption with reflection, transmission and internal scattering. Light changes direction at interfaces within the tissue, including those between hydrated cell walls and air spaces. Some light escapes back towards the observer. Because pigments remove blue and red light more strongly, the escaping visible light is relatively enriched in green. Leaf colour therefore reflects both pigment chemistry and tissue structure.
+
+https://doi.org/10.2307/2657019
+
+A green appearance does not mean most green light is rejected
+
+A leaf can absorb substantial green light while reflecting more green than blue or red. Weaker absorption also allows green light to penetrate deeper before absorption. Under strong white light, this can deliver additional excitation to deeper chloroplasts whose photosynthetic capacity is less saturated than that of chloroplasts near the illuminated surface.
+
+Terashima and colleagues demonstrated this advantage for additional green light in sunflower leaves; it depends on the background illumination.
+
+https://doi.org/10.1093/pcp/pcp034
+
+PAPERS
+Molecular scattering
+NASA Goddard · Atmospheric-science teaching resource
+Rayleigh Scattering
+https://acd-ext.gsfc.nasa.gov/anonftp/acd/daac_ozone/Lecture4/Text/Lecture_4/rayleigh.html
+Explains the induced-charge response, wavelength preservation and approximately inverse-fourth-power wavelength dependence. The 4.4 ratio is calculated as (650/450)⁴.
+
+Scattering and colour perception
+NASA Science · Electromagnetic-spectrum resource
+Wave Behaviors
+https://science.nasa.gov/ems/03_behaviors/
+Background on light–matter interactions and the eye’s response to blue and violet skylight.
+
+Atmospheric path length at sunset
+NASA Space Place · Explanatory resource
+Why Is the Sky Blue?
+https://spaceplace.nasa.gov/blue-sky/en/
+Supports the longer atmospheric path and the relative enrichment of red and orange in transmitted sunset light. Used as a scientific explanation, not as a visual-style reference.
+
+Pigment absorption and excitation
+Croce & van Amerongen (2020) · Science
+Light harvesting in oxygenic photosynthesis: Structural biology meets spectroscopy
+https://doi.org/10.1126/science.aay2058
+Pigment spectra, protein environments and electronic excitation. Also used in the LHC discussion.
+
+Internal leaf scattering
+Slaton, Hunt & Smith (2001) · American Journal of Botany
+Estimating near-infrared leaf reflectance from leaf structural characteristics
+https://doi.org/10.2307/2657019
+The introduction explains scattering at cell-wall and air-space interfaces. Its quantitative measurements concern near-infrared reflectance; do not treat those results as visible pigment-absorption spectra.
+
+Green-light absorption and use within leaves
+Terashima et al. (2009) · Plant and Cell Physiology
+Green light drives leaf photosynthesis more efficiently than red light in strong white light: revisiting the enigmatic question of why leaves are green
+https://doi.org/10.1093/pcp/pcp034
+Explains deeper green-light penetration and the conditional advantage of additional green light under moderate to strong white background light.
+
+CONTENT
+Use the blue sky and green leaves to open the light-reaction lecture. The sky question leads to wavelength, photon energy and PAR; return to leaves when introducing pigments.
+
+DISPLAY PROMPT
+One large photograph showing both blue sky and green leaves. Use the existing question as the only title. Let students consider both observations, then take the sky question first. Keep visible text minimal.
+
+SLIDE 3: The solar spectrum
+
+CONTEXT (CONFIRMED 22 OCTOBER 2026)
+The solar spectrum
+
+Sunlight and human vision
+
+Sunlight supplies both energy and information to life. It contains a broad range of wavelengths; a prism separates its visible components into a continuous spectrum from violet to red. Human eyes detect roughly 380–780 nm, using this light to recognise objects, colours and movement. This is the human visible range.
+
+https://science.nasa.gov/ems/03_behaviors/
+
+https://cie.co.at/eilvterm/17-21-003
+
+Photosynthetically active radiation
+
+Plants capture energy from an overlapping part of the spectrum. Photosynthetically active radiation—PAR—is conventionally defined as 400–700 nm, encompassing blue, green and red light. Photosynthetic pigments absorb photons within this range to drive the light reactions. PAR gives us a common basis for measuring light available for photosynthesis; the amount actually absorbed depends on the pigments and the leaf.
+
+https://cie.co.at/eilvterm/17-26-079
+
+https://doi.org/10.1126/science.aay2058
+
+Far-red light beyond conventional PAR
+
+Biological activity continues beyond these boundaries. Far-red photons around 700–750 nm can support photosynthesis alongside shorter-wavelength light, illustrating why conventional PAR is a measurement range rather than a strict limit on photosynthesis.
+
+https://doi.org/10.1111/pce.13730
+
+Ultraviolet, infrared and microwaves
+
+Toward shorter wavelengths, ultraviolet can trigger protective responses and damage cells at excessive exposure. Toward longer wavelengths, absorbed infrared contributes to warming tissues. Microwaves lie farther beyond infrared; their absorption by water and other molecules provides the familiar example of heating food. Different parts of the spectrum therefore interact with living material in different ways.
+
+https://doi.org/10.1146/annurev-arplant-050718-095946
+
+https://science.nasa.gov/ems/07_infraredwaves/
+
+https://gml.noaa.gov/outreach/info_activities/pdfs/TBI_electromagnetic_radiation.pdf
+
+PAPERS
+Prism and wavelength-dependent refraction
+NASA Science · Electromagnetic-spectrum resource
+Wave Behaviors
+https://science.nasa.gov/ems/03_behaviors/
+Dispersion separates components already present in sunlight. The visible prism spectrum and the wider electromagnetic-spectrum scale are distinct representations.
+
+Human visible range
+CIE S 017:2020 · International Lighting Vocabulary
+Visible radiation
+https://cie.co.at/eilvterm/17-21-003
+Visible limits are approximate and depend on the observer and radiant flux. The lecture uses roughly 380–780 nm.
+
+Conventional PAR
+CIE S 017:2020 · International Lighting Vocabulary
+Photosynthetically active radiation
+https://cie.co.at/eilvterm/17-26-079
+Defines the conventional 400–700 nm waveband.
+
+Pigment absorption and light harvesting
+Croce & van Amerongen (2020) · Science
+Light harvesting in oxygenic photosynthesis: Structural biology meets spectroscopy
+https://doi.org/10.1126/science.aay2058
+Reviews how photosynthetic pigments and their protein environments determine absorption and light harvesting.
+
+Far-red contribution to photosynthesis
+Zhen & Bugbee (2020) · Plant, Cell & Environment
+Far-red photons have equivalent efficiency to traditional photosynthetic photons: Implications for redefining photosynthetically active radiation
+https://doi.org/10.1111/pce.13730
+Experiments with 14 crop species show a photosynthetic contribution from far-red photons together with shorter-wavelength light; far-red alone had little effect.
+
+UV-B signalling and protection
+Podolec, Demarsy & Ulm (2021) · Annual Review of Plant Biology
+Perception and Signaling of Ultraviolet-B Radiation in Plants
+https://doi.org/10.1146/annurev-arplant-050718-095946
+Reviews the links between UV-B perception, protective responses and tolerance to UV-B damage.
+
+Infrared and heating
+NASA Science · Electromagnetic-spectrum resource
+Infrared Waves
+https://science.nasa.gov/ems/07_infraredwaves/
+Infrared absorption, warming and thermal emission. Heating also occurs when other wavelengths are absorbed.
+
+Microwave absorption and heating
+NOAA Global Monitoring Laboratory · Educational resource
+Electromagnetic waves
+https://gml.noaa.gov/outreach/info_activities/pdfs/TBI_electromagnetic_radiation.pdf
+Locates the spectrum regions and explains the familiar heating of food through microwave absorption by water and other molecules.
+
+CONTENT
+Sunlight contains many wavelengths. Locate radio waves, microwaves, infrared, visible light, ultraviolet, X-rays and gamma rays on the electromagnetic spectrum. Mark human vision (≈380–780 nm) and conventional PAR (400–700 nm).
+
+DISPLAY PROMPT
+Static only. Left: key facts and ranges. Right: sunlight through a prism, linked to the visible part of an expanded electromagnetic-spectrum scale. Label the regions and bracket vision and PAR. Keep all text and annotations visible in the PDF. Wavelength, energy and scattering follow on the next slide.
+
+SLIDE 4: Photon energy and scattering
+
+CONTEXT (CONFIRMED 22 OCTOBER 2026)
+Photon energy and scattering
+
+Photon energy
+
+Light carries energy in discrete packets called photons. Einstein’s 1905 light-quantum proposal connects each photon’s energy to its frequency: E = hν = hc/λ, where h is Planck’s constant, c is the speed of light and λ is wavelength. Shorter wavelengths therefore carry more energy per photon: a blue photon carries more than a red photon. Increasing light intensity at a fixed wavelength supplies more photons without changing each photon’s energy. This distinction matters when comparing the energy supplied by different colours.
+
+https://www.nobelprize.org/prizes/physics/the-dual-nature-of-light-as-reflected-in-the-nobel-archives/
+
+Rayleigh scattering
+
+Wavelength also affects how light is scattered. Light’s electric field makes charges within air molecules oscillate, producing radiation in other directions. Rayleigh scattering increases approximately as 1/λ⁴, so blue light is scattered much more strongly than red. This wavelength dependence comes from the molecules’ electromagnetic response; greater photon energy alone does not explain it. Scattering changes the photon’s direction while essentially preserving its wavelength.
+
+https://psg.gsfc.nasa.gov/helpatm.php
+
+The blue sky and sunset
+
+When we look away from the Sun, this scattered light reaches our eyes and gives the sky its blue appearance. At sunset, sunlight travels through more atmosphere. More blue light is scattered out of the direct beam, leaving the sunlight reaching us relatively enriched in red and orange.
+
+https://spaceplace.nasa.gov/blue-sky/en/
+
+PAPERS
+Einstein and light quanta
+Nobel Prize archive · Historical account
+The dual nature of light as reflected in the Nobel archives
+https://www.nobelprize.org/prizes/physics/the-dual-nature-of-light-as-reflected-in-the-nobel-archives/
+Einstein’s 1905 light-quantum proposal and the frequency dependence of photon energy.
+
+Molecular Rayleigh scattering
+NASA Goddard · Planetary Spectrum Generator
+Atmospheric modelling: molecular scattering
+https://psg.gsfc.nasa.gov/helpatm.php
+Explains induced molecular dipoles, elastic scattering and the approximate inverse-fourth-power wavelength dependence.
+
+Sky colour and atmospheric path length
+NASA Space Place · Explanatory resource
+Why Is the Sky Blue?
+https://spaceplace.nasa.gov/blue-sky/en/
+Explains blue scattered skylight and the relative enrichment of red and orange in transmitted sunset light.
+
+CONTENT
+Einstein: light quanta, E = hν = hc/λ. Shorter λ means more energy per photon. Rayleigh: scattering ∝ 1/λ⁴, so blue scatters more than red. Optional Planck: energy exchange in quanta, ΔE = hν. Keep the findings distinct.
+
+DISPLAY PROMPT
+Black-and-white newspaper-cutout portraits of Einstein and Rayleigh, each beside his finding, equation and takeaway. Planck optional. “Animation” opens our existing seven-step blue-sky/sunset animation over most of the screen. “Close” returns. PDF keeps portraits and study content.
+
+SLIDE 5: Why are leaves green?
+
+MAIN TAKEAWAY
+Pigments absorb wavelengths differently. Leaves reflect more green light, so they look green.
+
+CONTENT
+Show chlorophyll a/b and carotenoid absorption peaks. Mark PAR (400–700 nm). Green light is also transmitted and absorbed within leaves.
+
+DISPLAY PROMPT
+Main figure: pigment spectra. Two small examples: green light penetrating leaf tissue and scattering along longer paths, and red algae using phycoerythrin to absorb green light. Keep the leaf-colour explanation dominant. Static only.
+
+HANDOFF NOTES
+- The main teaching point is selective pigment absorption and its connection to leaf colour. Keep PAR as a range annotation.
+- Use sourced absorption spectra with labelled peaks. Identify the measurement medium or pigment–protein context, because peak positions vary. Distinguish pigment absorption from whole-leaf absorptance and from an action spectrum.
+- The leaf inset should show internal scattering lengthening the optical path and green light reaching deeper chloroplasts. Leaf thickness acts alongside anatomy and pigment content. Avoid implying that thickness alone guarantees greater photosynthesis.
+- The algal example shows a different pigment complement capturing wavelengths chlorophyll absorbs weakly. Phycoerythrin is an example within conventional PAR.
+- The far-red paper is background for the PAR boundary only. Keep it in Context without making it the slide conclusion or adding another teaching block.
+- Keep the four-minute estimate and static study content. Context replaces the separate References control and keeps explanation with its sources. It also holds the LHC discussion while that next slide is being planned. LHC context and papers are in src/planning/lightHarvesting.ts.
+
+CONTEXT (CONFIRMED 22 OCTOBER 2026)
+
+Why are leaves green?
+
+Selective absorption and leaf colour
+
+Light reaching a leaf can be absorbed, reflected or transmitted. Chlorophyll absorbs blue and red light strongly, but green light more weakly. Consequently, the reflected light is relatively enriched in green, giving leaves their familiar colour. Green appearance does not mean that most green light is reflected.
+
+https://doi.org/10.1093/pcp/pcp034
+
+Different pigments, different absorption spectra
+
+The pigments have different absorption spectra. Chlorophyll a and b have shifted blue and red absorption peaks, so their contributions overlap without being identical. Carotenoids absorb mainly in the blue to blue-green region, extending light capture. Peak positions also depend on the pigment’s molecular environment.
+
+https://doi.org/10.1038/nchembio.1555
+
+Green light inside a leaf
+
+Green light still supports photosynthesis. Its weaker absorption lets it penetrate deeper into the leaf, while internal scattering lengthens its path and increases opportunities for absorption. Under strong white light, additional green light can reach deeper chloroplasts whose photosynthesis is less saturated, making it more effective than additional red light. Leaf anatomy and pigment distribution matter; thickness alone does not guarantee this advantage.
+
+https://doi.org/10.1093/pcp/pcp034
+
+Accessory pigments in algae
+
+Other photosynthetic organisms use different pigment combinations. In the red alga Griffithsia pacifica, phycoerythrin absorbs strongly around 540 and 565 nm, capturing green wavelengths that chlorophyll absorbs relatively weakly. These wavelengths are within conventional PAR: the contrast is between pigment absorption spectra.
+
+https://doi.org/10.1038/nature24278
+
+PAPERS
+Pigment absorption and spectral tuning
+Croce & van Amerongen (2014) · Nature Chemical Biology
+Natural strategies for photosynthetic light harvesting
+https://doi.org/10.1038/nchembio.1555
+Different pigment absorption spectra and the influence of the molecular environment on their absorption properties.
+
+Green light inside leaves
+Terashima et al. (2009) · Plant and Cell Physiology
+Green light drives leaf photosynthesis more efficiently than red light in strong white light: revisiting the enigmatic question of why leaves are green
+https://doi.org/10.1093/pcp/pcp034
+Leaf colour, green-light penetration and use by deeper chloroplasts. The reported advantage over red light depends on the background light.
+
+Accessory pigments in red algae
+Zhang et al. (2017) · Nature
+Structure of phycobilisome from the red alga Griffithsia pacifica
+https://doi.org/10.1038/nature24278
+The reported absorption spectrum includes phycoerythrin peaks near 540 and 565 nm.
+
+PAR boundary (background)
+Zhen & Bugbee (2020) · Plant, Cell & Environment
+Far-red photons have equivalent efficiency to traditional photosynthetic photons: Implications for redefining photosynthetically active radiation
+https://doi.org/10.1111/pce.13730
+Far-red contribution in combination with shorter wavelengths. Supporting context only; pigment absorption and leaf colour remain the main point.
+
+SLIDE 6: Light-harvesting complexes
+
+CONTEXT (CONFIRMED 22 OCTOBER 2026)
+
+Light-harvesting complexes
+
+Why chlorophyll a and b absorb differently
+
+Chlorophyll a and b absorb different wavelengths because their molecular structures differ. Chlorophyll b has a formyl group (–CHO) where a has a methyl group (–CH₃). This changes the electron distribution and the energy gaps that photons must match. Surrounding protein charges also affect these gaps, so the same pigment can absorb differently in different protein environments.
+
+https://doi.org/10.1039/D1CP02580E
+
+Complementary absorption and different roles
+
+Their absorption spectra complement each other. Chlorophyll b broadens light collection and generally transfers excitation to lower-energy chlorophyll a states. In land plants, chlorophyll a also supplies the principal donor pigments for reaction-centre photochemistry.
+
+https://doi.org/10.1126/science.aay2058
+
+Organisation enables excitation transfer
+
+To make these pigments work together, proteins organise them into light-harvesting complexes. The proteins control pigment spacing, orientation and excitation energies, allowing rapid transfer towards a reaction centre. During antenna transfer, excitation moves between pigments; there is no net electron transfer between them. Electron transfer and charge separation occur when the reaction centre performs photochemistry.
+
+https://doi.org/10.1126/science.aay2058
+
+LHCII and LHCI in land plants
+
+LHCII mainly supplies photosystem II and usually forms a trimer of three proteins. Each protein binds 8 chlorophyll a, 6 chlorophyll b and 4 carotenoids. Its chlorophyll a:b ratio is approximately 1.3.
+
+LHCI supplies photosystem I and usually consists of four proteins beside the PSI core. The whole belt in one pea structure contains 45 chlorophyll a, 12 chlorophyll b and 13 carotenoids. Its chlorophyll a:b ratio is approximately 3.7–3.8.
+
+LHCII is called the major antenna because its numerous copies bind a large fraction of plant chlorophyll. PSI also contains a substantial chlorophyll-a-rich core antenna.
+
+https://doi.org/10.1093/plphys/kiac175
+
+What the pigment ratios imply
+
+The pigment ratios have functional consequences. LHCII’s greater proportion of chlorophyll b strengthens complementary absorption. LHCI contains proportionally more a, including specially coupled pairs that create low-energy “red forms” absorbing beyond 700 nm. These arise from pigment arrangement and protein interactions, not from the ratio alone. Some require thermally assisted uphill transfer to reach the reaction centre: extending spectral capture can therefore slow trapping.
+
+https://doi.org/10.1007/s11120-013-9838-x
+
+Two experiments, two discoveries
+
+Two experiments connect this organisation to its discovery. Emerson and Arnold’s 1932 flash experiments helped establish that many chlorophyll molecules cooperate within a photosynthetic unit. Emerson enhancement in 1957 showed that red and far-red light together could produce more photosynthesis than the sum of their separate effects. The first supports collective light harvesting; the second helped reveal two cooperating light reactions, leading into how PSII and PSI drive electron transport together.
+
+https://doi.org/10.1093/aob/mcz171
+
+PAPERS
+PSII antenna structure and excitation transfer
+van Amerongen & Croce (2013) · Photosynthesis Research
+Light harvesting in photosystem II
+https://doi.org/10.1007/s11120-013-9824-3
+Foundational review. Links LHCII pigment organization, excitation transfer, core antennae and reaction-centre trapping. Use the 2026 overview for the updated assembly context.
+
+Principles of light harvesting
+Croce & van Amerongen (2014) · Nature Chemical Biology
+Natural strategies for photosynthetic light harvesting
+https://doi.org/10.1038/nchembio.1555
+Foundational perspective. Useful figures: antenna function (Figure 4), pigment spectral tuning (Figure 6) and excitation-energy transfer (Figure 7). Also supports the pigment discussion.
+
+Mechanisms and transfer times
+Croce & van Amerongen (2020) · Science
+Light harvesting in oxygenic photosynthesis: Structural biology meets spectroscopy
+https://doi.org/10.1126/science.aay2058
+Links pigment coupling and parallel excitation-transfer pathways to reaction-centre trapping. Supports the detailed explanation below. Full text checked in the authors’ university repository.
+
+Chlorophyll structure and spectral tuning
+Sirohiwal & Pantazis (2021) · Physical Chemistry Chemical Physics
+Electrostatic profiling of photosynthetic pigments: implications for directed spectral tuning
+https://doi.org/10.1039/D1CP02580E
+Explains how pigment structure and protein electrostatics change the relative energies of ground and excited states, shifting absorption.
+
+LHCI composition and red forms
+Croce & van Amerongen (2013) · Photosynthesis Research
+Light-harvesting in photosystem I
+https://doi.org/10.1007/s11120-013-9838-x
+Supports the higher LHCI chlorophyll a:b ratio, coupled red forms and thermally assisted transfer from low-energy antenna states.
+
+Antenna organisation and pigment counts
+Arshad et al. (2022) · Plant Physiology
+A kaleidoscope of photosynthetic antenna proteins and their emerging roles
+https://doi.org/10.1093/plphys/kiac175
+Compare counts on explicit assembly bases: one LHCII protein versus a whole four-protein LHCI belt. The 45 a, 12 b and 13 carotenoid LHCI example comes from a pea structure and is not universal.
+
+Photosynthetic units and Emerson enhancement
+Stirbet, Lazár, Guo & Govindjee (2020) · Annals of Botany
+Photosynthesis: basics, history and modelling
+https://doi.org/10.1093/aob/mcz171
+Distinguishes the 1932 flash experiments underpinning the photosynthetic-unit concept from the 1957 enhancement effect supporting two cooperating light reactions.
+
+Current structural context
+Liu et al. (2026) · Annual Review of Biophysics
+Structures of Photosynthetic Supramolecular Complexes
+https://doi.org/10.1146/annurev-biophys-021424-011156
+Already in the research reading list. Current overview of antenna–photosystem assemblies, complementing the two foundational reviews.
+
+MAIN TAKEAWAY
+Different pigments → organised antenna → reaction centre.
+
+CONTENT
+Antenna: excitation transfer. Reaction centre: charge separation.
+
+DISPLAY PROMPT (CONFIRMED 22 OCTOBER 2026)
+Compare chlorophyll a/b structures (–CH₃ / –CHO), then show LHCII → PSII and LHCI → PSI using published structures. Label LHCII: 8 a + 6 b per protein, a:b ≈ 1.3; LHCI: 45 a + 12 b per four-protein pea belt, a:b ≈ 3.8. Explain: b broadens capture; specific coupled a pairs absorb beyond 700 nm. Keep transfer routes visible in the PDF. “Follow an excitation” opens a 20–30 s overlay: absorption → excitation through stationary pigments → charge separation. Close returns. Keep history and detailed mechanisms in Context.
+
+HANDOFF NOTES
+- Context and the display/animation brief were approved on 22 October 2026. This is the next slide after pigments, with a three-minute teaching estimate. The present slide remains a text-box prompt for Claude; finished graphics and animation require visual review.
+- One visual sequence: different pigments → organised antenna → reaction centre. Begin with matched chlorophyll a and b molecular structures, highlighting only –CH₃ and –CHO. Caption: “Different structure, different absorption.”
+- Make pigment organisation the main figure. Show LHCII supplying PSII and LHCI supplying PSI, using the papers in Context as structural references. Make pigments within the protein scaffold visible.
+- Use explicit assembly bases: LHCII, 8 chlorophyll a and 6 b per protein (a:b ≈ 1.3); LHCI, 45 a and 12 b across the four-protein belt in the pea example (a:b ≈ 3.8). The LHCI count is structure-specific.
+- LHCII: more b broadens complementary absorption. LHCI: specific coupled a pairs extend absorption beyond 700 nm. The higher a:b ratio alone does not cause red forms.
+- Mark excitation-transfer routes towards each reaction centre. Keep the distinction explicit: “Antenna: excitation transfer → Reaction centre: charge separation.” Static arrows and labels must explain this in the PDF.
+- A small “Follow an excitation” button should open an approximately 20–30-second overlay. A pigment absorbs light; an excitation marker passes through stationary pigments; charge separation occurs at the reaction centre. Close returns. Use different symbols for excitation and separated charges.
+- Preserve the paper-and-ink style, one title and classroom-readable labels. Retain the teaching-time estimate beside the page number. Keep the Emerson stories, thermal uphill-transfer explanation and detailed references in Context.

@@ -1,0 +1,363 @@
+{
+  "checkedAt": "2026-10-23T14:31:46.094Z",
+  "slides": [
+    {
+      "bodyFont": "30px",
+      "footerClear": true,
+      "id": "L07",
+      "page": "≈ 3 min\n      \n      7 / 27",
+      "rightClear": true,
+      "status": "UNREVIEWED",
+      "time": "≈ 3 min",
+      "title": "From excitation to charge separation",
+      "titleClear": true,
+      "context": {
+        "invalidLinks": 0,
+        "papers": 5,
+        "paragraphs": 35,
+        "unreviewed": true
+      }
+    },
+    {
+      "bodyFont": "30px",
+      "footerClear": true,
+      "id": "L08",
+      "page": "≈ 3 min\n      \n      8 / 27",
+      "rightClear": true,
+      "status": "UNREVIEWED",
+      "time": "≈ 3 min",
+      "title": "Water supplies electrons—and oxygen",
+      "titleClear": true,
+      "context": {
+        "invalidLinks": 0,
+        "papers": 5,
+        "paragraphs": 34,
+        "unreviewed": true
+      }
+    },
+    {
+      "bodyFont": "30px",
+      "footerClear": true,
+      "id": "L09",
+      "page": "≈ 4 min\n      \n      9 / 27",
+      "rightClear": true,
+      "status": "UNREVIEWED",
+      "time": "≈ 4 min",
+      "title": "Two light-driven steps, one electron route",
+      "titleClear": true,
+      "context": {
+        "invalidLinks": 0,
+        "papers": 3,
+        "paragraphs": 30,
+        "unreviewed": true
+      }
+    },
+    {
+      "bodyFont": "30px",
+      "footerClear": true,
+      "id": "L10",
+      "page": "≈ 4 min\n      \n      10 / 27",
+      "rightClear": true,
+      "status": "UNREVIEWED",
+      "time": "≈ 4 min",
+      "title": "A proton gradient powers ATP synthesis",
+      "titleClear": true,
+      "context": {
+        "invalidLinks": 0,
+        "papers": 7,
+        "paragraphs": 38,
+        "unreviewed": true
+      }
+    },
+    {
+      "bodyFont": "30px",
+      "footerClear": true,
+      "id": "L11",
+      "page": "≈ 4 min\n      \n      11 / 27",
+      "rightClear": true,
+      "status": "UNREVIEWED",
+      "time": "≈ 4 min",
+      "title": "Electron routes make the system flexible",
+      "titleClear": true,
+      "context": {
+        "invalidLinks": 0,
+        "papers": 10,
+        "paragraphs": 51,
+        "unreviewed": true
+      }
+    },
+    {
+      "bodyFont": "30px",
+      "footerClear": true,
+      "id": "L12",
+      "page": "≈ 2 min\n      \n      12 / 27",
+      "rightClear": true,
+      "status": "UNREVIEWED",
+      "time": "≈ 2 min",
+      "title": "Three fates of an excitation",
+      "titleClear": true,
+      "context": {
+        "invalidLinks": 0,
+        "papers": 4,
+        "paragraphs": 29,
+        "unreviewed": true
+      }
+    },
+    {
+      "bodyFont": "30px",
+      "footerClear": true,
+      "id": "L13",
+      "page": "≈ 4 min\n      \n      13 / 27",
+      "rightClear": true,
+      "status": "UNREVIEWED",
+      "time": "≈ 4 min",
+      "title": "Too much excitation: protect the system",
+      "titleClear": true,
+      "context": {
+        "invalidLinks": 0,
+        "papers": 6,
+        "paragraphs": 41,
+        "unreviewed": true
+      }
+    },
+    {
+      "bodyFont": "30px",
+      "footerClear": true,
+      "id": "L14",
+      "page": "≈ 2 min\n      \n      14 / 27",
+      "rightClear": true,
+      "status": "UNREVIEWED",
+      "time": "≈ 2 min",
+      "title": "Reading photosynthesis through fluorescence",
+      "titleClear": true,
+      "context": {
+        "invalidLinks": 0,
+        "papers": 5,
+        "paragraphs": 32,
+        "unreviewed": true
+      }
+    },
+    {
+      "bodyFont": "30px",
+      "footerClear": true,
+      "id": "L15",
+      "page": "≈ 3 min\n      \n      15 / 27",
+      "rightClear": true,
+      "status": "UNREVIEWED",
+      "time": "≈ 3 min",
+      "title": "From photons to the light-response curve",
+      "titleClear": true,
+      "context": {
+        "invalidLinks": 0,
+        "papers": 6,
+        "paragraphs": 34,
+        "unreviewed": true
+      }
+    },
+    {
+      "bodyFont": "30px",
+      "footerClear": true,
+      "id": "C01",
+      "page": "≈ 2 min\n      \n      16 / 27",
+      "rightClear": true,
+      "status": "UNREVIEWED",
+      "time": "≈ 2 min",
+      "title": "From light energy to organic carbon",
+      "titleClear": true,
+      "context": {
+        "invalidLinks": 0,
+        "papers": 4,
+        "paragraphs": 30,
+        "unreviewed": true
+      }
+    },
+    {
+      "bodyFont": "30px",
+      "footerClear": true,
+      "id": "C02",
+      "page": "≈ 4 min\n      \n      17 / 27",
+      "rightClear": true,
+      "status": "UNREVIEWED",
+      "time": "≈ 4 min",
+      "title": "Following carbon into the Calvin–Benson–Bassham cycle",
+      "titleClear": true,
+      "context": {
+        "invalidLinks": 0,
+        "papers": 3,
+        "paragraphs": 30,
+        "unreviewed": true
+      }
+    },
+    {
+      "bodyFont": "30px",
+      "footerClear": true,
+      "id": "C03",
+      "page": "≈ 4 min\n      \n      18 / 27",
+      "rightClear": true,
+      "status": "UNREVIEWED",
+      "time": "≈ 4 min",
+      "title": "Reduction and regeneration keep the cycle running",
+      "titleClear": true,
+      "context": {
+        "invalidLinks": 0,
+        "papers": 5,
+        "paragraphs": 34,
+        "unreviewed": true
+      }
+    },
+    {
+      "bodyFont": "30px",
+      "footerClear": true,
+      "id": "C04",
+      "page": "≈ 3 min\n      \n      19 / 27",
+      "rightClear": true,
+      "status": "UNREVIEWED",
+      "time": "≈ 3 min",
+      "title": "What the cycle produces—and what it costs",
+      "titleClear": true,
+      "context": {
+        "invalidLinks": 0,
+        "papers": 4,
+        "paragraphs": 30,
+        "unreviewed": true
+      }
+    },
+    {
+      "bodyFont": "30px",
+      "footerClear": true,
+      "id": "C05",
+      "page": "≈ 4 min\n      \n      20 / 27",
+      "rightClear": true,
+      "status": "UNREVIEWED",
+      "time": "≈ 4 min",
+      "title": "Rubisco reacts with CO₂—and O₂",
+      "titleClear": true,
+      "context": {
+        "invalidLinks": 0,
+        "papers": 5,
+        "paragraphs": 35,
+        "unreviewed": true
+      }
+    },
+    {
+      "bodyFont": "30px",
+      "footerClear": true,
+      "id": "C06",
+      "page": "≈ 5 min\n      \n      21 / 27",
+      "rightClear": true,
+      "status": "UNREVIEWED",
+      "time": "≈ 5 min",
+      "title": "Photorespiration recovers carbon at a cost",
+      "titleClear": true,
+      "context": {
+        "invalidLinks": 0,
+        "papers": 6,
+        "paragraphs": 39,
+        "unreviewed": true
+      }
+    },
+    {
+      "bodyFont": "30px",
+      "footerClear": true,
+      "id": "C07",
+      "page": "≈ 2 min\n      \n      22 / 27",
+      "rightClear": true,
+      "status": "UNREVIEWED",
+      "time": "≈ 2 min",
+      "title": "Evolution begins with CO₂ recapture",
+      "titleClear": true,
+      "context": {
+        "invalidLinks": 0,
+        "papers": 3,
+        "paragraphs": 28,
+        "unreviewed": true
+      }
+    },
+    {
+      "bodyFont": "30px",
+      "footerClear": true,
+      "id": "C08",
+      "page": "≈ 4 min\n      \n      23 / 27",
+      "rightClear": true,
+      "status": "UNREVIEWED",
+      "time": "≈ 4 min",
+      "title": "C₂ photosynthesis moves CO₂ release",
+      "titleClear": true,
+      "context": {
+        "invalidLinks": 0,
+        "papers": 5,
+        "paragraphs": 37,
+        "unreviewed": true
+      }
+    },
+    {
+      "bodyFont": "30px",
+      "footerClear": true,
+      "id": "C09",
+      "page": "≈ 5 min\n      \n      24 / 27",
+      "rightClear": true,
+      "status": "UNREVIEWED",
+      "time": "≈ 5 min",
+      "title": "C₄ photosynthesis concentrates CO₂ before Rubisco",
+      "titleClear": true,
+      "context": {
+        "invalidLinks": 0,
+        "papers": 6,
+        "paragraphs": 40,
+        "unreviewed": true
+      }
+    },
+    {
+      "bodyFont": "30px",
+      "footerClear": true,
+      "id": "C10",
+      "page": "≈ 2 min\n      \n      25 / 27",
+      "rightClear": true,
+      "status": "UNREVIEWED",
+      "time": "≈ 2 min",
+      "title": "CAM separates carbon capture in time",
+      "titleClear": true,
+      "context": {
+        "invalidLinks": 0,
+        "papers": 2,
+        "paragraphs": 24,
+        "unreviewed": true
+      }
+    },
+    {
+      "bodyFont": "30px",
+      "footerClear": true,
+      "id": "C11",
+      "page": "≈ 3 min\n      \n      26 / 27",
+      "rightClear": true,
+      "status": "UNREVIEWED",
+      "time": "≈ 3 min",
+      "title": "What a leaf's CO₂ exchange measures",
+      "titleClear": true,
+      "context": {
+        "invalidLinks": 0,
+        "papers": 4,
+        "paragraphs": 33,
+        "unreviewed": true
+      }
+    },
+    {
+      "bodyFont": "30px",
+      "footerClear": true,
+      "id": "C12",
+      "page": "≈ 5 min\n      \n      27 / 27",
+      "rightClear": true,
+      "status": "UNREVIEWED",
+      "time": "≈ 5 min",
+      "title": "FvCB links carbon fixation to energy supply",
+      "titleClear": true,
+      "context": {
+        "invalidLinks": 0,
+        "papers": 4,
+        "paragraphs": 37,
+        "unreviewed": true
+      }
+    }
+  ],
+  "originalSkyAnimationOpened": true
+}

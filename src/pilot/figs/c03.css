@@ -1,0 +1,55 @@
+/* Slide C03 figure styles, scoped under .theme-editorial and prefixed .fc03- (C04 reuses them). */
+
+/* Text */
+.theme-editorial .fig .fc03-sb{font-size:68%;baseline-shift:-.24em}
+.theme-editorial .fig text.fc03-acc{fill:#a9532f}
+.theme-editorial .fig text.fc03-out{fill:#a9532f}
+.theme-editorial .fig text.fc03-map{fill:#a9532f;font-style:italic}
+.theme-editorial .fig text.fc03-mt{font-size:16px;font-weight:600;fill:#2b2a27}
+.theme-editorial .fig text.fc03-op{fill:#8a877d;font-weight:400}
+.theme-editorial .fig text.fc03-big{font:600 46px Inter,"Helvetica Neue",Arial,sans-serif;fill:#141413}
+.theme-editorial .fig text.fc03-pga{fill:#a9532f}
+.theme-editorial .fig text.fc03-rubp{fill:#3d6a99}
+
+/* Carbon and molecules */
+.theme-editorial .fc03-bond{fill:none;stroke:#3d3d3a;stroke-width:3;stroke-linecap:round}
+.theme-editorial .fc03-chip{fill:#fffdf8;stroke:#a8a59a;stroke-width:1.4}
+.theme-editorial .fc03-chip-tp{fill:#eef3f9;stroke:#7f9cbc}
+.theme-editorial .fc03-chip-out{fill:#fbeee6;stroke:#d97757;stroke-width:1.8}
+.theme-editorial .fc03-grp{fill:#fffdf8;stroke:#a8a59a;stroke-width:1.4}
+.theme-editorial .fc03-grp-co2{fill:none;stroke-dasharray:4 4}
+.theme-editorial .fc03-grp-tp{fill:#eef3f9;stroke:#7f9cbc}
+.theme-editorial .fc03-grp-out{fill:#fbeee6;stroke:#d97757;stroke-width:1.8}
+.theme-editorial .fc03-ghost{fill:none;stroke:#b0ada3;stroke-width:1.8;stroke-dasharray:6 6}
+.theme-editorial .fc03-mb{fill:none;stroke:#6b6a64;stroke-width:3;stroke-linecap:round}
+.theme-editorial .fc03-hl{fill:none;stroke:#d97757;stroke-width:2;stroke-dasharray:6 5}
+
+/* Scheme parts */
+.theme-editorial .fc03-br{fill:none;stroke:#a9532f;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fc03-track{fill:none;stroke:#ebe7dc;stroke-width:18}
+.theme-editorial .fc03-phase{fill:#fffdf8;stroke:#a8a59a}
+.theme-editorial .fc03-panel{fill:#fffdf8;stroke:#e0ddd2;stroke-width:1.4}
+.theme-editorial .fc03-split{fill:none;stroke:#d97757;stroke-width:2;stroke-dasharray:6 6}
+.theme-editorial .fc03-ring{fill:none;stroke:#3d3d3a;stroke-width:2.6;stroke-linecap:round}
+.theme-editorial .fc03-ring-hl{stroke:#d97757;stroke-width:4}
+.theme-editorial .fc03-lens{fill:rgba(217,119,87,.08);stroke:#3d3d3a;stroke-width:2}
+.theme-editorial .fc03-zoom{fill:none;stroke:#b0ada3;stroke-width:1.4;stroke-dasharray:4 5}
+.theme-editorial .fc03-dark{fill:#e7e4da}
+.theme-editorial .fc03-cv-pga{stroke:#c0663f;stroke-width:4.2}
+.theme-editorial .fc03-cv-rubp{stroke:#3d6a99;stroke-width:4.2;stroke-dasharray:12 7}
+.theme-editorial .fc03-gone-ar{fill:none;stroke:#b0ada3;stroke-width:2.4;stroke-dasharray:5 6}
+.theme-editorial .fc03-ok{fill:none;stroke:#3f7a4a;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fc03-no{fill:none;stroke:#c0442a;stroke-width:4;stroke-linecap:round}
+.theme-editorial .fc03-struck{opacity:.45}
+.theme-editorial .fc03-strike{fill:none;stroke:#c0442a;stroke-width:2.6;stroke-linecap:round}
+.theme-editorial .fc03-sumrule{fill:none;stroke:#3d3d3a;stroke-width:1.6}
+.theme-editorial .ar.fc03-thin{stroke-width:1.6}
+
+/* Analogy drawings */
+.theme-editorial .fc03-sack{fill:#f1e3c2;stroke:#a8803a;stroke-width:1.6;stroke-linejoin:round}
+.theme-editorial .fc03-sack-out{fill:#fbe0cf;stroke:#d97757}
+.theme-editorial .fc03-tie{fill:none;stroke:#a8803a;stroke-width:1.6;stroke-linecap:round}
+.theme-editorial .fc03-soil{fill:#e9dcc3;stroke:#b39a6b;stroke-width:1.4}
+.theme-editorial .fc03-sprout{fill:none;stroke:#5f8f4a;stroke-width:2.4;stroke-linecap:round}
+.theme-editorial .fc03-cart{fill:#fffdf8;stroke:#8a877d;stroke-width:1.6}
+.theme-editorial .fc03-wheel{fill:#fffdf8;stroke:#6b6a64;stroke-width:2}

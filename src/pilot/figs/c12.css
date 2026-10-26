@@ -1,0 +1,92 @@
+/* Slide C12 figure styles, scoped under .theme-editorial and prefixed .fc12- */
+
+/* FvCB limits after the MSc thesis Fig. 5: Ac (Rubisco) red, Aj (RuBP regeneration) cyan, Ap (TPU) purple. */
+.theme-editorial .fig text.fc12-tc{fill:#b23a2e}
+.theme-editorial .fig text.fc12-tj{fill:#137a8b}
+.theme-editorial .fig text.fc12-tp{fill:#6b4c99}
+.theme-editorial .fig text.fc12-t4{fill:#3f6b45}
+.theme-editorial .fig text.fc12-pr,.theme-editorial .fig .fc12-pr-t{fill:#a9532f}
+.theme-editorial .fig .fc12-s{font-size:68%;baseline-shift:-.22em}
+.theme-editorial .fig text.fc12-ill{font:italic 400 22px Newsreader,Georgia,serif;fill:#6b6a64}
+.theme-editorial .fig text.fc12-num-t{font-size:17px;font-weight:700;fill:#fffdf8}
+.theme-editorial .fc12-num{fill:#3d3d3a}
+
+/* Arrows. */
+.theme-editorial .fc12-ar{fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fc12-ar-c{stroke:#c94a3c}.theme-editorial .fc12-hd-c{fill:#c94a3c}
+.theme-editorial .fc12-ar-j{stroke:#1a9bb0}.theme-editorial .fc12-hd-j{fill:#1a9bb0}
+.theme-editorial .fc12-ar-p{stroke:#7a5aa6}.theme-editorial .fc12-hd-p{fill:#7a5aa6}
+.theme-editorial .fc12-ar-g{stroke:#8a877d}.theme-editorial .fc12-hd-g{fill:#8a877d}
+.theme-editorial .fc12-ar-k{stroke:#3d3d3a}.theme-editorial .fc12-hd-k{fill:#3d3d3a}
+.theme-editorial .fc12-ar-b{stroke:#8b5a2b}.theme-editorial .fc12-hd-b{fill:#8b5a2b}
+.theme-editorial .fc12-ar-a{stroke:#e39a12}.theme-editorial .fc12-hd-a{fill:#e39a12}
+.theme-editorial .fc12-ar-w{stroke:#3f7fc0}.theme-editorial .fc12-hd-w{fill:#3f7fc0}
+.theme-editorial .fc12-ar-f{stroke:#3f6b45}.theme-editorial .fc12-hd-f{fill:#3f6b45}
+.theme-editorial .fc12-ar.fc12-axis{stroke-width:1.8}
+.theme-editorial .fc12-ar.fc12-raise{stroke-width:3.4}
+
+/* Curves: solid where a limit acts, grey dashed where it would act (thesis Fig. 5). */
+.theme-editorial .fc12-cv{fill:none;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fc12-cv-c{stroke:#d9584a}
+.theme-editorial .fc12-cv-j{stroke:#1aa6bb}
+.theme-editorial .fc12-cv-p{stroke:#7a5aa6}
+.theme-editorial .fc12-cv-4{stroke:#4e8a4a}
+.theme-editorial .fc12-ext{fill:none;stroke:#c3c0b7;stroke-width:4;stroke-dasharray:11 9;stroke-linecap:round}
+.theme-editorial .fc12-ext-p{stroke:#cbbfe0}
+.theme-editorial .fc12-dot{fill:#fffdf8;stroke:#3d3d3a;stroke-width:2.6}
+.theme-editorial .fc12-dot-c{fill:#d9584a}.theme-editorial .fc12-dot-j{fill:#1aa6bb}.theme-editorial .fc12-dot-p{fill:#7a5aa6}
+.theme-editorial .fc12-gain{stroke:none}
+.theme-editorial .fc12-gain-c{fill:#f6d3cd}.theme-editorial .fc12-gain-j{fill:#cbeaef}
+
+/* Braces, zones and boxes in the limit colours. */
+.theme-editorial .fc12-br{fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fc12-br-c{stroke:#c94a3c}.theme-editorial .fc12-br-j{stroke:#1a9bb0}.theme-editorial .fc12-br-p{stroke:#7a5aa6}
+.theme-editorial .fc12-zone{stroke-width:1.2}
+.theme-editorial .fc12-zone-c{fill:#fbebe7;stroke:#efc7bf}.theme-editorial .fc12-zone-j{fill:#e6f4f6;stroke:#bfe1e7}.theme-editorial .fc12-zone-p{fill:#f1ecf8;stroke:#d6cbe8}
+.theme-editorial .fc12-lbox{stroke-width:1.6}
+.theme-editorial .fc12-lbox-c{fill:#fdf1ee;stroke:#e3a99f}.theme-editorial .fc12-lbox-j{fill:#ecf7f9;stroke:#9fd2db}.theme-editorial .fc12-lbox-p{fill:#f4f0fa;stroke:#c6b6e0}
+.theme-editorial .fc12-out{fill:#fffdf8;stroke:#3d3d3a;stroke-width:1.8}
+.theme-editorial .fc12-lead{fill:none;stroke:#c9c6bb;stroke-width:1.6;stroke-dasharray:3 5}
+.theme-editorial .fc12-tray{fill:#fffdf8;stroke:#d8d4c8;stroke-width:1.4}
+
+/* Kitchen analogy. */
+.theme-editorial .fc12-app{fill:#fffdf8;stroke:#8a877d;stroke-width:1.8}
+.theme-editorial .fc12-app-in{fill:#f0eee6;stroke:#b9b5aa;stroke-width:1.4}
+.theme-editorial .fc12-pan{fill:#d8d4c8;stroke:#6b6a64;stroke-width:1.8;stroke-linejoin:round}
+.theme-editorial .fc12-handle{fill:none;stroke:#6b6a64;stroke-width:5;stroke-linecap:round}
+.theme-editorial .fc12-steam{fill:none;stroke:#b9b5aa;stroke-width:2;stroke-linecap:round}
+.theme-editorial .fc12-plate{fill:#fffdf8;stroke:#8a877d;stroke-width:1.6}
+.theme-editorial .fc12-basket{fill:#f1e4c6;stroke:#a8803a;stroke-width:1.8;stroke-linejoin:round}
+.theme-editorial .fc12-weave{fill:none;stroke:#b9a06a;stroke-width:1.4}
+.theme-editorial .fc12-knob{fill:#d8d4c8;stroke:#8a877d;stroke-width:1.2}
+.theme-editorial .fc12-box{fill:#f1e4d5;stroke:#8b5a2b;stroke-width:1.6;stroke-linejoin:round}
+
+/* C₃ vs C₄ and the field test. */
+.theme-editorial .fc12-rise{fill:#f0eee6}
+.theme-editorial .fc12-dlt{fill:none;stroke:#4e8a4a;stroke-width:2.2}
+.theme-editorial .fc12-dlt-3{stroke:#3d3d3a}
+.theme-editorial .fc12-guide{fill:none;stroke:#b9b5aa;stroke-width:1.2;stroke-dasharray:2 5}
+.theme-editorial .fc12-field{fill:#e3edd5;stroke:#8fb07a;stroke-width:1.6}
+.theme-editorial .fc12-row{fill:none;stroke:#a9c793;stroke-width:2.4;stroke-linecap:round}
+.theme-editorial .fc12-post{fill:none;stroke:#8a877d;stroke-width:3;stroke-linecap:round}
+.theme-editorial .fc12-vent{fill:#fffdf8;stroke:#8a877d;stroke-width:1.6}
+.theme-editorial .fc12-zero{fill:none;stroke:#8a877d;stroke-width:1.6}
+.theme-editorial .fc12-bar{fill:#e8e6dc;stroke:#6b6a64;stroke-width:1.4}
+.theme-editorial .fc12-nil{fill:none;stroke:#3d3d3a;stroke-width:4;stroke-linecap:round}
+.theme-editorial .fc12-time{fill:none;stroke:#8a877d;stroke-width:1.8}
+.theme-editorial .fc12-span{stroke-width:1.4}
+.theme-editorial .fc12-span-3{fill:#e8e6dc;stroke:#8a877d}.theme-editorial .fc12-span-4{fill:#dcebd6;stroke:#4e8a4a}
+
+/* Chloroplast map. */
+.theme-editorial .fc12-leaf{fill:#d3e7c3;stroke:#6f9a5a;stroke-width:1.8}
+.theme-editorial .fc12-vein{fill:none;stroke:#6f9a5a;stroke-width:1.4}
+.theme-editorial .fc12-zoom{fill:none;stroke:#3d3d3a;stroke-width:1.8}
+.theme-editorial .fc12-zoomline{fill:none;stroke:#b9b5aa;stroke-width:1.2;stroke-dasharray:3 5}
+.theme-editorial .fc12-env{fill:#f6f8ef;stroke:#7d9a64;stroke-width:2}
+.theme-editorial .fc12-env-in{fill:none;stroke:#a9bf94;stroke-width:1.4}
+.theme-editorial .fc12-thy{fill:#c5dfb0;stroke:#6f9a5a;stroke-width:1.4}
+.theme-editorial .fc12-tpt{fill:#efe9f7;stroke:#7a5aa6;stroke-width:1.8}
+.theme-editorial .fc12-thy-l{fill:none;stroke:#6f9a5a;stroke-width:3;stroke-linecap:round}
+
+/* Real subscripts in the page text: V<sub>cmax</sub>. */
+.theme-editorial .fc12-sub{font-size:.62em;line-height:0;vertical-align:-.22em}

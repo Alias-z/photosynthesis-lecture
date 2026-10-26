@@ -1,0 +1,62 @@
+/* Who uses which light? Staging A · Growing chart. Scoped under .ani-life-a; prefixed .la- */
+
+/* text: labels only, ≥ 22 px */
+.ani-life-a text.la-sec{font-size:23px;font-weight:500;fill:#3d3d3a}
+.ani-life-a text.la-row{font-size:27px;font-weight:600;fill:#141413}
+.ani-life-a text.la-lab{font-size:24px;fill:#3d3d3a}
+.ani-life-a text.la-note{font-size:22px;fill:#6b6a64}
+.ani-life-a text.la-fr-t{fill:#8e2316;font-weight:500}
+.ani-life-a text.la-q{font:500 150px Newsreader,Georgia,serif;fill:#141413}
+
+/* chart */
+.ani-life-a .la-guide{fill:none;stroke:#c9c6bb;stroke-width:1.4;stroke-dasharray:2 6;stroke-linecap:round}
+.ani-life-a .la-hump{fill:none;stroke:#3d3d3a;stroke-width:2;stroke-opacity:.6;stroke-linejoin:round}
+
+/* water */
+.ani-life-a .la-surf{fill:none;stroke:#7fa7b8;stroke-width:2}
+.ani-life-a .la-line{fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.ani-life-a .la-depth{fill:none;stroke:#8a877d;stroke-width:1.8}
+
+/* early chordate */
+.ani-life-a .la-fish{fill:#aeb592;stroke:#4d5242;stroke-width:2;stroke-linejoin:round}
+.ani-life-a .la-fin{fill:#d9ddc6;fill-opacity:.9;stroke:#7d836a;stroke-width:1.5;stroke-linejoin:round}
+.ani-life-a .la-myo{fill:none;stroke:#7d836a;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
+.ani-life-a .la-gill{fill:none;stroke:#6b6a64;stroke-width:1.4;stroke-linecap:round}
+.ani-life-a .la-fish-eye{fill:#fffdf8;stroke:#3d3d3a;stroke-width:1.6}
+.ani-life-a .la-fish-pupil{fill:#141413}
+
+/* bee */
+.ani-life-a .la-abd{fill:#f2b632}
+.ani-life-a .la-abd-o{fill:none;stroke:#8a6a1c;stroke-width:2}
+.ani-life-a .la-stripe{fill:none;stroke:#3d3d3a;stroke-width:6.5}
+.ani-life-a .la-thorax{fill:#8a6c3e;stroke:#5a4526;stroke-width:1.8}
+.ani-life-a .la-head{fill:#3d3d3a}
+.ani-life-a .la-ant,.ani-life-a .la-bee-leg{fill:none;stroke:#3d3d3a;stroke-width:2;stroke-linecap:round}
+.ani-life-a .la-bee-sting{fill:#3d3d3a}
+.ani-life-a .la-wing{fill:#eef4f8;fill-opacity:.88;stroke:#8796a3;stroke-width:1.6}
+
+/* discs and the bee's-eye lens */
+.ani-life-a .la-disc-sh{fill:#fffdf8}
+.ani-life-a .la-rim{fill:none;stroke:#c9c6bb;stroke-width:2}
+.ani-life-a .la-lens-sh{fill:#fffdf8}
+.ani-life-a .la-lens-bg{fill:#a7a2c0}
+.ani-life-a .la-lens-rim{fill:none;stroke:#3d3d3a;stroke-width:3}
+
+/* flower: as we see it, and its ultraviolet pattern in false colour */
+.ani-life-a .la-petal{fill:#f4c63a;stroke:#c9971c;stroke-width:2;stroke-linejoin:round}
+.ani-life-a .la-disc{fill:#d9922a;stroke:#a86a1a;stroke-width:2}
+.ani-life-a .la-stamen{fill:#b8781c}
+.ani-life-a .la-petal-uv{stroke:#6c6390;stroke-width:2;stroke-linejoin:round}
+.ani-life-a .la-disc-uv{fill:#231d36;stroke:#4a4266;stroke-width:2}
+.ani-life-a .la-stamen-uv{fill:#3b3354}
+
+/* algae and the mat */
+.ani-life-a .la-ralga-o{fill:none;stroke:#9a3346;stroke-width:17;stroke-linecap:round;stroke-linejoin:round}
+.ani-life-a .la-ralga{fill:none;stroke:#d7737f;stroke-width:13;stroke-linecap:round;stroke-linejoin:round}
+.ani-life-a .la-hold{fill:#9a3346}
+.ani-life-a .la-galga{fill:#a9cc8a;stroke:#5f8a4b;stroke-width:2;stroke-linejoin:round}
+.ani-life-a .la-mat1{fill:#7fa595;stroke:#4f7466;stroke-width:1.8}
+.ani-life-a .la-mat2{fill:#c2ab84;stroke:#8a7656;stroke-width:1.8}
+.ani-life-a .la-mat-f{fill:none;stroke:#4f7466;stroke-width:1.4;stroke-linecap:round}
+.ani-life-a .f2-w.la-faint{stroke-width:2;opacity:.5}
+.ani-life-a .la-fr{fill:none;stroke:#8e2316;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}

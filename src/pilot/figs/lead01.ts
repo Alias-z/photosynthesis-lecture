@@ -15,13 +15,9 @@ import { bolt } from '../illus';
 import { leaf, sun } from './s2';
 import { arr, co2, drop, loaf, marks, o2, ring, station, stepIcon, wheat } from './l01';
 
+// The lecturer's pick (26 Oct 2026). Unlisted variants (k, m, n, o, d) still draw by id.
 export const VARIANTS: Variant[] = [
   { id: 'l', name: 'Ins and outs' },
-  { id: 'k', name: 'Topic lines' },
-  { id: 'm', name: 'Two questions' },
-  { id: 'n', name: 'Topic cards' },
-  { id: 'o', name: 'Agenda' },
-  { id: 'd', name: 'Six steps' },
 ];
 
 const f = (v: number): string => v.toFixed(1);

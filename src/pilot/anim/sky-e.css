@@ -1,0 +1,52 @@
+/* Sky animation, staging E "Zoom journey, tuned". The world groups are drawn through a moving camera; strokes keep their
+   slide weight at every scale. */
+:is(.ani-sky-e,.ani-sky-e2) .se-world *{vector-effect:non-scaling-stroke}
+
+/* Earth seen whole. */
+:is(.ani-sky-e,.ani-sky-e2) .se-ocean{fill:#dbe8f2;stroke:#9cb5c8;stroke-width:1.6}
+:is(.ani-sky-e,.ani-sky-e2) .se-land{fill:#cfe3b4;stroke:#6f9a5a;stroke-width:1.4;stroke-linejoin:round}
+:is(.ani-sky-e,.ani-sky-e2) .se-airband{fill:#cfe1f5;fill-opacity:.9;stroke:#8fb2dc;stroke-width:1.6}
+:is(.ani-sky-e,.ani-sky-e2) .se-hl{fill:none;stroke:#a9532f;stroke-opacity:.42;stroke-width:46;stroke-linecap:butt}
+:is(.ani-sky-e,.ani-sky-e2) .se-you-dot{fill:#fffdf8;stroke:#141413;stroke-width:2.6}
+:is(.ani-sky-e,.ani-sky-e2) .atom{stroke-width:1.6}
+
+/* The prism inset. */
+:is(.ani-sky-e,.ani-sky-e2) .se-ring{fill:none;stroke:#3d3d3a;stroke-width:2}
+:is(.ani-sky-e,.ani-sky-e2) .se-lead{fill:none;stroke:#6b6a64;stroke-width:1.6;stroke-dasharray:3 6;stroke-linecap:round}
+:is(.ani-sky-e,.ani-sky-e2) .se-glass{fill:#e6edf1;stroke:#8ea2b0;stroke-width:2;stroke-linejoin:round}
+:is(.ani-sky-e,.ani-sky-e2) .se-inner{fill:#fffdf8}
+:is(.ani-sky-e,.ani-sky-e2) .se-ir{fill:#ebe6df}
+:is(.ani-sky-e,.ani-sky-e2) .se-uv{fill:#e5e3e9}
+:is(.ani-sky-e,.ani-sky-e2) .se-fan-edge{fill:none;stroke:#c9c6bb;stroke-width:1.2;stroke-linejoin:round}
+
+/* Ground level. */
+:is(.ani-sky-e,.ani-sky-e2) .se-ground{fill:#e3ebd2}
+:is(.ani-sky-e,.ani-sky-e2) .se-hill{fill:#d5e3c0}
+:is(.ani-sky-e,.ani-sky-e2) .se-ground.se-dusk{fill:#dfdfcd}
+:is(.ani-sky-e,.ani-sky-e2) .se-hill.se-dusk{fill:#d2d5c0}
+:is(.ani-sky-e,.ani-sky-e2) .se-horizon{fill:none;stroke:#93a882;stroke-width:1.6}
+:is(.ani-sky-e,.ani-sky-e2) .se-trunk{fill:#9a8463}
+:is(.ani-sky-e,.ani-sky-e2) .se-crown{fill:#cfe3b4;stroke:#6f9a5a;stroke-width:1.6;stroke-linejoin:round}
+:is(.ani-sky-e,.ani-sky-e2) .se-dusk .se-crown{fill:#c5d1ae;stroke:#6c8259}
+:is(.ani-sky-e,.ani-sky-e2) .se-person circle,:is(.ani-sky-e,.ani-sky-e2) .se-person rect{fill:#3d3d3a}
+:is(.ani-sky-e,.ani-sky-e2) .se-limb{fill:none;stroke:#3d3d3a;stroke-width:7;stroke-linecap:round}
+:is(.ani-sky-e,.ani-sky-e2) .se-arm{fill:none;stroke:#3d3d3a;stroke-width:6;stroke-linecap:round}
+
+/* Labels: at least 22 px. */
+:is(.ani-sky-e,.ani-sky-e2) text.se-lab{font-size:25px;font-weight:500;fill:#3d3d3a}
+:is(.ani-sky-e,.ani-sky-e2) text.se-you{font-size:26px;font-weight:600;fill:#141413}
+:is(.ani-sky-e,.ani-sky-e2) text.se-path-lab{fill:#a9532f;font-weight:600}
+:is(.ani-sky-e,.ani-sky-e2) text.se-key-b{fill:#2350e6;font-weight:600}
+:is(.ani-sky-e,.ani-sky-e2) text.se-key-g{fill:#2a963a;font-weight:600}
+:is(.ani-sky-e,.ani-sky-e2) text.se-key-r{fill:#c8361e;font-weight:600}
+
+/* E2 · Prism record: newsprint for the whole stage, and the prism card as a dark record sleeve. */
+.ani.ani-sky-e2{background-color:#ece6d6;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .32 0 0 0 0 .27 0 0 0 0 .18 0 0 0 .11 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E"),radial-gradient(rgba(70,58,36,.07) .8px,transparent 1.2px);background-size:220px 220px,5px 5px}
+.ani-sky-e2 .se-sleeve,.ani-sky-e2 .se-sleeve-fill{fill:#16161a}
+.ani-sky-e2 .se-moon{fill:#dedbd0}
+.ani-sky-e2 .se-rec-beam{fill:none;stroke:#f4f2ea;stroke-width:3;stroke-linecap:round}
+.ani-sky-e2 .se-rec-inner{fill:#f4f2ea;fill-opacity:.16}
+.ani-sky-e2 .se-rec-prism{fill:none;stroke:#efede6;stroke-width:2.6;stroke-linejoin:round}
+.ani-sky-e2 .se-rec-ir{fill:#e9dfd0;fill-opacity:.3}
+.ani-sky-e2 .se-rec-uv{fill:#dcdbea;fill-opacity:.3}
+.ani-sky-e2 text.se-rec-lab{fill:#ecebe4}

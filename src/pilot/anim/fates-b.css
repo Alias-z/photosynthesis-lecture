@@ -1,0 +1,68 @@
+/* Animation 4, staging B · Four doors. Scoped under .ani-fates-b, prefixed .ftb-. Inks follow slide 12:
+   photochemistry green, heat grey, fluorescence red, triplet clay, excitation amber, carotenoid orange. */
+
+/* text: labels only, 22 px and up */
+.ani-fates-b text.ftb-h{font-size:24px;font-weight:600;fill:#141413}
+.ani-fates-b text.ftb-l{font-size:22px;font-weight:500;fill:#3d3d3a}
+.ani-fates-b text.ftb-bt{font-size:22px;font-weight:600;fill:#2b2a27}
+.ani-fates-b text.ftb-c-green{fill:#3f6b35}
+.ani-fates-b text.ftb-c-red{fill:#b8301b}
+.ani-fates-b text.ftb-c-blue{fill:#2350e6}
+.ani-fates-b text.ftb-c-clay{fill:#a9532f}
+.ani-fates-b text.ftb-c-grey{fill:#6b6a64}
+.ani-fates-b text.ftb-c-orange{fill:#b75f12}
+.ani-fates-b text.ftb-c-protein{fill:#5f7a4c}
+
+/* time pills, deepening from fs to µs as on slide 12 */
+.ani-fates-b .ftb-tb{stroke-width:1.2}
+.ani-fates-b .ftb-tb-fs{fill:#fdf2cc;stroke:#e5c76a}
+.ani-fates-b .ftb-tb-ps{fill:#fde0c4;stroke:#e5a36a}
+.ani-fates-b .ftb-tb-ns{fill:#f8c7ad;stroke:#d9805a}
+.ani-fates-b .ftb-tb-us{fill:#eaa9a1;stroke:#b75a4e}
+
+/* the leaf keeps thin lines while the camera zooms through it */
+.ani-fates-b .ftb-la path{vector-effect:non-scaling-stroke}
+
+/* protein, rooms and chlorophyll */
+.ani-fates-b .ftb-protein{fill:#eef2e4;stroke:#c5d1b0;stroke-width:2}
+.ani-fates-b .ftb-room{fill:#fffdf8;stroke:#5f5c55;stroke-width:8}
+.ani-fates-b .ftb-wall{fill:none;stroke:#5f5c55;stroke-width:8}
+.ani-fates-b .ftb-chl{fill:#f3f1ea;stroke:#6b6a64;stroke-width:2;stroke-linejoin:round}
+.ani-fates-b .ftb-chl-b{fill:none;stroke:#8a877d;stroke-width:1.6}
+.ani-fates-b .ftb-chl-conj{fill:none;stroke:#e3a51c;stroke-width:3.5}
+.ani-fates-b .ftb-chl-tail{fill:none;stroke:#8a877d;stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}
+.ani-fates-b .ftb-mg{fill:#b9c7a0;stroke:#6b6a64;stroke-width:1.4}
+
+/* the excitation */
+.ani-fates-b .ftb-gl-core{stroke:#c98410;stroke-width:1.2}
+
+/* doors */
+.ani-fates-b .ftb-door{fill:none;stroke-width:7;stroke-linecap:round}
+.ani-fates-b .ftb-door-green{stroke:#4f7f3f}
+.ani-fates-b .ftb-door-red{stroke:#c8361e}
+.ani-fates-b .ftb-door-grey{stroke:#b3afa4}
+.ani-fates-b .ftb-door-clay{stroke:#d97757}
+.ani-fates-b .ftb-swing{fill:none;stroke:#b5b2a7;stroke-width:1.6;stroke-dasharray:4 5}
+
+/* exits */
+.ani-fates-b .ftb-rc-open{fill:#d3e7c3;stroke:#6f9a5a;stroke-width:2}
+.ani-fates-b .ftb-rc-closed{fill:#ecebe4;stroke:#a8a59a;stroke-width:2}
+.ani-fates-b .ftb-ar-green{fill:none;stroke:#4f7f3f;stroke-width:4;stroke-linecap:round}
+.ani-fates-b .ftb-hd-green{fill:#4f7f3f}
+.ani-fates-b .ftb-ar-red{fill:none;stroke:#c8361e;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+.ani-fates-b .ftb-hd-red{fill:#c8361e}
+.ani-fates-b .ftb-heat{fill:none;stroke:#a9a59a;stroke-width:3.6;stroke-linecap:round;stroke-linejoin:round}
+.ani-fates-b .ftb-heat-hd{fill:#a9a59a}
+.ani-fates-b .ftb-ar-clay{fill:none;stroke:#d97757;stroke-width:3.6;stroke-dasharray:10 8;stroke-linecap:round}
+.ani-fates-b .ftb-hd-clay{fill:#d97757}
+.ani-fates-b .ftb-ar-q{fill:none;stroke:#e07a1f;stroke-width:3.2;stroke-linecap:round}
+.ani-fates-b .ftb-hd-q{fill:#e07a1f}
+.ani-fates-b .ftb-e{fill:#3d3d3a;stroke:#fffdf8;stroke-width:1.6}
+.ani-fates-b .ftb-o{fill:#f4cc4f;stroke:#b8902a;stroke-width:1.6}
+.ani-fates-b .ftb-car{fill:none;stroke:#e07a1f;stroke-width:3.2;stroke-linejoin:round;stroke-linecap:round}
+.ani-fates-b .ftb-car-ring{fill:#fdeedd;stroke:#e07a1f;stroke-width:2.4;stroke-linejoin:round}
+
+/* light arriving as wave packets */
+.ani-fates-b .ftb-ph{fill:none;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+.ani-fates-b .ftb-ph-blue{stroke:#2350e6}
+.ani-fates-b .ftb-ph-red{stroke:#c8361e}

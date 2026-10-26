@@ -1,0 +1,51 @@
+/* Why pigments differ, staging B "Ladder first". The zoom layers keep their stroke weight at every scale. */
+.ani-pig-b [data-k="L0"] *,.ani-pig-b [data-k="L1"] *{vector-effect:non-scaling-stroke}
+
+/* leaf and chloroplast */
+.ani-pig-b .pb-cp-dot{fill:#9cc77a;stroke:#5f8f4a;stroke-width:1}
+.ani-pig-b .pb-cp{fill:#cfe3b4;stroke:#6f9a5a;stroke-width:2}
+.ani-pig-b .pb-granum{fill:#5f9a4a}
+.ani-pig-b .pb-lam{fill:none;stroke:#7fae66;stroke-width:3;stroke-linecap:round}
+
+/* molecules: bonds, the amber room, atoms, the side group */
+.ani-pig-b .pb-room{fill:none;stroke:#f0a316;stroke-opacity:.42;stroke-width:18;stroke-linecap:round;stroke-linejoin:round}
+.ani-pig-b .pb-bond{fill:none;stroke:#3d3d3a;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.ani-pig-b .pb-dbl{stroke-width:2.2}
+.ani-pig-b .pb-mgb{fill:none;stroke:#8a877d;stroke-width:1.6;stroke-dasharray:3 4}
+.ani-pig-b .pb-atom-bg{fill:#faf8f2}
+.ani-pig-b text.pb-atom{font-size:22px;font-weight:600;fill:#3d3d3a}
+.ani-pig-b text.pb-mg{font-size:25px;fill:#2f6e8a}
+.ani-pig-b text.pb-grp{font-size:25px;font-weight:600;fill:#3d3d3a}
+.ani-pig-b text.pb-grp-new{fill:#a9532f}
+.ani-pig-b .pb-pulse{fill:#f0a316;fill-opacity:.25;stroke:#f0a316;stroke-width:2}
+
+/* the ladder */
+.ani-pig-b .pb-axis{fill:none;stroke:#8a877d;stroke-width:1.8}
+.ani-pig-b .pb-tick{fill:none;stroke:#8a877d;stroke-width:1.6}
+.ani-pig-b .pb-rung{fill:none;stroke:#3d3d3a;stroke-width:3.2;stroke-linecap:round}
+.ani-pig-b .pb-rung.pb-ghost{stroke:#a8a59a;stroke-width:2;stroke-dasharray:7 7}
+.ani-pig-b .pb-band{fill-opacity:.55}
+.ani-pig-b .pb-lift{fill:none;stroke-width:3.4;stroke-linecap:round}
+.ani-pig-b .pb-pk{fill:none;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.ani-pig-b .pb-e{fill:#f0a316;stroke:#c98410;stroke-width:1.4}
+.ani-pig-b .pb-lead{fill:none;stroke:#a8a59a;stroke-width:1.8;stroke-dasharray:2 6;stroke-linecap:round}
+
+/* the spectra */
+.ani-pig-b .pb-sp{stroke-width:2.6;stroke-linejoin:round}
+.ani-pig-b .pb-sp-a{fill:#cfe3b4;stroke:#4f7f3f}
+.ani-pig-b .pb-sp-b{fill:#e6ecbf;stroke:#8a9a2e}
+.ani-pig-b .pb-sp-c{fill:#f7dcae;stroke:#d08a1e}
+.ani-pig-b .pb-base{fill:none;stroke:#8a877d;stroke-width:1.4}
+.ani-pig-b .pb-gband{fill:#2a963a;fill-opacity:.08;stroke:#2a963a;stroke-opacity:.35;stroke-width:1.4;stroke-dasharray:4 6}
+
+/* labels: at least 22 px */
+.ani-pig-b text.pb-lab{font-size:25px;fill:#3d3d3a}
+.ani-pig-b text.pb-mlab{font-weight:600;fill:#141413}
+.ani-pig-b text.pb-mute{font-size:23px;fill:#6b6a64}
+.ani-pig-b text.pb-tlab{font-size:22px;fill:#6b6a64}
+.ani-pig-b text.pb-ax{font-size:23px;fill:#6b6a64}
+.ani-pig-b text.pb-lv{font-size:27px;font-weight:600;fill:#141413}
+.ani-pig-b text.pb-amber{font-weight:600;fill:#9a6a0c}
+.ani-pig-b text.pb-rowlab{font-weight:600;fill:#141413}
+.ani-pig-b text.pb-green{font-weight:600;fill:#24812f}
+.ani-pig-b .pb-ink{font-weight:600}

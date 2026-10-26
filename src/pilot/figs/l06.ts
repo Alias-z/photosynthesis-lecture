@@ -18,11 +18,11 @@ export const PLATE: PlateText = {
   n: '6',
   status: 'confirmed',
   title: 'Light-harvesting complexes',
-  lead: 'In full sun a chlorophyll absorbs only about 10 photons a second, so many antenna pigments serve each reaction centre.',
+  lead: 'In full sun one chlorophyll absorbs only ~10 photons per second, so light-harvesting complexes (LHC) collect light for each reaction centre.',
   points: [
-    { claim: 'Chl a and Chl b differ by one group.', text: 'Chlorophyll b has –CHO where chlorophyll a has –CH₃, which shifts its absorption peaks.' },
-    { claim: 'Antennas move energy, not electrons.', text: 'Energy hops between pigments to the reaction centre, where an excited chlorophyll pair gives away an electron.' },
-    { claim: 'Each photosystem has its own antenna.', text: 'Light-harvesting complex (LHC) II serves PSII; LHCI, richer in Chl a, serves PSI and absorbs beyond 700 nm.' },
+    { claim: 'Energy transfer.', text: 'Antenna pigments pass on energy, not electrons<br>Only the reaction centre releases an electron' },
+    { claim: 'Chlorophyll a and b.', text: 'Chl b carries –CHO where Chl a carries –CH₃<br>This shifts its absorption peaks' },
+    { claim: 'Two antennas.', text: 'LHCII feeds photosystem II (PSII)<br>LHCI feeds PSI and absorbs beyond 700 nm' },
   ],
   refs: [
     { label: 'Croce & van Amerongen 2020', url: 'https://doi.org/10.1126/science.aay2058' },

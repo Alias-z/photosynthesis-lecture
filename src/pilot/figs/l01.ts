@@ -12,28 +12,23 @@ export const PLATE: PlateText = {
   n: '1',
   status: 'confirmed',
   title: 'Photosynthesis',
-  lead: 'Photosynthesis converts light energy into chemical energy: electrons taken from water reduce CO₂ to sugar.',
+  lead: 'Photosynthesis converts light energy into chemical energy.',
   points: [
-    { claim: 'Photo: capturing light.', text: 'Pigments absorb light; the light reactions convert its energy into ATP and NADPH.' },
-    { claim: 'Synthesis: fixing carbon.', text: 'The Calvin–Benson cycle uses ATP and NADPH to fix CO₂ into sugar: the carbon in bread comes from air.' },
-    { claim: 'One equation sums it up.', text: `6 CO₂ + 6 H₂O ${rxn('light')} C₆H₁₂O₆ + 6 O₂` },
+    { claim: 'Light reactions.', text: 'Pigments absorb light<br>Water is split, O₂ is released, ATP and NADPH are made' },
+    { claim: 'Calvin–Benson cycle.', text: 'ATP and NADPH fix CO₂ into sugar<br>The carbon in bread comes from air' },
+    { claim: 'Overall equation.', text: `6 CO₂ + 6 H₂O ${rxn('light')} C₆H₁₂O₆ + 6 O₂` },
   ],
   refs: [{ label: 'Johnson 2016', url: 'https://doi.org/10.1042/EBC20160016' }],
 };
 
 // Round 2: the lecturer's picks (b, f, h) first, then five combinations of them (k–o).
 // The unpicked round-1 variants (a, c, d, e, g, i, j) stay drawable by id through draw().
+// The lecturer's picks (26 Oct 2026); the others were removed from the list at their request. Unlisted variants (r, p, k, l, m, n) still draw by id.
 export const VARIANTS: Variant[] = [
   { id: 'o', name: 'Full picture' },
-  { id: 'r', name: 'Full picture, no title', noTitle: true },
-  { id: 'p', name: 'Full picture, airy' },
   { id: 'b', name: 'Word split' },
   { id: 'f', name: 'Six steps', anim: true },
   { id: 'h', name: 'Battery analogy' },
-  { id: 'k', name: 'Words over loop' },
-  { id: 'l', name: 'Equation hub' },
-  { id: 'm', name: 'Steps in stations', anim: true },
-  { id: 'n', name: 'Word columns', anim: true },
 ];
 
 const f = (v: number): string => v.toFixed(1);

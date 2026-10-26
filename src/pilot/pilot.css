@@ -27,7 +27,7 @@ html,body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--s
 .seg button.picked{position:relative;box-shadow:inset 0 -5px 0 #a9532f}
 .seg button.picked::before{content:"✓";position:absolute;top:3px;right:5px;font:700 13px/1 var(--sans);color:#a9532f}
 .seg button.picked[aria-pressed="true"]::before{color:#f0a47e}
-.plates .frame.is-picked{outline:4px solid #a9532f;outline-offset:3px}
+.plates .frame.is-picked,.anim-frame.is-picked{outline:4px solid #a9532f;outline-offset:3px}
 .pick-note{display:block;width:100%;box-sizing:border-box;margin:-8px 0 24px;padding:10px 12px;font:15px/1.4 var(--sans);color:var(--ink);border:1px solid #b9bdb4;border-radius:10px;background:#fbfaf6;resize:vertical}
 .pick-status{position:fixed;right:18px;bottom:18px;z-index:5;padding:8px 14px;border-radius:999px;font-size:14px;color:var(--ink2);background:#f2f3ee;box-shadow:0 0 0 1px rgba(31,42,58,.2)}
 .pick-status:empty{display:none}
@@ -45,6 +45,8 @@ html,body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--s
 .theme-editorial .p-points{list-style:none;padding:0;display:grid;gap:22px}
 .theme-editorial .p-points li{font:400 27px/1.42 Inter,"Helvetica Neue",Arial,sans-serif;color:#3d3d3a;text-wrap:pretty}
 .theme-editorial .p-points b{font-weight:600;color:#a9532f}
+/* Math signs the text face lacks at full size, such as ∝. */
+.theme-editorial .p-points .math{font-family:"STIX Two Math",STIXGeneral,"Cambria Math",serif;font-size:1.1em}
 /* A reaction arrow with its condition over it, in running text. */
 .theme-editorial .rxn{display:inline-flex;flex-direction:column;align-items:stretch;vertical-align:.3em;margin:0 .3em;line-height:1}
 .theme-editorial .rxn-over{padding:0 .5em;font-size:.68em;font-weight:500;color:#a5670a;text-align:center}
@@ -59,6 +61,8 @@ html,body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--s
 .theme-editorial .p-num{right:96px;top:846px;font:400 20px Inter,sans-serif;color:#8a877d}
 .theme-editorial .p-anim{font:500 22px/1 Inter,sans-serif;color:#141413;background:#f0eee6;border:0;border-radius:999px;padding:14px 24px;cursor:pointer}
 .theme-editorial .p-anim:hover{background:#e6e3d8}
+.theme-editorial .p-play{right:96px;top:76px;z-index:2;font:500 24px/1 Inter,sans-serif;color:#fffdf8;background:#a9532f;border:0;border-radius:999px;padding:16px 28px;cursor:pointer;box-shadow:0 6px 18px -8px rgba(60,30,10,.5)}
+.theme-editorial .p-play:hover{background:#8f4426}
 .theme-editorial .fig text{font-family:Inter,"Helvetica Neue",Arial,sans-serif;fill:#3d3d3a}
 .theme-editorial .lab{font-size:27px}.theme-editorial .lab-b{font-weight:600;fill:#141413}
 .theme-editorial .tl{font-size:24px;fill:#6b6a64}
@@ -267,8 +271,22 @@ body.solo .block{margin:0}
 @media print{
   html,body{background:#fff}
   #pilot{max-width:none;padding:0}
-  .top,.bar,.note,#animation,.p-anim,.pick-note,.pick-status,.slide-bar,.lead-part,.frame[data-kind="lecture"]{display:none!important}
+  .top,.bar,.note,#animation,.anim-block,.p-anim,.pick-note,.pick-status,.slide-bar,.lead-part,.frame[data-kind="lecture"]{display:none!important}
   .slide .frame[data-kind="handout"]{display:block!important}
   .frame{width:1600px!important;height:900px!important;margin:0;box-shadow:none;outline:none!important;break-after:page}
   .frame>*{transform:none!important}
 }
+
+/* ---------- playing an animation over the page, as in the lecture ---------- */
+.player{position:fixed;inset:0;z-index:20;background:rgba(20,20,19,.88);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
+.player-bar{display:flex;align-items:center;gap:18px;height:60px}
+.player-title{font:500 20px/1 var(--sans);color:#f2f3ee}
+.player .seg button{font-size:15px;padding:9px 14px}
+.player[hidden]{display:none}
+.player-frame{position:relative;overflow:hidden}
+.player-frame>div{position:absolute;left:0;top:0;width:1600px;height:900px;transform-origin:0 0}
+.player-close{position:fixed;top:14px;right:18px;width:48px;height:48px;border-radius:50%;border:0;background:#f0eee6;color:#141413;font:400 30px/1 Inter,sans-serif;cursor:pointer}
+@media print{.player{display:none!important}.p-play{display:none!important}}
+/* Lecture mode: no variant names or switches in the player, as it will run in class. */
+body.lecture-mode .player-seg{display:none}
+.top .bar-r{margin-top:14px}

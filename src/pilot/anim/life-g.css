@@ -1,0 +1,116 @@
+/* Animation 2, staging G · Zoom through the eye. Scoped under .ani-life-g, prefixed .lfg- */
+
+/* text: labels only, 22 px and up */
+.ani-life-g text.lfg-lab{font-size:22px;font-weight:500;fill:#3d3d3a}
+.ani-life-g text.lfg-lab-b{font-weight:600;fill:#141413}
+.ani-life-g text.lfg-rowlab{font-size:22px;font-weight:600;fill:#141413}
+.ani-life-g text.lfg-q{font:500 96px Newsreader,Georgia,serif;fill:#141413}
+
+/* ground and water */
+.ani-life-g .lfg-ground{fill:#ece4d3}
+.ani-life-g .lfg-floor{fill:none;stroke-width:11;stroke-linecap:round}
+.ani-life-g .lfg-beach{fill:none;stroke:#e3cf9c;stroke-width:10;stroke-linecap:round}
+.ani-life-g .lfg-turf{fill:none;stroke:#a7c886;stroke-width:10;stroke-linecap:round}
+.ani-life-g .lfg-grass{fill:none;stroke:#7fa862;stroke-width:2.2;stroke-linecap:round}
+.ani-life-g .lfg-surf{fill:none;stroke:#7fb4c6;stroke-width:2.4}
+.ani-life-g .lfg-ralga{fill:#b8343a;stroke:#7d1e24;stroke-width:1.4;stroke-linejoin:round}
+.ani-life-g .lfg-hold{fill:#7d1e24}
+.ani-life-g .lfg-wave{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.ani-life-g .lfg-whalo{fill:none;stroke-width:8;stroke-linecap:round;stroke-linejoin:round}
+
+/* the fruit tree */
+.ani-life-g .lfg-trunk{fill:#8a6a4a;stroke:#5f4630;stroke-width:1.6;stroke-linejoin:round}
+.ani-life-g .lfg-branch{fill:none;stroke:#7a5c3e;stroke-width:6;stroke-linecap:round}
+.ani-life-g .lfg-crown-o{fill:none;stroke:#46703a;stroke-width:4}
+.ani-life-g .lfg-crown{fill:#5e8c45}
+.ani-life-g .lfg-tl{stroke:#46703a;stroke-width:.8}
+.ani-life-g .lfg-tl-big{fill:#6f9f50;stroke:#3f6634;stroke-width:1.4}
+.ani-life-g .lfg-young{fill:#c4583c;stroke:#8e3b26;stroke-width:1}
+.ani-life-g .lfg-fruit{fill:#d23c24;stroke:#8e2316;stroke-width:1.4}
+.ani-life-g .lfg-fruit-hi{fill:#f3a08a}
+.ani-life-g .lfg-stalk{fill:none;stroke:#5f4630;stroke-width:2;stroke-linecap:round}
+
+/* flowers and the bee's lens */
+.ani-life-g .lfg-stem{fill:none;stroke:#6f9a5a;stroke-width:2.6;stroke-linecap:round}
+.ani-life-g .lfg-sleaf{fill:#8fb77a;stroke:#6f9a5a;stroke-width:1}
+.ani-life-g .lfg-petal{fill:#f2c42a;stroke:#c99a17;stroke-width:1.2;stroke-linejoin:round}
+.ani-life-g .lfg-disk{fill:#e0952a;stroke:#b36f17;stroke-width:1.2}
+.ani-life-g .lfg-lens-halo{fill:none;stroke:#fffdf8;stroke-width:8}
+.ani-life-g .lfg-lens-ring{fill:none;stroke:#3d3d3a;stroke-width:3}
+
+/* the subject and the bee */
+.ani-life-g .lfg-body{stroke:#4a4236;stroke-width:1.8;stroke-linejoin:round}
+.ani-life-g .lfg-face{fill:#d9c3a5}
+.ani-life-g .lfg-ceye{fill:#fffdf8;stroke:#2b2620;stroke-width:1.2}
+.ani-life-g .lfg-cpupil{fill:#141413}
+.ani-life-g .lfg-wing{fill:#eef4f7;fill-opacity:.85;stroke:#9fb1bd;stroke-width:1.2}
+.ani-life-g .lfg-abd{fill:#f2c23a}
+.ani-life-g .lfg-abd-o{fill:none;stroke:#6b4a1a;stroke-width:1.4}
+.ani-life-g .lfg-stripe{fill:none;stroke:#3b2a1a;stroke-width:5}
+.ani-life-g .lfg-thorax{fill:#8a6232;stroke:#5a3e1e;stroke-width:1.4}
+.ani-life-g .lfg-head{fill:#3b2a1a}
+.ani-life-g .lfg-ant,.ani-life-g .lfg-leg,.ani-life-g .lfg-sting{fill:none;stroke:#3b2a1a;stroke-width:1.8;stroke-linecap:round}
+
+/* the close-up */
+.ani-life-g .lfg-callout{fill:#c9c6bb;fill-opacity:.18;stroke:#8a877d;stroke-width:1.6;stroke-linejoin:round}
+.ani-life-g .lfg-callring{fill:none;stroke:#3d3d3a;stroke-width:2}
+.ani-life-g .lfg-ins-bg{fill:#fffdf8}
+.ani-life-g .lfg-ins-ring{fill:none;stroke:#3d3d3a;stroke-width:2.6}
+.ani-life-g .lfg-ball{fill:#f7f3ea;stroke:#3d3d3a;stroke-width:2.2}
+.ani-life-g .lfg-cornea{fill:#f7f3ea;stroke:#3d3d3a;stroke-width:2.2}
+.ani-life-g .lfg-iris{fill:none;stroke:#8a877d;stroke-width:5;stroke-linecap:round}
+.ani-life-g .lfg-lens{fill:#e9f0f3;stroke:#7f95a3;stroke-width:1.8}
+.ani-life-g .lfg-dot{stroke:#fffdf8;stroke-width:1.2}
+.ani-life-g .lfg-iw{fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.ani-life-g .lfg-facet{fill:#f7f3ea;stroke:#a8a59a;stroke-width:1.2}
+.ani-life-g .lfg-fdot{stroke:#fffdf8;stroke-width:1.2}
+.ani-life-g .lfg-cell{fill:#eef5e2;stroke:#6f9a5a;stroke-width:3}
+.ani-life-g .lfg-chl{fill:#7fb35a;stroke:#4f7a3a;stroke-width:1.4}
+.ani-life-g .lfg-gran{fill:none;stroke:#4f7a3a;stroke-width:1.4;stroke-linecap:round}
+
+/* the monkey's face */
+.ani-life-g .lfg-ear{fill:#7d6550;stroke:#4a4236;stroke-width:1.6}
+.ani-life-g .lfg-ear-in{fill:#c9a98a}
+.ani-life-g .lfg-facedisk{fill:#e3cdb0;stroke:#4a4236;stroke-width:1.2}
+.ani-life-g .lfg-muzzle{fill:#f1e4cf;stroke:#8a7a66;stroke-width:1}
+.ani-life-g .lfg-mouth{fill:none;stroke:#4a4236;stroke-width:1.4;stroke-linecap:round}
+
+/* "So why?": the wavelength axis, and the leaders from labels into the close-up */
+.ani-life-g .lfg-ax{fill:none;stroke:#3d3d3a;stroke-width:2;stroke-linecap:round}
+.ani-life-g .lfg-axhead{fill:#3d3d3a}
+.ani-life-g .lfg-guide{fill:none;stroke:#a8a59a;stroke-width:1.4;stroke-dasharray:3 6;stroke-linecap:round}
+.ani-life-g .lfg-leader{fill:none;stroke:#6b6a64;stroke-width:1.6;stroke-linecap:round}
+.ani-life-g .lfg-panel{fill:#f9f8f3;fill-opacity:.9}
+
+/* inside the eye: windows, eyes and their light-sensitive cells */
+.ani-life-g .lfg-card{fill:#fffdf8}
+.ani-life-g .lfg-frame{fill:none;stroke:#3d3d3a;stroke-width:2.4}
+.ani-life-g .lfg-ew{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.ani-life-g .lfg-ball{fill:#f7f3ea;stroke:#3d3d3a;stroke-width:2.4}
+.ani-life-g .lfg-cornea{fill:#f7f3ea;stroke:#3d3d3a;stroke-width:2.4}
+.ani-life-g .lfg-retina{fill:none;stroke:#e6c9b8;stroke-width:16;stroke-linecap:round}
+.ani-life-g .lfg-elens{fill:#e9f0f3;stroke:#7f95a3;stroke-width:1.8}
+.ani-life-g .lfg-iris{fill:none;stroke:#8a877d;stroke-width:5;stroke-linecap:round}
+.ani-life-g .lfg-dot{stroke:#fffdf8;stroke-width:1.4}
+.ani-life-g .lfg-ceye-o{fill:#5a3e1e;stroke:#3b2a1a;stroke-width:2}
+.ani-life-g .lfg-facet{fill:#f7f3ea;stroke:#a8a59a;stroke-width:1.4}
+
+/* The animal and the bee are what the camera dives into: their outlines keep one width on screen at any zoom
+   (the widths below are their on-screen widths at the shore view, scale 1.45). */
+.ani-life-g .lfg-body,.ani-life-g .lfg-ear,.ani-life-g .lfg-facedisk,.ani-life-g .lfg-muzzle,.ani-life-g .lfg-mouth,
+.ani-life-g .lfg-ceye,.ani-life-g .lfg-wing,.ani-life-g .lfg-abd-o,.ani-life-g .lfg-thorax,
+.ani-life-g .lfg-ant,.ani-life-g .lfg-leg,.ani-life-g .lfg-sting{vector-effect:non-scaling-stroke}
+.ani-life-g .lfg-body{stroke-width:2.6}
+.ani-life-g .lfg-ear{stroke-width:2.3}
+.ani-life-g .lfg-facedisk,.ani-life-g .lfg-ceye{stroke-width:1.8}
+.ani-life-g .lfg-muzzle{stroke-width:1.5}
+.ani-life-g .lfg-mouth{stroke-width:2}
+.ani-life-g .lfg-wing{stroke-width:1.8}
+.ani-life-g .lfg-abd-o,.ani-life-g .lfg-thorax{stroke-width:2}
+.ani-life-g .lfg-ant,.ani-life-g .lfg-leg,.ani-life-g .lfg-sting{stroke-width:2.6}
+
+/* the lens that opens at the eye onto what it sees */
+.ani-life-g .lfg-lensbg{fill:#faf9f5}
+.ani-life-g .lfg-lensrim{fill:none;stroke:#3d3d3a;stroke-width:3}
+.ani-life-g .lfg-lensrim-h{fill:#faf9f5;stroke:#fffdf8;stroke-width:10;filter:drop-shadow(0 3px 6px rgba(31,42,58,.22))}
+.ani-life-g .lfg-limb{fill:none;stroke:#7a5c3e;stroke-width:7;stroke-linecap:round}

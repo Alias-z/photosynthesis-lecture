@@ -14,11 +14,11 @@ export const PLATE: PlateText = {
   n: '5',
   status: 'confirmed',
   title: 'Why are leaves green?',
-  lead: 'Chlorophyll absorbs blue and red strongly and green weakly, so the light a leaf reflects and transmits is enriched in green.',
+  lead: 'A pigment absorbs a photon only if its energy matches an electron jump in the pigment.',
   points: [
-    { claim: 'Leaves still use green light.', text: 'A leaf absorbs 50–90 % of green light (blue and red: 80–95 %); green penetrates deeper and drives photosynthesis in lower cells.' },
-    { claim: 'Pigments complement each other.', text: 'Chlorophyll a and b absorb blue and red at shifted peaks; carotenoids absorb blue to blue-green and protect against excess light.' },
-    { claim: 'Red algae catch green too.', text: 'Their phycoerythrin absorbs green light, with peaks near 498, 543 and 565 nm, where chlorophyll absorbs poorly.' },
+    { claim: 'Absorption spectrum.', text: 'Chlorophyll absorbs blue and red strongly, green weakly<br>Leaves reflect and transmit more green: they look green' },
+    { claim: 'Green light.', text: 'Leaves still absorb 50–90 % of green<br>It reaches deeper cells and drives photosynthesis there' },
+    { claim: 'Accessory pigments.', text: 'Chlorophyll b and carotenoids widen the absorbed band<br>Red algae: phycoerythrin absorbs green' },
   ],
   refs: [
     { label: 'Terashima et al. 2009', url: 'https://doi.org/10.1093/pcp/pcp034' },

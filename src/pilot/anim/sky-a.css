@@ -1,0 +1,32 @@
+/* Sunlight and the sky, staging A · Wide scene. Everything is scoped under .ani-sky-a; waves, Sun and molecules use the
+   slide-2 classes (.f2-*) from figs/s2.css. */
+
+/* Earth: sea, land, the (too thick) air and the soft night side, all in paper tones. */
+.ani-sky-a .sa-sea{fill:#a9c8e3;stroke:none}
+.ani-sky-a .sa-land{fill:#c9ddab;stroke:#8fae78;stroke-width:1.6;stroke-linejoin:round}
+.ani-sky-a .sa-limb{fill:none;stroke:#7f9fbf;stroke-width:1.6}
+.ani-sky-a .sa-night{fill:#55607a;fill-opacity:.3}
+
+/* Insets: thin leaders to the spot they show, a pick ring, the magnifier and the view. */
+.ani-sky-a .sa-lead{fill:none;stroke:#8a877d;stroke-width:1.6;stroke-linecap:round}
+.ani-sky-a .sa-pick{fill:none;stroke:#3d3d3a;stroke-width:2.4}
+.ani-sky-a .sa-lens{fill:#f5f8fb}
+.ani-sky-a .sa-rim{fill:none;stroke:#5f5e58;stroke-width:3.5}
+.ani-sky-a .sa-prism{fill:#eef3f6;fill-opacity:.88;stroke:#7d8b97;stroke-width:2;stroke-linejoin:round}
+.ani-sky-a .sa-band-x{fill:#e6e3da}
+.ani-sky-a .sa-fan-x{fill:#e6e3da;fill-opacity:.7}
+.ani-sky-a .sa-rib{fill:none;stroke:#8a877d;stroke-width:1.4}
+.ani-sky-a .sa-ground{fill:#56604d}
+.ani-sky-a .sa-view-rim{fill:none;stroke:#5f5e58;stroke-width:2.4}
+
+/* Paths, the midday spot and you. */
+.ani-sky-a .sa-br{fill:none;stroke:#3d3d3a;stroke-width:2.4;stroke-linecap:round}
+.ani-sky-a .sa-ghost{fill:none;stroke:#8a877d;stroke-width:1.8;stroke-dasharray:3 7;stroke-linecap:round}
+.ani-sky-a .sa-ghost-dot{fill:#fcfbf8;stroke:#6b6a64;stroke-width:2.4}
+.ani-sky-a .sa-you{fill:#141413;stroke:#fcfbf8;stroke-width:2.5}
+
+/* Labels: Inter, never under 22 px, with a paper halo where they cross the drawing. */
+.ani-sky-a text.sa-t{font-size:25px;fill:#3d3d3a;paint-order:stroke;stroke:#fcfbf8;stroke-width:6px;stroke-linejoin:round}
+.ani-sky-a text.sa-t-lens{stroke:#f5f8fb}
+.ani-sky-a text.sa-t-you{font-size:27px;font-weight:600;fill:#141413}
+.ani-sky-a text.sa-note{font-size:22px;font-style:italic;fill:#6b6a64}

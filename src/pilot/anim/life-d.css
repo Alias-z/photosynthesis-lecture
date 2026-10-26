@@ -1,0 +1,94 @@
+/* Animation 2, staging D · Side by side. Scoped under .ani-life-d, prefixed .lfd- */
+
+/* text: labels only, 22 px and up */
+.ani-life-d text.lfd-sec{font-size:22px;font-weight:500;fill:#6b6a64;letter-spacing:.01em}
+.ani-life-d text.lfd-plab{font-size:26px;font-weight:600;fill:#141413}
+.ani-life-d text.lfd-note{font-size:22px;font-weight:500;fill:#3d3d3a}
+.ani-life-d text.lfd-lab{font-size:24px;font-weight:600;fill:#3d3d3a}
+.ani-life-d .lfd-lead{fill:none;stroke:#6b6a64;stroke-width:1.6;stroke-linecap:round}
+.ani-life-d text.lfd-rowlab{font-size:26px;font-weight:600;fill:#141413}
+.ani-life-d text.lfd-q{font:500 132px Newsreader,Georgia,serif;fill:#141413}
+
+/* the ribbon and the rows */
+.ani-life-d .lfd-sep{fill:none;stroke:#c9c6bb;stroke-width:1.4;stroke-linecap:round}
+.ani-life-d .lfd-guide{fill:none;stroke:#c9c6bb;stroke-width:1.6;stroke-dasharray:2 7;stroke-linecap:round}
+.ani-life-d .lfd-axline{fill:none;stroke:#6b6a64;stroke-width:2;stroke-linecap:round}
+.ani-life-d .lfd-axhead{fill:#6b6a64}
+
+/* ground and water */
+.ani-life-d .lfd-ground{fill:#ece4d3}
+.ani-life-d .lfd-floor{fill:none;stroke-width:11;stroke-linecap:round}
+.ani-life-d .lfd-beach{fill:none;stroke:#e3cf9c;stroke-width:10;stroke-linecap:round}
+.ani-life-d .lfd-turf{fill:none;stroke:#a7c886;stroke-width:10;stroke-linecap:round}
+.ani-life-d .lfd-grass{fill:none;stroke:#7fa862;stroke-width:2.2;stroke-linecap:round}
+.ani-life-d .lfd-surf{fill:none;stroke:#7fb4c6;stroke-width:2.4}
+.ani-life-d .lfd-star{fill:#d4482c;stroke:#8e2a1a;stroke-width:1.4;stroke-linejoin:round}
+.ani-life-d .lfd-wave{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.ani-life-d .lfd-whalo{fill:none;stroke-width:8;stroke-linecap:round;stroke-linejoin:round}
+
+/* the subject */
+.ani-life-d .lfd-c-far-o,.ani-life-d .lfd-c-far,.ani-life-d .lfd-c-near-o,.ani-life-d .lfd-c-near{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.ani-life-d .lfd-c-fins{fill:#e4ddcc;fill-opacity:.85;stroke:#8a8475;stroke-width:1.2;stroke-linejoin:round}
+.ani-life-d .lfd-c-body{stroke-width:1.6;stroke-linejoin:round}
+.ani-life-d .lfd-c-marks{fill:none;stroke:#a69c84;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
+.ani-life-d .lfd-c-ear{stroke-width:1.4}
+.ani-life-d .lfd-c-muz{fill:#dcc5a0}
+.ani-life-d .lfd-c-eyew{fill:#f4efe2;stroke:#5f5a50;stroke-width:1}
+.ani-life-d .lfd-c-eye{fill:#1e2a33}
+
+/* the fruit tree and the flowers in the scene */
+.ani-life-d .lfd-trunk{fill:#8a6a4a;stroke:#5f4630;stroke-width:1.6;stroke-linejoin:round}
+.ani-life-d .lfd-branch{fill:none;stroke:#7a5c3e;stroke-width:6;stroke-linecap:round}
+.ani-life-d .lfd-crown-o{fill:none;stroke:#46703a;stroke-width:4}
+.ani-life-d .lfd-crown{fill:#5e8c45}
+.ani-life-d .lfd-tl{stroke:#46703a;stroke-width:.8}
+.ani-life-d .lfd-tl-big{fill:#6f9f50;stroke:#3f6634;stroke-width:1.4}
+.ani-life-d .lfd-fruit{fill:#d23c24;stroke:#8e2316;stroke-width:1.4}
+.ani-life-d .lfd-fruit-hi{fill:#f3a08a}
+.ani-life-d .lfd-stalk{fill:none;stroke:#5f4630;stroke-width:2;stroke-linecap:round}
+.ani-life-d .lfd-stem{fill:none;stroke:#6f9a5a;stroke-width:2.6;stroke-linecap:round}
+.ani-life-d .lfd-sleaf{fill:#8fb77a;stroke:#6f9a5a;stroke-width:1}
+.ani-life-d .lfd-petal{fill:#f2c42a;stroke:#c99a17;stroke-width:1.2;stroke-linejoin:round}
+.ani-life-d .lfd-disk{fill:#e0952a;stroke:#b36f17;stroke-width:1.2}
+.ani-life-d .lfd-rpetal{fill:#c8361e;stroke:#8e2316;stroke-width:1.2}
+.ani-life-d .lfd-rdisk{fill:#6e1a10}
+
+/* the bee */
+.ani-life-d .lfd-wing{fill:#eef4f7;fill-opacity:.85;stroke:#9fb1bd;stroke-width:1.2}
+.ani-life-d .lfd-abd{fill:#f2c23a}
+.ani-life-d .lfd-abd-o{fill:none;stroke:#6b4a1a;stroke-width:1.4}
+.ani-life-d .lfd-stripe{fill:none;stroke:#3b2a1a;stroke-width:5}
+.ani-life-d .lfd-thorax{fill:#8a6232;stroke:#5a3e1e;stroke-width:1.4}
+.ani-life-d .lfd-head{fill:#3b2a1a}
+.ani-life-d .lfd-ant,.ani-life-d .lfd-leg,.ani-life-d .lfd-sting{fill:none;stroke:#3b2a1a;stroke-width:1.8;stroke-linecap:round}
+
+/* the views */
+.ani-life-d .lfd-card{fill:#fffdf8}
+.ani-life-d .lfd-frame{fill:none;stroke:#3d3d3a;stroke-width:2}
+.ani-life-d .lfd-vbg{fill:#f6f3ea}
+.ani-life-d .lfd-vl{stroke:#3f6634;stroke-width:1}
+.ani-life-d .lfd-vfruit{fill:#d23c24;stroke:#8e2316;stroke-width:1.6}
+.ani-life-d .lfd-vstalk{fill:none;stroke:#5f4630;stroke-width:3;stroke-linecap:round}
+.ani-life-d .lfd-vstem{fill:none;stroke:#6f9a5a;stroke-width:6;stroke-linecap:round}
+.ani-life-d .lfd-vsleaf{fill:#8fb77a;stroke:#6f9a5a;stroke-width:1.6}
+.ani-life-d .lfd-vpetal{stroke-width:1.6}
+.ani-life-d .lfd-rpetal-bee{fill:#2c2628;stroke:#4a4245;stroke-width:1.2}
+.ani-life-d .lfd-rdisk-bee{fill:#1d191a}
+.ani-life-d .lfd-disk-bee{fill:#3a3020;stroke:#241d12;stroke-width:1.2}
+
+/* the eyes */
+.ani-life-d .lfd-ew{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.ani-life-d .lfd-ball{fill:#fffdf8;stroke:#3d3d3a;stroke-width:2.2}
+.ani-life-d .lfd-cornea{fill:#e9f1f3;stroke:#3d3d3a;stroke-width:2.2;stroke-linejoin:round}
+.ani-life-d .lfd-lens{fill:#e6eef0;stroke:#6b6a64;stroke-width:1.6}
+.ani-life-d .lfd-iris{fill:none;stroke:#8a877d;stroke-width:5;stroke-linecap:round}
+.ani-life-d .lfd-retina{fill:none;stroke:#e8c9bf;stroke-width:12;stroke-linecap:round}
+.ani-life-d .lfd-nerve{fill:none;stroke:#d9cfbd;stroke-width:9;stroke-linecap:round}
+.ani-life-d .lfd-dot{stroke:#fffdf8;stroke-width:1.2}
+.ani-life-d .lfd-ceye-o{fill:#6a5236;stroke:#3b2a1a;stroke-width:2.2}
+.ani-life-d .lfd-facet{fill:#fbf6ea;stroke:#3b2a1a;stroke-width:1.6;stroke-linejoin:round}
+
+/* the leaf up close */
+.ani-life-d .lfd-chl{fill:#3f8a3a;stroke:#2c6a2a;stroke-width:1}
+.ani-life-d .lfd-lw{stroke-width:3.4}
+.ani-life-d .lfd-lw-out{opacity:.75}

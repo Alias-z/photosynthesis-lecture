@@ -21,6 +21,10 @@ export interface PlateText {
   points: Point[];
   refs: Ref[];
   animation?: string;
+  /** The slide has only its lead page: shown live, never printed (slide 2 since 26 Oct 2026). */
+  leadOnly?: boolean;
+  /** Key of the animation this slide plays live (in src/pilot/anim): a play button on its lecture page opens it. */
+  play?: string;
 }
 
 export interface Plate extends PlateText {

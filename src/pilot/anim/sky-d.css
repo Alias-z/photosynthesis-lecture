@@ -1,0 +1,39 @@
+/* Sky animation, staging D "One sunbeam". The world groups are drawn through a moving camera; strokes keep their
+   slide weight at every scale. */
+.ani-sky-d .sd-world *{vector-effect:non-scaling-stroke}
+.ani-sky-d .atom{stroke-width:1.6}
+
+/* The prism near the Sun. */
+.ani-sky-d .sd-glass{fill:#e6edf1;stroke:#8ea2b0;stroke-width:2;stroke-linejoin:round}
+.ani-sky-d .sd-inner{fill:#fffdf8}
+.ani-sky-d .sd-ir{fill:#ebe6df}
+.ani-sky-d .sd-uv{fill:#e5e3e9}
+.ani-sky-d .sd-fan-edge{fill:none;stroke:#c9c6bb;stroke-width:1.2;stroke-linejoin:round}
+
+/* The ground. */
+.ani-sky-d .sd-ground{fill:#e3ebd2;stroke:#93a882;stroke-width:1.6}
+.ani-sky-d .sd-hill{fill:#d5e3c0}
+.ani-sky-d .sd-trunk{fill:#9a8463}
+.ani-sky-d .sd-crown{fill:#cfe3b4;stroke:#6f9a5a;stroke-width:1.6;stroke-linejoin:round}
+.ani-sky-d .sd-person circle,.ani-sky-d .sd-person rect{fill:#3d3d3a}
+.ani-sky-d .sd-limb{fill:none;stroke:#3d3d3a;stroke-width:7;stroke-linecap:round}
+.ani-sky-d .sd-arm{fill:none;stroke:#3d3d3a;stroke-width:6;stroke-linecap:round}
+
+/* The globe inset. */
+.ani-sky-d .sd-ocean{fill:#dbe8f2;stroke:#9cb5c8;stroke-width:1.6}
+.ani-sky-d .sd-land{fill:#cfe3b4;stroke:#6f9a5a;stroke-width:1.2;stroke-linejoin:round}
+.ani-sky-d .sd-frame{fill:#fffdf8;fill-opacity:.94;stroke:#d9d4c6;stroke-width:1.2}
+.ani-sky-d .sd-rim{fill:none;stroke:#9cb5c8;stroke-width:1.6}
+.ani-sky-d .sd-cap{fill:#f7f9fb;stroke:#b9c6d2;stroke-width:1.2}
+.ani-sky-d .sd-sunray{fill:none;stroke:#e3a51c;stroke-width:3;stroke-linecap:round}
+.ani-sky-d .sd-turn{fill:none;stroke:#6b6a64;stroke-width:2.2;stroke-linecap:round}
+.ani-sky-d .sd-you-dot{fill:#fffdf8;stroke:#141413;stroke-width:3}
+.ani-sky-d text.sd-halo{paint-order:stroke;stroke:#fffdf8;stroke-width:5px;stroke-linejoin:round}
+
+/* Labels: at least 22 px. */
+.ani-sky-d text.sd-lab{font-size:25px;font-weight:500;fill:#3d3d3a}
+.ani-sky-d text.sd-you{font-size:26px;font-weight:600;fill:#141413}
+.ani-sky-d text.sd-key{font-size:25px;font-weight:600}
+.ani-sky-d text.sd-key-b{fill:#2350e6}
+.ani-sky-d text.sd-key-g{fill:#2a963a}
+.ani-sky-d text.sd-key-r{fill:#c8361e}

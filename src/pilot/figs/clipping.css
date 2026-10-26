@@ -1,0 +1,7 @@
+/* Newspaper clipping: newsprint, warm ink, the deck's serif. */
+.theme-editorial .clip-paper{fill:#f1ece0;stroke:#d3cdbd;stroke-width:1}
+.theme-editorial text.clip-name{font-family:Newsreader,Georgia,serif;font-weight:500;fill:#2b2a27}
+.theme-editorial text.clip-find{font-family:Newsreader,Georgia,serif;font-style:italic;fill:#2b2a27}
+.theme-editorial text.clip-key{font-family:Inter,"Helvetica Neue",Arial,sans-serif;fill:#5c5a52}
+/* The serif has no full-size proportional sign. */
+.theme-editorial .clip-prop{font-family:"STIX Two Math",STIXGeneral,"Cambria Math",Menlo,serif;font-style:normal}

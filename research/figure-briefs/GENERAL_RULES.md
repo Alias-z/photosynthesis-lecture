@@ -7,7 +7,7 @@ The lecturer settled slides 1 and 2 on 24–26 October 2026. These rules general
 Each slide has a **lecture version**, shown live, and a **handout version**, which is the only one in the PDF.
 
 1. **Slides with a lead page.** The lecture version is the lead page alone: the question and one image, nothing that gives the answer away. The handout shows the answer.
-2. **Other slides.** The lecture version is the figure plus the three short claims. The handout is the figure plus the lead and the three explained points.
+2. **Other slides.** The lecture version is the handout page itself, plus the play button of the animation that follows the slide (lecturer, 26 Oct 2026). The handout is the figure plus the lead and the three points, with no play button.
 3. **Each version shows only its own material.**
    - Lecture logistics ("lecture 1 · 45 min") appear in the lecture version only.
    - A credit or source appears only on the version that shows the item. Slide 2's photo credit was listed under the handout, but only the lecture page shows the photo.

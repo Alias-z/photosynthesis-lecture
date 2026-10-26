@@ -1,40 +1,38 @@
-// Slide L04 · Photon energy and scattering. Confirmed context (CLAUDE_HANDOFF.txt, SLIDE 4); ten figure variants.
-// Confirmed display: black-and-white newspaper-cutout portraits of Einstein and Rayleigh beside finding, equation
-// and takeaway; Planck optional. Photos cannot be downloaded here, so each portrait is a labelled placeholder frame.
-// Two separate findings: E = hν = hc/λ (450 nm → 2.76 eV, 650 nm → 1.91 eV) and scattering ∝ 1/λ⁴
-// (450 nm ≈ 4.4× 650 nm; wavelength unchanged). Sunset = longer path. The seven-step sky animation stays as it is.
+// Slide L04 · Light is also a particle (since 26 Oct 2026; was "Photon energy and scattering"). Light-block order v5
+// (research/figure-briefs/ORDER_PROPOSAL.md): a photon's energy is set by its wavelength (E = hc/λ; 300 nm 4.1 eV,
+// 450 nm 2.8 eV, 650 nm 1.9 eV, 1000 nm 1.2 eV), and the energy decides what the photon can do. Scattering moved to
+// the wave slide (L03). Variants P and Q carry Einstein's history as a newspaper clipping; the earlier
+// Einstein-and-Rayleigh variants still draw by id.
 import type { PlateText, Variant } from '../types';
 import { arrow, heads } from '../mechanisms';
 import './l04.css';
+import { clipping as newsClip, clipHeight, EINSTEIN_CLIP, EINSTEIN_SLIDE } from './clipping';
 
 export const PLATE: PlateText = {
   n: '4',
   status: 'confirmed',
-  title: 'Photon energy and scattering',
-  lead: 'Light travels as photons. A shorter wavelength means more energy per photon (Einstein) and much stronger scattering by air (Rayleigh).',
+  title: 'Light is also a particle',
+  lead: 'Light comes in discrete packets of energy: photons.',
   points: [
-    { claim: 'Einstein: light comes in photons.', text: 'E = hc/λ: halving the wavelength doubles each photon’s energy. Brighter light means more photons, not more energetic ones.' },
-    { claim: 'Rayleigh: air scatters short waves.', text: 'Scattering rises as 1/λ⁴, so blue (450 nm) is scattered ≈ 4.4× more than red (650 nm).' },
-    { claim: 'Sunset: a longer path.', text: 'Near the horizon sunlight crosses far more air, which scatters most of the blue out of the beam and leaves red and orange.' },
+    { claim: 'Photon energy.', text: 'E = hc/λ<br>h: Planck constant · c: speed of light<br>A blue photon carries ~1.4× the energy of a red one.' },
+    { claim: 'Energy decides the effect.', text: 'Ultraviolet: damages DNA<br>Visible: excites electrons in pigments<br>Infrared: warms' },
+    { claim: 'Light intensity.', text: 'Brighter light = more photons,<br>not more energetic ones.' },
   ],
   refs: [
+    { label: 'Einstein 1905', url: 'https://doi.org/10.1002/andp.19053220607' },
     { label: 'Nobel archive: light quanta', url: 'https://www.nobelprize.org/prizes/physics/the-dual-nature-of-light-as-reflected-in-the-nobel-archives/' },
-    { label: 'NASA PSG: molecular scattering', url: 'https://psg.gsfc.nasa.gov/helpatm.php' },
-    { label: 'NASA Space Place', url: 'https://spaceplace.nasa.gov/blue-sky/en/' },
   ],
 };
 
-// Round 2: the lecturer's picks (E, F, H), then five combinations of them (K–O). Variants a–d, g, i and j
-// stay drawable by id through draw().
+// Round 2 (26 Oct 2026): the lecturer picked R; U–Y are built from it (SLIDE34_BRIEF.md) and reworked in round 3 to
+// draw light as separate photons. P, Q, S, T and the Einstein-and-Rayleigh variants (picks E, F, H and their combinations K–O) are unlisted but still draw by id.
 export const VARIANTS: Variant[] = [
-  { id: 'e', name: 'Clippings board' },
-  { id: 'f', name: 'Zoom in', anim: true },
-  { id: 'h', name: 'Four steps' },
-  { id: 'k', name: 'Zoom clippings' },
-  { id: 'l', name: 'Dated steps' },
-  { id: 'm', name: 'Zooms and sunset', anim: true },
-  { id: 'n', name: 'Beam stops', anim: true },
-  { id: 'o', name: 'Board completed' },
+  { id: 'r', name: 'Energy against wavelength' },
+  { id: 'u', name: 'Effects under the axis' },
+  { id: 'v', name: 'Effects beside the photons' },
+  { id: 'w', name: 'Spectrum columns behind the steps' },
+  { id: 'x', name: 'Effects on the energy axis' },
+  { id: 'y', name: 'Clipping in the corner' },
 ];
 
 /* ---------- shared parts ---------- */
@@ -106,15 +104,18 @@ function cutout(p: string, k: string, x: number, y: number, w: number, h: number
   </g>`;
 }
 
-/** A photon as a wave packet: a short wave under a bell-shaped envelope. */
-function packet(cx: number, cy: number, len: number, lam: number, amp: number, col: string, ang = 0, w = 3): string {
+/** The outline of a wave packet: a short wave under a bell-shaped envelope. */
+function packetD(cx: number, cy: number, len: number, lam: number, amp: number, ang = 0, span = 1): string {
   const pts: string[] = [], n = 90, c = Math.cos((ang * Math.PI) / 180), s = Math.sin((ang * Math.PI) / 180);
   for (let i = 0; i <= n; i++) {
-    const u = (i / n - 0.5) * len, env = Math.exp(-((u / (len * 0.28)) ** 2)), v = Math.sin((2 * Math.PI * u) / lam) * amp * env;
+    const u = (i / n - 0.5) * len * span, env = Math.exp(-((u / (len * 0.28)) ** 2)), v = Math.sin((2 * Math.PI * u) / lam) * amp * env;
     pts.push(`${i ? 'L' : 'M'}${f(cx + u * c - v * s)},${f(cy + u * s + v * c)}`);
   }
-  return `<path class="fl04-pk" style="stroke:${col};stroke-width:${w}" d="${pts.join('')}"/>`;
+  return pts.join('');
 }
+/** A photon as a wave packet: a short wave under a bell-shaped envelope. */
+const packet = (cx: number, cy: number, len: number, lam: number, amp: number, col: string, ang = 0, w = 3): string =>
+  `<path class="fl04-pk" style="stroke:${col};stroke-width:${w}" d="${packetD(cx, cy, len, lam, amp, ang)}"/>`;
 
 /** Light of one colour as a wave with a constant drawn wavelength. */
 function wv(x0: number, y0: number, x1: number, y1: number, lam: number, col: string, o: { amp?: number; head?: string; w?: number; ph?: number; op?: number } = {}): string {
@@ -667,8 +668,492 @@ function drawO(): string {
   </svg>`;
 }
 
-const DRAW: Record<string, () => string> = { a: drawA, b: drawB, c: drawC, d: drawD, e: drawE, f: drawF, g: drawG, h: drawH, i: drawI, j: drawJ, k: drawK, l: drawL, m: drawM, n: drawN, o: drawO };
+/* ---------- 4P–4T · Light is also a particle: the photon, its energy, and what that energy can do ---------- */
+// Rules of 26 Oct (research/figure-briefs/SLIDE34_BRIEF.md): every variant shows a packet labelled "photon", an axis
+// "energy per photon (eV)" with ticks and "eV: electronvolt", the four photons at their true relative wavelengths,
+// labelled pictures of what each can do, and Einstein's clipping; every label at least 19 px.
+
+/** Four photons across the spectrum: energy in eV from E = hc/λ = 1239.84 eV·nm / λ (4.1, 2.8, 1.9, 1.2 eV). */
+const PHOTONS = [
+  { name: 'ultraviolet', nm: 300, col: '#7a5fb0', fate: 'bond' },
+  { name: 'blue', nm: 450, col: BLUE, fate: 'lift' },
+  { name: 'red', nm: 650, col: RED, fate: 'lift' },
+  { name: 'infrared', nm: 1000, col: '#9a7b62', fate: 'heat' },
+] as const;
+type Photon = (typeof PHOTONS)[number];
+const eV = (nm: number): number => 1239.84 / nm;
+const eVs = (nm: number): string => `${eV(nm).toFixed(1)} eV`;
+const INK = '#3d3d3a';
+/** The clipping's width, as Rayleigh's on slide 3 (200–206 px). Its key is set at 0.092 w, so "h: Planck constant"
+ *  stays at 19.1 px. CL and CR are its left edge in the left and in the right column; CH is its height. */
+const CW = 208, CH = clipHeight(CW, EINSTEIN_CLIP), CL = 26, CR = 800 - 26 - CW;
+/** The photon key, centred under a clipping whose left edge is x. */
+const keyUnder = (x: number, y: number): string => photonKey(x + CW / 2 - 96, y);
+/** Top of a clipping that, with the key 76 px below it, sits centred in the figure's height. */
+const CT = Math.round((600 - CH - 76) / 2);
+
+/** Arrowheads for the axes and the electron's jump. */
+const pDefs = (p: string): string => `<defs>
+  <marker id="${p}-ax" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto"><path d="M0,0L10,5L0,10z" fill="#6b6a64"/></marker>
+  <marker id="${p}-up" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0,0L10,5L0,10z" fill="#b5770b"/></marker>
+  <marker id="${p}-go" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0L10,5L0,10z" fill="#8a877d"/></marker>
+</defs>`;
+
+/** One photon drawn as a wave packet: wavelength in proportion (`k` px per nm), the same envelope for all four. */
+const photon = (ph: Photon, cx: number, cy: number, len: number, k: number, amp = 12, ang = 0, w = 3.2): string =>
+  packet(cx, cy, len, ph.nm * k, amp, ph.col, ang, w);
+
+/** The key: a neutral wave packet named "photon". (x, y) is the packet's left end. */
+const photonKey = (x: number, y: number, len = 104): string =>
+  `${packet(x + len / 2, y, len, 22, 12, INK, 0, 3)}${T(x + len + 14, y + 8, 'photon', 'fl04-lab')}`;
+
+/** A vertical energy axis at x, from y0 up to y1 (arrow), with ticks via y(e). */
+function vAxis(p: string, x: number, y0: number, y1: number, y: (e: number) => number, ticks: number[]): string {
+  return `<path class="fl04-axis" d="M${x},${y0} V${y1}" marker-end="url(#${p}-ax)"/>${ticks.map(t =>
+    `<path class="fl04-axis" d="M${x - 7},${f(y(t))} H${x}"/>${T(x - 13, y(t) + 7, String(t), 'fl04-tick', 'end')}`).join('')}`;
+}
+/** A horizontal axis at y, from x0 to x1 (arrow), with ticks via x(v) and their labels below. */
+function hAxis(p: string, y: number, x0: number, x1: number, x: (v: number) => number, ticks: number[]): string {
+  return `<path class="fl04-axis" d="M${x0},${y} H${x1}" marker-end="url(#${p}-ax)"/>${ticks.map(t =>
+    `<path class="fl04-axis" d="M${f(x(t))},${y} V${y + 7}"/>${T(x(t), y + 30, String(t), 'fl04-tick', 'middle')}`).join('')}`;
+}
+
+/** DNA: a stretch of double helix with one base pair broken (red), the damage an ultraviolet photon can do. About 104 × 44. */
+function dnaPic(cx: number, cy: number): string {
+  const W = 104, A = 22, P = 70, n = 64;
+  const yb = (x: number, k: number): number => cy - k * A * Math.cos((2 * Math.PI * (x - cx)) / P);
+  const strand = (k: number): string => Array.from({ length: n + 1 }, (_, i) => {
+    const x = cx - W / 2 + (W * i) / n;
+    return `${i ? 'L' : 'M'}${f(x)},${f(yb(x, k))}`;
+  }).join('');
+  const rungs = [-3, -2, -1, 1, 2, 3].map(i => { const x = cx + (i * P) / 6; return `M${f(x)},${f(yb(x, 1))} V${f(yb(x, -1))}`; }).join('');
+  const burst = [20, 160, 200, 340].map(a => {
+    const c = Math.cos((a * Math.PI) / 180), s = Math.sin((a * Math.PI) / 180);
+    return `M${f(cx + c * 7)},${f(cy + s * 7)} L${f(cx + c * 15)},${f(cy + s * 15)}`;
+  }).join('');
+  return `<path class="fl04-rung" d="${rungs}"/><path class="fl04-dna" d="${strand(1)}${strand(-1)}"/>
+    <path class="fl04-break" d="M${cx},${cy - A + 2} V${cy - 6} M${cx},${cy + A - 2} V${cy + 6}${burst}"/>`;
+}
+/** An electron in a pigment, lifted from a lower to an upper level: what a visible photon can do. About 84 × 66. */
+function pigmentPic(p: string, cx: number, cy: number): string {
+  const w = 42, h = 27;
+  return `<path class="fl04-lvl" d="M${cx - w},${cy + h} H${cx + w} M${cx - w},${cy - h} H${cx + w}"/>
+    <circle class="fl04-e-old" cx="${cx}" cy="${cy + h}" r="8"/>
+    <path class="fl04-jump" d="M${cx},${cy + h - 12} V${cy - h + 17}" marker-end="url(#${p}-up)"/>
+    <circle class="fl04-e" cx="${cx}" cy="${cy - h}" r="9"/>`;
+}
+/** Heat: three rising wavy lines, what an infrared photon mostly does. About 50 × 52. */
+const heatPic = (cx: number, cy: number): string => [-16, 0, 16].map(dx =>
+  `<path class="fl04-heat" d="M${cx + dx},${cy + 26} c-8,-9 8,-17 0,-26 c-8,-9 8,-17 0,-26"/>`).join('');
+
+/** What a photon can do, as a picture with the object's name under it; `dy` is the label's baseline below the centre. */
+function effect(p: string, kind: 'bond' | 'lift' | 'heat', cx: number, cy: number, dy = 0, oneLine = false): string {
+  if (kind === 'bond') return `${dnaPic(cx, cy)}${T(cx, cy + (dy || 54), 'DNA', 'fl04-obj', 'middle')}`;
+  if (kind === 'heat') return `${heatPic(cx, cy)}${T(cx, cy + (dy || 58), 'heat', 'fl04-obj', 'middle')}`;
+  const lab = oneLine ? ['electron in a pigment'] : ['electron in', 'a pigment'];
+  return `${pigmentPic(p, cx, cy)}${lines(cx, cy + (dy || 64), lab, 'fl04-obj', 'middle', 25)}`;
+}
+
+/* ---------- 4P · Energy ladder: a vertical energy scale, each photon at its own height ---------- */
+
+function drawP(): string {
+  const p = 'fl04p', ax = 300, K = 0.042, xl = 484, xe = 734;
+  const y = (e: number): number => 540 - (e - 1) * 122; // 1 eV at 540 px; 0 eV sits below the axis break
+  const y0 = 578;
+  const rows = PHOTONS.map(ph => {
+    const yy = y(eV(ph.nm));
+    return `<circle cx="${ax}" cy="${f(yy)}" r="5.5" style="fill:${ph.col}"/>
+      ${photon(ph, 394, yy, 150, K, 13)}
+      ${T(xl, yy - 4, ph.name, 'fl04-lab')}${T(xl, yy + 23, `${ph.nm} nm · ${eVs(ph.nm)}`, 'fl04-val')}`;
+  }).join('');
+  const yb = y(eV(450)), yr = y(eV(650));
+  return `<svg class="fig-svg fl04" viewBox="0 0 800 600" role="img" aria-label="Albert Einstein's 1905 clipping, E = hc/λ, beside a vertical scale of energy per photon in electronvolts. Four photons, drawn as wave packets at their true relative wavelengths, sit at their energies: ultraviolet 300 nm 4.1 eV, beside DNA with a broken base pair; blue 450 nm 2.8 eV and red 650 nm 1.9 eV, beside an electron in a pigment lifted to a higher level; infrared 1000 nm 1.2 eV, beside heat.">
+    ${pDefs(p)}
+    ${newsClip(p, CL, CT, CW, EINSTEIN_CLIP, -2, 7)}
+    ${keyUnder(CL, CT + CH + 72)}
+    ${T(282, 46, 'energy per photon (eV)', 'fl04-ax')}${T(282, 74, 'eV: electronvolt', 'fl04-nt')}
+    <path class="fl04-axis" d="M${ax},${y0} V560 M${ax},548 V104" marker-end="url(#${p}-ax)"/>
+    <path class="fl04-axis" d="M${ax - 9},565 L${ax + 9},557 M${ax - 9},553 L${ax + 9},545"/>
+    ${[1, 2, 3, 4].map(t => `<path class="fl04-axis" d="M${ax - 7},${f(y(t))} H${ax}"/>${T(ax - 13, y(t) + 7, String(t), 'fl04-tick', 'end')}`).join('')}
+    <path class="fl04-axis" d="M${ax - 7},${y0} H${ax}"/>${T(ax - 13, y0 + 7, '0', 'fl04-tick', 'end')}
+    ${rows}
+    ${effect(p, 'bond', xe, y(eV(300)) - 4)}
+    <path class="fl04-br" d="M662,${f(yb)} H672 V${f(yr)} H662 M672,${f((yb + yr) / 2)} H682"/>
+    ${effect(p, 'lift', xe, (yb + yr) / 2 - 18)}
+    ${effect(p, 'heat', xe, y(eV(1000)) - 6, 52)}
+  </svg>`;
+}
+
+/* ---------- 4Q · Energy columns: a bar chart of energy per photon, what each can do underneath ---------- */
+
+function drawQ(): string {
+  const p = 'fl04q', base = 360, k = 60, ax = 70, cols = [152, 268, 384, 500], K = 0.03, x1 = 548;
+  const y = (e: number): number => base - e * k;
+  const grid = [1, 2, 3, 4].map(t => `<path class="fl04-grid" d="M${ax},${y(t)} H${x1}"/>`).join('');
+  const bars = PHOTONS.map((ph, i) => {
+    const e = eV(ph.nm), x = cols[i], top = y(e);
+    return `<rect class="fl04-bar" x="${x - 36}" y="${f(top)}" width="72" height="${f(base - top)}" rx="3" style="fill:${ph.col}"/>
+      ${T(x, top - 11, eVs(ph.nm), 'fl04-val fl04-val-b', 'middle')}
+      ${photon(ph, x, 392, 100, K, 11, 0, 3)}
+      ${T(x, 434, ph.name, 'fl04-lab', 'middle')}${T(x, 457, `${ph.nm} nm`, 'fl04-val', 'middle')}`;
+  }).join('');
+  const xm = (cols[1] + cols[2]) / 2;
+  return `<svg class="fig-svg fl04" viewBox="0 0 800 600" role="img" aria-label="A bar chart of energy per photon in electronvolts for four photons drawn as wave packets at their true relative wavelengths: ultraviolet 300 nm 4.1 eV, blue 450 nm 2.8 eV, red 650 nm 1.9 eV, infrared 1000 nm 1.2 eV. Underneath, what each can do: DNA with a broken base pair; an electron in a pigment lifted to a higher level; heat. Right: Albert Einstein's 1905 clipping, E = hc/λ.">
+    ${pDefs(p)}
+    ${T(24, 40, 'energy per photon (eV)', 'fl04-ax')}${T(24, 68, 'eV: electronvolt', 'fl04-nt')}
+    ${grid}
+    ${vAxis(p, ax, base, 88, y, [0, 1, 2, 3, 4])}
+    <path class="fl04-axis" d="M${ax},${base} H${x1}"/>
+    ${bars}
+    ${effect(p, 'bond', cols[0], 520, 60)}
+    <path class="fl04-br" d="M${cols[1] - 20},468 V475 H${cols[2] + 20} V468 M${xm},475 V481"/>
+    ${effect(p, 'lift', xm, 520, 60, true)}
+    ${effect(p, 'heat', cols[3], 518, 62)}
+    ${newsClip(p, CR, CT, CW, EINSTEIN_CLIP, 2, 11)}
+    ${keyUnder(CR, CT + CH + 72)}
+  </svg>`;
+}
+
+/* ---------- 4R · Energy against wavelength: the four photons on the curve E = hc/λ ---------- */
+
+function drawR(): string {
+  const p = 'fl04r', ox = 72, oy = 400, K = 0.03;
+  const X = (nm: number): number => ox + (nm - 200) * 0.53, Y = (e: number): number => oy - e * 76;
+  // the curve E = hc/λ, hidden under each photon's wave so the packet reads cleanly on it
+  const curve = Array.from({ length: 153 }, (_, i) => { const nm = 280 + i * 5; return `${i ? 'L' : 'M'}${f(X(nm))},${f(Y(eV(nm)))}`; }).join('');
+  const mask = `<mask id="${p}-m" maskUnits="userSpaceOnUse" x="0" y="0" width="800" height="600"><rect width="800" height="600" fill="#fff"/>${PHOTONS.map(ph =>
+    `<path d="${packetD(X(ph.nm), Y(eV(ph.nm)), 76, ph.nm * K, 10)}" fill="none" stroke="#000" stroke-width="13" stroke-linecap="round"/>`).join('')}</mask>`;
+  const lab: Record<number, [number, number, A]> = { 300: [48, -6, 'start'], 450: [48, -10, 'start'], 650: [48, -26, 'start'], 1000: [0, 40, 'middle'] };
+  const pts = PHOTONS.map(ph => {
+    const x = X(ph.nm), yy = Y(eV(ph.nm)), [dx, dy, a] = lab[ph.nm];
+    return `<path class="fl04-guide" d="M${f(x)},${f(yy + (dy > 0 ? 72 : 14))} V${oy}"/>
+      ${photon(ph, x, yy, 76, K, 10, 0, 3)}
+      ${T(x + dx, yy + dy, ph.name, 'fl04-lab', a)}${T(x + dx, yy + dy + 24, eVs(ph.nm), 'fl04-val', a)}`;
+  }).join('');
+  const xb = X(450), xr = X(650), xm = (xb + xr) / 2;
+  return `<svg class="fig-svg fl04" viewBox="0 0 800 600" role="img" aria-label="A graph of energy per photon in electronvolts against wavelength in nanometres: the curve falls as the wavelength grows. Four photons, drawn as wave packets at their true relative wavelengths, sit on it: ultraviolet 300 nm 4.1 eV, blue 450 nm 2.8 eV, red 650 nm 1.9 eV, infrared 1000 nm 1.2 eV. Below each, what it can do: DNA with a broken base pair; an electron in a pigment lifted to a higher level; heat. Right: Albert Einstein's 1905 clipping, E = hc/λ.">
+    ${pDefs(p)}
+    ${T(50, 40, 'energy per photon (eV)', 'fl04-ax')}${T(548, 40, 'eV: electronvolt', 'fl04-nt', 'end')}
+    ${mask}<path class="fl04-curve" d="${curve}" mask="url(#${p}-m)"/>
+    ${vAxis(p, ox, oy, 62, Y, [0, 1, 2, 3, 4])}
+    ${hAxis(p, oy, ox, 548, X, [300, 450, 650, 1000])}
+    ${T(548, 458, 'wavelength (nm)', 'fl04-ax', 'end')}
+    ${pts}
+    ${effect(p, 'bond', X(300), 504, 58)}
+    <path class="fl04-br" d="M${f(xb)},446 V452 H${f(xr)} V446 M${f(xm)},452 V460"/>
+    ${effect(p, 'lift', xm, 506, 56)}
+    ${effect(p, 'heat', X(1000), 502, 60)}
+    ${newsClip(p, CR, CT, CW, EINSTEIN_CLIP, 2, 11)}
+    ${keyUnder(CR, CT + CH + 72)}
+  </svg>`;
+}
+
+/* ---------- 4S · Brighter, not bluer: the four photons on an energy scale; a dim and a bright beam of the same red ---------- */
+
+function drawS(): string {
+  const p = 'fl04s', ay = 220, K = 0.036;
+  const X = (e: number): number => 44 + (e - 1) * 142; // a number line from 1 eV, so the four photons spread out
+  const pins = PHOTONS.map(ph => {
+    const x = X(eV(ph.nm));
+    return `${photon(ph, x, 148, 100, K, 11, 90, 3)}<path class="fl04-guide" d="M${f(x)},200 V${ay - 6}"/><circle cx="${f(x)}" cy="${ay}" r="5.5" style="fill:${ph.col}"/>
+      ${T(x, 36, ph.name, 'fl04-lab', 'middle')}${T(x, 60, `${ph.nm} nm`, 'fl04-val', 'middle')}${T(x, 84, eVs(ph.nm), 'fl04-val fl04-val-b', 'middle')}`;
+  }).join('');
+  const xr = X(eV(650)), xb = X(eV(450)), xm = (xr + xb) / 2;
+  // the beams: the same red photons, two in the dim beam, six in the bright one
+  const red = PHOTONS[2];
+  const beamRow = (y: number, xs: number[], cls: string, name: string): string =>
+    `<rect class="fl04-beam ${cls}" x="104" y="${y - 22}" width="560" height="44" rx="22"/>${T(30, y + 8, name, 'fl04-lab')}
+     ${xs.map(x => photon(red, x, y, 66, K, 11, 0, 3)).join('')}
+     <path class="fl04-axis" d="M640,${y} H684" marker-end="url(#${p}-go)"/>`;
+  const bright = [150, 238, 326, 414, 502, 590];
+  return `<svg class="fig-svg fl04" viewBox="0 0 800 600" role="img" aria-label="Top: four photons drawn as wave packets at their true relative wavelengths, pinned on a scale of energy per photon in electronvolts: infrared 1000 nm 1.2 eV, warms (heat); red 650 nm 1.9 eV and blue 450 nm 2.8 eV, lift an electron in a pigment; ultraviolet 300 nm 4.1 eV, breaks a base pair in DNA. Bottom: a dim red beam carries two photons, a bright red beam six; each photon carries 1.9 eV. Right: Albert Einstein's 1905 clipping, E = hc/λ.">
+    ${pDefs(p)}
+    ${pins}
+    ${hAxis(p, ay, 36, 548, X, [1, 2, 3, 4])}
+    ${T(30, ay + 60, 'energy per photon (eV)', 'fl04-ax')}${T(548, ay + 60, 'eV: electronvolt', 'fl04-nt', 'end')}
+    ${effect(p, 'heat', X(eV(1000)), 334, 60)}
+    <path class="fl04-br" d="M${f(xr)},292 V298 H${f(xb)} V292 M${f(xm)},298 V304"/>
+    ${effect(p, 'lift', xm, 342, 52)}
+    ${effect(p, 'bond', X(eV(300)), 336, 58)}
+    ${newsClip(p, CR, 22, CW, EINSTEIN_CLIP, 2, 11)}
+    ${beamRow(498, [194, 414], 'fl04-beam-dim', 'dim')}
+    ${beamRow(560, bright, 'fl04-beam-bright', 'bright')}
+    <path class="fl04-br" d="M${414 - 33},470 V464 H${414 + 33} V470"/>${T(414, 454, 'photon', 'fl04-lab', 'middle')}
+    <path class="fl04-br" d="M700,478 H708 V584 H700 M708,531 H716"/>${lines(724, 524, ['1.9 eV', 'each'], 'fl04-val fl04-val-b', 'start', 24)}
+  </svg>`;
+}
+
+/* ---------- 4T · Spectrum bands: ultraviolet, visible and infrared marked on the energy scale, each with its effect ---------- */
+
+function drawT(): string {
+  const p = 'fl04t', ax = 66, K = 0.036, xe = 440, x1 = 548;
+  const y = (e: number): number => 578 - e * 108;
+  const eUV = eV(380), eIR = eV(780); // the edges of human vision (slide 3): 3.26 and 1.59 eV
+  const band = (e0: number, e1: number, cls: string, name: string): string =>
+    `<rect class="fl04-band ${cls}" x="${ax}" y="${f(y(e1))}" width="${x1 - ax}" height="${f(y(e0) - y(e1))}"/>${T(x1 - 8, y(e1) + 28, name, 'fl04-bandt', 'end')}`;
+  const rows = PHOTONS.map(ph => {
+    const yy = y(eV(ph.nm));
+    return `<circle cx="${ax}" cy="${f(yy)}" r="5.5" style="fill:${ph.col}"/>
+      ${photon(ph, 144, yy, 100, K, 12)}
+      ${T(204, yy - 4, `${ph.nm} nm`, 'fl04-lab')}${T(204, yy + 22, ph.fate === 'lift' ? `${ph.name} · ${eVs(ph.nm)}` : eVs(ph.nm), 'fl04-val')}`;
+  }).join('');
+  const yb = y(eV(450)), yr = y(eV(650));
+  return `<svg class="fig-svg fl04" viewBox="0 0 800 600" role="img" aria-label="A vertical scale of energy per photon in electronvolts, split into the ultraviolet above 3.3 eV, the visible from 1.6 to 3.3 eV and the infrared below 1.6 eV. Four photons, drawn as wave packets at their true relative wavelengths, sit at their energies: 300 nm 4.1 eV in the ultraviolet, beside DNA with a broken base pair; blue 450 nm 2.8 eV and red 650 nm 1.9 eV in the visible, beside an electron in a pigment lifted to a higher level; 1000 nm 1.2 eV in the infrared, beside heat. Right: Albert Einstein's 1905 clipping, E = hc/λ.">
+    ${pDefs(p)}
+    <defs><linearGradient id="${p}-vis" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8a5cc4"/><stop offset=".25" stop-color="#2350e6"/><stop offset=".5" stop-color="#2a963a"/><stop offset=".75" stop-color="#e3a51c"/><stop offset="1" stop-color="#c8361e"/></linearGradient></defs>
+    ${band(eUV, 4.75, 'fl04-band-uv', 'ultraviolet')}
+    <rect class="fl04-band" x="${ax}" y="${f(y(eUV))}" width="${x1 - ax}" height="${f(y(eIR) - y(eUV))}" fill="url(#${p}-vis)" opacity=".13"/>${T(x1 - 8, y(eUV) + 28, 'visible', 'fl04-bandt', 'end')}
+    ${band(0, eIR, 'fl04-band-ir', 'infrared')}
+    ${vAxis(p, ax, y(0), 46, y, [0, 1, 2, 3, 4])}
+    ${rows}
+    ${effect(p, 'bond', xe, y(eV(300)) + 2)}
+    <path class="fl04-br" d="M332,${f(yb)} H342 V${f(yr)} H332 M342,${f((yb + yr) / 2)} H352"/>
+    ${effect(p, 'lift', xe, (yb + yr) / 2 - 24)}
+    ${effect(p, 'heat', xe, y(eV(1000)) + 44, 58)}
+    ${newsClip(p, CR, CT - 28, CW, EINSTEIN_CLIP, 2, 11)}
+    ${keyUnder(CR, CT - 28 + CH + 66)}${T(CR + CW / 2, CT - 28 + CH + 126, 'eV: electronvolt', 'fl04-nt', 'middle')}
+    ${T(80, 32, 'energy per photon (eV)', 'fl04-ax')}
+  </svg>`;
+}
+
+/* ================= Round 2 (26 Oct 2026): five variants from the lecturer's pick 4R ================= */
+// SLIDE34_BRIEF.md, "Round 2": keep 4R's energy-against-wavelength curve with the four photons, the clipping, the
+// symbol definitions and axis labels; fewer pieces, bigger; DNA drawn as a double helix with the break, and the
+// effects named as effects: "DNA damage", "electron excited", "warming". Each variant moves the clipping, the
+// spectral ranges or the effect pictures.
+
+const NM = [300, 450, 650, 1000];
+type Kind = 'bond' | 'lift' | 'heat';
+const FX: Record<Kind, string> = { bond: 'DNA damage', lift: 'electron excited', heat: 'warming' };
+
+/** DNA damage: a double helix (two backbones, two-tone base-pair rungs) snapped in two, a red flash at the break.
+ *  `len` is its length along the helix axis; `vertical` stands it upright. */
+function dnaDamage(cx: number, cy: number, len = 128, vertical = false): string {
+  const A = 19, P = 60, g = 12, n = 36;
+  const v = (u: number, k: number): number => k * A * Math.cos((2 * Math.PI * u) / P);
+  const strand = (u0: number, u1: number, k: number): string => Array.from({ length: n + 1 }, (_, i) => {
+    const u = u0 + ((u1 - u0) * i) / n;
+    return `${i ? 'L' : 'M'}${f(u)},${f(v(u, k))}`;
+  }).join('');
+  const rungs = (u0: number, u1: number): string => {
+    let d1 = '', d2 = '';
+    for (let u = Math.ceil(u0 / (P / 8)) * (P / 8); u <= u1; u += P / 8) {
+      if (Math.abs(Math.cos((2 * Math.PI * u) / P)) < 0.45) continue;
+      const a = v(u, 1), b = v(u, -1), m = (a + b) / 2;
+      d1 += `M${f(u)},${f(a)} V${f(m)}`; d2 += `M${f(u)},${f(m)} V${f(b)}`;
+    }
+    return `<path class="fl04-bp1" d="${d1}"/><path class="fl04-bp2" d="${d2}"/>`;
+  };
+  // each half droops a little from the break, as if snapped
+  const half = (u0: number, u1: number, rot: number, pivot: number): string =>
+    `<g transform="rotate(${rot} ${pivot} 0)">${rungs(u0, u1)}<path class="fl04-bb2" d="${strand(u0, u1, -1)}"/><path class="fl04-bb1" d="${strand(u0, u1, 1)}"/></g>`;
+  const zap = [0, 45, 90, 135, 180, 225, 270, 315].map(a => {
+    const c = Math.cos((a * Math.PI) / 180), s = Math.sin((a * Math.PI) / 180), r0 = a % 90 ? 5 : 4, r1 = a % 90 ? 10 : 14;
+    return `M${f(c * r0)},${f(s * r0)} L${f(c * r1)},${f(s * r1)}`;
+  }).join('');
+  return `<g transform="translate(${f(cx)} ${f(cy)})${vertical ? ' rotate(90)' : ''}">
+    ${half(-len / 2, -g, -7, -g)}${half(g, len / 2, 7, g)}<path class="fl04-zap" d="${zap}"/></g>`;
+}
+
+/** An effect picture with its name. `dy` is the name's baseline below the picture's centre (or `dx`/`a` beside it);
+ *  `two` breaks the name over two lines. */
+function fx(p: string, kind: Kind, cx: number, cy: number, o: { dx?: number; dy?: number; a?: A; two?: boolean; vertical?: boolean; len?: number; s?: number } = {}): string {
+  const len = o.len ?? 128, k = o.s ?? 1;
+  const raw = kind === 'bond' ? dnaDamage(cx, cy, len, o.vertical) : kind === 'lift' ? pigmentPic(p, cx, cy) : heatPic(cx, cy);
+  // `s` enlarges the picture about its centre; the name keeps its size
+  const pic = k === 1 ? raw : `<g transform="translate(${f(cx)} ${f(cy)}) scale(${k}) translate(${f(-cx)} ${f(-cy)})">${raw}</g>`;
+  const lab = o.two ? FX[kind].split(' ') : [FX[kind]];
+  const dy = o.dy ?? (kind === 'bond' ? (o.vertical ? len / 2 + 30 : 54) : kind === 'lift' ? 62 : 58);
+  return pic + lines(cx + (o.dx ?? 0), cy + dy, lab, 'fl04-obj', o.a ?? 'middle', 24);
+}
+
+interface Graph { X: (nm: number) => number; Y: (e: number) => number; ox: number; oy: number; xEnd: number; yTop: number; len: number; K: number; nm0: number; nm1: number }
+/** 4R's graph: energy and wavelength axes with ticks, the curve E = hc/λ, and the four photons on it. The curve is
+ *  masked under each photon's wave so the packet reads cleanly. */
+function eGraph(p: string, g: Graph): string {
+  const { X, Y, ox, oy, xEnd, yTop, len, K, nm0, nm1 } = g;
+  const curve = Array.from({ length: 121 }, (_, i) => { const nm = nm0 + ((nm1 - nm0) * i) / 120; return `${i ? 'L' : 'M'}${f(X(nm))},${f(Y(eV(nm)))}`; }).join('');
+  const mask = `<mask id="${p}-m" maskUnits="userSpaceOnUse" x="0" y="0" width="800" height="600"><rect width="800" height="600" fill="#fff"/>${PHOTONS.map(ph =>
+    `<path d="${packetD(X(ph.nm), Y(eV(ph.nm)), len, ph.nm * K, 11)}" fill="none" stroke="#000" stroke-width="13" stroke-linecap="round"/>`).join('')}</mask>`;
+  return `${mask}<path class="fl04-curve" d="${curve}" mask="url(#${p}-m)"/>
+    ${vAxis(p, ox, oy, yTop, Y, [0, 1, 2, 3, 4])}${hAxis(p, oy, ox, xEnd, X, NM)}
+    ${PHOTONS.map(ph => photon(ph, X(ph.nm), Y(eV(ph.nm)), len, K, 11, 0, 3)).join('')}`;
+}
+
+/** The visible spectrum as a gradient from x1 (380 nm) to x2 (780 nm), along x or, with `vertical`, along y. */
+function visGrad(id: string, x1: number, x2: number): string {
+  const st: Array<[number, string]> = [[380, '#7b4fc0'], [440, '#2350e6'], [490, '#1aa0c8'], [530, '#2a963a'], [580, '#e3c21c'], [620, '#e07a1f'], [680, '#c8361e'], [780, '#7a1f17']];
+  return `<linearGradient id="${id}" gradientUnits="userSpaceOnUse" x1="${f(x1)}" y1="0" x2="${f(x2)}" y2="0">${st.map(([nm, c]) => `<stop offset="${f((nm - 380) / 400)}" stop-color="${c}"/>`).join('')}</linearGradient>`;
+}
+const E_380 = eV(380), E_780 = eV(780); // the edges of human vision (slide 3): 3.26 and 1.59 eV
+
+/* ================= Round 3 (26 Oct 2026): light only as separate photons, each on its own energy step ================= */
+// The lecturer's note on round 2: a smooth curve draws light as continuous, but its energy comes in packets. So
+// light is drawn only as separate wave packets with gaps between them; each photon rests on a short level at its
+// energy; E = hc/λ is at most a faint dotted guide; a dim and a bright beam of the same red show intensity as the
+// number of equal packets. The page text now defines h and c, so the clipping is EINSTEIN_SLIDE (no key lines).
+
+const CHS = clipHeight(CW, EINSTEIN_SLIDE); // about 316 px: name, year and formula
+
+/** A photon on its energy step: a short level at y = yl in the photon's colour, the wave packet resting on it. */
+function onStep(ph: Photon, x: number, yl: number, len: number, K: number, w = len + 14): string {
+  return `<path class="fl04-step" d="M${f(x - w / 2)},${f(yl)} H${f(x + w / 2)}" style="stroke:${ph.col}"/>${photon(ph, x, yl - 18, len, K, 10, 0, 3)}`;
+}
+/** E = hc/λ as a faint dotted guide through the steps. */
+function hcGuide(X: (nm: number) => number, Y: (e: number) => number, nm0: number, nm1: number): string {
+  const d = Array.from({ length: 81 }, (_, i) => { const nm = nm0 + ((nm1 - nm0) * i) / 80; return `${i ? 'L' : 'M'}${f(X(nm))},${f(Y(eV(nm)))}`; }).join('');
+  return `<path class="fl04-hc" d="${d}"/>`;
+}
+/** Energy and wavelength axes with ticks; the wavelength ticks sit at the four photons. */
+const eAxes = (p: string, ox: number, oy: number, xEnd: number, yTop: number, X: (nm: number) => number, Y: (e: number) => number): string =>
+  `${vAxis(p, ox, oy, yTop, Y, [0, 1, 2, 3, 4])}${hAxis(p, oy, ox, xEnd, X, NM)}`;
+
+/** A small "photon" label on a short leader from (x0, y0) on a packet to (x1, y1); the label sits beyond the leader. */
+const photonTag = (x0: number, y0: number, x1: number, y1: number, a: A = 'start'): string =>
+  `<path class="fl04-lead" d="M${f(x0)},${f(y0)} L${f(x1)},${f(y1)}"/>${T(x1 + (a === 'end' ? -4 : a === 'start' ? 4 : 0), y1 + (y1 < y0 ? -4 : 16), 'photon', 'fl04-val', a)}`;
+/** Top of a clipping centred in the figure's height. */
+const CB = Math.round((600 - CHS) / 2);
+
+/* ---------- 4U · Effects under the axis: steps over a spectrum strip, the effects beneath; Einstein right ---------- */
+
+function drawU(): string {
+  const p = 'fl04u', ox = 74, oy = 380, K = 0.032;
+  const X = (nm: number): number => ox + (nm - 160) * 0.52, Y = (e: number): number => oy - e * 74;
+  const steps = PHOTONS.map(ph => onStep(ph, X(ph.nm), Y(eV(ph.nm)), 66, K, 72)).join('');
+  const lab = (nm: number, dx: number, dy: number, a: A = 'start'): string => T(X(nm) + dx, Y(eV(nm)) + dy, eVs(nm), 'fl04-lab', a);
+  const sy = oy + 42, sh = 28, x0 = X(160), xu = X(380), xv = X(780), x1 = X(1050);
+  const xb = X(450), yb = Y(eV(450)) - 18;
+  return `<svg class="fig-svg fl04" viewBox="0 0 800 600" role="img" aria-label="Four photons, drawn as separate wave packets at their true relative wavelengths, each resting on a short level at its energy on a graph of energy per photon in electronvolts against wavelength in nanometres: 300 nm 4.1 eV, 450 nm 2.8 eV, 650 nm 1.9 eV, 1000 nm 1.2 eV; a faint dotted guide links the levels. A strip under the wavelength axis marks ultraviolet, visible and infrared; under it, what each does: DNA damage, electron excited, warming. Right: Albert Einstein's 1905 clipping, E = hc/λ.">
+    ${pDefs(p)}<defs>${visGrad(`${p}-vg`, xu, xv)}</defs>
+    ${T(50, 34, 'energy per photon (eV)', 'fl04-ax')}${T(548, 34, 'eV: electronvolt', 'fl04-nt', 'end')}
+    ${hcGuide(X, Y, 280, 1045)}
+    ${eAxes(p, ox, oy, 548, 50, X, Y)}
+    ${steps}
+    ${lab(300, 46, 7)}${lab(450, 46, 7)}${lab(650, 46, 7)}${lab(1000, 0, -46, 'middle')}
+    ${photonTag(xb - 26, yb + 6, xb - 50, yb + 42, 'end')}
+    ${T(548, oy - 12, 'wavelength (nm)', 'fl04-ax', 'end')}
+    <rect class="fl04-strip fl04-band-uv" x="${f(x0)}" y="${sy}" width="${f(xu - x0)}" height="${sh}"/>
+    <rect class="fl04-strip" x="${f(xu)}" y="${sy}" width="${f(xv - xu)}" height="${sh}" fill="url(#${p}-vg)" fill-opacity=".3"/>
+    <rect class="fl04-strip fl04-band-ir" x="${f(xv)}" y="${sy}" width="${f(x1 - xv)}" height="${sh}"/>
+    ${T((x0 + xu) / 2, sy + 20, 'ultraviolet', 'fl04-strip-t', 'middle')}${T((xu + xv) / 2, sy + 20, 'visible', 'fl04-strip-t', 'middle')}${T((xv + x1) / 2, sy + 20, 'infrared', 'fl04-strip-t', 'middle')}
+    ${fx(p, 'bond', (x0 + xu) / 2, 510, { dy: 66, len: 116, s: 1.2 })}
+    ${fx(p, 'lift', (xu + xv) / 2, 506, { dy: 70, s: 1.2 })}
+    ${fx(p, 'heat', (xv + x1) / 2, 508, { dy: 68, s: 1.2 })}
+    ${newsClip(p, CR, CB, CW, EINSTEIN_SLIDE, 2, 11)}
+  </svg>`;
+}
+
+/* ---------- 4V · Effects beside the photons: Einstein left; each effect next to the photon causing it ---------- */
+
+function drawV(): string {
+  const p = 'fl04v', ox = 300, oy = 512, K = 0.032;
+  const X = (nm: number): number => ox + (nm - 200) * 0.56, Y = (e: number): number => oy - e * 104;
+  const steps = PHOTONS.map(ph => onStep(ph, X(ph.nm), Y(eV(ph.nm)), 76, K, 88)).join('');
+  const lab = (i: number, dx: number, dy: number, a: A = 'start'): string => {
+    const ph = PHOTONS[i], x = X(ph.nm) + dx, y = Y(eV(ph.nm)) + dy;
+    return `${T(x, y, ph.name, 'fl04-lab', a)}${T(x, y + 24, eVs(ph.nm), 'fl04-val', a)}`;
+  };
+  const xi = X(1000), yi = Y(eV(1000)), xb = X(450), yb = Y(eV(450)) - 18;
+  return `<svg class="fig-svg fl04" viewBox="0 0 800 600" role="img" aria-label="Left: Albert Einstein's 1905 clipping, E = hc/λ. Right: four photons, drawn as separate wave packets at their true relative wavelengths, each resting on a short level at its energy on a graph of energy per photon in electronvolts against wavelength in nanometres, a faint dotted guide linking the levels; beside each, what it does: ultraviolet 300 nm 4.1 eV, DNA damage; blue 450 nm 2.8 eV and red 650 nm 1.9 eV, electron excited; infrared 1000 nm 1.2 eV, warming.">
+    ${pDefs(p)}
+    ${newsClip(p, CL, CB, CW, EINSTEIN_SLIDE, -2, 7)}
+    ${T(282, 40, 'energy per photon (eV)', 'fl04-ax')}${T(780, 40, 'eV: electronvolt', 'fl04-nt', 'end')}
+    ${hcGuide(X, Y, 292, 1035)}
+    ${eAxes(p, ox, oy, 780, 60, X, Y)}
+    ${steps}
+    ${T(780, 576, 'wavelength (nm)', 'fl04-ax', 'end')}
+    ${lab(0, 54, -16)}${lab(1, 54, -16)}${lab(2, 54, -22)}${lab(3, 0, -64, 'middle')}
+    ${photonTag(xb - 30, yb + 6, xb - 52, yb + 42, 'end')}
+    ${fx(p, 'bond', 650, 84, { dy: 58, len: 128, s: 1.1 })}
+    ${fx(p, 'lift', 716, 196, { dy: 70, two: true, s: 1.1 })}
+    <g transform="translate(${f(xi)} ${f(yi + 52)}) scale(1.1) translate(${f(-xi)} ${f(-yi - 52)})">${heatPic(xi, yi + 52)}</g>${T(xi - 34, yi + 60, FX.heat, 'fl04-obj', 'end')}
+  </svg>`;
+}
+
+/* ---------- 4W · Spectrum columns: ultraviolet, visible and infrared shaded behind the steps, each effect at its foot ---------- */
+
+function drawW(): string {
+  const p = 'fl04w', ox = 300, oy = 520, top = 56, K = 0.032;
+  const X = (nm: number): number => ox + (nm - 120) * 0.48, Y = (e: number): number => oy - e * 94;
+  const xu = X(380), xv = X(780), x1 = X(1050);
+  const steps = PHOTONS.map(ph => onStep(ph, X(ph.nm), Y(eV(ph.nm)), 66, K, 76)).join('');
+  const lab = (nm: number, dx: number, dy: number, a: A = 'start'): string => T(X(nm) + dx, Y(eV(nm)) + dy, eVs(nm), 'fl04-lab', a);
+  const xb = X(450), yb = Y(eV(450)) - 18;
+  return `<svg class="fig-svg fl04" viewBox="0 0 800 600" role="img" aria-label="Left: Albert Einstein's 1905 clipping, E = hc/λ. Right: a graph of energy per photon in electronvolts against wavelength in nanometres, shaded behind into ultraviolet, visible and infrared. Four photons, drawn as separate wave packets at their true relative wavelengths, each rest on a short level at their energy: 300 nm 4.1 eV, 450 nm 2.8 eV, 650 nm 1.9 eV, 1000 nm 1.2 eV. At the foot of each column, what its photons do: DNA damage, electron excited, warming.">
+    ${pDefs(p)}<defs>${visGrad(`${p}-vg`, xu, xv)}</defs>
+    <rect class="fl04-band fl04-band-uv" x="${ox}" y="${top}" width="${f(xu - ox)}" height="${oy - top}"/>
+    <rect class="fl04-band" x="${f(xu)}" y="${top}" width="${f(xv - xu)}" height="${oy - top}" fill="url(#${p}-vg)" fill-opacity=".13"/>
+    <rect class="fl04-band fl04-band-ir" x="${f(xv)}" y="${top}" width="${f(x1 - xv)}" height="${oy - top}"/>
+    ${T((ox + xu) / 2 + 4, top + 26, 'ultraviolet', 'fl04-strip-t', 'middle')}${T((xu + xv) / 2, top + 26, 'visible', 'fl04-strip-t', 'middle')}${T((xv + x1) / 2, top + 26, 'infrared', 'fl04-strip-t', 'middle')}
+    ${newsClip(p, CL, CB, CW, EINSTEIN_SLIDE, -2, 7)}
+    ${T(282, 36, 'energy per photon (eV)', 'fl04-ax')}${T(780, 36, 'eV: electronvolt', 'fl04-nt', 'end')}
+    ${eAxes(p, ox, oy, 780, 64, X, Y)}
+    ${steps}
+    ${T(780, 582, 'wavelength (nm)', 'fl04-ax', 'end')}
+    ${lab(300, 48, 7)}${lab(450, 48, 7)}${lab(650, 48, 7)}${lab(1000, 0, -46, 'middle')}
+    ${photonTag(xb - 26, yb - 6, xb - 44, yb - 34, 'end')}
+    ${fx(p, 'bond', (ox + xu) / 2 + 4, 382, { vertical: true, len: 112, dy: 98, two: true, s: 1.12 })}
+    ${fx(p, 'lift', (xu + xv) / 2, 436, { dy: 68, s: 1.15 })}
+    ${fx(p, 'heat', (xv + x1) / 2 - 20, 448, { dy: 56, s: 1.15 })}
+  </svg>`;
+}
+
+/* ---------- 4X · Effects on the energy axis: each step reaches back to the axis, its effect level with it on the left ---------- */
+
+function drawX(): string {
+  const p = 'fl04x', ox = 196, oy = 520, xe = 88, K = 0.03;
+  const X = (nm: number): number => ox + (nm - 200) * 0.38, Y = (e: number): number => oy - e * 104;
+  const steps = PHOTONS.map(ph => `<path class="fl04-guide" d="M${ox + 6},${f(Y(eV(ph.nm)))} H${f(X(ph.nm) - 38)}"/>${onStep(ph, X(ph.nm), Y(eV(ph.nm)), 64, K, 72)}`).join('');
+  const lab = (i: number, dx: number, dy: number, a: A = 'start'): string => {
+    const ph = PHOTONS[i];
+    return T(X(ph.nm) + dx, Y(eV(ph.nm)) + dy, `${ph.name} <tspan class="fl04-tv">${eVs(ph.nm)}</tspan>`, 'fl04-lab', a);
+  };
+  const yb = Y(eV(450)), yr = Y(eV(650)), xb = X(450);
+  return `<svg class="fig-svg fl04" viewBox="0 0 800 600" role="img" aria-label="Four photons, drawn as separate wave packets at their true relative wavelengths, each resting on a short level at its energy on a graph of energy per photon in electronvolts against wavelength in nanometres: ultraviolet 300 nm 4.1 eV, blue 450 nm 2.8 eV, red 650 nm 1.9 eV, infrared 1000 nm 1.2 eV. Each level reaches back to the energy axis; left of it, level with the photons, what each does: DNA damage at 4.1 eV, electron excited between 1.9 and 2.8 eV, warming at 1.2 eV. Right: Albert Einstein's 1905 clipping, E = hc/λ.">
+    ${pDefs(p)}
+    ${T(24, 36, 'energy per photon (eV)', 'fl04-ax')}${T(548, 36, 'eV: electronvolt', 'fl04-nt', 'end')}
+    ${eAxes(p, ox, oy, 548, 64, X, Y)}
+    ${steps}
+    ${T(548, oy - 12, 'wavelength (nm)', 'fl04-ax', 'end')}
+    ${lab(0, 44, 7)}${lab(1, 44, 7)}${lab(2, 44, 7)}${lab(3, 52, 32, 'end')}
+    ${photonTag(xb + 30, yb - 26, xb + 46, yb - 52)}
+    ${fx(p, 'bond', xe, Y(eV(300)), { dy: 58, len: 110, s: 1.1 })}
+    <path class="fl04-br" d="M154,${f(yb)} H146 V${f(yr)} H154"/>
+    ${fx(p, 'lift', xe - 4, (yb + yr) / 2 - 14, { dy: 68, two: true, s: 1.1 })}
+    ${fx(p, 'heat', xe, Y(eV(1000)) + 32, { dy: 62, s: 1.1 })}
+    ${newsClip(p, CR, CB, CW, EINSTEIN_SLIDE, 2, 11)}
+  </svg>`;
+}
+
+/* ---------- 4Y · Clipping in the corner: a full-width graph, Einstein above the infrared step, effects under the steps ---------- */
+
+function drawY(): string {
+  const p = 'fl04y', ox = 70, oy = 540, K = 0.032;
+  const X = (nm: number): number => ox + (nm - 200) * 0.825, Y = (e: number): number => oy - e * 100;
+  const steps = PHOTONS.map(ph => onStep(ph, X(ph.nm), Y(eV(ph.nm)), 80, K, 94)).join('');
+  const lab = (i: number, dx: number, dy: number, a: A = 'start'): string => {
+    const ph = PHOTONS[i], x = X(ph.nm) + dx, y = Y(eV(ph.nm)) + dy;
+    return `${T(x, y, ph.name, 'fl04-lab', a)}${T(x, y + 24, eVs(ph.nm), 'fl04-val', a)}`;
+  };
+  const xu = X(300), yu = Y(eV(300)) - 18;
+  return `<svg class="fig-svg fl04" viewBox="0 0 800 600" role="img" aria-label="A full-width graph of energy per photon in electronvolts against wavelength in nanometres. Four photons, drawn as separate wave packets at their true relative wavelengths, each rest on a short level at their energy: ultraviolet 300 nm 4.1 eV, blue 450 nm 2.8 eV, red 650 nm 1.9 eV, infrared 1000 nm 1.2 eV; a faint dotted guide links the levels. Under the steps, below each, what it does: DNA damage, electron excited, warming. Albert Einstein's 1905 clipping, E = hc/λ, sits in the corner above the infrared step.">
+    ${pDefs(p)}
+    ${T(50, 40, 'energy per photon (eV)', 'fl04-ax')}${T(540, 40, 'eV: electronvolt', 'fl04-nt', 'end')}
+    ${hcGuide(X, Y, 276, 1050)}
+    ${eAxes(p, ox, oy, 780, 76, X, Y)}
+    ${steps}
+    ${T(780, oy - 12, 'wavelength (nm)', 'fl04-ax', 'end')}
+    ${lab(0, 56, -14)}${lab(1, 56, -14)}${lab(2, 0, 28, 'middle')}${lab(3, 0, 28, 'middle')}
+    ${photonTag(xu + 16, yu - 10, xu + 28, yu - 30)}
+    ${fx(p, 'bond', X(300) + 26, 330, { dy: 62, len: 128, s: 1.15 })}
+    ${fx(p, 'lift', (X(450) + X(650)) / 2 - 2, 456, { dy: 74, s: 1.15 })}
+    <g transform="translate(610 466) scale(1.15) translate(-610 -466)">${heatPic(610, 466)}</g>${T(576, 474, FX.heat, 'fl04-obj', 'end')}
+    ${newsClip(p, CR, 16, CW, EINSTEIN_SLIDE, 2, 11)}
+  </svg>`;
+}
+
+const DRAW: Record<string, () => string> = { a: drawA, b: drawB, c: drawC, d: drawD, e: drawE, f: drawF, g: drawG, h: drawH, i: drawI, j: drawJ, k: drawK, l: drawL, m: drawM, n: drawN, o: drawO, p: drawP, q: drawQ, r: drawR, s: drawS, t: drawT, u: drawU, v: drawV, w: drawW, x: drawX, y: drawY };
 
 export function draw(id: string): string {
-  return (DRAW[id] ?? drawA)();
+  return (DRAW[id] ?? drawP)();
 }

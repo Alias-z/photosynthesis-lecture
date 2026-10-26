@@ -1,41 +1,45 @@
-// Slide L03 · The solar spectrum. Confirmed context (CLAUDE_HANDOFF.txt, SLIDE 3); ten figure variants.
-// Static only. Core: a prism spreads the wavelengths already in sunlight; the visible band is a sliver of the
-// electromagnetic spectrum; vision ≈ 380–780 nm and PAR 400–700 nm overlap; PAR is a photon-counting
-// convention, not a limit (far-red counts in mixed light); UV triggers protection and damages, infrared warms.
+// Slide L03 · Light is a wave (since 26 Oct 2026; was "The solar spectrum"). Light-block order v5
+// (research/figure-briefs/ORDER_PROPOSAL.md): wavelength explains the blue sky and gives the spectrum we see and use.
+// Variants P–T each show λ on blue and red waves, the spectrum on a wavelength axis, scattering by air molecules and
+// Rayleigh's clipping (research/figure-briefs/SLIDE34_BRIEF.md); the earlier spectrum-only variants still draw by id.
 // Photon energy (E = hc/λ) belongs to L04 and is left out here.
 import type { PlateText, Variant } from '../types';
 import { spec } from '../../lib/colour';
 import { heads } from '../mechanisms';
+import { clipping, clipHeight, RAYLEIGH_SLIDE } from './clipping';
+import { airMol, beam as waves, defs as waveDefs, eye as eyeS2, wv as wave } from './s2';
+import type { Col } from './s2';
 import './l03.css';
 
 export const PLATE: PlateText = {
   n: '3',
   status: 'confirmed',
-  title: 'The solar spectrum',
-  lead: 'Sunlight is a continuous mix of wavelengths, from ultraviolet through visible light to infrared.',
+  title: 'Light is a wave',
+  lead: 'Light is an electromagnetic wave; its wavelength (λ) sets its colour.',
   points: [
-    { claim: 'We see about 380–780 nm.', text: 'Human eyes detect wavelengths from about 380 nm (violet) to 780 nm (deep red).' },
-    { claim: 'PAR: photosynthetically active radiation.', text: 'By convention 400–700 nm, counted in photons: full sun gives ≈ 2000 µmol photons m⁻² s⁻¹.' },
-    { claim: 'Far-red counts too.', text: 'Far-red photons (700–750 nm), outside PAR, add to photosynthesis as much as PAR photons when mixed with them.' },
+    { claim: 'Electromagnetic spectrum.', text: 'Sunlight mixes ultraviolet, visible and infrared light.' },
+    { claim: 'Visible light and PAR.', text: 'Human vision: 380–780 nm<br>PAR (photosynthetically active radiation): 400–700 nm, by convention' },
+    { claim: 'Rayleigh scattering.', text: 'Scattered intensity <span class="math">∝</span> 1/λ⁴<br>Blue is scattered ~4× more than red: blue sky by day, red Sun at sunset.' },
   ],
+  play: 'life',
   refs: [
+    { label: 'Rayleigh 1871', url: 'https://doi.org/10.1080/14786447108640452' },
     { label: 'CIE: visible radiation', url: 'https://cie.co.at/eilvterm/17-21-003' },
     { label: 'CIE: PAR', url: 'https://cie.co.at/eilvterm/17-26-079' },
-    { label: 'Zhen & Bugbee 2020', url: 'https://doi.org/10.1111/pce.13730' },
-    { label: 'Croce & van Amerongen 2013', url: 'https://doi.org/10.1007/s11120-013-9838-x' },
+    { label: 'Kasten & Young 1989', url: 'https://doi.org/10.1364/AO.28.004735' },
+    { label: 'Gan et al. 2014', url: 'https://doi.org/10.1126/science.1256963' },
   ],
 };
 
-// Round 2: the lecturer's picks (A, E, H), then five combinations of them. Unlisted variants still draw by id.
+// Round 4 (26 Oct 2026): the lecturer picked S; U–Y are five variants built from it. P, R, T and the older
+// spectrum-only variants (A–O) are unlisted but still draw by id.
 export const VARIANTS: Variant[] = [
-  { id: 'a', name: 'Prism to scale' },
-  { id: 'e', name: 'Sunlight curve' },
-  { id: 'h', name: 'Engelmann 1882' },
-  { id: 'k', name: 'Prism to curve' },
-  { id: 'l', name: 'Offered vs used' },
-  { id: 'm', name: 'Engelmann setup' },
-  { id: 'n', name: 'Three tiers' },
-  { id: 'o', name: 'Edges explained' },
+  { id: 's', name: 'Scattering curve' },
+  { id: 'u', name: 'Brackets, clipping right' },
+  { id: 'v', name: 'Bars on the axis' },
+  { id: 'w', name: 'Bands, clipping on the graph' },
+  { id: 'x', name: 'Big drawing' },
+  { id: 'y', name: 'Tall curve' },
 ];
 
 /* ---------- shared parts ---------- */
@@ -771,8 +775,427 @@ function drawO(): string {
   </svg>`;
 }
 
-const DRAW: Record<string, () => string> = { a: drawA, b: drawB, c: drawC, d: drawD, e: drawE, f: drawF, g: drawG, h: drawH, i: drawI, j: drawJ, k: drawK, l: drawL, m: drawM, n: drawN, o: drawO };
+/* ========== Light-block round 3 (26 Oct 2026): five self-explaining variants P–T ==========
+   Every variant shows the same four parts, each readable on its own (research/figure-briefs/SLIDE34_BRIEF.md):
+   - λ marked crest to crest on blue (450 nm) and red (650 nm) light, drawn to their true ratio;
+   - the spectrum on a wavelength axis: ultraviolet · visible · infrared, ticks, brackets for human vision and PAR;
+   - scattering by air molecules: blue leaves in all directions, red mostly passes (4 : 2 : 1 for blue, green, red,
+     as 1/λ⁴ gives for 450, 550 and 650 nm);
+   - Rayleigh's clipping. */
+
+const BLUE = '#2350e6', RED = '#c8361e';
+
+/** Arrowheads for dimension lines (both ends), plus the slide-2 wave heads. */
+const partDefs = (p: string): string => `${waveDefs(p)}<defs>
+  <marker id="${p}-dim" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path class="fl03-dimh" d="M0,1L10,5L0,9z"/></marker>
+  <marker id="${p}-hb4" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0,0L10,5L0,10z" fill="${BLUE}"/></marker>
+  <marker id="${p}-hr4" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0,0L10,5L0,10z" fill="${RED}"/></marker></defs>`;
+
+/** A constant-amplitude wave along the line from (x0, y0) to (x1, y1); a crest (displacement +amp, to the left of the
+ *  direction of travel) sits `c0` px from the start. `ramp` (px) grows the amplitude from zero at the start. */
+function sine(x0: number, y0: number, x1: number, y1: number, lam: number, col: string, amp: number, c0: number, head = '', ramp = 0): string {
+  const dx = x1 - x0, dy = y1 - y0, L = Math.hypot(dx, dy), ux = dx / L, uy = dy / L, run = head ? L - 7 : L;
+  const n = Math.ceil(run / 1.5), pts: string[] = [];
+  for (let i = 0; i <= n; i++) {
+    const d = (run * i) / n, w = amp * (ramp ? Math.min(1, d / ramp) : 1) * Math.cos((2 * Math.PI * (d - c0)) / lam);
+    pts.push(`${i ? 'L' : 'M'}${f(x0 + ux * d + uy * w)},${f(y0 + uy * d - ux * w)}`);
+  }
+  if (head) pts.push(`L${f(x1)},${f(y1)}`);
+  return `<path class="fl03-w fl03-wl" style="stroke:${col}" d="${pts.join('')}"${head ? ` marker-end="url(#${head})"` : ''}/>`;
+}
+
+/** A horizontal wave of blue (450 nm) or red (650 nm) light, k px per nm, centred on y from x0 to x1, with λ marked
+ *  crest to crest above it: dotted drops from two crests and a double-headed arrow labelled "λ = … nm". */
+function lamRow(p: string, nm: 450 | 650, x0: number, x1: number, y: number, k: number,
+  o: { amp?: number; c0?: number; rise?: number; label?: string; at?: A; head?: boolean } = {}): string {
+  const lam = nm * k, amp = o.amp ?? 11, c0 = o.c0 ?? lam * 0.5, xc = x0 + c0, yc = y - amp, yd = yc - (o.rise ?? 18);
+  const col = nm === 450 ? BLUE : RED, at = o.at ?? 'middle';
+  const lx = at === 'middle' ? xc + lam / 2 : at === 'start' ? xc : xc + lam;
+  return `${sine(x0, y, x1, y, lam, col, amp, c0, o.head ? `${p}-${nm === 450 ? 'hb4' : 'hr4'}` : '')}
+    <path class="fl03-crest" d="M${f(xc)},${f(yc - 5)} V${f(yd - 4)} M${f(xc + lam)},${f(yc - 5)} V${f(yd - 4)}"/>
+    <path class="fl03-dim" d="M${f(xc + 1.5)},${f(yd)} H${f(xc + lam - 1.5)}" marker-start="url(#${p}-dim)" marker-end="url(#${p}-dim)"/>
+    ${T(lx, yd - 11, o.label ?? `λ = ${nm} nm`, 'fl03-b', at)}`;
+}
+
+/** The colour's name, in its colour. */
+const nameOf = (nm: 450 | 650): string => `<tspan class="${nm === 450 ? 'fl03-blue' : 'fl03-red'}">${nm === 450 ? 'blue' : 'red'}</tspan>`;
+
+/** A section's name, centred over it when it fits (`w`: its width in px), else set against the inner divider. */
+function secName(a: Ax, n0: number, n1: number, y: number, s: string, w: number, side: 'start' | 'end'): string {
+  const x0 = X(a, Math.max(n0, a.nm0)), x1 = X(a, Math.min(n1, a.nm1));
+  if (x1 - x0 >= w + 16) return T((x0 + x1) / 2, y, s, 'fl03-sec', 'middle');
+  return side === 'end' ? T(x1 - 8, y, s, 'fl03-sec', 'end') : T(x0 + 8, y, s, 'fl03-sec', 'start');
+}
+
+/** The spectrum on a wavelength axis, top of the section names at y. Rows: section names (y + 20), strip (y + 30…62),
+ *  tick values (y + 92), axis title (y + 120), human vision (bracket y + 144, label + 26), PAR (bracket + 52, label + 78;
+ *  the page text spells PAR out). Returns the drawing and the y of its last baseline. */
+function specAxis(p: string, a: Ax, y: number, o: { ticks?: number[]; noTitle?: boolean } = {}): { svg: string; bottom: number } {
+  const sy = y + 30, sh = 32, ty = sy + sh;
+  const ticks = o.ticks ?? [300, 400, 500, 600, 700, 800, 900].filter(nm => nm >= a.nm0 && nm <= a.nm1);
+  const mid = (n0: number, n1: number): number => (X(a, Math.max(n0, a.nm0)) + X(a, Math.min(n1, a.nm1))) / 2;
+  const by = ty + (o.noTitle ? 54 : 82), py = by + 52;
+  const par = T(X(a, 550), py + 26, 'PAR', 'fl03-b fl03-par', 'middle');
+  return {
+    bottom: py + 26,
+    svg: `${strip(`${p}-s`, a, sy, sh, false)}
+    <path class="fl03-secl" d="M${f(X(a, 380))},${y + 2} V${sy - 2} M${f(X(a, 780))},${y + 2} V${sy - 2}"/>
+    ${secName(a, a.nm0, 380, y + 20, 'ultraviolet', 104, 'end')}${T(mid(380, 780), y + 20, 'visible', 'fl03-sec', 'middle')}${secName(a, 780, a.nm1, y + 20, 'infrared', 82, 'start')}
+    ${ticks.map(nm => `<path class="fl03-tick" d="M${f(X(a, nm))},${ty} v8"/>${T(X(a, nm), ty + 30, `${nm}`, 'fl03-tk', 'middle')}`).join('')}
+    ${o.noTitle ? '' : T((a.x0 + a.x1) / 2, ty + 58, 'wavelength (nm)', 'fl03-tk', 'middle')}
+    ${bracket(X(a, 380), X(a, 780), by, 1)}${T(X(a, 580), by + 26, 'human vision', 'fl03-s', 'middle')}
+    ${bracket(X(a, 400), X(a, 700), py, 1, 'fl03-br fl03-br-par')}${par}`,
+  };
+}
+
+/** A few air molecules (unlabelled, as two touching atoms) around (x, y). */
+const airCluster = (x: number, y: number, r = 8.5): string => {
+  const k = r / 8.5;
+  return `${airMol(x - 9 * k, y - 3 * k, 'N', 32, r)}${airMol(x + 11 * k, y + 13 * k, 'O', -42, r)}${airMol(x + 9 * k, y - 19 * k, 'N', 74, r)}`;
+};
+
+/** White light (blue, green and red waves) from the left meets air molecules at (cx, cy). Blue leaves in four
+ *  directions, green in two, red in one (≈ 4 : 2 : 1); most green and red carry straight on. */
+function scatterAt(p: string, cx: number, cy: number,
+  o: { inLen: number; r: number; pass: number; blue?: number[]; green?: number[]; red?: number[]; s?: number }): string {
+  const s = o.s ?? 1, g = 26 * s, w = { amp: 5 * s, k: s };
+  const ray = (c: Col, deg: number, l: number): string => {
+    const t = (deg * Math.PI) / 180;
+    return wave(p, c, cx + Math.cos(t) * g, cy + Math.sin(t) * g, cx + Math.cos(t) * l, cy + Math.sin(t) * l, w);
+  };
+  return `${waves(p, ['b', 'g', 'r'], cx - o.inLen, cy, cx - g, cy, 9 * s, { ...w, head: false })}
+    ${(o.blue ?? [-125, -60, 58, 122]).map(d => ray('b', d, o.r)).join('')}
+    ${(o.green ?? [-92, 90]).map(d => ray('g', d, o.r * 0.8)).join('')}
+    ${(o.red ?? [156]).map(d => ray('r', d, o.r * 0.72)).join('')}
+    ${waves(p, ['g', 'r'], cx + g, cy, cx + o.pass, cy, 9 * s, w)}
+    ${airCluster(cx, cy, 8.5 * s)}`;
+}
+
+/** The key to the scattering: optionally an air molecule, then a short wave of each colour and what it does.
+ *  `two` breaks the blue line in two. */
+function scKey(p: string, x: number, y: number, o: { gap?: number; two?: boolean; mol?: boolean } = {}): string {
+  const g = o.gap ?? 32, sw = (c: Col, yy: number): string => wave(p, c, x, yy - 7, x + 42, yy - 7, { amp: 5, head: false });
+  const y0 = o.mol ? y + g + 2 : y;
+  const mol = o.mol ? `${airMol(x + 21, y - 7, 'N', 0, 8.5)}${T(x + 54, y, 'air molecules', 'fl03-s')}` : '';
+  const blue = o.two
+    ? `${T(x + 54, y0, `${nameOf(450)} scattered`, 'fl03-s')}${T(x + 54, y0 + 26, 'in all directions', 'fl03-s')}`
+    : T(x + 54, y0, `${nameOf(450)} scattered in all directions`, 'fl03-s');
+  const yr = y0 + g + (o.two ? 26 : 0);
+  return `${mol}${sw('b', y0)}${blue}${sw('r', yr)}${T(x + 54, yr, `${nameOf(650)} mostly passes`, 'fl03-s')}`;
+}
+
+/* ---------- 3P · Clipping first: Rayleigh and λ on the left; the axis and one scattering event on the right ---------- */
+
+function drawP(): string {
+  const p = 'fl03p';
+  const a: Ax = { x0: 318, x1: 770, nm0: 260, nm1: 900 };
+  const sp = specAxis(p, a, 22);
+  const k = 0.16, cx = 590, cy = 404;
+  return `<svg class="fig-svg fl03" viewBox="0 0 800 600" role="img" aria-label="Left: a newspaper clipping of Lord Rayleigh, 1871: scattering is proportional to one over wavelength to the fourth. Below it, blue light of wavelength 450 nm and red light of 650 nm drawn to scale, each wavelength marked crest to crest. Right: the spectrum on a wavelength axis from 300 to 900 nm, with ultraviolet, visible and infrared, and brackets for human vision and PAR. Below, sunlight meets air molecules: blue is scattered in all directions, red mostly passes.">
+    ${partDefs(p)}
+    ${clipping(p, 40, 20, 206, RAYLEIGH_SLIDE, -2)}
+    ${lamRow(p, 450, 28, 270, 452, k, { c0: 30, at: 'start' })}${T(270, 410, nameOf(450), 'fl03-b', 'end')}
+    ${lamRow(p, 650, 28, 270, 552, k, { c0: 30, at: 'start' })}${T(270, 510, nameOf(650), 'fl03-b', 'end')}
+    ${sp.svg}
+    ${scatterAt(p, cx, cy, { inLen: 254, r: 92, pass: 180, blue: [-114, -58, 58, 122], green: [-86, 90], red: [-140] })}
+    ${T(a.x0 + 18, cy - 22, 'sunlight', 'fl03-s')}
+    ${T(cx - 50, cy + 46, 'air molecules', 'fl03-s', 'end')}
+    ${scKey(p, 344, 540)}
+  </svg>`;
+}
+
+/* ---------- 3Q · Blue sky: a tall sky beside the axis; the λ waves are the scene's key ---------- */
+
+function drawQ(): string {
+  const p = 'fl03q';
+  const a: Ax = { x0: 350, x1: 770, nm0: 230, nm1: 900 };
+  const sp = specAxis(p, a, 16);
+  const L = 18, R = 300, top = 18, gy = 548, bot = 584;
+  const b0: [number, number] = [88, 90], b1: [number, number] = [R + 10, 316];
+  const at = (t: number): [number, number] => [b0[0] + (b1[0] - b0[0]) * t, b0[1] + (b1[1] - b0[1]) * t];
+  const hits = [0.2, 0.48, 0.76].map(at);
+  const eyeP: [number, number] = [150, 512];
+  const ray = (h: [number, number], deg: number, l: number, c: Col = 'b'): string => {
+    const t = (deg * Math.PI) / 180;
+    return wave(p, c, h[0] + Math.cos(t) * 16, h[1] + Math.sin(t) * 16, h[0] + Math.cos(t) * l, h[1] + Math.sin(t) * l, { amp: 4.5 });
+  };
+  const toEye = hits.map(([x, y], i) => wave(p, 'b', x + (i - 1) * 2, y + 16, eyeP[0] + (i - 1) * 12, eyeP[1] - 30, { amp: 4.5 })).join('');
+  const k = 0.15, kx = 348, kx1 = 552;
+  return `<svg class="fig-svg fl03" viewBox="0 0 800 600" role="img" aria-label="Left: a tall sky. Sunlight crosses the air; air molecules send blue light in all directions, some of it down to an eye, while red mostly passes on. Right, top: the spectrum on a wavelength axis from 300 to 900 nm with ultraviolet, visible and infrared, and brackets for human vision and PAR. Below: blue light of wavelength 450 nm and red of 650 nm drawn to scale with the wavelength marked crest to crest, as the key to the sky; and a newspaper clipping of Lord Rayleigh, 1871: scattering is proportional to one over wavelength to the fourth.">
+    ${partDefs(p)}
+    <defs><linearGradient id="${p}-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bcd3ee"/><stop offset="1" stop-color="#eaf1f8"/></linearGradient>
+      <clipPath id="${p}-skyc"><rect x="${L}" y="${top}" width="${R - L}" height="${bot - top}" rx="14"/></clipPath></defs>
+    <g clip-path="url(#${p}-skyc)">
+      <rect x="${L}" y="${top}" width="${R - L}" height="${gy - top}" fill="url(#${p}-sky)"/>
+      <rect class="fl03-ground" x="${L}" y="${gy}" width="${R - L}" height="${bot - gy}"/>
+      ${sun(62, 64, 20)}
+      ${waves(p, ['b', 'g', 'r'], b0[0], b0[1], b1[0], b1[1], 8, { amp: 4, head: false })}
+      ${ray(hits[0], -150, 70)}${ray(hits[1], -62, 70)}${ray(hits[2], 30, 66)}${ray(hits[0], 175, 56)}${ray(hits[2], -110, 64)}
+      ${ray(hits[1], 135, 52, 'r')}
+      ${toEye}
+      ${hits.map(([x, y], i) => airMol(x, y, i === 1 ? 'O' : 'N', 30 + i * 40, 8)).join('')}
+    </g>
+    ${eyeS2(eyeP[0], eyeP[1], 0.82)}
+    ${T(296, 100, 'air molecules', 'fl03-s', 'end')}<path class="fl03-lead" d="M196,108 L${f(hits[0][0] + 10)},${f(hits[0][1] - 9)}"/>
+    ${sp.svg}
+    ${lamRow(p, 450, kx, kx1, 334, k, { c0: 24, at: 'start' })}
+    ${T(kx, 374, `${nameOf(450)} scattered`, 'fl03-s')}${T(kx, 400, 'in all directions', 'fl03-s')}
+    ${lamRow(p, 650, kx, kx1, 496, k, { c0: 24, at: 'start' })}
+    ${T(kx, 536, `${nameOf(650)} mostly passes`, 'fl03-s')}
+    ${clipping(p, 574, 262, 200, RAYLEIGH_SLIDE, 2, 11)}
+  </svg>`;
+}
+
+/* ---------- 3R · Waves on the axis: blue and red fall onto their place on the wavelength axis ---------- */
+
+function drawR(): string {
+  const p = 'fl03r';
+  const a: Ax = { x0: 58, x1: 762, nm0: 280, nm1: 880 };
+  const sp = specAxis(p, a, 360);
+  const xb = X(a, 450), xr = X(a, 650), k = 0.2, amp = 11, y0 = 60, y1 = 382;
+  // vertical waves travelling down; blue's marked crests bulge right, red's left
+  const lb = 450 * k, lr = 650 * k, cb = 24, cr = 130;
+  const vb = sine(xb, y0, xb, y1, lb, BLUE, -amp, cb, `${p}-hb4`), vr = sine(xr, y0, xr, y1, lr, RED, amp, cr, `${p}-hr4`);
+  const dB = xb + amp + 18, dR = xr - amp - 18;
+  const dim = (x: number, ya: number, yb2: number, xs: number, lab: string, an: A): string =>
+    `<path class="fl03-crest" d="M${f(xs)},${f(ya)} H${f(x + (x > xs ? 6 : -6))} M${f(xs)},${f(yb2)} H${f(x + (x > xs ? 6 : -6))}"/>
+     <path class="fl03-dim" d="M${f(x)},${f(ya + 1.5)} V${f(yb2 - 1.5)}" marker-start="url(#${p}-dim)" marker-end="url(#${p}-dim)"/>
+     ${T(x + (an === 'start' ? 12 : -12), (ya + yb2) / 2 + 8, lab, 'fl03-b', an)}`;
+  const cx = 670, cy = 124;
+  return `<svg class="fig-svg fl03" viewBox="0 0 800 600" role="img" aria-label="Blue light of wavelength 450 nm and red light of 650 nm, drawn to scale with the wavelength marked crest to crest, fall onto their places on a wavelength axis from 300 to 800 nm, which shows ultraviolet, visible and infrared and brackets for human vision and PAR. Left: a newspaper clipping of Lord Rayleigh, 1871. Right: sunlight meets air molecules; blue is scattered in all directions, red mostly passes.">
+    ${partDefs(p)}
+    ${clipping(p, 20, 20, 200, RAYLEIGH_SLIDE, -2)}
+    ${T(xb, 42, nameOf(450), 'fl03-b', 'middle')}${T(xr, 42, nameOf(650), 'fl03-b', 'middle')}
+    ${vb}${vr}
+    ${dim(dB, y0 + cb, y0 + cb + lb, xb + amp + 4, 'λ = 450 nm', 'start')}
+    ${dim(dR, y0 + cr, y0 + cr + lr, xr - amp - 4, 'λ = 650 nm', 'end')}
+    ${sp.svg}
+    ${scatterAt(p, cx, cy, { inLen: 118, r: 82, pass: 112, blue: [-108, -45, 48, 116], green: [-78, 88], red: [140] })}
+    ${T(552, cy - 24, 'sunlight', 'fl03-s')}
+    ${scKey(p, 552, 246, { two: true, mol: true, gap: 30 })}
+  </svg>`;
+}
+
+/* ---------- 3S · Scattering curve: 1/λ⁴ plotted over the same axis as the spectrum ---------- */
+
+function drawS(): string {
+  const p = 'fl03s';
+  const a: Ax = { x0: 92, x1: 540, nm0: 260, nm1: 900 };
+  const top = 54, base = 188, vmax = 8, V = (v: number): number => base - (v / vmax) * (base - top);
+  const nmTop = 650 / vmax ** 0.25;
+  const pts: string[] = [];
+  for (let nm = Math.ceil(nmTop); nm <= a.nm1; nm += 3) pts.push(`${pts.length ? 'L' : 'M'}${f(X(a, nm))},${f(V((650 / nm) ** 4))}`);
+  const sp = specAxis(p, a, 198);
+  const dot = (nm: number, col: string): string => {
+    const v = (650 / nm) ** 4;
+    return `<path class="fl03-guide" d="M${f(X(a, nm))},${f(V(v) + 8)} V${base + 40}"/><circle cx="${f(X(a, nm))}" cy="${f(V(v))}" r="7" fill="${col}" stroke="#fffdf8" stroke-width="2"/>`;
+  };
+  const k = 0.15, cx = 178, cy = 520, wx = 590;
+  return `<svg class="fig-svg fl03" viewBox="0 0 800 600" role="img" aria-label="Top left: a graph of how strongly air scatters light against wavelength, relative to red light at 650 nm. The curve falls steeply, as one over wavelength to the fourth: blue at 450 nm is scattered about four times more than red. It sits over the spectrum's wavelength axis, from 300 to 900 nm, with ultraviolet, visible and infrared and brackets for human vision and PAR. Below, sunlight meets air molecules: blue is scattered in all directions, red mostly passes. Right: a newspaper clipping of Lord Rayleigh, 1871, and blue and red waves drawn to scale with the wavelength marked crest to crest.">
+    ${partDefs(p)}
+    ${T(a.x0 - 52, 30, 'scattering by air (red = 1)', 'fl03-tk')}
+    <path class="fl03-axis" d="M${a.x0},${top - 10} V${base} H${a.x1}"/>
+    ${[0, 4, 8].map(v => `<path class="fl03-tick" d="M${a.x0 - 7},${f(V(v))} h7"/>${T(a.x0 - 12, V(v) + 7, `${v}`, 'fl03-tk', 'end')}`).join('')}
+    <path class="fl03-scurve" d="${pts.join('')}"/>
+    ${dot(450, BLUE)}${dot(650, RED)}
+    ${T(X(a, 450) + 14, V((650 / 450) ** 4) - 2, nameOf(450), 'fl03-b')}${T(X(a, 650) + 4, V(1) - 16, nameOf(650), 'fl03-b')}
+    ${sp.svg}
+    ${scatterAt(p, cx, cy, { inLen: 138, r: 66, pass: 112, blue: [-118, -58, 58, 114], green: [-88, 88], red: [140] })}
+    ${T(cx - 138, cy - 22, 'sunlight', 'fl03-s')}
+    ${scKey(p, 314, 476, { two: true, mol: true, gap: 31 })}
+    ${clipping(p, 580, 16, 200, RAYLEIGH_SLIDE, 2, 11)}
+    ${lamRow(p, 450, wx, 780, 432, k, { c0: 4, at: 'start' })}${T(780, 392, nameOf(450), 'fl03-b', 'end')}
+    ${lamRow(p, 650, wx, 780, 548, k, { c0: 4, at: 'start' })}${T(780, 508, nameOf(650), 'fl03-b', 'end')}
+  </svg>`;
+}
+
+/* ---------- 3T · Waves meet air: big blue and red waves, λ marked, reach the air molecules ---------- */
+
+function drawT(): string {
+  const p = 'fl03t';
+  const a: Ax = { x0: 40, x1: 760, nm0: 280, nm1: 880 };
+  const sp = specAxis(p, a, 14);
+  const k = 0.15, yb = 390, yr = 520, hx = 300, lb = 450 * k;
+  // blue ends at the molecules and leaves in all directions, keeping its wavelength; red carries on past them
+  const out = (deg: number, l: number): string => {
+    const t = (deg * Math.PI) / 180;
+    return sine(hx + Math.cos(t) * 22, yb + Math.sin(t) * 22, hx + Math.cos(t) * l, yb + Math.sin(t) * l, lb, BLUE, 9, 0, `${p}-hb4`, lb * 0.6);
+  };
+  return `<svg class="fig-svg fl03" viewBox="0 0 800 600" role="img" aria-label="Top: the spectrum on a wavelength axis from 300 to 800 nm, with ultraviolet, visible and infrared and brackets for human vision and PAR. Below: blue light of wavelength 450 nm and red light of 650 nm, drawn to scale with the wavelength marked crest to crest, reach air molecules. Blue is scattered in all directions; red mostly passes. Right: a newspaper clipping of Lord Rayleigh, 1871.">
+    ${partDefs(p)}
+    ${sp.svg}
+    ${lamRow(p, 450, 28, hx - 22, yb, k, { c0: 30, at: 'start' })}
+    ${lamRow(p, 650, 28, 552, yr, k, { c0: 30, at: 'start', head: true })}
+    ${([[-150, 126], [-95, 132], [-40, 120], [16, 132], [70, 100], [140, 132]] as Array<[number, number]>).map(([d, l]) => out(d, l)).join('')}
+    ${airCluster(hx, yb)}${airMol(hx + 2, yr - 1, 'N', 62, 8.5)}
+    ${T(hx + 50, (yb + yr) / 2 + 16, 'air molecules', 'fl03-s')}
+    ${T(552, 296, nameOf(450), 'fl03-b', 'end')}${T(552, 322, 'scattered in', 'fl03-s', 'end')}${T(552, 348, 'all directions', 'fl03-s', 'end')}
+    ${T(552, yr + 48, `${nameOf(650)} mostly passes`, 'fl03-s', 'end')}
+    ${clipping(p, 576, 262, 200, RAYLEIGH_SLIDE, 2, 11)}
+  </svg>`;
+}
+
+/* ========== Round 4 (26 Oct 2026): five variants from the lecturer's pick, 3S ==========
+   Each keeps 3S's scattering curve over the wavelength axis and Rayleigh's clipping, drops the separate λ waves, puts
+   the scattering drawing above the curve it explains and marks the ranges clearly: human vision 380–780 nm, PAR
+   400–700 nm and far-red 700–750 nm, which some cyanobacteria use (Gan et al. 2014). They differ in where the
+   clipping sits, how the ranges are marked and how big the drawing is. */
+
+const VIS_L = 'human vision';
+const PAR_L = '<tspan class="fl03-parb">PAR</tspan>'; // spelled out in the page text, so the figure keeps the short name
+const FR_L = '<tspan class="fl03-frb">far-red:</tspan> some cyanobacteria';
+
+/** The wavelength axis alone: section names (y + 20), strip (y + 30…62), tick values (y + 92) and the title, centred
+ *  below them (y + 120) or, with `titleEnd`, right-aligned on the tick row at that x. */
+function axisRows(p: string, a: Ax, y: number, o: { ticks?: number[]; titleEnd?: number } = {}): string {
+  const sy = y + 30, ty = sy + 32;
+  const tk = o.ticks ?? [300, 400, 500, 600, 700, 800, 900].filter(nm => nm >= a.nm0 && nm <= a.nm1);
+  return `${strip(`${p}-s`, a, sy, 32, false)}
+    <path class="fl03-secl" d="M${f(X(a, 380))},${y + 2} V${sy - 2} M${f(X(a, 780))},${y + 2} V${sy - 2}"/>
+    ${secName(a, a.nm0, 380, y + 20, 'ultraviolet', 104, 'end')}${T((X(a, 380) + X(a, 780)) / 2, y + 20, 'visible', 'fl03-sec', 'middle')}${secName(a, 780, a.nm1, y + 20, 'infrared', 82, 'start')}
+    ${tk.map(nm => `<path class="fl03-tick" d="M${f(X(a, nm))},${ty} v8"/>${T(X(a, nm), ty + 30, `${nm}`, 'fl03-tk', 'middle')}`).join('')}
+    ${o.titleEnd ? T(o.titleEnd, ty + 30, 'wavelength (nm)', 'fl03-tk', 'end') : T((a.x0 + a.x1) / 2, ty + 58, 'wavelength (nm)', 'fl03-tk', 'middle')}`;
+}
+
+/** 3S's curve: how strongly air scatters light relative to red (650 nm), (650/λ)⁴, from 0 at `base` to `vmax` at
+ *  `top`; blue (450 nm) and red (650 nm) are marked, with dotted drops to y `drop`. The y title starts at (tx, ty). */
+function scCurve(a: Ax, top: number, base: number, drop: number, tx: number, ty: number, o: { vmax?: number; ticks?: number[] } = {}): string {
+  const vmax = o.vmax ?? 8, V = (v: number): number => base - (v / vmax) * (base - top);
+  const pts: string[] = [];
+  for (let nm = Math.ceil(650 / vmax ** 0.25); nm <= a.nm1; nm += 3) pts.push(`${pts.length ? 'L' : 'M'}${f(X(a, nm))},${f(V((650 / nm) ** 4))}`);
+  const dot = (nm: number, col: string): string => {
+    const v = (650 / nm) ** 4;
+    return `<path class="fl03-guide" d="M${f(X(a, nm))},${f(V(v) + 8)} V${drop}"/><circle cx="${f(X(a, nm))}" cy="${f(V(v))}" r="7" fill="${col}" stroke="#fffdf8" stroke-width="2"/>`;
+  };
+  return `<path class="fl03-axis" d="M${a.x0},${top - 10} V${base} H${a.x1}"/>
+    ${(o.ticks ?? [0, 4, 8]).map(v => `<path class="fl03-tick" d="M${a.x0 - 7},${f(V(v))} h7"/>${T(a.x0 - 12, V(v) + 7, `${v}`, 'fl03-tk', 'end')}`).join('')}
+    ${T(tx, ty, 'scattering by air (red = 1)', 'fl03-tk')}
+    <path class="fl03-scurve" d="${pts.join('')}"/>
+    ${dot(450, BLUE)}${dot(650, RED)}
+    ${T(X(a, 450) + 14, V((650 / 450) ** 4) - 2, nameOf(450), 'fl03-b')}${T(X(a, 650) + 4, V(1) - 16, nameOf(650), 'fl03-b')}`;
+}
+
+/** The scattering drawing with its labels set where each layout has room: [x, y, anchor]. */
+interface AirO { cx: number; cy: number; inLen: number; r: number; pass: number; s?: number;
+  sun: [number, number, A]; mol: [number, number, A]; blue: [number, number, A]; red: [number, number, A]; blueTwo?: boolean }
+function airDrawing(p: string, o: AirO): string {
+  const [bx, by, ba] = o.blue;
+  const blue = o.blueTwo
+    ? `${T(bx, by, `${nameOf(450)} scattered`, 'fl03-s', ba)}${T(bx, by + 26, 'in all directions', 'fl03-s', ba)}`
+    : T(bx, by, `${nameOf(450)} scattered in all directions`, 'fl03-s', ba);
+  return `${scatterAt(p, o.cx, o.cy, { inLen: o.inLen, r: o.r, pass: o.pass, s: o.s, blue: [-116, -58, 58, 116], green: [-88, 88], red: [140] })}
+    ${T(o.sun[0], o.sun[1], 'sunlight', 'fl03-s', o.sun[2])}${T(o.mol[0], o.mol[1], 'air molecules', 'fl03-s', o.mol[2])}
+    ${blue}${T(o.red[0], o.red[1], `${nameOf(650)} mostly passes`, 'fl03-s', o.red[2])}`;
+}
+
+/** A strong bracket under a range, ticks pointing up at the axis. */
+const rb = (a: Ax, n0: number, n1: number, y: number, k: 'vis' | 'par' | 'fr'): string =>
+  bracket(X(a, n0) + (k === 'fr' ? 3 : 0), X(a, n1) - (k === 'par' ? 3 : 0), y, 1, `fl03-rb fl03-rb-${k}`);
+
+/** A filled bar over a range, for marking ranges on the axis. */
+const rbar = (a: Ax, n0: number, n1: number, y: number, h: number, k: 'vis' | 'par' | 'fr'): string => {
+  const x0 = X(a, n0) + (k === 'fr' ? 2 : 0), x1 = X(a, n1) - (k === 'par' ? 2 : 0);
+  return `<rect class="fl03-bar-${k}" x="${f(x0)}" y="${y}" width="${f(x1 - x0)}" height="${h}" rx="${k === 'fr' ? 5 : h / 2}"/>`;
+};
+
+/** A shaded band over a range from y0 to y1, drawn behind the curve. */
+const band = (a: Ax, n0: number, n1: number, y0: number, y1: number, k: 'vis' | 'par' | 'fr'): string =>
+  `<rect class="fl03-band-${k}" x="${f(X(a, n0))}" y="${y0}" width="${f(X(a, n1) - X(a, n0))}" height="${y1 - y0}"/>`;
+
+/* ---------- 3U · Brackets, clipping right: 3S tidied; the drawing above the curve, strong brackets below ---------- */
+
+function drawU(): string {
+  const p = 'fl03u';
+  const a: Ax = { x0: 90, x1: 516, nm0: 280, nm1: 880 };
+  const top = 214, base = 330, ax = 340, br = ax + 144;
+  return `<svg class="fig-svg fl03" viewBox="0 0 800 600" role="img" aria-label="Top: sunlight meets air molecules; blue is scattered in all directions, red mostly passes. Below it, how strongly air scatters light against wavelength, relative to red at 650 nm: the curve falls steeply, as one over wavelength to the fourth, so blue at 450 nm is scattered about four times more than red. The wavelength axis runs from 300 to 800 nm through ultraviolet, visible and infrared; brackets mark human vision, 380 to 780 nm, PAR, 400 to 700 nm, and far-red, 700 to 750 nm, used by some cyanobacteria. Right: a newspaper clipping of Lord Rayleigh, 1871.">
+    ${partDefs(p)}
+    ${airDrawing(p, { cx: 226, cy: 96, inLen: 166, r: 66, pass: 114, sun: [60, 74, 'start'], mol: [178, 142, 'end'], blue: [362, 44, 'start'], blueTwo: true, red: [352, 103, 'start'] })}
+    ${scCurve(a, top, base, ax + 30, 38, top - 20)}
+    ${axisRows(p, a, ax)}
+    ${rb(a, 380, 780, br, 'vis')}${T(X(a, 580), br + 26, VIS_L, 'fl03-s', 'middle')}
+    ${rb(a, 400, 700, br + 52, 'par')}${T(X(a, 550), br + 78, PAR_L, 'fl03-exp', 'middle')}
+    ${rb(a, 700, 750, br + 52, 'fr')}${T(X(a, 750) + 12, br + 56, FR_L, 'fl03-exp')}
+    ${clipping(p, 556, 16, 236, RAYLEIGH_SLIDE, 2, 11)}
+  </svg>`;
+}
+
+/* ---------- 3V · Bars on the axis: the drawing across the top, the clipping below it on the left ---------- */
+
+function drawV(): string {
+  const p = 'fl03v';
+  const a: Ax = { x0: 318, x1: 774, nm0: 280, nm1: 880 };
+  const top = 210, base = 318, ax = 328, by = ax + 140;
+  return `<svg class="fig-svg fl03" viewBox="0 0 800 600" role="img" aria-label="Across the top: sunlight meets air molecules; blue is scattered in all directions, red mostly passes. Below right, how strongly air scatters light against wavelength, relative to red at 650 nm, falling steeply as one over wavelength to the fourth: blue at 450 nm about four times red. Under the wavelength axis, from 300 to 800 nm, bars mark human vision, 380 to 780 nm, PAR, 400 to 700 nm, and far-red, 700 to 750 nm, used by some cyanobacteria. Left: a newspaper clipping of Lord Rayleigh, 1871.">
+    ${partDefs(p)}
+    ${airDrawing(p, { cx: 330, cy: 88, inLen: 270, r: 64, pass: 196, sun: [60, 66, 'start'], mol: [282, 134, 'end'], blue: [376, 38, 'start'], red: [538, 95, 'start'] })}
+    ${clipping(p, 20, 212, 216, RAYLEIGH_SLIDE, -2)}
+    ${scCurve(a, top, base, ax + 30, a.x0 - 52, top - 20)}
+    ${axisRows(p, a, ax)}
+    ${rbar(a, 380, 780, by, 28, 'vis')}${T(X(a, 580), by + 21, VIS_L, 'fl03-s', 'middle')}
+    ${rbar(a, 400, 700, by + 36, 28, 'par')}${rbar(a, 700, 750, by + 36, 28, 'fr')}${T(X(a, 550), by + 57, '<tspan class="fl03-parb">PAR</tspan>', 'fl03-s', 'middle')}
+    <path class="fl03-lead" d="M${f(X(a, 725))},${by + 65} V${by + 80}"/>${T(X(a, 750), by + 100, FR_L, 'fl03-exp', 'end')}
+  </svg>`;
+}
+
+/* ---------- 3W · Bands, clipping on the graph: shaded ranges behind the curve; the clipping over the infrared tail ---------- */
+
+function drawW(): string {
+  const p = 'fl03w';
+  const a: Ax = { x0: 90, x1: 770, nm0: 280, nm1: 1000 };
+  const top = 222, base = 388, ax = 398, r1 = ax + 150, r2 = r1 + 30;
+  return `<svg class="fig-svg fl03" viewBox="0 0 800 600" role="img" aria-label="Top left: sunlight meets air molecules; blue is scattered in all directions, red mostly passes. Below, across the figure, how strongly air scatters light against wavelength, relative to red at 650 nm, falling steeply as one over wavelength to the fourth: blue at 450 nm about four times red. Shaded bands mark PAR, 400 to 700 nm, far-red, 700 to 750 nm, used by some cyanobacteria, and human vision, 380 to 780 nm, on a wavelength axis from 300 to 1000 nm. Top right, over the flat infrared end of the curve: a newspaper clipping of Lord Rayleigh, 1871.">
+    ${partDefs(p)}
+    ${band(a, 380, 780, top - 8, r2 + 8, 'vis')}${band(a, 400, 700, top - 8, r1 + 8, 'par')}${band(a, 700, 750, top - 8, r1 + 8, 'fr')}
+    ${airDrawing(p, { cx: 240, cy: 92, inLen: 176, r: 64, pass: 120, sun: [64, 70, 'start'], mol: [192, 138, 'end'], blue: [376, 40, 'start'], blueTwo: true, red: [372, 99, 'start'] })}
+    ${scCurve(a, top, base, ax + 30, 38, top - 24, { ticks: [0, 2, 4, 6, 8] })}
+    ${axisRows(p, a, ax, { ticks: [300, 400, 500, 600, 700, 800, 900, 1000] })}
+    ${T(X(a, 550), r1, PAR_L, 'fl03-exp', 'middle')}${T(X(a, 700) + 8, r1, FR_L, 'fl03-exp', 'start')}
+    ${T(X(a, 580), r2, VIS_L, 'fl03-s', 'middle')}
+    ${clipping(p, 580, 14, 200, RAYLEIGH_SLIDE, 2, 11)}
+  </svg>`;
+}
+
+/* ---------- 3X · Big drawing: the scattering drawing large, the curve short beneath it ---------- */
+
+function drawX(): string {
+  const p = 'fl03x';
+  const a: Ax = { x0: 90, x1: 770, nm0: 280, nm1: 1000 };
+  const top = 262, base = 356, ax = 364, br = ax + 144;
+  return `<svg class="fig-svg fl03" viewBox="0 0 800 600" role="img" aria-label="Large, at the top: sunlight meets air molecules; blue is scattered in all directions, red mostly passes. Beneath, across the figure, how strongly air scatters light against wavelength, relative to red at 650 nm, falling steeply as one over wavelength to the fourth: blue at 450 nm about four times red. Brackets under the wavelength axis, from 300 to 1000 nm, mark PAR, 400 to 700 nm, far-red, 700 to 750 nm, used by some cyanobacteria, and human vision, 380 to 780 nm. Top right: a newspaper clipping of Lord Rayleigh, 1871.">
+    ${partDefs(p)}
+    ${airDrawing(p, { cx: 236, cy: 124, inLen: 206, r: 98, pass: 128, s: 1.35, sun: [30, 94, 'start'], mol: [172, 192, 'end'], blue: [310, 36, 'start'], blueTwo: true, red: [376, 131, 'start'] })}
+    ${scCurve(a, top, base, ax + 30, 38, top - 22)}
+    ${axisRows(p, a, ax, { ticks: [300, 400, 500, 600, 700, 800, 900, 1000] })}
+    ${rb(a, 400, 700, br, 'par')}${rb(a, 700, 750, br, 'fr')}
+    ${T(X(a, 550), br + 26, PAR_L, 'fl03-exp', 'middle')}${T(X(a, 700) + 8, br + 26, FR_L, 'fl03-exp', 'start')}
+    ${rb(a, 380, 780, br + 50, 'vis')}${T(X(a, 580), br + 76, VIS_L, 'fl03-s', 'middle')}
+    ${clipping(p, 580, 14, 200, RAYLEIGH_SLIDE, 2, 11)}
+  </svg>`;
+}
+
+/* ---------- 3Y · Tall curve: a small drawing, a tall curve, the clipping on the left ---------- */
+
+function drawY(): string {
+  const p = 'fl03y';
+  const a: Ax = { x0: 342, x1: 774, nm0: 280, nm1: 880 };
+  const top = 168, base = 318, ax = 328, br = ax + 160;
+  const side = (n0: number, y: number, s: string): string => T(X(a, n0) - 12, y + 4, s, 'fl03-exp', 'end');
+  return `<svg class="fig-svg fl03" viewBox="0 0 800 600" role="img" aria-label="Top right, small: sunlight meets air molecules; blue is scattered in all directions, red mostly passes. Below it, tall: how strongly air scatters light against wavelength, relative to red at 650 nm, falling steeply as one over wavelength to the fourth: blue at 450 nm about four times red. Brackets under the wavelength axis, from 300 to 800 nm, mark human vision, 380 to 780 nm, PAR, 400 to 700 nm, and far-red, 700 to 750 nm, used by some cyanobacteria. Left: a newspaper clipping of Lord Rayleigh, 1871.">
+    ${partDefs(p)}
+    ${airDrawing(p, { cx: 486, cy: 66, inLen: 166, r: 50, pass: 96, s: 0.8, sun: [320, 44, 'start'], mol: [446, 106, 'end'], blue: [600, 26, 'start'], blueTwo: true, red: [594, 80, 'start'] })}
+    ${scCurve(a, top, base, ax + 30, a.x0 - 52, top - 20, { ticks: [0, 2, 4, 6, 8] })}
+    ${axisRows(p, a, ax)}
+    ${rb(a, 380, 780, br, 'vis')}${side(380, br, VIS_L)}
+    ${rb(a, 400, 700, br + 38, 'par')}${side(400, br + 38, PAR_L)}
+    ${rb(a, 700, 750, br + 76, 'fr')}${side(700, br + 76, FR_L)}
+    ${clipping(p, 16, 111, 248, RAYLEIGH_SLIDE, -2)}
+  </svg>`;
+}
+
+
+const DRAW: Record<string, () => string> = { a: drawA, b: drawB, c: drawC, d: drawD, e: drawE, f: drawF, g: drawG, h: drawH, i: drawI, j: drawJ, k: drawK, l: drawL, m: drawM, n: drawN, o: drawO, p: drawP, q: drawQ, r: drawR, s: drawS, t: drawT, u: drawU, v: drawV, w: drawW, x: drawX, y: drawY };
 
 export function draw(id: string): string {
-  return (DRAW[id] ?? drawA)();
+  return (DRAW[id] ?? drawP)();
 }

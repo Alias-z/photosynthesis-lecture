@@ -1,0 +1,64 @@
+/* Animation 4, staging A · Energy ladder. Scoped under .ani-fates-a, prefixed .fa- (slide 12's level-diagram style). */
+
+/* text: labels only, 22 px and up */
+.ani-fates-a text.fa-lv{font-size:28px;font-weight:600;fill:#141413}
+.ani-fates-a text.fa-h{font-size:24px;font-weight:600;fill:#141413}
+.ani-fates-a text.fa-l{font-size:22px;font-weight:400;fill:#3d3d3a}
+.ani-fates-a text.fa-ax{font-size:22px;fill:#6b6a64}
+.ani-fates-a text.fa-bt{font-size:22px;font-weight:600;fill:#2b2a27}
+.ani-fates-a text.fa-c-blue{fill:#2350e6}
+.ani-fates-a text.fa-c-red{fill:#b8301b}
+.ani-fates-a text.fa-c-green{fill:#3f6b35}
+.ani-fates-a text.fa-c-clay{fill:#a9532f}
+.ani-fates-a text.fa-c-orange{fill:#b75f12}
+.ani-fates-a text.fa-mg-t{font-size:22px;font-weight:700;fill:#3f6b35}
+.ani-fates-a text.fa-atom-t{font-size:15px;font-weight:700;fill:#5a4a1a}
+.ani-fates-a text.fa-pmt{font-size:22px;font-weight:700;fill:#a9532f}
+.ani-fates-a text.fa-et{font-size:14px;font-weight:700;fill:#fffdf8}
+
+/* the chlorophyll */
+.ani-fates-a .fa-mol{fill:none;stroke:#3d3d3a;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+.ani-fates-a .fa-tail{stroke-width:2.6}
+.ani-fates-a .fa-bond{fill:none;stroke:#3d3d3a;stroke-width:2;stroke-dasharray:4 4}
+.ani-fates-a .fa-conj{fill:none;stroke:#f0a316;stroke-opacity:.55;stroke-width:16;stroke-linejoin:round}
+.ani-fates-a .fa-mg{fill:#d3e7c3;stroke:#6f9a5a;stroke-width:2}
+
+/* the ladder */
+.ani-fates-a .fa-lvl{fill:none;stroke:#3d3d3a;stroke-width:3;stroke-linecap:round}
+.ani-fates-a .fa-lvl-t{stroke:#a9532f}
+.ani-fates-a .fa-sub{fill:none;stroke:#cfccc1;stroke-width:1.4;stroke-linecap:round}
+.ani-fates-a .fa-axis{fill:none;stroke:#8a877d;stroke-width:1.8}
+.ani-fates-a .fa-br{fill:none;stroke:#8a877d;stroke-width:1.6}
+.ani-fates-a .fa-ar{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.ani-fates-a .fa-k-ink{stroke:#3d3d3a}.ani-fates-a .fa-hd-ink{fill:#3d3d3a}
+.ani-fates-a .fa-k-blue{stroke:#2350e6}.ani-fates-a .fa-hd-blue{fill:#2350e6}
+.ani-fates-a .fa-k-red{stroke:#c8361e}.ani-fates-a .fa-hd-red{fill:#c8361e}
+.ani-fates-a .fa-k-grey{stroke:#8a877d}.ani-fates-a .fa-hd-grey{fill:#8a877d}
+.ani-fates-a .fa-k-green{stroke:#4f7f3f}.ani-fates-a .fa-hd-green{fill:#4f7f3f}
+.ani-fates-a .fa-k-clay{stroke:#d97757}.ani-fates-a .fa-hd-clay{fill:#d97757}
+.ani-fates-a .fa-k-orange{stroke:#e07a1f}.ani-fates-a .fa-hd-orange{fill:#e07a1f}
+.ani-fates-a .fa-dash{stroke-dasharray:none}
+.ani-fates-a .fa-wave{fill:none;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+
+/* the electron */
+.ani-fates-a .fa-dcore{stroke-width:1.4}
+.ani-fates-a .fa-spin{fill:none;stroke:#141413;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+/* exits */
+.ani-fates-a .fa-rcbox{fill:#d3e7c3;stroke:#6f9a5a;stroke-width:2}
+.ani-fates-a .fa-rcbox.fa-rc-off{fill:#ecebe4;stroke:#a8a59a}
+.ani-fates-a .fa-pmr{fill:#faf9f5;stroke:#d97757;stroke-width:2.4}
+.ani-fates-a .fa-stop{fill:none;stroke:#8a877d;stroke-width:5;stroke-linecap:round}
+.ani-fates-a .fa-acc{fill:#fffdf8;stroke:#4f7f3f;stroke-width:2}
+.ani-fates-a .fa-e{fill:#2350e6;stroke:#1b3db0;stroke-width:1.2}
+.ani-fates-a .fa-car{fill:none;stroke:#e07a1f;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+.ani-fates-a .fa-car-ring{fill:#fdeedd;stroke:#e07a1f;stroke-width:2.2;stroke-linejoin:round}
+.ani-fates-a .fa-ros{fill:#fbeee6;stroke:#d97757;stroke-width:1.8}
+.ani-fates-a .fa-atom{fill:#f4cc4f;stroke:#b8902a;stroke-width:1.4}
+
+/* the stopwatch */
+.ani-fates-a .fa-watch{fill:#fffdf8;stroke:#3d3d3a;stroke-width:2.6}
+.ani-fates-a .fa-crown{fill:#3d3d3a}
+.ani-fates-a .fa-tick{fill:none;stroke:#8a877d;stroke-width:1.6;stroke-linecap:round}
+.ani-fates-a .fa-hand{fill:none;stroke:#c8361e;stroke-width:2.6;stroke-linecap:round}
+.ani-fates-a .fa-hub{fill:#3d3d3a}

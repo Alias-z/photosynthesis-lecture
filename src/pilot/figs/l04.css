@@ -78,3 +78,48 @@
 /* round 2 (variants k–o) */
 .theme-editorial .fig text.fl04-head-s{font-size:26px}
 .theme-editorial .fig text.fl04-note-s{font:italic 400 20px Newsreader,Georgia,serif;fill:#6b6a64}
+
+/* 4P–4T: the photon, its energy, and what that energy can do (labels at least 19 px) */
+.theme-editorial .fig text.fl04-lab{font-size:22px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fl04-val{font-size:20px;fill:#3d3d3a}
+.theme-editorial .fig text.fl04-val-b{font-weight:600;fill:#141413}
+.theme-editorial .fig text.fl04-ax{font-size:21px;font-weight:600;fill:#3d3d3a}
+.theme-editorial .fig text.fl04-tick{font-size:20px;fill:#6b6a64}
+.theme-editorial .fig text.fl04-nt{font-size:20px;font-style:italic;fill:#6b6a64}
+.theme-editorial .fig text.fl04-obj{font-size:21px;font-weight:500;fill:#3d3d3a}
+.theme-editorial .fig text.fl04-bandt{font-size:20px;font-weight:600;letter-spacing:.04em;fill:#6b6a64}
+.theme-editorial .fl04-dna{fill:none;stroke:#6b6a64;stroke-width:3.2;stroke-linecap:round}
+.theme-editorial .fl04-rung{fill:none;stroke:#a8a59a;stroke-width:2.6;stroke-linecap:round}
+.theme-editorial .fl04-break{fill:none;stroke:#c8361e;stroke-width:3;stroke-linecap:round}
+.theme-editorial .fl04-lvl{stroke:#3d3d3a;stroke-width:2.6;stroke-linecap:round}
+.theme-editorial .fl04-e{fill:#f0a316;stroke:#b5770b;stroke-width:1.6}
+.theme-editorial .fl04-e-old{fill:none;stroke:#a8a59a;stroke-width:1.6;stroke-dasharray:3 3}
+.theme-editorial .fl04-jump{fill:none;stroke:#b5770b;stroke-width:2.6}
+.theme-editorial .fl04-heat{fill:none;stroke:#d9632a;stroke-width:3;stroke-linecap:round}
+.theme-editorial .fl04-br{fill:none;stroke:#8a877d;stroke-width:1.8}
+.theme-editorial .fl04-bar{fill-opacity:.85}
+.theme-editorial .fl04-grid{fill:none;stroke:#e1ddd0;stroke-width:1.2}
+.theme-editorial .fl04-guide{fill:none;stroke:#a8a59a;stroke-width:1.4;stroke-dasharray:3 4}
+.theme-editorial .fl04-curve{fill:none;stroke:#a8a59a;stroke-width:2.4}
+.theme-editorial .fl04-beam{stroke:none}
+.theme-editorial .fl04-beam-dim{fill:#c8361e;fill-opacity:.07}
+.theme-editorial .fl04-beam-bright{fill:#c8361e;fill-opacity:.2}
+.theme-editorial .fl04-band{stroke:none}
+.theme-editorial .fl04-band-uv{fill:#7a5fb0;fill-opacity:.1}
+.theme-editorial .fl04-band-ir{fill:#9a7b62;fill-opacity:.12}
+
+/* 4U–4Y (round 2, from 4R): DNA as a double helix snapped in two, spectral strips and columns, a legend box */
+.theme-editorial .fl04-bb1{fill:none;stroke:#4a4842;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fl04-bb2{fill:none;stroke:#a19d91;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fl04-bp1{stroke:#d9a441;stroke-width:3.2}
+.theme-editorial .fl04-bp2{stroke:#5f8fc0;stroke-width:3.2}
+.theme-editorial .fl04-zap{fill:none;stroke:#c8361e;stroke-width:2.8;stroke-linecap:round}
+.theme-editorial .fig text.fl04-strip-t{font-size:19px;font-weight:600;fill:#3d3d3a}
+.theme-editorial .fig text.fl04-col-t{font-size:20px;font-weight:600;letter-spacing:.03em;fill:#6b6a64}
+.theme-editorial .fl04-legend{fill:#fffdf8;stroke:#d8d4c8;stroke-width:1.2}
+.theme-editorial .fl04-strip{stroke:#fffdf8;stroke-width:1.5}
+.theme-editorial .fig .fl04-tv{font-size:20px;font-weight:400;fill:#3d3d3a}
+
+/* 4U–4Y round 3: light only as separate photons, each resting on its energy step */
+.theme-editorial .fl04-step{fill:none;stroke-width:4;stroke-linecap:round}
+.theme-editorial .fl04-hc{fill:none;stroke:#b3afa3;stroke-width:2.2;stroke-dasharray:1 7;stroke-linecap:round}

@@ -1,0 +1,38 @@
+/* Sky animation, staging B "Zoom journey". The world groups are drawn through a moving camera; strokes keep their
+   slide weight at every scale. */
+.ani-sky-b .sb-world *{vector-effect:non-scaling-stroke}
+
+/* Earth seen whole. */
+.ani-sky-b .sb-ocean{fill:#dbe8f2;stroke:#9cb5c8;stroke-width:1.6}
+.ani-sky-b .sb-land{fill:#cfe3b4;stroke:#6f9a5a;stroke-width:1.4;stroke-linejoin:round}
+.ani-sky-b .sb-you-dot{fill:#fffdf8;stroke:#141413;stroke-width:2.6}
+.ani-sky-b .atom{stroke-width:1.6}
+
+/* The prism inset. */
+.ani-sky-b .sb-ring{fill:none;stroke:#3d3d3a;stroke-width:2}
+.ani-sky-b .sb-lead{fill:none;stroke:#6b6a64;stroke-width:1.6;stroke-dasharray:3 6;stroke-linecap:round}
+.ani-sky-b .sb-glass{fill:#e6edf1;stroke:#8ea2b0;stroke-width:2;stroke-linejoin:round}
+.ani-sky-b .sb-inner{fill:#fffdf8}
+.ani-sky-b .sb-ir{fill:#ebe6df}
+.ani-sky-b .sb-uv{fill:#e5e3e9}
+.ani-sky-b .sb-fan-edge{fill:none;stroke:#c9c6bb;stroke-width:1.2;stroke-linejoin:round}
+
+/* Ground level. */
+.ani-sky-b .sb-ground{fill:#e3ebd2}
+.ani-sky-b .sb-hill{fill:#d5e3c0}
+.ani-sky-b .sb-ground.sb-dusk{fill:#dfdfcd}
+.ani-sky-b .sb-hill.sb-dusk{fill:#d2d5c0}
+.ani-sky-b .sb-horizon{fill:none;stroke:#93a882;stroke-width:1.6}
+.ani-sky-b .sb-trunk{fill:#9a8463}
+.ani-sky-b .sb-crown{fill:#cfe3b4;stroke:#6f9a5a;stroke-width:1.6;stroke-linejoin:round}
+.ani-sky-b .sb-dusk .sb-crown{fill:#c5d1ae;stroke:#6c8259}
+.ani-sky-b .sb-person circle,.ani-sky-b .sb-person rect{fill:#3d3d3a}
+.ani-sky-b .sb-limb{fill:none;stroke:#3d3d3a;stroke-width:7;stroke-linecap:round}
+.ani-sky-b .sb-arm{fill:none;stroke:#3d3d3a;stroke-width:6;stroke-linecap:round}
+.ani-sky-b .sb-bracket{fill:none;stroke:#3d3d3a;stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}
+
+/* Labels: at least 22 px. */
+.ani-sky-b text.sb-lab{font-size:25px;font-weight:500;fill:#3d3d3a}
+.ani-sky-b text.sb-mol{font-size:27px;font-weight:600;fill:#3d3d3a}
+.ani-sky-b text.sb-you{font-size:26px;font-weight:600;fill:#141413}
+.ani-sky-b text.sb-note{font-size:22px;font-style:italic;fill:#6b6a64}

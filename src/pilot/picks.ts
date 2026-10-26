@@ -4,6 +4,8 @@ export interface SlidePicks { picks: string[]; note: string }
 type Picks = Record<string, SlidePicks>;
 
 export interface PickStore {
+  /** True once the saved picks have been read. */
+  readonly loaded: boolean;
   has(n: string, v: string): boolean;
   note(n: string): string;
   set(n: string, v: string, on: boolean): void;
@@ -13,7 +15,7 @@ export interface PickStore {
 /** Loads the saved picks, calls `onChange` whenever they change, and saves edits shortly after they happen. */
 export function pickStore(status: HTMLElement, onChange: () => void): PickStore {
   let picks: Picks = {};
-  let timer = 0;
+  let timer = 0, loaded = false;
   const slide = (n: string): SlidePicks => (picks[n] ??= { picks: [], note: '' });
 
   function save(): void {
@@ -40,6 +42,7 @@ export function pickStore(status: HTMLElement, onChange: () => void): PickStore 
       const saved = (await (await fetch('/__picks')).json()) as { slides?: Picks };
       if (edits !== before) return;
       picks = saved.slides ?? {};
+      loaded = true;
       if (first && saved.slides) status.textContent = 'Loaded saved picks';
     } catch {
       // keep what is shown
@@ -50,6 +53,7 @@ export function pickStore(status: HTMLElement, onChange: () => void): PickStore 
   void load(true);
 
   return {
+    get loaded() { return loaded; },
     has: (n, v) => picks[n]?.picks.includes(v) ?? false,
     note: n => picks[n]?.note ?? '',
     set(n, v, on) {

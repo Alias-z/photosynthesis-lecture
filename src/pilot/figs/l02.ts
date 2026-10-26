@@ -16,9 +16,9 @@ export const PLATE: PlateText = {
   title: 'Why is the sky blue, and why are leaves green?',
   lead: 'Light that meets matter is reflected, transmitted, absorbed or scattered, depending on its wavelength.',
   points: [
-    { claim: 'Air scatters blue most.', text: 'Air molecules scatter short wavelengths most, so scattered blue reaches us from the whole sky.' },
-    { claim: 'Leaves absorb blue and red.', text: 'Chlorophyll absorbs blue and red; more green is reflected or transmitted, so leaves look green.' },
-    { claim: 'Scattering keeps the colour.', text: 'A scattered photon keeps its wavelength; an absorbed photon gives its energy to the pigment.' },
+    { claim: 'Sky: Rayleigh scattering.', text: 'Air redirects short wavelengths most<br>Scattered blue reaches you from the whole sky' },
+    { claim: 'Leaf: absorption.', text: 'Chlorophyll removes blue and red<br>The green left over is reflected and transmitted' },
+    { claim: 'Redirect vs remove.', text: 'A scattered photon keeps its energy<br>An absorbed photon gives its energy to the pigment' },
   ],
   refs: [
     { label: 'NASA Space Place', url: 'https://spaceplace.nasa.gov/blue-sky/en/' },
@@ -27,14 +27,10 @@ export const PLATE: PlateText = {
   ],
 };
 
+// The lecturer's picks; since 26 Oct 2026 they are the summary slide 5b, after the pigments. Unlisted variants (j, l, m, n, o) still draw by id.
 export const VARIANTS: Variant[] = [
   { id: 'a', name: 'Redirect vs remove', anim: true },
-  { id: 'j', name: 'Colour grid' },
   { id: 'k', name: 'Scene and key', anim: true },
-  { id: 'l', name: 'Labelled rays', anim: true },
-  { id: 'm', name: 'Sun-to-eye grid' },
-  { id: 'n', name: 'Colour lanes', anim: true },
-  { id: 'o', name: 'Wave inset', anim: true },
 ];
 // Kept for reference and still drawn by id: b Mirror diptych, c Photo paths, d Spectra at eye, e Close-ups,
 // f Photo lenses, g Photo to eye, h Not this, but this, i One beam.

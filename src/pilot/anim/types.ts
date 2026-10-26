@@ -1,0 +1,22 @@
+// Stepped lecture animations: every variant of an animation stages the same beats, captions and sources.
+export interface Cite { label: string; url: string }
+
+/** One step: a short tag, the caption (HTML) and the papers it rests on, shown under the caption. */
+export interface Beat { tag: string; say: string; cite: Cite[] }
+
+/** One way of staging an animation's beats on the 1600 × 740 stage. */
+export interface Staging {
+  id: string;
+  name: string;
+  /** One line on what this variant tests, shown under the switch on the pilot page. */
+  note: string;
+  /** Beats this staging was built for, when they differ from the animation's current ones (older rounds). */
+  beats?: Beat[];
+  /** Inner markup of the stage SVG (viewBox 0 0 1600 740). */
+  svg(): string;
+  /** Wires the stage up once it is in the page. The returned function draws `beat` at `t` seconds after the
+   *  beat began; motion plays once and then holds its last frame, so a large `t` gives the beat's end state. */
+  bind(stage: SVGSVGElement): (beat: number, t: number) => void;
+}
+
+export interface Animation { key: string; title: string; beats: Beat[]; stagings: Staging[] }

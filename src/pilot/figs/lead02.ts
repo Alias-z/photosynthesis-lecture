@@ -6,13 +6,9 @@ import type { Variant } from '../types';
 import './lead02.css';
 import { T, defs, eye, leaf, photoBox, sun } from './s2';
 
+// The lecturer's pick (26 Oct 2026). Unlisted variants (b, c, d, e, f) still draw by id.
 export const VARIANTS: Variant[] = [
   { id: 'a', name: 'Photo' },
-  { id: 'b', name: 'Split scene' },
-  { id: 'c', name: 'Two questions' },
-  { id: 'd', name: 'Same sunlight' },
-  { id: 'e', name: 'Black boxes' },
-  { id: 'f', name: 'Photo band' },
 ];
 
 type Pt = [number, number];

@@ -1,0 +1,56 @@
+/* Why pigments differ, staging A "Zoom into the molecule". Scenes are drawn through a moving camera; strokes keep
+   their weight at every scale. */
+.ani-pig-a .pa-scene *{vector-effect:non-scaling-stroke}
+
+/* Molecules: skeletal bonds, Mg, and the amber room of the conjugated electrons. */
+.ani-pig-a .pa-bond{fill:none;stroke:#3d3d3a;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.ani-pig-a .pa-coord{fill:none;stroke:#8a877d;stroke-width:1.8;stroke-dasharray:3 5;stroke-linecap:round}
+.ani-pig-a .pa-mg{fill:#fffdf8;stroke:#3d3d3a;stroke-width:2}
+.ani-pig-a text.pa-atom{font-size:22px;font-weight:600;fill:#141413}
+.ani-pig-a .pa-room-glow{fill:none;stroke:#f0a316;stroke-width:26;stroke-opacity:.38;stroke-linecap:round;stroke-linejoin:round}
+.ani-pig-a .pa-room{fill:none;stroke:#f0a316;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1 1}
+.ani-pig-a .pa-swap{fill:none;stroke:#a9532f;stroke-width:2.4}
+
+/* Leaf and chloroplast. */
+.ani-pig-a .pa-env{fill:#e6efd8;stroke:#6f9a5a;stroke-width:2.4}
+.ani-pig-a .pa-env2{fill:none;stroke:#8fb07a;stroke-width:1.4}
+.ani-pig-a .pa-thy{fill:#a9cc8a;stroke:#4f7f3f;stroke-width:1.4}
+.ani-pig-a .pa-lam{fill:none;stroke:#7fa866;stroke-width:3;stroke-linecap:round}
+
+/* Energy ladders: rungs, sublevels, electrons, photons and their arrows. */
+.ani-pig-a .pa-rung{fill:none;stroke:#3d3d3a;stroke-width:3;stroke-linecap:round}
+.ani-pig-a .pa-sub{fill:none;stroke:#b9b6ab;stroke-width:1.4;stroke-linecap:round}
+.ani-pig-a .pa-ghost{fill:none;stroke:#a8a59a;stroke-width:2;stroke-dasharray:6 6;stroke-linecap:round}
+.ani-pig-a .pa-e0,.ani-pig-a .pa-e{fill:#3d3d3a}
+.ani-pig-a .pa-e.pa-e-on{fill:#f0a316;stroke:#c98410;stroke-width:1.4}
+.ani-pig-a .pa-pk{fill:none;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.ani-pig-a .pa-ar{fill:none;stroke-width:3.2;stroke-linecap:round}
+.ani-pig-a .pa-axis{fill:none;stroke:#8a877d;stroke-width:1.6}
+.ani-pig-a .pa-brace{fill:none;stroke:#8a877d;stroke-width:1.8}
+.ani-pig-a .pa-lead{fill:none;stroke:#b8902a;stroke-width:1.6}
+
+/* Spectra. */
+.ani-pig-a .pa-area{fill-opacity:.55}
+.ani-pig-a .pa-curve{fill:none;stroke-width:2.6;stroke-linejoin:round}
+.ani-pig-a .pa-curve-a{stroke:#2f5a36}
+.ani-pig-a .pa-curve-b{stroke:#5b8747}
+.ani-pig-a .pa-curve-car{stroke:#b5562f}
+.ani-pig-a .pa-curve-all{stroke:#141413;stroke-width:3}
+.ani-pig-a .pa-base,.ani-pig-a .pa-xaxis{fill:none;stroke:#8a877d;stroke-width:1.4}
+.ani-pig-a .pa-tick{fill:none;stroke:#8a877d;stroke-width:1.4}
+
+/* Labels: at least 22 px. */
+.ani-pig-a text.pa-lab{font-size:25px;font-weight:500;fill:#3d3d3a}
+.ani-pig-a text.pa-title{font-size:28px;font-weight:600;fill:#141413}
+.ani-pig-a text.pa-ax{font-size:23px;fill:#6b6a64}
+.ani-pig-a text.pa-amber{fill:#9a6a0c;font-weight:600}
+.ani-pig-a text.pa-photon{font-weight:600}
+.ani-pig-a text.pa-band{font-weight:600}
+.ani-pig-a text.pa-band-red{fill:#b8301b}
+.ani-pig-a text.pa-band-blue{fill:#2350e6}
+.ani-pig-a text.pa-row{font-weight:600}
+.ani-pig-a text.pa-row-a{fill:#2f5a36}
+.ani-pig-a text.pa-row-b{fill:#5b8747}
+.ani-pig-a text.pa-row-car{fill:#b5562f}
+.ani-pig-a text.pa-row-all{fill:#141413}
+.ani-pig-a text.pa-weak{fill:#24812f;font-weight:600}

@@ -19,6 +19,7 @@ export const PLATE: PlateText = {
     { claim: 'Fluorescence reports the competition.', text: 'It rises when reaction centres close and falls when heat dissipation (non-photochemical quenching, NPQ) grows.' },
     { claim: 'Triplets are the risky fate.', text: 'Triplet chlorophyll passes energy to O₂, forming singlet oxygen; carotenoids quench both.' },
   ],
+  play: 'fates',
   refs: [
     { label: 'van Amerongen & Croce 2013', url: 'https://doi.org/10.1007/s11120-013-9824-3' },
     { label: 'Murchie & Lawson 2013', url: 'https://doi.org/10.1093/jxb/ert208' },

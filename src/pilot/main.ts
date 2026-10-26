@@ -3,6 +3,9 @@
 // PDF keeps). The slide 6 animation runs in two looks. Double-clicking a page picks or unpicks the variant shown.
 import './pilot.css';
 import { grain } from '../lib/canvas';
+import { ANIMATIONS } from './anim';
+import { mountAnimation } from './anim/player';
+import type { Staging } from './anim/types';
 import { mountExcitation } from './excitation';
 import { installPapers } from './papers';
 import { pickStore } from './picks';
@@ -20,9 +23,19 @@ const LOOKS = [
   { id: 'story', name: 'Story look', note: 'Dark stage and hand lettering, like the existing sky animation.' },
 ] as const;
 
+/** Picking shows each play button's variant and the player's variant switch; lecture mode hides both, as in class. */
+const VIEWS = [
+  { id: 'picking', name: 'Picking' },
+  { id: 'lecture', name: 'Lecture mode' },
+] as const;
+let lectureMode = false;
+
 const seg = (group: string, items: ReadonlyArray<{ id: string; name: string }>, on = items[0].id): string =>
   `<div class="seg" data-group="${group}">${items.map(x => `<button type="button" data-v="${x.id}" aria-pressed="${x.id === on}">${x.name}</button>`).join('')}</div>`;
 
+/** Only a slide with a lead page (and more than that page) has two versions; on every other slide lecture and handout
+ *  are the same page, so it shows one page with its play button and no switch (lecturer, 26 Oct 2026). */
+const twoVersions = (p: (typeof PLATES)[number]): boolean => !!LEADS[p.n] && !p.leadOnly;
 /** A lead page keeps its own picks and note under lead-<n>; the lecture and handout versions share the slide's figure. */
 const pickKey = (i: number, kind: Kind): string => (kind === 'lead' ? `lead-${PLATES[i].n}` : PLATES[i].n);
 const frame = (i: number, kind: Kind): string => `<div class="frame" data-s="${i}" data-kind="${kind}"><div class="plate"></div></div>`;
@@ -33,25 +46,32 @@ const app = document.getElementById('pilot') as HTMLElement;
 app.innerHTML = `
   <header class="top">
     <h1>Style pilot</h1>
-    <p>Each slide has a lecture version, shown live, and a handout version, which the PDF keeps. The animation opens from slide 6 in the HTML version only.</p>
+    <p>A slide with a lead page has a lecture version (the lead page, shown live) and a handout version (the study page, which the PDF keeps). Every other slide is one page, the same live and in the PDF; its play button shows only live.</p>
     <p>Double-click a page to pick the variant shown; double-click again to unpick. Picked variants get a ✓ on their button. Picks and notes save automatically.</p>
+    <div class="bar-r"><span>View</span>${seg('view', VIEWS, 'picking')}</div>
   </header>
   <span class="pick-status" aria-live="polite"></span>
   <section class="block">
-    <div class="bar"><h2>Slides · Figure first</h2><div class="bar-r"><span>All slides</span>${seg('mode-all', MODES, 'handout')}</div></div>
+    <div class="bar"><h2>Slides · Figure first</h2></div>
     <div class="plates">${PLATES.map((p, i) => {
       const lead = LEADS[p.n];
       return `<section class="slide" data-s="${i}" data-mode="handout">
-        <div class="slide-bar"><h3>Slide ${p.n}${p.status === 'draft' ? ' · draft' : ''}</h3><div class="slide-ctl">${seg(`mode-${i}`, MODES, 'handout')}</div></div>
+        <div class="slide-bar"><h3>Slide ${p.n}${p.status === 'draft' ? ' · draft' : ''}${p.leadOnly ? ' · lecture page only' : ''}</h3><div class="slide-ctl">${twoVersions(p) ? seg(`mode-${i}`, MODES, 'handout') : ''}</div></div>
         <div class="var-rows">
           ${lead && lead.VARIANTS.length > 1 ? `<div class="var-row" data-for="lecture"><span>Lecture</span>${seg(`lead-${i}`, lead.VARIANTS)}</div>` : ''}
-          ${p.variants.length > 1 ? `<div class="var-row" data-for="${lead ? 'handout' : 'both'}"><span>${lead ? 'Handout' : 'Figure'}</span>${seg(`variant-${i}`, p.variants)}</div>` : ''}
+          ${p.variants.length > 1 && !p.leadOnly ? `<div class="var-row" data-for="${lead ? 'handout' : 'both'}"><span>${lead ? 'Handout' : 'Figure'}</span>${seg(`variant-${i}`, p.variants)}</div>` : ''}
         </div>
-        ${lead ? `<div class="lead-part">${frame(i, 'lead')}${noteBox(`lead-${p.n}`, `slide ${p.n} lecture page`)}</div>` : frame(i, 'lecture')}
-        ${frame(i, 'handout')}${noteBox(p.n, `slide ${p.n}`)}
+        ${lead ? `<div class="lead-part">${frame(i, 'lead')}${noteBox(`lead-${p.n}`, `slide ${p.n} lecture page`)}</div>` : ''}
+        ${p.leadOnly ? '' : `${frame(i, 'handout')}${noteBox(p.n, `slide ${p.n}`)}`}
       </section>`;
     }).join('')}</div>
   </section>
+  ${ANIMATIONS.map((a, i) => `<section class="block anim-block">
+    <div class="bar"><h2>Animation · ${a.title}</h2>${seg(`anim-${i}`, a.stagings)}</div>
+    <p class="note" data-note="anim-${i}"></p>
+    <div class="frame anim-frame" data-a="${i}"><div></div></div>
+    ${noteBox(`anim-${a.key}`, `the ${a.title} animation`)}
+  </section>`).join('')}
   <section class="block" id="animation">
     <div class="bar"><h2>Animation · Follow an excitation</h2>${seg('look', LOOKS)}</div>
     <p class="note" data-note="look"></p>
@@ -70,7 +90,7 @@ const note = (k: string): HTMLElement => app.querySelector(`[data-note="${k}"]`)
 const state = {
   variants: PLATES.map(p => p.variants[0].id),
   leads: PLATES.map(p => LEADS[p.n]?.VARIANTS[0].id ?? ''),
-  modes: PLATES.map((): Mode => 'handout'),
+  modes: PLATES.map((p): Mode => (p.leadOnly ? 'lecture' : 'handout')),
 };
 const shown = (i: number, kind: Kind): string => (kind === 'lead' ? state.leads[i] : state.variants[i]);
 
@@ -81,13 +101,32 @@ const query = new URLSearchParams(location.search);
 const [, soloPrefix, soloN] = /^(?:(lead|lecture)-)?(.+)$/.exec(query.get('solo') ?? '') ?? [];
 const solo = soloN === undefined ? -1 : PLATES.findIndex((p, i) => p.n === soloN || `${i}` === soloN);
 if (solo >= 0) {
-  const kind = (soloPrefix ?? 'handout') as Kind;
+  const kind = (soloPrefix === 'lead' || (soloPrefix === 'lecture' && LEADS[PLATES[solo].n]) ? soloPrefix : 'handout') as Kind;
   document.body.classList.add('solo');
   state.modes[solo] = kind === 'handout' ? 'handout' : 'lecture';
   const v = query.get('v');
   if (v && kind === 'lead') state.leads[solo] = v;
   else if (v) state.variants[solo] = v;
   app.querySelector(`.plates .frame[data-s="${solo}"][data-kind="${kind}"]`)?.classList.add('solo-frame');
+}
+
+// Animations: each shows one staging variant at a time. ?anim=<key>&v=<id>&beat=<n>&t=<s> shows one beat at full
+// size, frozen t seconds in (a large t gives the beat's end state), for screenshots.
+const soloAnim = ANIMATIONS.findIndex(a => a.key === query.get('anim'));
+const stagings = ANIMATIONS.map((a, i) => (i === soloAnim && a.stagings.find(s => s.id === query.get('v'))?.id) || a.stagings[0].id);
+const stopAnim = ANIMATIONS.map(() => (): void => undefined);
+if (soloAnim >= 0) {
+  document.body.classList.add('solo');
+  app.querySelector(`.anim-frame[data-a="${soloAnim}"]`)?.classList.add('solo-frame');
+}
+function showAnim(i: number): void {
+  const a = ANIMATIONS[i], s = a.stagings.find(x => x.id === stagings[i]) ?? a.stagings[0];
+  stopAnim[i]();
+  const host = app.querySelector(`.anim-frame[data-a="${i}"]`)?.firstElementChild as HTMLElement;
+  const solo = i === soloAnim;
+  stopAnim[i] = mountAnimation(host, a, s, solo ? { beat: Number(query.get('beat') ?? 0), freeze: query.has('t') ? Number(query.get('t')) : undefined } : {});
+  note(`anim-${i}`).textContent = s.note;
+  app.querySelectorAll<HTMLElement>(`[data-group="anim-${i}"] button`).forEach(b => b.setAttribute('aria-pressed', `${b.dataset.v === s.id}`));
 }
 
 // Only the version on show is drawn: the lecture and handout copies of a figure share their SVG ids, and an
@@ -99,7 +138,8 @@ function render(): void {
     const i = Number(fr.dataset.s), kind = fr.dataset.kind as Kind, p = PLATES[i];
     const plate = fr.firstElementChild as HTMLElement;
     plate.className = 'plate theme-editorial lay-figure paper-bristol';
-    plate.innerHTML = !isShown(i, kind) ? '' : kind === 'lead' ? leadHtml(p, LEADS[p.n].draw(state.leads[i])) : kind === 'lecture' ? lectureHtml(p, state.variants[i]) : plateHtml(p, state.variants[i]);
+    // A slide without a lead page is one page: the handout with its play button (print hides the button).
+    plate.innerHTML = !isShown(i, kind) ? '' : kind === 'lead' ? leadHtml(p, LEADS[p.n].draw(state.leads[i])) : twoVersions(p) ? plateHtml(p, state.variants[i]) : lectureHtml(p, state.variants[i]);
   });
   fitTitles(app);
   syncPicks();
@@ -111,15 +151,34 @@ function applyModes(): void {
     const i = Number(sec.dataset.s);
     sec.dataset.mode = state.modes[i];
     sec.querySelectorAll<HTMLElement>(`[data-group="mode-${i}"] button`).forEach(b => b.setAttribute('aria-pressed', `${b.dataset.v === state.modes[i]}`));
+    sec.querySelectorAll<HTMLElement>(`[data-group="variant-${i}"] button`).forEach(b => b.setAttribute('aria-pressed', `${b.dataset.v === state.variants[i]}`));
+    sec.querySelectorAll<HTMLElement>(`[data-group="lead-${i}"] button`).forEach(b => b.setAttribute('aria-pressed', `${b.dataset.v === state.leads[i]}`));
   });
-  const all = state.modes.every(m => m === state.modes[0]) ? state.modes[0] : '';
-  app.querySelectorAll<HTMLElement>('[data-group="mode-all"] button').forEach(b => b.setAttribute('aria-pressed', `${b.dataset.v === all}`));
   render();
   fit();
 }
 
 // Picks: a ✓ on each picked variant's button, an outline on a page whose shown variant is picked, and the notes.
-const store = pickStore(app.querySelector('.pick-status') as HTMLElement, syncPicks);
+const store = pickStore(app.querySelector('.pick-status') as HTMLElement, () => { syncPicks(); openOnPicks(); });
+/** Once the saved picks are in, each slide and animation opens on its first picked variant (in list order), unless the
+ *  page was opened on a given variant (?v=…). Runs once, so later picks don't jump the page under the lecturer. */
+let pickedDefaults = false;
+function openOnPicks(): void {
+  if (pickedDefaults || !store.loaded) return;
+  pickedDefaults = true;
+  if (query.has('v')) return;
+  PLATES.forEach((p, i) => {
+    const v = p.variants.find(x => store.has(p.n, x.id)), lv = LEADS[p.n]?.VARIANTS.find(x => store.has(`lead-${p.n}`, x.id));
+    if (v) state.variants[i] = v.id;
+    if (lv) state.leads[i] = lv.id;
+  });
+  ANIMATIONS.forEach((a, i) => {
+    const sv = a.stagings.find(x => store.has(`anim-${a.key}`, x.id));
+    if (sv) stagings[i] = sv.id;
+  });
+  applyModes();
+  ANIMATIONS.forEach((_, i) => { if (soloAnim < 0 || i === soloAnim) showAnim(i); });
+}
 function syncPicks(): void {
   PLATES.forEach((p, i) => {
     for (const [group, key] of [[`variant-${i}`, p.n], [`lead-${i}`, `lead-${p.n}`]]) {
@@ -130,18 +189,29 @@ function syncPicks(): void {
     const i = Number(fr.dataset.s), kind = fr.dataset.kind as Kind;
     fr.classList.toggle('is-picked', store.has(pickKey(i, kind), shown(i, kind)));
   });
+  ANIMATIONS.forEach((a, i) => {
+    app.querySelectorAll<HTMLElement>(`[data-group="anim-${i}"] button`).forEach(b => b.classList.toggle('picked', store.has(`anim-${a.key}`, b.dataset.v as string)));
+    app.querySelector(`.anim-frame[data-a="${i}"]`)?.classList.toggle('is-picked', store.has(`anim-${a.key}`, stagings[i]));
+  });
   app.querySelectorAll<HTMLTextAreaElement>('.pick-note').forEach(box => {
     if (document.activeElement !== box) box.value = store.note(box.dataset.n as string);
   });
+  labelPlayButtons();
 }
 app.addEventListener('dblclick', e => {
+  const af = (e.target as Element).closest('.anim-frame') as HTMLElement | null;
+  if (af && !(e.target as Element).closest('button, a')) {
+    const i = Number(af.dataset.a), key = `anim-${ANIMATIONS[i].key}`;
+    store.set(key, stagings[i], !store.has(key, stagings[i]));
+    return;
+  }
   const fr = (e.target as Element).closest('.plates .frame') as HTMLElement | null;
   if (!fr) return;
   const i = Number(fr.dataset.s), kind = fr.dataset.kind as Kind;
   store.set(pickKey(i, kind), shown(i, kind), !store.has(pickKey(i, kind), shown(i, kind)));
 });
 // A double-click on a page picks; it should not also select a word.
-app.addEventListener('mousedown', e => { if (e.detail > 1 && (e.target as Element).closest('.plates .frame')) e.preventDefault(); });
+app.addEventListener('mousedown', e => { if (e.detail > 1 && (e.target as Element).closest('.plates .frame, .anim-frame')) e.preventDefault(); });
 app.addEventListener('input', e => {
   const t = e.target as HTMLTextAreaElement;
   if (t.classList.contains('pick-note')) store.setNote(t.dataset.n as string, t.value);
@@ -162,24 +232,35 @@ app.addEventListener('click', e => {
   const b = (e.target as Element).closest('button');
   if (!b) return;
   if (b.hasAttribute('data-anim')) { document.getElementById('animation')?.scrollIntoView({ behavior: 'smooth' }); stageRef.focus(); return; }
+  if (b.dataset.play) { play(b.dataset.play); return; }
   const group = (b.closest('.seg') as HTMLElement | null)?.dataset.group;
   const v = b.dataset.v;
   if (!group || !v) return;
   b.parentElement?.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', `${x === b}`));
-  if (group === 'mode-all') { state.modes.fill(v as Mode); applyModes(); }
-  else if (group.startsWith('mode-')) { state.modes[Number(group.slice(5))] = v as Mode; applyModes(); }
+  if (group === 'view') {
+    lectureMode = v === 'lecture';
+    document.body.classList.toggle('lecture-mode', lectureMode);
+    labelPlayButtons();
+    return;
+  }
+  if (group.startsWith('mode-')) { state.modes[Number(group.slice(5))] = v as Mode; applyModes(); }
   // A variant opens the version it belongs to: lead variants the lecture version, figure variants the handout
   // (on a slide without a lead page both versions show the figure, so the version stays as it is).
   else if (group.startsWith('variant-')) {
     const i = Number(group.slice(8));
     state.variants[i] = v;
-    if (LEADS[PLATES[i].n]) state.modes[i] = 'handout';
+    if (LEADS[PLATES[i].n] && !PLATES[i].leadOnly) state.modes[i] = 'handout';
     applyModes();
   } else if (group.startsWith('lead-')) {
     const i = Number(group.slice(5));
     state.leads[i] = v;
     state.modes[i] = 'lecture';
     applyModes();
+  } else if (group.startsWith('anim-')) {
+    const i = Number(group.slice(5));
+    stagings[i] = v;
+    showAnim(i);
+    syncPicks();
   }
   else setLook(v as 'plate' | 'story');
 });
@@ -193,5 +274,77 @@ function fit(): void {
   });
 }
 new ResizeObserver(fit).observe(app);
+// A slide's play button runs its animation over the page, as in the lecture, fitted to the window. It plays the staging
+// picked on this page (else the one shown in its animation block) and names it on the button; the bar over the player
+// names it again and switches between the variants. Esc or the close button returns to the slide.
+const player = document.createElement('div');
+player.className = 'player';
+player.hidden = true;
+player.innerHTML = `<div class="player-bar"><span class="player-title"></span><div class="seg player-seg"></div></div>
+  <div class="player-frame"><div></div></div><button type="button" class="player-close" aria-label="Close">×</button>`;
+document.body.append(player);
+let stopPlayer = (): void => undefined, playing = -1;
+/** The staging a play button runs: the first picked, else the one shown in the animation's block. */
+const playStaging = (i: number): Staging => {
+  const a = ANIMATIONS[i];
+  return a.stagings.find(x => store.has(`anim-${a.key}`, x.id)) ?? a.stagings.find(x => x.id === stagings[i]) ?? a.stagings[0];
+};
+function labelPlayButtons(): void {
+  app.querySelectorAll<HTMLButtonElement>('[data-play]').forEach(b => {
+    const i = ANIMATIONS.findIndex(a => a.key === b.dataset.play);
+    if (i >= 0) b.textContent = lectureMode ? `▶ ${ANIMATIONS[i].title}` : `▶ ${ANIMATIONS[i].title} · ${playStaging(i).name}`;
+  });
+}
+function fitPlayer(): void {
+  const bar = 72, k = Math.min(innerWidth / 1600, (innerHeight - bar) / 900), fr = player.querySelector('.player-frame') as HTMLElement;
+  fr.style.width = `${1600 * k}px`;
+  fr.style.height = `${900 * k}px`;
+  (fr.firstElementChild as HTMLElement).style.transform = `scale(${k})`;
+}
+/** Takes an animation's block copy off the page (or puts it back): a staging's SVG ids are fixed, and with two copies
+ *  mounted the player would pick up the hidden copy's filters and masks (as happened on 26 Oct 2026). */
+function blockCopy(i: number, on: boolean): void {
+  if (i < 0) return;
+  if (on) { showAnim(i); return; }
+  stopAnim[i]();
+  stopAnim[i] = (): void => undefined;
+  const host = app.querySelector(`.anim-frame[data-a="${i}"]`)?.firstElementChild as HTMLElement | null;
+  if (host) host.innerHTML = '';
+}
+function mountPlaying(s: Staging): void {
+  const a = ANIMATIONS[playing], host = player.querySelector('.player-frame > div') as HTMLElement;
+  stopPlayer();
+  blockCopy(playing, false);
+  stopPlayer = mountAnimation(host, a, s);
+  (player.querySelector('.player-title') as HTMLElement).textContent = a.title;
+  player.querySelectorAll<HTMLElement>('.player-seg button').forEach(b => b.setAttribute('aria-pressed', `${b.dataset.v === s.id}`));
+  host.focus();
+}
+function play(key: string): void {
+  playing = ANIMATIONS.findIndex(a => a.key === key);
+  if (playing < 0) return;
+  const a = ANIMATIONS[playing];
+  (player.querySelector('.player-seg') as HTMLElement).innerHTML = a.stagings
+    .map(x => `<button type="button" data-v="${x.id}" class="${store.has(`anim-${a.key}`, x.id) ? 'picked' : ''}">${x.name}</button>`).join('');
+  player.hidden = false;
+  fitPlayer();
+  mountPlaying(playStaging(playing));
+}
+function closePlayer(): void {
+  stopPlayer();
+  stopPlayer = (): void => undefined;
+  (player.querySelector('.player-frame > div') as HTMLElement).innerHTML = '';
+  player.hidden = true;
+  blockCopy(playing, true);
+}
+player.addEventListener('click', e => {
+  const v = (e.target as Element).closest<HTMLElement>('.player-seg button')?.dataset.v;
+  if (v) { const s = ANIMATIONS[playing].stagings.find(x => x.id === v); if (s) mountPlaying(s); return; }
+  if (e.target === player || (e.target as Element).closest('.player-close')) closePlayer();
+});
+addEventListener('keydown', e => { if (e.key === 'Escape' && !player.hidden) closePlayer(); });
+addEventListener('resize', () => { if (!player.hidden) fitPlayer(); });
+
 applyModes();
-if (solo < 0) setLook('plate');
+ANIMATIONS.forEach((_, i) => { if (soloAnim < 0 || i === soloAnim) showAnim(i); });
+if (solo < 0 && soloAnim < 0) setLook('plate');

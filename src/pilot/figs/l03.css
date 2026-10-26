@@ -90,3 +90,31 @@
 
 /* round 2 combinations */
 .theme-editorial .fl03-hist-faint{fill:#fffdf8;fill-opacity:.3;stroke:#3d3d3a;stroke-opacity:.6;stroke-width:1.4}
+
+/* round 3 (wave slide): λ marks, section names, keys */
+.theme-editorial .fig text.fl03-sec{font-size:22px;font-weight:500;fill:#3d3d3a}
+.theme-editorial .fig text.fl03-exp{font-size:20px;fill:#3d3d3a}
+.theme-editorial .fig .fl03-parb{font-size:22px;font-weight:600;fill:#a9532f}
+.theme-editorial .fig .fl03-blue{fill:#2350e6;font-weight:600}
+.theme-editorial .fig .fl03-red{fill:#c8361e;font-weight:600}
+.theme-editorial .fl03-wl{stroke-width:3.4}
+.theme-editorial .fl03-dim{fill:none;stroke:#3d3d3a;stroke-width:1.8}
+.theme-editorial .fl03-dimh{fill:#3d3d3a}
+.theme-editorial .fl03-crest{fill:none;stroke:#8a877d;stroke-width:1.4;stroke-dasharray:2 4;stroke-linecap:round}
+.theme-editorial .fl03-secl{fill:none;stroke:#b4b0a4;stroke-width:1.4}
+.theme-editorial .fl03-guide{fill:none;stroke:#8a877d;stroke-width:1.4;stroke-dasharray:4 5}
+.theme-editorial .fl03-scurve{fill:none;stroke:#3d3d3a;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+.theme-editorial .fl03-ground{fill:#e4dfcf}
+
+/* round 4 (from the pick 3S): range marks */
+.theme-editorial .fig .fl03-frb{font-size:22px;font-weight:600;fill:#8e2316}
+.theme-editorial .fl03-rb{fill:none;stroke-width:3.2;stroke-linejoin:round}
+.theme-editorial .fl03-rb-vis{stroke:#3d3d3a}
+.theme-editorial .fl03-rb-par{stroke:#a9532f}
+.theme-editorial .fl03-rb-fr{stroke:#8e2316}
+.theme-editorial .fl03-bar-vis{fill:#e6e2d6;stroke:#8a877d;stroke-width:1.4}
+.theme-editorial .fl03-bar-par{fill:#f4ddcd;stroke:#a9532f;stroke-width:1.6}
+.theme-editorial .fl03-bar-fr{fill:#e9c2bb;stroke:#8e2316;stroke-width:1.6}
+.theme-editorial .fl03-band-vis{fill:#8a877d;opacity:.09}
+.theme-editorial .fl03-band-par{fill:#d98a5c;opacity:.16}
+.theme-editorial .fl03-band-fr{fill:#8e2316;opacity:.17}

@@ -15,7 +15,7 @@ const SUORSA12: Cite = { label: 'Suorsa et al. 2012, Plant Cell', url: 'https://
 
 export const BALANCE: Beat[] = [
   { tag: 'ATP : NADPH', say: 'Linear electron flow makes less ATP per NADPH than CO₂ fixation uses: ATP runs short, NADPH does not.', cite: [KRAMER11] },
-  { tag: 'Cyclic electron flow (more ATP)', say: 'Electrons from photosystem I return to plastoquinone: ATP, no NADPH. The main alternative pathway in flowering plants.', cite: [YAMORI16R, JOLIOT06] },
+  { tag: 'Cyclic electron flow (more ATP)', say: 'Electrons from photosystem I go from ferredoxin back to plastoquinone, through 2 routes: the PGR5 protein and the NADH dehydrogenase-like (NDH) complex. ATP, no NADPH.', cite: [YAMORI16R, JOLIOT06] },
   { tag: 'Water–water cycle (more ATP)', say: 'Electrons from photosystem I reduce O₂ to water: ATP, no NADPH. Flowering plants send few electrons this way (< 10 %); algae, mosses and conifers send more, through flavodiiron proteins.', cite: [BADGER00, ILIK17] },
   { tag: 'Malate valve (less NADPH)', say: 'Excess NADPH leaves the chloroplast as malate.', cite: [SCHEIBE04] },
   { tag: 'When plants use these routes', say: 'Plants use these routes most in sudden strong light, in the first minutes of light and in cold, when the cycle cannot use all the NADPH; without cyclic flow, plants barely grow. <b>With ATP and NADPH balanced, how do plants use them?</b>', cite: [YAMORI16, YAMORI11, MUNEKAGE04] },

@@ -13,6 +13,7 @@ import {
   topViewBody, topViewSvg, twoPartsSvg, type Arc, type Box, type Pigment, type Pt,
 } from './s6';
 import { lightHeads, ray } from './s5';
+import { drawRound3 } from './l06r';
 
 export const PLATE: PlateText = {
   n: '6',
@@ -21,33 +22,27 @@ export const PLATE: PlateText = {
   lead: 'In full sun one chlorophyll absorbs only ~10 photons per second, so light-harvesting complexes (LHC) collect light for each reaction centre.',
   points: [
     { claim: 'Energy transfer.', text: 'Antenna pigments pass on energy, not electrons<br>Only the reaction centre releases an electron' },
-    { claim: 'Chlorophyll a and b.', text: 'Chl b carries –CHO where Chl a carries –CH₃<br>This shifts its absorption peaks' },
-    { claim: 'Two antennas.', text: 'LHCII feeds photosystem II (PSII)<br>LHCI feeds PSI and absorbs beyond 700 nm' },
+    { claim: 'Two antennas.', text: 'LHCII feeds mainly photosystem II (PSII)<br>and PSI too<br>LHCI feeds PSI and absorbs beyond 700 nm' },
   ],
   refs: [
-    { label: 'Croce & van Amerongen 2020', url: 'https://doi.org/10.1126/science.aay2058' },
+    { label: 'Emerson & Arnold 1932', url: 'https://doi.org/10.1085/jgp.16.2.191' },
     { label: 'Liu et al. 2004', url: 'https://doi.org/10.1038/nature02373' },
-    { label: 'Qin et al. 2015', url: 'https://doi.org/10.1126/science.aab0214' },
-    { label: 'Croce & van Amerongen 2013', url: 'https://doi.org/10.1007/s11120-013-9838-x' },
+    { label: 'Kouřil et al. 2012', url: 'https://doi.org/10.1016/j.bbabio.2011.05.024' },
+    { label: 'Su et al. 2017', url: 'https://doi.org/10.1126/science.aan0327' },
+    { label: 'Lichtenthaler et al. 2007', url: 'https://doi.org/10.1016/j.plaphy.2007.04.006' },
   ],
   animation: 'Follow an excitation',
 };
 
 export const VARIANTS: Variant[] = [
-  { id: 'a', name: 'Funnel' },
-  { id: 'c', name: 'Top view' },
-  { id: 'd', name: 'Two parts' },
-  { id: 'g', name: 'Why antennas' },
-  { id: 'i', name: 'Downhill by colour' },
+  // Round 3 (27 Oct 2026): real images mixed with drawings, listed first; drawn in ./l06r.ts.
+  { id: 'r1', name: 'Routes on the real structure' },
   { id: 'k', name: 'Parts and funnel' },
-  { id: 'l', name: 'Two ladders' },
-  { id: 'm', name: 'Why a funnel' },
-  { id: 'n', name: 'Map with key' },
-  { id: 'o', name: 'Three columns' },
 ];
 
 export function draw(id: string): string {
   switch (id) {
+    case 'r1': case 'r2': case 'r3': case 'r4': case 'r5': return drawRound3(id) ?? funnelSvg('fl06a');
     case 'b': return stepsSvg();
     case 'c': return topViewSvg('fl06c');
     case 'd': return twoPartsSvg('fl06d');
@@ -62,6 +57,7 @@ export function draw(id: string): string {
     case 'm': return busyFunnelSvg();
     case 'n': return keyedMapSvg();
     case 'o': return columnsSvg();
+    case 'p': return zoomSvg(true);
     default: return funnelSvg('fl06a');
   }
 }
@@ -84,9 +80,9 @@ function stepsSvg(): string {
   const xs = [84, 150, 216, 282], isB = [true, true, false, false], r = 22, R = 370;
   const rows = [112, 238, 364, 490];
   const caps: Array<[string, string]> = [
-    ['Chl b absorbs a photon', 'and becomes excited'],
-    ['Energy hops to Chl a,', 'which sits lower'],
-    ['Energy hops on through', 'Chl a to the centre'],
+    ['Chl <tspan font-style="italic">b</tspan> absorbs a photon', 'and becomes excited'],
+    ['Energy hops to Chl <tspan font-style="italic">a</tspan>,', 'which sits lower'],
+    ['Energy hops on through', 'Chl <tspan font-style="italic">a</tspan> to the centre'],
     ['Only here an electron', 'moves: charge separation'],
   ];
   const up = (k: number, y: number): Pt => [xs[k] + (k ? -6 : 6), y - r - 3];
@@ -105,7 +101,7 @@ function stepsSvg(): string {
   };
   return svg('Four moments of one excitation: Chl b absorbs light, energy hops to lower-energy Chl a, then on to the reaction centre, where an electron moves', `
     ${defs(p)}
-    ${text(117, 40, 'Chl b', 'sm lab-b f6-lb')}${text(249, 40, 'Chl a', 'sm lab-b f6-la')}${text(R, 22, 'reaction', 'sm')}${text(R, 46, 'centre', 'sm')}
+    ${text(117, 40, 'Chl <tspan font-style="italic">b</tspan>', 'sm lab-b f6-lb')}${text(249, 40, 'Chl <tspan font-style="italic">a</tspan>', 'sm lab-b f6-la')}${text(R, 22, 'reaction', 'sm')}${text(R, 46, 'centre', 'sm')}
     <path class="rule" d="M20,175 H780 M20,301 H780 M20,427 H780"/>
     ${rows.map(row).join('')}
   `);
@@ -188,7 +184,7 @@ function rateSvg(): string {
     ${text(A[0], yB + 94, 'antenna', 'sm')}
     ${text(T0, yB - 52, 'antenna: every pigment’s photons add up', 'sm', 'start')}
     <path class="axis" d="M${T0},${yB} H${T1}"/><path class="fl06-tick fl06-tick-thin" d="${many}"/>${second(yB)}
-    ${text(400, 530, 'An antenna keeps one reaction centre busy.', 'lab lab-b')}
+    ${text(400, 530, '', 'lab lab-b')}
     ${text(400, 580, '≈ 10 photons s⁻¹: Croce & van Amerongen 2013 · ticks schematic', 'tiny f6-tiny')}
   `);
 }
@@ -255,14 +251,17 @@ function downhillSvg(): string {
     ${text((xb + xa) / 2 + 4, Yb - 62, 'downhill', 'lab lab-b f6-amb')}
     ${text((xa + xr) / 2, Ya - 58, 'energy hops', 'sm f6-amb')}
     ${epath(p, `M${xr + hw - 4},${Ya + 6} L748,300`)}${text(756, 312, 'e⁻', 'lab lbl-e', 'start')}
-    ${pig(xb, 494, true, 18, true)}${text(xb, 540, 'Chl b', 'lab lab-b f6-lb')}
-    ${pig(xa, 494, false, 18, true)}${text(xa, 540, 'Chl a', 'lab lab-b f6-la')}
+    ${pig(xb, 494, true, 18, true)}${text(xb, 540, 'Chl <tspan font-style="italic">b</tspan>', 'lab lab-b f6-lb')}
+    ${pig(xa, 494, false, 18, true)}${text(xa, 540, 'Chl <tspan font-style="italic">a</tspan>', 'lab lab-b f6-la')}
     ${rcRing(xr, 494, 18)}${text(xr, 540, 'reaction centre', 'sm lab-b')}</g>
     ${text(780, 584, 'red peaks in solvent · spacing exaggerated', 'tiny f6-tiny', 'end')}
   `);
 }
 
-/* ---------- 6J · zoom in: membrane → PSII–LHCII → LHCII trimer → one LHCII protein ---------- */
+/* ---------- 6J · zoom in: membrane → PSII–LHCII → LHCII trimer → one LHCII protein ----------
+   6P (place = true): the membrane lens shows a granum from above, PSII–LHCII on the stacked disc and PSI–LHCI on the
+   unstacked membrane around it (Wietrzynski et al. 2025), and the protein panel marks two neighbouring chlorophylls
+   about 1 nm apart (average Chl–Chl distance ≈ 10 Å; van Amerongen & Croce 2013). */
 
 /** A PSII–LHCII supercomplex seen from above: dimeric core, two minor antennas, two LHCII trimers. */
 function superIcon(cx: number, cy: number, s: number, rot = 0, cls = ''): string {
@@ -276,8 +275,14 @@ function superIcon(cx: number, cy: number, s: number, rot = 0, cls = ''): string
     ${tri(-78, 6, true)}${tri(78, -6, false)}</g>`;
 }
 
-function zoomSvg(): string {
-  const p = 'fl06j';
+/** PSI–LHCI seen from above: the core with a belt of four LHCI proteins along one side. */
+function psiIcon(cx: number, cy: number, s: number, rot = 0): string {
+  return `<g transform="translate(${f(cx)} ${f(cy)}) rotate(${rot}) scale(${s})">
+    <rect class="f6-core" x="-30" y="-26" width="60" height="40" rx="10"/>${[-24, -8, 8, 24].map(x => `<circle class="f6-ant" cx="${x}" cy="24" r="8"/>`).join('')}</g>`;
+}
+
+function zoomSvg(place = false): string {
+  const p = place ? 'fl06p' : 'fl06j';
   const rand = mulberry(17);
   const rr = 86, cy = 146;
   const C1: Pt = [110, cy], C2: Pt = [400, cy], C3: Pt = [690, cy];
@@ -290,8 +295,14 @@ function zoomSvg(): string {
     `<path class="fl06-zline" d="M${f(b.x + b.w)},${f(b.y)} L${f(c[0] - rr * 0.5)},${f(c[1] - rr * 0.866)} M${f(b.x + b.w)},${f(b.y + b.h)} L${f(c[0] - rr * 0.5)},${f(c[1] + rr * 0.866)}"/>`;
   // 1 · membrane with several supercomplexes; the boxed one is enlarged next.
   const many: Array<[number, number, number]> = [[-46, -46, 20], [36, -54, -15], [-58, 14, 70], [22, 4, 0], [-14, 60, -30], [62, 52, 40]];
-  const m1 = many.map(([dx, dy, rot]) => superIcon(C1[0] + dx, C1[1] + dy, 0.3, rot)).join('');
-  const box1: Rect = { x: C1[0] + 22 - 36, y: C1[1] + 4 - 16, w: 72, h: 32 };
+  // 6P: a granum disc (stacked membrane) with PSII–LHCII, ringed by unstacked membrane with PSI–LHCI.
+  const disc: Pt = [C1[0] - 8, C1[1] + 2], dr = 50;
+  const inDisc: Array<[number, number, number]> = [[-24, -24, 20], [20, -26, -15], [-30, 16, 70], [14, 8, 0], [-4, 34, -30]];
+  const ring: Array<[number, number, number]> = [[64, -38, 30], [70, 18, -60], [42, 62, 10], [-30, 70, 80], [-62, -52, -20], [8, -72, 0]];
+  const m1 = place
+    ? `<circle class="fl06-grana" cx="${disc[0]}" cy="${disc[1]}" r="${dr}"/>${inDisc.map(([dx, dy, rot]) => superIcon(disc[0] + dx, disc[1] + dy, 0.24, rot)).join('')}${ring.map(([dx, dy, rot]) => psiIcon(disc[0] + dx, disc[1] + dy, 0.36, rot)).join('')}`
+    : many.map(([dx, dy, rot]) => superIcon(C1[0] + dx, C1[1] + dy, 0.3, rot)).join('');
+  const box1: Rect = place ? { x: disc[0] + 14 - 30, y: disc[1] + 8 - 14, w: 60, h: 28 } : { x: C1[0] + 22 - 36, y: C1[1] + 4 - 16, w: 72, h: 32 };
   // 2 · one supercomplex; the right-hand LHCII trimer is enlarged next.
   const m2 = superIcon(C2[0], C2[1], 0.72);
   const tR: Pt = [C2[0] + 78 * 0.72, C2[1] - 6 * 0.72];
@@ -303,7 +314,7 @@ function zoomSvg(): string {
   const L0 = lobes[0];
   const box3: Rect = { x: L0[0] - 36, y: L0[1] - 36, w: 72, h: 72 };
   // 4 · one LHCII protein: three helices, four carotenoids (two crossing), eight Chl a and six Chl b.
-  const P0: Rect = { x: 236, y: 290, w: 544, h: 300 };
+  const P0: Rect = place ? { x: 316, y: 290, w: 464, h: 300 } : { x: 236, y: 290, w: 544, h: 300 };
   const helices: Array<[number, number, number]> = [[452, 440], [598, 440], [525, 532]].map(([x, y]) => [x, y, 22]);
   const cars: Array<[number, number, number, number]> = [[492, 392, 558, 488], [558, 392, 492, 488], [634, 520, 668, 548], [404, 486, 392, 532]];
   const chlA: Pt[] = [[436, 376], [525, 362], [614, 376], [664, 440], [406, 440], [474, 512], [576, 512], [640, 494]];
@@ -314,7 +325,14 @@ function zoomSvg(): string {
     [[exitA[0] + 12, exitA[1] + 6], [716, 484], [764, 500]],
   ];
   const blob = 'M372,446 C366,378 452,348 530,350 C616,352 704,388 708,456 C712,530 640,578 536,578 C446,578 378,520 372,446 Z';
-  return svg('Zoom from the thylakoid membrane to a PSII–LHCII supercomplex, an LHCII trimer and one LHCII protein, whose scaffold holds eight Chl a, six Chl b and four carotenoids in place', `
+  // 6P: the place key under the membrane lens, and a spacing bar between two neighbouring chlorophylls.
+  const placeKey = `<g transform="translate(24 254)">${superIcon(14, 0, 0.17)}${text(40, 7, 'stacked: PSII + LHCII', 'sm', 'start')}${psiIcon(14, 30, 0.3)}${text(40, 37, 'unstacked: PSI + LHCI', 'sm', 'start')}</g>`;
+  const [sa, sb] = [chlA[1], chlA[2]];
+  const spacing = `<path class="fl06-dim" d="M${sa[0]},${sa[1] - 16} V${sa[1] - 30} M${sb[0]},${sb[1] - 16} V${sb[1] - 30} M${sa[0]},${sa[1] - 24} L${sb[0]},${sb[1] - 24}"/>${text((sa[0] + sb[0]) / 2, Math.min(sa[1], sb[1]) - 34, '≈ 1 nm', 'sm lab-b')}`;
+  const label = place
+    ? 'Zoom from the thylakoid membrane, seen from above: PSII with LHCII on the stacked granum disc, PSI with LHCI on the unstacked membrane around it; then one PSII–LHCII supercomplex, an LHCII trimer and one LHCII protein, whose scaffold holds eight Chl a, six Chl b and four carotenoids about 1 nm apart'
+    : 'Zoom from the thylakoid membrane to a PSII–LHCII supercomplex, an LHCII trimer and one LHCII protein, whose scaffold holds eight Chl a, six Chl b and four carotenoids in place';
+  return svg(label, `
     ${defs(p)}<defs>${clip('c1', C1)}${clip('c2', C2)}${clip('c3', C3)}</defs>
     ${text(C1[0], 40, 'membrane', 'sm lab-b')}${text(C2[0], 40, 'PSII + LHCII', 'sm lab-b')}${text(C3[0], 40, 'LHCII trimer', 'sm lab-b')}
     ${lens('c1', C1, m1 + boxR(box1))}${lens('c2', C2, m2 + boxR(box2))}${lens('c3', C3, m3 + boxR(box3))}
@@ -327,14 +345,15 @@ function zoomSvg(): string {
     ${chlA.map(([x, y]) => pig(x, y, false, 11)).join('')}${chlB.map(([x, y]) => pig(x, y, true, 10)).join('')}
     ${glow(p, chlB[1], 0.75)}${route.map(a => hop(p, a, true)).join('')}
     ${text(770, 538, 'to PSII', 'sm lab-b', 'end')}
-    ${text(256, 326, 'one LHCII protein', 'sm lab-b', 'start')}
-    <g transform="translate(30 330)">
-      ${pig(10, -7, false, 10)}${text(30, 0, 'Chl a', 'sm', 'start')}
-      ${pig(10, 33, true, 9.5)}${text(30, 40, 'Chl b', 'sm', 'start')}
+    ${text(P0.x + 20, 326, 'one LHCII protein', 'sm lab-b', 'start')}
+    ${place ? placeKey + spacing : ''}
+    <g transform="translate(30 ${place ? 356 : 330})">
+      ${pig(10, -7, false, 10)}${text(30, 0, 'Chl <tspan font-style="italic">a</tspan>', 'sm', 'start')}
+      ${pig(10, 33, true, 9.5)}${text(30, 40, 'Chl <tspan font-style="italic">b</tspan>', 'sm', 'start')}
       <path class="fl06-car" d="M0,73 L22,73"/>${text(30, 80, 'carotenoid', 'sm', 'start')}
       <circle class="fl06-helix" cx="10" cy="113" r="10"/>${text(30, 120, 'helix', 'sm', 'start')}
-      ${text(0, 186, 'a:b ≈ 1.3', 'lab lab-b', 'start')}
-      ${text(0, 214, 'Chl b-rich', 'sm f6-mut', 'start')}
+      ${text(0, 186, '<tspan font-style="italic">a</tspan>:<tspan font-style="italic">b</tspan> ≈ 1.3', 'lab lab-b', 'start')}
+      ${text(0, 214, 'Chl <tspan font-style="italic">b</tspan>-rich', 'sm f6-mut', 'start')}
     </g>
   `);
 }
@@ -425,9 +444,9 @@ function partsFunnelSvg(): string {
   const F = funnelCore(p, { rim: 280, floor: 370, notch: 382, base: 420 });
   const ob = 172, oa = 486, oy = 82;
   const name = (ox: number, b: boolean, nm: string): string =>
-    `${pig(ox + 58, oy + 9, b, 9)}${text(ox + 74, oy + 18, b ? 'Chl b' : 'Chl a', `lab lab-b ${b ? 'f6-lb' : 'f6-la'}`, 'start')}`
+    `${pig(ox + 58, oy + 9, b, 9)}${text(ox + 74, oy + 18, b ? 'Chl <tspan font-style="italic">b</tspan>' : 'Chl <tspan font-style="italic">a</tspan>', `lab lab-b ${b ? 'f6-lb' : 'f6-la'}`, 'start')}`
     + text(ox + 50, oy + 46, `red peak ${nm} nm`, 'sm f6-mut', 'start');
-  return svg('Chl b and Chl a differ by one group, –CHO instead of –CH₃, which moves the red peak from 662 to 642 nm. In the antenna funnel Chl b therefore sits higher than Chl a; energy hops down to the reaction centre, where an electron moves. LHCII serves PSII, LHCI serves PSI', `
+  return svg('Chl b and Chl a differ by one group, –CHO instead of –CH₃, which moves the red peak from 662 to 642 nm. In the antenna funnel Chl b therefore sits higher than Chl a; energy hops down to the reaction centre, where an electron moves. LHCII serves mainly PSII, and PSI too; LHCI serves PSI', `
     ${defs(p)}
     ${chlHead(ob, oy, 0.5, '–CHO')}${name(ob, true, '642')}
     ${chlHead(oa, oy, 0.5, '–CH₃')}${name(oa, false, '662')}
@@ -435,14 +454,14 @@ function partsFunnelSvg(): string {
     <text class="tl" transform="translate(22 295) rotate(-90)" text-anchor="middle">excitation energy</text>
     ${F.body}
     ${text(F.X(400), 280, 'only energy moves', 'lab f6-amb')}
-    ${text(F.X(318), 406, 'Chl a', 'sm lab-b f6-la')}${text(F.X(482), 406, 'Chl a', 'sm lab-b f6-la')}
-    ${epath(p, `M${F.R[0]},386 L${F.R[0]},452`)}
-    ${text(386, 444, 'reaction centre', 'sm', 'end')}${text(414, 444, 'e⁻', 'lab lbl-e', 'start')}
+    ${text(F.X(318), 406, 'Chl <tspan font-style="italic">a</tspan>', 'sm lab-b f6-la')}${text(F.X(482), 406, 'Chl <tspan font-style="italic">a</tspan>', 'sm lab-b f6-la')}
+    ${arrow(p, 'ink', `M${F.R[0]},386 L${F.R[0]},452`)}
+    ${text(386, 444, 'reaction centre', 'sm', 'end')}${text(414, 444, 'e⁻', 'lab lab-b', 'start')}
     <path class="rule" d="M20,468 H780"/>
     ${miniPSII(92, 532, 0.62)}
-    ${text(176, 522, 'LHCII → PSII', 'sm lab-b', 'start')}${text(176, 550, 'Chl b‑rich · a:b ≈ 1.3', 'sm', 'start')}
+    ${text(176, 522, 'PSII + LHCII', 'sm lab-b', 'start')}${text(176, 550, 'Chl <tspan font-style="italic">b</tspan>‑rich · <tspan font-style="italic">a</tspan>:<tspan font-style="italic">b</tspan> ≈ 1.3', 'sm', 'start')}
     ${miniPSI(466, 516, 0.34)}
-    ${text(520, 522, 'LHCI → PSI', 'sm lab-b', 'start')}${text(520, 550, 'Chl a‑rich · a:b ≈ 3.7', 'sm', 'start')}
+    ${text(520, 522, 'PSI + LHCI', 'sm lab-b', 'start')}${text(520, 550, 'Chl <tspan font-style="italic">a</tspan>‑rich · <tspan font-style="italic">a</tspan>:<tspan font-style="italic">b</tspan> ≈ 3.7', 'sm', 'start')}
     ${text(20, 594, 'red peaks of Chl in solvent', 'tiny f6-tiny', 'start')}
   `);
 }
@@ -461,8 +480,8 @@ function laddersSvg(): string {
   return svg('Energy levels for both photosystems. PSII with LHCII: Chl b absorbs at a shorter wavelength than Chl a, so energy hops downhill from Chl b to Chl a to the reaction centre. PSI with LHCI: Chl a passes energy downhill to the centre; red forms absorb beyond 700 nm and sit below the centre, so their energy must climb uphill, helped by heat. Only at the centres does an electron move', `
     ${defs(p)}${lightHeads(p)}
     ${arrow(p, 'ink', 'M36,440 L36,120')}<text class="tl" transform="translate(22 280) rotate(-90)" text-anchor="middle">energy</text>
-    ${text(206, 38, 'LHCII → PSII', 'lab lab-b')}${text(206, 68, 'Chl b‑rich · a:b ≈ 1.3', 'sm')}
-    ${text(608, 38, 'LHCI → PSI', 'lab lab-b')}${text(608, 68, 'Chl a‑rich · a:b ≈ 3.7', 'sm')}
+    ${text(206, 38, 'PSII + LHCII', 'lab lab-b')}${text(206, 68, 'Chl <tspan font-style="italic">b</tspan>‑rich · <tspan font-style="italic">a</tspan>:<tspan font-style="italic">b</tspan> ≈ 1.3', 'sm')}
+    ${text(608, 38, 'PSI + LHCI', 'lab lab-b')}${text(608, 68, 'Chl <tspan font-style="italic">a</tspan>‑rich · <tspan font-style="italic">a</tspan>:<tspan font-style="italic">b</tspan> ≈ 3.7', 'sm')}
     <path class="rule" d="M414,20 V560"/>
     ${[xb, xa, xr, xa2, xr2, xf].map(x => lvl(x, G)).join('')}
     ${lvl(xb, Yb)}${lvl(xa, Ya)}${lvl(xr, Yr)}${lvl(xa2, Ya)}${lvl(xr2, Yr)}${lvl(xf, Yred)}
@@ -479,10 +498,10 @@ function laddersSvg(): string {
     ${text(xf + 2, Yr - 74, 'uphill,', 'lab lab-b f6-amb')}${text(xf + 2, Yr - 48, 'helped by heat', 'sm f6-amb')}
     ${epath(p, `M${xr},${Yr + 6} L${xr},334`)}${text(xr + 12, 334, 'e⁻', 'lab lbl-e', 'start')}
     ${epath(p, `M${xr2},${Yr + 6} L${xr2},334`)}${text(xr2 + 12, 334, 'e⁻', 'lab lbl-e', 'start')}
-    ${pig(xb, 476, true, 17, true)}${text(xb, 520, 'Chl b', 'lab lab-b f6-lb')}
-    ${pig(xa, 476, false, 17, true)}${text(xa, 520, 'Chl a', 'lab lab-b f6-la')}
+    ${pig(xb, 476, true, 17, true)}${text(xb, 520, 'Chl <tspan font-style="italic">b</tspan>', 'lab lab-b f6-lb')}
+    ${pig(xa, 476, false, 17, true)}${text(xa, 520, 'Chl <tspan font-style="italic">a</tspan>', 'lab lab-b f6-la')}
     ${rcRing(xr, 476, 17)}${text(xr, 520, 'reaction', 'sm lab-b')}${text(xr, 546, 'centre', 'sm lab-b')}
-    ${pig(xa2, 476, false, 17, true)}${text(xa2, 520, 'Chl a', 'lab lab-b f6-la')}
+    ${pig(xa2, 476, false, 17, true)}${text(xa2, 520, 'Chl <tspan font-style="italic">a</tspan>', 'lab lab-b f6-la')}
     ${rcRing(xr2, 476, 17)}${text(xr2, 520, 'reaction', 'sm lab-b')}${text(xr2, 546, 'centre', 'sm lab-b')}
     ${pair(xf, 476)}${text(xf, 520, 'red forms', 'sm lab-b')}${text(xf, 546, 'Chl pairs', 'sm')}
     ${text(780, 592, '642 and 662 nm: Chl in solvent · spacing exaggerated', 'tiny f6-tiny', 'end')}
@@ -497,17 +516,17 @@ function busyFunnelSvg(): string {
   const T0 = 320, T1 = 770;
   const rows: Array<[number, string, string, boolean]> = [
     [398, 'one chlorophyll, full sun', '≈ 10 photons per second', false],
-    [462, 'LHCII → PSII', 'Chl b‑rich antenna', true],
-    [526, 'LHCI → PSI', 'Chl a‑rich antenna', true],
+    [462, 'PSII + LHCII', 'Chl <tspan font-style="italic">b</tspan>‑rich antenna', true],
+    [526, 'PSI + LHCI', 'Chl <tspan font-style="italic">a</tspan>‑rich antenna', true],
   ];
   return svg('Energy funnel: Chl b on the rim, Chl a on the floor; only energy moves until the reaction centre, where an electron moves. Below, photon arrivals in one second: one chlorophyll in full sun catches about ten, while each photosystem collects many through its own antenna', `
     ${defs(p)}
     ${arrow(p, 'ink', 'M34,296 L34,40')}
     <text class="tl" transform="translate(22 168) rotate(-90)" text-anchor="middle">excitation energy</text>
     ${F.body}
-    ${text(104, 66, 'Chl b', 'sm lab-b f6-lb', 'start')}
+    ${text(104, 66, 'Chl <tspan font-style="italic">b</tspan>', 'sm lab-b f6-lb', 'start')}
     ${text(400, 152, 'only energy moves', 'lab f6-amb')}
-    ${text(F.X(318), 280, 'Chl a', 'sm lab-b f6-la')}
+    ${text(F.X(318), 280, 'Chl <tspan font-style="italic">a</tspan>', 'sm lab-b f6-la')}
     ${epath(p, `M${F.R[0]},260 L${F.R[0]},336`)}
     ${text(386, 322, 'reaction centre', 'sm', 'end')}${text(414, 322, 'e⁻', 'lab lbl-e', 'start')}
     <path class="rule" d="M20,350 H780"/>
@@ -523,8 +542,8 @@ function busyFunnelSvg(): string {
 function keyedMapSvg(): string {
   const p = 'fl06n';
   const name = (ox: number, oy: number, b: boolean): string =>
-    `${pig(ox + 54, oy + 10, b, 8)}${text(ox + 68, oy + 18, b ? 'Chl b' : 'Chl a', `lab lab-b ${b ? 'f6-lb' : 'f6-la'}`, 'start')}`;
-  return svg('Key: Chl a carries –CH₃ where Chl b carries –CHO; in the antenna only energy hops, at the reaction centre an electron moves. Top view: LHCII serves PSII, Chl b-rich; LHCI serves PSI, Chl a-rich', `
+    `${pig(ox + 54, oy + 10, b, 8)}${text(ox + 68, oy + 18, b ? 'Chl <tspan font-style="italic">b</tspan>' : 'Chl <tspan font-style="italic">a</tspan>', `lab lab-b ${b ? 'f6-lb' : 'f6-la'}`, 'start')}`;
+  return svg('Key: Chl a carries –CH₃ where Chl b carries –CHO; in the antenna only energy hops, at the reaction centre an electron moves. Top view: LHCII serves mainly PSII, and PSI too, Chl b-rich; LHCI serves PSI, Chl a-rich', `
     ${chlHead(96, 64, 0.44, '–CH₃')}${name(96, 64, false)}
     ${chlHead(330, 64, 0.44, '–CHO')}${name(330, 64, true)}
     ${glow(p, [494, 40], 0.6)}${hop(p, [[494, 40], [522, 24], [552, 40]])}${text(566, 48, 'antenna: energy hops', 'sm', 'start')}
@@ -544,14 +563,14 @@ function columnsSvg(): string {
   const Y = (a: number): number => base - a * (base - top);
   const curve = (k: 'a' | 'b'): string => `<path class="curve chl${k}" d="${absorb(k).map(([nm, a], i) => `${i ? 'L' : 'M'}${f(X(nm))},${f(Y(a))}`).join('')}"/>`;
   const name = (ox: number, oy: number, b: boolean): string =>
-    `${text(ox + 50, oy + 22, b ? 'Chl b' : 'Chl a', `lab lab-b ${b ? 'f6-lb' : 'f6-la'}`, 'start')}<path class="curve ${b ? 'chlb' : 'chla'}" d="M${ox + 50},${oy + 38} H${ox + 112}"/>`;
+    `${text(ox + 50, oy + 22, b ? 'Chl <tspan font-style="italic">b</tspan>' : 'Chl <tspan font-style="italic">a</tspan>', `lab lab-b ${b ? 'f6-lb' : 'f6-la'}`, 'start')}<path class="curve ${b ? 'chlb' : 'chla'}" d="M${ox + 50},${oy + 38} H${ox + 112}"/>`;
   // Column 2 · energy hops downhill, an electron moves at the centre (I).
   const G = 346, Yb = 160, Ya = 206, Yr = 222, hw = 30;
   const [cb, ca, cr] = [318, 404, 490];
   const lvl = (x: number, y: number): string => `<path class="lvl" d="M${x - hw},${y} H${x + hw}"/>`;
   const fall = (x0: number, y0: number, x1: number, y1: number, h: number): Arc => [[x0 + hw - 2, y0 - 8], [(x0 + x1) / 2, Math.min(y0, y1) - h], [x1 - hw + 4, y1 - 8]];
   const h1 = fall(cb, Yb, ca, Ya, 38), h2 = fall(ca, Ya, cr, Yr, 30);
-  return svg('Three columns. One: Chl a carries –CH₃ and Chl b –CHO, so their absorption peaks differ. Two: energy hops downhill from Chl b to Chl a to the reaction centre, where an electron moves. Three: LHCII, Chl b-rich, serves PSII; LHCI, Chl a-rich, serves PSI', `
+  return svg('Three columns. One: Chl a carries –CH₃ and Chl b –CHO, so their absorption peaks differ. Two: energy hops downhill from Chl b to Chl a to the reaction centre, where an electron moves. Three: LHCII, Chl b-rich, serves mainly PSII, and PSI too; LHCI, Chl a-rich, serves PSI', `
     ${defs(p)}${lightHeads(p)}${strip(`${p}-strip`)}
     <path class="rule" d="M256,24 V566 M548,24 V566"/>
     ${badge(34, 62, 1)}${badge(288, 62, 2)}${badge(568, 62, 3)}
@@ -570,13 +589,13 @@ function columnsSvg(): string {
     ${text((cb + ca) / 2, Yb - 56, 'downhill', 'sm lab-b f6-amb')}
     ${epath(p, `M${cr},${Yr + 6} L${cr},294`)}${text(cr + 10, 294, 'e⁻', 'lab lbl-e', 'start')}
     ${pig(cb, 370, true, 14, true)}${pig(ca, 370, false, 14, true)}${rcRing(cr, 370, 14)}
-    ${text(cb, 406, 'Chl b', 'sm lab-b f6-lb')}${text(ca, 406, 'Chl a', 'sm lab-b f6-la')}${text(cr, 406, 'centre', 'sm lab-b')}
+    ${text(cb, 406, 'Chl <tspan font-style="italic">b</tspan>', 'sm lab-b f6-lb')}${text(ca, 406, 'Chl <tspan font-style="italic">a</tspan>', 'sm lab-b f6-la')}${text(cr, 406, 'centre', 'sm lab-b')}
     </g>
-    ${text(676, 106, 'LHCII → PSII', 'sm lab-b')}
+    ${text(676, 106, 'PSII + LHCII', 'sm lab-b')}
     ${miniPSII(676, 166, 0.98, true)}
-    ${text(676, 238, 'Chl b‑rich · a:b ≈ 1.3', 'sm')}
-    ${text(676, 300, 'LHCI → PSI', 'sm lab-b')}
+    ${text(676, 238, 'Chl <tspan font-style="italic">b</tspan>‑rich · <tspan font-style="italic">a</tspan>:<tspan font-style="italic">b</tspan> ≈ 1.3', 'sm')}
+    ${text(676, 300, 'PSI + LHCI', 'sm lab-b')}
     ${miniPSI(676, 370, 0.62, true)}
-    ${text(676, 510, 'Chl a‑rich · a:b ≈ 3.7', 'sm')}
+    ${text(676, 510, 'Chl <tspan font-style="italic">a</tspan>‑rich · <tspan font-style="italic">a</tspan>:<tspan font-style="italic">b</tspan> ≈ 3.7', 'sm')}
   `);
 }

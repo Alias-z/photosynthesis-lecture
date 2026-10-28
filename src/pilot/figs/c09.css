@@ -44,3 +44,7 @@
 /* four-step panels are drawn at 0.97 scale; enlarge their text so it still renders at 22 px (labels) and 20 px (tags) */
 .theme-editorial .fig .fc09-g97 text.sm{font-size:22.7px}
 .theme-editorial .fig .fc09-g97 text.tag-t{font-size:20.6px}
+/* the deck's one glyph set (28 Oct 2026): the ¹⁴C isotope is purple wherever the experiment appears */
+.theme-editorial circle.fc09-l14{stroke:#8e63c4}
+.theme-editorial .fig text.fc09-l14t{fill:#5e3d8f}
+.theme-editorial circle.fc09-iso{fill:#8e63c4;stroke:#5e3d8f}

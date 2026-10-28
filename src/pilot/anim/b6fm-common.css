@@ -1,0 +1,16 @@
+/* Cytochrome b₆f on the slide 8 figure in the 7m1 glyph style (b6fm-common.ts), stagings m1, m2, pa and pb. The schema keeps
+   chain.css's look; these are the slide's figure card, the electrons (dark dots, as on slide 7) and the leader lines,
+   which keep their width while the camera zooms, and the brief glow behind a carrier when it is named (a stronger amber
+   than chain.css's pools, so that it shows on the lipids). */
+:is(.ani-b6f-m1,.ani-b6f-m2,.ani-b6f-pa,.ani-b6f-pb) .b6fm-slidecard{fill:rgba(255,254,250,.58);stroke:rgba(120,100,60,.10);stroke-width:1}
+:is(.ani-b6f-m1,.ani-b6f-m2,.ani-b6f-pa,.ani-b6f-pb) .b6fm-e{fill:#2b2a27;stroke:#fbfaf6;stroke-width:1.6}
+:is(.ani-b6f-m1,.ani-b6f-m2,.ani-b6f-pa,.ani-b6f-pb) .fig text.b6fm-elab{font-size:20px;font-weight:700;fill:#2b2a27}
+:is(.ani-b6f-m1,.ani-b6f-m2,.ani-b6f-pa,.ani-b6f-pb) .b6fm-lead path{vector-effect:non-scaling-stroke}
+:is(.ani-b6f-m1,.ani-b6f-m2,.ani-b6f-pa,.ani-b6f-pb) .b6fm-lead .chn-ld{stroke:#5a5953;stroke-width:1.7}
+:is(.ani-b6f-m1,.ani-b6f-m2,.ani-b6f-pa,.ani-b6f-pb) .b6fm-lead .chn-ldh{stroke-width:5.5}
+:is(.ani-b6f-m1,.ani-b6f-m2,.ani-b6f-pa,.ani-b6f-pb) .b6fm-lead .chn-ldt{fill:#5a5953}
+:is(.ani-b6f-m1,.ani-b6f-m2,.ani-b6f-pa,.ani-b6f-pb) .b6fm-pool0{stop-color:#f6b42c;stop-opacity:.75}
+:is(.ani-b6f-m1,.ani-b6f-m2,.ani-b6f-pa,.ani-b6f-pb) .b6fm-pool1{stop-color:#f8c75a;stop-opacity:.4}
+:is(.ani-b6f-m1,.ani-b6f-m2,.ani-b6f-pa,.ani-b6f-pb) .b6fm-pool2{stop-color:#fbe6b0;stop-opacity:0}
+:is(.ani-b6f-pa,.ani-b6f-pb) .b6fm-pqo{stroke:#b8902a;stroke-width:1.3;vector-effect:non-scaling-stroke}
+:is(.ani-b6f-pa,.ani-b6f-pb) .ani-stage text.b6fm-ro{font-size:24px;font-weight:600;fill:#141413}

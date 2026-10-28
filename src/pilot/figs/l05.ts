@@ -13,31 +13,27 @@ import {
 export const PLATE: PlateText = {
   n: '5',
   status: 'confirmed',
-  title: 'Why are leaves green?',
-  lead: 'A pigment absorbs a photon only if its energy matches an electron jump in the pigment.',
+  title: 'Leaf pigments',
+  lead: 'Leaf pigments differ in structure, so they absorb at different wavelengths.',
   points: [
-    { claim: 'Absorption spectrum.', text: 'Chlorophyll absorbs blue and red strongly, green weakly<br>Leaves reflect and transmit more green: they look green' },
-    { claim: 'Green light.', text: 'Leaves still absorb 50–90 % of green<br>It reaches deeper cells and drives photosynthesis there' },
-    { claim: 'Accessory pigments.', text: 'Chlorophyll b and carotenoids widen the absorbed band<br>Red algae: phycoerythrin absorbs green' },
+    { claim: 'Chlorophylls.', text: 'Chl <i>a</i> absorbs blue and red, with peaks at 430 and 662 nm<br>Chl <i>b</i> peaks at 453 and 642 nm' },
+    { claim: 'Carotenoids.', text: 'β-carotene absorbs blue, with a peak at 450 nm' },
+    { claim: 'Green is still used.', text: 'Leaves absorb 50–90 % of green; it drives photosynthesis in deeper cells' },
   ],
   refs: [
-    { label: 'Terashima et al. 2009', url: 'https://doi.org/10.1093/pcp/pcp034' },
+    { label: 'Meléndez-Martínez et al. 2019', url: 'https://doi.org/10.3390/nu11051093' },
     { label: 'Croce & van Amerongen 2014', url: 'https://doi.org/10.1038/nchembio.1555' },
+    { label: 'Terashima et al. 2009', url: 'https://doi.org/10.1093/pcp/pcp034' },
     { label: 'Xie et al. 2021', url: 'https://doi.org/10.1038/s41598-021-93696-6' },
   ],
 };
 
 // Round 2: the lecturer's picks (b, c, d, e), then five combinations of them. Variants a, f–j are still drawn by id.
 export const VARIANTS: Variant[] = [
-  { id: 'b', name: 'Inside a leaf', anim: true },
+  { id: 'm', name: 'Leaf + palette', anim: true },
   { id: 'c', name: 'Pigment palette' },
   { id: 'd', name: 'Rows' },
   { id: 'e', name: 'Absorbed vs used' },
-  { id: 'k', name: 'Rows + leaf' },
-  { id: 'l', name: 'Why green works' },
-  { id: 'm', name: 'Leaf + palette', anim: true },
-  { id: 'n', name: 'Gap vs use' },
-  { id: 'o', name: 'Three columns' },
 ];
 
 export function draw(id: string): string {
@@ -135,8 +131,8 @@ function actionPanels(p: string, top: number, base: number, headY: number, drop 
     <path class="f5-area f5-area-a" d="${area(XL, dA)}"/>
     <path class="axis" d="M${XL(lo)},${base} H${XL(hi)}"/><path class="axis" d="M${XR(lo)},${base} H${XR(hi)}"/>
     <path class="curve chlb" d="${dB}"/><path class="curve chla" d="${dA}"/>
-    ${t(XL(662) + 14, aRed + 10, 'Chl a', 'lab lab-b f5-c-a', 'start')}
-    ${t(XL(642) - 14, bRed - 4, 'Chl b', 'lab lab-b f5-c-b', 'end')}
+    ${t(XL(662) + 14, aRed + 10, 'Chl <tspan font-style="italic">a</tspan>', 'lab lab-b f5-c-a', 'start')}
+    ${t(XL(642) - 14, bRed - 4, 'Chl <tspan font-style="italic">b</tspan>', 'lab lab-b f5-c-b', 'end')}
     <defs>${specGrad(`${p}-fill`, XR(lo), XR(hi), lo, hi)}</defs>
     <path d="${area(XR, dAct)}" fill="url(#${p}-fill)" opacity=".32"/>
     <path class="curve fl05-act" d="${dAct}"/>

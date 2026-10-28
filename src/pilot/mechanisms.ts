@@ -83,13 +83,13 @@ const badge = (x: number, y: number, s: string): string =>
 
 export function carbonSvg(): string {
   const p = 'cbb';
-  return `<svg class="fig-svg" viewBox="0 0 800 600" role="img" aria-label="Calvin–Benson–Bassham cycle with Rubisco carboxylation, reduction, regeneration and the photorespiratory loop">
+  return `<svg class="fig-svg" viewBox="0 0 800 600" role="img" aria-label="Calvin–Benson–Bassham cycle with RuBisCO carboxylation, reduction, regeneration and the photorespiratory loop">
     ${heads(p)}
     ${pill(170, 310, 170, '3 RuBP', '5 C each')}
     ${pill(570, 310, 170, '6 3-PGA', '3 C each')}
     ${pill(570, 490, 190, '6 triose-P', '3 C each')}
     ${arrow(p, 'ink', 'M258,310 L478,310')}
-    ${text(368, 292, 'Rubisco', 'lab lab-b')}${badge(300, 340, 'Wc')}
+    ${text(368, 292, 'RuBisCO', 'lab lab-b')}${badge(300, 340, 'Wc')}
     ${arrow(p, 'ink', 'M368,404 L368,318')}${text(368, 430, '3 CO₂', 'lab lab-b')}
     ${arrow(p, 'ink', 'M570,342 L570,456')}
     ${text(592, 392, 'reduction', 'lab lab-b', 'start')}${text(592, 420, '6 ATP · 6 NADPH', 'sm', 'start')}
@@ -98,14 +98,14 @@ export function carbonSvg(): string {
     ${text(330, 526, 'regeneration · 5 triose-P + 3 ATP', 'sm')}${badge(170, 410, 'Wj')}
     ${arrow(p, 'clay', 'M170,278 L170,196')}
     ${arrow(p, 'ink', 'M52,236 L162,236')}${text(40, 243, 'O₂', 'lab lab-b', 'end')}
-    ${text(182, 262, 'Rubisco', 'sm', 'start')}
+    ${text(182, 262, 'RuBisCO', 'sm', 'start')}
     <rect class="node node-pr" x="102" y="134" width="136" height="54" rx="27"/>${text(170, 168, '2-PG (2 C)', 'lab lab-b')}
     ${arrow(p, 'clay', 'M238,160 L548,160 Q570,160 570,182 L570,276')}
     ${text(394, 144, 'photorespiration', 'lab lab-b lbl-pr')}
     ${text(410, 196, 'chloroplast · peroxisome · mitochondrion', 'sm')}
     ${arrow(p, 'ink', 'M470,158 L470,86')}${text(470, 72, 'CO₂ lost', 'lab lab-b')}
     ${text(250, 92, '4 C in → 3 C back + 1 CO₂', 'sm')}
-    ${text(400, 588, 'FvCB: the rate is set by the slower of Rubisco (Wc) and RuBP regeneration (Wj)', 'sm')}
+    ${text(400, 588, 'FvCB: the rate is set by the slower of RuBisCO (Wc) and RuBP regeneration (Wj)', 'sm')}
   </svg>`;
 }
 
@@ -274,14 +274,14 @@ export function cbbWheelSvg(): string {
     ${heads(p)}
     ${arc(204, 288)}${arc(328, 32)}${arc(72, 156)}
     ${mol(180, 5, 'RuBP ×3')}${mol(308, 3, '3-PGA ×6')}${mol(52, 3, 'triose-P ×6')}
-    ${text(lx1, ly1 - 8, '① carboxylation', 'lab lab-b')}${text(lx1, ly1 + 20, 'Rubisco', 'sm')}
+    ${text(lx1, ly1 - 8, '① carboxylation', 'lab lab-b')}${text(lx1, ly1 + 20, 'RuBisCO', 'sm')}
     ${text(lx2, ly2 - 8, '② reduction', 'lab lab-b', 'start')}${text(lx2, ly2 + 20, '6 ATP · 6 NADPH', 'sm', 'start')}
     ${text(lx3, ly3 - 8, '③ regeneration', 'lab lab-b')}${text(lx3, ly3 + 20, '3 ATP', 'sm')}
     ${beads(262, 250, 3, 'bead bead-co2')}${text(262, 228, '3 CO₂ in', 'sm lab-b')}${arrow(p, 'ink', 'M262,262 L262,300')}
     ${arrow(p, 'ink', 'M462,498 L530,540')}${beads(590, 552, 3)}${text(590, 584, '1 triose-P out → sugar', 'sm lab-b')}
     ${text(300, 382, 'RuBP 15 C + CO₂ 3 C', 'sm')}${text(300, 406, '= 18 C = 6 × 3-PGA', 'sm')}
     <rect class="box box-pr" x="560" y="40" width="226" height="250" rx="18"/>
-    ${text(673, 76, 'If Rubisco adds O₂', 'lab lab-b lbl-pr')}
+    ${text(673, 76, 'If RuBisCO adds O₂', 'lab lab-b lbl-pr')}
     ${beads(673, 112, 5)}${text(673, 140, 'RuBP + O₂', 'sm')}
     ${arrow(p, 'clay', 'M673,150 L673,170')}
     ${beads(623, 192, 3)}${beads(733, 192, 2, 'bead bead-pr')}${text(623, 220, '3-PGA', 'sm')}${text(733, 220, '2-PG', 'sm')}
@@ -292,7 +292,7 @@ export function cbbWheelSvg(): string {
 /* ---------- carbon, variant: the FvCB response to CO₂ ---------- */
 
 export function fvcbSvg(): string {
-  // Illustrative values: Vcmax 60 and J 110 µmol m⁻² s⁻¹; Rubisco kinetics at 25 °C.
+  // Illustrative values: Vcmax 60 and J 110 µmol m⁻² s⁻¹; RuBisCO kinetics at 25 °C.
   const vcmax = 60, j = 110, kc = 404.9, ko = 278.4, o = 210, gs = 42.75, rl = 1;
   const wc = (c: number): number => (vcmax * c) / (c + kc * (1 + o / ko));
   const wj = (c: number): number => (j * c) / (4 * (c + 2 * gs));
@@ -310,17 +310,17 @@ export function fvcbSvg(): string {
   const at = net(wc(ct), ct);
   const ticksX = [0, 200, 400, 600, 800, 1000].map(c => `<line class="tick" x1="${X(c)}" y1="${y0}" x2="${X(c)}" y2="${y0 + 8}"/>${text(X(c), y0 + 34, `${c}`, 'tl')}`).join('');
   const ticksY = [0, 10, 20, 30].map(a => `<line class="tick" x1="${x0 - 8}" y1="${Y(a)}" x2="${x0}" y2="${Y(a)}"/>${text(x0 - 14, Y(a) + 8, `${a}`, 'tl', 'end')}`).join('');
-  return `<svg class="fig-svg" viewBox="0 0 800 600" role="img" aria-label="FvCB model: net CO₂ assimilation against chloroplast CO₂, limited by Rubisco at low CO₂ and by RuBP regeneration at high CO₂">
+  return `<svg class="fig-svg" viewBox="0 0 800 600" role="img" aria-label="FvCB model: net CO₂ assimilation against chloroplast CO₂, limited by RuBisCO at low CO₂ and by RuBP regeneration at high CO₂">
     <path class="axis" d="M${x0},${y1 - 10} V${y0} H${x1}"/>${ticksX}${ticksY}
     <path class="zero" d="M${x0},${Y(0)} H${x1}"/>
-    ${text((x0 + x1) / 2, y0 + 74, 'CO₂ at Rubisco, Cc (µmol mol⁻¹)', 'tl')}
+    ${text((x0 + x1) / 2, y0 + 74, 'CO₂ at RuBisCO, Cc (µmol mol⁻¹)', 'tl')}
     <text class="tl" transform="translate(48 ${(y0 + y1) / 2}) rotate(-90)" text-anchor="middle">net CO₂ uptake, A (µmol m⁻² s⁻¹)</text>
     <path class="curve fv-c fv-ghost" d="${path(c => net(wc(c), c), ct, cmax)}"/>
     <path class="curve fv-j fv-ghost" d="${path(c => net(wj(c), c), 45, ct)}"/>
     <path class="curve fv-c" d="${path(c => net(wc(c), c), 45, ct)}"/>
     <path class="curve fv-j" d="${path(c => net(wj(c), c), ct, cmax)}"/>
     <circle class="dot dot-a" cx="${X(ct).toFixed(1)}" cy="${Y(at).toFixed(1)}" r="7"/>
-    ${text(X(60), Y(26), 'Rubisco-limited', 'lab lab-b lbl-c', 'start')}${text(X(60), Y(26) + 28, 'Wc: Rubisco capacity', 'sm', 'start')}
+    ${text(X(60), Y(26), 'RuBisCO-limited', 'lab lab-b lbl-c', 'start')}${text(X(60), Y(26) + 28, 'Wc: RuBisCO capacity', 'sm', 'start')}
     ${text(X(1000), Y(15), 'RuBP-regeneration-limited', 'lab lab-b lbl-j', 'end')}${text(X(1000), Y(15) + 28, 'Wj: ATP and NADPH supply', 'sm', 'end')}
     ${text(x0, y1 - 34, 'A = min(Wc, Wj) × (1 − Γ*/Cc) − Rʟ', 'sm', 'start')}
     ${text(x1, y0 - 16, 'illustrative: Vcmax 60, J 110, 25 °C', 'note', 'end')}

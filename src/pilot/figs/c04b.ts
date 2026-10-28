@@ -14,16 +14,17 @@ export const PLATE: PlateText = {
   n: 'C4b',
   title: 'Sucrose by day, starch for the night',
   status: 'draft',
-  lead: 'By day, triose phosphate becomes sucrose for the plant and starch to last the night.',
+  lead: 'By day, triose phosphate becomes sucrose for the plant; many leaves also store starch to last the night.',
   points: [
     { claim: 'Triose-P leaves in exchange for Pᵢ.', text: 'Making sucrose frees that phosphate; if it lags, ATP synthesis slows: the triose-phosphate use (TPU) limit.' },
-    { claim: 'Starch is the night-time store.', text: 'Built in the stroma by day, it is broken down at night at a rate that lasts until dawn.' },
+    { claim: 'Many leaves store starch for the night.', text: 'Built in the stroma by day, it is broken down at a rate that lasts until dawn. Wheat leaves store sucrose instead, and wheat stems fructans.' },
     { claim: 'Sucrose travels in the phloem.', text: 'SWEET transporters release it, sucrose transporters (SUTs) load it, and pressure flow carries it to growing organs.' },
   ],
   refs: [
     { label: 'Flügge 1999', url: 'https://doi.org/10.1146/annurev.arplant.50.1.27' },
     { label: 'Niittylä et al. 2004', url: 'https://doi.org/10.1126/science.1091811' },
     { label: 'Graf et al. 2010', url: 'https://doi.org/10.1073/pnas.0914299107' },
+    { label: 'Schnyder 1993', url: 'https://doi.org/10.1111/j.1469-8137.1993.tb03731.x' },
     { label: 'Braun 2022', url: 'https://doi.org/10.1146/annurev-arplant-070721-083240' },
   ],
 };

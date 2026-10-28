@@ -1,0 +1,42 @@
+/* Chunk pp's animations (slides 11–13, pp-stage.ts and pp11–pp13-*.ts): the slide card, the window camera, the story's
+   glyphs and labels, readout boxes and clippings. Prefix .ppa-; the chain keeps chain.css's look, the figures pp.css's. */
+.ani .ppa-slidecard{fill:rgba(255,254,250,.58);stroke:rgba(120,100,60,.10);stroke-width:1}
+.ani .ppa-winbg{fill:#fbfaf6}
+.ani .ppa-winedge{fill:none;stroke:rgba(120,100,60,.22);stroke-width:1.4}
+.ani .ppa-mark{fill:none;stroke:#e0a21a;stroke-width:3}
+.ani .ppa-box{fill:rgba(255,254,250,.95);stroke:rgba(120,100,60,.16);stroke-width:1}
+.ani .ppa-panel{fill:rgba(255,254,250,.9);stroke:rgba(120,100,60,.16);stroke-width:1}
+
+/* strokes */
+.ani .ppa-ar{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.ani .ppa-line{fill:none;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+.ani .ppa-axis{fill:none;stroke:#6b6a64;stroke-width:1.6}
+.ani .ppa-guide{fill:none;stroke:#a8a59a;stroke-width:1.4;stroke-dasharray:5 6}
+.ani .ppa-cursor{fill:none;stroke:#3d3d3a;stroke-width:2;stroke-dasharray:5 4}
+.ani .ppa-excess{fill:#f3c9a6;opacity:.85}
+.ani .ppa-burst{fill:#f6d3c9;stroke:#c8361e;stroke-width:2.2}
+.ani .ppa-o{fill:#e2553a;stroke:#fbfaf6;stroke-width:1.4}
+.ani .ppa-ex{fill:#f6b42c;stroke:#fbfaf6;stroke-width:1.4}
+.ani .ppa-so{fill:#fbe3dc;stroke:#a65a32;stroke-width:1.6}
+.ani .ppa-bar-green{fill:#7fbf6a}.ani .ppa-bar-grey{fill:#b6b2a6}.ani .ppa-bar-red{fill:#e58a72}
+.ani .ppa-bar-bg{fill:#efece3}
+
+/* text (stage or figure units; figure-unit text is counter-scaled with the camera) */
+.ani text.ppa-l{font-size:20px;font-weight:600;fill:#141413}
+.ani text.ppa-s{font-size:18px;font-weight:500;fill:#5b5a55}
+.ani text.ppa-t{font-size:21px;font-weight:600;fill:#3d3d3a}
+.ani text.ppa-hd{font-size:30px;font-weight:600;fill:#141413}
+.ani text.ppa-big{font-size:40px;font-weight:600;fill:#141413}
+.ani text.ppa-num{font-size:22px;font-weight:700;fill:#141413}
+.ani text.ppa-cr{font-size:13px;fill:#8a877d}
+.ani text.ppa-head{font-size:24px}
+.ani text.ppa-halo{paint-order:stroke;stroke:#fbfaf6;stroke-width:6px;stroke-linejoin:round}
+.ani text.ppa-green{fill:#24812f}
+.ani text.ppa-grey{fill:#6b6a64}
+.ani text.ppa-red{fill:#b8301b}
+.ani text.ppa-clay{fill:#8f4f2c}
+.ani text.ppa-amber{fill:#9a6a0c}
+.ani text.ppa-orange{fill:#b9620f}
+.ani text.ppa-blue{fill:#2350e6}
+.ani tspan.ppa-i{font-style:italic}
+.ani tspan.ppa-val{font-weight:800}

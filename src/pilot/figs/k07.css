@@ -1,0 +1,22 @@
+/* Slide C7 figure styles, scoped under .theme-editorial and prefixed .fk07- */
+.theme-editorial .fig text.fk07-l{font-size:20px;fill:#3d3d3a}
+.theme-editorial .fig text.fk07-h{font-size:21px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fk07-s{font-size:17px;fill:#6b6a64}
+.theme-editorial .fig text.fk07-ax{font-size:18px;fill:#3d3d3a}
+.theme-editorial .fig text.fk07-at{font-size:19px;fill:#141413}
+.theme-editorial .fig text.fk07-cr{font-size:13px;fill:#fffdf8}
+.theme-editorial .fig text.fk07-crd{font-size:14px;fill:#8a877d}
+.theme-editorial .fig text.fk07-pill{font-size:17px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fk07-c{font-size:16px;font-weight:600;fill:#7a3b12}
+.theme-editorial .fk07-pillbg{fill:#fffdf8;opacity:.94}
+.theme-editorial .fk07-pillbg-t{fill:#f3f1ea;stroke:#d8d5cb;stroke-width:1}
+.theme-editorial .fk07-credbg{fill:#141413;opacity:.45}
+.theme-editorial .fk07-mult{mix-blend-mode:multiply}
+.theme-editorial .fk07-ldh{fill:none;stroke:#fffdf8;stroke-width:4.2;stroke-linecap:round;opacity:.9}
+.theme-editorial .fk07-ldk{fill:none;stroke:#141413;stroke-width:1.5;stroke-linecap:round}
+.theme-editorial .fk07-tipd{fill:#141413;stroke:#fffdf8;stroke-width:1.5}
+.theme-editorial .fk07-tk{fill:none;stroke:#3d3d3a;stroke-width:1.4}
+
+.theme-editorial .fig text.fk07-eq{font-size:26px;fill:#141413}
+.theme-editorial .fk07-gd{fill:none;stroke:#6b6a64;stroke-width:1.5;stroke-dasharray:5 5}
+.theme-editorial .fk07-sbar{fill:#fffdf8;stroke:#141413;stroke-width:1}

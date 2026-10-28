@@ -1,0 +1,28 @@
+{
+  "title": "Rubisco: the enzyme that fixes CO₂",
+  "chunk": "Lecture 2 · Rubisco chunk (lead-C2, C2)",
+  "slides": [
+    "lead-C2",
+    "C2"
+  ],
+  "questions": [
+    {
+      "id": "a",
+      "question": "Why do farmers spread so much nitrogen fertiliser on a wheat field?",
+      "story": "Nitrogen is built into proteins, and one leaf protein dominates: Rubisco, the enzyme that fixes CO₂, holds about 20 % of all the nitrogen in a C₃ leaf. The reason is speed: each active site of Rubisco fixes only about 3 CO₂ per second, where a typical enzyme of central metabolism turns over about 80 times per second, so a leaf needs a great deal of Rubisco to fix CO₂ as fast as light allows.",
+      "steps": [
+        "Rubisco carries out the first step of the cycle: it adds CO₂ to RuBP.",
+        "Its turnover number is low: about 3 CO₂ per second per active site, against about 80 s⁻¹ for a typical enzyme of central metabolism.",
+        "To fix enough CO₂, a C₃ leaf holds large amounts of Rubisco: about 20 % of its nitrogen.",
+        "Nitrogen also goes into chlorophyll, other proteins and DNA: the question is a door, not the whole answer."
+      ],
+      "concepts": [
+        "Rubisco",
+        "Carboxylation",
+        "Turnover number and abundance"
+      ],
+      "see": "Lead page lead-C2 (wheat ear or field); then slide C2: Goodsell's spinach Rubisco beside a bar of the leaf's nitrogen with the Rubisco share coloured.",
+      "status": "Moved from hooks/C1-cbb-cycle.json candidate d (proposal), numbers aligned with the approved C2 text: Evans & Clarke 2019 (≈ 20 % of leaf N), Bar-On & Milo 2019 (k_cat ≈ 3 s⁻¹), Flamholz et al. 2019 / C2 text (≈ 80 s⁻¹ typical)."
+    }
+  ]
+}

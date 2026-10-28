@@ -4,13 +4,14 @@
 // glycerate (1 ATP) to 3-PGA; 4 C in → 3 C back + 1 CO₂ (25 % of the 2-PG carbon, not of photosynthesis);
 // NH₃ re-fixing costs ATP + reductant; per oxygenation 3.5 ATP + 2 NADPH and −0.5 C, per carboxylation 3 ATP + 2 NADPH
 // and +1 C; net gain = Vc − 0.5 Vo; 4.76 ATP per net C at Vo/Vc = 0.3 (worked example); pglp mutants cannot grow in
-// air (Somerville & Ogren 1979); field tobacco bypass ≈ 24 % (19–37 %) biomass, trials small (South 2019;
+// air (Somerville & Ogren 1979); field tobacco bypass +11–24 % biomass (+26 % at +5 °C), trials small (Cavanagh 2022) (South 2019;
 // Meacham-Hensold 2026); the AP3 bypass releases all glycolate carbon as CO₂ inside the chloroplast.
 // Vocabulary: carbon = bead (dark in the cycle, clay while in photorespiration), CO₂ / O₂ / NH₃ = atom balls,
-// RuBP = pentagon, Rubisco = warm grey block, ATP / NADPH = tags, photorespiration = clay and dashed.
+// RuBP = pentagon, RuBisCO = warm grey block, ATP / NADPH = tags, photorespiration = clay and dashed.
 import type { PlateText, Variant } from '../types';
 import { arrow, text as t } from '../mechanisms';
 import { illusHeads, molecule, tag } from '../illus';
+import { gasAr } from './l2-glyphs';
 import { draw as c5draw } from './c5';
 import './c06.css';
 
@@ -18,17 +19,18 @@ export const PLATE: PlateText = {
   n: 'C6',
   title: 'Photorespiration recovers carbon at a cost',
   status: 'draft',
-  lead: 'Photorespiration recycles 2-phosphoglycolate (2-PG), Rubisco’s O₂ product: 3 of every 4 carbons return, 1 is lost as CO₂.',
+  lead: 'Photorespiration recycles 2-phosphoglycolate (2-PG), RuBisCO’s O₂ product: 3 of every 4 carbons return, 1 is lost as CO₂.',
   points: [
     { claim: 'Three organelles, one CO₂ lost.', text: 'In mitochondria, two glycine become serine, CO₂ and NH₃; serine is recycled to 3-PGA.' },
-    { claim: 'Recycling costs energy.', text: 'Each oxygenation costs 3.5 ATP + 2 NADPH (cycle included) and loses ½ C.' },
-    { claim: 'Essential, and open to improvement.', text: 'Mutants that block it cannot grow in air; bypasses added ≈ 24 % tobacco biomass in field trials.' },
+    { claim: 'Recycling costs energy.', text: 'At 3 oxygenations per 10 carboxylations, each CO₂ gained costs ≈ 4.8 ATP + 3.1 NADPH instead of 3 + 2.' },
+    { claim: 'Essential, and it feeds metabolism.', text: 'Mutants lacking a core step survive only in high CO₂; 23–41 % of the pathway’s carbon leaves as serine for amino acids.' },
   ],
   refs: [
     { label: 'von Caemmerer et al. 2025', url: 'https://doi.org/10.1007/s00425-025-04834-7' },
     { label: 'Somerville & Ogren 1979', url: 'https://doi.org/10.1038/280833a0' },
     { label: 'South et al. 2019', url: 'https://doi.org/10.1126/science.aat9077' },
-    { label: 'Meacham-Hensold et al. 2026', url: 'https://doi.org/10.1111/nph.70724' },
+    { label: 'Cavanagh et al. 2022', url: 'https://doi.org/10.1111/pbi.13750' },
+    { label: 'Fu et al. 2023', url: 'https://doi.org/10.1038/s41477-022-01294-9' },
   ],
 };
 
@@ -36,7 +38,6 @@ export const VARIANTS: Variant[] = [
   { id: 'a', name: 'Thesis scheme' },
   { id: 'b', name: 'Three organelles', anim: true },
   { id: 'c', name: 'Four steps', anim: true },
-  { id: 'd', name: 'Recycling plant' },
   { id: 'e', name: 'Air-sick mutant' },
   { id: 'f', name: 'Net gain' },
   { id: 'g', name: 'Native vs bypass' },
@@ -120,8 +121,8 @@ export function pent(x: number, y: number, r: number, label = ''): string {
   return `<polygon class="node node-rubp" points="${pts}"/>${label ? t(x, y + 7, label, 'fc06-in') : ''}`;
 }
 
-/** Rubisco: a warm grey block. */
-export const rubisco = (x: number, y: number, w = 112, h = 38, label = 'Rubisco'): string =>
+/** RuBisCO: a warm grey block. */
+export const rubisco = (x: number, y: number, w = 112, h = 38, label = 'RuBisCO'): string =>
   `<rect class="node node-rub" x="${n1(x - w / 2)}" y="${n1(y - h / 2)}" width="${w}" height="${h}" rx="12"/>${t(x, y + 8, label, 'fc06-b')}`;
 
 export const num = (x: number, y: number, k: number): string =>
@@ -144,7 +145,7 @@ function organelles(): string {
     ${chloroplast(128, 300, 112, 190)}${peroxisome(400, 294, 92, false)}${mitochondrion(660, 294, 124, 112, 6)}
     ${t(128, 440, 'chloroplast', 'fc06-b fc06-chl-t')}${t(400, 302, 'peroxisome', 'fc06-b fc06-per-t')}${t(646, 302, 'mitochondrion', 'fc06-b fc06-mit-t')}
 
-    ${molecule(56, 182, 'OO', 10)}${arrow(p, 'clay', 'M80,182 L92,182')}${rubisco(150, 182, 104, 36)}
+    ${molecule(56, 182, 'OO', 10)}${gasAr(p, 'M80,182 L92,182')}${rubisco(150, 182, 104, 36)}
     ${arrow(p, 'clay', 'M150,202 L150,220')}
     ${chain(132, yF, 2, true)}${chain(184, yF, 2, true)}${t(158, yF + 32, '2 × 2-PG', 'fc06-b fc06-pr')}
 
@@ -159,7 +160,7 @@ function organelles(): string {
     ${arrow(p, 'clay', `M322,${yR} L240,${yR}`, 'dashed')}${t(282, yR + 36, 'glycerate', 'fc06-s')}${tag(198, yR - 34, 'ATP', 'atp')}
     ${chain(160, yR, 3)}${t(160, yR + 32, 'PGA', 'fc06-b')}
 
-    ${arrow(p, 'clay', 'M700,184 L728,128', 'dashed')}${molecule(742, 106, 'OCO', 11)}
+    ${gasAr(p, 'M700,184 L728,128', 'dashed')}${molecule(742, 106, 'OCO', 11)}
     ${t(722, 92, '1 C lost', 'fc06-b fc06-pr', 'end')}
 
     <path class="ar ar-ink dashed" d="M640,406 C640,470 610,500 560,500 L250,500 C214,500 196,494 184,480" marker-end="url(#${p}-ink)"/>
@@ -182,7 +183,7 @@ function fourSteps(): string {
     kind === 'chl' ? chloroplast(x, y, 34, 20, 2) : kind === 'per' ? peroxisome(x, y, 18) : mitochondrion(x, y, 32, 19, 4);
   const X = [4, 406], Y = [4, 306];
   const plus = (x: number, y: number): string => t(x, y + 9, '+', 'fc06-h');
-  return svg(p, 'Photorespiration in four numbered steps: Rubisco takes O₂, glycolate becomes glycine, two glycine give serine, CO₂ and NH₃, serine returns as PGA and NH₃ is re-fixed',
+  return svg(p, 'Photorespiration in four numbered steps: RuBisCO takes O₂, glycolate becomes glycine, two glycine give serine, CO₂ and NH₃, serine returns as PGA and NH₃ is re-fixed',
     `${card(1, X[0], Y[0], 'chl', 'Chloroplast', `${icon('chl', X[0] + 340, Y[0] + 36)}
         ${pent(X[0] + 44, Y[0] + 128, 24)}${plus(X[0] + 84, Y[0] + 128)}${molecule(X[0] + 118, Y[0] + 128, 'OO', 11)}
         ${arrow(p, 'clay', `M${X[0] + 146},${Y[0] + 128} L${X[0] + 186},${Y[0] + 128}`)}
@@ -199,7 +200,7 @@ function fourSteps(): string {
         ${chain(X[0] + 52, Y[1] + 112, 2, true)}${chain(X[0] + 52, Y[1] + 144, 2, true)}${t(X[0] + 52, Y[1] + 186, '2 glycine', 'fc06-s')}
         ${arrow(p, 'clay', `M${X[0] + 96},${Y[1] + 128} L${X[0] + 134},${Y[1] + 128}`)}
         ${chain(X[0] + 180, Y[1] + 128, 3, true)}${t(X[0] + 180, Y[1] + 186, 'serine', 'fc06-s')}
-        ${molecule(X[0] + 272, Y[1] + 128, 'OCO', 11)}${t(X[0] + 272, Y[1] + 186, 'CO₂', 'fc06-b fc06-pr')}
+        ${molecule(X[0] + 272, Y[1] + 128, 'OCO', 11)}${t(X[0] + 272, Y[1] + 186, 'CO₂', 'fc06-b')}
         ${nh3(X[0] + 348, Y[1] + 132, 11)}${t(X[0] + 348, Y[1] + 186, 'NH₃', 'fc06-s')}`,
       ['one carbon lost as CO₂'])}
     ${card(4, X[1], Y[1], 'chl', 'Back to the chloroplast', `
@@ -222,7 +223,7 @@ function recycling(): string {
   const both = (x: number, y: number, it: string, real: string, cls = 'fc06-b', a: 'start' | 'middle' | 'end' = 'middle'): string =>
     t(x, y, it, 'fc06-it', a) + t(x, y + 26, real, cls, a);
   return svg(p, 'Analogy: photorespiration as a recycling plant. Misprinted parts (2-PG) pass three workshops (chloroplast, peroxisome, mitochondrion); three of four pieces return to the main line as PGA, one goes up the chimney as CO₂, and every run is paid in ATP and NADPH',
-    `<rect class="node node-rub" x="16" y="44" width="184" height="100" rx="14"/>${both(108, 88, 'stamping press', 'Rubisco')}
+    `<rect class="node node-rub" x="16" y="44" width="184" height="100" rx="14"/>${both(108, 88, 'stamping press', 'RuBisCO')}
     <rect class="fc06-belt" x="214" y="96" width="566" height="20" rx="10"/>
     ${both(497, 54, 'main assembly line', 'Calvin–Benson cycle')}
     ${arrow(p, 'clay', 'M108,148 L108,186', 'dashed')}${part(108, 206, 2)}${part(108, 232, 2)}
@@ -311,9 +312,9 @@ function netGain(): string {
     <rect class="fc06-card fc06-card-pr" x="420" y="372" width="340" height="168" rx="16"/>
     ${t(590, 408, 'two oxygenations', 'fc06-b fc06-pr')}
     ${molecule(484, 442, 'OO', 12)}${molecule(484, 474, 'OO', 12)}${arrow(p, 'clay', 'M514,458 L562,458', 'dashed')}
-    ${molecule(610, 458, 'OCO', 14)}${arrow(p, 'clay', 'M648,458 L700,458')}${t(710, 466, 'out', 'fc06-s', 'start')}
+    ${molecule(610, 458, 'OCO', 14)}${gasAr(p, 'M648,458 L700,458')}${t(710, 466, 'out', 'fc06-s', 'start')}
     ${t(590, 516, '−1 C', 'fc06-pl fc06-pr')}
-    ${t(400, 586, 'Vc, Vo: rates of the two Rubisco reactions; gain before day respiration', 'fc06-n')}`);
+    ${t(400, 586, 'Vc, Vo: rates of the two RuBisCO reactions; gain before day respiration', 'fc06-n')}`);
 }
 
 /* ---------- G · native route vs an engineered bypass ---------- */
@@ -324,24 +325,24 @@ function bypass(): string {
     `${chloroplast(180, cy, 150, 84)}${peroxisome(420, cy, 44, false, eng)}${mitochondrion(558, cy, 64, 42, 4, eng)}
     ${t(180, cy + 112, 'chloroplast', 'fc06-n')}${t(420, cy + 70, 'peroxisome', 'fc06-n')}${t(558, cy + 70, 'mitochondrion', 'fc06-n')}`;
   const cN = 120, cB = 358;
-  return svg(p, 'Native photorespiration releases CO₂ in the mitochondrion; an engineered bypass breaks glycolate down to CO₂ inside the chloroplast, next to Rubisco; field tobacco gained about 24 % biomass',
+  return svg(p, 'Native photorespiration releases CO₂ in the mitochondrion; an engineered bypass breaks glycolate down to CO₂ inside the chloroplast, next to RuBisCO; field tobacco gained 11–24 % biomass in small trials',
     `${t(24, 30, 'native route', 'fc06-h', 'start')}${parts(cN, false)}
     ${rubisco(122, cN - 18, 100, 34)}${chain(250, cN + 22, 2, true)}${t(222, cN + 30, 'glycolate', 'fc06-s', 'end')}
     ${arrow(p, 'clay', `M276,${cN + 14} C304,${cN} 340,${cN} 370,${cN}`, 'dashed')}${arrow(p, 'clay', `M466,${cN} L490,${cN}`, 'dashed')}
-    ${arrow(p, 'clay', `M598,${cN - 34} L628,${cN - 70}`, 'dashed')}${molecule(648, cN - 86, 'OCO', 10)}
+    ${gasAr(p, `M598,${cN - 34} L628,${cN - 70}`, 'dashed')}${molecule(648, cN - 86, 'OCO', 10)}
     ${t(640, cN - 30, 'CO₂ released', 'fc06-s', 'start')}${t(640, cN - 4, 'in the', 'fc06-s', 'start')}${t(640, cN + 22, 'mitochondrion', 'fc06-s', 'start')}
     ${t(640, cN + 56, '1 of 4 C', 'fc06-b fc06-pr', 'start')}
 
     <path class="rule" d="M20,236 H780"/>
     ${t(24, 270, 'engineered bypass', 'fc06-h', 'start')}${parts(cB, true)}
     ${rubisco(110, cB - 18, 100, 34)}${chain(262, cB + 22, 2, true)}${t(266, cB - 8, 'glycolate', 'fc06-s')}
-    ${arrow(p, 'clay', `M236,${cB + 22} L214,${cB + 22}`)}${molecule(186, cB + 22, 'OCO', 9)}${molecule(186, cB + 50, 'OCO', 9)}
+    ${gasAr(p, `M236,${cB + 22} L214,${cB + 22}`)}${molecule(186, cB + 22, 'OCO', 9)}${molecule(186, cB + 50, 'OCO', 9)}
     ${arrow(p, 'clay', `M166,${cB + 14} C150,${cB + 6} 136,${cB} 126,${cB - 2}`, 'dashed')}
     <path class="ar ar-clay dashed fc06-faded" d="M330,${cB} L370,${cB}"/><path class="fc06-block" d="M341,${cB - 11} l18,22 M359,${cB - 11} l-18,22"/>
-    ${t(640, cB - 30, 'CO₂ released', 'fc06-s', 'start')}${t(640, cB - 4, 'next to', 'fc06-s', 'start')}${t(640, cB + 22, 'Rubisco', 'fc06-s', 'start')}
+    ${t(640, cB - 30, 'CO₂ released', 'fc06-s', 'start')}${t(640, cB - 4, 'next to', 'fc06-s', 'start')}${t(640, cB + 22, 'RuBisCO', 'fc06-s', 'start')}
 
     <path class="rule" d="M20,500 H780"/>
-    ${t(400, 544, 'More CO₂ lost, yet more biomass', 'fc06-b')}
+    ${t(400, 544, '', 'fc06-b')}
     ${t(400, 576, 'field tobacco, small trials; the cause is not settled', 'fc06-n')}`);
 }
 
@@ -369,7 +370,7 @@ function costCurve(): string {
     <text class="fc06-s" transform="translate(${x0 - 56} ${(tY0 + tY1) / 2}) rotate(-90)" text-anchor="middle">carboxylation</text>
     ${t(X(0.12), Yt(0.22), 'kept', 'fc06-b', 'start')}
     ${t(X(1.3), Yt(0.84), 'lost to', 'fc06-b fc06-pr', 'start')}${t(X(1.3), Yt(0.84) + 26, 'photorespiration', 'fc06-b fc06-pr', 'start')}
-    <circle class="fc06-dot" cx="${X(2)}" cy="${Yt(0)}" r="7"/>${t(X(2) + 4, Yt(0) + 34, 'at 2: two oxygenations cancel one carboxylation', 'fc06-s', 'end')}
+    <circle class="fc06-dot" cx="${X(2)}" cy="${Yt(0)}" r="7"/>${t(X(2) + 4, Yt(0) + 28, 'at 2: two oxygenations cancel one carboxylation;', 'fc06-s', 'end')}${t(X(2) + 4, Yt(0) + 52, 'the CO₂ level where this happens is Γ*', 'fc06-s', 'end')}
 
     <path class="axis" d="M${x0},${bY1 - 10} V${bY0} H${x1}"/>
     <path class="fc06-asym" d="M${X(2)},${bY1 - 10} V${bY0}"/>
@@ -415,7 +416,7 @@ function glycineStep(): string {
     ${glycine(126, 142)}${glycine(126, 262)}${t(118, 210, '2 glycine', 'fc06-b')}
     ${arrow(p, 'clay', 'M232,202 L304,202')}${t(268, 182, 'GDC', 'fc06-n')}${t(268, 234, 'SHMT', 'fc06-n')}
     ${serine(420, 216)}${t(410, 302, 'serine', 'fc06-b')}
-    ${molecule(612, 138, 'OCO', 15)}${t(612, 182, 'CO₂', 'fc06-b fc06-pr')}${t(612, 206, 'also NADH', 'fc06-n')}
+    ${molecule(612, 138, 'OCO', 15)}${t(612, 182, 'CO₂', 'fc06-b')}${t(612, 206, 'also NADH', 'fc06-n')}
     ${nh3(612, 264, 15)}${t(612, 312, 'NH₃', 'fc06-b')}
 
     <path class="rule" d="M40,388 H760"/>
@@ -440,7 +441,7 @@ function fourToThree(): string {
     ${t(274, 156, 'three organelles', 'fc06-n')}
     ${chain(470, 265, 3, false, 16, 40)}${t(470, 360, 'PGA', 'fc06-h')}${t(470, 392, '3 C back', 'fc06-pl')}
     ${t(578, 276, '+', 'fc06-pl')}
-    ${molecule(680, 265, 'OCO', 20)}${t(680, 360, 'CO₂', 'fc06-h fc06-pr')}${t(680, 392, '1 C lost', 'fc06-pl fc06-pr')}
+    ${molecule(680, 265, 'OCO', 20)}${t(680, 360, 'CO₂', 'fc06-h')}${t(680, 392, '1 C lost', 'fc06-pl fc06-pr')}
     ${tag(330, 480, 'ATP', 'atp')}${tag(450, 480, 'NADPH', 'nadph')}${t(400, 536, 'spent on the way', 'fc06-s')}
     </g>`);
 }

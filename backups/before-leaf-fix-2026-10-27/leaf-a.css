@@ -1,0 +1,44 @@
+/* Into the leaf, staging A · Side by side, and the scenes staging B shares (leaf-a.ts). Scoped under both stagings'
+   classes, prefixed .lf- */
+
+/* labels: 22 px and up */
+:is(.ani-leaf-a,.ani-leaf-b) text.lf-head{font-size:26px;font-weight:600;fill:#141413}
+:is(.ani-leaf-a,.ani-leaf-b) text.lf-lab{font-size:24px;font-weight:500;fill:#3d3d3a}
+:is(.ani-leaf-a,.ani-leaf-b) text.lf-dimt{font-size:22px;font-weight:600;fill:#3d3d3a}
+:is(.ani-leaf-a,.ani-leaf-b) text.lf-pill{font-size:22px;font-weight:600;fill:#141413}
+:is(.ani-leaf-a,.ani-leaf-b) .lf-pillbg{fill:#fffdf8;opacity:.92}
+:is(.ani-leaf-a,.ani-leaf-b) .lf-lead{fill:none;stroke:#6b6a64;stroke-width:1.6;stroke-linecap:round}
+:is(.ani-leaf-a,.ani-leaf-b) .lf-dim{fill:none;stroke:#3d3d3a;stroke-width:1.8;stroke-linecap:round}
+/* the complexes' colours, as on slide 9 (Wietrzynski et al.) */
+:is(.ani-leaf-a,.ani-leaf-b) tspan.lf-c-psii{fill:#2a5fc9;font-weight:700}
+:is(.ani-leaf-a,.ani-leaf-b) tspan.lf-c-lhc{fill:#5f8a45;font-weight:700}
+:is(.ani-leaf-a,.ani-leaf-b) tspan.lf-c-psi{fill:#3f9a1f;font-weight:700}
+:is(.ani-leaf-a,.ani-leaf-b) tspan.lf-c-atp{fill:#d0458e;font-weight:700}
+
+/* panels and photos */
+:is(.ani-leaf-a,.ani-leaf-b) .lf-frame{fill:none;stroke:#dcd8cc;stroke-width:1.5}
+:is(.ani-leaf-a,.ani-leaf-b) .lf-photo{fill:none;stroke:#d8d5cb;stroke-width:1.2}
+
+/* beat 1: cells, chloroplasts, light */
+:is(.ani-leaf-a,.ani-leaf-b) .lf-wall{fill:#f6f8ef;stroke:#a9c092;stroke-width:8}
+:is(.ani-leaf-a,.ani-leaf-b) .lf-pm{fill:none;stroke:#c9d8b8;stroke-width:1.2}
+:is(.ani-leaf-a,.ani-leaf-b) .lf-cp{fill:#8dbb6c;stroke:#4f7a3c;stroke-width:1.5}
+:is(.ani-leaf-a,.ani-leaf-b) .lf-cpg{fill:none;stroke:#3d6332;stroke-width:3;stroke-linecap:round}
+:is(.ani-leaf-a,.ani-leaf-b) .lf-arr{fill:none;stroke:#e3a51c;stroke-linecap:round}
+:is(.ani-leaf-a,.ani-leaf-b) .lf-arr-d{stroke-width:3;opacity:.8}
+:is(.ani-leaf-a,.ani-leaf-b) .lf-arr-b{stroke-width:6}
+
+/* beat 2: chloroplast */
+:is(.ani-leaf-a,.ani-leaf-b) .lf-env{fill:#e8f0da;stroke:#6f9a5a;stroke-width:2.2}
+:is(.ani-leaf-a,.ani-leaf-b) .lf-env2{fill:none;stroke:#6f9a5a;stroke-width:1.4}
+:is(.ani-leaf-a,.ani-leaf-b) .lf-lam{fill:none;stroke:#4f7a3c;stroke-linecap:round}
+:is(.ani-leaf-a,.ani-leaf-b) .lf-gr{fill:#3f6634}
+:is(.ani-leaf-a,.ani-leaf-b) .lf-grl{fill:none;stroke:#a9c58f;stroke-width:.6}
+
+/* beat 3: membranes and complexes */
+:is(.ani-leaf-a,.ani-leaf-b) .lf-mem{fill:#ecdfbc;stroke:#c2a66a;stroke-width:1.2}
+:is(.ani-leaf-a,.ani-leaf-b) .lf-lum{fill:#e6eef6;stroke:#c2a66a;stroke-width:1.2}
+:is(.ani-leaf-a,.ani-leaf-b) .lf-psii{fill:#b4c8f2;stroke:#2a5fc9;stroke-width:1.6}
+:is(.ani-leaf-a,.ani-leaf-b) .lf-lhc{fill:#dce7cf;stroke:#7d9a62;stroke-width:1.4}
+:is(.ani-leaf-a,.ani-leaf-b) .lf-psi{fill:#bfe0a8;stroke:#3f9a1f;stroke-width:1.6}
+:is(.ani-leaf-a,.ani-leaf-b) .lf-atp{fill:#f3c3dc;stroke:#d0458e;stroke-width:1.6}

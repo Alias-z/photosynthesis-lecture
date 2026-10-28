@@ -1,0 +1,50 @@
+/* Slide 9 (redo) figure styles, scoped under .theme-editorial and prefixed .fs09- */
+
+/* axes and labels */
+.theme-editorial .fig text.fs09-l{font-size:20px;fill:#3d3d3a}
+.theme-editorial .fig text.fs09-ax{font-size:18px;fill:#3d3d3a}
+.theme-editorial .fig text.fs09-axt{font-size:19px;fill:#3d3d3a}
+.theme-editorial .fig text.fs09-red{font-size:17px;font-weight:600;fill:#b8301b}
+.theme-editorial .fig text.fs09-grey{font-size:17px;font-weight:600;fill:#6b6a64}
+.theme-editorial .fig tspan.fs09-sub{font-size:.72em}
+
+/* Z-scheme */
+.theme-editorial .fs09-zax{fill:none;stroke:#8a877d;stroke-width:1.6}
+.theme-editorial .fs09-zl{fill:none;stroke:#3d3d3a;stroke-width:2;stroke-linecap:round}
+.theme-editorial .fs09-zlt{fill:none;stroke:#d9892b;stroke-width:4.2;stroke-linecap:round}
+.theme-editorial .fs09-hd-ink{fill:#3d3d3a}
+.theme-editorial .fs09-hd-lt{fill:#d9892b}
+.theme-editorial .fs09-zd{fill:#2b2a27}
+.theme-editorial .fs09-zdm{fill:#fffdf8;stroke:#6b6a64;stroke-width:1.8}
+.theme-editorial .fig text.fs09-zlab{font-size:20px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fs09-zmin{font-size:17px;fill:#6b6a64}
+.theme-editorial .fig text.fs09-zps{font-size:21px;font-weight:700;fill:#a0601a}
+.theme-editorial .fig text.fs09-val{font-size:16px;fill:#6b6a64}
+.theme-editorial .fig text.fs09-key{font-size:16px;fill:#4a4945}
+.theme-editorial .fig tspan.fs09-keyb{font-weight:700;fill:#141413}
+
+/* real figures: credits, label pills, leaders, markers */
+.theme-editorial .fig text.fs09-cr{font-size:13px;fill:#fffdf8}
+.theme-editorial .fig text.fs09-crd{font-size:14px;fill:#8a877d}
+.theme-editorial .fig text.fs09-pill{font-size:17px;font-weight:600;fill:#141413}
+.theme-editorial .fs09-pillbg{fill:#fffdf8;opacity:.94}
+.theme-editorial .fs09-pillbg-t{fill:#f3f1ea;stroke:#d8d5cb;stroke-width:1}
+.theme-editorial .fs09-credbg{fill:#141413;opacity:.45}
+.theme-editorial .fs09-mult{mix-blend-mode:multiply}
+.theme-editorial .fs09-ldh{fill:none;stroke:#fffdf8;stroke-width:4.2;stroke-linecap:round;opacity:.9}
+.theme-editorial .fs09-ldk{fill:none;stroke:#141413;stroke-width:1.5;stroke-linecap:round}
+.theme-editorial .fs09-tipd{fill:#141413;stroke:#fffdf8;stroke-width:1.5}
+.theme-editorial .fs09-ring{fill:none;stroke:#c8361e;stroke-width:2.4}
+
+.theme-editorial .fig text.fs09-pills{font-size:15px;font-weight:600;fill:#141413}
+.theme-editorial .fs09-bring{fill:none;stroke:#d9892b;stroke-width:3}
+.theme-editorial .fig tspan.fs09-c-h{fill:#2350e6;font-weight:700}
+.theme-editorial .fig tspan.fs09-c-e{fill:#c8361e;font-weight:700}
+
+/* particle and membrane-domain colours of Wietrzynski et al. */
+.theme-editorial .fig tspan.fs09-c-psii{fill:#2a5fc9;font-weight:700}
+.theme-editorial .fig tspan.fs09-c-b6f{fill:#c78a12;font-weight:700}
+.theme-editorial .fig tspan.fs09-c-psi{fill:#3f9a1f;font-weight:700}
+.theme-editorial .fig tspan.fs09-c-atp{fill:#d0458e;font-weight:700}
+.theme-editorial .fig tspan.fs09-c-teal{fill:#0e9aa7;font-weight:700}
+.theme-editorial .fig tspan.fs09-c-yel{fill:#a88a00;font-weight:700}

@@ -1,0 +1,73 @@
+/* The CO₂-fixation overview (figs/cbb-schema.ts) in the style of the light-reaction chain 7m1 (figs/chain.ts, glyph
+   mode). Parts are wrapped in .chn-on / .chn-off, so chain.css dims glyphs (.chn-g), waves (.chn-lw) and the shared
+   text classes; the rules here add the cycle's own lines, names and compartments. Prefix .cbb-. */
+
+/* ---------- text ---------- */
+.theme-editorial .fig text.cbb-mn{font-size:17px;font-weight:700;fill:#141413}
+.theme-editorial .fig text.cbb-cnt{font-size:15px;font-weight:600;fill:#3d3d3a}
+.theme-editorial .fig text.cbb-proc{font-size:17px;font-weight:600;font-style:italic;fill:#3d3d3a}
+.theme-editorial .fig text.cbb-proc-pr{fill:#9a4426}
+.theme-editorial .fig text.cbb-org{font-size:17px;font-weight:600;fill:#8a877d;letter-spacing:.02em}
+.theme-editorial .fig text.cbb-zone{font-size:19px;font-weight:600;fill:#8a877d;letter-spacing:.03em}
+.theme-editorial .fig text.cbb-key{font-size:15px;font-weight:700;fill:#3d3d3a}
+.theme-editorial .fig text.cbb-cr{font-size:13px;fill:#8a877d}
+.theme-editorial .fig text.cbb-halo{paint-order:stroke;stroke:#f6f4ec;stroke-width:5px;stroke-linejoin:round}
+.theme-editorial .fig text.cbb-lim{font-size:18px;font-weight:700}
+.theme-editorial .fig text.cbb-limk{font-size:15px;font-weight:700}
+.theme-editorial .cbb-limtag{fill:#fbfaf6;stroke-width:2.2}
+.theme-editorial .fig text.cbb-limsub{font-size:15px;font-weight:600;fill:#3d3d3a}
+.theme-editorial .fig tspan.cbb-sub{font-size:12px}
+.theme-editorial .fig .chn-off text.cbb-mn{fill:#8f8c83;font-weight:600}
+.theme-editorial .fig .chn-off text.cbb-cnt{fill:#a9a69c;font-weight:500}
+.theme-editorial .fig .chn-off text.cbb-proc{fill:#aaa79e;font-weight:500}
+.theme-editorial .fig .chn-off text.cbb-org{fill:#b5b2a8}
+
+/* ---------- carbon and gas paths: the cycle in ink, photorespiration rust, gases grey; ATP clay, NADPH blue ---------- */
+.theme-editorial .cbb-a{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .cbb-halo-l{fill:none;stroke:#f6f4ec;stroke-width:9;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .cbb-a-c{stroke:#2b2a27;stroke-width:3.6}.theme-editorial .cbb-h-c{fill:#2b2a27}
+.theme-editorial .cbb-a-pr{stroke:#b5532f;stroke-width:3.4}.theme-editorial .cbb-h-pr{fill:#b5532f}
+.theme-editorial .cbb-a-thin{stroke-width:2.4}
+.theme-editorial .cbb-a-gas{stroke:#6b6a64;stroke-width:2.8}.theme-editorial .cbb-h-gas{fill:#6b6a64}
+.theme-editorial .cbb-a-atp{stroke:#d97757;stroke-width:2.8}.theme-editorial .cbb-h-atp{fill:#d97757}
+.theme-editorial .cbb-a-nadph{stroke:#4f7cac;stroke-width:2.8}.theme-editorial .cbb-h-nadph{fill:#4f7cac}
+.theme-editorial .cbb-a-ret{stroke:#8a877d;stroke-width:2.4;stroke-dasharray:7 5}.theme-editorial .cbb-h-ret{fill:#8a877d}
+.theme-editorial .chn-off .cbb-a-c{stroke:#ccc8bd;stroke-width:2.8}.theme-editorial .chn-off .cbb-h-c{fill:#ccc8bd}
+.theme-editorial .chn-off .cbb-a-pr{stroke:#e6cbbf;stroke-width:2.8}.theme-editorial .chn-off .cbb-h-pr{fill:#e6cbbf}
+.theme-editorial .chn-off .cbb-a-gas{stroke:#d6d3ca}.theme-editorial .chn-off .cbb-h-gas{fill:#d6d3ca}
+.theme-editorial .chn-off .cbb-a-atp{stroke:#efd3c5}.theme-editorial .chn-off .cbb-h-atp{fill:#efd3c5}
+.theme-editorial .chn-off .cbb-a-nadph{stroke:#cdd9e7}.theme-editorial .chn-off .cbb-h-nadph{fill:#cdd9e7}
+.theme-editorial .chn-off .cbb-a-ret{stroke:#dedbd2}.theme-editorial .chn-off .cbb-h-ret{fill:#dedbd2}
+
+/* ---------- compartments: membranes in the bilayer's tan, quiet ---------- */
+.theme-editorial .cbb-stroma{fill:#f4f3ea;opacity:.8}
+.theme-editorial .cbb-cyto{fill:#fbfaf6;opacity:.55}
+.theme-editorial .cbb-env{fill:none;stroke:#c9b27a;stroke-width:7.5}
+.theme-editorial .cbb-env2{fill:none;stroke:#f6f1e1;stroke-width:3.2}
+.theme-editorial .cbb-perox{fill:#fbf7ea;stroke:#c9b27a;stroke-width:2.6}
+.theme-editorial .cbb-mito{fill:#fbf3ee;stroke:#c99a86;stroke-width:2.6}
+.theme-editorial .cbb-mito-in{fill:none;stroke:#e2bfb0;stroke-width:2.2;stroke-linejoin:round}
+.theme-editorial .chn-off .cbb-perox{fill:#fbfaf6;stroke:#ddd8c9}
+.theme-editorial .chn-off .cbb-mito{fill:#fbfaf6;stroke:#e2d8d2}
+.theme-editorial .chn-off .cbb-mito-in{stroke:#ece5e0}
+.theme-editorial .cbb-trans{fill:#fbf7ea;stroke:#8a877d;stroke-width:1.6}
+.theme-editorial .chn-off .cbb-trans{stroke:#d6d3ca}
+/* the thylakoid (bilayer as in 7m1: chain.css .chn-bil, .chn-head, .chn-tail, .chn-lumenf) */
+.theme-editorial .cbb-band{fill:none;stroke:#f8f2e0}
+.theme-editorial .cbb-disc-in{fill:#e3ecf1;opacity:.85}
+.theme-editorial .chn-off.cbb-thyl{opacity:.5}
+
+/* ---------- glyph mode extras ---------- */
+.theme-editorial .cbb-n{fill:#9dbbdb;stroke:#3f6f99;stroke-width:1.3}
+.theme-editorial .fig text.cbb-nt{font-size:12px;font-weight:700;fill:#1f3550}
+.theme-editorial .cbb-ktag{stroke-width:1.4}
+
+/* ---------- FvCB limits ---------- */
+.theme-editorial .cbb-box{fill:none;stroke-width:2.4;stroke-dasharray:9 6}
+.theme-editorial .cbb-box-c{stroke:#b23a2e}.theme-editorial .cbb-box-j{stroke:#137a8b}.theme-editorial .cbb-box-p{stroke:#6b4c99}
+.theme-editorial .fig text.cbb-lim-c{fill:#b23a2e}.theme-editorial .fig text.cbb-lim-j{fill:#137a8b}.theme-editorial .fig text.cbb-lim-p{fill:#6b4c99}
+.theme-editorial .cbb-limbg{fill:#fbfaf6;opacity:.92}
+
+/* ---------- views ---------- */
+.theme-editorial .cbb-mapbg{fill:#fbfaf6;stroke:#d8d5cb;stroke-width:1.2}
+.theme-editorial .cbb-mark{fill:none;stroke:#e3a21a;stroke-width:2.4}

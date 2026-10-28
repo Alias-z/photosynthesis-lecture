@@ -13,7 +13,7 @@ import type { Variant } from '../types';
 import './lead01.css';
 import { bolt } from '../illus';
 import { leaf, sun } from './s2';
-import { arr, co2, drop, loaf, marks, o2, ring, station, stepIcon, wheat } from './l01';
+import { arr, co2, h2oG, loaf, marks, o2, ring, station, stepIcon, wheat } from './l01';
 
 // The lecturer's pick (26 Oct 2026). Unlisted variants (k, m, n, o, d) still draw by id.
 export const VARIANTS: Variant[] = [
@@ -312,12 +312,12 @@ const oWords = `${Q(178, 84, 'Photo', 80)}${Q(616, 84, 'synthesis', 80)}
 /** O's photo half (sun, bolt, leaf; with water in and O₂ out when io is set), moved down by dy. */
 const oPhoto = (p: string, dy: number, io: boolean): string => `
     ${sun(54, 206 + dy, 20)}${bolt(p, 78, 226 + dy, 116, 262 + dy)}${bigLeaf(`${p}-leaf`, 190, 300 + dy, 150, 66, -18)}
-    ${io ? `${drop(64, 388 + dy)}${arr(p, 'w', `M80,${368 + dy} Q102,${344 + dy} 128,${328 + dy}`)}
+    ${io ? `${h2oG(64, 388 + dy)}${arr(p, 'w', `M80,${368 + dy} Q102,${344 + dy} 128,${328 + dy}`)}
     ${arr(p, 'w', `M226,${338 + dy} Q242,${362 + dy} 250,${388 + dy}`)}${o2(256, 408 + dy, 9)}` : ''}`;
 /** O's synthesis half without its cycle: CO₂ from the air comes down into the sugar hexagon (where O's cycle
  *  turned), and sugar goes on to wheat and bread. The "?" link arrives from the left. */
 const oSynth = (p: string, dy: number): string => `
-    ${co2(530, 190 + dy, 9)}${arr(p, 'c', `M530,${208 + dy} V${266 + dy}`)}
+    ${co2(530, 190 + dy, 9)}${arr(p, 'w', `M530,${208 + dy} V${266 + dy}`)}
     ${ring(530, 293 + dy, 20)}
     ${arr(p, 'c', `M554,${302 + dy} Q592,${310 + dy} 600,${348 + dy}`)}
     ${wheat(640, 366 + dy, 104)}${loaf(732, 470 + dy, 104)}`;
@@ -336,7 +336,7 @@ function drawK(): string {
     ${Ts(178, 162, 'catching sunlight', 'fld01-topic', 24, 'middle')}${Ts(616, 162, 'building sugar from air', 'fld01-topic', 24, 'middle')}
     <path class="fld01-cut" d="M400,36 V${293 + dy - 44} M400,${293 + dy + 44} V${490 + dy}"/>
     ${oPhoto(p, dy, false)}${oSynth(p, dy)}${oLink(p, dy)}
-    ${Ts(560, 198 + dy, 'CO₂', 'fld01-term fld01-c', 22)}${Ts(530, 348 + dy, 'sugar', 'fld01-term fld01-c', 22, 'middle')}
+    ${Ts(560, 198 + dy, 'CO₂', 'fld01-term fld01-m', 22)}${Ts(530, 348 + dy, 'sugar', 'fld01-term fld01-m', 22, 'middle')}
   `) + T(800, 842, 'How does a leaf turn sunlight into food?', 'fld01-prompt', 'middle'));
 }
 
@@ -358,7 +358,7 @@ function drawL(): string {
       ${oPhoto(p, 0, true)}${oSynth(p, 0)}${oLink(p, 0)}
       ${Ts(106, 214, 'light', 'fld01-term fld01-l', 22)}
       ${Ts(64, 432, 'H₂O', 'fld01-term fld01-w', 22, 'middle')}${Ts(280, 417, 'O₂', 'fld01-term fld01-w', 22)}
-      ${Ts(560, 198, 'CO₂', 'fld01-term fld01-c', 22)}${Ts(530, 348, 'sugar', 'fld01-term fld01-c', 22, 'middle')}
+      ${Ts(560, 198, 'CO₂', 'fld01-term fld01-m', 22)}${Ts(530, 348, 'sugar', 'fld01-term fld01-m', 22, 'middle')}
       ${Ts(732, 500, 'bread', 'fld01-term fld01-c', 22, 'middle')}`)}
     ${pill(at(178), 'lecture 1 · 45 min')}${pill(at(616), 'lecture 2 · 45 min')}
     ${T(800, 830, 'How do light, water and air become bread?', 'fld01-prompt', 'middle')}
@@ -374,7 +374,7 @@ function drawM(): string {
     ${Ts(178, 172, 'How does a leaf catch light?', 'fld01-halfq', 27, 'middle')}${Ts(616, 172, 'How does it build food from air?', 'fld01-halfq', 27, 'middle')}
     <path class="fld01-cut" d="M400,36 V${490 + dy}"/>
     ${oPhoto(p, dy + 22, false)}${oSynth(p, dy)}
-    ${Ts(560, 198 + dy, 'CO₂', 'fld01-term fld01-c', 22)}${Ts(530, 348 + dy, 'sugar', 'fld01-term fld01-c', 22, 'middle')}
+    ${Ts(560, 198 + dy, 'CO₂', 'fld01-term fld01-m', 22)}${Ts(530, 348 + dy, 'sugar', 'fld01-term fld01-m', 22, 'middle')}
   `) + T(800, 842, 'How does sunlight end up on our plate?', 'fld01-prompt', 'middle'));
 }
 
@@ -392,9 +392,9 @@ function drawN(): string {
     ${card(720, top, 160, h)}${qm(800, cy + 40, 110)}
     ${arr(p, 'k', `M886,${cy} H912`)}
     ${card(920, top, 540, h)}${Ts(948, top + 46, 'Building sugar from air', 'fld01-ctitle', 28)}
-    ${place([0, 0], [1010, cy], 1.5, co2(0, 0, 9))}${Ts(1010, cy - 38, 'CO₂', 'fld01-term fld01-c', 28, 'middle')}
-    ${arr(p, 'c', `M1052,${cy} H1092`)}
-    ${place([0, 0], [1124, cy], 1.4, ring(0, 0, 20))}${Ts(1124, cy - 46, 'sugar', 'fld01-term fld01-c', 28, 'middle')}
+    ${place([0, 0], [1010, cy], 1.5, co2(0, 0, 9))}${Ts(1010, cy - 38, 'CO₂', 'fld01-term fld01-m', 28, 'middle')}
+    ${arr(p, 'w', `M1052,${cy} H1092`)}
+    ${place([0, 0], [1124, cy], 1.4, ring(0, 0, 20))}${Ts(1124, cy - 46, 'sugar', 'fld01-term fld01-m', 28, 'middle')}
     ${arr(p, 'c', `M1158,${cy} H1196`)}
     ${place([650, 273], [1330, cy + 6], 1.0, synthB())}
     ${T(800, 720 + Y, 'How does sunlight make life on Earth possible?', 'fld01-prompt', 'middle')}

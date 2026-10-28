@@ -1,0 +1,41 @@
+/* Slide 10 (redo) figure styles, scoped under .theme-editorial and prefixed .fs10- */
+
+/* text */
+.theme-editorial .fig text.fs10-l{font-size:19px;fill:#3d3d3a}
+.theme-editorial .fig text.fs10-h{font-size:20px;font-weight:700;fill:#141413}
+.theme-editorial .fig text.fs10-note{font-size:17px;fill:#6b6a64}
+.theme-editorial .fig text.fs10-ax{font-size:18px;fill:#3d3d3a}
+.theme-editorial .fig text.fs10-axt{font-size:18px;fill:#3d3d3a}
+.theme-editorial .fig text.fs10-cat{font-size:18px;fill:#2b2a27}
+.theme-editorial .fig text.fs10-cats{font-size:16px;fill:#2b2a27}
+.theme-editorial .fig text.fs10-val{font-size:18px;font-weight:600;fill:#4a4945}
+.theme-editorial .fig text.fs10-val1{font-size:22px;font-weight:700;fill:#1f5f8b}
+.theme-editorial .fig text.fs10-hlab{font-size:19px;font-weight:700;fill:#2350e6}
+.theme-editorial .fig tspan.fs10-sub{font-size:.72em}
+
+/* protocol boxes, bars, axes, arrows */
+.theme-editorial .fs10-acid{fill:#fbe9dc;stroke:#d7a27c;stroke-width:1.4}
+.theme-editorial .fs10-base{fill:#e3edf6;stroke:#8fb0cf;stroke-width:1.4}
+.theme-editorial .fs10-ar{fill:none;stroke:#3d3d3a;stroke-width:2.4}
+.theme-editorial .fs10-hd-ink{fill:#3d3d3a}
+.theme-editorial .fs10-axis{fill:none;stroke:#8a877d;stroke-width:1.6}
+.theme-editorial .fs10-bar1{fill:#2f6f9f}
+.theme-editorial .fs10-bar2{fill:#9bb5c9}
+.theme-editorial .fs10-bar3{fill:#cfccc1}
+.theme-editorial .fs10-hpath{fill:none;stroke:#2350e6;stroke-width:3.4;stroke-linecap:round}
+.theme-editorial .fs10-hd-h{fill:#2350e6}
+
+/* real figures: credits, label pills, leaders */
+.theme-editorial .fig text.fs10-cr{font-size:13px;fill:#fffdf8}
+.theme-editorial .fig text.fs10-crd{font-size:14px;fill:#8a877d}
+.theme-editorial .fig text.fs10-pill{font-size:17px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fs10-pills{font-size:15px;font-weight:600;fill:#141413}
+.theme-editorial .fs10-pillbg{fill:#fffdf8;opacity:.94}
+.theme-editorial .fs10-pillbg-t{fill:#f3f1ea;stroke:#d8d5cb;stroke-width:1}
+.theme-editorial .fs10-credbg{fill:#141413;opacity:.45}
+.theme-editorial .fs10-mult{mix-blend-mode:multiply}
+.theme-editorial .fs10-ldh{fill:none;stroke:#fffdf8;stroke-width:4.2;stroke-linecap:round;opacity:.9}
+.theme-editorial .fs10-ldk{fill:none;stroke:#141413;stroke-width:1.5;stroke-linecap:round}
+.theme-editorial .fs10-tipd{fill:#141413;stroke:#fffdf8;stroke-width:1.5}
+.theme-editorial .fig tspan.fs10-c-h{fill:#2350e6;font-weight:700}
+.theme-editorial .fig tspan.fs10-c-e{fill:#c8361e;font-weight:700}

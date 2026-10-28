@@ -1,0 +1,48 @@
+/* rf5 and rf6 animations on the rf schema (rf56-kit.ts). The schema keeps rf-schema.css's look; these are the slide's
+   figure card, the story's glyphs and the cards on the stage. Scoped under .rf56. */
+.rf56 .rfs g{transition:none}
+.rf56 .rf-slidecard{fill:rgba(255,254,250,.58);stroke:rgba(120,100,60,.10);stroke-width:1}
+
+/* glyphs drawn in the schema (counter-scaled with the camera) */
+.rf56 .rf-chip{fill:#fffdf8;stroke:#6b6a64;stroke-width:1.6}
+.rf56 .rf-chip.rf-chip-o{stroke:#c0502c}
+.theme-editorial .rf56 .fig text.rf-chipt{font-size:17px;font-weight:700;fill:#141413}
+.rf56 .rf-bc{fill:#3d3d3a;stroke:#fbfaf6;stroke-width:1.6}
+.rf56 .rf-bn{fill:#3f7fb8;stroke:#fbfaf6;stroke-width:1.6}
+.rf56 .rf-flash{fill:#f6c453}
+.rf56 .rf-halo{fill:none;stroke:#f0a316;stroke-width:4;opacity:.9}
+.rf56 .rf-site{fill:rgba(246,196,83,.28);stroke:#2b2a27;stroke-width:2;stroke-dasharray:5 4}
+.rf56 .rf-veil{fill:#f7f6f0}
+.rf56 .rf-frame{fill:none;stroke:#6b6a64;stroke-width:1.5}
+.rf56 .rf-mshadow{fill:#fffdf8}
+.theme-editorial .rf56 .fig text.rf-lab{font-size:20px;font-weight:700;fill:#141413}
+.theme-editorial .rf56 .fig text.rf-lab-o{fill:#b5482a}
+.theme-editorial .rf56 .fig text.rf-halo-t{paint-order:stroke;stroke:#faf9f5;stroke-width:6px;stroke-linejoin:round}
+.rf56 .rf-pillbg{fill:#fffdf8;stroke:#d8d5cb;stroke-width:1.2;opacity:.96}
+
+/* cards on the stage */
+.rf56 .rf-paper{fill:#f6f1e5;stroke:#d3cdbd;stroke-width:1}
+.rf56 .rf-panel{fill:#fffdf8;stroke:#d8d5cb;stroke-width:1.4}
+.theme-editorial .rf56 .rf-cards text.rf-cname{font-family:Newsreader,Georgia,serif;font-size:28px;font-weight:500;fill:#2b2a27}
+.theme-editorial .rf56 .rf-cards text.rf-cjour{font-family:Newsreader,Georgia,serif;font-size:21px;font-style:italic;fill:#5c5a52}
+.theme-editorial .rf56 .rf-cards text.rf-ctitle{font-family:Newsreader,Georgia,serif;font-size:30px;font-weight:500;fill:#141413}
+.theme-editorial .rf56 .rf-cards text.rf-cauth{font-family:Newsreader,Georgia,serif;font-size:22px;fill:#2b2a27}
+.theme-editorial .rf56 .rf-cards text.rf-ct{font-size:22px;font-weight:600;fill:#2b2a27}
+.theme-editorial .rf56 .rf-cards text.rf-cs{font-size:20px;font-weight:500;fill:#5c5a52}
+.theme-editorial .rf56 .rf-cards text.rf-cbig{font-size:40px;font-weight:700;fill:#141413}
+.theme-editorial .rf56 .rf-cards text.rf-cbig-o{fill:#b5482a}
+.theme-editorial .rf56 .rf-cards text.rf-ccr{font-size:14px;fill:#8a877d}
+.rf56 .rf-cards .rf-tube{fill:#fffdf8;stroke:#6b6a64;stroke-width:2}
+.rf56 .rf-cards .rf-merc{fill:#c94a3c}
+.rf56 .rf-cards .rf-tick{stroke:#6b6a64;stroke-width:1.6}
+.rf56 .rf-cards .rf-rule{stroke:#d8d5cb;stroke-width:1.4}
+.rf56 .rf-cards .rf-mark{fill:none;stroke:#b5482a;stroke-width:2.4;stroke-dasharray:7 5}
+.rf56 .rf-cards .rf-bc{fill:#3d3d3a;stroke:#fbfaf6;stroke-width:1.6}
+.rf56 .rf-cards .rf-bn{fill:#3f7fb8;stroke:#fbfaf6;stroke-width:1.6}
+.rf56 .rf-cards .rf-cmult{mix-blend-mode:multiply}
+.rf56 .rf-cards .rf-ar{fill:none;stroke:#3d3d3a;stroke-width:2.6;stroke-linecap:round}
+.rf56 .rf-cards .rf-ar-hd{fill:#3d3d3a}
+.theme-editorial .rf56 .fig text.rf-sub{font-size:16px;font-weight:500;fill:#6b6a64}
+.rf56 .rf-cards .rf-bar-o{fill:#e7a07e}
+.rf56 .rf-cards .rf-bar-k{fill:#9db97d}
+.theme-editorial .rf56 .rf-cards text.rf-halo-c{paint-order:stroke;stroke:#fbf8f0;stroke-width:6px;stroke-linejoin:round}

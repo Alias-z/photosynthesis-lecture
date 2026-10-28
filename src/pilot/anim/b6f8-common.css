@@ -1,0 +1,5 @@
+/* Cytochrome b₆f on the slide 8 schema (b6f8-common.ts), stagings A and B. The schema keeps chain.css's look; these are
+   the slide's figure card and the story's glyphs (electrons dark, as on slide 7's animation; H⁺ red as chain.css). */
+:is(.ani-b6f-a,.ani-b6f-b) .p8-slidecard{fill:rgba(255,254,250,.58);stroke:rgba(120,100,60,.10);stroke-width:1}
+:is(.ani-b6f-a,.ani-b6f-b) .p8-e{fill:#2b2a27;stroke:#fbfaf6;stroke-width:1.6}
+:is(.ani-b6f-a,.ani-b6f-b) .fig text.p8-elab{font-size:20px;font-weight:700;fill:#2b2a27}

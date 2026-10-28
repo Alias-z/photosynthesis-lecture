@@ -1,0 +1,31 @@
+/* Slide 6 lead page, scoped under .theme-editorial and prefixed .fld06- (leaf from s2.css, O₂ from l01.css, the bench and
+   clipping from anim/antenna-common.css and figs/clipping.css) */
+
+/* Text. */
+.theme-editorial .lead-fig text.fld06-prompt{font-size:30px;fill:#6b6a64}
+.theme-editorial .lead-fig text.fld06-lab{font-size:28px;fill:#3d3d3a}
+.theme-editorial .lead-fig text.fld06-o2{font-weight:600;fill:#2a62a0}
+.theme-editorial .lead-fig text.fld06-credit{font-size:16px;fill:#8a877d}
+.theme-editorial .lead-fig text.fld06-qm{font-family:Newsreader,Georgia,serif;font-size:96px;fill:#a9532f}
+.theme-editorial .lead-fig text.fld06-pill-t{font-size:24px;font-weight:600;fill:#141413}
+
+/* Real images: a paper mat and hairline edge for photos; engravings multiplied into the page. */
+.theme-editorial .fld06-mat{fill:#fffdf8}
+.theme-editorial .fld06-edge{fill:none;stroke:rgba(120,100,60,.16);stroke-width:1}
+.theme-editorial .fld06-mult{mix-blend-mode:multiply}
+.theme-editorial .fld06-pill{fill:#fffdf8;fill-opacity:.94}
+.theme-editorial .fld06-ld{fill:none;stroke:#3d3d3a;stroke-width:2}
+.theme-editorial .fld06-ldh{fill:none;stroke:#fffdf8;stroke-width:6;stroke-opacity:.85}
+.theme-editorial .fld06-dot{fill:#3d3d3a;stroke:#fffdf8;stroke-width:2}
+
+/* Leaf zoom: the lens of chlorophylls and the open question towards O₂. */
+.theme-editorial .fld06-zoom{fill:none;stroke:#8a877d;stroke-width:1.6;stroke-dasharray:5 6}
+.theme-editorial .fld06-zoombox{fill:none;stroke:#3d3d3a;stroke-width:2}
+.theme-editorial .fld06-lens{fill:#f4f7ec}
+.theme-editorial .fld06-lens-rim{fill:none;stroke:#6f9a5a;stroke-width:3}
+.theme-editorial .fld06-chl{fill:#5f9a4c}
+.theme-editorial .fld06-ask{fill:none;stroke:#8a877d;stroke-width:3;stroke-dasharray:4 10;stroke-linecap:round}
+.theme-editorial .fld06-head{fill:#8a877d}
+
+/* The animation's bench on the lead page: its labels at the lead page's size. */
+.theme-editorial .lead-fig .fld06-bench text.an-lab{font-size:24px}

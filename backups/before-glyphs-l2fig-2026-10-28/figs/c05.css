@@ -1,0 +1,99 @@
+/* Slide C05 figure styles, scoped under .theme-editorial and prefixed .fc05- */
+/* Inks: ink = carboxylation (CO₂), clay = oxygenation, 2-PG and photorespiration (dashed), grey = context.
+   Vocabulary as in c5.ts: carbon = dark bead, 2-PG = clay beads, CO₂ / O₂ = atom balls, RuBP = pentagon,
+   Rubisco = warm grey block. The carbon that came from CO₂ is drawn in the atom colour of C. */
+
+.theme-editorial .fig text.fc05-b,.theme-editorial .fig tspan.fc05-b{font-weight:600;fill:#141413}
+.theme-editorial .fig tspan.fc05-map{fill:#a9532f;font-style:italic;font-weight:400}
+.theme-editorial .fig tspan.fc05-i{font-style:italic}
+.theme-editorial .fig text.fc05-grey{fill:#6b6a64}
+.theme-editorial .fig text.fc05-clay{fill:#a9532f}
+.theme-editorial .fig text.fc05-map{fill:#a9532f;font-style:italic}
+.theme-editorial .fig text.fc05-w{fill:#fffdf8}
+.theme-editorial .fig text.fc05-dim{fill:#b9b5aa}
+.theme-editorial .fig text.fc05-eq{font-size:30px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fc05-eq.fc05-dim{fill:#b9b5aa}
+.theme-editorial .fig text.fc05-big{font-size:30px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fc05-rubp{font-size:15px;font-weight:700;fill:#141413}
+.theme-editorial .fig text.fc05-chip{font-size:20px;font-weight:600;fill:#2b2a27}
+.theme-editorial .fig text.fc05-rot{font-size:24px;font-weight:600}
+.theme-editorial .fig text.num-t{font-size:17px;font-weight:700;fill:#fffdf8}
+.theme-editorial .fc05 text.atom-t{font-size:14px}
+
+/* subscripts in the page title (the serif face has no subscript digits) */
+.theme-editorial .fc05-sub{font-size:.62em;line-height:0;vertical-align:-.22em}
+
+/* arrows */
+.theme-editorial .fc05-ar{fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fc05-k-ink{stroke:#3d3d3a}.theme-editorial .fc05-hd-ink{fill:#3d3d3a}
+.theme-editorial .fc05-k-clay{stroke:#d97757;stroke-dasharray:8 7}.theme-editorial .fc05-hd-clay{fill:#d97757}
+.theme-editorial .fc05-k-grey{stroke:#a8a59a}.theme-editorial .fc05-hd-grey{fill:#a8a59a}
+.theme-editorial .fc05-k-heat{stroke:#c0442a}.theme-editorial .fc05-hd-heat{fill:#c0442a}
+.theme-editorial .fc05-ar.fc05-solid{stroke-dasharray:none}
+.theme-editorial .fc05-ar.fc05-thin{stroke-width:1.8}
+.theme-editorial .fc05-block{fill:none;stroke:#d97757;stroke-width:3;stroke-linecap:round}
+.theme-editorial .fc05-flow-c{fill:#4a4a46;opacity:.85}
+.theme-editorial .fc05-flow-o{fill:#d97757;opacity:.85}
+
+/* molecules */
+.theme-editorial .fc05-bond{fill:none;stroke:#3d3d3a;stroke-width:3;stroke-linecap:round}
+.theme-editorial .fc05-bond-pr{fill:none;stroke:#d97757;stroke-width:3;stroke-linecap:round}
+.theme-editorial .fc05-bead-c{fill:#d9633a;stroke:#9b3e1e;stroke-width:1.4}
+.theme-editorial .fc05-pent-bond{fill:none;stroke:#3d3d3a;stroke-width:2.4;stroke-linejoin:round}
+
+/* Rubisco and doors */
+.theme-editorial .fc05-door{fill:#fffdf8;stroke:#8a877d;stroke-width:1.6}
+.theme-editorial .fc05-pocket{fill:#f6f3ea;stroke:#8a877d;stroke-width:1.6}
+.theme-editorial .fc05-chipbox{fill:#e9f0e1;stroke:#788c5d;stroke-width:1.5}
+.theme-editorial .fc05-cyc{fill:none;stroke:#6b6a64;stroke-width:2.4}
+.theme-editorial .fc05-panel{fill:#fffdf8;stroke:#c9c6bb;stroke-width:1.4}
+.theme-editorial .fc05-cool{fill:#eef2f8;stroke:#b8c4d9;stroke-width:1.4}
+.theme-editorial .fc05-warm{fill:#fbefe6;stroke:#e3b39c;stroke-width:1.4}
+.theme-editorial .fc05-water{fill:#e3edf7;stroke:#9db6cf;stroke-width:1.4}
+.theme-editorial .fc05-gauge{fill:#f0eee6;stroke:#a8a59a;stroke-width:1.2}
+.theme-editorial .fc05-gauge-fill{fill:#3d3d3a}
+
+/* thermometer */
+.theme-editorial .fc05-th{fill:#fffdf8;stroke:#6b6a64;stroke-width:1.8}
+.theme-editorial .fc05-th-fill{fill:#c0442a}
+
+/* analogy */
+.theme-editorial .fc05-coin{fill:#f4cc4f;stroke:#b8902a;stroke-width:1.6}
+.theme-editorial .fc05-coin-in{fill:none;stroke:#b8902a;stroke-width:1.2}
+.theme-editorial .fc05-token{fill:#d9d5c9;stroke:#8a877d;stroke-width:1.6}
+.theme-editorial .fc05-hole{fill:#fffdf8;stroke:#8a877d;stroke-width:1.2}
+.theme-editorial .fc05-slot{fill:#3d3d3a}
+.theme-editorial .fc05-gear{fill:#e9e6dc;stroke:#6b6a64;stroke-width:1.6}
+.theme-editorial .fc05-can{fill:#fffdf8;stroke:#8a877d;stroke-width:1.5}
+.theme-editorial .fc05-jam{fill:#fbeee6;stroke:#d97757;stroke-width:1.6}
+
+/* wrench, balance */
+.theme-editorial .fc05-wrench{fill:#6b6a64}
+.theme-editorial .fc05-wrench-cut{fill:#ece9df}
+.theme-editorial .fc05-beam{fill:none;stroke:#3d3d3a;stroke-width:6;stroke-linecap:round}
+.theme-editorial .fc05-fulcrum{fill:#ece9df;stroke:#8a877d;stroke-width:1.6;stroke-linejoin:round}
+
+/* zoom */
+.theme-editorial .fc05-globe{fill:#dce9f6;stroke:#6a8fb5;stroke-width:1.6}
+.theme-editorial .fc05-land{fill:#b9d3a3;stroke:#6f9a5a;stroke-width:1}
+.theme-editorial .fc05-leaf{fill:#cfe3bd;stroke:#6f9a5a;stroke-width:1.6}
+.theme-editorial .fc05-vein{fill:none;stroke:#6f9a5a;stroke-width:1.4}
+.theme-editorial .fc05-cp{fill:#e4efd8;stroke:#6f9a5a;stroke-width:1.8}
+.theme-editorial .fc05-gr{fill:#b9d3a3;stroke:#6f9a5a;stroke-width:1}
+.theme-editorial .fc05-rub-dot{fill:#c9c4b5;stroke:#8a877d;stroke-width:1}
+.theme-editorial .fc05-lens{fill:none;stroke:#3d3d3a;stroke-width:2}
+.theme-editorial .fc05-zoom{fill:none;stroke:#8a877d;stroke-width:1.4;stroke-dasharray:5 5}
+
+/* plots */
+.theme-editorial .fc05-dens{fill:#ece9df;stroke:#6b6a64;stroke-width:2.4}
+.theme-editorial .fc05-tail{fill:#d97757;opacity:.55}
+.theme-editorial .fc05-bar-a{fill:#4a4a46}
+.theme-editorial .fc05-bar-b{fill:#f1d3c4;stroke:#d97757;stroke-width:1.6}
+.theme-editorial .fc05-eqbox{fill:#f0eee6;stroke:#6b6a64;stroke-width:1.8}
+.theme-editorial .fc05-eqbox-o{fill:#fbeee6;stroke:#d97757;stroke-width:1.8}
+.theme-editorial .fc05-tile{fill:#fffdf8;stroke:#c9c6bb;stroke-width:1.4}
+
+/* The reaction arrow of the equation, with light written over it (as fl01-eq-ar on slide 1), dimmed like its terms. */
+.theme-editorial .fc05-rx{fill:none;stroke:#b9b5aa;stroke-width:2.1;stroke-linecap:round}
+.theme-editorial .fc05-rxh{fill:#b9b5aa}
+.theme-editorial .fig text.fc05-rxl{font-size:22px;font-weight:600;fill:#d9b26a}

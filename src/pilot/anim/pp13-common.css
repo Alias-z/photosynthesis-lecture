@@ -1,0 +1,11 @@
+/* Slide 13 · Chlorophyll fluorescence (pp13-common.ts, pp13-a … pp13-d): the fluorometer trace, the darkened room, scene
+   cards. Prefix .p13-; the kit's .ppa- classes (pp-anim.css) and the figures' .pp- classes (figs/pp.css) are reused. */
+.ani text.p13-lv{font-size:26px;font-weight:600;fill:#141413}
+.ani text.p13-w{font-size:20px;font-weight:600;fill:#efeadc}
+.ani text.p13-wr{font-size:21px;font-weight:600;fill:#ff8a6e}
+.ani .p13-band{fill:#fbf0cf}
+.ani .p13-pen{fill:none;stroke:#c8361e;stroke-width:1.6;stroke-dasharray:3 4;opacity:.7}
+.ani .p13-card{fill:rgba(255,254,250,.94);stroke:rgba(120,100,60,.14);stroke-width:1}
+.ani .p13-room{fill:#2b2a27}
+.ani .p13-meter{fill:#e58a72}
+.ani .p13-redleaf{fill:#e2482c;stroke:#b8301b;stroke-width:2}

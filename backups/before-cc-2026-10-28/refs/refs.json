@@ -1,0 +1,186 @@
+{
+  "title": "CO₂-concentrating mechanisms: C₂, C₄, CAM",
+  "slides": ["C11", "C12", "C13"],
+  "images": [
+    {
+      "id": "a",
+      "file": "sage2014-c3-to-c4-series.jpg",
+      "kind": "schematic",
+      "caption": "C₃ → proto-Kranz → C₂ → C₄-like → C₄: Flaveria bundle-sheath TEMs (chloroplasts green, mitochondria red) above cell schemes",
+      "credit": "Sage, Khoshravesh & Sage 2014, J Exp Bot 65:3341, Fig. 2",
+      "url": "https://doi.org/10.1093/jxb/eru180",
+      "note": "The whole chunk in one figure: C₃ refixation, glycine shuttle and C₄ pump, with real micrographs. © Oxford University Press."
+    },
+    {
+      "id": "b",
+      "file": "sage2012-c4-origins-tree.jpg",
+      "kind": "figure",
+      "caption": "Angiosperm phylogeny with C₄ lineages in red: grasses (~18), sedges (~6), Caryophyllales (~23) and scattered eudicots",
+      "credit": "Sage, Sage & Kocacinar 2012, Annu Rev Plant Biol 63:19, Fig. 2",
+      "url": "https://doi.org/10.1146/annurev-arplant-042811-105511",
+      "note": "Shows C₄ evolving many times independently (> 60). Same tree as Sage, Christin & Edwards 2011 Fig. 3. © Annual Reviews; AR footer cropped."
+    },
+    {
+      "id": "c",
+      "file": "haberlandt1904-kranztypus.jpg",
+      "kind": "history",
+      "caption": "Haberlandt's 'Kranztypus': radial assimilating cells wreathe each vein in the sedge 'Papyrus cicuta' (Fig. 104) and Panicum turgidum (Fig. 105)",
+      "credit": "Haberlandt 1904, Physiologische Pflanzenanatomie, 3rd edn (Leipzig: Engelmann), p. 252, Figs 104–105; public domain, Internet Archive",
+      "url": "https://archive.org/details/physiologischepf00habeuoft/page/252",
+      "note": "Origin of the word Kranz. Text on p. 253 already wonders about a 'division of labour' between Kranz and sheath chloroplasts. 3rd edition, not the 1884 first."
+    },
+    {
+      "id": "d",
+      "file": "maize-leaf-kranz-bcc.jpg",
+      "kind": "micrograph",
+      "caption": "Maize leaf cross-section (400×): dark-green bundle-sheath wreaths around veins, mesophyll between them",
+      "credit": "Berkshire Community College Bioscience Image Library, 'Bundle Sheaths in Zea Leaf', Wikimedia Commons, CC0",
+      "url": "https://commons.wikimedia.org/wiki/File:Angiosperm_Morphology_Bundle_Sheaths_in_Zea_Leaf_(36808119403).jpg",
+      "note": "Clean real Kranz anatomy of a C₄ crop; pair with the rice section (h) for C₃."
+    },
+    {
+      "id": "e",
+      "file": "hatch-slack1966-14c-fig2.png",
+      "kind": "history",
+      "caption": "Sugarcane leaves in ¹⁴CO₂: label appears first in malate + aspartate, later in 3-PGA, hexose phosphates and sucrose",
+      "credit": "Hatch & Slack 1966, Biochem J 101:103, Fig. 2",
+      "url": "https://doi.org/10.1042/bj1010103",
+      "note": "The discovery data of the C₄ pathway. © Biochemical Society; free in PMC (PMC1270070)."
+    },
+    {
+      "id": "f",
+      "file": "sage2012-c4-nadpme-scheme.png",
+      "kind": "schematic",
+      "caption": "NADP-ME C₄ cycle: PEPC fixes HCO₃⁻ in mesophyll; malate releases CO₂ to Rubisco in bundle sheath (~100 vs ~1500 ppm)",
+      "credit": "Sage, Sage & Kocacinar 2012, Annu Rev Plant Biol 63:19, Fig. 1",
+      "url": "https://doi.org/10.1146/annurev-arplant-042811-105511",
+      "note": "Canonical two-cell C₄ schematic from a strong review. © Annual Reviews; AR footer cropped."
+    },
+    {
+      "id": "g",
+      "file": "sage2004-c4-subtypes-anatomy.jpg",
+      "kind": "micrograph",
+      "caption": "Leaf sections of an NADP-ME (Themeda) and an NAD-ME (Panicum) C₄ grass, each with its two-cell pathway",
+      "credit": "Sage 2004, New Phytol 161:341, Fig. 2 (micrographs by N. Dengler)",
+      "url": "https://doi.org/10.1111/j.1469-8137.2004.00974.x",
+      "note": "Links real Kranz anatomy to the biochemistry. Rotated 90° clockwise from the printed page for reading. © New Phytologist."
+    },
+    {
+      "id": "h",
+      "file": "sage2009-rice-mesophyll-lm.png",
+      "kind": "micrograph",
+      "caption": "Rice (C₃) mesophyll, light micrographs: chloroplasts line the entire periphery of lobed chlorenchyma cells",
+      "credit": "Sage & Sage 2009, Plant Cell Physiol 50:756, Fig. 1",
+      "url": "https://doi.org/10.1093/pcp/pcp033",
+      "note": "Lecturer's requested paper. Only 440 px from OUP HTML; a sharper copy needs the PDF (see wanted list). © Oxford University Press."
+    },
+    {
+      "id": "i",
+      "file": "sage2009-rice-mito-stromules-tem.png",
+      "kind": "micrograph",
+      "caption": "Rice mesophyll TEM: mitochondria and peroxisomes sit inside, sandwiched between or encircled by chloroplasts and stromules",
+      "credit": "Sage & Sage 2009, Plant Cell Physiol 50:756, Fig. 4",
+      "url": "https://doi.org/10.1093/pcp/pcp033",
+      "note": "Core image for refixation: photorespired CO₂ must cross stroma (chloroplasts + stromules cover ~97 % of the periphery). 440 px only."
+    },
+    {
+      "id": "j",
+      "file": "busch2013-wheat-rice-stromules-tem.jpg",
+      "kind": "micrograph",
+      "caption": "Wheat and rice mesophyll TEM: stromules (arrows) fill gaps between chloroplasts; mitochondria and peroxisomes lie inside",
+      "credit": "Busch, Sage, Cousins & Sage 2013, Plant Cell Environ 36:200, Fig. 4",
+      "url": "https://doi.org/10.1111/j.1365-3040.2012.02567.x",
+      "note": "Sharp alternative to (i); same paper measured 24–38 % of (photo)respired CO₂ refixed inside the cell. © Wiley (free access)."
+    },
+    {
+      "id": "k",
+      "file": "sage2004-photorespiratory-pump.png",
+      "kind": "schematic",
+      "caption": "The photorespiratory CO₂ pump: glycine moves to bundle sheath, glycine decarboxylase releases CO₂ next to Rubisco",
+      "credit": "Sage 2004, New Phytol 161:341, Fig. 11 (adapted from Sage 2001)",
+      "url": "https://doi.org/10.1111/j.1469-8137.2004.00974.x",
+      "note": "The C₂ glycine shuttle as Sage first drew it, incl. serine return and diffusive escape. © New Phytologist."
+    },
+    {
+      "id": "l",
+      "file": "sage2012-c2-glycine-shuttle.png",
+      "kind": "schematic",
+      "caption": "C₂ photosynthesis: glycine from mesophyll is decarboxylated by GDC in bundle-sheath mitochondria beside chloroplasts",
+      "credit": "Sage, Sage & Kocacinar 2012, Annu Rev Plant Biol 63:19, Fig. 5",
+      "url": "https://doi.org/10.1146/annurev-arplant-042811-105511",
+      "note": "Cleaner, coloured version of (k). © Annual Reviews; AR footer cropped."
+    },
+    {
+      "id": "m",
+      "file": "sage2014-gdc-immunolocalization.jpg",
+      "kind": "micrograph",
+      "caption": "Glycine decarboxylase (brown): spread in C₃ leaves, concentrated in bundle-sheath mitochondria in proto-Kranz and C₂ Heliotropium and Flaveria",
+      "credit": "Sage, Khoshravesh & Sage 2014, J Exp Bot 65:3341, Fig. 3",
+      "url": "https://doi.org/10.1093/jxb/eru180",
+      "note": "Real evidence that GDC moves to the bundle sheath. Panels A, D C₃; B, E proto-Kranz; C, F C₂. © Oxford University Press."
+    },
+    {
+      "id": "n",
+      "file": "khoshravesh2016-aci-c3-c2-c4.jpg",
+      "kind": "figure",
+      "caption": "CO₂ uptake vs intercellular CO₂ in C₃, C₂ and C₄ grasses (31 °C): C₂ and C₄ start lower",
+      "credit": "Khoshravesh et al. 2016, J Exp Bot 67:3065, Fig. 4",
+      "url": "https://doi.org/10.1093/jxb/erw150",
+      "note": "Measured consequence of the shuttle and the pump. CC BY 3.0 (PMC4867898)."
+    },
+    {
+      "id": "o",
+      "file": "sage2012-five-phase-model.png",
+      "kind": "schematic",
+      "caption": "Five-phase model of C₄ evolution, from preconditioning through proto-Kranz and the photorespiratory pump to C₄",
+      "credit": "Sage, Sage & Kocacinar 2012, Annu Rev Plant Biol 63:19, Fig. 6",
+      "url": "https://doi.org/10.1146/annurev-arplant-042811-105511",
+      "note": "Updated version of the 'pyramid' in Sage 2004 Fig. 12, with Flaveria and Heliotropium species per step. © Annual Reviews."
+    },
+    {
+      "id": "p",
+      "file": "sage2012-c4-ages-co2.png",
+      "kind": "figure",
+      "caption": "Estimated origin ages of C₄ lineages (a) against falling atmospheric CO₂ and δ¹⁸O over 45 million years (b)",
+      "credit": "Sage, Sage & Kocacinar 2012, Annu Rev Plant Biol 63:19, Fig. 3",
+      "url": "https://doi.org/10.1146/annurev-arplant-042811-105511",
+      "note": "C₄ origins follow the Oligocene CO₂ drop. © Annual Reviews; AR footer cropped."
+    },
+    {
+      "id": "q",
+      "file": "sage2011-c4-origins-map.png",
+      "kind": "figure",
+      "caption": "Geographic centres of origin of C₄ eudicot lineages, clustered in today's arid and semi-arid regions",
+      "credit": "Sage, Christin & Edwards 2011, J Exp Bot 62:3155, Fig. 4",
+      "url": "https://doi.org/10.1093/jxb/err048",
+      "note": "The lineage map the lecturer named. Only 440 px from OUP HTML; PDF needed for a sharp copy. © Oxford University Press."
+    },
+    {
+      "id": "r",
+      "file": "agave-field-jalisco.jpg",
+      "kind": "photo",
+      "caption": "Agave plantation in Jalisco, Mexico, seen from above: a CAM crop on dry red soil",
+      "credit": "Tomascastelazo, 'Agave field in Jalisco, Mexico', Wikimedia Commons, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Agave_field_in_Jalisco,_Mexico.jpg",
+      "note": "Real CAM plants; links to the Agave data in (t)."
+    },
+    {
+      "id": "s",
+      "file": "borland2009-cam-four-phases.png",
+      "kind": "figure",
+      "caption": "Diel CO₂ exchange of Kalanchoë fedtschenkoi leaves with Osmond's four CAM phases: phase I night uptake",
+      "credit": "Borland, Griffiths, Hartwell & Smith 2009, J Exp Bot 60:2879, Fig. 3 (phases after Osmond 1978)",
+      "url": "https://doi.org/10.1093/jxb/erp118",
+      "note": "Real gas-exchange trace with the canonical phase labels. 361 × 440 px only. © Oxford University Press."
+    },
+    {
+      "id": "t",
+      "file": "abraham2016-agave-cam.jpg",
+      "kind": "figure",
+      "caption": "Agave leaves take up CO₂ at night (grey) as they mature; malic acid builds overnight, unlike in Arabidopsis",
+      "credit": "Abraham et al. 2016, Nature Plants 2:16178, Fig. 1",
+      "url": "https://doi.org/10.1038/nplants.2016.178",
+      "note": "Night uptake plus malate store in one figure (panels a, c). © Springer Nature."
+    }
+  ]
+}

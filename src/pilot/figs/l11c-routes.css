@@ -1,0 +1,10 @@
+/* Slide 10b routes (l11c-routes.ts): the colours and dash patterns of the picked slide-10c figures (l11.css), cyclic violet,
+   to O₂ teal (thin), the malate exit neutral grey. */
+.theme-editorial .bal-cyc-band{fill:none;stroke:#7a4fb0;stroke-opacity:.22;stroke-width:16;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .bal-cyc-line{fill:none;stroke:#7a4fb0;stroke-width:4;stroke-dasharray:15 6 1 6;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .bal-cyc-hd{fill:#7a4fb0}
+.theme-editorial .bal-oxy-line{fill:none;stroke:#1f8a7a;stroke-width:2.4;stroke-dasharray:3 5;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .bal-oxy-hd{fill:#1f8a7a}
+.theme-editorial .bal-mal-line{fill:none;stroke:#6b6a64;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .bal-mal-hd{fill:#6b6a64}
+.theme-editorial .fig text.bal-c-cyc{font-size:20px;font-weight:700;fill:#6b3fa0}

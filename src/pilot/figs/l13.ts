@@ -1,6 +1,6 @@
 // Slide L13 · Too much excitation: protect the system. Draft context; see research/figure-briefs/LECTURE_OVERVIEW.md.
 // Facts used, all CONFIRMED in research/review-2026-10-23-claude/C_L12-L15.md and REVIEW_SUMMARY.md:
-// lumen pH ≈ 7.5 in weak light, ≈ 5.7 in strong light; low pH protonates PsbS and activates VDE (V → A → Z);
+// lumen pH ≈ 7.5 in weak light, ≈ 6 (± 0.5) in strong light (Takizawa et al. 2007); low pH protonates PsbS and activates VDE (V → A → Z);
 // qE acts in seconds to minutes, zeaxanthin (qZ) is slower and is removed slowly (ZEP), qI lasts hours;
 // acidification also slows b₆f, protecting PSI; most quenching sits in LHCII; D1 damage is proportional to light
 // from 6.5 to 1500 µmol m⁻² s⁻¹ (repair blocked with lincomycin), repair (FtsH removal, new D1) runs continuously,
@@ -17,8 +17,8 @@ export const PLATE: PlateText = {
   status: 'draft',
   lead: 'In excess light, an acidic lumen switches the antenna to dissipate energy as heat. Damage still happens; repair never stops.',
   points: [
-    { claim: 'An acidic lumen triggers quenching.', text: 'The protein PsbS senses low pH and, with the carotenoid zeaxanthin, turns excess excitation into heat (NPQ).' },
-    { claim: 'Fast on, slow off.', text: 'Quenching builds within minutes but relaxes slowly in shade, lowering CO₂ fixation.' },
+    { claim: 'An acidic lumen triggers quenching.', text: 'The protein PsbS senses the low pH and switches the antenna to dissipate heat (NPQ); the carotenoid zeaxanthin strengthens it.' },
+    { claim: 'Fast on, slow off.', text: 'In shade the fast part relaxes in a minute, the zeaxanthin part in 10–15 min; a model puts the cost at 13–32 % of canopy CO₂ uptake.' },
     { claim: 'Repair runs all the time.', text: 'PSII’s D1 protein is damaged at any light; photoinhibition means damage outpaces repair.' },
   ],
   refs: [
@@ -26,6 +26,8 @@ export const PLATE: PlateText = {
     { label: 'Tyystjärvi & Aro 1996', url: 'https://doi.org/10.1073/pnas.93.5.2213' },
     { label: 'Komenda et al. 2024', url: 'https://doi.org/10.1093/plcell/koae082' },
     { label: 'Kromdijk et al. 2016', url: 'https://doi.org/10.1126/science.aai8878' },
+    { label: 'Nilkens et al. 2010', url: 'https://doi.org/10.1016/j.bbabio.2010.01.001' },
+    { label: 'Zhu et al. 2004', url: 'https://doi.org/10.1093/jxb/erh141' },
   ],
 };
 
@@ -133,8 +135,8 @@ function chainSvg(): string {
     ${ar(p, 'ink', 'M86,382 L94,318', 'fl13-thin')}
 
     ${'' /* electron flow and proton release */}
-    <path class="ar ar-red epath" d="M396,262 L474,262" marker-end="url(#${p}-red)"/>${T(436, 226, 'e⁻', 'sm lbl-e')}
-    ${ar(p, 'blue', 'M352,372 L364,412', 'fl13-dash')}${ar(p, 'blue', 'M520,370 L520,408', 'fl13-dash')}
+    ${ar(p, 'ink', 'M396,262 L474,262')}${T(436, 226, 'e⁻', 'sm lab-b')}
+    ${ar(p, 'red', 'M352,372 L364,412', 'fl13-hpath')}${ar(p, 'red', 'M520,370 L520,408', 'fl13-hpath')}
     ${H(392, 436)}${H(440, 470)}${H(476, 430)}${H(530, 462)}${H(574, 428)}${H(620, 460)}${H(664, 426)}${H(708, 458)}${H(356, 476)}
     ${ar(p, 'blue', 'M378,450 L318,408', 'fl13-thin')}
 
@@ -152,7 +154,7 @@ function chainSvg(): string {
 
     ${'' /* ② protons */}
     ${num(420, 524, '2')}${T(442, 532, 'H⁺ accumulate in the lumen', 'fl13-h', 'start')}
-    ${T(442, 560, 'pH ≈ 7.5 → ≈ 5.7', 'fl13-l', 'start')}
+    ${T(442, 560, 'pH ≈ 7.5 → ≈ 6', 'fl13-l', 'start')}
   `);
 }
 
@@ -170,7 +172,7 @@ function thesisSvg(): string {
   return svg('After the MSc thesis inset: PSII and its light-harvesting antenna; protons from an acid lumen bind PsbS; the xanthophyll cycle makes zeaxanthin and the antenna dissipates heat. Below, the cycle between violaxanthin, antheraxanthin and zeaxanthin: VDE forward at low pH, ZEP back slowly', `
     ${defs(p)}<g transform="translate(0 -22)">
     <rect class="fl13-frame" x="12" y="108" width="776" height="366" rx="20"/>
-    ${T(24, 92, 'lumen pH ≈ 7.5', 'fl13-l fl13-c-blue', 'start')}${T(776, 92, 'lumen pH ≈ 5.7', 'fl13-l fl13-c-clay', 'end')}
+    ${T(24, 92, 'lumen pH ≈ 7.5', 'fl13-l fl13-c-blue', 'start')}${T(776, 92, 'lumen pH ≈ 6', 'fl13-l fl13-c-clay', 'end')}
     ${ar(p, 'ink', 'M200,84 L588,84', 'fl13-thin fl13-dot')}${T(394, 70, 'light rises, lumen acidifies', 'fl13-s')}
     ${bolts}
 
@@ -400,11 +402,11 @@ function shadeSunSvg(): string {
       ${psbs(ox + 190, 312, 40, 19, 0, strong ? [[ox + 158, 342], [ox + 222, 344]] : [])}
       ${hs.map(([x, y]) => H(x, y)).join('')}
       ${bolts}${fate}
-      ${T(ox + 186, 494, strong ? 'lumen pH ≈ 5.7' : 'lumen pH ≈ 7.5', `fl13-h ${strong ? 'fl13-c-clay' : 'fl13-c-blue'}`)}
+      ${T(ox + 186, 494, strong ? 'lumen pH ≈ 6' : 'lumen pH ≈ 7.5', `fl13-h ${strong ? 'fl13-c-clay' : 'fl13-c-blue'}`)}
       ${T(ox + 186, 522, strong ? 'zeaxanthin' : 'violaxanthin', `fl13-l ${strong ? 'fl13-c-orange' : 'fl13-c-amber'}`)}
       ${T(ox + 186, 562, strong ? 'excess leaves as heat' : 'energy goes to PSII', 'fl13-h')}`;
   };
-  return svg('The same membrane in weak and in strong light. Weak light: lumen pH about 7.5, PsbS without protons, violaxanthin, and the antenna passes its energy to PSII. Strong light: lumen pH about 5.7, PsbS carries protons, zeaxanthin, and the excess leaves as heat', `
+  return svg('The same membrane in weak and in strong light. Weak light: lumen pH about 7.5, PsbS without protons, violaxanthin, and the antenna passes its energy to PSII. Strong light: lumen pH about 6, PsbS carries protons, zeaxanthin, and the excess leaves as heat', `
     ${defs(p)}
     ${T(194, 40, 'weak light', 'fl13-hb')}${T(606, 40, 'strong light', 'fl13-hb')}
     <path class="fl13-rule" d="M400,30 V570"/>
@@ -470,7 +472,7 @@ function storySvg(): string {
     { yr: '2020', crop: 'Arabidopsis', mark: 'down', note: 'growth impaired' },
     { yr: '2022', crop: 'soybean', mark: 'up', note: 'year 1: up to +33 % seed' },
     { yr: '2022', crop: 'soybean', mark: 'flat', note: 'year 2: no gain' },
-    { yr: '2022', crop: 'potato', mark: 'flat', note: 'no gain' },
+    { yr: '2022', crop: 'potato', mark: 'down', note: 'no gain; lower in fluctuating light' },
     { yr: '2026', crop: 'rice', mark: 'down', note: 'growth impaired' },
     { yr: '2026', crop: 'soybean', mark: 'flat', note: 'better light use, no seed gain' },
   ];
@@ -496,7 +498,7 @@ function storySvg(): string {
     }).join('')}
     <path class="fl13-rule" d="M24,${r0 + 7 * dy + 2} H776"/>
     ${mk(40, 558, 'up')}${T(58, 565, 'gain', 'fl13-s', 'start')}${mk(124, 558, 'flat')}${T(142, 565, 'no gain', 'fl13-s', 'start')}${mk(234, 558, 'down')}${T(252, 565, 'worse', 'fl13-s', 'start')}
-    ${T(776, 565, 'Yield gain depends on crop and season.', 'fl13-in', 'end')}
+    ${T(776, 565, '', 'fl13-in', 'end')}
   </g>`);
 }
 

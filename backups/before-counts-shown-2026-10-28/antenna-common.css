@@ -1,0 +1,72 @@
+/* "To the reaction centre": the parts both stagings share (antenna-common.ts), scoped to the two stagings. */
+:is(.ani-antenna-a,.ani-antenna-b) .an-st *{vector-effect:non-scaling-stroke}
+
+/* Labels: at least 22 px. */
+:is(.ani-antenna-a,.ani-antenna-b) text.an-lab{font-size:26px;font-weight:500;fill:#3d3d3a;paint-order:stroke;stroke:#fcfbf8;stroke-width:8px;stroke-linejoin:round}
+:is(.ani-antenna-a,.ani-antenna-b) text.an-lab-rc,:is(.ani-antenna-a,.ani-antenna-b) text.an-lab-rcs{fill:#a9532f;font-weight:600}
+:is(.ani-antenna-a,.ani-antenna-b) text.an-lab-ant{fill:#3f8a32;font-weight:600}
+:is(.ani-antenna-a,.ani-antenna-b) text.an-lab-psii{font-size:28px;font-weight:600;fill:#141413}
+:is(.ani-antenna-a,.ani-antenna-b) text.an-lab-b{fill:#5f9a2f;font-weight:600}
+:is(.ani-antenna-a,.ani-antenna-b) text.an-lab-a{fill:#24702f;font-weight:600}
+:is(.ani-antenna-a,.ani-antenna-b) text.an-ax{font-size:23px;fill:#6b6a64}
+:is(.ani-antenna-a,.ani-antenna-b) .an-lead{fill:none;stroke:#5c5a52;stroke-width:1.8}
+:is(.ani-antenna-a,.ani-antenna-b) .an-lead-halo{fill:none;stroke:#fcfbf8;stroke-width:5.5;stroke-opacity:.9}
+:is(.ani-antenna-a,.ani-antenna-b) .an-lead-dot{fill:#5c5a52;stroke:#fcfbf8;stroke-width:2}
+
+/* Bench, lamp and flask. */
+:is(.ani-antenna-a,.ani-antenna-b) .an-bench{fill:#ebe5d8;stroke:#b9b4a6;stroke-width:1.4}
+:is(.ani-antenna-a,.ani-antenna-b) .an-stand{fill:none;stroke:#6b6a64;stroke-width:7;stroke-linecap:round}
+:is(.ani-antenna-a,.ani-antenna-b) .an-lamp{fill:#57554f;stroke:#2f2e2b;stroke-width:2;stroke-linejoin:round}
+:is(.ani-antenna-a,.ani-antenna-b) .an-lamp-win{fill:none;stroke:#d9d4c6;stroke-width:4;stroke-linecap:round}
+:is(.ani-antenna-a,.ani-antenna-b) .an-tube{fill:#f6efd8;stroke:#b9b29c;stroke-width:1.4}
+:is(.ani-antenna-a,.ani-antenna-b) .an-liquid{fill:#9cc97a}
+:is(.ani-antenna-a,.ani-antenna-b) .an-liquid-lit{fill:#f3f7c8}
+:is(.ani-antenna-a,.ani-antenna-b) .an-cell{fill:#4f8f3a}
+:is(.ani-antenna-a,.ani-antenna-b) .an-glass{fill:rgba(255,255,255,.35);stroke:#6f6c63;stroke-width:3;stroke-linejoin:round}
+:is(.ani-antenna-a,.ani-antenna-b) .an-lip{fill:none;stroke:#6f6c63;stroke-width:5;stroke-linecap:round}
+:is(.ani-antenna-a,.ani-antenna-b) .an-glint{fill:none;stroke:#fff;stroke-width:6;stroke-linecap:round;opacity:.7}
+:is(.ani-antenna-a,.ani-antenna-b) .an-cork{fill:#c9a777;stroke:#9a7b4f;stroke-width:1.4}
+:is(.ani-antenna-a,.ani-antenna-b) .an-beam{mix-blend-mode:multiply}
+
+/* Counters and the field of 2,400 chlorophylls. */
+:is(.ani-antenna-a,.ani-antenna-b) .an-cbox{fill:#fffdf8;stroke:#c9c6bb;stroke-width:1.6}
+:is(.ani-antenna-a,.ani-antenna-b) text.an-count{font-family:Newsreader,Georgia,serif;font-size:60px;font-weight:500;fill:#2a7a33}
+:is(.ani-antenna-a,.ani-antenna-b) text.an-count-o2{fill:#a9532f}
+:is(.ani-antenna-a,.ani-antenna-b) text.an-read-row{font-size:30px;font-weight:600;fill:#3d3d3a}
+:is(.ani-antenna-a,.ani-antenna-b) text.an-read-before{fill:#8a877d;font-weight:500}
+/* the molecule's name in ink (the deck's glyph standard, 28 Oct 2026) */
+:is(.ani-antenna-a,.ani-antenna-b) .an-read-o2{fill:#141413}
+:is(.ani-antenna-a,.ani-antenna-b) .an-read-chl{fill:#2a7a33}
+:is(.ani-antenna-a,.ani-antenna-b) text.an-count-dash{fill:#8a877d}
+:is(.ani-antenna-a,.ani-antenna-b) .an-rule{fill:none;stroke:#d9d5c8;stroke-width:1.4}
+:is(.ani-antenna-a,.ani-antenna-b) .an-bubble{fill:#fdfcf8;stroke:#5d8fae;stroke-width:2.2}
+:is(.ani-antenna-a,.ani-antenna-b) .an-bubble-hi{fill:#ffffff}
+:is(.ani-antenna-a,.ani-antenna-b) .an-fdot{fill:#5f9a4c}
+:is(.ani-antenna-a,.ani-antenna-b) .an-fglow{fill:#f0a316}
+:is(.ani-antenna-a,.ani-antenna-b) .an-spot{fill:#a9532f;stroke:#fcfbf8;stroke-width:1.6}
+:is(.ani-antenna-a,.ani-antenna-b) .an-spot-burst{fill:#f6c453;fill-opacity:.55;stroke:#f0a316;stroke-width:2}
+
+/* The structure: pigments at their Mg, carotenoids as rods, the reaction centre's ring, the hop and the trap. */
+:is(.ani-antenna-a,.ani-antenna-b) .an-chla{fill:#2e7d32;stroke:#fcfbf8;stroke-width:1.4}
+:is(.ani-antenna-a,.ani-antenna-b) .an-chlb{fill:#93c95a;stroke:#fcfbf8;stroke-width:1.4}
+:is(.ani-antenna-a,.ani-antenna-b) .an-pheo{fill:#a8a08f;stroke:#fcfbf8;stroke-width:1.4}
+:is(.ani-antenna-a,.ani-antenna-b) .an-car{fill:none;stroke:#e08a2c;stroke-width:3.2;stroke-linecap:round;stroke-opacity:.85}
+:is(.ani-antenna-a,.ani-antenna-b) .an-car-key{stroke-width:5}
+/* The antenna's soft outline: around the patch of the field and around the lit half's pigments. */
+:is(.ani-antenna-a,.ani-antenna-b) .an-antline{fill:none;stroke:#3f8a32;stroke-width:3.2;stroke-opacity:.55;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+:is(.ani-antenna-a,.ani-antenna-b) .an-patchline{stroke-width:2.6;stroke-opacity:.9}
+:is(.ani-antenna-a,.ani-antenna-b) .an-rcring{fill:none;stroke:#a9532f;stroke-width:2.6;stroke-dasharray:7 6}
+:is(.ani-antenna-a,.ani-antenna-b) .an-trail{fill:none;stroke:#f0a316;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:.9}
+:is(.ani-antenna-a,.ani-antenna-b) .an-hopcore{fill:#ffd27a;stroke:#e08a10;stroke-width:2}
+:is(.ani-antenna-a,.ani-antenna-b) .an-burst{fill:none;stroke:#f0a316;stroke-width:6}
+:is(.ani-antenna-a,.ani-antenna-b) .an-keybg{fill:#fcfbf8;fill-opacity:.92}
+
+/* The energy staircase on its cut card. */
+:is(.ani-antenna-a,.ani-antenna-b) .an-card{fill:#fffdf8;stroke:#c9c6bb;stroke-width:1.4}
+:is(.ani-antenna-a,.ani-antenna-b) .an-axis{fill:none;stroke:#8a877d;stroke-width:1.8}
+:is(.ani-antenna-a,.ani-antenna-b) .an-axhead{fill:none;stroke:#8a877d;stroke-width:1.8;stroke-linejoin:round}
+:is(.ani-antenna-a,.ani-antenna-b) .an-rung{fill:none;stroke:#3d3d3a;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+
+/* The photon. */
+:is(.ani-antenna-a,.ani-antenna-b) .an-photon{fill:none;stroke:#2350e6;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+:is(.ani-antenna-a,.ani-antenna-b) text.an-lab-photon{fill:#2350e6;font-weight:600}

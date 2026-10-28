@@ -19,7 +19,7 @@ export const PLATE: PlateText = {
   lead: 'Fixing 3 CO₂ yields one triose phosphate and costs 9 ATP and 6 NADPH from the light reactions.',
   points: [
     { claim: 'The product is triose phosphate.', text: 'Not glucose: it becomes sucrose in the cytosol and starch in the chloroplast.' },
-    { claim: 'Each CO₂ costs 3 ATP + 2 NADPH.', text: 'A ratio of 1.5 that the light reactions must match; photorespiration adds to it.' },
+    { claim: 'Each CO₂ costs 3 ATP + 2 NADPH.', text: 'A ratio of 1.5; linear electron flow alone gives ≈ 1.3 (lecture 1, slide 11). Photorespiration raises both costs.' },
     { claim: 'C₆H₁₂O₆ is bookkeeping.', text: 'One hexose equals two trioses from 6 CO₂: 18 ATP + 12 NADPH.' },
   ],
   refs: [
@@ -316,14 +316,14 @@ function theMinimum(): string {
     `<rect class="fc04-extra" x="${x - 130}" y="${y - 58}" width="260" height="116" rx="18"/>${icon}${T(x - 74, y - 14, title, 'sm lab-b', 'start')}${T(x - 74, y + 12, line, 'sm', 'start')}` +
     `${T(x - 74, y + 46, '+', 'sm lab-b', 'start')}${mini(x - 30, y + 40, 'atp')}${nadph ? mini(x + 46, y + 40, 'nadph') : ''}`;
   const funnel = (x: number, y: number): string => `<path class="fc04-pump" d="M${x - 16},${y - 14} H${x + 16} L${x + 4},${y + 2} V${y + 16} H${x - 4} V${y + 2} Z"/>`;
-  return wrap(p, 'Scope of the count: 9 ATP + 6 NADPH per 3 CO₂ is the minimum for the canonical cycle. Photorespiration, CO₂-concentrating mechanisms, making sucrose and starch, and keeping Rubisco active cost extra',
+  return wrap(p, 'Scope of the count: 9 ATP + 6 NADPH per 3 CO₂ is the minimum for the canonical cycle. Photorespiration, CO₂-concentrating mechanisms, making sucrose and starch, and keeping RuBisCO active cost extra',
     `<g transform="translate(0 -4)">
     <rect class="fc04-bound" x="230" y="210" width="340" height="190" rx="26"/>${T(250, 240, 'counted here', 'sm fc03-acc', 'start')}
     ${cycleIcon(p, 326, 318, 58)}${T(326, 314, 'Calvin–', 'sm lab-b')}${T(326, 338, 'Benson', 'sm lab-b')}
     ${tag(480, 290, '9 ATP', 'atp')}${tag(480, 336, '6 NADPH', 'nadph')}${T(480, 382, 'per 3 CO₂', 'tiny')}
-    ${extra(150, 112, 'photorespiration', 'Rubisco adds O₂', molecule(42, 98, 'OO', 9), true)}
+    ${extra(150, 112, 'photorespiration', 'RuBisCO adds O₂', molecule(42, 98, 'OO', 9), true)}
     ${extra(650, 112, 'C₄ and CAM', 'concentrate CO₂', funnel(548, 98))}
     ${extra(150, 496, 'sucrose, starch', 'making them', hexa(46, 482, 14))}
-    ${extra(650, 496, 'Rubisco activase', 'keeps it active', `<rect class="node node-rub" x="526" y="470" width="44" height="24" rx="6"/>`)}
+    ${extra(650, 496, 'RuBisCO activase', 'keeps it active', `<rect class="node node-rub" x="526" y="470" width="44" height="24" rx="6"/>`)}
     </g>`);
 }

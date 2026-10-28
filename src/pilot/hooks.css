@@ -1,0 +1,43 @@
+/* Hook questions over the page (hooksView.ts). The paper, header, note box, tabs and index tiles are the References
+   ones (refs.css); this file adds the overlay, the question cards and the ? button on the page frame. */
+.hooks-overlay{position:fixed;inset:0;z-index:30;overflow:auto;overscroll-behavior:contain}
+.hooks-overlay[hidden]{display:none}
+html.hooks-lock{overflow:hidden}
+/* The pilot's save status stays in sight over the overlay. */
+html.hooks-lock .pick-status{z-index:35}
+
+/* One card per question, two columns on a wide screen: the question, its numbered steps, concepts, what the students
+   see and, small, what is still to check. */
+.hk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(600px,1fr));gap:24px}
+.hk-card{display:flex;flex-direction:column;padding:20px 26px 22px;border-radius:18px;background:rgba(255,254,250,.62);box-shadow:inset 0 0 0 1px rgba(120,100,60,.14),0 14px 30px -24px rgba(70,50,20,.45)}
+.hk-card.picked{box-shadow:0 0 0 3px var(--rf-clay),0 14px 30px -24px rgba(70,50,20,.45)}
+.hk-row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.hk-id{min-width:34px;height:34px;box-sizing:border-box;padding:0 11px;border:1.5px solid var(--rf-rule);border-radius:999px;font:italic 400 21px/31px Newsreader,Georgia,serif;color:var(--rf-ink2);text-align:center}
+.hk-card.picked .hk-id{border-color:var(--rf-clay);background:var(--rf-clay);color:#faf9f5}
+.hk-card.picked .hk-id::before{content:"✓";margin-right:6px;font:normal 700 16px/1 Inter,sans-serif}
+.hk-q{margin:14px 0 20px;font:400 32px/1.16 Newsreader,Georgia,serif;letter-spacing:-.01em;color:var(--rf-ink);text-wrap:balance}
+/* The story of how it was found out, when the question has one, between the question and the steps. */
+.hk-story{margin:0 0 22px}
+.hk-label{margin:0 0 6px;font:600 12px/1 Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--rf-mute)}
+.hk-story p+p{margin:0;font:400 17px/1.5 Inter,sans-serif;color:var(--rf-ink);text-wrap:pretty}
+.hk-steps{display:grid;gap:12px;margin:0;padding:0;list-style:none;counter-reset:step}
+.hk-steps li{position:relative;padding-left:40px;font:400 17px/1.45 Inter,sans-serif;color:var(--rf-ink2);text-wrap:pretty;counter-increment:step}
+.hk-steps li::before{content:counter(step);position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;background:var(--rf-clay);color:#faf9f5;font:600 14px/26px Inter,sans-serif;text-align:center}
+.hk-tags{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}
+.hk-tags li{padding:7px 12px;border-radius:999px;font:500 14px/1 Inter,sans-serif;background:#e1ead6;color:#3f6b45}
+.hk-see{margin:16px 0 0;font:400 16px/1.45 Inter,sans-serif;color:var(--rf-ink)}
+.hk-see b{font-weight:600}
+.hk-status{margin:10px 0 0;font:400 13.5px/1.4 Inter,sans-serif;color:var(--rf-mute)}
+
+/* Index: the tiles carry no image, so the chunk label sits over the title. */
+.rf-tile.hk-tile{gap:10px;padding:20px 20px 18px}
+.hk-tile-k{font:600 12px/1 Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--rf-mute)}
+
+/* Pilot: the ? on a page that has a question set, in the page's left margin (picking view only), and the top-bar entry. */
+.frame>.hook-open{left:12px;top:50%;z-index:3;width:44px;height:44px;transform:translateY(-50%);display:flex;align-items:center;justify-content:center;padding:0;font:500 25px/1 Newsreader,Georgia,serif;color:#141413;background:#fffdf8;border:1px solid #c9c6bb;border-radius:50%;cursor:pointer;box-shadow:0 6px 16px -8px rgba(60,40,20,.45)}
+.frame>.hook-open:hover{background:#f0eee6}
+body.lecture-mode .hook-open,body.solo .hook-open{display:none}
+@media print{
+  .hook-open,.hook-index,.hooks-overlay{display:none!important}
+  html.hooks-lock{overflow:visible}
+}

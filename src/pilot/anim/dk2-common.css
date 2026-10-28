@@ -1,0 +1,49 @@
+/* Builder 2's dark-reaction animations in the strip scene (anim/dk2-common.ts). Prefix .dk2. */
+/* dimmed parts carry no labels (DARK_ANIM_BRIEF.md): the dimmed strip's names, counts and process words are hidden */
+.dk2-dim text.cel-prot,.dk2-dim text.cel-mn,.dk2-dim text.cel-cnt,.dk2-dim text.cbb-proc,.dk2-dim text.cbb-org,
+.dk2-dim .chn-off text.cel-zone,.dk2-dim .chn-off text.chn-zone,.dk2-dim text.chn-light,.dk2-dim .cel-ld{display:none}
+.theme-editorial .fig.dk2 text.dk2-num{font-size:16px;font-weight:700;fill:#9b3e1e}
+.theme-editorial .fig.dk2 text.dk2-big{font-size:21px;font-weight:700;fill:#141413}
+.theme-editorial .fig.dk2 .dk2-card{fill:rgba(253,252,248,.93);stroke:rgba(120,100,60,.18);stroke-width:1.2}
+.theme-editorial .fig.dk2 .dk2-panel{fill:#fdfcf8}
+.theme-editorial .fig.dk2 text.dk2-unit{font-size:20px;font-weight:700;fill:#141413}
+.theme-editorial .fig.dk2 text.dk2-lname{font-size:19px;font-weight:600;fill:#3d3d3a}
+.theme-editorial .fig.dk2 text.dk2-ln{font-size:19px;font-weight:700;fill:#d6d2c6}
+.theme-editorial .fig.dk2 text.dk2-ln.dk2-ln-on{fill:#9b3e1e}
+.theme-editorial .fig.dk2 text.dk2-lt{font-size:19px;font-weight:600;fill:#141413}
+.theme-editorial .fig.dk2 .dk2-axis{fill:none;stroke:#3d3d3a;stroke-width:1.8}
+.theme-editorial .fig.dk2 .dk2-tick{fill:none;stroke:#3d3d3a;stroke-width:1.4}
+.theme-editorial .fig.dk2 .dk2-zero{fill:none;stroke:#a9a69c;stroke-width:1.2;stroke-dasharray:4 4}
+.theme-editorial .fig.dk2 text.dk2-tl{font-size:17px;fill:#3d3d3a}
+.theme-editorial .fig.dk2 text.dk2-at{font-size:19px;font-weight:600;fill:#3d3d3a}
+.theme-editorial .fig.dk2 text.dk2-gl{font-size:18px;font-weight:600;fill:#141413}
+.theme-editorial .fig.dk2 text.dk2-cr{font-size:13px;fill:#8a877d}
+.theme-editorial .fig.dk2 .dk2-cur{fill:none;stroke:#141413;stroke-width:3.2;stroke-linejoin:round;stroke-linecap:round}
+.theme-editorial .fig.dk2 .dk2-cur-amber{stroke:#d9922a}
+.theme-editorial .fig.dk2 .dk2-cur-faint{stroke:#c9c5ba;stroke-width:2.2}
+.theme-editorial .fig.dk2 .dk2-dot{fill:#141413;stroke:#fbfaf6;stroke-width:2.4}
+.theme-editorial .fig.dk2 .dk2-dot-amber{fill:#d9922a}
+.theme-editorial .fig.dk2 .dk2-cursor{fill:none;stroke:#8a877d;stroke-width:1.4;stroke-dasharray:4 4}
+.theme-editorial .fig.dk2 .dk2-day{fill:#f8ecc4}
+.theme-editorial .fig.dk2 .dk2-night{fill:#5b6273}
+.theme-editorial .fig.dk2 .dk2-nshade{fill:#5b6273;opacity:.08}
+.theme-editorial .fig.dk2 text.dk2-band{font-size:17px;font-weight:600;fill:#6b5a1e}
+.theme-editorial .fig.dk2 text.dk2-band-d{font-size:17px;font-weight:600;fill:#f3f1ea}
+.theme-editorial .fig.dk2 .dk2-nightveil{fill:#2f3b55}
+.theme-editorial .fig.dk2 .dk2-x{fill:none;stroke:#b8321f;stroke-width:6;stroke-linecap:round}
+.dk2-pool0{stop-color:#f8c75a;stop-opacity:.75}.dk2-pool1{stop-color:#f8d98a;stop-opacity:.35}.dk2-pool2{stop-color:#fbe6b0;stop-opacity:0}
+.theme-editorial .fig.dk2 text.dk2-gl-amber{fill:#b5711a}
+.theme-editorial .fig.dk2 .dk2-lim{fill:none;stroke-width:2.4;stroke-dasharray:7 5}
+.theme-editorial .fig.dk2 .dk2-lim-c{stroke:#b23a2e}.theme-editorial .fig.dk2 .dk2-lim-j{stroke:#137a8b}.theme-editorial .fig.dk2 .dk2-lim-p{stroke:#6b4c99}
+.theme-editorial .fig.dk2 text.dk2-lt-c{fill:#b23a2e}.theme-editorial .fig.dk2 text.dk2-lt-j{fill:#137a8b}.theme-editorial .fig.dk2 text.dk2-lt-p{fill:#6b4c99}
+.theme-editorial .fig.dk2 text.dk2-lsym{font-size:22px;font-weight:700;font-style:italic}
+.theme-editorial .fig.dk2 .dk2-act{fill:none;stroke:#141413;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}
+.theme-editorial .fig.dk2 text.dk2-toxic{font-size:17px;font-weight:700;fill:#b8321f}
+.theme-editorial .fig.dk2 text.dk2-take{font-size:21px;font-weight:700;fill:#141413}
+.theme-editorial .fig.dk2 text.dk2-cardh{font-size:19px;font-weight:700;fill:#141413}
+.theme-editorial .fig.dk2 text.dk2-cardt{font-size:17px;font-weight:500;fill:#3d3d3a}
+.theme-editorial .fig.dk2 text.dk2-ititle{font-size:19px;font-weight:700;fill:#3d3d3a}
+.theme-editorial .fig.dk2 .dk2-imito{fill:#fbefe9;stroke:#d9b98f;stroke-width:5}
+.theme-editorial .fig.dk2 .dk2-icris{fill:none;stroke:#d9b98f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.dk2-red0{stop-color:#d9482b;stop-opacity:.55}.dk2-red1{stop-color:#e0704f;stop-opacity:.22}.dk2-red2{stop-color:#f0a58c;stop-opacity:0}
+.theme-editorial .fig.dk2 text.dk2-ilab{font-size:24px;font-weight:700;fill:#141413}

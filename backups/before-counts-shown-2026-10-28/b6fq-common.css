@@ -1,0 +1,22 @@
+/* Cytochrome b₆f told as the Q cycle (b6fq-common.ts), stagings qa and qb. As b6fm-common.css (the slide's figure card,
+   the electrons as dark dots, leader lines that keep their width while the camera zooms, the brief amber glow of a named
+   carrier), plus the ledger panel (H⁺ per O₂), the result pill, the route names and the subscripts of the Qₒ and Qᵢ sites. */
+:is(.ani-b6f-qa,.ani-b6f-qb) .b6fq-slidecard{fill:rgba(255,254,250,.58);stroke:rgba(120,100,60,.10);stroke-width:1}
+:is(.ani-b6f-qa,.ani-b6f-qb) .b6fq-e{fill:#2b2a27;stroke:#fbfaf6;stroke-width:1.6}
+:is(.ani-b6f-qa,.ani-b6f-qb) .fig text.b6fq-elab{font-size:20px;font-weight:700;fill:#2b2a27}
+:is(.ani-b6f-qa,.ani-b6f-qb) .b6fq-lead path{vector-effect:non-scaling-stroke}
+:is(.ani-b6f-qa,.ani-b6f-qb) .b6fq-lead .chn-ld{stroke:#5a5953;stroke-width:1.7}
+:is(.ani-b6f-qa,.ani-b6f-qb) .b6fq-lead .chn-ldh{stroke-width:5.5}
+:is(.ani-b6f-qa,.ani-b6f-qb) .b6fq-lead .chn-ldt{fill:#5a5953}
+:is(.ani-b6f-qa,.ani-b6f-qb) .b6fq-pool0{stop-color:#f6b42c;stop-opacity:.75}
+:is(.ani-b6f-qa,.ani-b6f-qb) .b6fq-pool1{stop-color:#f8c75a;stop-opacity:.4}
+:is(.ani-b6f-qa,.ani-b6f-qb) .b6fq-pool2{stop-color:#fbe6b0;stop-opacity:0}
+:is(.ani-b6f-qa,.ani-b6f-qb) .b6fq-pq{stroke:#b8902a;stroke-width:.8}
+:is(.ani-b6f-qa,.ani-b6f-qb) .fig tspan.b6fq-sub{font-size:.72em}
+:is(.ani-b6f-qa,.ani-b6f-qb) .fig text.b6fq-route{font-size:16px;font-weight:600;fill:#141413}
+:is(.ani-b6f-qa,.ani-b6f-qb) .b6fq-pill{fill:#fffdf8;stroke:#d8d3c6;stroke-width:1.2}
+:is(.ani-b6f-qa,.ani-b6f-qb) .b6fq-panel{fill:#fffdf8;stroke:#d8d3c6;stroke-width:1.2}
+:is(.ani-b6f-qa,.ani-b6f-qb) .fig text.b6fq-lgh{font-size:22px;font-weight:700;fill:#141413}
+:is(.ani-b6f-qa,.ani-b6f-qb) .fig text.b6fq-lg{font-size:21px;font-weight:600;fill:#141413}
+:is(.ani-b6f-qa,.ani-b6f-qb) .fig text.b6fq-lgt{font-size:22px;font-weight:700;fill:#141413}
+:is(.ani-b6f-qa,.ani-b6f-qb) .fig text.b6fq-lgn{font-size:18px;font-weight:500;fill:#141413}

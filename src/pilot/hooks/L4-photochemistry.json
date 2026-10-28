@@ -1,0 +1,63 @@
+{
+  "title": "Photochemistry",
+  "chunk": "Lecture 1 · chunk 4",
+  "slides": ["7"],
+  "questions": [
+    {
+      "id": "a",
+      "question": "Where does the oxygen we breathe come from: water or CO₂?",
+      "story": "In 1771 Joseph Priestley found that a sprig of mint restores air in which a candle has burned out, and in 1779 Jan Ingenhousz showed that it needs sunlight. For 150 years most chemists assumed that plants split CO₂, keep the carbon and release its oxygen. In 1931 Cornelis van Niel studied purple sulfur bacteria: they photosynthesise with hydrogen sulfide instead of water, and release sulfur instead of oxygen. So, he argued, plants split water, and the O₂ comes from water. In 1937 Robert Hill showed that isolated chloroplasts release O₂ in light with no CO₂ at all, if they are given something to take the electrons. In 1941 Sam Ruben and Martin Kamen gave algae water labelled with the heavy oxygen isotope ¹⁸O: the O₂ released carried the label of the water, not of the CO₂.",
+      "steps": [
+        "Light excites the reaction-centre chlorophyll pair (P680), and it gives away an electron to the next molecule: charge separation.",
+        "P680 is left one electron short (P680⁺). It takes an electron back from water, through a cluster of manganese and calcium atoms.",
+        "Water is split into O₂, electrons and H⁺. The O₂ is a by-product; the H⁺ stay inside the thylakoid (the lumen) and acidify it.",
+        "The electrons go on to plastoquinone, which also takes up H⁺ from the stroma and carries both into the electron transport chain."
+      ],
+      "concepts": ["Charge separation", "Water oxidation", "O₂ as a by-product", "Lumen acidification", "Plastoquinone"],
+      "see": "Halftone avatars and clippings: Priestley's jar, van Niel's sulfur bacteria, Hill's isolated chloroplasts, Ruben & Kamen's ¹⁸O water; then into the real PSII structure: an electron leaves P680, water is split at the Mn₄CaO₅ cluster, O₂ leaves, H⁺ stay in the lumen.",
+      "status": "Van Niel 1931; Hill 1937, Nature 139:881; Ruben, Randall, Kamen & Hyde 1941, J Am Chem Soc 63:877. Checked in reviews; the originals are still to read."
+    },
+    {
+      "id": "b",
+      "question": "How can light pull electrons out of water, one of the most stable molecules there is?",
+      "story": "In 1985 Johann Deisenhofer, Robert Huber and Hartmut Michel solved the first atomic structure of a membrane protein: the reaction centre of a purple bacterium, which won them the 1988 Nobel Prize in Chemistry. It showed a pair of chlorophylls and a short chain of electron carriers crossing the membrane. In 2011 Yasufumi Umena, Keisuke Kawakami, Jian-Ren Shen and Nobuo Kamiya solved photosystem II in fine detail and saw the catalyst that splits water: four manganese atoms, one calcium and five oxygens (Mn₄CaO₅).",
+      "steps": [
+        "The excited chlorophyll pair (P680) hands an electron to the next carrier, and each step goes downhill in energy, so the electron does not come back: charge separation.",
+        "The electron ends up on the other side of the membrane: light energy is now stored as separated charge.",
+        "P680⁺ is the strongest oxidant known in living cells. Through the Mn₄CaO₅ cluster it takes electrons from water, one at a time.",
+        "Two water molecules give up four electrons and four H⁺, and one O₂ is released; the H⁺ stay in the lumen."
+      ],
+      "concepts": ["Reaction centre", "Charge separation", "Mn₄CaO₅ cluster", "Water oxidation"],
+      "see": "Nobel portraits of Deisenhofer, Huber and Michel; the real PSII structure; animation: the electron hops across the membrane, the Mn₄CaO₅ cluster takes electrons from water, O₂ leaves.",
+      "status": "Deisenhofer et al. 1985, Nature 318:618; Umena et al. 2011, Nature 473:55. Both are on the photochemistry reference board."
+    },
+    {
+      "id": "c",
+      "question": "Why is there oxygen in the air at all?",
+      "story": "Earth's early air held almost no oxygen. About 2.4 billion years ago O₂ began to build up: the Great Oxidation Event. The rocks still record it. Banded iron formations are red layers of rust that formed when oxygen made by cyanobacteria met iron dissolved in the oceans. The enzyme that made that oxygen, photosystem II, works the same way in every leaf today.",
+      "steps": [
+        "Cyanobacteria were the first organisms to use water as the electron source for photosynthesis.",
+        "To do it, light first separates charge in the reaction centre: P680 gives away an electron, and P680⁺ refills itself with an electron from water.",
+        "Splitting water releases O₂ as a by-product and leaves H⁺ in the lumen.",
+        "Chloroplasts descend from cyanobacteria, so plants split water the same way: the oxygen we breathe comes from photosystem II."
+      ],
+      "concepts": ["Water oxidation", "O₂ as a by-product", "Charge separation"],
+      "see": "A real photo of a banded iron formation; the history of atmospheric O₂ (Lyons, Reinhard & Planavsky 2014); then into the PSII structure.",
+      "status": "Lyons et al. 2014, Nature 506:307, is on the photorespiration board. This connects to lecture 2, where RuBisCO evolved before O₂ rose."
+    },
+    {
+      "id": "d",
+      "question": "What does a reaction-centre chlorophyll do that an antenna chlorophyll cannot?",
+      "story": "In 1956 Bessel Kok shone light on chloroplasts and saw a tiny drop in their absorption at 700 nm. A special chlorophyll was losing an electron, and having lost it, it absorbed less light. He called it P700, P for pigment. In 1969 Horst Witt's group found the same signal at 680 nm in the other photosystem: P680, the reaction centre of photosystem II.",
+      "steps": [
+        "Antenna and reaction centre hold the same molecule, chlorophyll a; the protein around it decides its job.",
+        "In the antenna, the excited chlorophyll passes on only its energy (chunk 3).",
+        "In the reaction centre, the excited chlorophyll pair (P680) gives away an electron: charge separation. Having lost an electron, it absorbs less at 680 nm, which is how it was found and named.",
+        "P680⁺ then takes an electron back from water, so water is split and O₂ is released."
+      ],
+      "concepts": ["Reaction centre", "P680", "Charge separation"],
+      "see": "Kok's absorption trace with its dip at 700 nm; two identical chlorophylls side by side: one passes on energy, the other gives away an electron.",
+      "status": "Kok 1956, Biochim Biophys Acta 22:399; Döring et al. 1969 (P680). Both are still to check in the originals."
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+{
+ "title": "Light harvesting",
+ "slides": [
+  "6"
+ ],
+ "images": [
+  {
+   "id": "a",
+   "file": "emerson1942-lange.jpg",
+   "kind": "history",
+   "caption": "Robert Emerson (right, at the balance); with Arnold he found one CO₂ reduced per ~2,480 chlorophylls per flash",
+   "credit": "Dorothea Lange, Manzanar, 28 June 1942; U.S. National Archives (NARA 538036); public domain, via Wikimedia Commons",
+   "url": "https://commons.wikimedia.org/wiki/File:Manzanar_Relocation_Center,_Manzanar,_California._Doctor_Robert_Emerson,_bio-chemist_and_botanist_f_._._._-_NARA_-_538036.jpg",
+   "note": "No public-domain studio portrait found. NARA caption: Emerson explains a guayule-rubber assay to project director Roy Nash (seated, centre)."
+  },
+  {
+   "id": "b",
+   "file": "scholes2011-psii-antenna-layout.jpg",
+   "kind": "schematic",
+   "caption": "PSII supercomplex layout: peripheral antenna (LHCII, CP29, CP26) feeds core antenna (CP43, CP47), which feeds the reaction centre",
+   "credit": "Scholes, Fleming, Olaya-Castro & van Grondelle 2011, Nat Chem 3:763, Fig. 1",
+   "url": "https://doi.org/10.1038/nchem.1145",
+   "note": "The whole antenna hierarchy in one labelled picture, at true scale (5 nm bar)."
+  },
+  {
+   "id": "c",
+   "file": "wietrzynski2020-psii-lhcii-in-thylakoid.jpg",
+   "kind": "micrograph",
+   "caption": "Cryo-ET of native Chlamydomonas thylakoids: PSII positions mapped, with PSII–LHCII supercomplexes filling the stacked membranes (panel C)",
+   "credit": "Wietrzynski et al. 2020, eLife 9:e53740, Fig. 4 (CC BY 4.0)",
+   "url": "https://doi.org/10.7554/eLife.53740",
+   "note": "Panels B are real tomogram densities; in C the LHCII antenna is modelled (C₂S₂M₂L₂) onto the observed PSII cores."
+  },
+  {
+   "id": "d",
+   "file": "kouril2012-c2s2m2-em-map.jpg",
+   "kind": "micrograph",
+   "caption": "Single-particle EM map of Arabidopsis PSII–LHCII (C₂S₂M₂) and the fitted core, LHCII trimers (S, M) and CP24/26/29",
+   "credit": "Kouřil, Dekker & Boekema 2012, BBA Bioenergetics 1817:2, Fig. 1 (adapted from Caffarri et al. 2009, EMBO J 28:3052)",
+   "url": "https://doi.org/10.1016/j.bbabio.2011.05.024",
+   "note": "How the antenna was first located around the core, before cryo-EM. Legend read verbatim (repository PDF, earlier session)."
+  },
+  {
+   "id": "e",
+   "file": "wei2016-psii-lhcii-cryoem.jpg",
+   "kind": "structure",
+   "caption": "Cryo-EM of spinach PSII–LHCII (C₂S₂): raw particles, class averages and 3.2 Å density with LHCII, CP26 and CP29",
+   "credit": "Wei et al. 2016, Nature 534:69, Fig. 1 (PDB 3JCU)",
+   "url": "https://doi.org/10.1038/nature18020",
+   "note": "First plant PSII–LHCII structure; shows real data (a, b) next to the map (c, d)."
+  },
+  {
+   "id": "f",
+   "file": "su2017-c2s2m2-structure.jpg",
+   "kind": "structure",
+   "caption": "Pea C₂S₂M₂ PSII–LHCII at 2.7 Å: subunits in the membrane (A) and top view with S- and M-LHCII (B)",
+   "credit": "Su et al. 2017, Science 357:815, Fig. 1 (PDB 5XNL)",
+   "url": "https://doi.org/10.1126/science.aan0327",
+   "note": "The complete plant PSII antenna (both LHCII trimers, CP24, CP26, CP29). Legend not re-read: science.org blocks curl."
+  },
+  {
+   "id": "g",
+   "file": "liu2004-lhcii-pigments.jpg",
+   "kind": "structure",
+   "caption": "LHCII trimer pigments from the stroma: per monomer 8 Chl a (green), 6 Chl b (blue), 4 carotenoids",
+   "credit": "Liu et al. 2004, Nature 428:287, Fig. 4 (PDB 1RWT)",
+   "url": "https://doi.org/10.1038/nature02373",
+   "note": "The main antenna protein: pigments packed ~1 nm apart; d, e give Chl–Chl distances in Å."
+  },
+  {
+   "id": "h",
+   "file": "croce2014-walk-and-energy-levels.jpg",
+   "kind": "schematic",
+   "caption": "a: simulated excitation walk to P680 (red); b: energy levels, carotenoid and Chl b above Chl a, rates ps⁻¹",
+   "credit": "Croce & van Amerongen 2014, Nat Chem Biol 10:492, Fig. 4",
+   "url": "https://doi.org/10.1038/nchembio.1555",
+   "note": "The field's energy funnel: Chl b and carotenoids hand energy to Chl a within ~1 ps; charge separation ~150 ps after absorption."
+  },
+  {
+   "id": "i",
+   "file": "kouril2012-energy-routes.jpg",
+   "kind": "schematic",
+   "caption": "Main energy-transfer routes in half a C₂S₂M₂: LHCII → CP29/CP26 → CP43/CP47 → reaction centre",
+   "credit": "Kouřil, Dekker & Boekema 2012, BBA Bioenergetics 1817:2, Fig. 2",
+   "url": "https://doi.org/10.1016/j.bbabio.2011.05.024",
+   "note": "Source of Eva Rosenqvist's slide 7. Yellow: core antenna ⇄ RC; blue: within the supercomplex; green: to neighbours."
+  },
+  {
+   "id": "j",
+   "file": "wei2016-chl-network-pathways.jpg",
+   "kind": "structure",
+   "caption": "Spinach C₂S₂ chlorophylls (Chl a green, Chl b blue) with likely routes LHCII → minor antenna → core → RC",
+   "credit": "Wei et al. 2016, Nature 534:69, Fig. 5",
+   "url": "https://doi.org/10.1038/nature18020",
+   "note": "Pathways drawn by the structure authors; panel a is the overview, b–f give Chl–Chl distances (Å) at the interfaces."
+  },
+  {
+   "id": "k",
+   "file": "caffarri2011-connectivity-model.jpg",
+   "kind": "schematic",
+   "caption": "Network model of PSII supercomplexes of four antenna sizes; red bars mark the energy-transfer contacts leading to charge separation",
+   "credit": "Caffarri, Broess, Croce & van Amerongen 2011, Biophys J 100:2094, Fig. 1",
+   "url": "https://doi.org/10.1016/j.bpj.2011.03.049",
+   "note": "The plainest drawing of the antenna as a network of complexes; red = active, white = inactive links in the model."
+  },
+  {
+   "id": "l",
+   "file": "caffarri2011-fluorescence-decay.jpg",
+   "kind": "figure",
+   "caption": "Picosecond fluorescence decays of four PSII supercomplex sizes: the bigger the antenna, the slower the excitation is trapped",
+   "credit": "Caffarri, Broess, Croce & van Amerongen 2011, Biophys J 100:2094, Fig. 2",
+   "url": "https://doi.org/10.1016/j.bpj.2011.03.049",
+   "note": "The one 'how fast' image: time-resolved fluorescence; average lifetime 109 ps (core) to 158 ps (C₂S₂M₂), per the abstract."
+  },
+  {
+   "id": "m",
+   "file": "croce2013-psi-lhci-structure.jpg",
+   "kind": "structure",
+   "caption": "Pea PSI–LHCI from the stroma: the core (PsaA, PsaB) with four Lhca antenna proteins on one side",
+   "credit": "Croce & van Amerongen 2013, Photosynth Res 116:153, Fig. 1 (CC BY 2.0; structure of Amunts et al. 2010, PDB 3LW5)",
+   "url": "https://doi.org/10.1007/s11120-013-9838-x",
+   "note": "PSI has its own antenna belt; red-form chlorophylls of Lhca3 and Lhca4 shown as spheres. The chunk plan may move PSI's antenna to chunk 5."
+  },
+  {
+   "id": "n",
+   "file": "croce2013-psi-energy-routes.jpg",
+   "kind": "schematic",
+   "caption": "PSI–LHCI: energy flows from Lhca1–4 into the core complex; thicker arrows mean faster transfer",
+   "credit": "Croce & van Amerongen 2013, Photosynth Res 116:153, Fig. 4 (CC BY 2.0; after Wientjes et al. 2011)",
+   "url": "https://doi.org/10.1007/s11120-013-9838-x",
+   "note": "The PSI counterpart of i (Kouřil routes); transfer also runs back from core to antenna."
+  },
+  {
+   "id": "o",
+   "file": "croce2013-psi-red-forms.jpg",
+   "kind": "figure",
+   "caption": "77 K spectra of PSI antenna dimers: absorption peaks near 680 nm, emission near 730 nm from low-energy 'red forms'",
+   "credit": "Croce & van Amerongen 2013, Photosynth Res 116:153, Fig. 3 (CC BY 2.0; data of Wientjes et al. 2011)",
+   "url": "https://doi.org/10.1007/s11120-013-9838-x",
+   "note": "PSI antenna holds chlorophylls lower in energy than P700, so its funnel is not strictly downhill."
+  }
+ ]
+}

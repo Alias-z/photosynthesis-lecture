@@ -1,0 +1,15 @@
+/* "RuBisCO through Earth's history" (dk-history.ts), on top of dk1-common.css. Prefix .hs-. */
+.theme-editorial .dk1 text.hs-h{font-size:19px;font-weight:600;fill:#3d3d3a}
+.theme-editorial .dk1 text.hs-tk{font-size:16px;fill:#5c5a52}
+.theme-editorial .dk1 text.hs-ax{font-size:17px;fill:#3d3d3a}
+.theme-editorial .dk1 text.hs-lab{font-size:17px;font-weight:600;fill:#141413}
+.dk1 .hs-grid{fill:none;stroke:#e3e0d6;stroke-width:1}
+.dk1 .hs-ice{fill:none;stroke:#5a7fa3;stroke-width:2.4;stroke-linejoin:round}
+.dk1 .hs-ml{fill:none;stroke:#b8301b;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+.dk1 .hs-dot{fill:#2b2a27;stroke:#fffdf8;stroke-width:1.4}
+.dk1 .hs-tl{fill:none;stroke:#8a877d;stroke-width:3;stroke-linecap:round}
+.dk1 .hs-stop{fill:#fffdf8;stroke:#8a877d;stroke-width:2.4}
+.dk1 .hs-mark{fill:#b8301b;stroke:#fffdf8;stroke-width:2.4}
+.theme-editorial .dk1 text.hs-tl1{font-size:20px;font-weight:600;fill:#141413}
+.theme-editorial .dk1 text.hs-tl2{font-size:17px;fill:#5c5a52}
+.dk1 .hs-band{fill:#fbfaf6;opacity:.92;stroke:#e3e0d6;stroke-width:1}

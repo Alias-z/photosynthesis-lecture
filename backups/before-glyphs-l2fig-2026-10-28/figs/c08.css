@@ -1,0 +1,88 @@
+/* Slide C08 figure styles, scoped under .theme-editorial and prefixed .fc08-.
+   The leaf-anatomy kit (cells, organelles, routes) is shared with C09, whose figures also carry .fc08. */
+.theme-editorial .fc08 text.atom-t{font-size:15px}
+.theme-editorial .fig text.fc08-b{font-weight:600;fill:#141413}
+.theme-editorial .fig text.fc08-it{font:italic 400 23px Inter,"Helvetica Neue",Arial,sans-serif;fill:#6b6a64}
+.theme-editorial .fig text.fc08-big{font-size:30px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fc08-gly{fill:#a9532f}
+.theme-editorial .fig text.fc08-c4{fill:#1d6b64}
+.theme-editorial .fig text.fc08-grey{fill:#8a877d}
+.theme-editorial .fig text.fc08-num-t{font-size:18px;font-weight:700;fill:#fffdf8}
+.theme-editorial .fig text.fc08-in{fill:#fffdf8;font-weight:600}
+.theme-editorial .fig .fc08-sp{font-style:italic}
+.theme-editorial .fig text.fc08-tiny{font-size:16px;fill:#6b6a64}
+
+/* routes: glycine clay dashed, C₄ acid teal solid, escape grey dotted */
+.theme-editorial .fc08-r{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fc08-r-k{stroke:#3d3d3a;stroke-width:2.6}
+.theme-editorial .fc08-r-g{stroke:#c4683f;stroke-width:4.2;stroke-dasharray:10 7}
+.theme-editorial .fc08-r-m{stroke:#237a72;stroke-width:4.6}
+.theme-editorial .fc08-r-x{stroke:#9d9a90;stroke-width:3.2;stroke-dasharray:1 7}
+.theme-editorial .fc08-r-w{stroke:#c9c6bb;stroke-width:2.6;stroke-dasharray:6 6}
+.theme-editorial .fc08-r-a{stroke:#d97757;stroke-width:2.6}
+.theme-editorial .fc08-r.fc08-thin{stroke-width:2.8}
+.theme-editorial .fc08-r-m.fc08-ret{stroke-width:3.2;stroke-dasharray:9 7}
+.theme-editorial .fc08-hd-k{fill:#3d3d3a}.theme-editorial .fc08-hd-g{fill:#c4683f}.theme-editorial .fc08-hd-m{fill:#237a72}
+.theme-editorial .fc08-hd-x{fill:#9d9a90}.theme-editorial .fc08-hd-w{fill:#c9c6bb}.theme-editorial .fc08-hd-a{fill:#d97757}
+
+/* cells and organelles */
+.theme-editorial .fc08-m{fill:#eef4e4;stroke:#9cbd88;stroke-width:1.8}
+.theme-editorial .fc08-bs{fill:#dce8c9;stroke:#5f8a4a;stroke-width:3.4}
+.theme-editorial .fc08-vein{fill:#f3eee0;stroke:#b4a98a;stroke-width:1.8}
+.theme-editorial .fc08-xy{fill:#fffdf8;stroke:#b4a98a;stroke-width:1.4}
+.theme-editorial .fc08-cp{fill:#a6cc8a;stroke:#5a8645;stroke-width:1.4}
+.theme-editorial .fc08-th{fill:none;stroke:#5a8645;stroke-width:1.1;opacity:.55}
+.theme-editorial .fc08-mt{fill:#f6dcc5;stroke:#b8754b;stroke-width:1.5}
+.theme-editorial .fc08-mt-on{fill:#e9a676;stroke:#7d3417;stroke-width:2.4}
+.theme-editorial .fc08-mt-off{fill:#fbf4ec;stroke:#cfae92;stroke-width:1.4;stroke-dasharray:4 3}
+.theme-editorial .fc08-cr{fill:none;stroke:#b8754b;stroke-width:1.3}
+.theme-editorial .fc08-mt-on+.fc08-cr{stroke:#7d3417}
+.theme-editorial .fc08-dot{fill:#1f1e1c}
+.theme-editorial .fc08-px{fill:#f5edd0;stroke:#bba25a;stroke-width:1.5}
+.theme-editorial .fc08-enz{fill:#fffdf8;stroke:#3d3d3a;stroke-width:1.6}
+.theme-editorial .fc08-enz-m{fill:#e3f1ee;stroke:#237a72;stroke-width:1.8}
+.theme-editorial .fc08-enz-g{fill:#fbeee6;stroke:#c4683f;stroke-width:1.8}
+.theme-editorial .fc08-warm{fill:#f8dcc6;stroke:#d08a62}
+.theme-editorial .fc08-expr{fill:#f2c6a6;stroke:#b8754b}
+.theme-editorial .fc08-cross{fill:none;stroke:#c0442a;stroke-width:3.4;stroke-linecap:round}
+.theme-editorial .fc08-panel{fill:#fffdf8;stroke:#d6d2c6;stroke-width:1.4}
+.theme-editorial .fc08-num{fill:#3d3d3a}
+.theme-editorial .fc08-rule{fill:none;stroke:#c9c6bb;stroke-width:1.4}
+.theme-editorial .fc08-halo{fill:#fbe3d0;stroke:#e7b090;stroke-width:1.4;stroke-dasharray:5 5}
+.theme-editorial .fc08-ghost{opacity:.35}
+
+/* icons and analogy */
+.theme-editorial .fc08-room{fill:#fffdf8;stroke:#6b6a64;stroke-width:4}
+.theme-editorial .fc08-room-b{fill:#f3f7ec}
+.theme-editorial .fc08-floor{fill:none;stroke:#e6e2d6;stroke-width:1}
+.theme-editorial .fc08-bench{fill:#ece9df;stroke:#8a877d;stroke-width:1.8}
+.theme-editorial .fc08-parcel{fill:#f0d6b4;stroke:#a87a45;stroke-width:1.6}
+.theme-editorial .fc08-tape{fill:none;stroke:#a87a45;stroke-width:1.4}
+.theme-editorial .fc08-wind{fill:none;stroke:#9d9a90;stroke-width:2.4;stroke-linecap:round}
+
+/* evidence panels drawn like electron micrographs */
+.theme-editorial .fc08-em{fill:#e4e2dc;stroke:#bdb9ae;stroke-width:1.4}
+.theme-editorial .fc08-emcell{fill:#efeee9;stroke:#7d7a72;stroke-width:2.6}
+.theme-editorial .fc08-emcp{fill:#c9c6bd;stroke:#8d8a82;stroke-width:1.2}
+.theme-editorial .fc08-emth{fill:none;stroke:#9a978e;stroke-width:1}
+.theme-editorial .fc08-emmt{fill:#d8d5cd;stroke:#6f6c64;stroke-width:1.4}
+.theme-editorial .fc08-emcr{fill:none;stroke:#8d8a82;stroke-width:1.1}
+
+/* data */
+.theme-editorial .fc08-bar{fill:#e6e2d6;stroke:#8a877d;stroke-width:1.4}
+.theme-editorial .fc08-bar-g{fill:#efb48d;stroke:#a9532f;stroke-width:1.6}
+.theme-editorial .fc08-axis{fill:none;stroke:#8a877d;stroke-width:1.6}
+
+/* gene switch */
+.theme-editorial .fc08-dna{fill:none;stroke:#6b6a64;stroke-width:3;stroke-linecap:round}
+.theme-editorial .fc08-sw{fill:#fffdf8;stroke:#3d3d3a;stroke-width:1.8}
+.theme-editorial .fc08-sw-off{fill:#f2f0ea;stroke:#a8a59a;stroke-width:1.6;stroke-dasharray:5 4}
+.theme-editorial .fc08-gene{fill:#efb48d;stroke:#a9532f;stroke-width:1.8}
+
+/* carbon skeletons */
+.theme-editorial .fc08-bond{fill:none;stroke:#3d3d3a;stroke-width:3;stroke-linecap:round}
+.theme-editorial .fc08-bond-pr{stroke:#d97757}
+
+/* scissors (the analogy's parcel opener) */
+.theme-editorial .fc08-sc{fill:none;stroke:#3d3d3a;stroke-width:3.6;stroke-linecap:round}
+.theme-editorial .fc08-sc-loop{fill:#fffdf8;stroke:#3d3d3a;stroke-width:3}

@@ -1,10 +1,10 @@
 /* Slide L01 figure styles, scoped under .theme-editorial and prefixed .fl01- */
 
-/* Equation terms: light amber, water and O₂ blue, carbon brown; operators quiet. */
+/* Equation terms: light amber; molecule names in ink (the deck's glyph standard, 28 Oct 2026); operators quiet. */
 .theme-editorial .fig text.fl01-eq{font-weight:600;letter-spacing:-.005em}
 .theme-editorial .fig text.fl01-l,.theme-editorial .fig .fl01-l{fill:#a5670a}
-.theme-editorial .fig text.fl01-w,.theme-editorial .fig .fl01-w{fill:#2a62a0}
-.theme-editorial .fig text.fl01-c,.theme-editorial .fig .fl01-c{fill:#7a4a20}
+.theme-editorial .fig text.fl01-w,.theme-editorial .fig .fl01-w{fill:#141413}
+.theme-editorial .fig text.fl01-c,.theme-editorial .fig .fl01-c{fill:#141413}
 .theme-editorial .fig text.fl01-o{fill:#8a877d;font-weight:400}
 .theme-editorial .fig text.fl01-dark{fill:#3d3d3a}
 .theme-editorial .fig .fl01-sb{font-size:68%;baseline-shift:-.24em}
@@ -12,7 +12,8 @@
 /* Arrows and guides. */
 .theme-editorial .fl01-ar{fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
 .theme-editorial .fl01-ar-l{stroke:#e39a12}.theme-editorial .fl01-hd-l{fill:#e39a12}
-.theme-editorial .fl01-ar-w{stroke:#3f7fc0}.theme-editorial .fl01-hd-w{fill:#3f7fc0}
+/* w: water and gas (O₂, CO₂) paths, neutral grey */
+.theme-editorial .fl01-ar-w{stroke:#6b6a64}.theme-editorial .fl01-hd-w{fill:#6b6a64}
 .theme-editorial .fl01-ar-c{stroke:#8b5a2b}.theme-editorial .fl01-hd-c{fill:#8b5a2b}
 .theme-editorial .fl01-ar-k{stroke:#3d3d3a}.theme-editorial .fl01-hd-k{fill:#3d3d3a}
 .theme-editorial .fl01-ar.fl01-main{stroke-width:3.2}

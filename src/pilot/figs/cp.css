@@ -1,0 +1,77 @@
+/* CO₂-path chunk (C9, C10; prefix cp, 28 Oct 2026). Scoped under .theme-editorial, classes prefixed .fcp- */
+.theme-editorial .fig text.fcp-l{font-size:21px;fill:#3d3d3a}
+.theme-editorial .fig text.fcp-h{font-size:23px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fcp-h-sm{font-size:21px}
+.theme-editorial .fig text.fcp-s{font-size:19px;fill:#5f5e58}
+.theme-editorial .fig text.fcp-z{font-size:20px;fill:#5f5e58;font-style:italic}
+.theme-editorial .fig text.fcp-sym{font-size:27px;fill:#141413;font-family:Newsreader,Georgia,serif}
+.theme-editorial .fig text.fcp-eq{font-size:27px;fill:#141413;font-family:Newsreader,Georgia,serif}
+.theme-editorial .fig text.fcp-c{font-size:22px;font-weight:700;fill:#141413}
+.theme-editorial .fig text.fcp-w{font-size:22px;font-weight:700;fill:#141413}
+.theme-editorial .fig text.fcp-cr{font-size:13px;fill:#fffdf8}
+.theme-editorial .fig text.fcp-crd{font-size:14px;fill:#8a877d}
+.theme-editorial .fig text.fcp-ax{font-size:19px;fill:#3d3d3a}
+.theme-editorial .fig text.fcp-big{font-size:30px;font-weight:700;fill:#141413}
+.theme-editorial .fig text.fcp-yr{font-size:24px;font-weight:700;fill:#141413}
+
+.theme-editorial .fig text.fcp-pt{font-size:20px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fcp-pt-big{font-size:22px}
+.theme-editorial .fig text.fcp-pt-co2,.theme-editorial .fig text.fcp-pt-h2o{fill:#141413}
+.theme-editorial .fig text.fcp-pt-dark{fill:#fffdf8}
+.theme-editorial .fcp-pill-paper{fill:#f3f1ea;stroke:#d3cfc3;stroke-width:1}
+.theme-editorial .fcp-pill-photo{fill:#fffdf8;opacity:.95}
+.theme-editorial .fcp-pill-co2,.theme-editorial .fcp-pill-h2o{fill:#fffdf8;stroke:#d3cfc3;stroke-width:1;opacity:.97}
+.theme-editorial .fcp-pill-dark{fill:#141413;opacity:.82}
+.theme-editorial .fcp-pill-leaf{fill:#e4eed9;stroke:#9cbb83;stroke-width:1}
+.theme-editorial .fcp-ldh{fill:none;stroke:#fffdf8;stroke-width:4.5;stroke-linecap:round;opacity:.9}
+.theme-editorial .fcp-ldk{fill:none;stroke:#141413;stroke-width:1.6;stroke-linecap:round}
+.theme-editorial .fcp-tip{fill:#141413;stroke:#fffdf8;stroke-width:1.5}
+.theme-editorial .fcp-credbg{fill:#141413;opacity:.45}
+.theme-editorial .fcp-mult{mix-blend-mode:multiply}
+.theme-editorial .fcp-frame{fill:none;stroke:#d3cfc3;stroke-width:1}
+
+.theme-editorial .fcp-ar{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fcp-ar-big{stroke-width:5}
+.theme-editorial .fcp-ar-co2{stroke:#6b6a64}.theme-editorial .fcp-hd-co2{fill:#6b6a64}
+.theme-editorial .fcp-ar-h2o{stroke:#6b6a64}.theme-editorial .fcp-hd-h2o{fill:#6b6a64}
+.theme-editorial .fcp-ar-ink{stroke:#3d3d3a}.theme-editorial .fcp-hd-ink{fill:#3d3d3a}
+.theme-editorial .fcp-ar-grey{stroke:#a3a198}.theme-editorial .fcp-hd-grey{fill:#a3a198}
+.theme-editorial .fcp-ar-dash{stroke-dasharray:7 6}
+.theme-editorial .fcp-h2o-o{fill:#f4cc4f;stroke:#b8902a}
+
+.theme-editorial .fcp-brace{fill:none;stroke:#3d3d3a;stroke-width:2}
+.theme-editorial .fcp-dash{fill:none;stroke:#8a9bb0;stroke-width:1.6;stroke-dasharray:6 6}
+.theme-editorial .fcp-rule{fill:none;stroke:#d3cfc3;stroke-width:1.2}
+.theme-editorial .fcp-axis{fill:none;stroke:#3d3d3a;stroke-width:1.6}
+.theme-editorial .fcp-grid{fill:none;stroke:#e4e1d8;stroke-width:1}
+
+/* the drawn leaf */
+.theme-editorial .fcp-epi{fill:#f1f4ea;stroke:#8aa37a;stroke-width:1.8}
+.theme-editorial .fcp-guard{fill:#cfe2b8;stroke:#6f9156;stroke-width:1.8}
+.theme-editorial .fcp-ias{fill:#eef3f8}
+.theme-editorial .fcp-cell{fill:#e7efdc;stroke:#8aa37a;stroke-width:1.6}
+.theme-editorial .fcp-wall{fill:#d9cdb3;stroke:#a8987a;stroke-width:1}
+.theme-editorial .fcp-cyto{fill:#f6f4ec}
+.theme-editorial .fcp-pm{fill:none;stroke:#a8987a;stroke-width:1.6}
+.theme-editorial .fcp-chl{fill:#cfe3b5;stroke:#5f8a45;stroke-width:2.4}
+.theme-editorial .fcp-thy rect{fill:#7ea65f}
+.theme-editorial .fcp-box{fill:#f6f4ec;stroke:#3d3d3a;stroke-width:1.8}
+.theme-editorial .fcp-box-t{fill:#eef3f8;stroke:#3d3d3a;stroke-width:1.8}
+.theme-editorial .fcp-pipe{fill:none;stroke:#a3a198;stroke-width:14;stroke-linecap:round}
+.theme-editorial .fcp-pipe-in{fill:none;stroke:#f6f4ec;stroke-width:9;stroke-linecap:round}
+.theme-editorial .fcp-leaf{fill:#9cc47a;stroke:#5f8a45;stroke-width:2}
+.theme-editorial .fcp-lamp{fill:#f4cc4f;stroke:#b8902a;stroke-width:1.6}
+.theme-editorial .fcp-bar-in{fill:#d6c8b8}
+.theme-editorial .fcp-bar-co2{fill:#a2461f}
+.theme-editorial .fcp-bar-h2o{fill:#2f62a3}
+.theme-editorial .fcp-ir{fill:none;stroke:#c0392b;stroke-width:3;stroke-dasharray:2 7;stroke-linecap:round}
+.theme-editorial .fcp-zoom{fill:none;stroke:#141413;stroke-width:1.6;stroke-dasharray:5 5}
+.theme-editorial .fcp-step{fill:none;stroke:#a2461f;stroke-width:4;stroke-linejoin:round}
+.theme-editorial .fcp-stepfill{fill:#a2461f;opacity:.1}
+.theme-editorial .fcp-res{fill:none;stroke:#3d3d3a;stroke-width:2.6;stroke-linejoin:round}
+
+/* lit / dimmed parts of the path schema */
+.theme-editorial .cpp-off{opacity:.22}
+.theme-editorial .cpp-glow{filter:drop-shadow(0 0 6px rgba(242,183,5,.75))}
+.theme-editorial .fcp-rub{fill:#fffdf8;stroke:#5f8a45;stroke-width:1.8}
+.theme-editorial .fig text.fcp-rubt{font-size:19px;font-weight:600;fill:#3c5a2a}

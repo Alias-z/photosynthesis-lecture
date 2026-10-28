@@ -1,0 +1,42 @@
+/* Rubisco story, slides C5a–C5c (prefix frb-), on top of cb.css (fcb- classes); scoped under .theme-editorial. */
+.theme-editorial .frb-panel{fill:#f6f4ee;stroke:#e1ddd1;stroke-width:1.2}
+.theme-editorial .frb-panel-w{fill:#fffdf8;stroke:#d8d5cb;stroke-width:1.2}
+.theme-editorial .frb-opt{fill:#2a963a;opacity:.14}
+.theme-editorial .frb-optl{fill:none;stroke:#24812f;stroke-width:2;stroke-dasharray:7 5}
+.theme-editorial .frb-ice{fill:none;stroke:#5a7fa3;stroke-width:2.6;stroke-linejoin:round}
+.theme-editorial .frb-ml{fill:none;stroke:#b8301b;stroke-width:3.4;stroke-linejoin:round;stroke-linecap:round}
+.theme-editorial .frb-gap{fill:none;stroke:#b8301b;stroke-width:2.4;stroke-dasharray:3 5}
+.theme-editorial .frb-co2{fill:none;stroke:#2b2a27;stroke-width:3.4;stroke-linejoin:round;stroke-linecap:round}
+.theme-editorial .frb-o2{fill:none;stroke:#b8902a;stroke-width:3.4;stroke-linejoin:round;stroke-linecap:round}
+.theme-editorial .frb-ox{fill:none;stroke:#a9532f;stroke-width:3.4;stroke-linejoin:round;stroke-linecap:round}
+.theme-editorial .frb-fit{fill:none;stroke:#8a877d;stroke-width:2;stroke-dasharray:6 5}
+.theme-editorial .frb-dot{fill:#2b2a27;stroke:#fffdf8;stroke-width:1.6}
+.theme-editorial .frb-dot-ox{fill:#a9532f;stroke:#fffdf8;stroke-width:1.6}
+.theme-editorial .frb-dot-o2{fill:#f4cc4f;stroke:#b8902a;stroke-width:1.8}
+.theme-editorial .frb-dot-ml{fill:#b8301b;stroke:#fffdf8;stroke-width:1.6}
+.theme-editorial .frb-bar{fill:#8a877d}
+.theme-editorial .frb-bar-plant{fill:#2a963a}
+.theme-editorial .frb-bar-c4{fill:#7fae5a}
+.theme-editorial .frb-bar-red{fill:#b8301b}
+.theme-editorial .frb-bar-cy{fill:#4a8fb8}
+.theme-editorial .frb-bar-ii{fill:#9b988e}
+.theme-editorial .frb-bar-ox{fill:#a9532f}
+.theme-editorial .frb-bar-soft{fill:#d9d5c9}
+.theme-editorial .frb-o2band{fill:#f4cc4f;opacity:.28}
+.theme-editorial .frb-co2band{fill:#6b6a64;opacity:.16}
+.theme-editorial .frb-goe{fill:#f4cc4f;opacity:.32}
+.theme-editorial .frb-tick{fill:none;stroke:#4a4945;stroke-width:1.5}
+.theme-editorial .frb-rule{fill:none;stroke:#d8d5cb;stroke-width:1.2}
+.theme-editorial .frb-ok{fill:#24812f}
+.theme-editorial .frb-no{fill:#b8301b}
+.theme-editorial .frb-tool{fill:#2350e6}
+.theme-editorial .frb-chip-ok{fill:#e3f0dc;stroke:#2a963a;stroke-width:1.4}
+.theme-editorial .frb-chip-no{fill:#f6e0d9;stroke:#b8301b;stroke-width:1.4}
+.theme-editorial .frb-chip-tool{fill:#e2e8fb;stroke:#2350e6;stroke-width:1.4}
+.theme-editorial .frb-water{fill:#dbe9f2;stroke:#8fb3cc;stroke-width:1.6}
+.theme-editorial .frb-glass{fill:none;stroke:#6b6a64;stroke-width:2.4}
+.theme-editorial .frb-clock{fill:#fffdf8;stroke:#3d3d3a;stroke-width:2.2}
+.theme-editorial .frb-hand{fill:none;stroke:#b8301b;stroke-width:3;stroke-linecap:round}
+.theme-editorial .frb-arc-goe{fill:none;stroke:#e0b43a;stroke-width:16;opacity:.75}
+.theme-editorial .frb-ring{fill:none;stroke:#b8301b;stroke-width:3;stroke-dasharray:7 5}
+.theme-editorial .frb-halo{paint-order:stroke;stroke:#fffdf8;stroke-width:6px;stroke-linejoin:round}

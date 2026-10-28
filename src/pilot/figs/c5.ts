@@ -1,10 +1,11 @@
 // Slide C5 figure concepts. What each must show is in research/figure-briefs/FIGURE_BRIEF.md.
 // Vocabulary: carbon = dark bead, CO₂ and O₂ = atom balls, RuBP = pentagon, ATP/NADPH = tags, Pᵢ = orange ball,
-// Rubisco = warm grey block, photorespiration = clay and dashed. FvCB limits: Ac (Rubisco, teal),
+// RuBisCO = warm grey block, photorespiration = clay and dashed. FvCB limits: Ac (RuBisCO, teal),
 // Aj (electron transport, blue), Ap (triose-phosphate use, purple).
 import './c5.css';
 import { illusHeads, molecule, tag } from '../illus';
 import { arrow, text } from '../mechanisms';
+import { gasAr } from './l2-glyphs';
 
 export const VARIANTS = [
   { id: 'a', name: 'FvCB scheme' },
@@ -57,22 +58,22 @@ function schemeSvg(): string {
   const p = 'fc5a';
   const lim = (x: number, y: number, head: string, lines: string[], l: Lim, anchor: 'start' | 'end'): string =>
     text(x, y, head, `lab lab-b fc5-${l}`, anchor) + lines.map((s, i) => text(x, y + 28 * (i + 1), s, 'sm', anchor)).join('');
-  return svg('FvCB scheme after the MSc thesis: Rubisco carboxylation and oxygenation, PGA reduction, RuBP regeneration and export, with the three limitations',
+  return svg('FvCB scheme after the MSc thesis: RuBisCO carboxylation and oxygenation, PGA reduction, RuBP regeneration and export, with the three limitations',
     `${illusHeads(p)}
-    ${brace(186, 170, 440, -1, 'j')}${lim(158, 280, 'Aj ~ Jmax', ['electron', 'transport'], 'j', 'end')}
-    ${brace(186, 462, 592, -1, 'c')}${lim(158, 506, 'Ac ~ Vcmax', ['Rubisco', 'capacity'], 'c', 'end')}
-    ${brace(628, 24, 116, 1, 'p')}${lim(652, 62, 'Ap ~ TPU', ['triose-P use'], 'p', 'start')}
+    ${brace(186, 170, 440, -1, 'j')}${lim(158, 280, 'Aj ~ J', ['electron', 'transport'], 'j', 'end')}
+    ${brace(186, 462, 592, -1, 'c')}${lim(158, 506, 'Ac ~ Vcmax', ['RuBisCO', 'capacity'], 'c', 'end')}
+    ${brace(628, 24, 116, 1, 'p')}${lim(652, 62, 'Ap ~ TPU', ['triose phosphate use'], 'p', 'start')}
 
-    <rect class="node node-rub" x="336" y="494" width="128" height="44" rx="14"/>${text(400, 523, 'Rubisco', 'sm lab-b')}
+    <rect class="node node-rub" x="336" y="494" width="128" height="44" rx="14"/>${text(400, 523, 'RuBisCO', 'sm lab-b')}
     ${pent(400, 454, 38)}
-    ${molecule(294, 574, 'OCO', 12)}${arrow(p, 'ink', 'M322,560 L344,542')}
-    ${molecule(506, 574, 'OO', 12)}${arrow(p, 'clay', 'M482,560 L458,542')}
+    ${molecule(294, 574, 'OCO', 12)}${gasAr(p, 'M322,560 L344,542')}
+    ${molecule(506, 574, 'OO', 12)}${gasAr(p, 'M482,560 L458,542')}
 
     ${arrow(p, 'ink', 'M400,414 L400,362')}${text(388, 396, 'carboxylation', 'sm', 'end')}
-    ${pill(400, 338, 104, text(400, 346, 'PGA', 'sm lab-b'))}
+    ${pill(400, 338, 104, text(400, 346, '3-PGA', 'sm lab-b'))}
     ${arrow(p, 'ink', 'M400,316 L400,182', 'boost')}
     ${text(416, 216, 'reduction', 'sm', 'start')}${tag(448, 254, 'ATP', 'atp')}${tag(540, 254, 'NADPH', 'nadph')}
-    ${pill(400, 158, 150, text(400, 166, 'triose-P', 'sm lab-b'))}
+    ${pill(400, 158, 150, text(400, 166, 'triose phosphate', 'sm lab-b'))}
 
     <path class="ar ar-ink" d="M325,158 C224,158 204,318 226,384 S320,470 366,462" marker-end="url(#${p}-ink)"/>
     ${text(272, 112, 'regeneration', 'sm')}${text(272, 140, '5 of 6', 'sm lab-b')}${tag(262, 300, 'ATP', 'atp')}
@@ -82,12 +83,12 @@ function schemeSvg(): string {
     ${tag(452, 48, '', 'pi')}${arrow(p, 'ink', 'M446,66 L420,130', 'dashed')}
 
     ${arrow(p, 'clay', 'M436,440 L508,416', 'dashed')}${text(480, 472, 'oxygenation', 'sm fc5-pr', 'start')}
-    ${pill(594, 410, 168, `<text class="sm lab-b" x="594" y="418" text-anchor="middle">PGA + <tspan class="fc5-pr-t">2-PG</tspan></text>`)}
+    ${pill(594, 410, 168, `<text class="sm lab-b" x="594" y="418" text-anchor="middle">3-PGA + <tspan class="fc5-pr-t">2-PG</tspan></text>`)}
     ${arrow(p, 'clay', 'M548,388 C540,366 488,366 458,354', 'dashed')}
     ${arrow(p, 'clay', 'M640,388 L640,334', 'dashed')}
     ${pill(664, 310, 210, text(664, 318, 'photorespiration', 'sm fc5-pr'), 'node node-pr')}
     ${arrow(p, 'clay', 'M558,304 L460,328', 'dashed')}${text(552, 298, '3 of 4 C back', 'sm', 'end')}
-    ${arrow(p, 'clay', 'M706,288 L720,236', 'dashed')}${molecule(726, 218, 'OCO', 10)}${text(690, 224, '1 of 4 C lost', 'sm', 'end')}`);
+    ${gasAr(p, 'M706,288 L720,236', 'dashed')}${molecule(726, 218, 'OCO', 10)}${text(690, 224, '1 of 4 C lost', 'sm', 'end')}`);
 }
 
 /* ---------- C5B · three-station wheel with carbon counted as beads ---------- */
@@ -120,7 +121,7 @@ function wheelSvg(): string {
     <rect class="node" x="${tx - 76}" y="${ty - 54}" width="152" height="118" rx="20"/>${grid(tx, ty - 30, 3, 6, 3)}${text(tx, ty + 52, '6 triose-P', 'sm lab-b')}
     <rect class="node" x="${rx - 64}" y="${ry - 54}" width="128" height="118" rx="20"/>${grid(rx, ry - 30, 5, 3)}${text(rx, ry + 52, '3 RuBP', 'sm lab-b')}
 
-    <rect class="node node-rub" x="${rbx - 62}" y="${rby - 24}" width="124" height="48" rx="14"/>${text(rbx, rby + 8, 'Rubisco', 'sm lab-b')}
+    <rect class="node node-rub" x="${rbx - 62}" y="${rby - 24}" width="124" height="48" rx="14"/>${text(rbx, rby + 8, 'RuBisCO', 'sm lab-b')}
     <rect class="node" x="${rdx - 66}" y="${rdy - 24}" width="132" height="48" rx="24"/>${text(rdx, rdy + 8, 'reduction', 'sm lab-b')}
     <rect class="node" x="${rgx - 78}" y="${rgy - 24}" width="156" height="48" rx="24"/>${text(rgx, rgy + 8, 'regeneration', 'sm lab-b')}
 
@@ -140,7 +141,7 @@ function wheelSvg(): string {
     ${text(786, 586, 'per 3 CO₂: 9 ATP + 6 NADPH', 'sm', 'end')}`);
 }
 
-/* ---------- C5C · Rubisco's two doors ---------- */
+/* ---------- C5C · RuBisCO's two doors ---------- */
 
 function doorsSvg(): string {
   const p = 'fc5c';
@@ -149,9 +150,9 @@ function doorsSvg(): string {
     return `<path class="fc5-door" d="M${x0},${yB} V${yT + r} A${r},${r} 0 0 1 ${x1},${yT + r} V${yB} Z"/>`;
   };
   const L = 200, Rx = 590;
-  return svg('Rubisco has two doors: CO₂ gives two PGA and gains a carbon; O₂ gives PGA and 2-phosphoglycolate, and photorespiration loses one carbon in four',
+  return svg('RuBisCO has two doors: CO₂ gives two PGA and gains a carbon; O₂ gives PGA and 2-phosphoglycolate, and photorespiration loses one carbon in four',
     `${illusHeads(p)}
-    <rect class="node node-rub" x="100" y="14" width="600" height="196" rx="30"/>${text(400, 54, 'Rubisco', 'lab lab-b')}
+    <rect class="node node-rub" x="100" y="14" width="600" height="196" rx="30"/>${text(400, 54, 'RuBisCO', 'lab lab-b')}
     ${pent(400, 136, 40)}
     ${door(L, 124, 62, 210)}${door(Rx, 124, 62, 210)}
     ${molecule(L, 140, 'OCO', 15)}${text(L, 190, 'CO₂', 'lab lab-b')}
@@ -180,7 +181,7 @@ function doorsSvg(): string {
 
 function valvesSvg(): string {
   const p = 'fc5d';
-  // Illustrative FvCB response: Vcmax 60, J 110, TPU 8 µmol m⁻² s⁻¹, Rubisco kinetics at 25 °C (the constants of
+  // Illustrative FvCB response: Vcmax 60, J 110, TPU 8 µmol m⁻² s⁻¹, RuBisCO kinetics at 25 °C (the constants of
   // fvcbMapSvg, with TPU 8 instead of 7.5 so that each limitation spans a readable stretch of the axis).
   const vcmax = 60, j = 110, tpu = 8, kc = 404.9, ko = 278.4, o = 210, gs = 42.75, rl = 1;
   const ac = (c: number): number => (vcmax * c) / (c + kc * (1 + o / ko)) * (1 - gs / c) - rl;
@@ -207,13 +208,13 @@ function valvesSvg(): string {
     `<path class="fc5-stem" d="M${n1(x)},${vy - 15} V${vy - 40} M${n1(x - 16)},${vy - 40} H${n1(x + 16)}"/>
      <path class="fc5-valve fc5-valve-${l}" d="M${n1(x - 22)},${vy - 20} L${n1(x)},${vy} L${n1(x - 22)},${vy + 20} Z M${n1(x + 22)},${vy - 20} L${n1(x)},${vy} L${n1(x + 22)},${vy + 20} Z"/>
      ${text(x, 64, name, 'sm lab-b')}${text(x, 96, param, `lab lab-b fc5-${l}`)}`;
-  return svg('A pipeline with three valves — Rubisco, RuBP regeneration and export — above an illustrative CO₂ response curve coloured by the valve that limits it',
+  return svg('A pipeline with three valves — RuBisCO, RuBP regeneration and export — above an illustrative CO₂ response curve coloured by the valve that limits it',
     `${illusHeads(p)}
     ${bands.map(([a, b, l]) => `<rect class="fc5-band fc5-band-${l}" x="${n1(a + 3)}" y="34" width="${n1(b - a - 6)}" height="${n1(y0 - 34)}" rx="16"/>`).join('')}
     <rect class="fc5-pipe" x="44" y="${vy - 17}" width="722" height="34" rx="17"/>
     ${molecule(30, vy, 'OCO', 10)}${arrow(p, 'ink', `M766,${vy} L794,${vy}`)}
     ${text(mid(vx[0], vx[1]), vy + 7, 'PGA', 'sm fc5-flow')}${text(mid(vx[1], vx[2]), vy + 7, 'triose-P', 'sm fc5-flow')}${text(mid(vx[2] + 22, 766), vy + 7, 'sugars', 'sm fc5-flow')}
-    ${valve(vx[0], 'c', 'Rubisco', 'Vcmax')}${valve(vx[1], 'j', 'regeneration', 'J')}${valve(vx[2], 'p', 'export', 'TPU')}
+    ${valve(vx[0], 'c', 'RuBisCO', 'Vcmax')}${valve(vx[1], 'j', 'regeneration', 'J')}${valve(vx[2], 'p', 'export', 'TPU')}
     <path class="axis" d="M${x0},${yt - 6} V${y0} H${x1}"/>
     <path class="curve fc5-ghost fc5-cv-c" d="${seg(ac, cj, cmax)}"/>
     <path class="curve fc5-ghost fc5-cv-j" d="${seg(aj, cmin + 20, cj)}${seg(aj, cp, cmax)}"/>
@@ -246,14 +247,14 @@ function lineSvg(): string {
     Array.from({ length: n }, (_, i) => box(x, top - 13 - i * 26, out && i === n - 1 ? 'fc5-box fc5-box-out' : 'fc5-box')).join('');
   const machine = (x0: number, x1: number, y0: number, y1: number, label: string, cls = 'node'): string =>
     `<rect class="${cls}" x="${x0}" y="${y0}" width="${x1 - x0}" height="${y1 - y0}" rx="14"/>${text((x0 + x1) / 2, y0 + 36, label, 'sm lab-b')}`;
-  return svg('Calvin–Benson cycle as an assembly line: 3 CO₂ in, Rubisco and reduction stations, 1 of 6 triose phosphates leaves as sugar, 5 return underneath to rebuild RuBP',
+  return svg('Calvin–Benson cycle as an assembly line: 3 CO₂ in, RuBisCO and reduction stations, 1 of 6 triose phosphates leaves as sugar, 5 return underneath to rebuild RuBP',
     `${illusHeads(p)}
     ${belt(90, 690, 250, 1)}${belt(100, 720, 470, -1)}
 
     ${text(135, 36, '3 CO₂ in', 'lab lab-b')}
     ${molecule(66, 78, 'OCO', 10)}${molecule(135, 78, 'OCO', 10)}${molecule(204, 78, 'OCO', 10)}
     <path class="fc5-hopper" d="M100,104 H170 L150,138 H120 Z"/>
-    ${machine(80, 190, 140, 274, 'Rubisco', 'node node-rub')}
+    ${machine(80, 190, 140, 274, 'RuBisCO', 'node node-rub')}
     ${stack(232, 238, 2)}${stack(286, 238, 2)}${stack(340, 238, 2)}${text(286, 166, '6 PGA', 'sm lab-b')}
 
     ${tag(416, 96, 'ATP', 'atp')}${tag(506, 96, 'NADPH', 'nadph')}${arrow(p, 'ink', 'M416,114 L432,138')}${arrow(p, 'ink', 'M506,114 L490,138')}

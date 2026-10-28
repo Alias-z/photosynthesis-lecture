@@ -1,0 +1,69 @@
+/* Slide C5 (k05) figure styles, scoped under .theme-editorial and prefixed .fk05- (lecture 2 redo, 27 Oct 2026) */
+
+/* text */
+.theme-editorial .fig text.fk05-h{font-size:22px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fk05-l{font-size:20px;fill:#3d3d3a}
+.theme-editorial .fig text.fk05-s{font-size:17px;fill:#3d3d3a}
+.theme-editorial .fig text.fk05-node{font-size:21px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fk05-big{font-size:26px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fk05-ax{font-size:19px;fill:#4a4945}
+.theme-editorial .fig text.fk05-tk{font-size:17px;fill:#6b6a64}
+.theme-editorial .fig text.fk05-crd{font-size:13.5px;fill:#8a877d}
+.theme-editorial .fig text.fk05-pill{font-size:17px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fk05-band{font-size:17px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fk05-band-d{font-size:17px;font-weight:600;fill:#fffdf8}
+.theme-editorial .fig text.fk05-c-green,.theme-editorial .fig tspan.fk05-c-green{fill:#24812f}
+.theme-editorial .fig text.fk05-c-blue,.theme-editorial .fig tspan.fk05-c-blue{fill:#2350e6}
+.theme-editorial .fig text.fk05-c-amber,.theme-editorial .fig tspan.fk05-c-amber{fill:#9a5a0c}
+.theme-editorial .fig text.fk05-c-red,.theme-editorial .fig tspan.fk05-c-red{fill:#b8301b}
+.theme-editorial .fig text.fk05-c-grey,.theme-editorial .fig tspan.fk05-c-grey{fill:#6b6a64}
+.theme-editorial .fig text.fk05-c-paper{fill:#fffdf8}
+.theme-editorial .fig tspan.fk05-it{font-style:italic}
+.theme-editorial .fig tspan.fk05-b{font-weight:700}
+
+/* real figures: multiplied white ground, label pills, leaders, credits, frames */
+.theme-editorial .fk05-mult{mix-blend-mode:multiply}
+.theme-editorial .fk05-pillbg{fill:#fffdf8;opacity:.95}
+.theme-editorial .fk05-pillbg-t{fill:#f3f1ea;stroke:#d8d5cb;stroke-width:1}
+.theme-editorial .fk05-ldh{fill:none;stroke:#fffdf8;stroke-width:4.2;stroke-linecap:round;opacity:.9}
+.theme-editorial .fk05-ldk{fill:none;stroke:#141413;stroke-width:1.5;stroke-linecap:round}
+.theme-editorial .fk05-tipd{fill:#141413;stroke:#fffdf8;stroke-width:1.5}
+.theme-editorial .fk05-frame{fill:none;stroke:#d8d5cb;stroke-width:1}
+
+/* redrawn axes over scans */
+.theme-editorial .fk05-axis{fill:none;stroke:#4a4945;stroke-width:1.6}
+.theme-editorial .fk05-gd{fill:none;stroke:#6b6a64;stroke-width:1.5;stroke-dasharray:5 5}
+.theme-editorial .fk05-band-l{fill:#f4e3a6}
+.theme-editorial .fk05-band-k{fill:#4a4945}
+.theme-editorial .fk05-band-c{fill:#dfe9f2}
+.theme-editorial .fk05-mark{fill:none;stroke:#b8301b;stroke-width:2.2;stroke-dasharray:6 5}
+
+/* drawn schematics: boxes, arrows */
+.theme-editorial .fk05-box{fill:#fffdf8;stroke:#3d3d3a;stroke-width:1.6}
+.theme-editorial .fk05-box-t{fill:#f3f1ea;stroke:#a8a59a;stroke-width:1.4}
+.theme-editorial .fk05-ar{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fk05-thin{stroke-width:2}
+.theme-editorial .fk05-dash{stroke-dasharray:7 6}
+.theme-editorial .fk05-k-ink{stroke:#3d3d3a}.theme-editorial .fk05-hd-ink{fill:#3d3d3a}
+.theme-editorial .fk05-k-grey{stroke:#8a877d}.theme-editorial .fk05-hd-grey{fill:#8a877d}
+.theme-editorial .fk05-k-green{stroke:#2a963a}.theme-editorial .fk05-hd-green{fill:#2a963a}
+.theme-editorial .fk05-k-blue{stroke:#2350e6}.theme-editorial .fk05-hd-blue{fill:#2350e6}
+.theme-editorial .fk05-k-amber{stroke:#c07a12}.theme-editorial .fk05-hd-amber{fill:#c07a12}
+.theme-editorial .fk05-k-red{stroke:#c8361e}.theme-editorial .fk05-hd-red{fill:#c8361e}
+.theme-editorial .fk05-x{fill:none;stroke:#c8361e;stroke-width:3.4;stroke-linecap:round}
+.theme-editorial .fig text.fk05-tks{font-size:15px;fill:#6b6a64}
+.theme-editorial .fk05-br{fill:none;stroke:#6b6a64;stroke-width:1.6}
+/* scatter groups (Flamholz 2019 Fig. 5A colours, darkened for projection) */
+.theme-editorial .fk05-pt{stroke:#fffdf8;stroke-width:.9;opacity:.88}
+.theme-editorial .fk05-g-p{fill:#3f9b4a}.theme-editorial .fk05-g-q{fill:#a59a1f}.theme-editorial .fk05-g-c{fill:#145f63}
+.theme-editorial .fk05-g-r{fill:#c8361e}.theme-editorial .fk05-g-f{fill:#7a3fb0}.theme-editorial .fk05-g-o{fill:#b4b1a6}
+.theme-editorial .fig tspan.fk05-g-p{fill:#3f9b4a}.theme-editorial .fig tspan.fk05-g-q{fill:#a59a1f}.theme-editorial .fig tspan.fk05-g-c{fill:#145f63}
+.theme-editorial .fig tspan.fk05-g-r{fill:#c8361e}.theme-editorial .fig tspan.fk05-g-f{fill:#7a3fb0}
+/* carbon boxes and gases */
+.theme-editorial .fk05-c{fill:#ebe8de;stroke:#3d3d3a;stroke-width:1.6}
+.theme-editorial .fk05-cco2,.theme-editorial .fk05-cn{fill:#f0b23a;stroke:#9a5a0c;stroke-width:1.8}
+.theme-editorial .fk05-c2pg{fill:#f4c9bf;stroke:#b8301b;stroke-width:1.8}
+.theme-editorial .fk05-o2{fill:#fbe3dd;stroke:#c8361e;stroke-width:1.8}
+.theme-editorial .fig text.fk05-o2t{font-size:16px;font-weight:700;fill:#b8301b}
+/* specificity bars */
+.theme-editorial .fk05-bar-l{fill:#4f8f45}.theme-editorial .fk05-bar-ls{fill:#8a877d}.theme-editorial .fk05-bar-p{fill:#3f9b4a}

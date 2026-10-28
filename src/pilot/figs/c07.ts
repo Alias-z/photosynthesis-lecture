@@ -6,7 +6,7 @@
 // not shown (Sage TL 2013); living C₃, C₂ and C₄ species are not each other's ancestors; C₂ persists as a strategy of
 // its own (Lundgren & Christin 2017); grass C₄ arose only with pre-existing enablers (bundle sheath > 15 % of leaf
 // tissue, close veins): 22–24 origins in PACMAD, none in BEP, which includes rice (Christin 2013); C₂: glycine made in
-// the mesophyll is decarboxylated only in bundle-sheath mitochondria, next to chloroplasts (Rawsthorne 1988; Hylton 1988).
+// the mesophyll is decarboxylated mainly in bundle-sheath mitochondria (85–86 % of GDC; Leung 2024), next to chloroplasts (Rawsthorne 1988; Hylton 1988).
 // Title changed from "Evolution begins…" to "…often begins…", as the review asks.
 import type { PlateText, Variant } from '../types';
 import { arrow, text as t } from '../mechanisms';
@@ -22,7 +22,7 @@ export const PLATE: PlateText = {
   points: [
     { claim: 'Some CO₂ is refixed already.', text: 'Rice and wheat refix 24–38 % of the CO₂ their mitochondria release.' },
     { claim: 'Organelles move to the vein side.', text: 'In proto-Kranz Flaveria, bundle-sheath mitochondria and chloroplasts cluster by the veins; this may help refixation slightly.' },
-    { claim: 'A branching path, not a ladder.', text: 'Grass C₄ needed close veins first; C₂ also persists in its own right.' },
+    { claim: 'A branching path, not a ladder.', text: 'Grass C₄ arose where bundle sheaths were large; C₂ also persists in its own right.' },
   ],
   refs: [
     { label: 'Busch et al. 2013', url: 'https://doi.org/10.1111/j.1365-3040.2012.02567.x' },
@@ -130,7 +130,7 @@ function fourTypes(): string {
     for (let k = 0; k < nChl - 1; k++) s += mit(c - 75 + step * (k + 1), bsY + bsH - 14, 9, 5.5);
     return s;
   };
-  return svg(p, 'Four leaf types compared: in C₃ CO₂ is released in every cell; proto-Kranz has more bundle-sheath organelles on the vein side; in C₂ glycine is split only in the bundle sheath; in C₄ C₄ acids carry CO₂ into the bundle sheath',
+  return svg(p, 'Four leaf types compared: in C₃ CO₂ is released in every cell; proto-Kranz has more bundle-sheath organelles on the vein side; in C₂ glycine is split mainly in the bundle sheath; in C₄ C₄ acids carry CO₂ into the bundle sheath',
     `<g transform="translate(0 30)">
     ${col(0, 'C₃', '', `${mChl(0)}${mit(cx(0) - 22, top + 70)}${co2(cx(0) + 12, top + 70)}${mit(cx(0) + 32, top + 96)}`,
       `${chl(cx(0) - 46, bsY + 34)}${chl(cx(0) + 48, bsY + 90)}${mit(cx(0) - 6, bsY + 56)}${co2(cx(0) + 30, bsY + 56)}`,
@@ -141,7 +141,7 @@ function fourTypes(): string {
     ${col(2, 'C₂', '', `${mChl(2, false)}${mit(cx(2) - 34, top + 66, 10, 6, true)}${mit(cx(2) + 34, top + 66, 10, 6, true)}
         ${arrow(p, 'clay', `M${cx(2)},${top + 48} L${cx(2)},${bsY + 26}`, 'dashed')}${t(cx(2) - 8, top + 108, 'glycine', 'fc06-n', 'end')}`,
       `${inward(2, 5)}${co2(cx(2) - 34, bsY + 40)}`,
-      ['glycine split', 'only in sheath'])}
+      ['glycine split', 'mainly in sheath'])}
     ${col(3, 'C₄', '', `${mChl(3, false)}${t(cx(3), top + 62, 'PEPC', 'fc06-in')}
         ${arrow(p, 'ink', `M${cx(3)},${top + 74} L${cx(3)},${bsY + 22}`)}${t(cx(3) - 8, top + 108, 'C₄ acid', 'fc06-n', 'end')}`,
       `${inward(3, 5, 1.25)}${chl(cx(3) - 50, bsY + 34, 16, 10)}${chl(cx(3) + 50, bsY + 34, 16, 10)}${co2(cx(3), bsY + 40)}`,
@@ -151,7 +151,8 @@ function fourTypes(): string {
     ${mit(196, 508)}${t(214, 514, 'mitochondrion', 'fc06-n', 'start')}
     ${mit(364, 508, 10, 6, true)}${t(382, 514, 'no glycine split', 'fc06-n', 'start')}
     ${co2(544, 508)}${t(564, 514, 'CO₂ released', 'fc06-n', 'start')}
-    ${t(788, 514, 'schematic', 'fc06-n', 'end')}</g>`);
+    ${t(788, 514, 'schematic', 'fc06-n', 'end')}
+    ${t(400, 550, 'each column, top to bottom: mesophyll · bundle sheath · vein', 'fc06-n')}</g>`);
 }
 
 /* ---------- B · one cell: some released CO₂ is caught, the rest leaves ---------- */
@@ -238,7 +239,7 @@ function buckets(): string {
     <rect class="fc07-inner" x="470" y="120" width="266" height="256" rx="8"/>${pipe(486, 720, 150)}
     ${[520, 578, 636, 694].map(x => fall(x, 168, fl - 40)).join('')}
     ${bucket(520, fl, 48)}${bucket(578, fl, 48)}${bucket(694, fl, 48)}${drain(636, fl + 4)}`;
-  return svg(p, 'Analogy: drips from a leaking pipe (CO₂ released by mitochondria) fall into buckets (chloroplasts with Rubisco) or into the drain (CO₂ leaving the cell). Moving the leaks into a small room lined with buckets (the bundle sheath) catches more',
+  return svg(p, 'Analogy: drips from a leaking pipe (CO₂ released by mitochondria) fall into buckets (chloroplasts with RuBisCO) or into the drain (CO₂ leaving the cell). Moving the leaks into a small room lined with buckets (the bundle sheath) catches more',
     `<g transform="translate(0 14)">${t(197, 32, 'C₃: leaks in every cell', 'fc06-h')}${t(603, 32, 'C₂: leaks in the sheath', 'fc06-h')}
     ${r1}${r2}
     ${t(197, 440, 'some caught', 'fc06-b')}${t(603, 440, 'more caught', 'fc06-b')}
@@ -315,9 +316,9 @@ function grasses(): string {
      ${sec}
      ${cap.map((s, k) => t(x0 + 185, 304 + k * 28, s, 'fc06-s')).join('')}
      ${t(x0 + 185, 412, 'C₄ origins', 'fc06-s')}${t(x0 + 185, 466, n, 'fc07-big')}`;
-  return svg(p, 'Evidence from grasses: the BEP clade, which includes rice, has veins far apart and a small bundle sheath and no C₄ origins; the PACMAD clade has close veins and a large sheath and 22 to 24 C₄ origins',
-    `${col(10, 'BEP grasses', 'includes rice', section(20, 200, 350, 2, 9, 8, 5), ['veins far apart,', 'small bundle sheath'], '0')}
-    ${col(420, 'PACMAD grasses', 'includes maize', section(430, 200, 350, 4, 9, 11, 1), ['veins close,', 'large bundle sheath'], '22–24')}
+  return svg(p, 'Evidence from grasses: veins moved closer before the two clades split; the BEP clade, which includes rice, then evolved small bundle-sheath cells and has no C₄ origins; the PACMAD clade kept large bundle-sheath cells, more than 15 % of the leaf, and has 22 to 24 C₄ origins',
+    `${col(10, 'BEP grasses', 'includes rice', section(20, 200, 350, 3, 9, 6, 3), ['close veins,', 'small bundle-sheath cells'], '0')}
+    ${col(420, 'PACMAD grasses', 'includes maize', section(430, 200, 350, 3, 9, 11, 3), ['close veins, large bundle-', 'sheath cells (> 15 % of leaf)'], '22–24')}
     <path class="rule" d="M400,44 V484"/>
     ${t(400, 556, 'Christin et al. 2013; cross-sections schematic', 'fc06-n')}`);
 }
@@ -399,7 +400,7 @@ function catchAngle(): string {
 
 function shuttle(): string {
   const p = 'fc07i';
-  return svg(p, 'C₂ photosynthesis in thesis style: glycine made in the mesophyll moves to the bundle sheath, where only the sheath mitochondria split it; the CO₂ released there is refixed by Rubisco in nearby chloroplasts',
+  return svg(p, 'C₂ photosynthesis in thesis style: glycine made in the mesophyll moves to the bundle sheath, where only the sheath mitochondria split it; the CO₂ released there is refixed by RuBisCO in nearby chloroplasts',
     `<g transform="translate(0 30)">${t(196, 36, 'mesophyll cell', 'fc06-b')}${t(548, 36, 'bundle-sheath cell', 'fc06-b')}${t(755, 36, 'vein', 'fc06-b')}
     ${cell(20, 54, 352, 420, 'm', 26)}${cell(388, 54, 320, 420, 'bs', 26)}${veinBand(722, 54, 66, 420)}
 
@@ -419,21 +420,21 @@ function shuttle(): string {
 
     <path class="ar ar-clay dashed" d="M604,344 C602,404 580,440 520,440 L300,440 C284,440 276,430 276,356" marker-end="url(#${p}-clay)"/>
     ${chain(486, 440, 3, true)}${t(486, 422, 'serine returns', 'fc06-s')}</g>
-    ${t(400, 558, '2-PG: 2-phosphoglycolate · C₂ photosynthesis: next slide', 'fc06-n')}`);
+    ${t(400, 558, '2-PG: 2-phosphoglycolate', 'fc06-n')}`);
 }
 
 /* ---------- J · minimal: released, recaptured, rearranged ---------- */
 
 function icons(): string {
   const p = 'fc07j';
-  return svg(p, 'Minimal summary: mitochondria release CO₂; Rubisco nearby refixes some; bundle-sheath organelles moving to the vein side is an early step on some routes to C₄',
+  return svg(p, 'Minimal summary: mitochondria release CO₂; RuBisCO nearby refixes some; bundle-sheath organelles moving to the vein side is an early step on some routes to C₄',
     `<g transform="translate(0 38)">${mitochondrion(140, 220, 70, 44, 5)}${molecule(196, 140, 'OCO', 11)}${molecule(232, 186, 'OCO', 11)}
     ${arrow(p, 'clay', 'M176,184 L186,164')}${arrow(p, 'clay', 'M208,206 L216,196')}
     ${t(140, 330, 'released', 'fc06-h')}${t(140, 362, 'CO₂ from', 'fc06-s')}${t(140, 388, 'mitochondria', 'fc06-s')}
 
     ${arrow(p, 'ink', 'M262,220 L300,220')}
     ${chloroplast(410, 220, 82, 52)}${rubisco(410, 220, 108, 36)}${molecule(342, 166, 'OCO', 11)}${arrow(p, 'clay', 'M356,180 L372,198')}
-    ${t(410, 330, 'recaptured', 'fc06-h')}${t(410, 362, 'Rubisco nearby', 'fc06-s')}${t(410, 388, 'refixes some', 'fc06-s')}
+    ${t(410, 330, 'recaptured', 'fc06-h')}${t(410, 362, 'RuBisCO nearby', 'fc06-s')}${t(410, 388, 'refixes some', 'fc06-s')}
 
     ${arrow(p, 'ink', 'M512,220 L550,220')}
     ${cell(574, 150, 172, 116, 'bs', 16)}${veinBand(574, 274, 172, 26)}

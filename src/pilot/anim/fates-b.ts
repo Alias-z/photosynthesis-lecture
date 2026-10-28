@@ -1,7 +1,7 @@
 // Animation 4 · "Fates of an excitation", staging B · "Four doors". The camera zooms from a leaf into one chlorophyll
 // inside its protein. The excitation is an amber glow in the chlorophyll's room; the room has four doors, one per exit,
 // each labelled with its time: photochemistry (green, to the reaction centre), fluorescence (red wave), heat (grey
-// wave, widened by NPQ in strong light) and the rare triplet (clay, to oxygen; a carotenoid quenches it). Inks follow
+// wave, widened by NPQ in strong light) and the triplet when excitation lingers (clay, to oxygen; a carotenoid quenches it). Inks follow
 // slide 12. Beats: absorb (blue gives a bigger, hotter glow than red), relax (< 1 ps, both end in S₁), photochemistry,
 // fluorescence, heat, triplet.
 import './fates-b.css';
@@ -172,10 +172,10 @@ const PHOTONS: Ph[] = [
   { b: 0, c: 'blue', a: [300, 40], z: ringC(RA), t0: 2.6, t1: 3.5 },
   { b: 0, c: 'red', a: [1300, 40], z: ringC(RB), t0: 2.6, t1: 3.5 },
   { b: 3, c: 'red', a: [330, 40], z: GLOW, t0: 0.5, t1: 1.4 },
-  { b: 4, c: 'blue', a: [300, 40], z: GLOW, t0: 0.4, t1: 1.3 },
-  { b: 4, c: 'red', a: [360, 30], z: GLOW, t0: 0.6, t1: 1.5 },
-  { b: 4, c: 'red', a: [240, 70], z: GLOW, t0: 0.8, t1: 1.7 },
-  { b: 5, c: 'red', a: [330, 40], z: GLOW, t0: 0.4, t1: 1.2 },
+  { b: 4, c: 'blue', a: [300, 40], z: GLOW, t0: 0.5, t1: 1.4 },
+  { b: 4, c: 'red', a: [360, 30], z: GLOW, t0: 0.7, t1: 1.6 },
+  { b: 4, c: 'red', a: [240, 70], z: GLOW, t0: 0.9, t1: 1.8 },
+  { b: 5, c: 'red', a: [330, 40], z: GLOW, t0: 0.8, t1: 1.6 },
 ];
 
 /* ---------- the stage ---------- */
@@ -216,7 +216,7 @@ function svg(): string {
       ${T(800, 172, 'protein', 'ftb-h ftb-c-protein', 'middle')}
       ${T(RA[0], RA[1] + ROOM.h / 2 + 38, 'chlorophyll', 'ftb-l', 'middle')}
       ${T(RB[0], RB[1] + ROOM.h / 2 + 38, 'chlorophyll', 'ftb-l', 'middle')}
-      <g class="ftb-s2a">${T(RA[0], RA[1] - 98, 'more energy (S₂)', 'ftb-h', 'middle')}</g>
+      <g class="ftb-s2a">${T(RA[0], RA[1] - 98, 'more energy (Sₙ)', 'ftb-h', 'middle')}</g>
       <g class="ftb-s1a" opacity="0">${T(RA[0], RA[1] - 98, 'less energy (S₁)', 'ftb-h', 'middle')}</g>
       <g class="ftb-plab">${T(290, 48, 'blue light', 'ftb-l ftb-c-blue', 'end')}${T(1310, 48, 'red light', 'ftb-l ftb-c-red', 'start')}</g>
       <g class="ftb-relax">
@@ -244,7 +244,7 @@ function svg(): string {
       <g class="ftb-rc-o">${T(RC.x + RC.w / 2, RC.y + RC.h + 66, 'open', 'ftb-l', 'middle')}</g>
       <g class="ftb-rc-c" opacity="0">${T(RC.x + RC.w / 2, RC.y + RC.h + 66, 'closed', 'ftb-l', 'middle')}</g>
     </g>
-    ${T(RC.x + RC.w / 2, 252, 'photochemistry', 'ftb-h ftb-c-green', 'middle')}${badge(RC.x + RC.w / 2, 288, '< 100 ps', 'ps')}
+    ${T(RC.x + RC.w / 2, 252, 'photochemistry', 'ftb-h ftb-c-green', 'middle')}${badge(RC.x + RC.w / 2, 288, '~300 ps', 'ps')}
     ${T(900, 74, 'fluorescence', 'ftb-h ftb-c-red', 'start')}${badge(1066, 66, 'ns', 'ns', 'start')}${T(900, 106, '≈ 685 nm', 'ftb-l', 'start')}
     ${T(485, DOOR_LY + 110, 'heat (NPQ)', 'ftb-h ftb-c-grey', 'end')}${badge(485, DOOR_LY + 144, 'ns', 'ns', 'end')}
     ${T(630, 588, 'triplet', 'ftb-h ftb-c-clay', 'end')}${badge(630, 622, 'lasts µs', 'us', 'end')}
@@ -268,9 +268,9 @@ function svg(): string {
 
     <g class="ftb-ox" opacity="0">
       <circle class="ftb-o2-halo" cx="${O2[0]}" cy="${O2[1]}" r="52" fill="url(#${P}-g-clay)" opacity="0"/>
-      <circle class="ftb-o" cx="${O2[0] - 14}" cy="${O2[1]}" r="17"/><circle class="ftb-o" cx="${O2[0] + 14}" cy="${O2[1]}" r="17"/>
+      <circle class="ftb-o" cx="${O2[0] - 14}" cy="${O2[1]}" r="17"/><circle class="ftb-o" cx="${O2[0] + 14}" cy="${O2[1]}" r="17"/>${T(O2[0] - 14, O2[1] + 7, 'O', 'ftb-ot', 'middle')}${T(O2[0] + 14, O2[1] + 7, 'O', 'ftb-ot', 'middle')}
       <g class="ftb-o2-l">${T(O2[0], O2[1] + 58, 'oxygen (O₂)', 'ftb-l', 'middle')}</g>
-      <g class="ftb-o2-s" opacity="0">${T(O2[0], O2[1] + 58, 'singlet oxygen (¹O₂)', 'ftb-h ftb-c-clay', 'middle')}</g>
+      <g class="ftb-o2-s" opacity="0">${T(O2[0], O2[1] + 58, 'singlet oxygen (¹O₂)', 'ftb-h', 'middle')}</g>
       ${carotenoid(CAR.x, CAR.y, CAR.len)}${T(CAR.x + CAR.len / 2 + 30, CAR.y + 58, 'carotenoid', 'ftb-l ftb-c-orange', 'middle')}
       <g class="ftb-x-q"><path class="ftb-ar-q"/><path class="ftb-hd-q"/></g>
       <g class="ftb-x-ch"><path class="ftb-heat"/><path class="ftb-heat-hd"/></g>
@@ -373,8 +373,8 @@ function bind(stage: SVGSVGElement): (beat: number, t: number) => void {
       set(el, 'd', packet(ph.a, ph.z, k * L, LAM[ph.c]));
       op(el, Math.min(1, k / 0.08, (1 - k) / 0.06));
     });
-    op(redL, b === 3 ? ramp(t, 0.4, 0.7) * (1 - ramp(t, 1.5, 1.8)) : b === 5 ? ramp(t, 0.3, 0.6) * (1 - ramp(t, 1.3, 1.6)) : 0);
-    op(strongL, only(4, 0.3, 0.6) * (1 - only(4, 1.8, 2.1)));
+    op(redL, b === 3 ? ramp(t, 0.4, 0.7) * (1 - ramp(t, 1.5, 1.8)) : b === 5 ? ramp(t, 0.7, 1.0) * (1 - ramp(t, 1.7, 2.0)) : 0);
+    op(strongL, only(4, 0.4, 0.7) * (1 - only(4, 1.9, 2.2)));
 
     // Absorb (beat 1): blue makes a bigger, hotter glow in room A; red a smaller one in room B.
     // Relax (beat 2): room A sheds its extra energy as heat in under a picosecond and settles to the same S₁ glow.
@@ -392,14 +392,14 @@ function bind(stage: SVGSVGElement): (beat: number, t: number) => void {
     if (b <= 1) lvl = at(0, 3.35, 3.7);
     else if (b === 2) lvl = 1 - ramp(t, 3.0, 3.6);
     else if (b === 3) lvl = ramp(t, 1.3, 1.6) * (1 - ramp(t, 2.9, 3.6));
-    else if (b === 4) { lvl = ramp(t, 1.2, 1.5) * (1 - ramp(t, 2.8, 3.8)); rB = S1_R * 1.08; }
-    else { lvl = ramp(t, 1.0, 1.3) * (1 - ramp(t, 2.8, 3.3)); clay = ramp(t, 1.5, 2.1); }
+    else if (b === 4) { lvl = ramp(t, 1.3, 1.6) * (1 - ramp(t, 3.4, 4.4)); rB = S1_R * 1.08; }
+    else { lvl = ramp(t, 1.4, 1.7) * (1 - ramp(t, 3.2, 3.7)); clay = ramp(t, 2.0, 2.6); }
     setGlow(glowB, lvl, rB, 0, clay);
 
     // Beat 3 on: the doors and their labels appear whole once the camera has landed.
     const doors = at(2, 1.8, 2.1);
     show(ov, doors);
-    const hl = 40 + 40 * (b === 4 ? ramp(t, 1.8, 2.8) : b === 5 ? 1 - ramp(t, 0, 0.4) : 0);
+    const hl = 40 + 40 * (b === 4 ? ramp(t, 2.2, 3.2) : b === 5 ? 1 - ramp(t, 0, 0.4) : 0);
     const rb = roomB(hl);
     set(wallB, 'd', rb.wall);
     plugs.forEach((p, i) => { set(p, 'd', rb.plugs[i]); op(p, 1 - doors); });
@@ -407,8 +407,8 @@ function bind(stage: SVGSVGElement): (beat: number, t: number) => void {
     // Door openings, each in its own beat; a door shuts again at the start of the next beat.
     const oR = b === 2 ? ramp(t, 2.3, 2.9) : b === 3 ? 1 - ramp(t, 0, 0.4) : 0;
     const oT = b === 3 ? ramp(t, 2.2, 2.8) : b === 4 ? 1 - ramp(t, 0, 0.4) : 0;
-    const oL = b === 4 ? ramp(t, 1.8, 2.6) : b === 5 ? 1 - ramp(t, 0, 0.4) : 0;
-    const oB = b === 5 ? ramp(t, 2.2, 2.7) : 0;
+    const oL = b === 4 ? ramp(t, 2.2, 3.0) : b === 5 ? 1 - ramp(t, 0, 0.4) : 0;
+    const oB = b === 5 ? ramp(t, 2.6, 3.1) : 0;
     door(dr.r, sw.r, [RX1, DOOR_R.y0], DOOR_R.y1 - DOOR_R.y0, 90, 0, oR);
     door(dr.t, sw.t, [DOOR_T.x0, RY0], DOOR_T.x1 - DOOR_T.x0, 0, -90, oT);
     door(dr.l, sw.l, [RX0, DOOR_LY - hl], 2 * hl, 90, 180, oL);
@@ -417,12 +417,12 @@ function bind(stage: SVGSVGElement): (beat: number, t: number) => void {
     // Photochemistry: the energy reaches the open reaction centre, which separates charge, and an electron leaves.
     arrow(xGreen, GREEN_A, GREEN_B, b === 2 ? ramp(t, 2.9, 3.4) : b === 3 ? 1 : 0, 'line');
     if (b === 3) op(xGreen, 1 - ramp(t, 0, 0.3));
-    op(cs, at(2, 3.4, 3.7));
-    const ke = only(2, 3.6, 4.4);
-    show(elec, b === 2 ? ramp(t, 3.6, 3.75) : b === 3 ? 1 - ramp(t, 0, 0.3) : 0);
+    op(cs, at(2, 3.6, 3.9));
+    const ke = only(2, 3.9, 4.7);
+    show(elec, b === 2 ? ramp(t, 3.9, 4.05) : b === 3 ? 1 - ramp(t, 0, 0.3) : 0);
     const ep = lerpP(E0, E1, b === 2 ? ke : 1);
     set(elecDot, 'cx', f(ep[0])); set(elecDot, 'cy', f(ep[1]));
-    op(elecL, b === 2 ? ramp(t, 4.2, 4.5) : b === 3 ? 1 - ramp(t, 0, 0.3) : 0);
+    op(elecL, b === 2 ? ramp(t, 4.5, 4.8) : b === 3 ? 1 - ramp(t, 0, 0.3) : 0);
 
     // From beat 4 the reaction centre is closed: it still holds its separated charge.
     const closed = at(3, 0, 0.3);
@@ -434,25 +434,27 @@ function bind(stage: SVGSVGElement): (beat: number, t: number) => void {
 
     // Heat (NPQ): in strong light the heat door widens and the energy leaves as heat.
     xHeat.forEach((g, i) => {
-      const k = b === 4 ? ramp(t, 2.6 + 0.12 * i, 3.4 + 0.12 * i) : b === 5 ? 1 : 0;
+      const k = b === 4 ? ramp(t, 3.2 + 0.12 * i, 4.0 + 0.12 * i) : b === 5 ? 1 : 0;
       arrow(g, HEAT[i].a, HEAT[i].b, k, 'wave', 24, 7);
       if (b === 5) op(g, 1 - ramp(t, 0, 0.3));
     });
 
-    // Triplet: rarely the spin flips (T₁, clay); the triplet passes its energy to oxygen, making singlet oxygen,
+    // Triplet: when excitation lingers the spin flips (T₁, clay); the triplet passes its energy to oxygen, making singlet oxygen,
     // and a carotenoid quenches that, giving the energy off as heat.
-    op(rlS1, b < 5 ? lvl : lvl * (1 - ramp(t, 1.75, 1.92)));
-    op(rlT1, b === 5 ? lvl * ramp(t, 1.92, 2.1) : 0);
-    show(ox, only(5, 0.2, 0.5));
-    arrow(xClay, TRIP_A, TRIP_B, only(5, 2.7, 3.2), 'line', 0, 0, 16);
-    const singlet = only(5, 3.1, 3.4) * (1 - only(5, 4.0, 4.3));
+    op(rlS1, b < 5 ? lvl : lvl * (1 - ramp(t, 2.25, 2.42)));
+    op(rlT1, b === 5 ? lvl * ramp(t, 2.42, 2.6) : 0);
+    show(ox, only(5, 0.4, 0.7));
+    arrow(xClay, TRIP_A, TRIP_B, only(5, 3.1, 3.6), 'line', 0, 0, 16);
+    const singlet = only(5, 3.5, 3.8) * (1 - only(5, 4.4, 4.7));
     op(o2Halo, singlet);
-    op(o2L, 1 - (b === 5 ? ramp(t, 3.1, 3.25) * (1 - ramp(t, 4.15, 4.3)) : 0));
-    op(o2S, b === 5 ? ramp(t, 3.25, 3.4) * (1 - ramp(t, 4.0, 4.15)) : 0);
-    arrow(xQ, Q_A, Q_B, only(5, 3.6, 4.0), 'line', 0, 0, 14);
-    arrow(xCh, CH_A, CH_B, only(5, 4.1, 4.7), 'wave', 24, 7);
+    op(o2L, 1 - (b === 5 ? ramp(t, 3.5, 3.65) * (1 - ramp(t, 4.55, 4.7)) : 0));
+    op(o2S, b === 5 ? ramp(t, 3.65, 3.8) * (1 - ramp(t, 4.4, 4.55)) : 0);
+    arrow(xQ, Q_A, Q_B, only(5, 4.0, 4.4), 'line', 0, 0, 14);
+    arrow(xCh, CH_A, CH_B, only(5, 4.5, 5.1), 'wave', 24, 7);
   };
 }
+
+// One click per scene, as in the sky and life animations (lecturer, 27 Oct 2026): no holds inside a beat.
 
 export const STAGING: Staging = {
   id: 'b',

@@ -1,0 +1,142 @@
+/* The rf schema (figs/rf-schema.ts): Rubisco's two reactions → photorespiration → FvCB, scoped under .rfs.
+   A part is lit (g.on) or dimmed (g.off). Looks: thesis · flat · tem · pdb · line · glow. FvCB colours as figs/c12.css
+   (after the MSc thesis Fig. 5): Ac red, Aj cyan, Ap purple. */
+
+/* ---------- dimming ---------- */
+.rfs g.off{opacity:.34;filter:grayscale(1)}
+.rfs g[data-p="chl"].off{opacity:1;filter:none}
+.rfs g[data-p="perox"].off,.rfs g[data-p="mito"].off{opacity:.5}
+.rfs g[data-opt].off{display:none}
+.rfs g{transition:opacity .25s}
+
+/* ---------- text ---------- */
+.theme-editorial .fig .rfs text{font-family:Inter,"Helvetica Neue",Arial,sans-serif}
+.theme-editorial .fig .rfs text.rfs-zone{font-size:20px;font-weight:600;fill:#6b7a52;letter-spacing:.03em}
+.theme-editorial .fig .rfs text.rfs-org{font-size:19px;font-weight:600;fill:#5a5650;letter-spacing:.02em}
+.theme-editorial .fig .rfs text.rfs-lab{font-size:20px;font-weight:600;fill:#2b2a27}
+.theme-editorial .fig .rfs text.rfs-light{font-size:20px;font-weight:600;fill:#a86c06}
+.theme-editorial .fig .rfs text.rfs-proc{font-size:20px;font-weight:700;fill:#3d3d3a}
+.theme-editorial .fig .rfs text.rfs-frac{font-size:19px;font-weight:600;fill:#6b6a64}
+.theme-editorial .fig .rfs text.rfs-nodet{font-size:20px;font-weight:700;fill:#141413}
+.theme-editorial .fig .rfs text.rfs-small{font-size:19px;font-weight:600;fill:#6b6a64}
+.theme-editorial .fig .rfs text.rfs-met{font-size:20px;font-weight:600;fill:#8f3f1f}
+.theme-editorial .fig .rfs text.rfs-name{font-size:20px;font-weight:700;fill:#141413}
+.theme-editorial .fig .rfs text.rfs-pi{font-size:20px;font-weight:700;fill:#a2561a}
+.theme-editorial .fig .rfs text.rfs-tagt{font-size:18px;font-weight:700}
+.theme-editorial .fig .rfs text.rfs-tagt-atp{fill:#9a4a1c}
+.theme-editorial .fig .rfs text.rfs-tagt-nadph{fill:#1d6f8f}
+.theme-editorial .fig .rfs text.rfs-tagt-fd{fill:#8a4a36}
+.theme-editorial .fig .rfs text.rfs-gas{font-size:20px;font-weight:700;fill:#2b2a27}
+.theme-editorial .fig .rfs text.rfs-atomt{font-size:15px;font-weight:700;fill:#5a4a1a}
+.theme-editorial .fig .rfs text.rfs-atomt-C{fill:#fff}
+.theme-editorial .fig .rfs text.rfs-rubpt{font-size:16px;font-weight:700;fill:#3f4a1c}
+.theme-editorial .fig .rfs text.rfs-chipt{font-size:20px;font-weight:700;fill:#2b2a27}
+.theme-editorial .fig .rfs text.rfs-lim{font-size:25px;font-weight:700}
+.theme-editorial .fig .rfs text.rfs-lim-c{fill:#b23a2e}
+.theme-editorial .fig .rfs text.rfs-lim-j{fill:#137a8b}
+.theme-editorial .fig .rfs text.rfs-lim-p{fill:#6b4c99}
+.theme-editorial .fig .rfs text.rfs-limsub{font-size:19px;font-weight:600;fill:#3d3d3a}
+.theme-editorial .fig .rfs tspan.rfs-sub{font-size:68%}
+.theme-editorial .fig .rfs text.rfs-cr{font-size:13px;fill:#8a877d}
+.theme-editorial .fig .rfs text.rfs-halo,.theme-editorial .fig .rfs-tem text.rfs-met,.theme-editorial .fig .rfs-tem text.rfs-org{paint-order:stroke;stroke:#faf9f5;stroke-width:5px;stroke-linejoin:round}
+
+/* ---------- compartments ---------- */
+.rfs .rfs-stroma{fill:#eef3e2}
+.rfs .rfs-env{fill:none;stroke:#93ad78;stroke-width:2.4}
+.rfs .rfs-env2{fill:none;stroke:#b8cb9f;stroke-width:1.6}
+.rfs .rfs-perox{fill:#f7f0d6}
+.rfs .rfs-crystal{fill:#e7dcb2}
+.rfs .rfs-mito{fill:#f6e1da}
+.rfs .rfs-crista{fill:none;stroke:#dcae9f;stroke-width:5;stroke-linecap:round}
+.rfs .rfs-mem{fill:none;stroke:#b9a46a;stroke-width:2.4}
+.rfs [data-p="mito"] .rfs-mem{stroke:#c08d7d}
+.rfs .rfs-temrim{fill:none;stroke:#6b6a64;stroke-width:1.5}
+.rfs .rfs-granum{fill:#e3edd3;stroke:#8fb071;stroke-width:1.6}
+.rfs .rfs-disc{fill:#7fae5a;stroke:#5f8f40;stroke-width:1}
+.rfs .rfs-membr{fill:#efe4c8;stroke:#d6c497;stroke-width:1.2}
+.rfs .rfs-trans{fill:#fffdf8;stroke:#6b6a64;stroke-width:1.8}
+
+/* ---------- molecules ---------- */
+.rfs .rfs-atom{stroke-width:1.6}
+.rfs .rfs-atom-O{fill:#f4c63a;stroke:#b98d12}
+.rfs .rfs-atom-C{fill:#e0532f;stroke:#a83b1f}
+.rfs .rfs-rubp{fill:#eef1d8;stroke:#6b7a3a;stroke-width:2}
+.rfs .rfs-rub{fill:#ece3e0;stroke:#8a7f7a;stroke-width:2}
+.rfs .rfs-notch{fill:#faf9f5;stroke:#8a7f7a;stroke-width:2}
+.rfs .rfs-node{fill:#fffdf8;stroke:#cfcac0;stroke-width:1.6}
+.rfs .rfs-node.rfs-n-pg2{stroke:#d39a7f}
+.rfs .rfs-chip{stroke-width:1.6}
+.rfs .rfs-chip-co2{fill:#f9e3d8;stroke:#d88b6c}
+.rfs .rfs-chip-o2{fill:#fbf0cf;stroke:#d2b04a}
+.rfs .rfs-tag{stroke-width:1.5}
+.rfs .rfs-tag-atp{fill:#fbe3d3;stroke:#e39a6b}
+.rfs .rfs-tag-nadph{fill:#dff1f8;stroke:#6cb6d2}
+.rfs .rfs-tag-fd{fill:#f4e1d9;stroke:#cf8c74}
+.rfs .rfs-bolt{fill:#f6c84a;stroke:#b98d12;stroke-width:1.5;stroke-linejoin:round}
+.rfs .rfs-ray{fill:none;stroke:#d9a520;stroke-width:3;stroke-linejoin:round}
+
+/* ---------- arrows ---------- */
+.rfs .rfs-ar{fill:none;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.rfs .rfs-ar.rfs-thin{stroke-width:2}
+.rfs .rfs-hd{stroke:none}
+.rfs .rfs-hdo{fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.rfs .rfs-k-cyc{stroke:#3d3d3a}.rfs .rfs-hd.rfs-k-cyc{fill:#3d3d3a}
+.rfs .rfs-k-ox{stroke:#c0502c}.rfs .rfs-hd.rfs-k-ox{fill:#c0502c}
+.rfs .rfs-k-pr{stroke:#c0502c}.rfs .rfs-hd.rfs-k-pr{fill:#c0502c}
+.rfs .rfs-k-gas{stroke:#8a877d}.rfs .rfs-hd.rfs-k-gas{fill:#8a877d}
+.rfs .rfs-k-e{stroke:#a86c06}.rfs .rfs-hd.rfs-k-e{fill:#a86c06}
+.rfs .rfs-k-pi{stroke:#a2561a}.rfs .rfs-hd.rfs-k-pi{fill:#a2561a}
+.rfs .rfs-k-light{fill:#d9a520}
+
+/* ---------- FvCB braces ---------- */
+.rfs .rfs-brace{fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.rfs .rfs-br-c{stroke:#c94a3c}.rfs .rfs-br-j{stroke:#1a9bb0}.rfs .rfs-br-p{stroke:#7a5aa6}
+
+/* ================================================================ looks */
+
+/* thesis: dashed arrows with open heads, red process labels, atom balls (MSc thesis Fig. 2b) */
+.rfs-thesis .rfs-ar{stroke-dasharray:9 6}
+.rfs-thesis .rfs-ar.rfs-k-gas{stroke-dasharray:6 5}
+.theme-editorial .fig .rfs-thesis text.rfs-proc{fill:#d0341c;font-size:21px}
+.rfs-thesis .rfs-stroma{fill:#f4f6ec}
+
+/* flat: tinted shapes, solid arrows, chips */
+.rfs-flat .rfs-stroma{fill:#e6f0d6}
+.rfs-flat .rfs-env{stroke:#7fa05f;stroke-width:3}
+.rfs-flat .rfs-perox{fill:#f6eab8}
+.rfs-flat .rfs-mito{fill:#f3cfc4}
+.rfs-flat .rfs-node{fill:#fffdf8;stroke:none}
+.rfs-flat .rfs-rub{fill:#c9b8b0;stroke:none}
+.rfs-flat .rfs-rubp{fill:#dfe7b8;stroke:none}
+.rfs-flat .rfs-tag{stroke:none}
+
+/* tem: the micrographs carry the organelles; labels on halos */
+.rfs-tem .rfs-stroma{fill:#ecefe2}
+.rfs-tem .rfs-mem{stroke:none}
+
+/* pdb: structures */
+.rfs-pdb .rfs-stroma{fill:#f1f4e8}
+
+/* line: ink outlines, no fills; the lit part in colour */
+.rfs-line .rfs-stroma,.rfs-line .rfs-perox,.rfs-line .rfs-mito,.rfs-line .rfs-granum,.rfs-line .rfs-node,.rfs-line .rfs-rub,.rfs-line .rfs-rubp,.rfs-line .rfs-tag,.rfs-line .rfs-chip{fill:none}
+.rfs-line .rfs-env,.rfs-line .rfs-mem{stroke:#6b6a64;stroke-width:1.6}
+.rfs-line .rfs-env2{display:none}
+.rfs-line .rfs-disc{fill:none;stroke:#6b6a64}
+.rfs-line .rfs-ar{stroke-width:2.2}
+.rfs-line g.off{opacity:.38}
+.rfs-line g.on .rfs-ar{stroke:#b5562f;stroke-width:3}.rfs-line g.on .rfs-hd{fill:#b5562f}
+.rfs-line g.on .rfs-node,.rfs-line g.on .rfs-rub,.rfs-line g.on .rfs-rubp,.rfs-line g.on .rfs-tag,.rfs-line g.on .rfs-chip,.rfs-line g.on .rfs-granum,.rfs-line g.on .rfs-disc{stroke:#b5562f;stroke-width:2.4}
+.rfs-line g.on .rfs-mem{stroke:#b5562f;stroke-width:2.4}
+
+/* glow: the lit parts glow, the others are pale silhouettes */
+.rfs-glow g.on{filter:drop-shadow(0 0 7px rgba(246,196,83,.95))}
+.rfs-glow g[data-p="chl"].on,.rfs-glow g[data-p="chl"].off{filter:none;opacity:1}
+.rfs-glow g.off{opacity:1;filter:none}
+.rfs-glow g.off :is(rect,circle,ellipse,polygon,path){fill:none;stroke:#d9d5cb;stroke-dasharray:none}
+.rfs-glow g.off .rfs-hd{fill:#d9d5cb;stroke:none}
+.theme-editorial .fig .rfs-glow g.off text{fill:#b9b5aa}
+.rfs-glow g.off image{opacity:.25}
+.rfs-glow .rfs-stroma{fill:#f6f7f0}
+.theme-editorial .fig .rfs text.rfs-nodet.rfs-n-sm{font-size:19px}
+.theme-editorial .fig .rfs text.rfs-lim.rfs-lim-sm{font-size:22px}
+.rfs-pdb .rfs-pdbbox{fill:#f3efe0;stroke:#d6c497}

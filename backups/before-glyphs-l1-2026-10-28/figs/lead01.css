@@ -1,0 +1,43 @@
+/* Slide 1 lead page styles, scoped under .theme-editorial and prefixed .fld01- */
+
+/* Text: the prompt line, question marks, small labels. */
+.theme-editorial .lead-fig text.fld01-prompt{font:400 30px Inter,"Helvetica Neue",Arial,sans-serif;fill:#3d3d3a}
+.theme-editorial .lead-fig text.fld01-qm{font-family:Newsreader,Georgia,serif;font-weight:400;fill:#a9532f}
+.theme-editorial .lead-fig text.fld01-pill-t{font-size:26px;fill:#3d3d3a}
+.theme-editorial .lead-fig text.fld01-band{font-size:26px;font-weight:600;letter-spacing:.09em;fill:#141413}
+.theme-editorial .lead-fig .fld01-band-s{font-size:23px;font-weight:400;letter-spacing:0;fill:#6b6a64}
+.theme-editorial .lead-fig text.fld01-lab{font-size:28px;font-weight:600}
+.theme-editorial .lead-fig text.fld01-l{fill:#a5670a}
+.theme-editorial .lead-fig text.fld01-c{fill:#7a4a20}
+.theme-editorial .lead-fig text.fld01-op{font-size:56px;fill:#8a877d}
+.theme-editorial .lead-fig text.fld01-num-t{font-size:17px;font-weight:700;fill:#fffdf8}
+
+/* Shapes. */
+.theme-editorial .fld01-cut{fill:none;stroke:#c9c6bb;stroke-width:2;stroke-dasharray:2 9;stroke-linecap:round}
+.theme-editorial .fld01-ring{fill:#fffdf8;stroke:#a9532f;stroke-width:2;stroke-dasharray:6 6}
+.theme-editorial .fld01-blank{fill:#fffdf8;stroke:#b0ada3;stroke-width:2.2;stroke-dasharray:10 8}
+.theme-editorial .fl01-ar.fld01-thick{stroke-width:3.4}
+
+/* Round 3 text (sizes come from the font-size attribute, in the units of the group the text sits in). */
+.theme-editorial .lead-fig .fld01-sb{font-size:68%;baseline-shift:-.24em}
+.theme-editorial .lead-fig text.fld01-gloss{font-family:Newsreader,Georgia,serif;font-style:italic;fill:#6b6a64}
+.theme-editorial .lead-fig text.fld01-topic{font-weight:600;fill:#a9532f}
+.theme-editorial .lead-fig text.fld01-halfq{font-family:Newsreader,Georgia,serif;font-style:italic;fill:#141413}
+.theme-editorial .lead-fig text.fld01-term{font-weight:600}
+.theme-editorial .lead-fig text.fld01-w{fill:#2a62a0}
+.theme-editorial .lead-fig text.fld01-ctitle{font-weight:600;fill:#141413}
+.theme-editorial .lead-fig text.fld01-agenda{fill:#3d3d3a}
+
+/* Round 2 icons, in the deck's flat line style: pale fills, darker outlines in the same hue. */
+.theme-editorial .fld01-sea{fill:#d4e5f6}
+.theme-editorial .fld01-globe{fill:none;stroke:#3f7fc0;stroke-width:2}
+.theme-editorial .fld01-land{fill:#cfe3b4;stroke:#6f9a5a;stroke-width:1.6;stroke-linejoin:round}
+.theme-editorial .fld01-person{fill:#f0eee6;stroke:#3d3d3a;stroke-width:2.2;stroke-linejoin:round}
+.theme-editorial .fld01-crown{fill:#cfe3b4;stroke:#6f9a5a;stroke-width:2}
+.theme-editorial .fld01-crown.fld01-back{fill:#b9d59c;stroke:#5f8a4c}
+.theme-editorial .fld01-trunk{fill:none;stroke:#8b5a2b;stroke-width:4;stroke-linecap:round}
+.theme-editorial .fld01-ground{fill:#e8f0dc;stroke:#6f9a5a;stroke-width:2;stroke-linejoin:round}
+.theme-editorial .fld01-stem{fill:none;stroke:#6f9a5a;stroke-width:2;stroke-linecap:round}
+.theme-editorial .fld01-sprout{fill:#cfe3b4;stroke:#6f9a5a;stroke-width:1.4}
+.theme-editorial .fld01-zoombox{fill:none;stroke:#3d3d3a;stroke-width:2}
+.theme-editorial .fld01-zoom{fill:none;stroke:#8a877d;stroke-width:1.6;stroke-dasharray:5 6}

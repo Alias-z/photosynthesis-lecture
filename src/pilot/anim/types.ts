@@ -12,6 +12,10 @@ export interface Staging {
   note: string;
   /** Beats this staging was built for, when they differ from the animation's current ones (older rounds). */
   beats?: Beat[];
+  /** Pauses inside each beat, in seconds since the beat began (holds[b] for beat b, ascending): the player stops at
+   *  each and waits for a click, so every click plays one step. The beat's end is always a stop and is not listed.
+   *  Without holds, a beat plays through in one click. */
+  holds?: number[][];
   /** Inner markup of the stage SVG (viewBox 0 0 1600 740). */
   svg(): string;
   /** Wires the stage up once it is in the page. The returned function draws `beat` at `t` seconds after the

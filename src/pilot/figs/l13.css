@@ -29,6 +29,8 @@
 .theme-editorial .fl13-k-orange{stroke:#e07a1f}.theme-editorial .fl13-hd-orange{fill:#e07a1f}
 .theme-editorial .fl13-k-red{stroke:#c8361e}.theme-editorial .fl13-hd-red{fill:#c8361e}
 .theme-editorial .fl13-dash{stroke-dasharray:8 7}
+/* H⁺ paths: red dotted, as in chain.ts (the deck's glyph standard, 28 Oct 2026) */
+.theme-editorial .fl13-ar.fl13-hpath{stroke:#d1492a;stroke-width:3.4;stroke-dasharray:.1 7.5}
 .theme-editorial .fl13-dot{stroke-dasharray:2 6}
 .theme-editorial .fl13-thin{stroke-width:2}
 .theme-editorial .fl13-heat{fill:none;stroke:#8a877d;stroke-width:2.6;stroke-linecap:round}

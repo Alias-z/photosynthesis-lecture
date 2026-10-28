@@ -1,5 +1,5 @@
 {
-  "savedAt": "2026-10-26T16:41:49.142Z",
+  "savedAt": "2026-10-28T18:07:27.794Z",
   "slides": {
     "1": {
       "picks": [
@@ -7,6 +7,12 @@
         "f",
         "b",
         "o"
+      ],
+      "note": ""
+    },
+    "2": {
+      "picks": [
+        "k"
       ],
       "note": ""
     },
@@ -32,34 +38,57 @@
     },
     "5": {
       "picks": [
-        "c",
-        "d",
-        "m",
-        "e"
+        "o",
+        "p",
+        "r3"
       ],
       "note": ""
     },
     "6": {
       "picks": [
-        "i",
-        "g",
-        "d",
+        "k",
+        "r1"
+      ],
+      "note": ""
+    },
+    "7": {
+      "picks": [
+        "wb",
+        "7m1"
+      ],
+      "note": ""
+    },
+    "8": {
+      "picks": [
+        "8m1"
+      ],
+      "note": ""
+    },
+    "9": {
+      "picks": [
+        "9m1"
+      ],
+      "note": ""
+    },
+    "10": {
+      "picks": [
+        "l",
+        "k",
         "a",
-        "c"
+        "10m1"
       ],
       "note": ""
     },
     "11": {
       "picks": [
-        "b",
-        "d"
+        "a",
+        "b"
       ],
       "note": ""
     },
     "12": {
       "picks": [
-        "b",
-        "a"
+        "b"
       ],
       "note": ""
     },
@@ -77,12 +106,189 @@
     },
     "5b": {
       "picks": [
-        "a",
         "k"
       ],
       "note": ""
     },
     "4b": {
+      "picks": [
+        "c",
+        "m"
+      ],
+      "note": ""
+    },
+    "4a": {
+      "picks": [
+        "s"
+      ],
+      "note": ""
+    },
+    "anim-life": {
+      "picks": [
+        "f"
+      ],
+      "note": ""
+    },
+    "anim-pig": {
+      "picks": [
+        "a"
+      ],
+      "note": ""
+    },
+    "C6": {
+      "picks": [
+        "a",
+        "v10"
+      ],
+      "note": ""
+    },
+    "C9": {
+      "picks": [
+        "a"
+      ],
+      "note": ""
+    },
+    "anim-sky": {
+      "picks": [
+        "e"
+      ],
+      "note": ""
+    },
+    "ref-L3-light-harvesting": {
+      "picks": [
+        "a",
+        "i"
+      ],
+      "note": ""
+    },
+    "ref-L2b-shade-light": {
+      "picks": [
+        "e",
+        "j",
+        "d"
+      ],
+      "note": ""
+    },
+    "anim-antenna": {
+      "picks": [],
+      "note": ""
+    },
+    "anim-leaf": {
+      "picks": [
+        "a"
+      ],
+      "note": ""
+    },
+    "lead-5": {
+      "picks": [
+        "a"
+      ],
+      "note": ""
+    },
+    "lead-6": {
+      "picks": [
+        "a"
+      ],
+      "note": ""
+    },
+    "anim-cyclic": {
+      "picks": [
+        "a",
+        "s1"
+      ],
+      "note": ""
+    },
+    "anim-pp11": {
+      "picks": [
+        "d"
+      ],
+      "note": ""
+    },
+    "anim-rf6": {
+      "picks": [
+        "a"
+      ],
+      "note": ""
+    },
+    "anim-psii": {
+      "picks": [
+        "m2"
+      ],
+      "note": ""
+    },
+    "anim-b6f": {
+      "picks": [
+        "pb"
+      ],
+      "note": ""
+    },
+    "anim-psi": {
+      "picks": [
+        "m4"
+      ],
+      "note": ""
+    },
+    "anim-atps": {
+      "picks": [],
+      "note": ""
+    },
+    "10b": {
+      "picks": [
+        "11m1"
+      ],
+      "note": ""
+    },
+    "anim-bridge": {
+      "picks": [],
+      "note": ""
+    },
+    "C0": {
+      "picks": [
+        "b"
+      ],
+      "note": ""
+    },
+    "C2": {
+      "picks": [
+        "mr3"
+      ],
+      "note": ""
+    },
+    "anim-rubisco": {
+      "picks": [],
+      "note": ""
+    },
+    "anim-c2story": {
+      "picks": [
+        "s"
+      ],
+      "note": ""
+    },
+    "anim-reduction": {
+      "picks": [
+        "s"
+      ],
+      "note": ""
+    },
+    "anim-lf10": {
+      "picks": [
+        "lf10m"
+      ],
+      "note": ""
+    },
+    "anim-lf11": {
+      "picks": [
+        "lf11m"
+      ],
+      "note": ""
+    },
+    "C1": {
+      "picks": [
+        "m1"
+      ],
+      "note": ""
+    },
+    "anim-cb1": {
       "picks": [
         "s"
       ],

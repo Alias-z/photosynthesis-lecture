@@ -15,7 +15,7 @@ export const PLATE: PlateText = {
   lead: 'A light-response curve plots a leaf’s net CO₂ uptake against light: photons limit uptake in dim light, downstream steps in bright light.',
   points: [
     { claim: 'The initial slope is the quantum yield.', text: 'CO₂ fixed per photon absorbed; low O₂ steepens it in C₃ leaves.' },
-    { claim: 'Downstream steps set the plateau.', text: 'Electron transport, Rubisco or sugar export limit CO₂ uptake while pigments still absorb.' },
+    { claim: 'Downstream steps set the plateau.', text: 'Electron transport, RuBisCO or sugar export limit CO₂ uptake while pigments still absorb.' },
     { claim: 'Real curves bend smoothly.', text: 'Blackman (1905) drew a sharp corner; in leaves the limits overlap.' },
   ],
   refs: [
@@ -28,7 +28,6 @@ export const PLATE: PlateText = {
 
 export const VARIANTS: Variant[] = [
   { id: 'a', name: 'Two regimes' },
-  { id: 'b', name: 'Funnel and pipe', anim: true },
   { id: 'c', name: 'Leaf layers', anim: true },
   { id: 'd', name: 'Corner vs bend' },
   { id: 'e', name: 'Turn up light', anim: true },
@@ -293,26 +292,26 @@ function supplySvg(): string {
   const atps = (x: number): string =>
     `<rect class="blob-stalk" x="${x - 12}" y="${mTop - 8}" width="24" height="${h + 22}" rx="9"/><circle class="blob-atp" cx="${x - 15}" cy="${mTop - 26}" r="19"/><circle class="blob-atp" cx="${x + 15}" cy="${mTop - 26}" r="19"/><circle class="blob-atp" cx="${x}" cy="${mTop - 50}" r="19"/>`;
   const membrane = `<defs><pattern id="${p}-lip" width="14" height="${h}" patternUnits="userSpaceOnUse" x="30" y="${mTop}"><path class="lip-tail" d="M5,8 V${h * 0.42} M9,8 V${h * 0.42} M5,${h - 8} V${h * 0.58} M9,${h - 8} V${h * 0.58}"/><circle class="lip-head" cx="7" cy="6" r="5.5"/><circle class="lip-head" cx="7" cy="${h - 6}" r="5.5"/></pattern></defs><rect class="lip-bg" x="30" y="${mTop}" width="450" height="${h}"/><rect x="30" y="${mTop}" width="450" height="${h}" fill="url(#${p}-lip)"/>`;
-  // Calvin–Benson cycle, clockwise: RuBP (right) → Rubisco (bottom) → reduction (left, where ATP and NADPH arrive) → triose-P (top) → RuBP.
+  // Calvin–Benson cycle, clockwise: RuBP (right) → RuBisCO (bottom) → reduction (left, where ATP and NADPH arrive) → triose-P (top) → RuBP.
   const cx = 650, cy = 320, R = 80;
   const pt = (deg: number): [number, number] => [cx + R * Math.cos((deg * Math.PI) / 180), cy + R * Math.sin((deg * Math.PI) / 180)];
   const arc = (a: number, b: number): string => { const [xa, ya] = pt(a), [xb, yb] = pt(b); return ar(p, 'ink', `M${xa.toFixed(1)},${ya.toFixed(1)} A${R},${R} 0 0 1 ${xb.toFixed(1)},${yb.toFixed(1)}`); };
   const penta = (x: number, y: number, r = 33): string =>
     `<polygon class="node-rubp" points="${Array.from({ length: 5 }, (_, k) => { const a = -Math.PI / 2 + (k * 2 * Math.PI) / 5; return `${(x + r * Math.cos(a)).toFixed(1)},${(y + r * Math.sin(a)).toFixed(1)}`; }).join(' ')}"/>${t(x, y + 7, 'RuBP', 'fl15-t15 fl15-b')}`;
-  return svg(p, 'Thesis-style supply line: photons drive the thylakoid membrane, which supplies ATP and NADPH to the Calvin–Benson cycle. Photons limit in dim light; electron transport, Rubisco with CO₂, or sugar export cap the plateau in bright light', `
+  return svg(p, 'Thesis-style supply line: photons drive the thylakoid membrane, which supplies ATP and NADPH to the Calvin–Benson cycle. Photons limit in dim light; electron transport, RuBisCO with CO₂, or sugar export cap the plateau in bright light', `
     <g transform="translate(0 -24)">
     ${t(40, 116, '① photons absorbed', 'sm fl15-b fl15-amber', 'start')}${hBrace(40, 300, 128, 12, 'fl15-brace fl15-brace-amber')}
     ${bolt(p, 58, 166, 96, mTop - 30)}${bolt(p, 238, 166, 276, mTop - 30)}
     ${membrane}
     ${ps(110, 'PSII')}${ps(290, 'PSI')}${atps(420)}
-    ${ar(p, 'red', `M164,${mTop + 30} L232,${mTop + 30}`, 'fl15-e')}${t(198, mTop + 22, 'e⁻', 'fl15-t15 fl15-red fl15-b')}
+    ${ar(p, 'ink', `M164,${mTop + 30} L232,${mTop + 30}`)}${t(198, mTop + 22, 'e⁻', 'fl15-t15 fl15-b')}
     ${t(200, mTop - 12, 'stroma', 'fl15-t15 fl15-grey')}${t(476, mBot + 30, 'lumen', 'fl15-t15 fl15-grey', 'end')}
     ${water(110, 446)}${ar(p, 'ink', 'M130,450 L168,460')}${molecule(194, 462, 'OO', 11)}${t(226, 469, 'O₂', 'sm', 'start')}
     ${ar(p, 'ink', `M296,${mTop - 28} L310,266`)}${tag(326, 246, 'NADPH', 'nadph')}
     ${ar(p, 'ink', `M420,${mTop - 72} L420,236`)}${tag(420, 216, 'ATP', 'atp')}
     ${ar(p, 'ink', 'M380,250 L560,300')}${ar(p, 'ink', 'M448,222 L566,276')}
     ${arc(22, 66)}${arc(114, 246)}${arc(292, 338)}
-    <rect class="node-rub" x="${cx - 58}" y="${cy + R - 20}" width="116" height="40" rx="12"/>${t(cx, cy + R + 8, 'Rubisco', 'sm fl15-b')}
+    <rect class="node-rub" x="${cx - 58}" y="${cy + R - 20}" width="116" height="40" rx="12"/>${t(cx, cy + R + 8, 'RuBisCO', 'sm fl15-b')}
     ${penta(cx + R, cy)}
     <rect class="node" x="${cx - 62}" y="${cy - R - 20}" width="124" height="40" rx="20"/>${t(cx, cy - R + 8, 'triose-P', 'sm fl15-b')}
     ${t(cx - 20, cy - 4, 'Calvin–Benson', 'fl15-t15 fl15-grey')}${t(cx - 20, cy + 16, 'cycle', 'fl15-t15 fl15-grey')}
@@ -320,7 +319,7 @@ function supplySvg(): string {
     ${ar(p, 'ink', `M${cx + 40},${cy - R - 22} L${cx + 70},${cy - R - 60}`)}${t(cx + 82, cy - R - 58, 'sugar', 'sm fl15-b', 'start')}
     ${t(784, 116, '④ sugar export (TPU)', 'sm fl15-b fl15-p', 'end')}${hBrace(640, 784, 128, 12, 'fl15-brace fl15-brace-p')}
     ${hBrace(36, 476, 498, 12, 'fl15-brace fl15-brace-j')}${t(256, 548, '② electron transport (ATP, NADPH)', 'sm fl15-b fl15-j')}
-    ${hBrace(574, 784, 498, 12, 'fl15-brace fl15-brace-c')}${t(679, 548, '③ Rubisco and CO₂', 'sm fl15-b fl15-c')}</g>`, illusHeads(p));
+    ${hBrace(574, 784, 498, 12, 'fl15-brace fl15-brace-c')}${t(679, 548, '③ RuBisCO and CO₂', 'sm fl15-b fl15-c')}</g>`, illusHeads(p));
 }
 
 /* ---------- 15G · the low-O₂ test: measured initial slopes ---------- */
@@ -347,7 +346,7 @@ function lowO2Svg(): string {
     ])}
     <path class="fl15-div" d="M410,40 V470"/>
     ${t(400, 522, 'slopes to scale · mol CO₂ per mol photons · 30 °C · air 21 % O₂', 'sm')}
-    ${t(400, 556, 'Rubisco also reacts with O₂ (lecture 2)', 'sm fl15-b')}
+    ${t(400, 556, 'RuBisCO also reacts with O₂', 'sm fl15-b')}
     ${t(400, 586, 'Ehleringer & Björkman 1977', 'fl15-cr')}`);
 }
 
@@ -399,7 +398,7 @@ function recapSvg(): string {
   const cards = [
     { x: 20, title: 'Capture light', sub: ['pigments, antennas,', 'two photosystems'] },
     { x: 280, title: 'Shed the excess', sub: ['as heat (NPQ);', 'repair PSII'] },
-    { x: 540, title: 'Make ATP, NADPH', sub: ['used to fix CO₂', 'in lecture 2'] },
+    { x: 540, title: 'Make ATP, NADPH', sub: ['used to make sugar', 'in lecture 2'] },
   ];
   const icon = (k: number, cx: number): string => {
     if (k === 0) return `${bolt(p, cx - 64, 44, cx - 22, 92)}<circle class="fl15-pig" cx="${cx}" cy="96" r="20"/><circle class="fl15-pig" cx="${cx + 36}" cy="80" r="14"/><circle class="fl15-pig" cx="${cx + 30}" cy="114" r="11"/>`;
@@ -409,7 +408,7 @@ function recapSvg(): string {
   const pl = plot(110, 730, 530, 300, 1);
   const spots: Array<[number, number, number]> = [[0.1, 30, -6], [0.3, -2, -34], [0.75, 0, -32]];
   const badges = spots.map(([i, dx, dy], k) => num(pl.X(i) + dx, pl.Y(net(i)) + dy, `${k + 1}`)).join('');
-  return svg(p, 'Recap of lecture 1 on the light-response curve: capturing light sets the initial slope, excess light grows from the bend and is shed as heat, and the ATP and NADPH used to fix CO₂ set the plateau', `
+  return svg(p, 'Recap of lecture 1 on the light-response curve: capturing light sets the initial slope, excess light grows from the bend and is shed as heat, and the ATP and NADPH used to make sugar set the plateau', `
     ${cards.map((c, k) => `<rect class="box" x="${c.x}" y="20" width="240" height="214" rx="18"/>${num(c.x + 26, 46, `${k + 1}`)}${icon(k, c.x + 132)}${t(c.x + 120, 172, c.title, 'fl15-h')}${lines(c.x + 120, 198, c.sub, 'sm', 'middle', 25)}`).join('')}
     ${axes(p, pl, 'light: photon flux (PPFD) →', 'net CO₂ uptake →', 545, 'tl', 580)}
     ${gcurve(p, trace(pl, net, 0, 1))}

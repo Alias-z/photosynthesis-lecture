@@ -40,3 +40,16 @@
 .theme-editorial .fig tspan.fl04b-t-blue{fill:#2350e6;font-weight:600}
 .theme-editorial .fig tspan.fl04b-t-red{fill:#b8301b;font-weight:600}
 .theme-editorial .fig tspan.fl04b-t-green{fill:#24812f;font-weight:600}
+
+/* real figures and photos (4b u–z): credits, label pills, leaders, guides */
+.theme-editorial .fig text.fl04b-cr{font-size:13px;fill:#fffdf8}
+.theme-editorial .fig text.fl04b-crd{font-size:14px;fill:#8a877d}
+.theme-editorial .fig text.fl04b-pill{font-size:17px;font-weight:600;fill:#141413}
+.theme-editorial .fl04b-pillbg{fill:#fffdf8;opacity:.94}
+.theme-editorial .fl04b-pillbg-t{fill:#f3f1ea;stroke:#d8d5cb;stroke-width:1}
+.theme-editorial .fl04b-credbg{fill:#141413;opacity:.45}
+.theme-editorial .fl04b-mult{mix-blend-mode:multiply}
+.theme-editorial .fl04b-ldh{fill:none;stroke:#fffdf8;stroke-width:4.2;stroke-linecap:round;opacity:.9}
+.theme-editorial .fl04b-ldk{fill:none;stroke:#141413;stroke-width:1.5;stroke-linecap:round}
+.theme-editorial .fl04b-tipd{fill:#141413;stroke:#fffdf8;stroke-width:1.5}
+.theme-editorial .fl04b-gd{fill:none;stroke:#6b6a64;stroke-width:1.5;stroke-dasharray:5 5}

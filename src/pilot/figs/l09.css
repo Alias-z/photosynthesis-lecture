@@ -86,3 +86,41 @@
 .theme-editorial .fl09-stop{fill:#fffdf8;stroke:#3d3d3a;stroke-width:3}
 .theme-editorial .fl09-stop.fl09-end{stroke:#4f7cac}
 .theme-editorial .fl09-hub{fill:#fffdf8;stroke:#4d7a3a;stroke-width:4}
+
+/* 9p–9t compartments: stroma pale green, membrane tan, lumen pale blue; envelope as two green lines */
+.theme-editorial .fl09-stroma{fill:#eef4e6}
+.theme-editorial .fl09-env{fill:#eef4e6;stroke:#6f9a5a;stroke-width:2}
+.theme-editorial .fl09-env2{fill:none;stroke:#6f9a5a;stroke-width:1.3}
+.theme-editorial .fl09-gr{fill:#6f9a5a;stroke:#4f7a3c;stroke-width:.8}
+.theme-editorial .fl09-lam2{fill:none;stroke:#8fb07a;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fl09-memb{fill:#efe2c0;stroke:#c9b789;stroke-width:1.2}
+.theme-editorial .fl09-lum{fill:#eaf1f8;stroke:#c9b789;stroke-width:1.2}
+.theme-editorial .fl09-mband{fill:none;stroke:#c9b789;stroke-linejoin:round}
+.theme-editorial .fl09-mfill{fill:none;stroke:#efe2c0;stroke-linejoin:round}
+/* 9p zoom lenses */
+.theme-editorial .fl09-lens{fill:#fffdf8;stroke:#a8a59a;stroke-width:1.6}
+.theme-editorial .fl09-zl{fill:none;stroke:#a8a59a;stroke-width:1.3;stroke-dasharray:4 4}
+.theme-editorial .fl09-zb{fill:none;stroke:#3d3d3a;stroke-width:1.8}
+.theme-editorial .fl09-leaf{fill:#a9c793;stroke:#5f8a4b;stroke-width:2}
+.theme-editorial .fl09-vein{fill:none;stroke:#5f8a4b;stroke-width:1.4;stroke-linecap:round}
+.theme-editorial .fl09-cellw{fill:#f4f7ee;stroke:#a9bd94;stroke-width:2}
+.theme-editorial .fl09-cp{fill:#7fa866;stroke:#5f8a4b;stroke-width:1}
+/* 9q compartment tints, shared by the map and the Z boxes */
+.theme-editorial .fl09-ts{fill:#e3eed6;stroke:#7fa866;stroke-width:1.8}
+.theme-editorial .fl09-tm{fill:#f1dfb0;stroke:#c4a35a;stroke-width:1.6}
+.theme-editorial .fl09-tl{fill:#d7e6f5;stroke:#6a8fb5;stroke-width:1.6}
+.theme-editorial .fl09-chip{fill:#fffdf8;stroke:#5f5e58;stroke-width:1.4}
+.theme-editorial .fl09-tm-o{fill:#c4a35a;stroke:#c4a35a;stroke-width:3.2}
+.theme-editorial .fl09-tm-f{fill:#f1dfb0}
+.theme-editorial .fl09-tl-o{fill:#6a8fb5;stroke:#6a8fb5;stroke-width:3.2}
+.theme-editorial .fl09-tl-f{fill:#d7e6f5}
+/* 9s granum close-up */
+.theme-editorial .fl09-cyto{fill:#fbfaf6}
+.theme-editorial .fl09-env3{fill:none;stroke:#6f9a5a;stroke-width:2}
+.theme-editorial .fl09-guide2{fill:none;stroke:#8a877d;stroke-width:1.4;stroke-dasharray:5 5}
+.theme-editorial .fl09-dim{fill:none;stroke:#3d3d3a;stroke-width:1.6}
+/* 9t joined thylakoid network: membrane tan, lumen pale blue, one outline around the union */
+.theme-editorial .fl09-n-mo{fill:#c9b789;stroke:#c9b789;stroke-width:2.4}
+.theme-editorial .fl09-n-mf{fill:#efe2c0}
+.theme-editorial .fl09-n-lo{fill:#c9b789;stroke:#c9b789;stroke-width:2.4}
+.theme-editorial .fl09-n-lf{fill:#eaf1f8}

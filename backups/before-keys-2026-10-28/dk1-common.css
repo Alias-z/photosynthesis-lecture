@@ -1,0 +1,36 @@
+/* Builder 1's dark-reaction animations in the real-protein strip (dk1-common.ts): only lit parts are named (the dimmed
+   copy's names are hidden), leader lines, the active-site ring, the tally panel and paper cards. Prefix .dk-. */
+.dk1 .dk-dim .chn-off text.cel-prot,.dk1 .dk-dim .chn-off text.cel-mn,.dk1 .dk-dim .chn-off text.cbb-proc,
+.dk1 .dk-dim .chn-off text.cel-cnt,.dk1 .dk-dim .chn-off text.cbb-org,.dk1 .dk-dim .chn-off text.cel-zone,
+.dk1 .dk-dim .chn-off text.chn-zone,.dk1 .dk-dim .chn-off text.chn-light,.dk1 .dk-dim .chn-off .cel-ld{display:none}
+.dk1 .dk-pool0{stop-color:#f8c75a;stop-opacity:.75}.dk1 .dk-pool1{stop-color:#f8d98a;stop-opacity:.35}.dk1 .dk-pool2{stop-color:#fbe6b0;stop-opacity:0}
+.dk1 .dk-ld{fill:none;stroke:#5a5953;stroke-width:1.5}
+.dk1 .dk-ldh{fill:none;stroke:#fbfaf6;stroke-width:5;opacity:.85}
+.dk1 .dk-ldt{fill:#5a5953;stroke:#fbfaf6;stroke-width:1.2}
+.theme-editorial .dk1 text.dk-lt{font-size:19px;font-weight:600;fill:#141413}
+.dk1 .dk-site{fill:rgba(255,253,248,.35);stroke:#e3a21a;stroke-width:3}
+.theme-editorial .dk1 text.dk-sn{font-size:15px;font-weight:700;fill:#8a5a00}
+.dk1 .dk-c14g{fill:#f2b705;opacity:.45}
+.dk1 .dk-panel{fill:#fffdf8;stroke:#d8d5cb;stroke-width:1.2}
+.theme-editorial .dk1 text.dk-ph{font-size:19px;font-weight:600;fill:#6b6a64}
+.theme-editorial .dk1 text.dk-pr{font-size:21px;font-weight:600;fill:#141413}
+.theme-editorial .dk1 text.dk-pc{font-size:20px;font-weight:600;fill:#3d3d3a}
+.theme-editorial .dk1 text.dk-pt{font-size:22px;font-weight:700;fill:#141413}
+.theme-editorial .dk1 tspan.dk-dim{fill:#b5b2a8}
+.theme-editorial .dk1 tspan.dk-pr-r{fill:#b4532a}
+.dk1 .dk-paper{fill:#f6f1e5;stroke:#d3cdbd;stroke-width:1}
+.dk1 .dk-mult{mix-blend-mode:multiply}
+.theme-editorial .dk1 text.dk-ctitle{font-family:Newsreader,Georgia,serif;font-size:26px;font-weight:500;fill:#141413}
+.theme-editorial .dk1 text.dk-cs{font-size:18px;font-weight:500;fill:#5c5a52}
+.theme-editorial .dk1 text.dk-ct{font-size:19px;font-weight:600;fill:#2b2a27}
+.theme-editorial .dk1 text.dk-ccr{font-size:13px;fill:#8a877d}
+.dk1 .dk-mark{fill:none;stroke:#e3a21a;stroke-width:3}
+.dk1 .dk-chip{fill:#fffdf8;stroke:#c9c6bb;stroke-width:1.2}
+.dk1 .dk-chip-o{fill:#fbefe9;stroke:#d9a28a}
+.theme-editorial .dk1 text.dk-chipt{font-size:15px;font-weight:700;fill:#2b2a27}
+.dk1 .dk-thermo{fill:#fffdf8;stroke:#6b6a64;stroke-width:2}
+.dk1 .dk-thermo-f{fill:#c2401f}
+.theme-editorial .dk1 text.dk-yr{font-size:22px;font-weight:700;fill:#141413}
+.dk1 .dk-pocket{fill:rgba(255,253,248,.8);stroke:#e3a21a;stroke-width:2.6}
+.dk1 .dk-cap{fill:#fffdf8;opacity:.82}
+.dk1 .dk-drop{fill:#e3ecf1;stroke:#8fb3c9;stroke-width:2.4}

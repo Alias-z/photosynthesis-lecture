@@ -9,33 +9,28 @@ import { bilayer, bolt, epath, illusHeads, water } from '../illus';
 import './l07.css';
 
 export const PLATE: PlateText = {
-  n: '7',
+  n: '8',
   title: 'From excitation to charge separation',
   status: 'draft',
   lead: 'In a reaction centre, an excited chlorophyll pair hands an electron to an acceptor: light energy becomes separated charge.',
   points: [
-    { claim: 'Both photosystems sit in thylakoids.', text: 'PSII is in the stacked grana; PSI and ATP synthase in the unstacked stroma lamellae.' },
-    { claim: 'They work at the same time.', text: 'PSII refills its chlorophyll pair from water; PSI from the electron chain.' },
-    { claim: 'P680 and P700 are Chl a pairs.', text: 'Each is named after the wavelength (nm) where its absorption bleaches.' },
+    { claim: 'Charge separation in picoseconds.', text: 'The excited pair hands an electron to the first acceptor within a few ps' },
+    { claim: 'Stabilised step by step.', text: 'The electron moves along a chain of acceptors, away from the + side (PSII: to quinones; PSI: to iron–sulphur clusters), so it rarely falls back' },
+    { claim: 'P680 and P700 are Chl <i>a</i> pairs.', text: 'Each is named after the wavelength (nm) where its absorption bleaches.' },
   ],
   refs: [
     { label: 'Johnson 2025', url: 'https://doi.org/10.1038/s41580-025-00847-y' },
     { label: 'Croce & van Amerongen 2020', url: 'https://doi.org/10.1126/science.aay2058' },
     { label: 'Wietrzynski et al. 2025', url: 'https://doi.org/10.7554/eLife.105496' },
     { label: 'Kok 1956', url: 'https://doi.org/10.1016/0006-3002(56)90172-x' },
+    { label: 'Wientjes et al. 2013', url: 'https://doi.org/10.1021/jp401663w' },
   ],
 };
 
 export const VARIANTS: Variant[] = [
-  { id: 'a', name: 'Zoom in', anim: true },
   { id: 'b', name: 'Donor to acceptor' },
-  { id: 'c', name: 'Solar cell' },
   { id: 'd', name: 'Same pigment' },
   { id: 'e', name: 'Four steps', anim: true },
-  { id: 'f', name: 'Both at once' },
-  { id: 'g', name: 'Membrane map' },
-  { id: 'h', name: 'Bleaching dips' },
-  { id: 'i', name: 'Charge equation' },
   { id: 'j', name: 'Three icons' },
 ];
 
@@ -172,7 +167,7 @@ function zoomSvg(): string {
     ${text(190, 576, 'granum', 'sm fl07-b')}
     ${text(560, 576, 'stroma lamella', 'sm fl07-b')}`;
 
-  return svg('Zoom from a leaf to a mesophyll cell, a chloroplast and its thylakoid membranes: PSII in the stacked grana, PSI and ATP synthase in the stroma lamellae, both photosystems separating charge', `
+  return svg('Zoom from a leaf to a mesophyll cell, a chloroplast and its thylakoid membranes: PSII in the stacked grana, PSI and ATP synthase in the unstacked stroma lamellae, both photosystems separating charge', `
     ${defs(p)}${clip(A, 'cA')}${clip(B, 'cB')}${clip(C, 'cC')}
     ${line([120, 121], on(B, 205))}${line([120, 139], on(B, 155))}
     ${line([370, 130], on(C, 205))}${line([370, 162], on(C, 155))}
@@ -209,11 +204,11 @@ function donorSvg(): string {
     ${epath(p, `M${A2[0] + 14},${A2[1] - 8} L590,124`)}${eLab(404, 276, 'end')}
     ${text(600, 118, 'to PQ (PSII)', 'sm', 'start')}${text(600, 144, 'or Fd (PSI)', 'sm', 'start')}
     ${text(574, 206, 'reduced acceptor', 'sm fl07-blue', 'start')}
-    ${text(334, 446, 'oxidised donor', 'sm fl07-red', 'end')}${text(334, 472, '(Chl a pair)', 'sm', 'end')}
+    ${text(334, 446, 'oxidised donor', 'sm fl07-red', 'end')}${text(334, 472, '(Chl <tspan font-style="italic">a</tspan> pair)', 'sm', 'end')}
     ${epath(p, `M${Dp[0]},536 L${Dp[0]},${Dp[1] + 52}`)}${eLab(366, 470, 'start')}
     ${text(334, 534, 'from water (PSII)', 'sm', 'end')}${text(334, 560, 'or PC (PSI)', 'sm', 'end')}
     ${text(780, 446, 'quantum yield, weak light:', 'sm fl07-mut', 'end')}
-    ${text(780, 472, 'PSII ≈ 92 % · PSI ≈ 97 %', 'sm fl07-mut', 'end')}
+    ${text(780, 472, 'PSII ≈ 85–90 % · PSI ≈ 97 %', 'sm fl07-mut', 'end')}
     ${text(780, 560, 'PQ plastoquinone · PC plastocyanin', 'fl07-key', 'end')}
     ${text(780, 584, 'Fd ferredoxin', 'fl07-key', 'end')}
   `);
@@ -279,13 +274,13 @@ function samePigmentSvg(): string {
     <path class="fl07-rule" d="M400,64 V540 M24,300 H776"/>
     ${text(28, 84, 'just excited', 'fl07-note', 'start')}${text(28, 330, 'a moment later', 'fl07-note', 'start')}
     ${antenna(186, 0)}${bolt(p, 178, 70, 132, 164)}
-    ${text(205, 276, 'an excited Chl a', 'sm')}
+    ${text(205, 276, 'an excited Chl <tspan font-style="italic">a</tspan>', 'sm')}
     ${antenna(432, 1)}${hop(p, [132, 414], [192, 414], 0.4)}
     ${text(205, 512, 'energy hops on', 'sm')}${text(205, 538, 'no charge', 'sm fl07-b')}
     ${centre(186)}${pair(560, 186, 18)}${acc(668, 186, 16)}${glow(p, 560, 186, 1.3)}
     ${hop(p, [446, 132], [536, 166], 0.2)}
     ${text(668, 226, 'acceptor', 'sm fl07-mut')}
-    ${text(595, 276, 'an excited Chl a pair', 'sm')}
+    ${text(595, 276, 'an excited Chl <tspan font-style="italic">a</tspan> pair', 'sm')}
     ${centre(432)}${pair(560, 432, 18)}${q(560, 432, '+', 15)}${q(668, 432, '−', 16)}
     ${epath(p, 'M574,408 Q614,380 652,414')}${eLab(614, 384)}
     ${text(595, 512, 'an electron moves', 'sm')}${text(595, 538, 'pair⁺ and acceptor⁻', 'sm fl07-b')}
@@ -412,7 +407,7 @@ function dipsSvg(): string {
   const lab = (y0: number, mu: number, name: string): string =>
     `${text(X(mu), y0 + depth + 36, `dip near ${mu} nm`, 'sm')}${text(X(mu), y0 + depth + 66, `→ ${name}`, 'lab lab-b fl07-grn')}`;
   return svg('Schematic light-induced absorbance changes: a PSII sample dips near 680 nm and a PSI sample near 700 nm when the Chl a pair gives away an electron; the dip gives each reaction centre its name', `
-    ${text(24, 52, 'In light, the oxidised Chl a pair absorbs less', 'sm', 'start')}
+    ${text(24, 52, 'In light, the oxidised Chl <tspan font-style="italic">a</tspan> pair absorbs less', 'sm', 'start')}
     ${trace(yA, 680)}${trace(yB, 700)}
     ${lab(yA, 680, 'P680')}${lab(yB, 700, 'P700')}
     ${text(xL - 10, yA + 8, '0', 'tl', 'end')}${text(xL - 10, yB + 8, '0', 'tl', 'end')}

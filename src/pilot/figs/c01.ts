@@ -4,7 +4,7 @@
 // ATP and NADPH are delivered on the stromal side; the CBB cycle in the stroma spends them; ADP, Pᵢ and NADP⁺ return.
 // Redox: water is oxidised (it supplies the electrons, O₂ is the by-product); CO₂ (carbon +4) is reduced.
 // Per CO₂: 3 ATP + 2 NADPH; per hexose equivalent 18 ATP + 12 NADPH; the cycle exports triose phosphate, not glucose.
-// Light switches the cycle on: Fd → FTR → thioredoxin reduces FBPase, SBPase, PRK, GAPDH (and activase); Rubisco needs
+// Light switches the cycle on: Fd → FTR → thioredoxin reduces FBPase, SBPase, PRK, GAPDH (and activase); RuBisCO needs
 // activase (ATP); an oxidising switch turns the targets off in darkness, and GAPDH/PRK are held in a CP12 complex.
 // Land GPP ≈ 120–160 Pg C yr⁻¹, upper values debated (Beer 2010; Lai 2024; never the retracted Keenan 2021).
 // Equation thread: C01 makes ATP and NADPH the link, using the L08 form 6 CO₂ + 12 H₂O → C₆H₁₂O₆ + 6 O₂ + 6 H₂O.
@@ -19,7 +19,7 @@ export const PLATE: PlateText = {
   n: 'C1',
   title: 'From light energy to organic carbon',
   status: 'draft',
-  lead: 'In the stroma, the Calvin–Benson–Bassham cycle uses ATP and NADPH from the light reactions to fix CO₂ into sugar; light also switches the cycle on.',
+  lead: 'In the stroma, RuBisCO fixes CO₂; ATP and NADPH from the light reactions turn it into sugar. Light also switches the cycle on.',
   points: [
     { claim: 'ATP and NADPH link the two halves.', text: 'NADPH supplies electrons, ATP energy; ADP, inorganic phosphate (Pᵢ) and NADP⁺ return to the light reactions.' },
     { claim: 'Water is oxidised, carbon reduced.', text: 'Electrons taken from water end up in sugar; the water’s oxygen leaves as O₂.' },
@@ -39,7 +39,6 @@ export const VARIANTS: Variant[] = [
   { id: 'c', name: 'Oxidation states' },
   { id: 'd', name: 'Carbon from air' },
   { id: 'e', name: 'Day and night' },
-  { id: 'f', name: 'Fuel and key' },
   { id: 'g', name: 'Thesis panorama' },
   { id: 'h', name: 'Switch timeline', anim: true },
   { id: 'i', name: 'Electron’s trip', anim: true },
@@ -143,12 +142,12 @@ function drawA(): string {
     <circle class="blob-small" cx="352" cy="402" r="17"/>${T(352, 409, 'Fd', 'sm')}
     <ellipse class="blob-pq" cx="414" cy="404" rx="32" ry="17"/>${T(414, 411, 'FNR', 'sm')}
     ${synthase(616, 410, 106)}${T(616, 548, 'ATP synthase', 'sm')}
-    ${epath(p, 'M76,532 C92,512 120,496 150,494 L300,494 C326,492 340,456 346,422')}${T(186, 404, 'e⁻', 'sm fc01-e')}
+    ${arrow(p, 'ink', 'M76,532 C92,512 120,496 150,494 L300,494 C326,492 340,456 346,422')}<circle cx="178" cy="398" r="5" fill="#2b2a27"/>${T(188, 405, 'e⁻', 'sm lab-b', 'start')}
     ${water(70, 548)}${arrow(p, 'ink', 'M94,556 L126,556')}${molecule(150, 556, 'OO', 10)}${T(178, 564, 'PSII takes e⁻ from water', 'sm', 'start')}
     ${bolt(p, 30, 340, 72, 400)}${bolt(p, 214, 340, 256, 400)}${T(108, 362, 'light', 'note', 'start')}
 
     ${ring(p, cx, cy, R, [[288, 398], [48, 140], [160, 252]])}
-    ${pent(px, py, 26, 'RuBP')}${T(468, 46, 'Rubisco', 'sm', 'start')}
+    ${pent(px, py, 26, 'RuBP')}${T(468, 46, 'RuBisCO', 'sm', 'start')}
     ${molecule(290, 46, 'OCO', 11)}${arrow(p, 'ink', 'M322,52 L398,66')}${T(290, 86, 'CO₂', 'sm lab-b')}
     ${T(cx, cy - 6, 'Calvin–Benson–', 'sm lab-b')}${T(cx, cy + 20, 'Bassham cycle', 'sm lab-b')}
     ${arrow(p, 'ink', `M${f(cx + R + 4)},${cy} L618,${cy}`)}
@@ -187,7 +186,8 @@ function eqRow(toks: Tok[], cx: number, y: number, size: number): { svg: string;
         + `<text class="fc01-eq fc01-l" x="${f(c)}" y="${f(ay - 0.26 * size)}" text-anchor="middle" style="font-size:${f(Math.max(22, size * 0.62))}px">${t.over}</text>`;
     }
     return t.tag ? tag(c, y - size * 0.34, t.s, t.tag)
-      : `<text class="fc01-eq fc01-${t.k ?? 'o'}" x="${f(c)}" y="${y}" text-anchor="middle" style="font-size:${size}px">${chem(t.s)}</text>`;
+      // molecule names in ink, never coloured (the deck's one glyph set, 28 Oct 2026)
+      : `<text class="fc01-eq ${t.k === 'w' || t.k === 'c' ? 'fc01-mol' : `fc01-${t.k ?? 'o'}`}" x="${f(c)}" y="${y}" text-anchor="middle" style="font-size:${size}px">${chem(t.s)}</text>`;
   }).join('');
   return { svg: body, x };
 }
@@ -295,8 +295,9 @@ function drawE(): string {
   const p = 'fc01e';
   const D = 203, N = 597;
   const list = (cx: number, on: boolean): string =>
-    ['FBPase', 'SBPase', 'PRK', 'GAPDH'].map((n, i) => chip(cx, 204 + i * 50, n, on)).join('');
-  return svg(p, 'Day and night. By day, light drives ferredoxin, which reduces thioredoxin; thioredoxin switches on FBPase, SBPase, PRK and GAPDH by reducing their disulfides, and Rubisco is kept active by activase, which uses ATP. The cycle turns. At night an oxidising switch re-forms the disulfides, GAPDH and PRK are held in a CP12 complex, and the cycle stops.', `
+    // Named on slide C3 (FBPase, SBPase, PRK in regeneration; GAPDH in reduction); here only their step.
+    ['regeneration', 'regeneration', 'regeneration', 'reduction'].map((n, i) => chip(cx, 204 + i * 50, n, on)).join('');
+  return svg(p, 'Day and night. By day, light drives ferredoxin, which reduces thioredoxin; thioredoxin switches on FBPase, SBPase, PRK and GAPDH by reducing their disulfides, and RuBisCO is kept active by activase, which uses ATP. The cycle turns. At night an oxidising switch re-forms the disulfides, GAPDH and PRK are held in a CP12 complex, and the cycle stops.', `
     <rect class="fc01-day" x="14" y="14" width="378" height="572" rx="20"/>
     <rect class="fc01-night" x="408" y="14" width="378" height="572" rx="20"/>
     ${T(D, 58, 'Day: light on', 'lab lab-b')}${T(N, 58, 'Night: light off', 'lab lab-b')}
@@ -314,8 +315,8 @@ function drawE(): string {
     ${list(D, true)}${list(N, false)}
     <rect class="fc01-cp12" x="${N - 162}" y="276" width="324" height="106" rx="16"/>
 
-    ${T(D, 418, 'Rubisco activase', 'sm lab-b')}${T(D, 444, 'uses ATP', 'sm')}
-    ${T(N, 418, 'GAPDH, PRK', 'sm lab-b')}${T(N, 444, 'held by CP12', 'sm')}
+    ${T(D, 418, 'RuBisCO activase', 'sm lab-b')}${T(D, 444, 'uses ATP', 'sm')}
+    ${T(N, 418, 'two of them', 'sm lab-b')}${T(N, 444, 'held by CP12', 'sm')}
 
     ${ring(p, 104, 506, 40, [[290, 390], [50, 150], [170, 270]])}${T(166, 514, 'cycle runs', 'sm lab-b', 'start')}
     ${ring(p, 498, 506, 40, [[290, 390], [50, 150], [170, 270]], 'fc01-cyc-off', false)}${T(560, 514, 'cycle stops', 'sm lab-b', 'start')}
@@ -371,7 +372,7 @@ function drawF(): string {
 
 function drawG(): string {
   const p = 'fc01g';
-  return svg(p, 'Illustrated light reactions and carbon fixation side by side, after the MSc thesis figure. Left: in the thylakoid membrane, light drives PSII and PSI, water gives electrons and O₂, protons build up in the lumen and ATP synthase makes ATP; ferredoxin reduces NADP⁺ to NADPH. Right: in the stroma, Rubisco joins CO₂ to RuBP, giving PGA; ATP and NADPH from the left reduce PGA to triose phosphate; five of six rebuild RuBP using ATP and one of six leaves as sugar, freeing phosphate.', `
+  return svg(p, 'Illustrated light reactions and carbon fixation side by side, after the MSc thesis figure. Left: in the thylakoid membrane, light drives PSII and PSI, water gives electrons and O₂, protons build up in the lumen and ATP synthase makes ATP; ferredoxin reduces NADP⁺ to NADPH. Right: in the stroma, RuBisCO joins CO₂ to RuBP, giving PGA; ATP and NADPH from the left reduce PGA to triose phosphate; five of six rebuild RuBP using ATP and one of six leaves as sugar, freeing phosphate.', `
     ${T(14, 30, 'Light reactions · thylakoid', 'sm lab-b', 'start')}${T(440, 30, 'CO₂ fixation · stroma', 'sm lab-b', 'start')}
     ${T(14, 60, 'stroma', 'tiny', 'start')}${T(14, 590, 'lumen', 'tiny', 'start')}
     ${bilayer(p, 14, 380, 300, 370)}
@@ -389,7 +390,7 @@ function drawG(): string {
     ${arrow(p, 'ink', 'M306,212 C350,196 400,236 428,244')}${arrow(p, 'ink', 'M372,262 C400,276 420,294 440,298')}
     ${tag(484, 246, 'NADPH', 'nadph')}${tag(476, 300, 'ATP', 'atp')}
 
-    <rect class="node node-rub" x="500" y="504" width="122" height="44" rx="14"/>${T(561, 533, 'Rubisco', 'sm lab-b')}
+    <rect class="node node-rub" x="500" y="504" width="122" height="44" rx="14"/>${T(561, 533, 'RuBisCO', 'sm lab-b')}
     ${pent(561, 462, 34, 'RuBP')}
     ${molecule(712, 570, 'OCO', 11)}${arrow(p, 'ink', 'M690,560 L630,536')}${T(712, 546, 'CO₂', 'sm lab-b')}
     ${arrow(p, 'ink', 'M561,426 L561,384')}
@@ -431,7 +432,7 @@ function drawH(): string {
     ${T(x0 - 8, Y(1) + 8, 'all', 'tiny', 'end')}${T(x0 - 8, y0, 'none', 'tiny', 'end')}
     ${T((x0 + x1) / 2, y0 + 34, 'time →', 'tl')}
     <path class="fc01-curve" d="${curve()}"/>
-    ${T(tOn + 150, Y(0.92) - 14, 'FBPase, SBPase, PRK, GAPDH', 'sm lab-b fc01-g')}
+    ${T(tOn + 150, Y(0.92) - 14, 'four cycle enzymes', 'sm lab-b fc01-g')}
     ${T(tOn + 96, Y(0.42), 'Fd → thioredoxin', 'sm', 'start')}${T(tOn + 96, Y(0.42) + 26, 'reduces them', 'sm', 'start')}
     ${T(tOff + 82, Y(0.5), 'oxidising switch', 'sm', 'start')}${T(tOff + 82, Y(0.5) + 26, 'turns them off', 'sm', 'start')}
     <rect class="fc01-fix" x="${tOn + 30}" y="466" width="${tOff - tOn - 10}" height="30" rx="8"/>

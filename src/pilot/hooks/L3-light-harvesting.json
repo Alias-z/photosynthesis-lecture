@@ -1,0 +1,77 @@
+{
+  "title": "Light harvesting",
+  "chunk": "Lecture 1 · chunk 3",
+  "slides": ["6"],
+  "questions": [
+    {
+      "id": "j",
+      "question": "Does every chlorophyll in a leaf make oxygen?",
+      "story": "In 1771 Joseph Priestley put a sprig of mint into a sealed jar in which a candle had burned out; weeks later a candle burned in it again. In 1779 Jan Ingenhousz found that plants restore the air only in sunlight, and only with their green parts. So the green pigment, chlorophyll, makes the oxygen. But does every chlorophyll do it? In 1932 Robert Emerson and William Arnold lit algae with flashes bright enough to excite every chlorophyll at once: each flash released only one O₂ for about every 2,400 chlorophylls. In 1936 Hans Gaffron and Kurt Wohl explained why: most chlorophylls only collect light and pass the energy on to a few centres where the chemistry happens.",
+      "steps": [
+        "Leaves make oxygen in light, with their green parts (Priestley 1771, Ingenhousz 1779).",
+        "Most chlorophylls make no oxygen themselves; they collect light: the antenna (Emerson & Arnold 1932).",
+        "A few special chlorophylls do the chemistry: the reaction centres. Hundreds of collectors serve each one (photosynthetic unit).",
+        "The collected energy hops from pigment to pigment, downhill from carotenoids and Chl b to Chl a, to the reaction centre, which traps it. What it does there is the next chunk."
+      ],
+      "concepts": ["Photosynthetic unit", "Antenna", "Excitation energy transfer", "Reaction centre"],
+      "see": "Halftone portraits and clippings: Priestley's jar and mint, Ingenhousz's leaves in sunlight, Emerson & Arnold's flash experiment; then the zoom into the real antenna structure, with the energy hopping to the reaction centre.",
+      "status": "The lecturer's direction of 27 Oct 2026. Priestley and Ingenhousz from their own books; Emerson & Arnold checked (Govindjee 2001; Arnold NAS memoir)."
+    },
+    {
+      "id": "f",
+      "question": "Why does chlorophyll glow red in a test tube, but only faintly in a leaf?",
+      "story": "In 1833 David Brewster sent a beam of sunlight through a green alcohol extract of leaves and saw the beam glow blood red. In 1852 George Stokes showed that the red was new light, longer in wavelength than the light that went in, and named the effect fluorescence. A century later Eugene Rabinowitch's lab measured that living algae glow far more weakly than the same chlorophyll in solution. Lou Duysens (1952) found why: light absorbed only by the other pigments still made chlorophyll a glow, so the energy moves from pigment to pigment, and it ends in a few traps that use it: the reaction centres.",
+      "steps": [
+        "In a tube each chlorophyll is alone. Its excitation can only leave as heat or as red light: fluorescence.",
+        "In a leaf, proteins hold the pigments about a nanometre apart. The excitation passes to a neighbour long before it could glow: excitation energy transfer.",
+        "Pigment by pigment it reaches a reaction centre, which traps the energy and uses it (chunk 4).",
+        "So a faint glow means the light is being used. How faint it is tells how well a leaf works (chunk 6)."
+      ],
+      "concepts": ["Fluorescence", "Excitation energy transfer", "Reaction centre"],
+      "see": "Brewster's observation redone: extract in white light and under UV beside a leaf; portraits of Brewster, Stokes and Duysens; then the animation of energy hopping to the reaction centre.",
+      "status": "History checked in secondary sources (Brewster 1834; Stokes 1852; Latimer, Bannister & Rabinowitch 1956, Science; Duysens 1952 thesis). The yields in solution vs in vivo are still to read in the original."
+    },
+    {
+      "id": "g",
+      "question": "How do plants on a dark forest floor collect enough light?",
+      "story": "In 1908 Gustav Senn published six years of watching plant cells under the microscope: chloroplasts are not fixed. In dim light they gather on the cell walls that face the light; in strong light they move to the side walls. In the alga Mougeotia a single flat chloroplast turns its face to dim light and its edge to bright light. Electron microscopy later showed that shade plants also stack their light-collecting membranes much higher: up to about 100 thylakoids per granum in Alocasia, a plant of the rainforest floor, against fewer than 10 in sun chloroplasts.",
+      "steps": [
+        "On a forest floor a leaf gets only a few percent of full sunlight.",
+        "Cell scale: chloroplasts move to the cell walls facing the light (accumulation response), so more of them catch it.",
+        "Chloroplast scale: shade chloroplasts build taller grana stacks, which means more membrane to hold pigments.",
+        "Membrane scale: hundreds of pigments in light-harvesting complexes surround each reaction centre: the antenna. Shade leaves make bigger antennas."
+      ],
+      "concepts": ["Chloroplast movement", "Grana", "Antenna", "Light-harvesting complex"],
+      "see": "Real micrographs of chloroplasts in dim vs strong light; the Mougeotia chloroplast turning; electron micrographs of a shade vs a sun chloroplast; the zoom ends on the real antenna structure.",
+      "status": "Senn 1908 and Mougeotia from reviews (Kataoka 2015); Alocasia grana from Goodchild et al. 1972, quoted in Staehelin 2003. The movement away from strong light (Kasahara et al. 2002, Nature) belongs to chunk 6."
+    },
+    {
+      "id": "h",
+      "question": "Does every chlorophyll in a leaf do photosynthesis?",
+      "story": "In 1932 Robert Emerson and William Arnold lit algae with very short, very bright flashes, each strong enough to excite every chlorophyll once. Even then, each flash released only one O₂ for about every 2,400 chlorophylls. In 1936 Hans Gaffron and Kurt Wohl explained it: most chlorophylls only collect light and pass the energy on to a few centres where the chemistry happens. They called this team a photosynthetic unit.",
+      "steps": [
+        "Most chlorophylls do no chemistry. They catch light: the antenna.",
+        "A few special chlorophylls do the chemistry: the reaction centres.",
+        "The antenna passes each excitation, pigment to pigment, to a reaction centre: excitation energy transfer.",
+        "The team pays off because one chlorophyll catches a photon only rarely, even in sunlight; many collectors keep one reaction centre busy."
+      ],
+      "concepts": ["Photosynthetic unit", "Antenna", "Reaction centre"],
+      "see": "Emerson and Arnold's flash experiment and their curve of O₂ per flash; portraits; then the real antenna structure with its reaction-centre chlorophylls marked.",
+      "status": "Checked in Govindjee 2001 and the National Academy memoir of William Arnold (2,400 to 2,480 chlorophylls per O₂ per flash)."
+    },
+    {
+      "id": "i",
+      "question": "Can anything photosynthesise at the bottom of the ocean, in the dark?",
+      "story": "In 2003 the submarine Alvin collected samples from a hydrothermal vent 2.4 km deep in the Pacific, where no sunlight reaches. From them Beatty and colleagues (2005, PNAS) grew a green sulfur bacterium that lives only by photosynthesis, on the faint glow of the hot vent itself.",
+      "steps": [
+        "A hot vent gives off very weak light, mostly infrared, from its heat.",
+        "Green sulfur bacteria carry the largest antennas known, chlorosomes, each packed with hundreds of thousands of pigment molecules.",
+        "The antenna passes every captured excitation on to a few reaction centres.",
+        "The dimmer the light, the bigger the antenna: the same rule as shade leaves."
+      ],
+      "concepts": ["Antenna size", "Excitation energy transfer", "Reaction centre"],
+      "see": "Photos of the vent and of Alvin; an electron micrograph of a green sulfur bacterium with its chlorosomes.",
+      "status": "Beatty et al. 2005, PNAS 102:9306, checked; the pigment count of chlorosomes is still to check."
+    }
+  ]
+}

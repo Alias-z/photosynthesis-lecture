@@ -1,0 +1,77 @@
+{
+  "title": "Photosynthesis and crops",
+  "chunk": "Lecture 2 · chunk 5",
+  "slides": ["C14", "C15"],
+  "questions": [
+    {
+      "id": "a",
+      "question": "Is more CO₂ in the air good for plants?",
+      "story": "Greenhouse growers add CO₂ to the air of their glasshouses. In 1983 Bruce Kimball pooled more than 430 such trials, most of them in greenhouses and growth chambers: doubling the CO₂ raised yields by about a third. Open fields were tested later with free-air CO₂ enrichment (FACE), rings of pipes that release CO₂ upwind of a plot of crop. There the yield gain was about half as large as in enclosures, and maize and sorghum gained nothing unless water was short.",
+      "steps": [
+        "In C₃ crops, RuBisCO works below CO₂ saturation in today's air, and O₂ competes with CO₂ at its active site.",
+        "More CO₂ speeds carboxylation and suppresses oxygenation, so less carbon is lost to photorespiration.",
+        "Across 186 FACE studies of 18 C₃ crops, ≈ +200 ppm CO₂ raised yield by ≈ 18 %; with low nitrogen or ≈ 2 °C of warming, by ≈ 10 %.",
+        "C₄ crops already concentrate CO₂ around RuBisCO in the bundle sheath, so extra CO₂ adds no carbon. It narrows their stomata, which saves water and helps only in drought."
+      ],
+      "concepts": ["CO₂ fertilisation of C₃ crops", "Suppressed oxygenation", "C₄ crops already CO₂-saturated"],
+      "see": "The FACE ring in a wheat field at Maricopa, Arizona (USDA-ARS photo, board image c); then the A/Cᵢ curves of soybean and maize with supply lines for today's and future CO₂ (Leakey et al. 2009, Fig. 4, board image e).",
+      "status": "Kimball 1983 (abstract), Long et al. 2006 (abstract), Ainsworth & Long 2021 (abstract and Fig. 2), Leakey et al. 2009 (full text)."
+    },
+    {
+      "id": "b",
+      "question": "Will bread and rice be less nutritious in the future?",
+      "story": "In 2014 Samuel Myers and colleagues analysed grain from FACE experiments in Japan, Australia and the USA, grown at 546–586 ppm CO₂, the level expected around the middle of this century. Wheat grain held 9.3 % less zinc, 5.1 % less iron and 6.3 % less protein than wheat grown in today's air; rice grain held 7.8 % less protein. About 2.3 billion people live in countries that get at least 60 % of their dietary zinc or iron from C₃ grains and legumes.",
+      "steps": [
+        "Higher CO₂ raises the carbon that C₃ crops fix.",
+        "The grain's zinc, iron and nitrogen do not rise with it, so their concentrations fall. The cause is not settled: dilution by extra carbohydrate, slower nitrogen uptake and less transpiration-driven flow of nutrients are candidates.",
+        "Legume seeds keep their protein, because legumes fix more N₂ from the air.",
+        "C₄ crops (maize, sorghum), whose photosynthesis does not rise, are less affected."
+      ],
+      "concepts": ["Grain quality under rising CO₂", "C₃ and C₄ crops respond differently"],
+      "see": "Myers et al. 2014, Fig. 1 (board image g): change in zinc, iron, protein and phytate per crop at elevated CO₂.",
+      "status": "Myers et al. 2014 (author manuscript, full text, PMC4810679). Its 2019 correction is not read."
+    },
+    {
+      "id": "c",
+      "question": "Can we keep raising crop yields the way the Green Revolution did?",
+      "story": "Over the past 50 years the yield potential of the major grain crops rose steeply. Most of that came from two traits: shorter stems with more seeds, which put a larger share of the biomass into grain, and larger leaves that cover the ground sooner after sowing, which catch more of the light. Photosynthesis itself changed little.",
+      "steps": [
+        "Yield = sunlight × light interception × conversion efficiency × harvest index (Monteith's equation).",
+        "Modern soybean intercepts ≈ 90 % of the light and puts ≈ 60 % of its biomass into the seed; both are close to their limits, and maize, wheat and rice are similar.",
+        "Conversion efficiency is photosynthesis: at most 4.6 % of sunlight in C₃ crops and 6 % in C₄ crops, and the best crops reach about one third of that.",
+        "So further gains in yield potential must come mainly from better photosynthesis."
+      ],
+      "concepts": ["Yield potential equation", "Conversion efficiency", "Harvest index"],
+      "see": "The energy losses from sunlight to biomass, C₃ and C₄ side by side (Zhu, Long & Ort 2010, Fig. 2, board image h).",
+      "status": "Zhu, Long & Ort 2010 (full text, free on annualreviews.org). Monteith 1977 is not read; the equation is as Zhu et al. give it."
+    },
+    {
+      "id": "d",
+      "question": "Could we engineer crops to photosynthesise better?",
+      "story": "In 2019 Paul South, Amanda Cavanagh, Helen Liu and Donald Ort gave tobacco a synthetic pathway that breaks glycolate down inside the chloroplast, and lowered the glycolate transporter PLGG1 that lets glycolate leave it. In field trials in Illinois the plants made 20 % (2016) and 24 % (2017) more biomass than unmodified tobacco. With the plots heated by 5 °C, the same design gained 26 %, against 11 % without heating (Cavanagh et al. 2022).",
+      "steps": [
+        "RuBisCO's oxygenation makes 2-phosphoglycolate. The native pathway recycles it through peroxisome and mitochondrion and releases CO₂ and NH₃ there.",
+        "The bypass keeps glycolate in the chloroplast and breaks it down there, so the CO₂ is released next to RuBisCO.",
+        "Field trials: tobacco biomass +11 to +24 %; potato tubers +9.5 % and +30 % in two years.",
+        "Most bypass field trials show gains, but they are small and have low statistical power."
+      ],
+      "concepts": ["Photorespiratory bypass", "Raising conversion efficiency"],
+      "see": "Greenhouse tobacco with and without the bypass (South et al. 2019, Fig. 3A, board image j) and the 2017 field biomass (Fig. 6A, board image k).",
+      "status": "South et al. 2019 (full text; its erratum is not read), Cavanagh et al. 2022 (full text), Meacham-Hensold et al. 2024 and 2026 (full text)."
+    },
+    {
+      "id": "e",
+      "question": "How does the sugar made in a leaf end up in a loaf of bread?",
+      "story": "After a wheat plant flowers, its grains fill with starch. The carbon comes from photosynthesis of the top leaf (the flag leaf) and of the green ear itself, and from sugar stored in the stem before flowering. In elite, well-watered bread wheat in Mexico, the ear gave more of the grain's carbon than the leaves and stem below it; the flag-leaf blade gave only 3–18 % (Sanchez-Bragado et al. 2014).",
+      "steps": [
+        "Leaves export sucrose, made in the cytosol from triose phosphate.",
+        "The phloem carries sucrose from leaves, ear and stem to the growing grain.",
+        "The endosperm turns sucrose into starch, packed in granules.",
+        "White flour is milled endosperm: the starch in bread was made from CO₂ in the leaf and the ear."
+      ],
+      "concepts": ["Source and sink", "Phloem transport of sucrose", "Grain starch"],
+      "see": "A green wheat ear (Wikimedia Commons, CC0, board image l) and SEM of developing wheat endosperm packing with starch granules 10–20 days after flowering (Chen et al. 2024, Fig. 9A, board image m).",
+      "status": "Sanchez-Bragado et al. 2014 (full text); Chen et al. 2024 (CC BY 4.0, legend on the board). Stem reserves (Schnyder 1993) not read."
+    }
+  ]
+}

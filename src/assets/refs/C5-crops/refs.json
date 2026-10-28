@@ -1,0 +1,132 @@
+{
+  "title": "Photosynthesis and crops",
+  "slides": ["C14", "C15"],
+  "images": [
+    {
+      "id": "a",
+      "file": "noaa-scripps-keeling-curve.png",
+      "kind": "figure",
+      "caption": "The Keeling curve: monthly CO₂ at Mauna Loa from 1958 to 2026, rising from ~315 to ~430 ppm",
+      "credit": "NOAA Global Monitoring Laboratory & Scripps Institution of Oceanography, Mauna Loa CO₂ record, graph of 9 Oct 2026; US Government work",
+      "url": "https://gml.noaa.gov/ccgg/trends/",
+      "note": "Current official graph (Scripps + NOAA). The page states no licence; US federal work is public domain, logos are trademarks."
+    },
+    {
+      "id": "b",
+      "file": "ainsworth2021-maunaloa-face-sites.jpg",
+      "kind": "figure",
+      "caption": "Mauna Loa CO₂ since 1980 with the start year and place of each crop FACE experiment",
+      "credit": "Ainsworth & Long 2021, Global Change Biol 27:27, Fig. 1",
+      "url": "https://doi.org/10.1111/gcb.15375",
+      "note": "Links the Keeling curve to the field trials (Maricopa 1993 … Brazil 2011). © Wiley."
+    },
+    {
+      "id": "c",
+      "file": "usda-ars-face-ring-wheat.jpg",
+      "kind": "photo",
+      "caption": "A FACE ring in a wheat field: vertical vent pipes release CO₂ around an open-air plot (1993)",
+      "credit": "USDA Agricultural Research Service, photo Bruce Kimball, Wikimedia Commons, public domain",
+      "url": "https://commons.wikimedia.org/wiki/File:Agriculture_Research_Service_(ARS)_(8412930086).jpg",
+      "note": "Real FACE hardware in a C₃ cereal. Site not stated on the file; Kimball led the Maricopa, Arizona wheat FACE (date stamp 25 Mar 1993)."
+    },
+    {
+      "id": "d",
+      "file": "aspray2023-soyface-ring.jpg",
+      "kind": "photo",
+      "caption": "SoyFACE, Illinois: a 20-m octagonal plot with gas pipes (b) and the CO₂/O₃ manifold beside maize (c)",
+      "credit": "Aspray et al. 2023, Sci Data 10:226, Fig. 1b–c (photos A. Leakey, S. Gable)",
+      "url": "https://doi.org/10.1038/s41597-023-02118-x",
+      "note": "The best-known crop FACE site. CC BY 4.0 (PMC10119297). Panel a (Google Earth aerial) cropped away."
+    },
+    {
+      "id": "e",
+      "file": "leakey2009-c3-c4-co2-supply.png",
+      "kind": "figure",
+      "caption": "A/Cᵢ of C₄ maize and C₃ soybean with supply lines for 384, 550 and 700 ppm CO₂",
+      "credit": "Leakey et al. 2009, J Exp Bot 60:2859, Fig. 4",
+      "url": "https://doi.org/10.1093/jxb/erp096",
+      "note": "Why C₄ gains little from more CO₂: maize already sits on its plateau, soybean on the rising slope. 440 px only. © Oxford University Press."
+    },
+    {
+      "id": "f",
+      "file": "ainsworth2021-yield-c3-c4.jpg",
+      "kind": "figure",
+      "caption": "FACE yield response (elevated/ambient − 1) by crop: C₃ about +18 %, C₄ none except under drought",
+      "credit": "Ainsworth & Long 2021, Global Change Biol 27:27, Fig. 2",
+      "url": "https://doi.org/10.1111/gcb.15375",
+      "note": "30-year synthesis; supersedes the Ainsworth & Long 2005 meta-analysis (see wanted list). WD water deficit, LN low N. © Wiley."
+    },
+    {
+      "id": "g",
+      "file": "myers2014-zn-fe-protein.jpg",
+      "kind": "figure",
+      "caption": "Change in grain zinc, iron, protein and phytate at elevated CO₂ in FACE: C₃ grasses and legumes lose nutrients",
+      "credit": "Myers et al. 2014, Nature 510:139, Fig. 1",
+      "url": "https://doi.org/10.1038/nature13179",
+      "note": "Wheat: Zn −9.3 %, Fe −5.1 %, protein −6.3 %. From the PMC author manuscript (PMC4810679). © Springer Nature."
+    },
+    {
+      "id": "h",
+      "file": "zhu2010-energy-losses.png",
+      "kind": "schematic",
+      "caption": "Energy losses from sunlight to biomass: at most 4.6 % for C₃ and 6.0 % for C₄",
+      "credit": "Zhu, Long & Ort 2010, Annu Rev Plant Biol 61:235, Fig. 2",
+      "url": "https://doi.org/10.1146/annurev-arplant-042809-112206",
+      "note": "The canonical cascade (first in Zhu, Long & Ort 2008, blocked). Photorespiration costs C₃ 6.1 points. © Annual Reviews; AR footer cropped."
+    },
+    {
+      "id": "i",
+      "file": "south2019-bypass-pathways.jpg",
+      "kind": "schematic",
+      "caption": "Native photorespiration (grey) across chloroplast, peroxisome, mitochondrion, and three engineered chloroplast bypasses AP1–AP3",
+      "credit": "South, Cavanagh, Liu & Ort 2019, Science 363:eaat9077, Fig. 1A",
+      "url": "https://doi.org/10.1126/science.aat9077",
+      "note": "The engineering target. CC BY 4.0 (PMC7745124 author manuscript). Panels B–C cropped away."
+    },
+    {
+      "id": "j",
+      "file": "south2019-greenhouse-tobacco.jpg",
+      "kind": "photo",
+      "caption": "Wild-type and AP3 bypass tobacco after 6 weeks in the greenhouse, and biomass change per design",
+      "credit": "South, Cavanagh, Liu & Ort 2019, Science 363:eaat9077, Fig. 3",
+      "url": "https://doi.org/10.1126/science.aat9077",
+      "note": "Real plants showing the gain. CC BY 4.0 (PMC7745124)."
+    },
+    {
+      "id": "k",
+      "file": "south2019-field-2017.jpg",
+      "kind": "figure",
+      "caption": "2017 field trial: AP3 tobacco gains biomass (~24 % with PLGG1 RNAi), leaf starch and daily CO₂ uptake",
+      "credit": "South, Cavanagh, Liu & Ort 2019, Science 363:eaat9077, Fig. 6",
+      "url": "https://doi.org/10.1126/science.aat9077",
+      "note": "The field proof of the bypass. CC BY 4.0 (PMC7745124)."
+    },
+    {
+      "id": "l",
+      "file": "wheat-ear-green.jpg",
+      "kind": "photo",
+      "caption": "Green, awned bread-wheat ear with its upper leaves: the source leaves feed the grains",
+      "credit": "Patrick Alexander, 'Triticum aestivum', Wikimedia Commons (via Flickr), CC0",
+      "url": "https://commons.wikimedia.org/wiki/File:Triticum_aestivum_-_Flickr_-_aspidoscelis.jpg",
+      "note": "Start of 'from leaf to loaf'. Not labelled as flag leaf by the photographer."
+    },
+    {
+      "id": "m",
+      "file": "chen2024-wheat-endosperm-sem.jpg",
+      "kind": "micrograph",
+      "caption": "SEM of developing durum-wheat endosperm, 10–20 days after flowering: A-type (red) and B-type (blue) starch granules",
+      "credit": "Chen et al. 2024, Plant Physiol 196:1980, Fig. 9A (wild-type row)",
+      "url": "https://doi.org/10.1093/plphys/kiae429",
+      "note": "Grain filling seen directly: cells packing with starch. Pseudo-colour by the authors. CC BY 4.0 (PMC11531834). Bars 50 µm."
+    },
+    {
+      "id": "n",
+      "file": "chen2024-wheat-starch-lm-sem.jpg",
+      "kind": "micrograph",
+      "caption": "Mature wheat endosperm: iodine-stained section (top) and SEM of purified lens-shaped and small round starch granules (bottom)",
+      "credit": "Chen et al. 2024, Plant Physiol 196:1980, Fig. 6 (wild-type column)",
+      "url": "https://doi.org/10.1093/plphys/kiae429",
+      "note": "End point of 'leaf to loaf': the starch in flour. CC BY 4.0. Bars 40 µm (A), 20 µm (B)."
+    }
+  ]
+}

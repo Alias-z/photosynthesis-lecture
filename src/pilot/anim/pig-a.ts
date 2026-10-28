@@ -1,15 +1,15 @@
 // Why pigments differ, staging A "Zoom into the molecule". Each molecule is zoomed into, with its own energy ladder
-// beside it: a chlorophyll in a leaf, three chains of growing length, β-carotene, chlorophyll a turning into b, and
-// the three absorption spectra together.
+// beside it, in the order chlorophyll a, chlorophyll b, carotenoids (lecturer, 27 Oct 2026): chlorophyll a in a leaf,
+// turning into chlorophyll b, three chains of growing length, β-carotene, and the three absorption spectra together.
 // - The absorbing electrons are drawn as spread over a "room", the conjugated system of alternating single and double
 //   bonds, highlighted in amber (the free-electron model, Kuhn 1949); real orbitals are not drawn.
 // - Ladders are to scale in energy, E = 1239.84 eV·nm / λ, at one scale per scene: the chains of 3 and 5 double
 //   bonds (hexatriene, decapentaene) absorb at about 258 and 334 nm; 11 double bonds (β-carotene's system) from its
 //   lowest band at 478 nm, with sublevels at 450 and 425 nm; chlorophyll a at 662 and 430 nm, b at 642 and 453 nm
 //   (in solvent).
-// - Scene changes: the first beat dives from leaf to chloroplast to molecule; later scenes cross-fade at their own
-//   size (never one scene blown up over another), and Chl a → Chl b is a pan. The stage is never blank. Labels and
-//   scenery appear whole.
+// - Scene changes: the first beat dives from leaf to chloroplast to chlorophyll a beside its ladder; Chl a → Chl b
+//   happens in place; later scenes cross-fade at their own size (never one scene blown up over another). The stage is
+//   never blank. Labels and scenery appear whole.
 import './pig-a.css';
 import { leaf } from '../figs/s2';
 import { absorb, col, type Pig } from '../figs/s5';
@@ -41,7 +41,6 @@ const T = (x: number, y: number, s: string, cls: string, anchor: 'start' | 'midd
   `<text class="${cls}" x="${f1(x)}" y="${f1(y)}" text-anchor="${anchor}"${k ? ` data-k="${k}"` : ''}>${s}</text>`;
 const tfStr = (v: Tf): string => `matrix(${v.s.toFixed(5)},0,0,${v.s.toFixed(5)},${v.t[0].toFixed(2)},${v.t[1].toFixed(2)})`;
 const ID_TF: Tf = { s: 1, t: [0, 0] };
-const apply = (v: Tf, p: V): V => add(mul(p, v.s), v.t);
 
 /** A dive: scene B sits inside scene A at A's point fa, Z times smaller; the camera zooms from A (e = 0) to B (e = 1),
  *  carrying fa to B's focus fb on the stage. Returns the views of A and of B. */
@@ -199,7 +198,6 @@ function carotene(cx: number, cy: number): { svg: string; path: string } {
 const LEAF_F: V = [905, 352]; // where the chloroplast is, on the leaf
 const CHL_F: V = [800, 370]; // the chloroplast's centre
 const THY_F: V = [895, 401]; // where the chlorophyll is, on a thylakoid
-const MC: V = [600, 300], SC1 = 1.4; // the chlorophyll ring's centre and its drawing scale
 const Z_LEAF = 6, Z_CHL = 6;
 
 function chloroplast(): string {
@@ -223,12 +221,6 @@ const COLS2: Array<{ n: number; x: number; nm: number; up: number; ink: Ink; nam
 const Y0_2 = 610, K2 = 55, CHAIN_Y = 205; // lower rung, px per eV, chain row
 const SUB_EV = [eV(450), eV(425)]; // β-carotene's sublevels above its lowest band
 const lad2 = (i: number): { y1: number; ytop: number } => ({ y1: Y0_2 - COLS2[i].up * K2, ytop: Y0_2 - eV(COLS2[i].nm) * K2 });
-// The pan: from close on the first chain to all three.
-const PAN0 = { p: [270, 420] as V, c: [520, 370] as V, s: 1.2 }; // the whole first column in view
-const panView = (u: number): Tf => {
-  const s = PAN0.s ** (1 - u), p = lerpV(PAN0.p, [800, 370], u), c = lerpV(PAN0.c, [800, 370], u);
-  return { s, t: sub(c, mul(p, s)) };
-};
 
 function scene2(): string {
   return COLS2.map((c, i) => {
@@ -259,8 +251,8 @@ const scene3 = (): string => `${room('r3', CAR.path)}${CAR.svg}${T(600, 256, 'β
 
 /* ---------------------------------------------------------------- scene 4: chlorophyll a turns into b */
 
-const MC4: V = [440, 300];
-const CHL4 = chlorophyll(MC4, 'm4', 1.15, true);
+const MC4: V = [440, 300], SC4 = 1.15; // the chlorophyll ring's centre and its drawing scale
+const CHL4 = chlorophyll(MC4, 'm4', SC4, true);
 const LAD4 = { x: 1130, y0: 640, k: 160 };
 const Y4 = (nm: number): number => LAD4.y0 - eV(nm) * LAD4.k;
 const BANDS4 = [
@@ -269,21 +261,21 @@ const BANDS4 = [
 ];
 const scene4 = (): string => `${CHL4.svg}
   <circle class="pa-swap" cx="${f1(CHL4.group[0] + 28)}" cy="${f1(CHL4.group[1] - 14)}" r="40" data-k="swapring"/>
-  ${T(150, 112, 'Chl a', 'pa-title', 'start', 'ta')}${T(150, 112, 'Chl b', 'pa-title', 'start', 'tb')}
-  ${eAxis(LAD4.x - 160, 670, 150)}
+  ${T(150, 112, 'Chl <tspan font-style="italic">a</tspan>', 'pa-title', 'start', 'ta')}${T(150, 112, 'Chl <tspan font-style="italic">b</tspan>', 'pa-title', 'start', 'tb')}
+  <g data-k="lad4">${eAxis(LAD4.x - 160, 670, 150)}
   <path class="pa-rung" d="M${LAD4.x - 90},${LAD4.y0}H${LAD4.x + 90}"/>
   <circle class="pa-e0" cx="${LAD4.x + 20}" cy="${LAD4.y0}" r="7"/><circle class="pa-e0" cx="${LAD4.x + 44}" cy="${LAD4.y0}" r="7"/>
   ${BANDS4.map(b => `<path class="pa-ghost" data-k="g4${b.key}" d="M${LAD4.x - 90},${f1(Y4(b.a))}H${LAD4.x + 90}"/>
     <path class="pa-rung" data-k="u4${b.key}" d="M${LAD4.x - 90},${f1(Y4(b.a))}H${LAD4.x + 90}"/>
     <path class="pa-ar" data-k="a4${b.key}" style="stroke:${inkOf(b.ink)}" marker-end="url(#${ID}-h${b.ink})"/>
     ${T(LAD4.x + 110, 0, b.name, `pa-lab pa-band pa-band-${b.key}`, 'start', `n4${b.key}`)}
-    ${T(LAD4.x + 110, 0, `${b.a} nm`, 'pa-lab', 'start', `v4${b.key}a`)}${T(LAD4.x + 110, 0, `${b.a} → ${b.b} nm`, 'pa-lab', 'start', `v4${b.key}b`)}`).join('')}`;
+    ${T(LAD4.x + 110, 0, `${b.a} nm`, 'pa-lab', 'start', `v4${b.key}a`)}${T(LAD4.x + 110, 0, `${b.a} → ${b.b} nm`, 'pa-lab', 'start', `v4${b.key}b`)}`).join('')}</g>`;
 
 /* ---------------------------------------------------------------- scene 5: the spectra together */
 
 const SX = (nm: number): number => 380 + ((nm - 400) / 300) * 960;
 const ROWS: Array<{ k: Pig | 'all'; name: string; top: number }> = [
-  { k: 'a', name: 'Chl a', top: 64 }, { k: 'b', name: 'Chl b', top: 182 }, { k: 'car', name: 'β-carotene', top: 300 }, { k: 'all', name: 'together', top: 432 },
+  { k: 'a', name: 'Chl <tspan font-style="italic">a</tspan>', top: 64 }, { k: 'b', name: 'Chl <tspan font-style="italic">b</tspan>', top: 182 }, { k: 'car', name: 'β-carotene', top: 300 }, { k: 'all', name: 'together', top: 432 },
 ];
 const ROW_H = 96, AXIS_Y = 562;
 const absAll = (nm: number): number => Math.max(absorb('a', nm), absorb('b', nm), absorb('car', nm));
@@ -305,21 +297,23 @@ function scene5(): string {
   return `<defs>${grads}</defs>${rows}<path class="pa-xaxis" d="M${SX(400)},${AXIS_Y}H${SX(700)}"/>${ticks}
     ${T(SX(550), AXIS_Y + 76, 'wavelength (nm)', 'pa-lab', 'middle')}
     <text class="pa-ax" transform="translate(150 ${(ROWS[0].top + ROWS[3].top + ROW_H) / 2}) rotate(-90)" text-anchor="middle">absorption</text>
-    ${T(SX(550), ROWS[3].top + 34, 'green: weakest', 'pa-lab pa-weak', 'middle', 'weak')}`;
+    ${T(SX(550), ROWS[3].top + 34, 'green: absorbed least', 'pa-lab pa-weak', 'middle', 'weak')}`;
 }
 
 /* ---------------------------------------------------------------- staging */
 
-const TEND = [4.9, 3.9, 2.3, 3.7, 3.4]; // when each beat's motion is over, s
-const PAN_W = 1700; // "Chl a → Chl b" pans this far from β-carotene to chlorophyll
-const O: V = [800, 370];
+// Each scene comes in whole, then plays at most one teaching motion (lecturer, 27 Oct 2026: show the three things at
+// once, not one after another). One click per scene, as in the sky and life animations: no holds inside a beat.
+const TEND = [3.9, 1.3, 1.8, 2.3, 1.05]; // when each beat's motion is over, s
+const PHO2 = 0.9; // beat 3: the three photons arrive together
 
 export const STAGING: Staging = {
   id: 'a',
   name: 'A · Zoom into the molecule',
   note: 'Each molecule zoomed into, with its energy ladder beside it.',
+  // Beat 2 opens on chlorophyll a and waits: the click plays the change to b, and Back lands here, not on the leaf zoom.
+  holds: [[], [0.02], [], [], []],
   svg: () => {
-    const m1 = chlorophyll(MC, 'm1', SC1, false);
     const heads = (['uv', 'b', 'bg', 'r'] as Ink[]).map(k => `<marker id="${ID}-h${k}" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path fill="${inkOf(k)}" d="M0,0L10,5L0,10z"/></marker>`).join('');
     return `<defs>${heads}
       <marker id="${ID}-hgrey" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path fill="#8a877d" d="M0,0L10,5L0,10z"/></marker>
@@ -328,14 +322,12 @@ export const STAGING: Staging = {
     </defs>
     <g class="pa-scene" data-k="s-leaf">${leaf(800, 380, 900, 400, -8)}</g>
     <g class="pa-scene" data-k="s-chl">${chloroplast()}</g>
-    <g class="pa-scene" data-k="s-mol">${m1.svg}</g>
+    <g class="pa-scene" data-k="s-chlb">${scene4()}</g>
     <g class="pa-scene" data-k="s-chains">${scene2()}</g>
     <g class="pa-scene" data-k="s-car">${scene3()}</g>
-    <g class="pa-scene" data-k="s-chlb">${scene4()}</g>
     <g class="pa-scene" data-k="s-spec">${scene5()}</g>
     ${T(1190, 600, 'leaf', 'pa-lab', 'start', 'l-leaf')}${T(800, 612, 'chloroplast', 'pa-lab', 'middle', 'l-chl')}
-    ${T(150, 112, 'chlorophyll', 'pa-title', 'start', 'l-mol')}
-    <g data-k="l-room"><path class="pa-lead" d="M${f1(MC[0] + 186 * SC1)},${MC[1] - 8}L${f1(MC[0] + 122 * SC1)},${MC[1]}"/>${T(MC[0] + 194 * SC1, MC[1] - 2, 'electrons’ room', 'pa-lab pa-amber', 'start')}</g>`;
+    <g data-k="l-room"><path class="pa-lead" d="M${f1(MC4[0] + 186 * SC4)},${MC4[1] - 8}L${f1(MC4[0] + 122 * SC4)},${MC4[1]}"/>${T(MC4[0] + 194 * SC4, MC4[1] - 2, 'conjugated π system', 'pa-lab pa-amber', 'start')}</g>`;
   },
 
   bind(stage) {
@@ -378,88 +370,74 @@ export const STAGING: Staging = {
       last = key;
       const tb = (k: number): number => (b === k ? Math.max(0, t) : b > k ? 99 : 0);
       const t0 = tb(0), t1 = tb(1), t2 = tb(2), t3 = tb(3), t4 = tb(4);
-      const hide = ['s-leaf', 's-chl', 's-mol', 's-chains', 's-car', 's-chlb', 's-spec'];
+      const hide = ['s-leaf', 's-chl', 's-chlb', 's-chains', 's-car', 's-spec'];
       const shown = new Map<string, [Tf, number]>();
 
-      // Beat 1: leaf → chloroplast → chlorophyll; the ring's room glows.
-      const e1 = smoother((t0 - 0.5) / 1.5), e2 = smoother((t0 - 2.6) / 1.5);
-      const MOL_F = MC;
+      // Beat 1: leaf → chloroplast → chlorophyll a; once it lands, its conjugated π system glows and its energy ladder,
+      // with the red and the blue band, comes in.
+      const e1 = smoother((t0 - 0.2) / 1.3), e2 = smoother((t0 - 1.9) / 1.3);
       if (b === 0) {
         if (e2 <= 0) {
           const [va, vb] = dive(LEAF_F, CHL_F, Z_LEAF, e1);
           shown.set('s-leaf', [va, fadeOut(e1)]); shown.set('s-chl', [vb, fadeIn(e1)]);
-        } else {
-          const [va, vb] = dive(THY_F, MOL_F, Z_CHL, e2);
-          shown.set('s-chl', [va, 1 - tw(e2, 0.3, 0.6)]); shown.set('s-mol', [vb, tw(e2, 0.45, 0.75)]); // the stacks clear before the molecule shows
-        }
+        } else if (e2 < 1) {
+          const [va, vb] = dive(THY_F, MC4, Z_CHL, e2);
+          shown.set('s-chl', [va, 1 - tw(e2, 0.3, 0.6)]); shown.set('s-chlb', [vb, tw(e2, 0.45, 0.75)]); // the stacks clear before the molecule shows
+        } else shown.set('s-chlb', [ID_TF, 1]);
       }
-      const glow1 = tw(t0, 4.1, 4.7);
-      op(q('l-leaf'), b === 0 ? 1 - tw(t0, 0.5, 0.75) : 0);
-      op(q('l-chl'), b === 0 ? tw(t0, 1.9, 2.15) * (1 - tw(t0, 2.6, 2.85)) : 0);
+      const glow = tw(t0, 3.3, 3.9);
+      op(q('l-leaf'), b === 0 ? 1 - tw(t0, 0.2, 0.45) : 0);
+      op(q('l-chl'), b === 0 ? tw(t0, 1.3, 1.55) * (1 - tw(t0, 1.9, 2.15)) : 0);
+      set(q('m4-room-line'), 'stroke-dashoffset', (1 - glow).toFixed(3));
+      op(q('m4-room'), glow);
+      op(q('lad4'), tw(t0, 3.3, 3.7));
+      op(q('l-room'), b === 0 ? tw(t0, 3.6, 3.9) : b === 1 ? 1 : b === 2 ? 1 - tw(t2, 0, 0.3) : 0);
 
-      // Beat 2: the chlorophyll fades out in place as the chains fade in, close on the first; the camera pans across all
-      // three as each ladder grows. A column shows only once it is wholly on the stage, so no label is ever cut.
-      const u = smoother((t1 - 1.0) / 1.9);
-      if (b === 1) {
-        shown.set('s-mol', [ID_TF, 1 - tw(t1, 0, 0.45)]);
-        shown.set('s-chains', [panView(u), tw(t1, 0.3, 0.7)]);
-      }
-      const view2 = b === 1 ? panView(u) : ID_TF;
-      COLS2.forEach((c, i) => op(q(`c2${i}`), smooth((1570 - apply(view2, [c.x + [80, 94, 222][i], 0])[0]) / 50)));
-      op(q('l-mol'), b === 0 ? tw(t0, 4.1, 4.35) : b === 1 ? 1 - tw(t1, 0, 0.3) : 0);
-      op(q('l-room'), b === 0 ? tw(t0, 4.6, 4.85) : b === 1 ? 1 - tw(t1, 0, 0.3) : 0);
-      set(q('m1-room-line'), 'stroke-dashoffset', (1 - glow1).toFixed(3));
-      op(q('m1-room'), b === 0 ? glow1 : b === 1 ? 1 : 0);
-      [0.9, 1.8, 2.6].forEach((s0, i) => {
-        const tt = t1 - s0, J: Jump = { k: `j2${i}`, ink: COLS2[i].ink, nm: COLS2[i].nm, x: COLS2[i].x - 16, y0: Y0_2, y1: lad2(i).ytop, from: 0, label: COLS2[i].name };
-        op(q(`l2${i}`), tw(tt, 0, 0.25));
-        const grow = smooth((tt - 0.1) / 0.4), y1 = lerp(Y0_2, lad2(i).y1, grow);
-        set(q(`u2${i}`), 'd', `M${COLS2[i].x - 62},${f1(y1)}H${COLS2[i].x + 62}`);
-        if (i === 0) { // the gap brace grows with the rung
-          set(q('brace'), 'd', `M${COLS2[0].x + 78},${Y0_2}h10V${f1(y1)}h-10`);
-          set(q('gaplab'), 'y', f1((Y0_2 + y1) / 2 + 8)); op(q('gaplab'), tw(tt, 0.4, 0.65));
-        }
-        jump(J, clamp01((tt - 0.4) / 0.5), clamp01((tt - 0.9) / 0.4), tw(tt, 0.4, 0.65));
-        op(q(`r2${i}`), 0.45 + 0.55 * tw(tt, 1.0, 1.3));
-        set(q(`r2${i}-line`), 'stroke-dashoffset', '0');
-      });
-
-      // Beat 3: the chains fade out as β-carotene fades in; a blue-green photon fits its lowest band and is absorbed.
-      if (b === 2) { shown.set('s-chains', [ID_TF, 1 - tw(t2, 0, 0.45)]); shown.set('s-car', [ID_TF, tw(t2, 0.3, 0.7)]); }
-      jump(J3, clamp01((t2 - 1.2) / 0.6), clamp01((t2 - 1.8) / 0.45), b === 2 ? tw(t2, 1.2, 1.45) : b > 2 ? 1 : 0);
-      op(q('r3'), 0.45 + 0.55 * tw(t2, 1.9, 2.25)); set(q('r3-line'), 'stroke-dashoffset', '0');
-
-      // Beat 4: pan to chlorophyll; –CH₃ becomes –CHO; the rungs nudge, red band 662 → 642 nm, blue band 430 → 453 nm.
-      const e5 = smoother(t3 / 1.6);
-      if (b === 3) {
-        const s = 1 - 0.18 * Math.sin(Math.PI * e5);
-        const view = (dx: number): Tf => ({ s, t: add(mul([dx, 0], s), mul(O, 1 - s)) });
-        shown.set('s-car', [view(-PAN_W * e5), 1]); shown.set('s-chlb', [view(PAN_W * (1 - e5)), 1]);
-      }
-      const swap = tw(t3, 1.8, 2.1), nudge = smooth((t3 - 2.3) / 1.0), nums = tw(t3, 3.3, 3.6);
-      op(q('m4-ch3'), 1 - swap); op(q('m4-cho'), swap); op(q('swapring'), swap); op(q('ta'), 1 - swap); op(q('tb'), swap);
-      op(q('m4-room'), 0.45); set(q('m4-room-line'), 'stroke-dashoffset', '0');
+      // Beat 2: in place and in one motion, –CH₃ becomes –CHO and the rungs nudge, red band 662 → 642 nm, blue band
+      // 430 → 453 nm.
+      if (b === 1) shown.set('s-chlb', [ID_TF, 1]);
+      const swap = tw(t1, 0.3, 0.6), nudge = smooth((t1 - 0.3) / 1.0), nums = tw(t1, 0.3, 0.6);
+      op(q('m4-ch3'), 1 - swap); op(q('m4-cho'), swap); op(q('swapring'), swap); op(q('ta'), tw(t0, 3.05, 3.3) * (1 - swap)); op(q('tb'), swap);
       BANDS4.forEach(bd => {
         const y = lerp(Y4(bd.a), Y4(bd.b), nudge);
         set(q(`u4${bd.key}`), 'd', `M${LAD4.x - 90},${f1(y)}H${LAD4.x + 90}`);
-        op(q(`g4${bd.key}`), tw(t3, 2.3, 2.55));
+        op(q(`g4${bd.key}`), tw(t1, 0.3, 0.55));
         set(q(`a4${bd.key}`), 'd', `M${bd.ax},${LAD4.y0 - 6}L${bd.ax},${f1(y + 8)}`);
         const ln = q(`n4${bd.key}`), va = q(`v4${bd.key}a`), vb = q(`v4${bd.key}b`);
         set(ln, 'y', f1(y - 6)); set(va, 'y', f1(y + 22)); set(vb, 'y', f1(y + 22));
         op(va, 1 - nums); op(vb, nums);
       });
 
-      // Beat 5: Chl b fades out as the spectra fade in; the three rows draw in, then all three together; green stays
-      // weakest.
-      if (b === 4) { shown.set('s-chlb', [ID_TF, 1 - tw(t4, 0, 0.45)]); shown.set('s-spec', [ID_TF, tw(t4, 0.3, 0.7)]); }
-      [0.8, 1.3, 1.8, 2.4].forEach((s0, i) => {
-        set(q(`sc${i}`), 'width', f1((SX(700) - SX(400) + 8) * smooth((t4 - s0) / 0.6)));
-        op(q(`rl${i}`), tw(t4, s0, s0 + 0.25));
+      // Beat 3: Chl b fades out in place as the three chains fade in together, each with its whole ladder; then their
+      // three photons are absorbed at the same moment.
+      if (b === 2) { shown.set('s-chlb', [ID_TF, 1 - tw(t2, 0, 0.45)]); shown.set('s-chains', [ID_TF, tw(t2, 0.3, 0.7)]); }
+      COLS2.forEach((_, i) => {
+        const tp = t2 - PHO2 + 0.4, J: Jump = { k: `j2${i}`, ink: COLS2[i].ink, nm: COLS2[i].nm, x: COLS2[i].x - 16, y0: Y0_2, y1: lad2(i).ytop, from: 0, label: COLS2[i].name };
+        op(q(`c2${i}`), 1); op(q(`l2${i}`), 1);
+        const y1 = lad2(i).y1;
+        set(q(`u2${i}`), 'd', `M${COLS2[i].x - 62},${f1(y1)}H${COLS2[i].x + 62}`);
+        if (i === 0) { // the gap brace beside the first rung
+          set(q('brace'), 'd', `M${COLS2[0].x + 78},${Y0_2}h10V${f1(y1)}h-10`);
+          set(q('gaplab'), 'y', f1((Y0_2 + y1) / 2 + 8)); op(q('gaplab'), 1);
+        }
+        jump(J, clamp01((tp - 0.4) / 0.5), clamp01((tp - 0.9) / 0.4), tw(tp, 0.4, 0.65));
+        op(q(`r2${i}`), 0.45 + 0.55 * tw(tp, 1.0, 1.3));
+        set(q(`r2${i}-line`), 'stroke-dashoffset', '0');
       });
-      op(q('weak'), tw(t4, 3.1, 3.35));
 
-      // Static ends of each beat: the scene that holds.
-      if (b === 0 && e2 >= 1) shown.set('s-mol', [ID_TF, 1]);
+      // Beat 4: the chains fade out as β-carotene fades in; a blue-green photon fits its lowest band and is absorbed.
+      if (b === 3) { shown.set('s-chains', [ID_TF, 1 - tw(t3, 0, 0.45)]); shown.set('s-car', [ID_TF, tw(t3, 0.3, 0.7)]); }
+      jump(J3, clamp01((t3 - 1.2) / 0.6), clamp01((t3 - 1.8) / 0.45), b === 3 ? tw(t3, 1.2, 1.45) : b > 3 ? 1 : 0);
+      op(q('r3'), 0.45 + 0.55 * tw(t3, 1.9, 2.25)); set(q('r3-line'), 'stroke-dashoffset', '0');
+
+      // Beat 5: β-carotene fades out as the spectra fade in with all four rows at once; then "green: weakest".
+      if (b === 4) { shown.set('s-car', [ID_TF, 1 - tw(t4, 0, 0.45)]); shown.set('s-spec', [ID_TF, tw(t4, 0.3, 0.7)]); }
+      ROWS.forEach((_, i) => {
+        set(q(`sc${i}`), 'width', f1(SX(700) - SX(400) + 8));
+        op(q(`rl${i}`), 1);
+      });
+      op(q('weak'), tw(t4, 0.8, 1.05));
+
       hide.forEach(k => { const v = shown.get(k); scene(k, v ? v[0] : ID_TF, v ? v[1] : 0); });
     };
   },

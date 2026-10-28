@@ -172,8 +172,8 @@ function chloroplastLayer(): string {
 
 const G = (x: number, m: number, a: number, s: number): number => a * Math.exp(-(((x - m) / s) ** 2) / 2);
 const SPECS: Array<{ k: string; name: string; fn: (nm: number) => number }> = [
-  { k: 'a', name: 'chlorophyll a', fn: x => G(x, 430, 1, 13) + G(x, 410, 0.42, 16) + G(x, 385, 0.22, 20) + G(x, 662, 0.78, 10) + G(x, 615, 0.12, 15) + G(x, 578, 0.07, 15) },
-  { k: 'b', name: 'chlorophyll b', fn: x => G(x, 453, 1, 12) + G(x, 430, 0.42, 15) + G(x, 405, 0.18, 18) + G(x, 642, 0.36, 10) + G(x, 595, 0.07, 15) },
+  { k: 'a', name: 'chlorophyll <tspan font-style="italic">a</tspan>', fn: x => G(x, 430, 1, 13) + G(x, 410, 0.42, 16) + G(x, 385, 0.22, 20) + G(x, 662, 0.78, 10) + G(x, 615, 0.12, 15) + G(x, 578, 0.07, 15) },
+  { k: 'b', name: 'chlorophyll <tspan font-style="italic">b</tspan>', fn: x => G(x, 453, 1, 12) + G(x, 430, 0.42, 15) + G(x, 405, 0.18, 18) + G(x, 642, 0.36, 10) + G(x, 595, 0.07, 15) },
   { k: 'c', name: 'carotenoids', fn: x => G(x, 425, 0.72, 11) + G(x, 450, 1, 12) + G(x, 478, 0.86, 11) + G(x, 402, 0.25, 14) },
 ];
 const SX0 = 470, SX1 = 1370, SNM0 = 400, SNM1 = 700, ROW_H = 118, ROW_Y = [218, 388, 558], AXIS_Y = 590;
@@ -202,16 +202,22 @@ function spectra(): string {
 
 /* ---------------------------------------------------------------- timing */
 
-const TEND = [4.8, 4.5, 2.7, 2.7, 3.0]; // when each beat's motion has finished, s
+// Each scene comes in whole, then plays at most one teaching motion (lecturer, 27 Oct 2026: show the three things at
+// once, not one after another).
+// Beats in the order chlorophyll a, chlorophyll b, carotenoids (lecturer, 27 Oct 2026): 1 into chlorophyll a, 2 Chl a → Chl b
+// in place, 3 the three chains, 4 β-carotene, 5 the spectra.
+const TEND = [4.0, 1.3, 1.8, 1.8, 1.0]; // when each beat's motion has finished, s
 const LN1 = Math.log(Z1), LN2 = Math.log(Z2);
-/** Beat 1's camera: leaf → chloroplast (0.3–1.3 s), a short look at the chloroplast, then → chlorophyll (1.6–2.6 s). */
+/** Beat 1's camera: leaf → chloroplast (0.2–1.2 s), a short look at the chloroplast, then → chlorophyll (1.4–2.4 s). */
 function zoomAt(b: number, t: number): { z: number; fs: V; e: number } {
-  const e1 = b === 0 ? smoother((t - 0.3) / 1.0) : 1, e2 = b === 0 ? smoother((t - 1.6) / 1.0) : 1;
+  const e1 = b === 0 ? smoother((t - 0.2) / 1.0) : 1, e2 = b === 0 ? smoother((t - 1.4) / 1.0) : 1;
   const mid: V = [860, 350], fs: V = [lerp(lerp(800, mid[0], e1), F[0], e2), lerp(lerp(370, mid[1], e1), F[1], e2)];
   return { z: Math.exp(e1 * LN1 + e2 * (LN2 - LN1)), fs, e: (e1 + e2) / 2 };
 }
-// Beat 2: the three chains in turn — [fade in, rung slides there, photon arrives]
-const B2 = [{ c: CH3, on: 0, slide: 0, arrive: 1.5 }, { c: CH5, on: 1.9, slide: 2.0, arrive: 2.85 }, { c: CH11, on: 3.25, slide: 3.35, arrive: 4.2 }];
+// Beat 3: once chlorophyll b has left, the three chains come in together, each with its rung; their photons arrive
+// together at ARRIVE2.
+const B2 = [{ c: CH3 }, { c: CH5 }, { c: CH11 }], ARRIVE2 = 1.4;
+// One click per scene, as in the sky and life animations (lecturer, 27 Oct 2026): no holds inside a beat.
 
 export const STAGING: Staging = {
   id: 'b',
@@ -225,8 +231,8 @@ export const STAGING: Staging = {
     <g class="pb-zoom" data-k="L0">${leafLayer()}</g>
     <g class="pb-zoom" data-k="L1">${chloroplastLayer()}</g>
     <g class="pb-zoom" data-k="L2">${chlorophyll()}
-      <g data-k="chlLabA">${T(110, 168, 'chlorophyll a', 'pb-lab pb-mlab')}</g><g data-k="chlLabB">${T(110, 168, 'chlorophyll b', 'pb-lab pb-mlab')}</g>
-      <g data-k="roomLab">${T(332, 500, 'electrons’ room', 'pb-lab pb-amber')}</g>
+      <g data-k="chlLabA">${T(110, 168, 'chlorophyll <tspan font-style="italic">a</tspan>', 'pb-lab pb-mlab')}</g><g data-k="chlLabB">${T(110, 168, 'chlorophyll <tspan font-style="italic">b</tspan>', 'pb-lab pb-mlab')}</g>
+      <g data-k="roomLab">${T(332, 490, 'conjugated', 'pb-lab pb-amber')}${T(332, 516, 'π system', 'pb-lab pb-amber')}</g>
       <circle class="pb-pulse" data-k="pulse" cx="${f(GRP_END[0] + 30)}" cy="${f(GRP_END[1])}" r="40"/></g>
     ${chain(CH3.n, CH3.x0, yOf(CH3.nm), CH3.step, 'ch3', '3 double bonds')}
     ${chain(CH5.n, CH5.x0, yOf(CH5.nm), CH5.step, 'ch5', '5 double bonds')}
@@ -273,102 +279,97 @@ export const STAGING: Staging = {
       [1, Z1, Z2].forEach((zi, i) => set(L[i], 'transform', `translate(${f(fs[0])} ${f(fs[1])}) scale(${(z / zi).toFixed(5)}) translate(${-F[0]} ${-F[1]})`));
       op(L[0], b === 0 ? 1 - smooth(Math.log(z / 3) / Math.log(9 / 3)) : 0);
       op(L[1], b === 0 ? Math.min(smooth(Math.log(z / 4) / Math.log(8 / 4)), 1 - smooth(Math.log(z / 45) / Math.log(90 / 45))) : 0);
-      // chlorophyll: in at the end of the zoom; out in beat 2; back in beat 4; out in beat 5
-      const chlO = b === 0 ? smooth(Math.log(z / 35) / Math.log(75 / 35)) : b === 1 ? 1 - tw(t, 0.15, 0.45) : b === 3 ? tw(t, 0.25, 0.55) : b === 4 ? 1 - tw(t, 0, 0.3) : 0;
+      // chlorophyll: in at the end of the zoom; stays through beat 2 (a → b); out at the start of beat 3, before the chains
+      const chlO = b === 0 ? smooth(Math.log(z / 35) / Math.log(75 / 35)) : b === 1 ? 1 : b === 2 ? 1 - tw(t, 0, 0.3) : 0;
       op(L[2], chlO);
-      op(room, b === 0 ? 0.25 + 0.75 * tw(t, 2.6, 3.1) : 1);
-      op(roomLab, b === 0 ? tw(t, 2.9, 3.2) : 1);
-      const swap = b === 3 ? tw(t, 0.9, 1.2) : b === 4 ? 1 : 0;
+      op(room, b === 0 ? 0.25 + 0.75 * tw(t, 2.4, 2.8) : 1);
+      op(roomLab, b === 0 ? tw(t, 2.4, 2.8) : 1);
+      const swap = b === 1 ? tw(t, 0.3, 0.6) : b > 1 ? 1 : 0;
       op(labA, 1 - swap); op(labB, swap); op(grpA, 1 - swap); op(grpB, swap);
-      op(pulse, b === 3 ? Math.sin(Math.PI * clamp01((t - 0.75) / 0.6)) * 0.9 : 0);
+      op(pulse, b === 1 ? Math.sin(Math.PI * clamp01((t - 0.3) / 0.6)) * 0.9 : 0);
 
-      // the chains of beat 2, and β-carotene in beat 3
+      // the chains of beat 3, and β-carotene in beat 4
       B2.forEach((s, i) => {
-        const on = b === 1 ? tw(t, s.on, s.on + 0.3) : b === 2 ? (i === 2 ? 1 : 1 - tw(t, 0, 0.3)) : b === 3 ? (i === 2 ? 1 - tw(t, 0, 0.3) : 0) : 0;
+        const on = b === 2 ? tw(t, 0.3, 0.6) : b === 3 ? (i === 2 ? 1 : 1 - tw(t, 0, 0.3)) : b === 4 ? (i === 2 ? 1 - tw(t, 0, 0.3) : 0) : 0;
         op(ch[i], on);
-        op(chRoom[i], b === 1 ? (i === 2 ? 1 : 0.35 + 0.65 * (1 - tw(t, B2[i + 1].on, B2[i + 1].on + 0.3))) : i === 2 ? 1 : 0.35);
+        op(chRoom[i], i === 2 ? 1 : 0.35);
       });
-      const caro = b === 2 ? tw(t, 0.3, 0.6) : b === 3 ? 1 - tw(t, 0, 0.3) : 0;
-      op(rings, caro); op(caroLab, caro); op(ch11Lab, 1 - caro);
+      const caro = b === 3 ? tw(t, 0.3, 0.6) : b === 4 ? 1 - tw(t, 0, 0.3) : 0;
+      op(rings, caro); op(caroLab, caro); op(ch11Lab, b < 3 ? 1 : b === 3 ? 1 - tw(t, 0, 0.3) : 0); // the chain's name leaves before β-carotene's comes
 
-      // the ladder: axis and S₀ stay from the moment it appears until the spectra take over
-      op(ladder, b === 0 ? tw(t, 2.8, 3.1) : b === 4 ? 1 - tw(t, 0.2, 0.5) : 1);
+      // the ladder: axis and S₀ stay from the moment it appears until the spectra take over (it leaves before they come)
+      op(ladder, b === 0 ? tw(t, 2.4, 2.8) : b === 4 ? 1 - tw(t, 0, 0.3) : 1);
 
       let m = '';
-      if (b === 0 || b === 3) {
-        // chlorophyll's rungs: S₁ (red gap) and S₂ (blue gap); in beat 4 they nudge from Chl a's to Chl b's
-        const appear = b === 0 ? tw(t, 2.8, 3.1) : tw(t, 0.25, 0.55), nudge = b === 3 ? smoother((t - 1.3) / 1.0) : 0;
+      if (b === 0 || b === 1) {
+        // chlorophyll's rungs: S₁ (red gap) and Sₙ (blue gap, a higher state); in beat 2 they nudge from Chl a's to Chl b's
+        const appear = b === 0 ? tw(t, 2.4, 2.8) : 1, nudge = b === 1 ? smoother((t - 0.3) / 1.0) : 0;
         const s1 = lerp(662, 642, nudge), s2 = lerp(430, 453, nudge), y1 = yOf(s1), y2 = yOf(s2);
-        if (b === 3) m += `<g opacity="${tw(t, 1.3, 1.6).toFixed(3)}">${rung(yOf(662), 'pb-rung pb-ghost')}${rung(yOf(430), 'pb-rung pb-ghost')}</g>`;
-        m += `<g opacity="${appear.toFixed(3)}">${rung(y2)}${rung(y1)}${T(RL0 - 12, y2 + 9, 'S₂', 'pb-lv', 'end')}${T(RL0 - 12, y1 + 9, 'S₁', 'pb-lv', 'end')}
+        if (b === 1) m += `<g opacity="${tw(t, 0.3, 0.6).toFixed(3)}">${rung(yOf(662), 'pb-rung pb-ghost')}${rung(yOf(430), 'pb-rung pb-ghost')}</g>`;
+        m += `<g opacity="${appear.toFixed(3)}">${rung(y2)}${rung(y1)}${T(RL0 - 12, y2 + 9, 'Sₙ', 'pb-lv', 'end')}${T(RL0 - 12, y1 + 9, 'S₁', 'pb-lv', 'end')}
           ${T(RL0 + 8, (yOf(662) + yOf(430)) / 2 + 8, 'excited states', 'pb-lab pb-mute')}</g>`;
         const lab = (nmA: number, nmB: number): string => {
           const k = inkOf(nmA);
-          return b === 3 && nudge > 0 ? `<tspan class="pb-ink" fill="${INK[k]}">${NAME[k]}</tspan> · ${nmA} → ${nmB} nm` : `<tspan class="pb-ink" fill="${INK[k]}">${NAME[k]}</tspan> · ${nmA} nm`;
+          return b === 1 && nudge > 0 ? `<tspan class="pb-ink" fill="${INK[k]}">${NAME[k]}</tspan> · ${nmA} → ${nmB} nm` : `<tspan class="pb-ink" fill="${INK[k]}">${NAME[k]}</tspan> · ${nmA} nm`;
         };
         if (b === 0) {
-          m += photonMarkup({ nm: 662, y: y1, arrive: 3.75, jx: JX - 36 }, t) + photonMarkup({ nm: 430, y: y2, arrive: 4.35 }, t);
+          m += photonMarkup({ nm: 662, y: y1, arrive: 3.6, jx: JX - 36 }, t) + photonMarkup({ nm: 430, y: y2, arrive: 3.6 }, t);
         } else {
-          const out = 1 - tw(t, 0, 0.3), yc = yOf(450);
-          if (out > 0) m += `<g opacity="${out.toFixed(3)}"><rect class="pb-band" fill="url(#${ID}-band)" x="${RL0}" y="${f(yOf(400))}" width="${RL1 - RL0}" height="${f(yOf(500) - yOf(400))}"/>${rung(yOf(400))}${rung(yOf(500))}
-            ${T(RL0 + 8, yOf(400) - 12, 'excited state', 'pb-lab pb-mute')}${T(RL0 + 8, yOf(500) + 30, '400–500 nm', 'pb-lab pb-mute')}</g>`
-            + photonMarkup({ nm: 450, y: yc, arrive: 0, o: out }, 9) + photonMarkup({ nm: 495, y: yOf(495), arrive: 0, o: out, jx: JX - 36 }, 9);
-          const o = tw(t, 0.25, 0.55);
-          m += photonMarkup({ nm: Math.round(s1), y: y1, arrive: 0, o, label: lab(662, 642), jx: JX - 36 }, 9) + photonMarkup({ nm: Math.round(s2), y: y2, arrive: 0, o, label: lab(430, 453) }, 9);
+          m += photonMarkup({ nm: Math.round(s1), y: y1, arrive: 0, o: 1, label: lab(662, 642), jx: JX - 36 }, 9) + photonMarkup({ nm: Math.round(s2), y: y2, arrive: 0, o: 1, label: lab(430, 453) }, 9);
         }
       }
-      if (b === 1) {
-        // one rung per chain: it appears at the first chain's gap and slides down as the chain grows
-        let yr = yOf(CH3.nm);
-        if (t >= B2[1].slide) yr = lerp(yOf(CH3.nm), yOf(CH5.nm), smoother((t - B2[1].slide) / 0.7));
-        if (t >= B2[2].slide) yr = lerp(yOf(CH5.nm), yOf(CH11.nm), smoother((t - B2[2].slide) / 0.7));
-        const rO = tw(t, 0, 0.3); // the first chain and its rung come in while chlorophyll is still leaving
-        // chlorophyll's rungs and photons leave with the molecule
-        const out = 1 - tw(t, 0.15, 0.45);
-        if (out > 0) m += `<g opacity="${out.toFixed(3)}">${rung(yOf(430))}${rung(yOf(662))}${T(RL0 - 12, yOf(430) + 9, 'S₂', 'pb-lv', 'end')}${T(RL0 - 12, yOf(662) + 9, 'S₁', 'pb-lv', 'end')}
-            ${T(RL0 + 8, (yOf(662) + yOf(430)) / 2 + 8, 'excited states', 'pb-lab pb-mute')}</g>`
-          + photonMarkup({ nm: 662, y: yOf(662), arrive: 0, o: out, jx: JX - 36 }, 9) + photonMarkup({ nm: 430, y: yOf(430), arrive: 0, o: out }, 9);
-        B2.forEach((s, i) => { if (i < 2 && t > B2[i + 1].slide) m += rung(yOf(s.c.nm), 'pb-rung pb-ghost', tw(t, B2[i + 1].slide, B2[i + 1].slide + 0.3)); });
+      if (b === 2) {
+        // the three chains come in with their rungs at once (the two shorter ones dashed, as they will rest), and their
+        // photons arrive together: the longest chain's lifts the electron
+        const rO = tw(t, 0.3, 0.6); // the chains and their rungs come in once chlorophyll b has left
+        // chlorophyll b's rungs and photons leave with the molecule
+        const out = 1 - tw(t, 0, 0.3), y1 = yOf(642), y2 = yOf(453);
+        const lab = (k: Ink, a: number, c: number): string => `<tspan class="pb-ink" fill="${INK[k]}">${NAME[k]}</tspan> · ${a} → ${c} nm`;
+        if (out > 0) m += `<g opacity="${out.toFixed(3)}">${rung(y1)}${rung(y2)}${rung(yOf(662), 'pb-rung pb-ghost')}${rung(yOf(430), 'pb-rung pb-ghost')}
+            ${T(RL0 - 12, y2 + 9, 'Sₙ', 'pb-lv', 'end')}${T(RL0 - 12, y1 + 9, 'S₁', 'pb-lv', 'end')}${T(RL0 + 8, (yOf(662) + yOf(430)) / 2 + 8, 'excited states', 'pb-lab pb-mute')}</g>`
+          + photonMarkup({ nm: 642, y: y1, arrive: 0, o: out, label: lab('r', 662, 642), jx: JX - 36 }, 9) + photonMarkup({ nm: 453, y: y2, arrive: 0, o: out, label: lab('b', 430, 453) }, 9);
+        B2.forEach((s, i) => { if (i < 2) m += rung(yOf(s.c.nm), 'pb-rung pb-ghost', rO); });
+        const yr = yOf(CH11.nm);
         m += `<g opacity="${rO.toFixed(3)}">${rung(yr)}${T(RL0 + 8, yr - 12, 'excited state', 'pb-lab pb-mute')}</g>`;
         B2.forEach((s, i) => {
-          const next = B2[i + 1], dim = next ? 1 - 0.55 * tw(t, next.slide, next.slide + 0.3) : 1, lift = next ? 1 - tw(t, next.slide, next.slide + 0.3) : 1;
-          m += photonMarkup({ nm: s.c.nm, y: yOf(s.c.nm), arrive: s.arrive, dim, liftO: lift }, t);
+          const dim = i < 2 ? 0.45 : 1, lift = i < 2 ? 0 : 1;
+          m += photonMarkup({ nm: s.c.nm, y: yOf(s.c.nm), arrive: ARRIVE2, dim, liftO: lift }, t);
           // a dotted leader from the chain to its rung
-          const lo = tw(t, s.arrive - 0.15, s.arrive + 0.15) * dim;
+          const lo = tw(t, ARRIVE2 - 0.15, ARRIVE2 + 0.15) * dim;
           if (lo > 0) m += `<path class="pb-lead" opacity="${lo.toFixed(3)}" d="M${chainEnd(s.c) + 14},${f(yOf(s.c.nm))}H${RL0 - 46}"/>`;
         });
       }
-      if (b === 2) {
+      if (b === 3) {
         // β-carotene: the rung widens into its band, about 400–500 nm; a blue-green photon fits it too
-        const g = smoother((t - 0.6) / 0.8), yc = yOf(450), top = lerp(yc, yOf(400), g), bot = lerp(yc, yOf(500), g);
+        const g = smoother((t - 0.3) / 0.3), yc = yOf(450), top = lerp(yc, yOf(400), g), bot = lerp(yc, yOf(500), g);
         const fade = 1 - tw(t, 0, 0.3);
         m += `<g opacity="${fade.toFixed(3)}">${rung(yOf(CH3.nm), 'pb-rung pb-ghost')}${rung(yOf(CH5.nm), 'pb-rung pb-ghost')}</g>`
           + photonMarkup({ nm: CH3.nm, y: yOf(CH3.nm), arrive: 0, dim: 0.45 * fade, liftO: 0 }, 9)
           + photonMarkup({ nm: CH5.nm, y: yOf(CH5.nm), arrive: 0, dim: 0.45 * fade, liftO: 0 }, 9);
         if (g > 0.01) m += `<rect class="pb-band" fill="url(#${ID}-band)" x="${RL0}" y="${f(top)}" width="${RL1 - RL0}" height="${f(bot - top)}"/>`;
         m += `${rung(top)}${g > 0.01 ? rung(bot) : ''}${T(RL0 + 8, top - 12, 'excited state', 'pb-lab pb-mute')}`;
+        m += [CH3, CH5].map(c => `<path class="pb-lead" opacity="${(0.45 * fade).toFixed(3)}" d="M${chainEnd(c) + 14},${f(yOf(c.nm))}H${RL0 - 46}"/>`).join(''); // the shorter chains' leaders leave with them
         m += `<path class="pb-lead" opacity="${fade.toFixed(3)}" d="M${chainEnd(CH11) + 14},${f(yc)}H${RL0 - 46}"/><path class="pb-lead" opacity="${(1 - fade).toFixed(3)}" d="M${chainEnd(CH11) + 54},${f(yc)}H${RL0 - 46}"/>`;
-        m += photonMarkup({ nm: 450, y: yc, arrive: 0 }, 9) + photonMarkup({ nm: 495, y: yOf(495), arrive: 2.2, jx: JX - 36 }, t);
-        if (g > 0.5) m += `<g opacity="${tw(t, 1.2, 1.5).toFixed(3)}">${T(RL0 + 8, bot + 30, '400–500 nm', 'pb-lab pb-mute')}</g>`;
+        m += photonMarkup({ nm: 450, y: yc, arrive: 0 }, 9) + photonMarkup({ nm: 495, y: yOf(495), arrive: 1.4, jx: JX - 36 }, t);
+        if (g > 0.5) m += `<g opacity="${tw(t, 0.3, 0.6).toFixed(3)}">${T(RL0 + 8, bot + 30, '400–500 nm', 'pb-lab pb-mute')}</g>`;
       }
       if (b === 4) {
-        // the ladder hands over: Chl b's rungs and photons fade as the spectra come in
-        const out = 1 - tw(t, 0.2, 0.5), y1 = yOf(642), y2 = yOf(453);
-        const lab = (k: Ink, a: number, c: number): string => `<tspan class="pb-ink" fill="${INK[k]}">${NAME[k]}</tspan> · ${a} → ${c} nm`;
-        if (out > 0) m += `<g opacity="${out.toFixed(3)}">${rung(y1)}${rung(y2)}${rung(yOf(662), 'pb-rung pb-ghost')}${rung(yOf(430), 'pb-rung pb-ghost')}
-            ${T(RL0 - 12, y2 + 9, 'S₂', 'pb-lv', 'end')}${T(RL0 - 12, y1 + 9, 'S₁', 'pb-lv', 'end')}${T(RL0 + 8, (yOf(662) + yOf(430)) / 2 + 8, 'excited states', 'pb-lab pb-mute')}</g>`
-          + photonMarkup({ nm: 642, y: y1, arrive: 0, o: out, label: lab('r', 662, 642), jx: JX - 36 }, 9) + photonMarkup({ nm: 453, y: y2, arrive: 0, o: out, label: lab('b', 430, 453) }, 9);
+        // the ladder hands over: β-carotene's band, rungs, photons and leader fade with the molecule as the spectra come in
+        const out = 1 - tw(t, 0, 0.3), yc = yOf(450);
+        if (out > 0) m += `<g opacity="${out.toFixed(3)}"><rect class="pb-band" fill="url(#${ID}-band)" x="${RL0}" y="${f(yOf(400))}" width="${RL1 - RL0}" height="${f(yOf(500) - yOf(400))}"/>${rung(yOf(400))}${rung(yOf(500))}
+            ${T(RL0 + 8, yOf(400) - 12, 'excited state', 'pb-lab pb-mute')}${T(RL0 + 8, yOf(500) + 30, '400–500 nm', 'pb-lab pb-mute')}
+            <path class="pb-lead" d="M${chainEnd(CH11) + 54},${f(yc)}H${RL0 - 46}"/></g>`
+            + photonMarkup({ nm: 450, y: yc, arrive: 0, o: out }, 9) + photonMarkup({ nm: 495, y: yOf(495), arrive: 0, o: out, jx: JX - 36 }, 9);
       }
       dyn.innerHTML = m;
 
       // the spectra: in as the ladder goes; each row traces from short to long wavelength; then the green band
       op(spectraG, b === 4 ? tw(t, 0.3, 0.6) : 0);
       rows.forEach((r, i) => {
-        const t0 = 0.6 + 0.45 * i;
-        op(r, b === 4 ? tw(t, t0, t0 + 0.3) : 0);
-        set(trace[i], 'width', f((SX1 - SX0 + 8) * (b === 4 ? smooth((t - t0) / 1.1) : 0)));
+        op(r, b === 4 ? tw(t, 0.3, 0.6) : 0);
+        set(trace[i], 'width', f((SX1 - SX0 + 8) * (b === 4 ? 1 : 0)));
       });
-      op(gband, b === 4 ? tw(t, 2.7, 3.0) : 0);
+      op(gband, b === 4 ? tw(t, 0.7, 1.0) : 0);
     };
   },
 };

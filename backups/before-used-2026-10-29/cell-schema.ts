@@ -1,0 +1,690 @@
+// The dark reactions drawn in the real cell, like the 7m1 strip (lecturer, 28 Oct 2026; brief research/redo-2026-10-28/
+// SPATIAL_DARK_BRIEF.md): every protein where it really is. RuBisCO, GAPDH, PRK, glycerate kinase and glutamine synthetase
+// float in the stroma; the triose-phosphate translocator and PLGG1 sit across the inner envelope bilayer; sucrose is made
+// in the cytosol; glycolate oxidase and catalase are in the peroxisome (one bilayer); glycine decarboxylase and SHMT in
+// the mitochondrial matrix (two bilayers).
+//
+// Arrangement 'strip': one panorama at the chain's scale (0.95 figure units per Å; proteins as our renders at 2.4 px per
+// Å, scripts/cell_render.mjs; bilayers 38 units thick as in 7m1), left to right: the end of the thylakoid (membrane centre
+// y 300, lumen to 452, so that x 0 sits flush on the right edge of the 7m1 chain), the stroma, the envelope (inner and outer
+// bilayer), the cytosol, the peroxisome, the mitochondrion. Compartments are cut to fit (a peroxisome is about 1 µm
+// across); proteins and membranes are at true scale. A slide shows a window of it: the left 800 × 600 (scale 1) or the
+// organelles (scale 0.87).
+// Counts: one unit per figure, on the lit part only (lecturer, 28 Oct 2026): the cycle per 3 CO₂ fixed (C1–C4, C7, C8;
+// the O₂ side and the loop then carry no numbers), per reaction (C5: RuBP + CO₂ → 2 3-PGA, 5 C + 1 C = 2 × 3 C;
+// RuBP + O₂ → 3-PGA + 2-phosphoglycolate, 5 C = 3 C + 2 C) or per 2 O₂ (C6: 4 C in, 3 C back, 1 C lost; the cycle
+// side then carries none). The key names that unit only.
+// Markup: every piece of a part sits in <g data-p="<part>" class="chn-on|chn-off"> (chain.css dims .chn-off).
+import './cbb-schema.css';
+import './cell-schema.css';
+import rubPng from '../../assets/rf/rubisco-8ruc.png';
+import rubG from '../../assets/cell/rubisco-g.png';
+import prkPng from '../../assets/cell/prk.png';
+import prkG from '../../assets/cell/prk-g.png';
+import gapdhPng from '../../assets/cell/gapdh.png';
+import gapdhG from '../../assets/cell/gapdh-g.png';
+import tptPng from '../../assets/cell/tpt.png';
+import tptG from '../../assets/cell/tpt-g.png';
+import goxPng from '../../assets/cell/gox.png';
+import goxG from '../../assets/cell/gox-g.png';
+import catPng from '../../assets/cell/cat.png';
+import catG from '../../assets/cell/cat-g.png';
+import gdcpPng from '../../assets/cell/gdcp.png';
+import gdcpG from '../../assets/cell/gdcp-g.png';
+import gdchPng from '../../assets/cell/gdch.png';
+import gdchG from '../../assets/cell/gdch-g.png';
+import shmtPng from '../../assets/cell/shmt.png';
+import shmtG from '../../assets/cell/shmt-g.png';
+import glykPng from '../../assets/cell/glyk.png';
+import glykG from '../../assets/cell/glyk-g.png';
+import gsPng from '../../assets/cell/gs.png';
+import gsG from '../../assets/cell/gs-g.png';
+import { carrierImg, tagG, rowG } from './chain';
+import { row, rowWidth } from './carbon-form';
+import { LIT_C1, LIT_C2, LIT_C3, LIT_C4, LIT_ALL, type Part } from './cbb-schema';
+import { LIT_C5, LIT_C6, LIT_C7, LIT_C8, LIT_C8C, LIT_C8J, LIT_C8P } from './rf-schema';
+
+export { LIT_C1, LIT_C2, LIT_C3, LIT_C4, LIT_C5, LIT_C6, LIT_C7, LIT_C8, LIT_C8C, LIT_C8J, LIT_C8P, LIT_ALL, type Part };
+export type Arr = 'strip' | 'cell';
+export type Pt = [number, number];
+type A = 'start' | 'middle' | 'end';
+
+export interface CellOpts {
+  /** The window [x, y, w] of the panorama shown in the 800 × 600 figure (height w × 0.75). Default: the arrangement's. */
+  win?: [number, number, number];
+  /** FvCB limits as boxes (C8). */
+  limits?: boolean;
+  /** Inner markup of the panorama only, untransformed (for a combined figure). */
+  bare?: boolean;
+  /** Supply arrows start at the chain's NADPH and ATP tags (the strip placed right of 7m1). */
+  join?: boolean;
+  /** The one unit of the numbers: per 3 CO₂ fixed, per reaction, per 2 O₂, or none (default 'cycle'). */
+  unit?: Unit;
+  /** Leave out the cycle's molecules and the supply tags (an animation moves its own). */
+  noMol?: boolean;
+  /** The photorespiration takeaway (C6 m3): 2-PG in, 3-PGA back and CO₂ lost large with their carbon counts; organelles and
+   *  enzymes at secondary weight; dimmed parts left out; enzyme abbreviations other than PLGG1 not named. */
+  emph?: 'loop';
+  /** Parts lit at secondary weight (lecturer, 28 Oct 2026: "show how much input you put in the previous step"): named and
+   *  counted like lit parts, drawn lighter, so the main lit part stays first. */
+  sec?: Part[];
+  /** Dimmed parts left out of this figure (e.g. a lone 2-PG at a zoom's edge). */
+  hide?: Part[];
+  /** A zoom view (m3, mz): dimmed parts that the window edge cuts through are left out (no fragments at the frame). */
+  clean?: boolean;
+}
+export type Unit = 'cycle' | 'perCO2' | 'reaction' | 'loop' | 'none';
+const UNIT_SAY: Record<Unit, string> = { cycle: 'numbers per 3 CO₂ fixed', perCO2: 'numbers per CO₂', reaction: 'numbers per reaction', loop: 'numbers per 2 O₂', none: '' };
+/** The default windows: the strip's left 800 × 600 (flush with 7m1) and its organelles; the cell section whole. */
+export const WIN = { left: [0, 0, 800] as [number, number, number], right: [560, -40, 980] as [number, number, number], export: [280, -30, 800] as [number, number, number], cell: [0, 0, 800] as [number, number, number] };
+
+const SAY: Record<Arr, string> = {
+  strip: 'The dark reactions drawn where they happen, continuing the thylakoid strip of the light reactions to the right: the end of the thylakoid membrane, the stroma with RuBisCO, GAPDH, phosphoribulokinase, glycerate kinase and glutamine synthetase as renders of their structures, the two bilayers of the chloroplast envelope with the triose-phosphate translocator and the glycolate/glycerate transporter PLGG1 in the inner one, the cytosol where sucrose is made, the peroxisome with glycolate oxidase and catalase, and the mitochondrion with glycine decarboxylase and SHMT',
+  cell: 'A section through a leaf mesophyll cell: cell wall and plasma membrane at the top, a chloroplast pressed against them with its envelope, a granum and the stroma with RuBisCO; on its vacuole side a peroxisome and a mitochondrion pressed against it, the cytosol between them, the vacuole below',
+};
+
+/** The figure: a window of the panorama in the 800 × 600 frame. Below it, only what the figure needs: the arrow key
+ *  when it shows both carbon and photorespiration arrows, the unit when it carries numbers, and the structures it shows. */
+export function cellSvg(id: string, arr: Arr, lit: Iterable<Part>, o: CellOpts = {}): string {
+  const on = new Set([...lit, ...(o.sec ?? [])]);
+  const d = new Draw(id, on, arr === 'cell' && o.unit !== 'perCO2' ? { ...o, unit: 'none' } : o, arr);
+  d.add('bg', null, defs(id));
+  (arr === 'strip' ? stripPano : cellPano)(d);
+  if (o.bare) return d.out();
+  const [x, y, w] = o.win ?? (arr === 'strip' ? WIN.left : WIN.cell), s = 800 / w;
+  // the bottom rows (credit and unit; the abbreviation key; the arrow key; the limits' legend) set where the figure ends
+  d.out([x, y, w, 556 / s], o.clean ?? false);
+  const band = bandTop(d), ab = new Set(d.abbr);
+  const body = d.out([x, y, w, band / s], o.clean ?? false);
+  d.abbr = ab;
+  const label = `${SAY[arr]}. Highlighted and named: ${[...on].join(', ')}. Everything else is drawn dimmed, unnamed.`;
+  return `<svg class="fig-svg cel cel-${arr}${o.emph ? ' cel-emph' : ''}" viewBox="0 0 800 600" role="img" aria-label="${label}"><defs><clipPath id="${id}-win"><rect x="0" y="0" width="800" height="${band}"/></clipPath></defs>
+    <g clip-path="url(#${id}-win)"><g transform="scale(${f(s)}) translate(${f(-x)} ${f(-y)})">${body}</g></g>${keyLine(d, band)}</svg>`;
+}
+
+/** Slide C2, m4: the RuBisCO render (spinach L8S8, PDB 8RUC; our render, scripts/rf_rubisco_render.mjs) close up, one active
+ *  site ringed (the CABP of the front large subunit, rubisco-8ruc.json sites[0]), CO₂ and O₂ both heading to it. Names
+ *  only (after rff05 v5, without its product boxes). */
+export function rubiscoCloseSvg(id: string): string {
+  const k = 470 / 548, x0 = 196, y0 = 92, w = 548 * k, h = 471 * k;
+  const site: Pt = [x0 + 317.6 * k, y0 + 309.5 * k];
+  const co2: Pt = [92, 357], o2: Pt = [726, 357];
+  const lead = `M${f(site[0] + 30)},${f(site[1] - 26)}L${f(660)},${f(150)}`;
+  return `<svg class="fig-svg cel cel-close" viewBox="0 0 800 600" role="img" aria-label="Our space-filling render of spinach RuBisCO (PDB 8RUC), eight large and eight small subunits, with one of its eight active sites ringed. CO2 from above and O2 from below both head to the same active site.">
+    <defs><radialGradient id="${id}-pool"><stop offset="0" class="chn-pool0"/><stop offset=".55" class="chn-pool1"/><stop offset="1" class="chn-pool2"/></radialGradient></defs>
+    <rect class="cel-stroma" x="0" y="0" width="800" height="600"/>
+    <image href="${rubPng}" x="${f(x0)}" y="${f(y0)}" width="${f(w)}" height="${f(h)}"/>
+    <circle cx="${f(site[0])}" cy="${f(site[1])}" r="46" fill="url(#${id}-pool)"/>
+    <circle class="cel-siteh" cx="${f(site[0])}" cy="${f(site[1])}" r="23"/><circle class="cel-site" cx="${f(site[0])}" cy="${f(site[1])}" r="23"/>
+    <path class="cel-ldh" d="${lead}"/><path class="cel-ldk" d="${lead}"/>${T(668, 148, 'active site', 'cel-big cel-halo', 'start')}
+    ${arrow([[co2[0] + 40, co2[1]], [site[0] - 28, site[1]]], 'gas', { halo: true })}
+    ${arrow([[o2[0] - 32, o2[1]], [site[0] + 28, site[1]]], 'gas', { halo: true })}
+    ${balls(co2[0], co2[1], 'OCO', 17)}${T(co2[0], co2[1] - 30, 'CO₂', 'cel-big cel-halo')}
+    ${balls(o2[0], o2[1], 'OO', 17)}${T(o2[0], o2[1] - 30, 'O₂', 'cel-big cel-halo')}
+    ${T(x0 + w / 2, y0 + h + 34, 'RuBisCO', 'cel-big cel-halo')}
+    ${T(16, 592, 'structure: PDB 8RUC', 'cel-cr', 'start')}</svg>`;
+}
+
+/* ================================================================ kit */
+
+const f = (v: number): string => (Math.round(v * 100) / 100).toString();
+const T = (x: number, y: number, s: string, cls: string, a: A = 'middle'): string =>
+  `<text class="${cls}" x="${f(x)}" y="${f(y)}" text-anchor="${a}">${s}</text>`;
+/** The molecules an animation moves itself (CellOpts.noMol). */
+const NO_MOL = new Set(['3-PGA', 'triose phosphate', 'RuBP']);
+type Layer = 'bg' | 'pool' | 'mem' | 'body' | 'flow' | 'node' | 'text' | 'top';
+const LAYERS: Layer[] = ['bg', 'pool', 'mem', 'body', 'flow', 'node', 'text', 'top'];
+type Box = [number, number, number, number];
+/** The abbreviations the cell figures use, spelled out (lecturer, 28 Oct 2026); a figure lists those it shows lit. */
+export const ABBR: Array<[string, string]> = [
+  ['RuBP', 'ribulose-1,5-bisphosphate'], ['3-PGA', '3-phosphoglycerate'], ['2-PG', '2-phosphoglycolate'], ['GAPDH', 'glyceraldehyde-3-phosphate dehydrogenase'],
+  ['PRK', 'phosphoribulokinase'], ['TPT', 'triose phosphate/phosphate translocator'], ['PLGG1', 'plastidic glycolate/glycerate translocator'],
+  ['GS', 'glutamine synthetase'], ['Fd-GOGAT', 'ferredoxin-dependent glutamate synthase'], ['SHMT', 'serine hydroxymethyltransferase'],
+];
+/** The abbreviation key as lines of at most `maxW` units (11.5 px text, ≈ 6.1 units per character), in ABBR's order. */
+export function abbrLines(found: Iterable<string>, maxW = 772): string[][] {
+  const have = new Set(found), items = ABBR.filter(([a]) => have.has(a)), lines: string[][] = [];
+  let cur: string[] = [], len = 0;
+  for (const [a, full] of items) {
+    const w = (a.length + full.length + 2) * 6.1 + (cur.length ? 18 : 0);
+    if (cur.length && len + w > maxW) { lines.push(cur); cur = []; len = 0; }
+    cur.push(`<tspan class="cel-abk">${a}</tspan>: ${full}`); len += (a.length + full.length + 2) * 6.1 + (cur.length > 1 ? 18 : 0);
+  }
+  if (cur.length) lines.push(cur);
+  return lines;
+}
+/** The key's lines as svg text: the last line's baseline at y, earlier lines 18 above each. */
+export function abbrSvg(lines: string[][], x: number, y: number, a: 'start' | 'end' = 'start'): string {
+  return lines.map((ln, i) => `<text class="cel-abbr" x="${x}" y="${y - 18 * (lines.length - 1 - i)}" text-anchor="${a}">${ln.join(' · ')}</text>`).join('');
+}
+interface Entry { svg: string; part: Part | null; on: boolean }
+/** The bounding box of svg markup in its own units, from its absolute coordinates (images, rects, circles, ellipses,
+ *  path points of absolute commands, text anchors with an estimated width). */
+export function bbox(svg: string): Box | null {
+  let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+  const put = (x: number, y: number): void => { if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; };
+  const num = (tag: string, a: string): number => Number(new RegExp(`\\s${a}="(-?[\\d.]+)"`).exec(tag)?.[1] ?? NaN);
+  for (const m of svg.matchAll(/<(image|rect)\b[^>]*>/g)) { const t = m[0], x = num(t, 'x'), y = num(t, 'y'); if (!isNaN(x)) { put(x, y); put(x + num(t, 'width'), y + num(t, 'height')); } }
+  for (const m of svg.matchAll(/<circle\b[^>]*>/g)) { const t = m[0], r = num(t, 'r'); put(num(t, 'cx') - r, num(t, 'cy') - r); put(num(t, 'cx') + r, num(t, 'cy') + r); }
+  for (const m of svg.matchAll(/<ellipse\b[^>]*>/g)) { const t = m[0]; put(num(t, 'cx') - num(t, 'rx'), num(t, 'cy') - num(t, 'ry')); put(num(t, 'cx') + num(t, 'rx'), num(t, 'cy') + num(t, 'ry')); }
+  for (const m of svg.matchAll(/<text\b[^>]*>([^<]*)/g)) {
+    const t = m[0], x = num(t, 'x'), y = num(t, 'y'), w = m[1].length * 10.5, a = /text-anchor="(\w+)"/.exec(t)?.[1] ?? 'start';
+    if (isNaN(x)) continue;
+    const l = a === 'middle' ? x - w / 2 : a === 'end' ? x - w : x; put(l, y - 14); put(l + w, y + 4);
+  }
+  for (const m of svg.matchAll(/\sd="([^"]+)"/g)) {
+    let cx = 0, cy = 0;
+    for (const c of m[1].matchAll(/([MLCQHVAZmlcqhvaz])([^MLCQHVAZmlcqhvaz]*)/g)) {
+      const v = (c[2].match(/-?[\d.]+(?:e-?\d+)?/g) ?? []).map(Number);
+      if (c[1] === 'H') { cx = v[v.length - 1]; put(cx, cy); } else if (c[1] === 'V') { cy = v[v.length - 1]; put(cx, cy); }
+      else if (c[1] === 'A') { for (let q = 0; q + 6 < v.length + 1; q += 7) { cx = v[q + 5]; cy = v[q + 6]; put(cx, cy); } }
+      else if ('MLCQ'.includes(c[1])) for (let q = 0; q + 1 < v.length; q += 2) { cx = v[q]; cy = v[q + 1]; put(cx, cy); }
+    }
+  }
+  return x0 === Infinity ? null : [x0, y0, x1 - x0, y1 - y0];
+}
+const meets = (a: Box, b: Box): boolean => a[0] < b[0] + b[2] && a[0] + a[2] > b[0] && a[1] < b[1] + b[3] && a[1] + a[3] > b[1];
+const within = (a: Box, b: Box, tol = 2): boolean => a[0] >= b[0] - tol && a[1] >= b[1] - tol && a[0] + a[2] <= b[0] + b[2] + tol && a[1] + a[3] <= b[1] + b[3] + tol;
+/** PDB ids of the renders, for the credit line. */
+const PDB: Record<string, string> = { rubisco: '8RUC', prk: '6H7H', gapdh: '2PKQ', tpt: '5Y78', gox: '1GOX', cat: '1DGF', gdcp: '4LHC', gdch: '1HPC', shmt: '6UXI', glyk: '7XPC', gs: '2D3A', fd: '1A70' };
+
+class Draw {
+  private L: Record<Layer, Entry[]> = { bg: [], pool: [], mem: [], body: [], flow: [], node: [], text: [], top: [] };
+  /** After out(win): structures shown, whether lit carbon and photorespiration arrows show. */
+  shown = new Set<string>();
+  arrows = { c: false, pr: false };
+  /** After out(win): the abbreviations named by lit labels inside the window. */
+  abbr = new Set<string>();
+  constructor(readonly id: string, readonly lit: Set<Part>, readonly o: CellOpts, readonly arr: Arr) {}
+  on(...ps: Part[]): boolean { return ps.some(p => this.lit.has(p)); }
+  /** The count `s` when the figure's unit is `u` and the part is lit, else ''. */
+  n(u: Unit, part: Part | Part[], s: string): string {
+    const ps = Array.isArray(part) ? part : [part], ok = (this.o.unit ?? 'cycle') === u && this.on(...ps) && s !== '';
+    if (ok) this.counted = true;
+    return ok ? s : '';
+  }
+  /** A count was drawn (the key then names its unit). */
+  counted = false;
+  /** Adds svg to a layer; with parts, wrapped lit or dimmed. Dimmed parts carry no labels (handout, lecturer 28 Oct 2026:
+   *  only the lit part is named), so their text layer is left out. */
+  add(layer: Layer, part: Part | Part[] | null, svg: string, cls = ''): void {
+    if (!part) { this.L[layer].push({ svg, part: null, on: true }); return; }
+    const ps = Array.isArray(part) ? part : [part], on = this.on(...ps);
+    if (layer === 'text' && !on) return;
+    if (this.o.emph && !on) return;
+    if (!on && this.o.hide && ps.some(p => this.o.hide!.includes(p))) return;
+    // secondary: every lit part of the piece is a secondary one
+    const sec = on && !!this.o.sec && ps.filter(p => this.lit.has(p)).every(p => this.o.sec!.includes(p));
+    this.L[layer].push({ svg: `<g data-p="${ps[0]}" class="chn-${on ? 'on' : 'off'}${sec ? ' cel-sec' : ''}${cls ? ` ${cls}` : ''}">${svg}</g>`, part: ps[0], on });
+  }
+  /** The markup; with a window, records what shows in it, and with `clean` leaves out dimmed parts the window edge cuts. */
+  out(win?: Box, clean = false): string {
+    this.shown.clear(); this.arrows = { c: false, pr: false }; this.abbr.clear();
+    // clean: a dimmed part that the window edge cuts goes as a whole, and so does what it leaves orphaned (RuBisCO's gases
+    // and reaction arrows; the arrows into a gone product); so do context labels and compartment fills that the edge cuts
+    const cut = new Set<Part>();
+    if (win && clean) for (const k of LAYERS) for (const e of this.L[k]) {
+      const b = e.part && !e.on ? bbox(e.svg) : null;
+      if (b && meets(b, win) && !within(b, win)) cut.add(e.part as Part);
+    }
+    if (cut.has('rubisco')) for (const q of ['co2', 'o2', 'carbox', 'oxy'] as Part[]) cut.add(q);
+    if (cut.has('pg2')) cut.add('oxy');
+    // 3-PGA gone: the arrows into it (carboxylation, the oxygenation 3-PGA's return) and out of it (to GAPDH) go too
+    if (cut.has('pga')) for (const q of ['carbox', 'oxy', 'reduce'] as Part[]) cut.add(q);
+    return LAYERS.map(k => this.L[k].map(e => {
+      if (!win) return e.svg;
+      if (e.part && !e.on && cut.has(e.part)) return '';
+      const b = bbox(e.svg);
+      if (b && !meets(b, win)) return e.svg;
+      if (clean && !e.part && /^\s*<(text|ellipse class="cel-(perox|matrix))/.test(e.svg) && b && !within(b, win)) return '';
+      for (const m of e.svg.matchAll(/data-s="(\w+)"/g)) this.shown.add(PDB[m[1]]);
+      if (e.on && e.part) for (const m of e.svg.matchAll(/<text\b[^>]*\sx="(-?[\d.]+)" y="(-?[\d.]+)"[^>]*>([^<]*)<\/text>/g)) {
+        const tx = Number(m[1]), ty = Number(m[2]);
+        if (tx < win[0] || tx > win[0] + win[2] || ty < win[1] || ty > win[1] + win[3]) continue;
+        for (const [a] of ABBR) if (new RegExp(`(^|[^\\w-])${a.replace('-', '\\-')}([^\\w-]|$)`).test(m[3])) this.abbr.add(a);
+      }
+      if (e.on && /cbb-a-c[\s"]/.test(e.svg)) this.arrows.c = true;
+      if (e.on && /cbb-a-pr[\s"]/.test(e.svg)) this.arrows.pr = true;
+      return e.svg;
+    }).join('')).join('');
+  }
+}
+function defs(p: string): string {
+  return `<defs><filter id="${p}-grey" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values=".12 .24 .05 0 .53 .12 .24 .05 0 .53 .12 .24 .05 0 .53 0 0 0 1 0"/></filter></defs>`;
+}
+function smooth(q: Pt[]): string {
+  let s = `M${f(q[0][0])},${f(q[0][1])}`;
+  for (let i = 0; i < q.length - 1; i++) {
+    const p0 = q[Math.max(0, i - 1)], p1 = q[i], p2 = q[i + 1], p3 = q[Math.min(q.length - 1, i + 2)];
+    s += `C${f(p1[0] + (p2[0] - p0[0]) / 6)},${f(p1[1] + (p2[1] - p0[1]) / 6)} ${f(p2[0] - (p3[0] - p1[0]) / 6)},${f(p2[1] - (p3[1] - p1[1]) / 6)} ${f(p2[0])},${f(p2[1])}`;
+  }
+  return s;
+}
+function head(tip: Pt, dir: Pt, cls: string, hl = 13, hw = 7.5): string {
+  const L = Math.hypot(dir[0], dir[1]), u: Pt = [dir[0] / L, dir[1] / L], n: Pt = [-u[1], u[0]];
+  const b: Pt = [tip[0] - u[0] * hl, tip[1] - u[1] * hl];
+  return `<path class="${cls}" d="M${f(tip[0])},${f(tip[1])}L${f(b[0] + n[0] * hw)},${f(b[1] + n[1] * hw)}L${f(b[0] - n[0] * hw)},${f(b[1] - n[1] * hw)}Z"/>`;
+}
+type Kind = 'c' | 'pr' | 'gas' | 'atp' | 'nadph' | 'ret';
+/** An arrow: carbon (ink), photorespiration (rust), gas (grey), ATP (clay), NADPH (blue), spent carriers (grey dashes). */
+export function arrow(q: Pt[], k: Kind, o: { halo?: boolean; thin?: boolean } = {}): string {
+  const thin = o.thin ?? false, hl = thin ? 11 : 13, hw = thin ? 6.5 : 7.5;
+  const tip = q[q.length - 1], prev = q[q.length - 2];
+  const dir: Pt = [tip[0] - prev[0], tip[1] - prev[1]], L = Math.hypot(dir[0], dir[1]);
+  const back: Pt = [tip[0] - (dir[0] / L) * hl * 0.75, tip[1] - (dir[1] / L) * hl * 0.75];
+  const dd = smooth([...q.slice(0, -1), back]);
+  return `${o.halo ? `<path class="cbb-halo-l" d="${dd}"/>` : ''}<path class="cbb-a cbb-a-${k}${thin ? ' cbb-a-thin' : ''}" d="${dd}"/>${head(tip, dir, `cbb-h-${k}`, hl, hw)}`;
+}
+function wave(a: Pt, b: Pt, n = 3, amp = 6): string {
+  const dx = b[0] - a[0], dy = b[1] - a[1], L = Math.hypot(dx, dy), ux = dx / L, uy = dy / L, pts: string[] = [];
+  const stop = 1 - 15 / L;
+  for (let i = 0; i <= 70; i++) {
+    const t = (i / 70) * stop, w = Math.sin(t * n * 2 * Math.PI) * amp * Math.min(1, (stop - t) * 8);
+    pts.push(`${i ? 'L' : 'M'}${f(a[0] + dx * t - uy * w)},${f(a[1] + dy * t + ux * w)}`);
+  }
+  return `<path class="chn-lw" d="${pts.join('')}"/>${head(b, [dx, dy], 'chn-lwh', 15, 8.5)}`;
+}
+
+/* ---------- glyphs (sizes for a window shown at 0.87: letters stay ≥ 11 px) ---------- */
+export const RB = 11;
+const gl = (svg: string): string => `<g class="chn-g">${svg}</g>`;
+/** Atom balls in a row, touching (CO₂ 'OCO', O₂ 'OO'), the deck's colours. */
+export function balls(x: number, y: number, el: string, r = 11): string {
+  return gl([...el].map((a, i) => {
+    const cx = x + (i - (el.length - 1) / 2) * r * 1.7;
+    return `<circle class="atom atom-${a}" cx="${f(cx)}" cy="${f(y)}" r="${r}"/>${T(cx, y + r * 0.42, a, `cel-att cel-att-${a}`)}`;
+  }).join(''));
+}
+/** Water and hydrogen peroxide: O balls with small H balls. */
+function h2oG(x: number, y: number): string {
+  return gl(`<circle class="atom atom-H" cx="${f(x - 12)}" cy="${f(y + 9)}" r="6"/><circle class="atom atom-H" cx="${f(x + 12)}" cy="${f(y + 9)}" r="6"/>`) + balls(x, y, 'O');
+}
+function h2o2G(x: number, y: number): string {
+  return gl(`<circle class="atom atom-H" cx="${f(x - 26)}" cy="${f(y + 8)}" r="6"/><circle class="atom atom-H" cx="${f(x + 26)}" cy="${f(y + 8)}" r="6"/>`) + balls(x, y, 'OO');
+}
+function nh3G(x: number, y: number): string {
+  const h = (dx: number, dy: number): string => `<circle class="atom atom-H" cx="${f(x + dx)}" cy="${f(y + dy)}" r="6"/>`;
+  return gl(`${h(-13, 8)}${h(13, 8)}${h(0, -14)}<circle class="cbb-n" cx="${f(x)}" cy="${f(y)}" r="${RB}"/>${T(x, y + 4.8, 'N', 'cbb-nt')}`);
+}
+const tag = (x: number, y: number, s: string, k: 'nadph' | 'atp' | 'plain' | 'pi'): string => gl(tagG(x, y, s, k));
+
+/** A metabolite in carbon form with its name and, in the figure's unit and when its part is lit, its count. */
+interface Lab { name: string; c?: Partial<Record<Unit, string>>; at?: 'below' | 'above' | 'right' | 'left'; dx?: number; dy?: number; big?: boolean }
+function mol(d: Draw, part: Part | Part[], at: Pt, formula: string, lab: Lab, r = RB): void {
+  const [x, y] = at, w = rowWidth(formula.length, r), side = lab.at ?? 'below', dx = lab.dx ?? 0, dy = lab.dy ?? 0;
+  const u = d.o.unit ?? 'cycle', cnt = d.n(u, part, lab.c?.[u] ?? '');
+  if (d.o.noMol && NO_MOL.has(lab.name)) return;
+  d.add('node', part, gl(row(x, y, formula, { r })));
+  const B = lab.big ? 1.5 : 1;
+  const nm = (xx: number, yy: number, a: A): string => T(xx, yy, lab.name, `cel-mn${lab.big ? ' cel-em' : ''} cel-halo`, a);
+  const ct = (xx: number, yy: number, a: A): string => (cnt ? T(xx, yy, cnt, `cel-cnt${lab.big ? ' cel-emc' : ''} cel-halo`, a) : '');
+  let s = '';
+  if (side === 'below') s = nm(x + dx, y + r + 21 * B + dy, 'middle') + ct(x + dx, y + r + 41 * B + dy, 'middle');
+  else if (side === 'above') s = nm(x + dx, y - r - (cnt ? 30 * B : 10) + dy, 'middle') + ct(x + dx, y - r - 10 + dy, 'middle');
+  else if (side === 'right') s = nm(x + w / 2 + 10 + dx, y + (cnt ? -2 * B : 6) + dy, 'start') + ct(x + w / 2 + 10 + dx, y + 16 * B + dy, 'start');
+  else s = nm(x - w / 2 - 10 + dx, y + (cnt ? -2 * B : 6) + dy, 'end') + ct(x - w / 2 - 10 + dx, y + 16 * B + dy, 'end');
+  d.add('text', part, s);
+}
+
+/* ---------- proteins: our renders (2.4 px per Å), k = 1 is the chain's scale ---------- */
+const PXU = 0.95 / 2.4;
+type Prot = 'rubisco' | 'prk' | 'gapdh' | 'tpt' | 'gox' | 'cat' | 'gdcp' | 'gdch' | 'shmt' | 'glyk' | 'gs';
+const PROT: Record<Prot, { href: string; g: string; w: number; h: number; s?: number; memX?: number }> = {
+  rubisco: { href: rubPng, g: rubG, w: 548, h: 471, s: 0.95 / 4 },
+  prk: { href: prkPng, g: prkG, w: 292, h: 170 }, gapdh: { href: gapdhPng, g: gapdhG, w: 234, h: 236 },
+  tpt: { href: tptPng, g: tptG, w: 159, h: 263, memX: 83.7 }, gox: { href: goxPng, g: goxG, w: 252, h: 252 },
+  cat: { href: catPng, g: catG, w: 264, h: 250 }, gdcp: { href: gdcpPng, g: gdcpG, w: 302, h: 222 },
+  gdch: { href: gdchPng, g: gdchG, w: 128, h: 111 }, shmt: { href: shmtPng, g: shmtG, w: 300, h: 226 },
+  glyk: { href: glykPng, g: glykG, w: 178, h: 149 }, gs: { href: gsPng, g: gsG, w: 310, h: 311 },
+};
+/** Size of a protein in figure units at scale k. */
+export const protSize = (p: Prot, k = 1): [number, number] => { const P = PROT[p], s = (P.s ?? PXU) * k; return [P.w * s, P.h * s]; };
+/** A protein centred on c (for the membrane protein: c is on its membrane centre line); dimmed: the grey copy. */
+function prot(d: Draw, part: Part | Part[], p: Prot, c: Pt, k = 1, name?: [string, Pt, A?]): void {
+  const P = PROT[p], s = (P.s ?? PXU) * k, w = P.w * s, h = P.h * s, ps = Array.isArray(part) ? part : [part];
+  const x = P.memX !== undefined ? c[0] - P.memX * s : c[0] - w / 2;
+  d.add('body', part, `<image data-s="${p}" class="cel-p cel-p-${p}" href="${d.on(...ps) ? P.href : P.g}" x="${f(x)}" y="${f(c[1] - h / 2)}" width="${f(w)}" height="${f(h)}"/>`);
+  if (name) d.add('text', part, T(name[1][0], name[1][1], name[0], 'cel-prot cel-halo', name[2] ?? 'middle'));
+}
+/** A protein without a structure (PLGG1): a drawn outline of its size across the membrane, marked as drawn. */
+function drawnProt(d: Draw, part: Part | Part[], c: Pt, w: number, h: number): void {
+  const r = w * 0.32;
+  d.add('body', part, `<rect class="cel-drawn" x="${f(c[0] - w / 2)}" y="${f(c[1] - h / 2)}" width="${f(w)}" height="${f(h)}" rx="${f(r)}"/>
+    <path class="cel-wallf" d="M${f(c[0] - w / 4)},${f(c[1] - h / 2 + 6)}V${f(c[1] + h / 2 - 6)}M${f(c[0])},${f(c[1] - h / 2 + 4)}V${f(c[1] + h / 2 - 4)}M${f(c[0] + w / 4)},${f(c[1] - h / 2 + 6)}V${f(c[1] + h / 2 - 6)}" style="stroke:#5f8f87;stroke-width:1.4"/>`);
+}
+function ferredoxin(d: Draw, part: Part, c: Pt, k = 1): string { return carrierImg('fd', c[0], c[1], k, !d.on(part), ' data-s="fd"'); }
+
+/* ---------- bilayers, as chain.ts bilayerR: heads on both faces, two tails each ---------- */
+type Seg = { L: [number, number, number, number] } | { A: [number, number, number, number, number, number] };
+function sample(segs: Seg[], step: number): Array<[number, number, number, number]> {
+  const fine: Array<[number, number]> = [];
+  for (const s of segs) {
+    if ('L' in s) { const [x0, y0, x1, y1] = s.L, n = Math.max(2, Math.ceil(Math.hypot(x1 - x0, y1 - y0) / 2)); for (let i = 0; i <= n; i++) fine.push([x0 + (x1 - x0) * i / n, y0 + (y1 - y0) * i / n]); }
+    else { const [cx, cy, rx, ry, a0, a1] = s.A, n = 360; for (let i = 0; i <= n; i++) { const t = ((a0 + (a1 - a0) * i / n) * Math.PI) / 180; fine.push([cx + rx * Math.cos(t), cy + ry * Math.sin(t)]); } }
+  }
+  const out: Array<[number, number, number, number]> = [];
+  let acc = step;
+  for (let i = 1; i < fine.length; i++) {
+    const [ax, ay] = fine[i - 1], [bx, by] = fine[i], L = Math.hypot(bx - ax, by - ay);
+    if (L < 1e-6) continue;
+    acc += L;
+    if (acc >= step) { acc = 0; out.push([bx, by, -(by - ay) / L, (bx - ax) / L]); }
+  }
+  return out;
+}
+const segPath = (segs: Seg[]): string => segs.map((s, i) => {
+  if ('L' in s) return `${i ? 'L' : 'M'}${f(s.L[0])},${f(s.L[1])}L${f(s.L[2])},${f(s.L[3])}`;
+  const [cx, cy, rx, ry, a0, a1] = s.A, p = (a: number): Pt => [cx + rx * Math.cos((a * Math.PI) / 180), cy + ry * Math.sin((a * Math.PI) / 180)];
+  const [x0, y0] = p(a0), [x1, y1] = p(a1), big = Math.abs(a1 - a0) > 180 ? 1 : 0, sw = a1 > a0 ? 1 : 0;
+  if (Math.abs(a1 - a0) >= 359.9) { const [xm, ym] = p((a0 + a1) / 2); return `${i ? 'L' : 'M'}${f(x0)},${f(y0)}A${f(rx)},${f(ry)} 0 1 ${sw} ${f(xm)},${f(ym)}A${f(rx)},${f(ry)} 0 1 ${sw} ${f(x1)},${f(y1)}`; }
+  return `${i ? 'L' : 'M'}${f(x0)},${f(y0)}A${f(rx)},${f(ry)} 0 ${big} ${sw} ${f(x1)},${f(y1)}`;
+}).join('');
+/** A bilayer along segments: half-thickness `half` (19 = 7m1), head radius r, head spacing `step`. */
+export function bilayer(segs: Seg[], half = 19, r = 3.1, step = 7.2): string {
+  const heads: string[] = [], tails: string[] = [], tl = half - r - 3;
+  for (const [x, y, nx, ny] of sample(segs, step)) for (const sg of [1, -1]) {
+    const hx = x + sg * nx * (half - r), hy = y + sg * ny * (half - r);
+    heads.push(`M${f(hx - r)},${f(hy)}a${r},${r} 0 1 0 ${f(2 * r)},0a${r},${r} 0 1 0 ${f(-2 * r)},0`);
+    const ax = x + sg * nx * (half - 2 * r), ay = y + sg * ny * (half - 2 * r), tx = -ny, ty = nx;
+    for (const o of [-1.2, 1.2]) tails.push(`M${f(ax + tx * o)},${f(ay + ty * o)}l${f(-sg * nx * tl)},${f(-sg * ny * tl)}`);
+  }
+  return `<path class="cbb-band" d="${segPath(segs)}" stroke-width="${f(2 * half)}" fill="none"/><path class="chn-tail" d="${tails.join('')}"/><path class="chn-head" d="${heads.join('')}"/>`;
+}
+const ell = (cx: number, cy: number, rx: number, ry: number): Seg[] => [{ A: [cx, cy, rx, ry, -90, 270] }];
+
+/* ---------- key ---------- */
+/** The line under the figure: the arrow key only when both arrow kinds show lit, the unit only when numbers show, the
+ *  structures shown (each named once), the limits' legend on C8. */
+/** Where the figure ends: above the bottom rows. Rows from the bottom: credit (left) and unit (right); the abbreviation key
+ *  (1–2 lines); the arrow key, when both arrow kinds show lit; the limits' legend (C8). */
+function bandTop(d: Draw): number {
+  const k = abbrLines(d.abbr).length, key = d.arrows.c && d.arrows.pr ? 1 : 0, lim = d.o.limits ? 1 : 0;
+  return Math.min(556, 593 - 18 * k - 20 * (key + lim) - 18);
+}
+function keyLine(d: Draw, band: number): string {
+  const x = 14, y = 593, key = d.arrows.c && d.arrows.pr, ab = abbrLines(d.abbr);
+  const ball = (cx: number, yy: number, a: 'C' | 'P' | 'N'): string => gl(row(cx, yy - 5, a, { r: 8.5 }));
+  const ids = [...d.shown].filter(Boolean).sort();
+  const cr = ids.length ? `structure${ids.length > 1 ? 's' : ''}: PDB ${ids.join(', ')}` : '';
+  const yA = y - 18, yK = y - 18 * ab.length - 20, yL = yK - (key ? 20 : 0);
+  let s = `${band < 556 || key || d.o.limits ? `<rect class="cel-band" x="0" y="${band}" width="800" height="${600 - band}"/>` : ''}
+    ${cr ? T(x, y, cr, 'cel-cr', 'start') : ''}${d.counted ? T(790, y, UNIT_SAY[d.o.unit ?? 'cycle'], 'cbb-cnt', 'end') : ''}
+    ${abbrSvg(ab, x, yA)}
+    ${key ? `${arrow([[x, yK - 5], [x + 34, yK - 5]], 'c', { thin: true })}${T(x + 42, yK, 'carbon', 'cbb-key', 'start')}
+    ${arrow([[x + 108, yK - 5], [x + 142, yK - 5]], 'pr', { thin: true })}${T(x + 150, yK, 'photorespiration', 'cbb-key', 'start')}
+    ${ball(x + 292, yK, 'C')}${ball(x + 316, yK, 'P')}${ball(x + 340, yK, 'N')}${balls(x + 364, yK - 5, 'O', 8.5)}` : ''}`;
+  if (d.o.limits) {
+    const X: Record<'c' | 'j' | 'p', [number, number, string, string]> = { c: [14, 120, 'A<tspan class="cbb-sub" dy="4">c</tspan><tspan dy="-4"> ~ V</tspan><tspan class="cbb-sub" dy="4">cmax</tspan>', 'RuBisCO'],
+      j: [200, 252, 'A<tspan class="cbb-sub" dy="4">j</tspan><tspan dy="-4"> ~ J</tspan>', 'electron transport'], p: [400, 474, 'A<tspan class="cbb-sub" dy="4">p</tspan><tspan dy="-4"> ~ TPU</tspan>', 'triose-phosphate use'] };
+    for (const k of ['c', 'j', 'p'] as const) if (d.on(`lim-${k}` as Part)) s += `${T(X[k][0], yL, X[k][2], `cbb-limk cbb-lim-${k}`, 'start')}${T(X[k][1], yL, X[k][3], 'cbb-cnt', 'start')}`;
+  }
+  return s;
+}
+function limit(d: Draw, k: 'c' | 'j' | 'p', box: [number, number, number, number], tagAt: Pt): void {
+  const part = `lim-${k}` as Part;
+  if (!d.o.limits || !d.on(part)) return;
+  const sym = { c: 'A<tspan class="cbb-sub" dy="4">c</tspan>', j: 'A<tspan class="cbb-sub" dy="4">j</tspan>', p: 'A<tspan class="cbb-sub" dy="4">p</tspan>' }[k];
+  d.add('top', part, `<rect class="cbb-box cbb-box-${k}" x="${f(box[0])}" y="${f(box[1])}" width="${f(box[2])}" height="${f(box[3])}" rx="16"/>
+    <rect class="cbb-limtag cbb-box-${k}" x="${f(tagAt[0] - 22)}" y="${f(tagAt[1] - 14)}" width="44" height="28" rx="9"/>${T(tagAt[0] - 1, tagAt[1] + 5, sym, `cbb-lim cbb-lim-${k}`)}`);
+}
+
+/* ================================================================ the strip (true scale) */
+
+/** The strip's x: inner and outer envelope membranes, peroxisome and mitochondrion centres, panorama width. */
+export const SX = { inner: 760, outer: 818, perox: [1022, 300] as Pt, mito: [1362, 300] as Pt, width: 1540 };
+/** Glyph spots of the strip, in panorama units (lecturer, 28 Oct 2026, RUBISCO_LAYOUT_BRIEF): RuBP, the shared 5-carbon
+ *  input, comes up into RuBisCO from below (PRK sits lower right; the regeneration path runs round the right);
+ *  carboxylation owns the left (CO₂ in from the left, 3-PGA out up-left towards GAPDH), oxygenation the right (O₂ in from the
+ *  right, 3-PGA and 2-phosphoglycolate out up-right: 3-PGA back to the 3-PGA pool, 2-phosphoglycolate on to PLGG1).
+ *  stripPano draws from these, so animations that use them match the drawing. *From/*To are arrow ends. */
+export const SPOT = (() => {
+  const p = (x: number, y: number): Pt => [x, y];
+  const rub = p(336, 340), rubp = p(336, 458), co2 = p(146, 372), o2 = p(468, 368), pga = p(166, 272), oxyPga = p(430, 222),
+    pg2 = p(520, 290), tp = p(352, 98), prk = p(536, 458), gapdh = p(232, 200);
+  const [px, py] = SX.perox, [mx, my] = SX.mito, IN = SX.inner, OUT = SX.outer;
+  return {
+    rub, co2, o2, rubp, pga, pg2, tp, oxyPga,
+    rubpFrom: p(rubp[0], rubp[1] - 16), rubpTo: p(rub[0], rub[1] + 60),
+    co2From: p(co2[0] + 36, co2[1]), co2To: p(rub[0] - 69, co2[1]),
+    o2From: p(o2[0] - 26, o2[1]), o2To: p(rub[0] + 69, o2[1]),
+    carboxFrom: p(rub[0] - 54, rub[1] - 42), carboxTo: p(pga[0] + 52, pga[1] + 6),
+    oxyFrom: p(rub[0] + 62, rub[1] - 34), oxyTo: p(pg2[0] - 38, pg2[1] + 2),
+    oxyPgaFrom: p(rub[0] + 56, rub[1] - 52), oxyPgaTo: p(oxyPga[0], oxyPga[1] + 16),
+    carboxLabel: p(224, 396), oxyLabel: p(448, 402),
+    prkFrom: p(prk[0] - 60, prk[1]), prkTo: p(rubp[0] + 88, rubp[1]),
+    gapdh, gap: gapdh, prk, starch: p(560, 18), tpt: p(IN, 112), plgg1: p(IN, 352),
+    glyk: p(696, 262), glykAtp: p(636, 262), pgaBack: p(690, 326), gs: p(690, 494), regenAtp: p(452, 482),
+    nh3Atp: p(624, 530), fd: p(624, 488),
+    sucrose: p(OUT + 120, 45), pi: p(OUT + 84, 152),
+    perox: p(px, py), mito: p(mx, my), gox: p(px, py - 70), cat: p(px + 4, py + 76),
+    gdcP: p(mx + 6, my - 66), gdcH: p(mx - 60, my + 8), shmt: p(mx + 4, my + 78),
+    glycolate: p(OUT + 68, 400), glycine: p(1176, 96), serine: p(1170, 490), glycerate: p(OUT + 68, 286),
+    nh3: p(1296, 566), co2Lost: p(mx + 4, 16),
+    nadphTag: p(94, 64), atpTag: p(70, 100), back: p(70, 30),
+  };
+})();
+/** Where the chain's NADPH and ATP tags end (7m1 glyph mode), in strip units when the strip sits right of it. */
+/** (join mode draws the chain with counts: false: its NADPH row is centred on x 536, so its NADPH tag ends at 645.) */
+const CHAIN_NADPH: Pt = [645 - 800, 64], CHAIN_ATP: Pt = [807 - 800, 92];
+
+function stripPano(d: Draw): void {
+  const yM = 300, xe = 52, IN = SX.inner, OUT = SX.outer;
+  // join mode: below the lumen the chain has no stroma tint, so the strip's tint fades out there (no panel edge)
+  d.add('bg', null, `${d.o.join ? `<defs><linearGradient id="${d.id}-bfade" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#000"/></linearGradient>
+      <mask id="${d.id}-bm" maskUnits="userSpaceOnUse" x="-10" y="-60" width="${IN + 20}" height="720"><rect x="-10" y="-60" width="${IN + 20}" height="512" fill="#fff"/><rect x="-10" y="452" width="${IN + 20}" height="90" fill="url(#${d.id}-bfade)"/></mask></defs>` : ''}
+    <rect class="cel-stroma" x="0" y="${d.o.join ? 0 : -60}" width="${IN}" height="${d.o.join ? 720 : 860}"${d.o.join ? ` mask="url(#${d.id}-bm)"` : ''}/><rect class="cel-ims" x="${IN}" y="${d.o.join ? 0 : -60}" width="${OUT - IN}" height="${d.o.join ? 720 : 860}"${d.o.join ? ` mask="url(#${d.id}-bm)"` : ''}/>`);
+  // the thylakoid end: membrane in from the left (7m1: centre y 300, ±19; lumen to 452), closing round its lumen
+  const segs: Seg[] = [{ L: [-8, yM, xe, yM] }, { A: [xe, 376, 40, 76, -90, 90] }, { L: [xe, 452, -8, 452] }];
+  d.add('mem', ['thyl', 'light'], `<defs><linearGradient id="${d.id}-fade" x1="0" x2="1"><stop offset="0" stop-color="#000"/><stop offset="1" stop-color="#fff"/></linearGradient>
+      <mask id="${d.id}-mf" maskUnits="userSpaceOnUse" x="-10" y="-60" width="200" height="720"><rect x="-10" y="-60" width="200" height="720" fill="#fff"/><rect x="-10" y="404" width="80" height="90" fill="url(#${d.id}-fade)"/></mask></defs>
+    <path class="cel-lumen" d="${segPath(segs)}Z"/><g mask="url(#${d.id}-mf)">${bilayer(segs)}</g>`, 'cbb-thyl');
+  d.add('text', 'thyl', `${d.o.join ? '' : T(10, 392, 'lumen', 'chn-zone', 'start')}${T(8, 500, 'thylakoid', 'cbb-org', 'start')}`);
+  if (!d.o.join) d.add('flow', 'light', `${wave([62, 164], [54, 270])}${T(76, 190, 'light', 'chn-light', 'start')}`);
+  // the envelope: inner and outer bilayer, cut by the frame
+  d.add('mem', null, `${bilayer([{ L: [IN, -60, IN, 800] }])}${bilayer([{ L: [OUT, -60, OUT, 800] }])}`);
+  d.add('text', null, T(IN - 26, 30, 'stroma', 'chn-zone', 'end'));
+  d.add('text', null, T(OUT + 32, 590, 'cytosol', 'cel-zone', 'start'));
+  d.add('text', null, `<g transform="translate(${(IN + OUT) / 2} 236) rotate(-90)">${T(0, 6, 'envelope', 'cbb-org')}</g>`);
+
+  // ATP and NADPH from the thylakoid (from the chain's own tags when joined); the spent carriers back
+  const n0: Pt = d.o.join ? CHAIN_NADPH : [-4, 64], a0: Pt = d.o.join ? CHAIN_ATP : [-4, 96];
+  const gap: Pt = SPOT.gapdh;
+  d.add('flow', 'supply', `${arrow([n0, [100, 64], [150, 96], [gap[0] - 46, gap[1] - 34]], 'nadph')}${arrow([a0, [86, 98], [124, 146], [gap[0] - 50, gap[1] + 4]], 'atp')}`);
+  if (!d.o.noMol && !d.o.join) d.add('node', 'supply', `${tag(94, 64, d.n('cycle', 'supply', '6 ') + d.n('perCO2', 'supply', '2 ') + 'NADPH', 'nadph')}${tag(70, 100, d.n('cycle', 'supply', '6 ') + d.n('perCO2', 'supply', '2 ') + 'ATP', 'atp')}`);
+  // the spent carriers back; joined, the row stays inside the frame and points back to the chain's reaction rows
+  d.add('flow', 'supply', arrow([[gap[0] - 16, gap[1] - 50], [176, 52], [120, 32], [d.o.join ? 8 : -2, 30]], 'ret', { thin: true }));
+  d.add('node', 'supply', rowG(d.o.join ? 104 : 70, 30, [['NADP⁺', 'plain'], ['ADP', 'atp'], ['', 'pi']]));
+
+  // the cycle round RuBisCO: GAPDH upper left, triose phosphate on top, PRK lower right, RuBP below RuBisCO
+  const { rub, pga, tp, prk, rubp, co2, o2 } = SPOT;
+  prot(d, 'rubisco', 'rubisco', rub, 1, ['RuBisCO', [rub[0], rub[1] - 66]]);
+  prot(d, 'reduce', 'gapdh', gap, 1, ['GAPDH', [gap[0] + 52, gap[1] - 2], 'start']);
+  prot(d, 'regen', 'prk', prk, 1, ['PRK', [prk[0], prk[1] + 56]]);
+  mol(d, 'pga', pga, 'CCCP', { name: d.n('perCO2', 'pga', '2 × ') + '3-PGA', c: { cycle: '6 × 3 C = 18 C', reaction: '3 C' } });
+  mol(d, 'tp', tp, 'CCCP', { name: d.n('perCO2', 'tp', '2 ') + 'triose phosphate', c: { cycle: '6 × 3 C = 18 C' }, at: 'above' });
+  // RuBP, the shared input, below RuBisCO
+  mol(d, ['rubisco', 'regen'], rubp, 'PCCCCCP', { name: d.n('perCO2', 'rubisco', '1 ') + 'RuBP', c: { cycle: '3 × 5 C = 15 C', reaction: '5 C' } });
+  d.add('flow', ['rubisco', 'regen'], arrow([SPOT.rubpFrom, SPOT.rubpTo], 'c'));
+  d.add('flow', 'reduce', `${arrow([[pga[0] + 10, pga[1] - 14], [gap[0] - 18, gap[1] + 50]], 'c')}${arrow([[gap[0] + 30, gap[1] - 48], [tp[0] - 50, tp[1] + 12]], 'c')}`);
+  d.add('text', 'reduce', `${T(gap[0] + 52, gap[1] + 20, 'reduction', 'cbb-proc cbb-halo', 'start')}${T(gap[0] + 52, gap[1] + 38, 'of 3-PGA', 'cbb-proc cbb-halo', 'start')}`);
+  // regeneration: triose phosphate round the right to PRK (lower right), PRK → RuBP from the side
+  d.add('flow', 'regen', `${arrow([[tp[0] + 48, tp[1] + 8], [480, 128], [580, 196], [606, 300], [598, 398], [prk[0] + 20, prk[1] - 38]], 'c', { halo: true })}${arrow([SPOT.prkFrom, SPOT.prkTo], 'c')}`);
+  d.add('text', 'regen', `${T(612, 160, 'regeneration', 'cbb-proc cbb-halo', 'start')}${T(612, 178, 'of RuBP', 'cbb-proc cbb-halo', 'start')}${d.n('cycle', 'regen', T(612, 196, '5 × 3 C = 15 C', 'cel-cnt cel-halo', 'start'))}`);
+  d.add('node', 'regen', tag(SPOT.regenAtp[0], SPOT.regenAtp[1], d.n('cycle', 'regen', '3 ') + 'ATP', 'atp'));
+  // left: carboxylation. CO₂ in from the left, its label on the arrow, 3-PGA out up-left
+  if (!d.o.noMol) d.add('node', 'co2', balls(co2[0], co2[1], 'OCO'));
+  if (!d.o.noMol) d.add('text', 'co2', `${T(co2[0], co2[1] - 22, d.n('cycle', 'co2', '3 ') + d.n('perCO2', 'co2', '1 ') + 'CO₂', 'cel-mn cel-halo')}${d.n('reaction', 'co2', T(co2[0], co2[1] + 30, '1 C', 'cel-cnt cel-halo'))}`);
+  d.add('flow', 'co2', arrow([SPOT.co2From, SPOT.co2To], 'gas', { thin: true }));
+  d.add('flow', 'carbox', arrow([SPOT.carboxFrom, SPOT.carboxTo], 'c'));
+  const [clx, cly] = SPOT.carboxLabel;
+  d.add('text', 'carbox', `${T(clx, cly, 'carboxylation', 'cbb-proc cbb-halo')}${d.n('reaction', 'carbox', T(clx + 8, cly + 20, '5 C + 1 C = 2 × 3 C', 'cel-cnt cel-halo'))}`);
+  // right: oxygenation. O₂ in from the right, its label on the arrow, 3-PGA and 2-phosphoglycolate out up-right
+  d.add('node', 'o2', balls(o2[0], o2[1], 'OO'));
+  d.add('text', 'o2', T(o2[0] + 26, o2[1] + 6, 'O₂', 'cel-mn cel-halo', 'start'));
+  d.add('flow', 'o2', arrow([SPOT.o2From, SPOT.o2To], 'gas', { thin: true }));
+  const [olx, oly] = SPOT.oxyLabel;
+  d.add('text', 'oxy', `${T(olx, oly, 'oxygenation', 'cbb-proc cbb-proc-pr cbb-halo')}${d.n('reaction', 'oxy', T(olx, oly + 18, '5 C = 3 C + 2 C', 'cel-cnt cel-halo'))}`);
+  d.add('flow', 'oxy', `${arrow([SPOT.oxyPgaFrom, SPOT.oxyPgaTo], 'c')}${arrow([SPOT.oxyFrom, SPOT.oxyTo], 'pr')}`);
+  mol(d, 'oxy', SPOT.oxyPga, 'CCCP', { name: '3-PGA', c: { reaction: '3 C' }, at: 'above' });
+  // the oxygenation 3-PGA back to the 3-PGA pool, over RuBisCO's top
+  d.add('flow', 'oxy', arrow([[SPOT.oxyPga[0] - 48, SPOT.oxyPga[1] + 8], [rub[0] - 6, rub[1] - 86], [pga[0] + 54, pga[1] - 4]], 'c', { thin: true }));
+
+  // out: starch in the stroma; triose phosphate through TPT (inner envelope) to the cytosol → sucrose, Pᵢ back
+  const [sx, sy] = SPOT.starch;
+  d.add('body', 'starch', `<ellipse class="cel-starch" cx="${sx}" cy="${sy}" rx="84" ry="40"/>${[0.75, 0.5, 0.26].map(q => `<ellipse class="cel-starchr" cx="${sx}" cy="${sy}" rx="${f(84 * q)}" ry="${f(40 * q)}"/>`).join('')}`);
+  d.add('text', 'starch', T(sx, sy + 7, 'starch', 'cel-mn cel-halo'));
+  d.add('flow', 'starch', arrow([[tp[0] + 46, tp[1] - 8], [476, 36]], 'c', { thin: true }));
+  prot(d, 'export', 'tpt', SPOT.tpt, 1, ['TPT', [IN - 36, 76], 'end']);
+  d.add('flow', 'export', `${arrow([[tp[0] + 48, tp[1] + 2], [560, 96], [IN, 100], [OUT + 40, 98], [OUT + 80, 76]], 'c', { halo: true })}${arrow([[OUT + 70, 148], [OUT, 128], [IN - 60, 126]], 'gas', { thin: true, halo: true })}`);
+  d.add('node', 'export', `${tag(SPOT.pi[0], SPOT.pi[1], '', 'pi')}${gl(row(SPOT.sucrose[0], SPOT.sucrose[1] - 11, 'CCCCCC', { r: 9 }))}${gl(row(SPOT.sucrose[0], SPOT.sucrose[1] + 11, 'CCCCCC', { r: 9 }))}`);
+  d.add('text', 'export', `${T(OUT + 120, 92, 'sucrose', 'cel-mn cel-halo')}${d.n('cycle', 'export', T(650, 88, '1 × 3 C', 'cel-cnt cel-halo'))}`);
+
+  // oxygenation → 2-phosphoglycolate → glycolate out through PLGG1 (inner envelope); glycerate back in
+  const pg2 = SPOT.pg2;
+  const E = d.o.emph === 'loop';
+  mol(d, 'pg2', pg2, 'CCP', E ? { name: '2 × 2-PG', c: { loop: '4 C' }, at: 'above', big: true } : { name: '2-PG', c: { reaction: '2 C', loop: '2 × 2 C = 4 C' }, at: 'above', dx: -8 });
+  drawnProt(d, ['glycolate', 'glycerate'], SPOT.plgg1, 50, 66);
+  d.add('text', ['glycolate', 'glycerate'], `<path class="cel-ld" d="M${IN + 22},352H${OUT + 26}"/>${T(OUT + 30, 358, 'PLGG1', 'cel-prot cel-halo', 'start')}`);
+  // (the takeaway view routes glycolate under the 3-PGA coming back, so that 3-PGA's large label sits clear)
+  d.add('flow', 'glycolate', arrow(E ? [[pg2[0] + 30, pg2[1] + 14], [596, 414], [700, 430], [IN, 378], [OUT + 40, 378], [SX.perox[0] - 120, 340]]
+    : [[pg2[0] + 36, pg2[1] + 2], [606, 352], [690, 380], [IN, 370], [OUT + 40, 376], [SX.perox[0] - 120, 340]], 'pr', { halo: true }));
+  // back in the stroma: glycerate kinase (glycerate → 3-PGA, ATP), glutamine synthetase (NH₃; ATP, ferredoxin)
+  prot(d, 'glycerate', 'glyk', SPOT.glyk);
+  d.add('text', 'glycerate', `${T(SPOT.glyk[0], SPOT.glyk[1] - 54, 'glycerate', 'cel-prot cel-halo')}${T(SPOT.glyk[0], SPOT.glyk[1] - (E ? 38 : 36), 'kinase', 'cel-prot cel-halo')}`);
+  d.add('flow', 'glycerate', `${arrow([[SX.perox[0] - 118, 312], [OUT + 30, 336], [IN, 334], [748, 306], [734, 282]], 'pr', { halo: true })}${arrow([[SPOT.glyk[0], SPOT.glyk[1] + 32], [SPOT.pgaBack[0], SPOT.pgaBack[1] - 14]], 'pr', { thin: true })}`);
+  mol(d, 'glycerate', SPOT.pgaBack, 'CCCP', E ? { name: '3-PGA', c: { loop: '3 C' }, big: true, dx: -8 } : { name: '3-PGA', dx: 0 });
+  d.add('node', 'glycerate', tag(SPOT.glykAtp[0], SPOT.glykAtp[1], 'ATP', 'atp'));
+  prot(d, 'nh3', 'gs', SPOT.gs, 0.7);
+  d.add('node', 'nh3', `${tag(SPOT.nh3Atp[0], SPOT.nh3Atp[1], 'ATP', 'atp')}${ferredoxin(d, 'nh3', SPOT.fd, 0.9)}`);
+  if (!E) d.add('text', 'nh3', `${T(SPOT.gs[0], SPOT.gs[1] - 74, 'GS +', 'cel-prot cel-halo')}${T(SPOT.gs[0], SPOT.gs[1] - 56, 'Fd-GOGAT', 'cel-prot cel-halo')}`);
+
+  /* ---- the cytosol side: peroxisome and mitochondrion (the right window) ---- */
+  const [px, py] = SX.perox, [mx, my] = SX.mito;
+  d.add('bg', null, `<ellipse class="cel-perox" cx="${px}" cy="${py}" rx="106" ry="156"/>`);
+  d.add('mem', 'perox', bilayer(ell(px, py, 106, 156)));
+  d.add('text', 'perox', T(px, py - 182, 'peroxisome', 'cel-zone cel-halo'));
+  prot(d, 'perox', 'gox', SPOT.gox, 1, ['glycolate oxidase', [px, py - 134]]);
+  prot(d, 'perox', 'cat', SPOT.cat, 1, ['catalase', [px, py + 146]]);
+  d.add('node', 'perox', `${h2o2G(px - 44, py + 2)}${h2oG(px + 52, py + 2)}`);
+  d.add('flow', 'perox', arrow([[px - 8, py + 2], [px + 30, py + 2]], 'gas', { thin: true }));
+  d.add('text', 'perox', T(px - 44, py - 14, 'H₂O₂', 'cel-mn cel-halo'));
+  d.add('bg', null, `<ellipse class="cel-matrix" cx="${mx}" cy="${my}" rx="152" ry="236"/>`);
+  d.add('mem', 'mito', `${bilayer(ell(mx, my, 152, 236))}${bilayer(ell(mx, my, 96, 180))}`);
+  d.add('text', 'mito', T(mx + 100, 586, 'mitochondrion', 'cel-zone cel-halo'));
+  prot(d, 'mito', 'gdcp', SPOT.gdcP, 1, ['glycine decarboxylase', [mx, my - 124]]);
+  prot(d, 'mito', 'gdch', SPOT.gdcH);
+  prot(d, 'mito', 'shmt', SPOT.shmt, 1, E ? undefined : ['SHMT', [mx, my + 142]]);
+  mol(d, 'glycolate', SPOT.glycolate, 'CC', { name: d.n('loop', 'glycolate', '2 ') + 'glycolate', c: E ? {} : { loop: '4 C in' }, dx: 2 });
+  mol(d, 'glycine', SPOT.glycine, 'CCN', { name: d.n('loop', 'glycine', '2 ') + 'glycine', at: 'above' });
+  d.add('flow', 'glycine', arrow([[px + 66, 186], [1136, 118], [1210, 110], [mx - 100, 168]], 'pr', { halo: true }));
+  mol(d, 'serine', SPOT.serine, 'CCCN', { name: 'serine', c: E ? {} : { loop: '3 C' } });
+  d.add('flow', 'serine', arrow([[mx - 104, 440], [1226, 472], [1112, 474], [px + 60, 432]], 'pr', { halo: true }));
+  mol(d, 'glycerate', SPOT.glycerate, 'CCC', { name: 'glycerate', c: E ? {} : { loop: '3 C back' }, at: 'above' });
+  d.add('node', 'co2-out', balls(SPOT.co2Lost[0], SPOT.co2Lost[1], 'OCO'));
+  d.add('text', 'co2-out', E ? `${T(mx + 48, 26, 'CO₂', 'cel-mn cel-em cel-halo', 'start')}${d.n('loop', 'co2-out', T(mx + 48, 56, '1 C', 'cel-cnt cel-emc cel-halo', 'start'))}`
+    : `${T(mx + 48, 22, 'CO₂', 'cel-mn cel-halo', 'start')}${d.n('loop', 'co2-out', T(mx + 48, 42, '1 C lost', 'cel-cnt cel-halo', 'start'))}`);
+  d.add('flow', 'co2-out', arrow([[mx + 4, my - 196], [mx + 4, 32]], 'gas', { thin: true }));
+  d.add('node', 'nh3', nh3G(SPOT.nh3[0], SPOT.nh3[1]));
+  d.add('text', 'nh3', T(1316, 572, 'NH₃', 'cel-mn cel-halo', 'start'));
+  d.add('flow', 'nh3', `${arrow([[mx - 30, my + 232], [1306, 552]], 'pr', { thin: true })}${arrow([[1278, 568], [px + 60, 566], [OUT + 30, 556], [IN, 540], [736, 510]], 'pr', { thin: true })}`);
+
+  // FvCB limits (C8)
+  limit(d, 'c', [104, 268, 320, 160], [126, 268]);
+  limit(d, 'j', [-2, 14, 290, 250], [266, 264]);
+  limit(d, 'p', [300, -4, 470, 120], [660, 116]);
+}
+
+/* ================================================================ the cell section (half scale) */
+
+// A section through a C₃ mesophyll cell, as in leaf micrographs (cell wall and plasma membrane against the intercellular
+// air space; the chloroplast pressed against them; peroxisome and mitochondrion on the chloroplast's vacuole side, so
+// that CO₂ released by photorespiration must cross the chloroplast, where RuBisCO can refix part of it: Busch et al.
+// 2013; Sage & Sage 2009). Proteins and bilayers at half the chain's scale; compartment sizes not to scale.
+const K2 = 0.5, H2 = 9.5;
+const bil2 = (segs: Seg[]): string => bilayer(segs, H2, 1.7, 4.2);
+
+function cellPano(d: Draw): void {
+  // air space, cell wall, plasma membrane
+  d.add('bg', null, `<rect class="cel-ims" x="-10" y="-10" width="820" height="34"/><rect class="cel-wall" x="-10" y="24" width="820" height="26"/>
+    ${Array.from({ length: 26 }, (_, i) => `<path class="cel-wallf" d="M${i * 32 - 10},${30 + (i % 3) * 5}q16,-4 32,0"/>`).join('')}
+    <rect class="cel-vac" x="-10" y="520" width="820" height="60"/>`);
+  d.add('mem', null, `${bil2([{ L: [-10, 60, 810, 60] }])}${bil2([{ L: [-10, 520, 810, 520] }])}`);
+  d.add('text', null, `${T(14, 18, 'air space', 'cel-zone', 'start')}${T(14, 44, 'cell wall', 'cbb-org', 'start')}${T(790, 92, 'plasma membrane', 'cbb-org', 'end')}
+    ${T(790, 550, 'vacuole', 'cel-zone', 'end')}${T(14, 404, 'cytosol', 'cel-zone', 'start')}`);
+  // the chloroplast: envelope (two bilayers), stroma, a granum
+  const [cx, cy, rx, ry] = [300, 214, 272, 140];
+  d.add('bg', null, `<ellipse class="cel-stroma" cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}"/>`);
+  d.add('mem', null, `${bil2(ell(cx, cy, rx, ry))}${bil2(ell(cx, cy, rx - 22, ry - 22))}`);
+  d.add('text', null, `${T(cx - 120, cy - 96, 'chloroplast', 'cel-zone cel-halo')}`);
+  const stack = Array.from({ length: 4 }, (_, k) => {
+    const y = 176 + k * 26, x0 = 70, x1 = 170, r = 9.5;
+    const segs: Seg[] = [{ L: [x0, y - 3, x1, y - 3] }, { A: [x1, y + 0.5, r - 6, 3.5, -90, 90] }, { L: [x1, y + 4, x0, y + 4] }, { A: [x0, y + 0.5, r - 6, 3.5, 90, 270] }];
+    return `<path class="cel-lumen" d="${segPath(segs)}Z"/>${bilayer(segs, 7, 1.4, 3.6)}`;
+  }).join('');
+  d.add('mem', ['thyl', 'light'], stack, 'cbb-thyl');
+  d.add('text', 'thyl', T(120, 296, 'granum', 'cbb-org cel-halo'));
+  d.add('flow', 'light', `${wave([96, -6], [112, 160], 3, 6)}${T(84, 116, 'light', 'chn-light', 'end')}`);
+  // ATP and NADPH from the granum to GAPDH
+  const gap: Pt = [262, 196], rub: Pt = [280, 256], prk: Pt = [418, 172];
+  d.add('flow', 'supply', `${arrow([[172, 184], [212, 180], [238, 188]], 'nadph', { thin: true })}${arrow([[172, 226], [214, 222], [240, 208]], 'atp', { thin: true })}`);
+  d.add('node', 'supply', `${tag(204, 158, d.n('perCO2', 'supply', '2 ') + 'NADPH', 'nadph')}${tag(206, 244, d.n('perCO2', 'supply', '2 ') + 'ATP', 'atp')}`);
+  // the cycle: GAPDH, PRK, RuBisCO (half scale) and its molecules
+  prot(d, 'rubisco', 'rubisco', rub, K2, ['RuBisCO', [rub[0], rub[1] + 50]]);
+  prot(d, 'reduce', 'gapdh', gap, K2, ['GAPDH', [gap[0] + 28, gap[1] + 6], 'start']);
+  prot(d, 'regen', 'prk', prk, K2, ['PRK', [prk[0] + 34, prk[1] + 6], 'start']);
+  mol(d, 'tp', [318, 118], 'CCCP', { name: d.n('perCO2', 'tp', '2 ') + 'triose phosphate', at: 'right' });
+  mol(d, 'pga', [196, 290], 'CCCP', { name: d.n('perCO2', 'pga', '2 × ') + '3-PGA', at: 'above', dy: 2 });
+  mol(d, ['rubisco', 'regen'], [440, 220], 'PCCCCCP', { name: d.n('perCO2', 'rubisco', '1 ') + 'RuBP' });
+  d.add('flow', 'carbox', arrow([[rub[0] - 34, rub[1] + 12], [196 + 50, 288]], 'c', { thin: true }));
+  d.add('flow', 'reduce', `${arrow([[214, 278], [246, 222]], 'c', { thin: true })}${arrow([[278, 174], [298, 130]], 'c', { thin: true })}`);
+  d.add('flow', 'regen', `${arrow([[366, 124], [400, 158]], 'c', { thin: true })}${arrow([[420, 188], [428, 206]], 'c', { thin: true })}`);
+  d.add('flow', ['rubisco', 'regen'], arrow([[364, 232], [rub[0] + 34, rub[1] - 10]], 'c', { thin: true }));
+  // CO₂ from the air through wall and membranes to RuBisCO; O₂ at RuBisCO
+  d.add('node', 'co2', balls(612, 10, 'OCO'));
+  d.add('text', 'co2', T(648, 16, d.n('perCO2', 'co2', '1 ') + 'CO₂', 'cel-mn cel-halo', 'start'));
+  d.add('flow', 'co2', arrow([[600, 24], [540, 110], [372, 196], [310, 212], [rub[0] + 6, rub[1] - 28]], 'gas', { thin: true }));
+  d.add('node', 'o2', balls(368, 262, 'OO'));
+  d.add('text', 'o2', T(392, 268, 'O₂', 'cel-mn cel-halo', 'start'));
+  d.add('flow', 'o2', arrow([[348, 264], [rub[0] + 36, rub[1] + 8]], 'gas', { thin: true }));
+  // triose phosphate out through TPT (inner envelope, right) → sucrose in the cytosol
+  prot(d, 'export', 'tpt', [cx + rx - 22, 196], K2);
+  d.add('flow', 'export', arrow([[368, 112], [500, 150], [cx + rx - 22, 186], [cx + rx + 30, 186], [640, 168]], 'c', { thin: true, halo: true }));
+  d.add('node', 'export', `${gl(row(700, 140, 'CCCCCC', { r: 8 }))}${gl(row(700, 160, 'CCCCCC', { r: 8 }))}${tag(640, 214, '', 'pi')}`);
+  d.add('text', 'export', `${T(700, 192, 'sucrose', 'cel-mn cel-halo')}${T(cx + rx + 24, 240, 'TPT', 'cel-prot cel-halo', 'start')}`);
+  d.add('flow', 'export', arrow([[624, 216], [cx + rx + 6, 208], [cx + rx - 40, 208]], 'gas', { thin: true }));
+  d.add('body', 'starch', `<ellipse class="cel-starch" cx="340" cy="186" rx="26" ry="12"/><ellipse class="cel-starchr" cx="340" cy="186" rx="14" ry="6"/>`);
+  d.add('text', 'starch', T(340, 214, 'starch', 'cbb-org cel-halo'));
+  // oxygenation → 2-phosphoglycolate → PLGG1 (inner envelope, vacuole side) → peroxisome
+  mol(d, 'pg2', [384, 316], 'CCP', { name: '2-PG', at: 'above' });
+  d.add('flow', 'oxy', arrow([[rub[0] + 30, rub[1] + 22], [350, 314]], 'pr', { thin: true }));
+  // the peroxisome and the mitochondrion, pressed on the chloroplast's vacuole side
+  const px: Pt = [318, 438], pr = 60, mx: Pt = [516, 406];
+  d.add('bg', null, `<circle class="cel-perox" cx="${px[0]}" cy="${px[1]}" r="${pr}"/><ellipse class="cel-matrix" cx="${mx[0]}" cy="${mx[1]}" rx="96" ry="66"/>`);
+  d.add('mem', 'perox', bil2(ell(px[0], px[1], pr, pr)));
+  d.add('mem', 'mito', `${bil2(ell(mx[0], mx[1], 96, 66))}${bil2(ell(mx[0], mx[1], 74, 44))}`);
+  d.add('text', 'perox', T(px[0] - 70, px[1] + 70, 'peroxisome', 'cel-zone cel-halo', 'end'));
+  d.add('text', 'mito', T(mx[0] + 100, mx[1] + 84, 'mitochondrion', 'cel-zone cel-halo'));
+  prot(d, 'perox', 'gox', [px[0] - 18, px[1] - 12], K2);
+  prot(d, 'perox', 'cat', [px[0] + 22, px[1] + 22], K2);
+  prot(d, 'mito', 'gdcp', [mx[0] - 24, mx[1] - 4], K2);
+  prot(d, 'mito', 'shmt', [mx[0] + 38, mx[1] + 6], K2);
+  d.add('text', 'perox', `${T(px[0] - 70, px[1] - 30, 'glycolate', 'cel-prot cel-halo', 'end')}${T(px[0] - 70, px[1] - 12, 'oxidase', 'cel-prot cel-halo', 'end')}${T(px[0] - 70, px[1] + 26, 'catalase', 'cel-prot cel-halo', 'end')}`);
+  d.add('text', 'mito', `${T(mx[0] + 104, mx[1] - 34, 'glycine', 'cel-prot cel-halo', 'start')}${T(mx[0] + 104, mx[1] - 16, 'decarboxylase', 'cel-prot cel-halo', 'start')}${T(mx[0] + 104, mx[1] + 22, 'SHMT', 'cel-prot cel-halo', 'start')}`);
+  drawnProt(d, ['glycolate', 'glycerate'], [cx, cy + ry - 22], 33, 25);
+  d.add('text', ['glycolate', 'glycerate'], T(cx - 24, cy + ry + 6, 'PLGG1', 'cel-prot cel-halo', 'end'));
+  d.add('flow', 'glycolate', arrow([[352, 322], [cx + 8, cy + ry - 30], [cx + 8, cy + ry + 6], [px[0] + 4, px[1] - 38]], 'pr', { thin: true }));
+  d.add('flow', 'glycine', arrow([[px[0] + 34, px[1] - 18], [mx[0] - 50, mx[1] - 8]], 'pr', { thin: true }));
+  d.add('flow', 'serine', arrow([[mx[0] - 44, mx[1] + 30], [px[0] + 44, px[1] + 26]], 'pr', { thin: true }));
+  d.add('flow', 'glycerate', arrow([[px[0] - 14, px[1] - 44], [cx - 8, cy + ry + 6], [cx - 8, cy + ry - 30], [cx - 4, cy + ry - 52]], 'pr', { thin: true }));
+  // CO₂ from the mitochondrion must cross the chloroplast, where RuBisCO can refix part of it; NH₃ back to the chloroplast
+  d.add('flow', 'co2-out', arrow([[mx[0] - 10, mx[1] - 56], [494, 300], [488, 286]], 'gas', { thin: true, halo: true }));
+  d.add('node', 'co2-out', balls(486, 272, 'OCO', 9));
+  d.add('text', 'co2-out', T(486, 252, 'CO₂', 'cel-mn cel-halo'));
+  d.add('node', 'nh3', nh3G(700, 330));
+  d.add('text', 'nh3', T(720, 336, 'NH₃', 'cel-mn cel-halo', 'start'));
+  d.add('flow', 'nh3', `${arrow([[mx[0] + 64, mx[1] - 50], [680, 340]], 'pr', { thin: true })}${arrow([[690, 318], [620, 290], [cx + rx - 40, 262]], 'pr', { thin: true })}`);
+  // FvCB limits (C8)
+  limit(d, 'c', [236, 222, 96, 100], [236, 222]);
+  limit(d, 'j', [56, 130, 172, 132], [78, 130]);
+  limit(d, 'p', [300, 96, 448, 132], [740, 228]);
+}

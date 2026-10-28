@@ -1,0 +1,87 @@
+/* Slide L12 figure styles, scoped under .theme-editorial and prefixed .fl12- (variants a, c, e, f reuse s12.css) */
+
+/* text */
+.theme-editorial .fl12 text.fl12-lv{font-size:26px;font-weight:600;fill:#141413}
+.theme-editorial .fl12 text.fl12-h{font-size:23px;font-weight:600;fill:#141413}
+.theme-editorial .fl12 text.fl12-l{font-size:22px;fill:#3d3d3a}
+.theme-editorial .fl12 text.fl12-s{font-size:18px;fill:#6b6a64}
+.theme-editorial .fl12 text.fl12-in{font-size:17px;font-weight:600;fill:#2b2a27}
+.theme-editorial .fl12 text.fl12-it{font:italic 400 24px Newsreader,Georgia,serif;fill:#6b6a64}
+.theme-editorial .fl12 text.fl12-ax{font-size:20px;fill:#6b6a64}
+.theme-editorial .fl12 text.fl12-bt{font-size:19px;font-weight:600;fill:#2b2a27}
+.theme-editorial .fl12 text.fl12-nt{font-size:17px;font-weight:700;fill:#fffdf8}
+.theme-editorial .fl12 text.fl12-eq{font-size:25px;fill:#8a877d}
+.theme-editorial .fl12 text.fl12-e{font-size:19px;font-weight:700;fill:#b8321c}
+.theme-editorial .fl12 text.fl12-wt{font-size:17px;font-weight:600;fill:#fffdf8}
+.theme-editorial .fl12 text.fl12-c-red{fill:#b8301b}
+.theme-editorial .fl12 text.fl12-c-blue{fill:#2350e6}
+.theme-editorial .fl12 text.fl12-c-green{fill:#3f6b35}
+.theme-editorial .fl12 text.fl12-c-clay{fill:#a9532f}
+.theme-editorial .fl12 text.fl12-c-orange{fill:#b75f12}
+.theme-editorial .fl12 text.fl12-c-amber{fill:#9a6a06}
+.theme-editorial .fl12 text.atom-t{font-size:13px}
+
+/* levels and axes */
+.theme-editorial .fl12-lvl{fill:none;stroke:#3d3d3a;stroke-width:2.8;stroke-linecap:round}
+.theme-editorial .fl12-lvl-thick{fill:none;stroke:#3d3d3a;stroke-width:6;stroke-linecap:round}
+.theme-editorial .fl12-lvl-fade{fill:none;stroke-width:2.8;stroke-linecap:round}
+.theme-editorial .fl12-axis{fill:none;stroke:#8a877d;stroke-width:1.6}
+.theme-editorial .fl12-guide{fill:none;stroke:#c9c6bb;stroke-width:1.4;stroke-dasharray:3 5}
+.theme-editorial .fl12-s0{stop-color:#3d3d3a;stop-opacity:1}.theme-editorial .fl12-s1{stop-color:#3d3d3a;stop-opacity:0}
+.theme-editorial .fl12-c0{stop-color:#d97757;stop-opacity:1}.theme-editorial .fl12-c1{stop-color:#d97757;stop-opacity:.08}
+
+/* arrows: one ink per exit, as in s12 */
+.theme-editorial .fl12-ar{fill:none;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fl12-k-ink{stroke:#3d3d3a}.theme-editorial .fl12-hd-ink{fill:#3d3d3a}
+.theme-editorial .fl12-k-green{stroke:#4f7f3f}.theme-editorial .fl12-hd-green{fill:#4f7f3f}
+.theme-editorial .fl12-k-grey{stroke:#8a877d}.theme-editorial .fl12-hd-grey{fill:#8a877d}
+.theme-editorial .fl12-k-red{stroke:#c8361e}.theme-editorial .fl12-hd-red{fill:#c8361e}
+.theme-editorial .fl12-k-blue{stroke:#2350e6}.theme-editorial .fl12-hd-blue{fill:#2350e6}
+.theme-editorial .fl12-k-clay{stroke:#d97757}.theme-editorial .fl12-hd-clay{fill:#d97757}
+.theme-editorial .fl12-k-amber{stroke:#e39a12}.theme-editorial .fl12-hd-amber{fill:#e39a12}
+.theme-editorial .fl12-dash{stroke-dasharray:8 7}
+.theme-editorial .fl12-dots{stroke-dasharray:2 7}
+
+/* excitation energy: amber glow dot */
+.theme-editorial .fl12-g0{stop-color:#f6c453;stop-opacity:.95}
+.theme-editorial .fl12-g1{stop-color:#f6c453;stop-opacity:.45}
+.theme-editorial .fl12-g2{stop-color:#f6c453;stop-opacity:0}
+.theme-editorial .fl12-exc{fill:#f0a316;stroke:#c98410;stroke-width:1.2}
+
+/* carotenoid, danger, cards */
+.theme-editorial .fl12-car{fill:none;stroke:#e07a1f;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+.theme-editorial .fl12-car-ring{fill:#fdeedd;stroke:#e07a1f;stroke-width:2.2;stroke-linejoin:round}
+.theme-editorial .fl12-card{fill:#fffdf8;stroke:#e3dfd3;stroke-width:1.4}
+.theme-editorial .fl12-num{fill:#3d3d3a}
+
+/* time zoom (d) */
+.theme-editorial .fl12-bar-blue{fill:#dfe7fb;stroke:#2350e6;stroke-width:1.4}
+.theme-editorial .fl12-bar-amber{fill:#fbe3a6;stroke:#e3a72a;stroke-width:1.4}
+.theme-editorial .fl12-bar-green{fill:#a9cf92;stroke:#4f7f3f;stroke-width:1.4}
+.theme-editorial .fl12-bar-clay{fill:#f6cdb9;stroke:#d97757;stroke-width:1.4}
+.theme-editorial .fl12-bar-fade{stroke:#d97757;stroke-width:1.4}
+.theme-editorial .fl12-wedge{fill:#e9e6dc;opacity:.6}
+
+/* membrane (h) */
+.theme-editorial .fl12-lumen{fill:#eaf1f8}
+.theme-editorial .fl12-lhc{fill:#e7f1de;stroke:#9cbd88;stroke-width:1.6}
+.theme-editorial .fl12-pig{fill:#3f6b45}
+.theme-editorial .fl12-hop{fill:none;stroke:#e39a12;stroke-width:3;stroke-dasharray:2 7;stroke-linecap:round}
+
+/* Kautsky curve (i) */
+.theme-editorial .fl12-dark{fill:#3d3d3a}
+.theme-editorial .fl12-on{fill:#f6c453;stroke:#d99a1c;stroke-width:1}
+.theme-editorial .fl12-curve{fill:none;stroke:#c8361e;stroke-width:4.4;stroke-linejoin:round;stroke-linecap:round}
+.theme-editorial .fl12-mark{fill:none;stroke:#8a877d;stroke-width:1.6;stroke-dasharray:4 5}
+
+/* light term (j) */
+.theme-editorial .fl12-pill{fill:#fdf1d0;stroke:#e39a12;stroke-width:2}
+.theme-editorial .fl12-trunk{fill:#f6c453;opacity:.55}
+.theme-editorial .fl12-eq-ar{fill:none;stroke:#8a877d;stroke-width:2.4}
+.theme-editorial .fl12-eq-hd{fill:#8a877d}
+.theme-editorial .fl12-br{fill:none;stroke-linecap:butt}
+.theme-editorial .fl12-br-green{stroke:#7fae68}.theme-editorial .fl12-br-grey{stroke:#a9a59a}
+.theme-editorial .fl12-br-red{stroke:#c8361e}.theme-editorial .fl12-br-clay{stroke:#d97757}
+.theme-editorial .fl12-f-green{fill:#7fae68}.theme-editorial .fl12-f-grey{fill:#a9a59a}
+.theme-editorial .fl12-f-red{fill:#c8361e}.theme-editorial .fl12-f-clay{fill:#d97757}
+.theme-editorial .fl12-ar.fl12-faint{opacity:.4}

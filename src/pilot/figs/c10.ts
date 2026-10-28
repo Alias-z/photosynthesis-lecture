@@ -12,18 +12,19 @@ import type { PlateText, Variant } from '../types';
 import './c10.css';
 
 export const PLATE: PlateText = {
-  n: 'C10',
+  n: 'C11',
   title: 'CAM separates carbon capture in time',
   status: 'draft',
-  lead: 'CAM (crassulacean acid metabolism) plants take up CO₂ at night, store it as malic acid and release it to Rubisco by day.',
+  lead: 'CAM (crassulacean acid metabolism) plants take up CO₂ at night, store it as malic acid and release it to RuBisCO by day.',
   points: [
     { claim: 'Night: CO₂ is stored as acid.', text: 'Through open stomata, CO₂ is fixed by PEPC and stored as malic acid in the vacuole.' },
-    { claim: 'Day: Rubisco works behind closed stomata.', text: 'Malate releases its CO₂, which the light-driven Calvin–Benson cycle fixes.' },
-    { claim: 'C₄ chemistry, separated in time.', text: 'C₄ separates the steps in space, CAM in time; CAM saves water.' },
+    { claim: 'Day: RuBisCO works behind closed stomata.', text: 'Malate releases its CO₂, which the light-driven Calvin–Benson cycle fixes, so little water is lost.' },
+    { claim: 'CO₂ pumps evolved many times.', text: 'C₄ separates the steps in space, CAM in time; algae and cyanobacteria pump HCO₃⁻ into a RuBisCO compartment and do about half of Earth’s CO₂ fixation.' },
   ],
   refs: [
     { label: 'Ludwig 2024', url: 'https://doi.org/10.1016/j.semcdb.2023.07.013' },
     { label: 'Yang et al. 2024', url: 'https://doi.org/10.1101/cshperspect.a041674' },
+    { label: 'Hennacy & Jonikas 2020', url: 'https://doi.org/10.1146/annurev-arplant-081519-040100' },
   ],
 };
 
@@ -32,7 +33,6 @@ export const VARIANTS: Variant[] = [
   { id: 'b', name: 'Space vs time' },
   { id: 'c', name: '24-hour dial', anim: true },
   { id: 'd', name: 'Day–night traces' },
-  { id: 'e', name: 'Bakery shifts' },
   { id: 'f', name: 'Four steps', anim: true },
   { id: 'g', name: 'Noon test' },
   { id: 'h', name: 'Plant to acid' },
@@ -119,7 +119,7 @@ const chip = (x: number, y: number, w: number, s: string, cls: string, tcls = 's
   `<rect class="${cls}" x="${f(x - w / 2)}" y="${f(y - h / 2)}" width="${w}" height="${h}" rx="${h / 2}"/>${t(x, y + 8, s, tcls)}`;
 
 const rubisco = (x: number, y: number, on = true, w = 104): string =>
-  chip(x, y, w, 'Rubisco', on ? 'fc10-rub' : 'fc10-rub fc10-off', on ? 'sm fc10-b' : 'sm fc10-mute');
+  chip(x, y, w, 'RuBisCO', on ? 'fc10-rub' : 'fc10-rub fc10-off', on ? 'sm fc10-b' : 'sm fc10-mute');
 
 /** The vacuole as a rounded store filled with malic acid to a level between 0 and 1. */
 function vacuole(x: number, y: number, w: number, h: number, level: number, r = 18): string {
@@ -169,7 +169,7 @@ function nightDaySvg(): string {
       ${ar(p, 'ink', `M290,${Y(232)} L334,${Y(232)}`)}${t(342, Y(240), 'sugar', 'sm fc10-b', 'start')}
       ${t(24, Y(198), 'light', 'sm fc10-amber', 'start')}${bolt(p, 36, Y(212), 180, Y(234))}`;
   };
-  return svg(p, 'CAM in one cell. At night stomata open, PEPC fixes CO₂ and malic acid fills the vacuole while the Calvin–Benson cycle is off. By day stomata close, malate is decarboxylated and the CO₂ goes to Rubisco, powered by light',
+  return svg(p, 'CAM in one cell. At night stomata open, PEPC fixes CO₂ and malic acid fills the vacuole while the Calvin–Benson cycle is off. By day stomata close, malate is decarboxylated and the CO₂ goes to RuBisCO, powered by light',
     half(4, true) + half(306, false));
 }
 
@@ -198,10 +198,10 @@ function spaceTimeSvg(): string {
       ${co2(bx + 156, 396)}${ar(p, 'c', `M${bx + 156},410 L${bx + 156},436`)}${rubisco(bx + 156, 458)}`;
     return head + box1 + box2 + capture + acid1 + link + acid2 + release;
   };
-  return svg(p, 'C₄ and CAM use the same steps: PEPC captures CO₂ into a C₄ acid, which later releases CO₂ to Rubisco. C₄ separates the steps between two cells, CAM between night and day',
+  return svg(p, 'C₄ and CAM use the same steps: PEPC captures CO₂ into a C₄ acid, which later releases CO₂ to RuBisCO. C₄ separates the steps between two cells, CAM between night and day',
     `<g transform="translate(0,4)">${col(16, false)}${col(410, true)}
     ${num(400, 200, '1')}${num(400, 396, '2')}
-    ${t(400, 544, 'Same chemistry: PEPC first, then Rubisco', 'sm fc10-b')}</g>`);
+    ${t(400, 544, 'Same chemistry: PEPC first, then RuBisCO', 'sm fc10-b')}</g>`);
 }
 
 /* ---------- 10C · 24-hour dial: the minimal summary ---------- */
@@ -216,13 +216,13 @@ function dialSvg(): string {
   const [sx1, sy1] = at(-130, Rm), [sx2, sy2] = at(130, Rm), [ux, uy] = at(50, Rm);
   const [ca, cb] = at(-50, 270), [a0x, a0y] = at(-50, 248), [a1x, a1y] = at(-50, 160);
   const jar = (x: number, level: number): string => vacuole(x - 30, cy - 44, 60, 88, level, 14);
-  return svg(p, '24-hour dial for a CAM plant. Night half: stomata open, CO₂ enters and the vacuole fills with malic acid from dusk to dawn. Day half: stomata closed, the acid empties from dawn to dusk and its CO₂ goes to Rubisco', `
+  return svg(p, '24-hour dial for a CAM plant. Night half: stomata open, CO₂ enters and the vacuole fills with malic acid from dusk to dawn. Day half: stomata closed, the acid empties from dawn to dusk and its CO₂ goes to RuBisCO', `
     <path class="fc10-nightbg" d="${ring(true)}"/><path class="fc10-daybg" d="${ring(false)}"/>
     <circle class="fc10-disc" cx="${cx}" cy="${cy}" r="${Ri}"/>
     ${moon(cx, cy - Rm, 20)}${sun(cx, cy + Rm, 16)}
     ${stoma(sx1, sy1, true)}${stoma(sx2, sy2, false)}
     ${co2(ca, cb, 11)}${ar(p, 'c', `M${f(a0x)},${f(a0y)} L${f(a1x)},${f(a1y)}`)}
-    ${chip(ux, uy, 104, 'Rubisco', 'fc10-rub')}
+    ${chip(ux, uy, 104, 'RuBisCO', 'fc10-rub')}
     ${jar(cx - 66, 0.1)}${jar(cx + 66, 0.8)}${t(cx, cy + 8, 'acid', 'sm fc10-plum fc10-b')}
     ${ar(p, 'acid', `M${cx - 66},${cy - 54} Q${cx},${cy - 112} ${cx + 60},${cy - 56}`)}
     ${t(cx, cy - 102, 'fills at night', 'sm fc10-plum')}
@@ -251,14 +251,14 @@ function tracesSvg(): string {
       <path class="fc10-trace ${cls}" d="M${pts.join(' L')}"/><path class="fc10-base" d="M${X0},${base} H${X1}"/>`;
   };
   const ticks = [['dusk', 0], ['midnight', 6], ['dawn', 12], ['noon', 18], ['dusk', 24]] as const;
-  return svg(p, 'Schematic 24-hour time courses in a CAM leaf: CO₂ uptake from the air happens at night; malic acid in the vacuole rises through the night and falls through the day; Rubisco fixes CO₂ by day', `
+  return svg(p, 'Schematic 24-hour time courses in a CAM leaf: CO₂ uptake from the air happens at night; malic acid in the vacuole rises through the night and falls through the day; RuBisCO fixes CO₂ by day', `
     <rect class="fc10-nightbg" x="${X0}" y="92" width="${X(12) - X0}" height="410"/>
     <rect class="fc10-daybg" x="${X(12)}" y="92" width="${X1 - X(12)}" height="410"/>
     ${moon(X(6) - 120, 62, 13)}${t(X(6) - 100, 70, 'night · stomata open', 'sm fc10-b', 'start')}
     ${sun(X(18) - 124, 62, 10)}${t(X(18) - 94, 70, 'day · stomata closed', 'sm fc10-b', 'start')}
     ${strip(100, uptake, 'fc10-tr-c', 'CO₂ taken up from the air', true)}
     ${strip(236, acid, 'fc10-tr-acid', 'malic acid in the vacuole')}
-    ${strip(372, fix, 'fc10-tr-fix', 'CO₂ fixed by Rubisco')}
+    ${strip(372, fix, 'fc10-tr-fix', 'CO₂ fixed by RuBisCO')}
     ${ticks.map(([s, h]) => `<path class="fc10-tick" d="M${f(X(h))},502 V512"/>${t(X(h), 538, s, 'tl', h === 0 ? 'start' : h === 24 ? 'end' : 'middle')}`).join('')}
     ${SCHEMATIC(770, 584)}`);
 }
@@ -294,7 +294,7 @@ function bakerySvg(): string {
     const legend = night
       ? `${mapped(bx + 20, 470, 'door open', 'stomata open')}${mapped(bx + 20, 498, 'delivery', 'CO₂')}${mapped(bx + 20, 526, 'packing', 'PEPC')}
          ${mapped(bx + 20, 554, 'sacks', 'malic acid')}${mapped(bx + 20, 582, 'storeroom', 'vacuole')}`
-      : `${mapped(bx + 20, 470, 'door shut', 'stomata closed')}${mapped(bx + 20, 498, 'unpacking', 'decarboxylation')}${mapped(bx + 20, 526, 'oven', 'Rubisco, Calvin cycle')}
+      : `${mapped(bx + 20, 470, 'door shut', 'stomata closed')}${mapped(bx + 20, 498, 'unpacking', 'decarboxylation')}${mapped(bx + 20, 526, 'oven', 'RuBisCO, Calvin cycle')}
          ${mapped(bx + 20, 554, 'solar panel', 'light reactions')}${mapped(bx + 20, 582, 'bread', 'sugar')}`;
     return `<rect class="${night ? 'fc10-nightbg' : 'fc10-daybg'}" x="${bx}" y="4" width="392" height="592" rx="18"/>${head}
       <path class="fc10-roof" d="M${bx + 56},${top} L${ax},${ay} L${bx + 354},${top} Z"/>${panel}
@@ -302,7 +302,7 @@ function bakerySvg(): string {
       <rect class="fc10-store" x="${bx + 138}" y="${floor - 128}" width="90" height="128" rx="6"/>${sacks(night ? 6 : 1)}
       ${oven}${door}<path class="fc10-ground" d="M${bx + 14},${floor} H${bx + 378}"/>${flows}${legend}`;
   };
-  return svg(p, 'Analogy: a bakery that takes deliveries at night through an open door and packs them into sacks in a storeroom; by day the door is shut, sacks are unpacked and a solar-powered oven bakes bread. Door = stomata, delivery = CO₂, packing = PEPC, sacks = malic acid, storeroom = vacuole, unpacking = decarboxylation, oven = Rubisco and the Calvin–Benson cycle, solar panel = light reactions, bread = sugar',
+  return svg(p, 'Analogy: a bakery that takes deliveries at night through an open door and packs them into sacks in a storeroom; by day the door is shut, sacks are unpacked and a solar-powered oven bakes bread. Door = stomata, delivery = CO₂, packing = PEPC, sacks = malic acid, storeroom = vacuole, unpacking = decarboxylation, oven = RuBisCO and the Calvin–Benson cycle, solar panel = light reactions, bread = sugar',
     shop(4, true) + shop(404, false));
 }
 
@@ -312,8 +312,8 @@ function stepsSvg(): string {
   const p = 'fc10f';
   const panel = (px: number, py: number, n: number): string => {
     const night = n <= 2, open = n <= 2;
-    const titles = ['Dusk: stomata open', 'Night: PEPC fixes CO₂', 'Dawn: stomata close', 'Day: CO₂ goes to Rubisco'];
-    const caps = ['CO₂ diffuses in', 'malic acid fills the vacuole', 'water stays in the leaf', 'light powers the Calvin cycle'];
+    const titles = ['Dusk: stomata open', 'Night: PEPC fixes CO₂', 'Dawn: stomata close', 'Day: CO₂ goes to RuBisCO'];
+    const caps = ['CO₂ diffuses in', 'malic acid fills the vacuole', 'water stays in the leaf', 'light powers CO₂ fixation'];
     const level = [0.1, 0.78, 0.78, 0.22][n - 1];
     const sx = px + 92, sy = py + 150;
     const leaf = `<rect class="fc10-leaf" x="${px + 92}" y="${py + 62}" width="${280}" height="${176}" rx="20"/>
@@ -335,7 +335,7 @@ function stepsSvg(): string {
       ${bolt(p, px + 124, py + 52, px + 160, py + 178)}`;
     return bg + leaf + act;
   };
-  return svg(p, 'Four steps of CAM: at dusk stomata open and CO₂ enters; at night PEPC fixes it and malic acid fills the vacuole; at dawn stomata close and water stays in; by day the acid releases CO₂ to Rubisco and light powers the Calvin–Benson cycle',
+  return svg(p, 'Four steps of CAM: at dusk stomata open and CO₂ enters; at night PEPC fixes it and malic acid fills the vacuole; at dawn stomata close and water stays in; by day the acid releases CO₂ to RuBisCO and light powers the Calvin–Benson cycle',
     panel(6, 6, 1) + panel(406, 6, 2) + panel(6, 306, 3) + panel(406, 306, 4));
 }
 
@@ -461,7 +461,7 @@ function purslaneSvg(): string {
     ${vacuole(372, 318, 96, 142, 0.7, 16)}${t(420, 352, 'vacuole', 'fc10-t15 fc10-mute')}
     ${ar(p, 'acid', 'M420,314 Q420,250 330,214', 'fc10-dash')}
     ${lines(534, 360, ['next day the', 'stored acid', 'probably joins', 'the C₄ cycle'], 'sm', 'start')}
-    ${t(400, 538, 'Space vs time: a rule of thumb', 'sm fc10-b')}
+    ${t(400, 538, '', 'sm fc10-b')}
     ${t(400, 572, 'Moreno-Villena et al. 2022 · Koch & Kennedy 1980', 'fc10-n')}`);
 }
 
@@ -479,7 +479,7 @@ function equationSvg(): string {
     <rect class="fc10-nightbg" x="24" y="190" width="276" height="290" rx="18"/>
     <rect class="fc10-daybg" x="300" y="190" width="476" height="290" rx="18"/>
     ${moon(272, 216, 12)}${t(252, 224, 'night', 'sm fc10-b', 'end')}${sun(676, 216, 10)}${t(704, 224, 'day', 'sm fc10-b', 'start')}
-    ${ar(p, 'c', 'M66,92 L66,234')}${t(80, 128, 'CO₂ at night', 'sm fc10-brown', 'start')}
+    ${ar(p, 'c', 'M66,92 L66,234')}${t(80, 128, 'CO₂ at night', 'sm', 'start')}
     ${stoma(66, 270, true, 0.8)}${t(98, 278, 'stomata open', 'sm', 'start')}
     ${ar(p, 'c', 'M66,302 L66,370 Q66,400 94,400')}${t(80, 346, 'PEPC', 'sm fc10-teal fc10-b', 'start')}
     ${malate(140, 400)}${ar(p, 'acid', 'M186,400 L244,400')}
@@ -489,5 +489,5 @@ function equationSvg(): string {
     ${ar(p, 'amber', 'M334,80 L404,276')}${t(338, 168, 'light by day', 'sm fc10-amber', 'end')}
     ${ar(p, 'ink', 'M462,276 L490,92')}${t(494, 168, 'sugar', 'sm fc10-brown', 'start')}
     ${stoma(700, 330, false, 0.8)}${t(700, 386, 'stomata', 'sm')}${t(700, 410, 'closed', 'sm')}
-    ${t(400, 534, 'Stored malic acid bridges night and day', 'sm fc10-b')}</g>`);
+    ${t(400, 534, 'Malic acid stored at night releases CO₂ by day', 'sm fc10-b')}</g>`);
 }

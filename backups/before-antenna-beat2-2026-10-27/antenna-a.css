@@ -1,0 +1,10 @@
+/* To the reaction centre, staging A "One continuous zoom": the alga and the granum of the dive. Shared parts:
+   antenna-common.css. Strokes keep their weight at every camera scale. */
+.ani-antenna-a .ana-scene *{vector-effect:non-scaling-stroke}
+.ani-antenna-a .ana-wall{fill:#f1f6e8;stroke:#6f9a5a;stroke-width:3}
+.ani-antenna-a .ana-cup{fill:#cfe3b4;stroke:#6f9a5a;stroke-width:2.4}
+.ani-antenna-a .ana-gr{fill:none;stroke:#3f7a33;stroke-width:2.6;stroke-linecap:round}
+.ani-antenna-a .ana-lam{fill:none;stroke:#7fa866;stroke-width:2;stroke-linecap:round}
+.ani-antenna-a .ana-nuc{fill:#efe9dd;stroke:#b9b4a6;stroke-width:2}
+.ani-antenna-a .ana-disc{fill:#e3eed3;stroke:#6f9a5a;stroke-width:2.4}
+.ani-antenna-a .ana-rim{fill:#cfe0b8;stroke:#6f9a5a;stroke-width:2}

@@ -1,11 +1,13 @@
 // Slide L01 · Photosynthesis. Confirmed context: PHOTO (light reactions, solar energy, the colour of life) and
 // SYNTHESIS (carbon reactions, CO₂ → sugars, the bread that feeds us), 45 min each, linked by ATP + NADPH.
 // The classic equation 6 CO₂ + 6 H₂O → C₆H₁₂O₆ + 6 O₂, with light written over the arrow, is the spine that returns in C13.
-// Colour code for its terms: light amber, water and O₂ blue, carbon brown. Each term also carries its own name or icon.
+// Light is amber; molecules are the deck's glyphs (atom balls, lecturer 28 Oct 2026), their names in ink, gas and water
+// paths neutral grey; the carbon path stays brown. Each term also carries its own name or icon.
 import type { PlateText, Variant } from '../types';
 import './l01.css';
 import { rxn } from '../plates-text';
-import { bolt, illusHeads, tag } from '../illus';
+import { bolt, illusHeads, molecule, tag } from '../illus';
+import { rowG } from './chain';
 import { leaf, sun } from './s2';
 
 export const PLATE: PlateText = {
@@ -14,8 +16,8 @@ export const PLATE: PlateText = {
   title: 'Photosynthesis',
   lead: 'Photosynthesis converts light energy into chemical energy.',
   points: [
-    { claim: 'Light reactions.', text: 'Pigments absorb light<br>Water is split, O₂ is released, ATP and NADPH are made' },
-    { claim: 'Calvin–Benson cycle.', text: 'ATP and NADPH fix CO₂ into sugar<br>The carbon in bread comes from air' },
+    { claim: 'Light reactions.', text: 'Pigments absorb light<br>Water is oxidised, O₂ is released<br>ATP and NADPH are made' },
+    { claim: 'Calvin–Benson–Bassham cycle.', text: 'RuBisCO fixes CO₂<br>ATP and NADPH make it into sugar<br>The carbon in bread comes from air' },
     { claim: 'Overall equation.', text: `6 CO₂ + 6 H₂O ${rxn('light')} C₆H₁₂O₆ + 6 O₂` },
   ],
   refs: [{ label: 'Johnson 2016', url: 'https://doi.org/10.1042/EBC20160016' }],
@@ -79,17 +81,19 @@ function equation(cx: number, y: number, size: number, gap = 0.38): { svg: strin
 
 /* ---------- icons ---------- */
 
-export const drop = (x: number, y: number, s = 1): string =>
-  `<path class="fl01-drop" d="M${x},${f(y - 17 * s)} C${f(x + 7 * s)},${f(y - 7 * s)} ${f(x + 11 * s)},${f(y - 2 * s)} ${f(x + 11 * s)},${f(y + 4 * s)} A${f(11 * s)},${f(11 * s)} 0 0 1 ${f(x - 11 * s)},${f(y + 4 * s)} C${f(x - 11 * s)},${f(y - 2 * s)} ${f(x - 7 * s)},${f(y - 7 * s)} ${x},${f(y - 17 * s)}Z"/>`;
-/** O₂ as two blue atom balls. */
-export const o2 = (x: number, y: number, r = 10): string =>
-  `<circle class="fl01-ow" cx="${f(x - r * 0.78)}" cy="${y}" r="${r}"/><circle class="fl01-ow" cx="${f(x + r * 0.78)}" cy="${y}" r="${r}"/>`;
-/** CO₂ as a brown carbon between two pale oxygens. */
-export const co2 = (x: number, y: number, r = 10): string =>
-  `<circle class="fl01-oc" cx="${f(x - r * 1.5)}" cy="${y}" r="${f(r * 0.85)}"/><circle class="fl01-oc" cx="${f(x + r * 1.5)}" cy="${y}" r="${f(r * 0.85)}"/><circle class="fl01-cb" cx="${x}" cy="${y}" r="${r}"/>`;
-/** Water as a blue oxygen with two small hydrogens. */
+/** Water as the deck's glyph: one O ball with two small H balls below it, centred near (x, y) (it replaced a drop icon). */
+export const h2oG = (x: number, y: number, s = 1): string => h2o(x, y - 2 * s, 11 * s);
+/** The former drop icon's name, kept for lead07.ts (not listed): it draws the water glyph too. */
+export const drop = h2oG;
+/** O₂ as two touching O balls. */
+export const o2 = (x: number, y: number, r = 10): string => molecule(x, y, 'OO', r);
+/** CO₂ as O–C–O balls in a row. */
+export const co2 = (x: number, y: number, r = 10): string => molecule(x, y, 'OCO', r);
+/** Water: an O ball with two small H balls below it. */
 const h2o = (x: number, y: number, r = 10): string =>
-  `<circle class="fl01-hw" cx="${f(x - r * 0.95)}" cy="${f(y + r * 0.7)}" r="${f(r * 0.58)}"/><circle class="fl01-hw" cx="${f(x + r * 0.95)}" cy="${f(y + r * 0.7)}" r="${f(r * 0.58)}"/><circle class="fl01-ow" cx="${x}" cy="${y}" r="${r}"/>`;
+  `<circle class="atom atom-H" cx="${f(x - r * 0.95)}" cy="${f(y + r * 0.75)}" r="${f(r * 0.58)}"/><circle class="atom atom-H" cx="${f(x + r * 0.95)}" cy="${f(y + r * 0.75)}" r="${f(r * 0.58)}"/>${molecule(x, y, 'O', r)}`;
+/** One carbon atom ball. */
+const cAtom = (x: number, y: number, r = 10): string => molecule(x, y, 'C', r);
 /** A six-membered sugar ring. */
 export function ring(x: number, y: number, r = 22): string {
   const pts = Array.from({ length: 6 }, (_, i) => { const a = (Math.PI / 3) * i + Math.PI / 6; return `${f(x + r * Math.cos(a))},${f(y + r * Math.sin(a))}`; });
@@ -98,7 +102,7 @@ export function ring(x: number, y: number, r = 22): string {
 /** Six carbons in a zigzag chain: the carbon skeleton of the sugar. */
 function chain(x: number, y: number, step = 24, r = 10): string {
   const P = Array.from({ length: 6 }, (_, i) => [x + (i - 2.5) * step, y + (i % 2 ? 9 : -9)]);
-  return `<path class="fl01-bond" d="M${P.map(q => `${f(q[0])},${f(q[1])}`).join('L')}"/>${P.map(q => `<circle class="fl01-cb" cx="${f(q[0])}" cy="${f(q[1])}" r="${r}"/>`).join('')}`;
+  return `<path class="fl01-bond" d="M${P.map(q => `${f(q[0])},${f(q[1])}`).join('L')}"/>${P.map(q => cAtom(q[0], q[1], r)).join('')}`;
 }
 export function loaf(x: number, y: number, w: number): string {
   const h = w * 0.52, l = x - w / 2, r = x + w / 2;
@@ -140,16 +144,16 @@ const num = (cx: number, cy: number, n: number): string =>
 export function stepIcon(p: string, n: number, cx: number, cy: number): string {
   switch (n) {
     case 1: return `${sun(cx - 54, cy - 2, 16)}${bolt(p, cx - 28, cy - 2, cx + 4, cy + 4)}${leaf(cx + 50, cy + 6, 80, 34, -14)}`;
-    case 2: return `${drop(cx - 56, cy + 4, 1.3)}${arr(p, 'w', `M${cx - 30},${cy} H${cx + 22}`)}${o2(cx + 52, cy)}`;
+    case 2: return `${h2oG(cx - 56, cy + 4, 1.3)}${arr(p, 'w', `M${cx - 30},${cy} H${cx + 22}`)}${o2(cx + 52, cy)}`;
     case 3: return `${tag(cx - 46, cy, 'ATP', 'atp')}${tag(cx + 46, cy, 'NADPH', 'nadph')}`;
-    case 4: return `${co2(cx - 50, cy, 9)}${arr(p, 'c', `M${cx - 20},${cy} H${cx + 24}`)}<circle class="fl01-cb" cx="${cx + 48}" cy="${cy}" r="10"/>`;
+    case 4: return `${co2(cx - 50, cy, 9)}${arr(p, 'w', `M${cx - 20},${cy} H${cx + 24}`)}${cAtom(cx + 48, cy)}`;
     case 5: return `${ring(cx, cy, 26)}`;
     default: return `${wheat(cx - 50, cy - 34, 80)}${loaf(cx + 44, cy + 32, 94)}`;
   }
 }
 const STEP: Record<number, [string, string, string]> = {
   1: ['Absorb light', 'in pigments', ''],
-  2: ['Split water', 'it gives electrons;', 'O₂ is released'],
+  2: ['Oxidise water', 'it gives electrons;', 'O₂ is released'],
   3: ['Store energy', 'in ATP and NADPH', ''],
   4: ['Fix CO₂', 'carbon from the air', ''],
   5: ['Make sugar', 'with ATP and NADPH', ''],
@@ -174,6 +178,22 @@ const cycle = (p: string, cx: number, cy: number, r = 52): string => [0, 1, 2].m
 }).join('');
 /** H: a row of three batteries, charged or empty. */
 const batteries = (cx: number, y: number, full: boolean, dx = 74): string => [-1, 0, 1].map(i => battery(cx + i * dx, y, full)).join('');
+
+/** The batteries' carriers as tags: charged ATP + NADPH, empty ADP + Pᵢ, NADP⁺. */
+type Row = Parameters<typeof rowG>[2];
+const FULL: Row = [['ATP', 'atp'], ['+', 'op'], ['NADPH', 'nadph']];
+const EMPTY: Row = [['ADP', 'atp'], ['+', 'op'], ['', 'pi'], [',', 'op'], ['NADP⁺', 'nadph']];
+/** chain.ts's row of tags, 1.2 × larger so its letters (18 px) sit with this figure's 22 px labels. */
+const TK = 1.2;
+const tags = (cx: number, y: number, items: Row): string =>
+  `<g transform="translate(${f(cx)} ${f(y)}) scale(${TK}) translate(${f(-cx)} ${f(-y)})">${rowG(cx, y, items)}</g>`;
+/** A word (e.g. "charged:") and a row of tags after it, the pair centred on cx. Widths as in chain.ts rowG. */
+function named(cx: number, y: number, word: string, items: Row): string {
+  const wid = ([s, k]: Row[number]): number => (k === 'op' ? 20 : k === 'h' ? 26 : k === 'pi' ? 28 : s.length * 9.6 + 18);
+  const rw = TK * (items.reduce((a, it) => a + wid(it), 0) + 5 * (items.length - 1)), ww = word.length * 10.6, gap = 10;
+  const x0 = cx - (ww + gap + rw) / 2;
+  return `${T(x0 + ww, y + 7, word, 'fl01-name fl01-dark', 'end')}${tags(x0 + ww + gap + rw / 2, y, items)}`;
+}
 
 /* ---------- a · Equation split: photo terms up, synthesis terms down ---------- */
 
@@ -237,7 +257,7 @@ function drawC(): string {
     ${E.svg}
     ${T(400, 98, 'pulled apart into its two halves', 'fl01-hook', 'middle')}
     ${T(16, y1 - 6, 'PHOTO', 'fl01-band')}${T(16, y1 + 22, 'lecture 1', 'fl01-name')}
-    ${drop(212, y1 - 4)}${T(234, y1 + 9, 'H₂O', 'fl01-term fl01-w', 'start')}
+    ${h2oG(212, y1 - 4)}${T(234, y1 + 9, 'H₂O', 'fl01-term fl01-w', 'start')}
     ${arr(p, 'k', `M${a0},${y1} H${a1}`, 'fl01-main')}
     ${bolt(p, 312, 128, 330, y1 - 8)}${T(350, 156, 'light', 'fl01-term fl01-l')}
     ${o2(624, y1)}${T(652, y1 + 9, 'O₂', 'fl01-term fl01-w')}
@@ -266,11 +286,11 @@ function drawD(): string {
     ${tag(268, 252, 'ATP', 'atp')}${tag(268, 294, 'NADPH', 'nadph')}
     ${arr(p, 'k', 'M318,272 H392')}
     ${ring(430, 270, 20)}
-    ${drop(84, 368)}${drop(108, 392, 0.8)}${arr(p, 'w', 'M110,350 Q126,312 150,294')}
+    ${h2oG(84, 368)}${h2oG(108, 392, 0.8)}${arr(p, 'w', 'M110,350 Q126,312 150,294')}
     ${T(30, 432, 'water', 'fl01-term fl01-w')}
     ${arr(p, 'w', 'M232,340 Q240,380 236,418')}${o2(238, 446)}${T(262, 455, 'O₂', 'fl01-term fl01-w')}
     ${co2(470, 76, 9)}${co2(536, 112, 9)}${co2(444, 132, 9)}
-    ${arr(p, 'c', 'M470,152 Q456,178 446,206')}
+    ${arr(p, 'w', 'M470,152 Q456,178 446,206')}
     ${T(574, 82, 'CO₂ from the air', 'fl01-term fl01-c')}
     ${arr(p, 'c', 'M532,276 Q580,280 600,318')}${T(556, 248, 'sugar', 'fl01-term fl01-c')}
     ${wheat(612, 296, 196)}
@@ -361,9 +381,9 @@ function drawG(): string {
     ${arr(p, 'k', 'M524,350 C470,380 400,380 350,360')}
     ${T(436, 404, 'ADP + Pᵢ, NADP⁺', 'fl01-name fl01-dark', 'middle')}
     ${bolt(p, 50, 62, 122, 270)}${T(72, 50, 'light', 'fl01-term fl01-l', 'start')}
-    ${drop(84, 520)}${T(106, 530, 'H₂O', 'fl01-term fl01-w')}${arr(p, 'w', 'M100,494 Q126,430 150,380')}
+    ${h2oG(84, 520)}${T(106, 530, 'H₂O', 'fl01-term fl01-w')}${arr(p, 'w', 'M100,494 Q126,430 150,380')}
     ${arr(p, 'w', 'M262,392 Q262,450 262,500')}${o2(262, 524)}${T(290, 533, 'O₂', 'fl01-term fl01-w')}
-    ${co2(742, 100, 9)}${T(712, 109, 'CO₂', 'fl01-term fl01-c', 'end')}${arr(p, 'c', 'M738,122 Q716,214 668,266')}
+    ${co2(742, 100, 9)}${T(712, 109, 'CO₂', 'fl01-term fl01-c', 'end')}${arr(p, 'w', 'M738,122 Q716,214 668,266')}
     ${arr(p, 'c', 'M628,372 Q648,440 664,488')}${ring(664, 518, 20)}${T(694, 527, 'sugar', 'fl01-term fl01-c')}
     ${E.svg}
   `);
@@ -376,16 +396,16 @@ function drawH(): string {
   return svg(p, 'An analogy. A solar charger (the light reactions) charges batteries (ATP and NADPH) using light and water and releases O₂. A workshop (the carbon reactions) uses the charged batteries to turn CO₂ into sugar. Empty batteries (ADP, Pi, NADP+) go back to be recharged.', `<g transform="translate(0 26)">
     ${station(20, 170, 224, 210, 1)}${station(556, 170, 224, 210, 2)}
     ${sun(62, 104, 20)}${bolt(p, 74, 128, 92, 184)}${T(62, 50, 'light', 'fl01-term fl01-l', 'middle')}
-    ${drop(150, 108)}${arr(p, 'w', 'M150,128 V178')}${T(150, 74, 'H₂O', 'fl01-term fl01-w', 'middle')}
+    ${h2oG(150, 108)}${arr(p, 'w', 'M150,128 V178')}${T(150, 74, 'H₂O', 'fl01-term fl01-w', 'middle')}
     ${arr(p, 'w', 'M222,176 V124')}${o2(222, 104, 9)}${T(222, 74, 'O₂', 'fl01-term fl01-w', 'middle')}
     ${leaf(132, 286, 150, 66, -16)}
-    ${co2(612, 104, 9)}${arr(p, 'c', 'M612,124 V178')}${T(612, 74, 'CO₂', 'fl01-term fl01-c', 'middle')}
+    ${co2(612, 104, 9)}${arr(p, 'w', 'M612,124 V178')}${T(612, 74, 'CO₂', 'fl01-term fl01-c', 'middle')}
     ${arr(p, 'c', 'M716,176 V130')}${ring(716, 106, 18)}${T(716, 74, 'sugar', 'fl01-term fl01-c', 'middle')}
     ${cycle(p, 668, 276)}
     ${arr(p, 'k', 'M252,232 H548')}${batteries(400, 210, true)}
-    ${T(400, 170, 'charged: ATP + NADPH', 'fl01-name fl01-dark', 'middle')}
+    ${named(400, 170, 'charged:', FULL)}
     ${arr(p, 'k', 'M548,322 H252')}${batteries(400, 344, false)}
-    ${T(400, 398, 'empty: ADP + Pᵢ, NADP⁺', 'fl01-name fl01-dark', 'middle')}
+    ${named(400, 392, 'empty:', EMPTY)}
     ${T(132, 426, 'solar charger', 'fl01-txt fl01-b', 'middle')}${T(132, 458, '= light reactions', 'fl01-txt', 'middle')}
     <text class="fl01-band" x="132" y="500" text-anchor="middle">PHOTO<tspan class="fl01-band-s"> · lecture 1</tspan></text>
     ${T(668, 426, 'workshop', 'fl01-txt fl01-b', 'middle')}${T(668, 458, '= carbon reactions', 'fl01-txt', 'middle')}
@@ -411,7 +431,7 @@ function drawI(): string {
     ${bolt(p, 336, 254, 206, 302)}${T(346, 262, 'light', 'fl01-term fl01-l')}${T(346, 292, 'lifts the electrons', 'fl01-name fl01-dark')}
     ${tag(232, high - 30, 'NADPH', 'nadph')}${tag(320, high - 30, 'ATP', 'atp')}
     <path class="fl01-e" d="M290,${high + 10} C400,${high + 14} 470,${high + 30} 540,${sug - 20}" marker-end="url(#${p}-red)"/>
-    ${co2(560, 86, 9)}${T(588, 94, 'CO₂', 'fl01-term fl01-c')}${arr(p, 'c', `M560,104 Q562,${sug - 50} 576,${sug - 22}`)}
+    ${co2(560, 86, 9)}${T(588, 94, 'CO₂', 'fl01-term fl01-c')}${arr(p, 'w', `M560,104 Q562,${sug - 50} 576,${sug - 22}`)}
     ${ring(620, sug, 22)}${T(652, sug + 9, 'sugar', 'fl01-term fl01-c')}
     ${T(560, sug + 56, 'electrons + CO₂', 'fl01-name fl01-dark', 'middle')}
     ${bracket(60, 400, 540, false)}<text class="fl01-band" x="60" y="574">PHOTO<tspan class="fl01-band-s"> · lifts them</tspan></text>
@@ -461,10 +481,10 @@ function drawK(): string {
     <path class="fl01-cutline" d="M${mid},28 V122"/>
     ${station(L - 104, top, 208, H, 1)}${station(R - 104, top, 208, H, 2)}
     ${T(L - 70, io - 18, 'light', 'fl01-term fl01-l', 'middle')}${sun(L - 70, io + 24, 16)}${bolt(p, L - 58, io + 46, L - 44, top + 12)}
-    ${T(L + 6, io, 'H₂O', 'fl01-term fl01-w', 'middle')}${drop(L + 6, io + 32)}${arr(p, 'w', `M${L + 6},${io + 52} V${top + 8}`)}
+    ${T(L + 6, io, 'H₂O', 'fl01-term fl01-w', 'middle')}${h2oG(L + 6, io + 32)}${arr(p, 'w', `M${L + 6},${io + 52} V${top + 8}`)}
     ${T(L + 70, io, 'O₂', 'fl01-term fl01-w', 'middle')}${arr(p, 'w', `M${L + 70},${top + 6} V${io + 50}`)}${o2(L + 70, io + 30, 9)}
     ${leaf(L, top + 82, 150, 66, -16)}
-    ${T(R - 48, io, 'CO₂', 'fl01-term fl01-c', 'middle')}${co2(R - 48, io + 30, 9)}${arr(p, 'c', `M${R - 48},${io + 50} V${top + 8}`)}
+    ${T(R - 48, io, 'CO₂', 'fl01-term fl01-c', 'middle')}${co2(R - 48, io + 30, 9)}${arr(p, 'w', `M${R - 48},${io + 50} V${top + 8}`)}
     ${T(R + 48, io, 'sugar', 'fl01-term fl01-c', 'middle')}${arr(p, 'c', `M${R + 48},${top + 6} V${io + 54}`)}${ring(R + 48, io + 32, 18)}
     ${cycle(p, R, top + 82)}
     ${T(mid, top + 20, 'charged: ATP + NADPH', 'fl01-name fl01-dark', 'middle')}
@@ -493,12 +513,12 @@ function drawL(): string {
     ${T(400, 486, 'workshop', 'fl01-txt fl01-b')}${T(400, 516, '= carbon reactions', 'fl01-txt')}
     <text class="fl01-band" x="400" y="562">SYNTHESIS<tspan class="fl01-band-s"> · lecture 2</tspan></text>
     ${E.svg}
-    ${drop(x.h2o, 254)}${arr(p, 'w', `M${f(x.h2o)},232 V${b1 - 4}`)}
+    ${h2oG(x.h2o, 254)}${arr(p, 'w', `M${f(x.h2o)},232 V${b1 - 4}`)}
     ${T(x.h2o - 22, 262, 'gives e⁻', 'fl01-name fl01-dark', 'end')}
     ${sun(x.light, 236, 11)}${bolt(p, x.light, 204, x.light, b1 - 10)}
     ${arr(p, 'w', `M${f(x.o2)},${b1 - 2} V234`)}${o2(x.o2, 256, 9)}
     ${T(x.o2 - 24, 262, 'from water', 'fl01-name fl01-dark', 'end')}
-    ${co2(x.co2, 354, 9)}${arr(p, 'c', `M${f(x.co2)},374 V${t2 + 6}`)}
+    ${co2(x.co2, 354, 9)}${arr(p, 'w', `M${f(x.co2)},374 V${t2 + 6}`)}
     ${T(x.co2 + 28, 404, 'gives the carbon', 'fl01-name fl01-dark')}
     ${arr(p, 'c', `M${f(x.sugar)},${t2 + 4} V386`)}${ring(x.sugar, 362, 17)}
     ${arr(p, 'k', `M${x1},94 H${x1 + 14} V508 H${x1 + 5}`)}
@@ -575,24 +595,24 @@ function fullBody(p: string, steps: boolean): string {
     <path class="fl01-cutline" d="M400,30 V146"/><path class="fl01-cutline" d="M400,470 V580"/>
     ${sun(90, 214, 20)}${bolt(p, 104, 240, 140, 292)}
     ${leaf(210, 350, 160, 70, -18)}
-    ${drop(124, 488)}${T(124, 532, 'H₂O', 'fl01-term fl01-w', 'middle')}${arr(p, 'w', 'M126,466 Q128,432 140,404')}
+    ${h2oG(124, 488)}${T(124, 532, 'H₂O', 'fl01-term fl01-w', 'middle')}${arr(p, 'w', 'M126,466 Q128,432 140,404')}
     ${arr(p, 'w', 'M238,392 Q232,420 222,444')}${o2(218, 464, 9)}${T(242, 473, 'O₂', 'fl01-term fl01-w')}
-    ${T(400, 290, 'ATP + NADPH', 'fl01-name fl01-dark', 'middle')}
+    ${tags(400, 282, FULL)}
     ${batteries(400, 318, true, 58)}${arr(p, 'k', 'M302,340 H498')}
     ${arr(p, 'k', 'M498,378 H302')}${batteries(400, 400, false, 58)}
-    ${T(400, 446, 'ADP + Pᵢ, NADP⁺', 'fl01-name fl01-dark', 'middle')}
-    ${co2(540, 214, 9)}${arr(p, 'c', 'M540,232 V272')}
+    ${tags(400, 442, EMPTY)}
+    ${co2(540, 214, 9)}${arr(p, 'w', 'M540,232 V272')}
     ${cycle(p, 540, 322, 42)}
     ${arr(p, 'c', 'M588,322 H626')}${ring(652, 322, 19)}
     ${arr(p, 'c', 'M652,344 V384')}
     ${wheat(622, 396, 104)}${loaf(712, 500, 92)}
     ${steps ? `
-    ${call(140, 214, 1, 'Absorb light')}${call(62, 568, 2, 'Split water')}${call(330, 252, 3, 'Store energy')}
+    ${call(140, 214, 1, 'Absorb light')}${call(62, 568, 2, 'Oxidise water')}${call(330, 252, 3, 'Store energy')}
     ${call(582, 214, 4, 'Fix CO₂')}${call(624, 278, 5, 'Make sugar')}${call(612, 568, 6, 'Grain, bread')}` : `
     ${T(566, 222, 'CO₂', 'fl01-term fl01-c')}${T(652, 288, 'sugar', 'fl01-term fl01-c', 'middle')}`}`;
 }
 
-const O_LABEL = 'The word photosynthesis split in two. Photo, Greek phōs, light: 1 the leaf absorbs light; 2 water is split and O₂ is released; 3 the energy is stored in charged batteries, ATP and NADPH, which cross the cut to synthesis, Greek for putting together: 4 CO₂ is fixed in the turning cycle; 5 sugar is made; the empty batteries, ADP + Pi and NADP+, go back; 6 sugar becomes grain and bread.';
+const O_LABEL = 'The word photosynthesis split in two. Photo, Greek phōs, light: 1 the leaf absorbs light; 2 water is oxidised and O₂ is released; 3 the energy is stored in charged batteries, ATP and NADPH, which cross the cut to synthesis, Greek for putting together: 4 CO₂ is fixed in the turning cycle; 5 sugar is made; the empty batteries, ADP + Pi and NADP+, go back; 6 sugar becomes grain and bread.';
 
 function drawO(): string {
   return svg('fl01o', O_LABEL, fullBody('fl01o', true));

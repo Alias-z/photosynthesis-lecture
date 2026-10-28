@@ -1,0 +1,17 @@
+/* RuBisCO's two reactions as a mirrored pair (figs/rubside.ts): carboxylation left, oxygenation right, RuBP below. */
+.theme-editorial .rbs-tint-c{fill:#eef1e6}
+.theme-editorial .rbs-tint-o{fill:#f7ebe4}
+.theme-editorial .rbs-div{fill:none;stroke:#c9c5ba;stroke-width:1.4;stroke-dasharray:5 6}
+.theme-editorial .fig text.rbs-h{font-size:26px;font-weight:700;fill:#141413}
+.theme-editorial .fig text.rbs-h-o{fill:#9a4426}
+.theme-editorial .fig text.rbs-mn{font-size:18px;font-weight:700;fill:#141413}
+.theme-editorial .fig text.rbs-cnt{font-size:16px;font-weight:600;fill:#3d3d3a}
+.theme-editorial .fig text.rbs-to{font-size:15px;font-weight:600;fill:#6b6a64}
+.theme-editorial .fig text.rbs-to-o{fill:#9a4426}
+.theme-editorial .fig text.rbs-cr{font-size:12px;fill:#8a877d}
+.theme-editorial .fig text.rbs-halo{paint-order:stroke;stroke:#f6f4ec;stroke-width:5px;stroke-linejoin:round}
+.theme-editorial .rbs-site{fill:none;stroke:#e3a21a;stroke-width:4}
+.theme-editorial .rbs-siteh{fill:none;stroke:#fbfaf6;stroke-width:9;opacity:.9}
+.theme-editorial .rbs-ld{fill:none;stroke:#2b2a27;stroke-width:1.8}
+.theme-editorial .rbs-ldh{fill:none;stroke:#fbfaf6;stroke-width:5;opacity:.9}
+.theme-editorial .rbs-bg{fill:#f4f3ea}

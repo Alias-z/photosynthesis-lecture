@@ -1,0 +1,113 @@
+/* Lecture 2 chunk 1 (Calvin–Benson–Bassham cycle, slides C1–C4, prefix cb, 28 Oct 2026): figure styles, scoped under
+   .theme-editorial and prefixed .fcb-. Sizes are SVG units of an 800 × 600 figure shown ≈ 860 px wide, so 19 units ≈ 20 px. */
+
+/* text */
+.theme-editorial .fig text.fcb-h{font-size:25px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fcb-l{font-size:22px;fill:#3d3d3a}
+.theme-editorial .fig text.fcb-s{font-size:20.5px;fill:#4a4945}
+.theme-editorial .fig text.fcb-node{font-size:22px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fcb-big{font-size:30px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fcb-huge{font-size:40px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fcb-phase{font-size:24px;font-weight:700;letter-spacing:.2px}
+.theme-editorial .fig text.fcb-ax{font-size:21px;fill:#3d3d3a}
+.theme-editorial .fig text.fcb-tk{font-size:20.5px;fill:#4a4945}
+.theme-editorial .fig text.fcb-crd{font-size:13.5px;fill:#8a877d}
+.theme-editorial .fig text.fcb-pill{font-size:21px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fcb-band{font-size:20.5px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fcb-band-d{font-size:20.5px;font-weight:600;fill:#fffdf8}
+.theme-editorial .fig text.fcb-cl{font-size:13px;font-weight:700;fill:#3d3d3a}
+.theme-editorial .fig text.fcb-cl-n{font-size:13px;font-weight:700;fill:#5a3a06}
+.theme-editorial .fig tspan.fcb-it{font-style:italic}
+.theme-editorial .fig tspan.fcb-b{font-weight:700}
+.theme-editorial .fig tspan.fcb-sub{font-size:72%}
+
+/* inks */
+.theme-editorial .fig text.fcb-c-green,.theme-editorial .fig tspan.fcb-c-green{fill:#24812f}
+.theme-editorial .fig text.fcb-c-blue,.theme-editorial .fig tspan.fcb-c-blue{fill:#2350e6}
+.theme-editorial .fig text.fcb-c-amber,.theme-editorial .fig tspan.fcb-c-amber{fill:#9a5a0c}
+.theme-editorial .fig text.fcb-c-red,.theme-editorial .fig tspan.fcb-c-red{fill:#b8301b}
+.theme-editorial .fig text.fcb-c-rust,.theme-editorial .fig tspan.fcb-c-rust{fill:#a9532f}
+.theme-editorial .fig text.fcb-c-grey,.theme-editorial .fig tspan.fcb-c-grey{fill:#6b6a64}
+.theme-editorial .fig text.fcb-c-dim,.theme-editorial .fig tspan.fcb-c-dim{fill:#b3b0a6}
+.theme-editorial .fig text.fcb-c-paper{fill:#fffdf8}
+
+/* real figures: multiplied white ground, label pills, leaders, credits, frames */
+.theme-editorial .fcb-mult{mix-blend-mode:multiply}
+.theme-editorial .fcb-pillbg{fill:#fffdf8;opacity:.95}
+.theme-editorial .fcb-pillbg-t{fill:#f3f1ea;stroke:#d8d5cb;stroke-width:1}
+.theme-editorial .fcb-ldh{fill:none;stroke:#fffdf8;stroke-width:4.2;stroke-linecap:round;opacity:.9}
+.theme-editorial .fcb-ldk{fill:none;stroke:#141413;stroke-width:1.6;stroke-linecap:round}
+.theme-editorial .fcb-tipd{fill:#141413;stroke:#fffdf8;stroke-width:1.5}
+.theme-editorial .fcb-frame{fill:none;stroke:#d8d5cb;stroke-width:1.2}
+.theme-editorial .fcb-ring{fill:none;stroke:#b8301b;stroke-width:3;stroke-dasharray:7 5}
+.theme-editorial .fcb-ring-s{fill:none;stroke:#b8301b;stroke-width:3}
+.theme-editorial .fcb-veil{fill:#fbfaf6;opacity:.72}
+.theme-editorial .fcb-hl-green{fill:#2a963a;opacity:.13}
+.theme-editorial .fcb-hl-blue{fill:#2350e6;opacity:.11}
+.theme-editorial .fcb-hl-amber{fill:#c07a12;opacity:.14}
+.theme-editorial .fcb-hl-rust{fill:#a9532f;opacity:.13}
+
+/* graphs */
+.theme-editorial .fcb-axis{fill:none;stroke:#4a4945;stroke-width:1.8}
+.theme-editorial .fcb-tick{fill:none;stroke:#4a4945;stroke-width:1.5}
+.theme-editorial .fcb-grid{fill:none;stroke:#e3e0d6;stroke-width:1}
+.theme-editorial .fcb-band-day{fill:#f7ecc4}
+.theme-editorial .fcb-band-night{fill:#55534d}
+.theme-editorial .fcb-band-early{fill:url(#fcb-hatch)}
+.theme-editorial .fcb-band-ext{fill:#c9c6bc}
+.theme-editorial .fcb-shade-night{fill:#55534d;opacity:.12}
+.theme-editorial .fcb-shade-ext{fill:#55534d;opacity:.06}
+.theme-editorial .fcb-line{fill:none;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fcb-line-ink{stroke:#2b2a27}
+.theme-editorial .fcb-line-green{stroke:#2a963a}
+.theme-editorial .fcb-line-amber{stroke:#c07a12}
+.theme-editorial .fcb-line-blue{stroke:#2350e6}
+.theme-editorial .fcb-line-rust{stroke:#a9532f}
+.theme-editorial .fcb-dot-ink{fill:#2b2a27}
+.theme-editorial .fcb-dot-open{fill:#fffdf8;stroke:#2b2a27;stroke-width:2.2}
+.theme-editorial .fcb-dot-green{fill:#2a963a}
+.theme-editorial .fcb-dot-amber{fill:#fffdf8;stroke:#c07a12;stroke-width:2.6}
+.theme-editorial .fcb-mark{fill:none;stroke:#141413;stroke-width:1.8;stroke-dasharray:6 5}
+
+/* drawn schematics */
+.theme-editorial .fcb-box{fill:#fffdf8;stroke:#3d3d3a;stroke-width:1.7}
+.theme-editorial .fcb-box-t{fill:#f3f1ea;stroke:#a8a59a;stroke-width:1.4}
+.theme-editorial .fcb-box-dim{fill:#fbfaf6;stroke:#d3d0c6;stroke-width:1.4}
+.theme-editorial .fcb-ar{fill:none;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fcb-thin{stroke-width:2.2}
+.theme-editorial .fcb-fat{stroke-width:7}
+.theme-editorial .fcb-dash{stroke-dasharray:8 6}
+.theme-editorial .fcb-k-ink{stroke:#3d3d3a}.theme-editorial .fcb-hd-ink{fill:#3d3d3a}
+.theme-editorial .fcb-k-grey{stroke:#8a877d}.theme-editorial .fcb-hd-grey{fill:#8a877d}
+.theme-editorial .fcb-k-dim{stroke:#d3d0c6}.theme-editorial .fcb-hd-dim{fill:#d3d0c6}
+.theme-editorial .fcb-k-green{stroke:#2a963a}.theme-editorial .fcb-hd-green{fill:#2a963a}
+.theme-editorial .fcb-k-blue{stroke:#2350e6}.theme-editorial .fcb-hd-blue{fill:#2350e6}
+.theme-editorial .fcb-k-amber{stroke:#c07a12}.theme-editorial .fcb-hd-amber{fill:#c07a12}
+.theme-editorial .fcb-k-red{stroke:#c8361e}.theme-editorial .fcb-hd-red{fill:#c8361e}
+.theme-editorial .fcb-k-rust{stroke:#a9532f}.theme-editorial .fcb-hd-rust{fill:#a9532f}
+/* energy and molecule chips */
+.theme-editorial .fcb-atp{fill:#fbe3d3;stroke:#d97757;stroke-width:1.4}
+.theme-editorial .fcb-nadph{fill:#dce9f6;stroke:#4f7cac;stroke-width:1.4}
+.theme-editorial .fcb-chip-dim{fill:#f6f4ee;stroke:#d8d5cb;stroke-width:1.4}
+/* carbon boxes */
+.theme-editorial .fcb-c{fill:#ebe8de;stroke:#3d3d3a;stroke-width:1.5}
+.theme-editorial .fcb-cn{fill:#f0b23a;stroke:#9a5a0c;stroke-width:1.7}
+.theme-editorial .fcb-cx{fill:#e9c4b4;stroke:#a9532f;stroke-width:1.7}
+.theme-editorial .fcb-c-dim{fill:#f4f2ec;stroke:#d3d0c6;stroke-width:1.3}
+/* compartments */
+.theme-editorial .fcb-stroma{fill:#eef3e2;stroke:#8fae6a;stroke-width:2.2}
+.theme-editorial .fcb-cytosol{fill:#f8f4ea;stroke:#c9c6bc;stroke-width:1.6}
+.theme-editorial .fcb-thyl{fill:#a7c98a;stroke:#5f8c3e;stroke-width:1.6}
+.theme-editorial .fcb-lumen{fill:#dfeaf3}
+.theme-editorial .fcb-starch{fill:#f2ead2;stroke:#9a8a5a;stroke-width:1.6}
+.theme-editorial .fcb-sector-green{fill:#2a963a;opacity:.12}
+.theme-editorial .fcb-sector-blue{fill:#2350e6;opacity:.10}
+.theme-editorial .fcb-sector-amber{fill:#c07a12;opacity:.13}
+.theme-editorial .fcb-sector-dim{fill:#d3d0c6;opacity:.18}
+.theme-editorial .fcb-glow{fill:url(#fcb-glow-g)}
+/* the deck's one glyph set (28 Oct 2026, slide 7 variant 7m1): gas arrows grey, tags as illus.ts, carbons as C balls */
+.theme-editorial .fcb-k-gas{stroke:#6b6a64}.theme-editorial .fcb-hd-gas{fill:#6b6a64}
+.theme-editorial .fcb-gdim{opacity:.38}
+.theme-editorial .fcb-halo-n{fill:#f2b705;opacity:.5}
+.theme-editorial .fcb-halo-x{fill:#a9532f;opacity:.35}
+.theme-editorial .fcb-plain{fill:#fffdf8;stroke:#c9c6bb;stroke-width:1.4}

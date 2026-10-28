@@ -123,8 +123,8 @@
 .theme-editorial .fl14-cup{fill:#fdf1ec;stroke:#c8361e;stroke-width:1.6}
 .theme-editorial .fl14-eq-light{fill:#9a6a08}
 .theme-editorial .fig text.fl14-eq{font-size:30px;font-weight:600;fill:#141413}
-.theme-editorial .fig text.fl14-eqc{fill:#8a4a1c}
-.theme-editorial .fig text.fl14-eqw{fill:#3d6a99}
+/* Molecule names in ink (the deck's glyph standard, 28 Oct 2026): carbon and water terms no longer coloured. */
+.theme-editorial .fig text.fl14-eqc,.theme-editorial .fig text.fl14-eqw{fill:#141413}
 .theme-editorial .fig text.fl14-eql{fill:#b07a00}
 .theme-editorial .fl14-eqbox{fill:#fdf1ec;stroke:#c8361e;stroke-width:1.6}
 .theme-editorial .fl14-eqbox-g{fill:#eef4e8;stroke:#6f9a5a;stroke-width:1.6}

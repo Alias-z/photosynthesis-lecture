@@ -1,9 +1,9 @@
 // Animation 4 · "Fates of an excitation", staging A · "Energy ladder". The camera zooms into one chlorophyll and its
 // energy-level diagram (Jablonski style) takes its place. An amber dot, the excited electron, moves between the levels;
-// a small stopwatch shows each step's time scale. Beats: absorb (blue to S₂, red to S₁, fs) · relax (S₂ → S₁ as heat,
-// < 1 ps) · photochemistry (open reaction centre, < 100 ps) · fluorescence (closed centre, ≈ 685 nm after ns) · heat
+// a small stopwatch shows each step's time scale. Beats: absorb (blue to a higher state Sₙ, red to S₁, fs) · relax (Sₙ → S₁ as heat,
+// < 1 ps) · photochemistry (open reaction centre, trapping ≈ 0.3 ns in leaves) · fluorescence (closed centre, ≈ 685 nm after ns) · heat
 // through a quencher (NPQ) · triplet (spin flip to T₁, µs; singlet oxygen; a carotenoid quenches it).
-// Levels to scale from E = 1239.84 eV·nm / λ: S₁ 1.87 eV (662 nm), S₂ 2.88 eV (430 nm); T₁ ≈ 1.3 eV.
+// Levels to scale from E = 1239.84 eV·nm / λ: S₁ 1.87 eV (662 nm), Sₙ 2.88 eV (430 nm); T₁ ≈ 1.3 eV.
 import './fates-a.css';
 import type { Staging } from './types';
 import { wave } from '../mechanisms';
@@ -28,7 +28,7 @@ const Y0 = 610, K = 170;
 const eV = (nm: number): number => 1239.84 / nm;
 const Y1 = Y0 - eV(662) * K, Y2 = Y0 - eV(430) * K, YT = Y0 - 1.3 * K;
 const LX = 200;
-/** Columns: blue and red absorption, S₂ → S₁ heat, then the exits from S₁. */
+/** Columns: blue and red absorption, Sₙ → S₁ heat, then the exits from S₁. */
 const XB = 262, XH = 334, XR = 406, XF = 540, XN = 740, XT = 880;
 /** The reaction centre, the acceptor, the triplet level, O₂ and the carotenoid. */
 const RC = { x: 990, y: Y1 - 50, w: 180, h: 100 }, RCC: Pt = [RC.x + 36, Y1];
@@ -106,7 +106,7 @@ function chlorophyll(): string {
 
 const CK: Pt = [1450, 112], CR = 34;
 const CLOCK_T = [
-  { s: 'fs', sc: 'fs' }, { s: '< 1 ps', sc: 'ps' }, { s: '< 100 ps', sc: 'ps' }, { s: 'ns', sc: 'ns' }, { s: '', sc: 'ns' }, { s: 'µs', sc: 'us' },
+  { s: 'fs', sc: 'fs' }, { s: '< 1 ps', sc: 'ps' }, { s: '~300 ps', sc: 'ps' }, { s: 'ns', sc: 'ns' }, { s: '', sc: 'ns' }, { s: 'µs', sc: 'us' },
 ] as const;
 
 /* ---------- the camera on the ladder: stage = (world − c) · s + SC ---------- */
@@ -131,7 +131,7 @@ function svg(): string {
   <g class="fa-ladv" opacity="0"><g class="fa-cam">
     <path class="fa-axis" d="M120,664 L120,78" marker-end="url(#${P}-grey)"/>
     <text class="fa-ax" transform="translate(98 372) rotate(-90)" text-anchor="middle">energy</text>
-    ${lvl(LX, 560, Y2)}${sub(LX, 300, Y2)}${T(186, Y2 + 9, 'S₂', 'fa-lv', 'end')}
+    ${lvl(LX, 560, Y2)}${sub(LX, 300, Y2)}${T(186, Y2 + 9, 'Sₙ', 'fa-lv', 'end')}
     ${lvl(LX, RC.x + 6, Y1)}${sub(LX, 300, Y1)}${T(186, Y1 + 9, 'S₁', 'fa-lv', 'end')}
     ${lvl(LX, 900, Y0)}${sub(LX, 300, Y0)}${T(186, Y0 + 9, 'S₀', 'fa-lv', 'end')}
     <path class="fa-br" d="M572,${f(Y2)} H584 V${f(Y1 - 14)}"/>${T(598, (Y2 + Y1) / 2 - 2, 'excited', 'fa-l')}${T(598, (Y2 + Y1) / 2 + 24, 'states', 'fa-l')}
@@ -141,7 +141,7 @@ function svg(): string {
       ${ar('blue', `M${XB},${Y0 - 3} L${XB},${f(Y2 + 6)}`, 'fa-up fa-upb')}${ar('red', `M${XR},${Y0 - 3} L${XR},${f(Y1 + 6)}`, 'fa-up fa-upr')}
       <g class="fa-pk fa-pkb"><path class="fa-wave" style="stroke:${COL.blue}" transform="rotate(90)" d="${packet(NM.blue, 92, 15)}"/></g>
       <g class="fa-pk fa-pkr"><path class="fa-wave" style="stroke:${COL.red}" transform="rotate(90)" d="${packet(NM.red, 92, 15)}"/></g>
-      <g class="fa-plab">${T(XB - 30, Y0 + 62, 'blue', 'fa-h fa-c-blue', 'end')}${T(XR + 30, Y0 + 62, 'red', 'fa-h fa-c-red')}</g>
+      <g class="fa-plab fa-plab-b">${T(XB - 30, Y0 + 62, 'blue', 'fa-h fa-c-blue', 'end')}</g><g class="fa-plab fa-plab-r">${T(XR + 30, Y0 + 62, 'red', 'fa-h fa-c-red')}</g>
     </g>
     <g class="fa-g2" opacity="0">${wv('grey', XH, Y2 + 8, XH, Y1 - 8, 5, 'fa-hw')}${T(XH + 22, Y2 + 62, 'heat', 'fa-h')}</g>
 
@@ -176,9 +176,9 @@ function svg(): string {
       ${ar('clay', `M${XT},${f(Y1 + 6)} L${T1X0 + 14},${f(YT - 8)}`, 'fa-sf')}${T(XT + 14, Y1 + 62, 'spin flip', 'fa-l fa-c-clay', 'end')}
       ${lvl(T1X0, T1X1, YT, 'fa-lvl fa-lvl-t')}${T(T1X1 + 14, YT + 9, 'T₁', 'fa-lv')}${T((T1X0 + T1X1) / 2, YT + 36, 'triplet state', 'fa-l', 'middle')}
       ${ar('clay', `M${T1X1 + 12},${f(YT + 22)} L${O2[0] - 30},${f(O2[1] - 40)}`, 'fa-to2')}
-      <g class="fa-o2box" opacity="0"><rect class="fa-ros" x="${O2[0] - 54}" y="${f(O2[1] - 36)}" width="108" height="88" rx="14"/>${T(O2[0], O2[1] + 40, '¹O₂', 'fa-h fa-c-clay', 'middle')}</g>
+      <g class="fa-o2box" opacity="0"><rect class="fa-ros" x="${O2[0] - 54}" y="${f(O2[1] - 36)}" width="108" height="88" rx="14"/>${T(O2[0], O2[1] + 40, '¹O₂', 'fa-h', 'middle')}</g>
       ${o2(O2[0], O2[1])}${T(O2[0] - 66, O2[1] + 8, 'O₂', 'fa-h', 'end')}
-      <g class="fa-sox" opacity="0">${T(O2[0] + 68, O2[1] + 2, 'singlet', 'fa-l fa-c-clay')}${T(O2[0] + 68, O2[1] + 28, 'oxygen', 'fa-l fa-c-clay')}</g>
+      <g class="fa-sox" opacity="0">${T(O2[0] + 68, O2[1] + 2, 'singlet', 'fa-l')}${T(O2[0] + 68, O2[1] + 28, 'oxygen', 'fa-l')}</g>
       ${ar('orange', `M${O2[0]},${f(O2[1] + 56)} L${O2[0]},${f(CAR[1] - 18)}`, 'fa-toc')}
       ${carotenoid(CAR[0], CAR[1], 104)}${T(CAR[0], CAR[1] + 42, 'carotenoid', 'fa-h fa-c-orange', 'middle')}
       ${[0, 1].map(i => `<path class="fa-ar fa-k-grey fa-ch" pathLength="1" d="${wave(CAR[0] + 66, CAR[1] - 10 + i * 20, CAR[0] + 146, CAR[1] - 30 + i * 40, 5, 3)}" marker-end="url(#${P}-grey)"/>`).join('')}
@@ -212,7 +212,7 @@ function bind(stage: SVGSVGElement): (beat: number, t: number) => void {
 
   const molg = q('.fa-molg'), ladv = q('.fa-ladv'), cam = q('.fa-cam');
   const g = [q('.fa-g1'), q('.fa-g2'), q('.fa-g3'), q('.fa-g4'), q('.fa-g5'), q('.fa-g6')];
-  const upb = q('.fa-upb'), upr = q('.fa-upr'), pkb = q('.fa-pkb'), pkr = q('.fa-pkr'), plab = q('.fa-plab'), hw = q('.fa-hw');
+  const upb = q('.fa-upb'), upr = q('.fa-upr'), pkb = q('.fa-pkb'), pkr = q('.fa-pkr'), plabB = q('.fa-plab-b'), plabR = q('.fa-plab-r'), hw = q('.fa-hw');
   const open = q('.fa-open'), closed = q('.fa-closed'), pm = q('.fa-pm'), rcbox = q('.fa-rcbox'), pc = q('.fa-pc'), pe = q('.fa-pe'), em = q('.fa-em');
   const fw = q('.fa-fw'), pkf = q('.fa-pkf'), flab = q('.fa-flab');
   const nw = q('.fa-nw'), qglow = q('.fa-qglow'), qh = qa('.fa-qh');
@@ -253,88 +253,90 @@ function bind(stage: SVGSVGElement): (beat: number, t: number) => void {
     // Earlier steps stay as faint context once the next one starts; each new step appears once the camera has settled.
     const dim = (bb: number): number => (b < bb ? 0 : b === bb ? 1 : b === bb + 1 ? lerp(1, 0.32, fade(t, 0)) : 0.32);
     op(g[0], b === 0 ? 1 : dim(0));
-    [1, 2, 3, 4, 5].forEach(i => op(g[i], b < i ? 0 : b === i ? fade(t, 1.0) : dim(i)));
+    [1, 2, 3, 4, 5].forEach(i => op(g[i], b < i ? 0 : b === i ? fade(t, 1.2) : dim(i)));
     if (b >= 3) op(g[2], b === 3 ? 0.55 + 0.45 * (1 - fade(t, 0)) : 0.55);
 
-    // Absorb: a blue photon lifts one electron to S₂, a red one lifts another to S₁, each in femtoseconds.
-    const pb = b === 0 ? ramp(t, 1.9, 2.5) : 1, pr = b === 0 ? ramp(t, 2.7, 3.3) : 1;
-    set(pkb, 'transform', `translate(${XB} ${f(lerp(790, Y0 + 52, pb))})`); op(pkb, b === 0 ? ramp(t, 1.9, 2.1) * (1 - ramp(t, 2.45, 2.6)) : 0);
-    set(pkr, 'transform', `translate(${XR} ${f(lerp(790, Y0 + 52, pr))})`); op(pkr, b === 0 ? ramp(t, 2.7, 2.9) * (1 - ramp(t, 3.25, 3.4)) : 0);
-    op(plab, b === 0 ? fade(t, 1.9) : 1);
-    const ub = at(0, ramp(t, 2.45, 2.75)), ur = at(0, ramp(t, 3.25, 3.55));
+    // Absorb: a blue photon lifts one electron to Sₙ, a red one lifts another to S₁, each in femtoseconds.
+    const pb = b === 0 ? ramp(t, 2.4, 3.0) : 1, pr = b === 0 ? ramp(t, 3.25, 3.85) : 1;
+    set(pkb, 'transform', `translate(${XB} ${f(lerp(790, Y0 + 52, pb))})`); op(pkb, b === 0 ? ramp(t, 2.4, 2.6) * (1 - ramp(t, 2.95, 3.1)) : 0);
+    set(pkr, 'transform', `translate(${XR} ${f(lerp(790, Y0 + 52, pr))})`); op(pkr, b === 0 ? ramp(t, 3.25, 3.45) * (1 - ramp(t, 3.8, 3.95)) : 0);
+    op(plabB, b === 0 ? fade(t, 2.4) : 1); op(plabR, b === 0 ? fade(t, 3.25) : 1);
+    const ub = at(0, ramp(t, 2.95, 3.25)), ur = at(0, ramp(t, 3.8, 4.1));
     reveal(upb, ub); reveal(upr, ur);
 
     // The electrons: a ground-state dot that the photon lifts and lights up.
-    let pa: Pt = [XB, lerp(Y0, Y2, ub)], oa = b === 0 ? fade(t, 1.6) : 1;
+    let pa: Pt = [XB, lerp(Y0, Y2, ub)], oa = b === 0 ? fade(t, 1.8) : 1;
     const ea = ub;
-    let ob = b === 0 ? fade(t, 1.6) : 1, eb = ur, posB: Pt = [XR, lerp(Y0, Y1, ur)];
-    // Relax: the blue one drops from S₂ to S₁ as heat, within a picosecond.
+    let ob = b === 0 ? fade(t, 1.8) : 1, eb = ur, posB: Pt = [XR, lerp(Y0, Y1, ur)];
+    // Relax: the blue one drops from Sₙ to S₁ as heat, within a picosecond.
     if (b >= 1) {
-      const k1 = at(1, ramp(t, 1.2, 1.5)), k2 = at(1, ramp(t, 1.5, 2.6));
+      const k1 = at(1, ramp(t, 1.4, 1.7)), k2 = at(1, ramp(t, 1.7, 2.8));
       pa = k2 > 0 ? onWave(XH, Y2 + 8, Y1, 5, k2) : [lerp(XB, XH, k1), Y2];
       if (k2 >= 1) pa = [XH, Y1];
     }
-    reveal(hw, at(1, ramp(t, 1.5, 2.6)));
+    reveal(hw, at(1, ramp(t, 1.7, 2.8)));
     if (b >= 2) oa = b === 2 ? 1 - fade(t, 0) : 0;
     // Photochemistry: the reaction centre is open; the excitation reaches it and an electron leaves to the acceptor.
-    const toRC = at(2, ramp(t, 1.4, 2.4));
+    const toRC = at(2, ramp(t, 1.5, 2.5));
     reveal(pc, toRC);
-    if (b === 2) { posB = [lerp(XR, RCC[0], toRC), Y1]; ob = 1 - ramp(t, 2.4, 2.7); }
-    op(pm, at(2, ramp(t, 2.4, 2.7)));
-    const ke = at(2, ramp(t, 2.8, 3.6));
+    if (b === 2) { posB = [lerp(XR, RCC[0], toRC), Y1]; ob = 1 - ramp(t, 2.5, 2.8); }
+    op(pm, at(2, ramp(t, 2.5, 2.8)));
+    const ke = at(2, ramp(t, 2.9, 3.7));
     reveal(pe, ke);
     set(em, 'transform', `translate(${f(lerp(RCC[0] + 30, ACC[0], ke))} ${f(Y1)})`);
-    op(em, at(2, ramp(t, 2.7, 2.9)));
+    op(em, at(2, ramp(t, 2.8, 3.0)));
     // Fluorescence: the centre is closed (its acceptor is still full); the excitation waits nanoseconds, then
     // leaves as a slightly redder photon.
-    op(open, 1 - at(3, fade(t, 1.0)));
-    op(closed, at(3, fade(t, 1.0)));
-    set(rcbox, 'class', b > 3 || (b === 3 && t > 1.15) ? 'fa-rcbox fa-rc-off' : 'fa-rcbox');
+    op(open, 1 - at(3, fade(t, 1.2)));
+    op(closed, at(3, fade(t, 1.2)));
+    set(rcbox, 'class', b > 3 || (b === 3 && t > 1.35) ? 'fa-rcbox fa-rc-off' : 'fa-rcbox');
     if (b === 3) {
-      const go = ramp(t, 1.4, 1.9), back = ramp(t, 1.95, 2.5), fall = ramp(t, 3.0, 3.7);
+      const go = ramp(t, 1.8, 2.3), back = ramp(t, 2.35, 2.9), fall = ramp(t, 3.4, 4.1);
       posB = fall > 0 ? onWave(XF, Y1 + 8, Y0 - 4, 8, fall) : [back > 0 ? lerp(RC.x - 40, XF, back) : lerp(XR, RC.x - 40, go), Y1];
-      ob = fade(t, 1.1) * (1 - ramp(t, 3.6, 3.8)); eb = 1;
+      ob = fade(t, 1.5) * (1 - ramp(t, 4.0, 4.2)); eb = 1;
     }
-    reveal(fw, at(3, ramp(t, 3.0, 3.7)));
-    const kf = at(3, ramp(t, 3.5, 4.6));
+    reveal(fw, at(3, ramp(t, 3.4, 4.1)));
+    const kf = at(3, ramp(t, 3.9, 5.0));
     set(pkf, 'transform', `translate(${f(lerp(XF + 40, XF + 330, kf))} ${f(Y0 - 60)})`);
-    op(pkf, b === 3 ? ramp(t, 3.5, 3.7) * (1 - ramp(t, 4.3, 4.6)) : 0);
-    op(flab, at(3, fade(t, 3.1)));
+    op(pkf, b === 3 ? ramp(t, 3.9, 4.1) * (1 - ramp(t, 4.7, 5.0)) : 0);
+    op(flab, at(3, fade(t, 3.5)));
     // Heat (NPQ): in excess light a quencher takes the excitation and turns it into heat.
     if (b === 4) {
-      const go = ramp(t, 1.4, 2.1), fall = ramp(t, 2.2, 3.1);
+      const go = ramp(t, 1.8, 2.5), fall = ramp(t, 2.6, 3.5);
       posB = fall > 0 ? onWave(XN, Y1 + 8, Y0 - 4, 8, fall) : [lerp(XR, XN, go), Y1];
-      ob = fade(t, 1.1) * (1 - ramp(t, 3.0, 3.2)); eb = 1;
+      ob = fade(t, 1.5) * (1 - ramp(t, 3.4, 3.6)); eb = 1;
     }
-    reveal(nw, at(4, ramp(t, 2.2, 3.1)));
-    op(qglow, b === 4 ? ramp(t, 2.4, 2.8) * (1 - ramp(t, 3.7, 4.1)) : 0);
-    qh.forEach((e, i) => reveal(e, at(4, ramp(t, 2.9 + 0.12 * i, 3.6 + 0.12 * i))));
+    reveal(nw, at(4, ramp(t, 2.6, 3.5)));
+    op(qglow, b === 4 ? ramp(t, 2.8, 3.2) * (1 - ramp(t, 4.1, 4.5)) : 0);
+    qh.forEach((e, i) => reveal(e, at(4, ramp(t, 3.3 + 0.12 * i, 4.0 + 0.12 * i))));
     // Triplet: the spin flips (T₁, lives µs); it passes its energy to O₂, giving singlet oxygen; a carotenoid quenches it.
     if (b === 5) {
-      const go = ramp(t, 1.4, 2.0), drop = ramp(t, 2.3, 2.8), along = ramp(t, 2.8, 3.4);
+      const go = ramp(t, 1.8, 2.4), drop = ramp(t, 2.7, 3.2), along = ramp(t, 3.2, 3.8);
       posB = drop > 0 ? (along > 0 ? [lerp(T1X0 + 18, T1X1 - 14, along), YT] : lerpP([XT, Y1], [T1X0 + 14, YT], drop)) : [lerp(XR, XT, go), Y1];
-      ob = fade(t, 1.1) * (1 - ramp(t, 3.6, 3.8)); eb = 1;
+      ob = fade(t, 1.5) * (1 - ramp(t, 4.1, 4.3)); eb = 1;
     }
-    op(spin, b === 5 ? fade(t, 1.1) : 0);
-    set(spin, 'transform', `rotate(${b === 5 ? f(180 * ramp(t, 2.0, 2.3)) : 0})`);
-    reveal(sf, at(5, ramp(t, 2.3, 2.8)));
-    reveal(to2, at(5, ramp(t, 3.3, 3.7)));
-    op(o2box, b === 5 ? ramp(t, 3.6, 3.9) * (1 - ramp(t, 4.5, 4.8)) : 0);
-    op(sox, b === 5 ? ramp(t, 3.6, 3.9) : 0);
-    reveal(toc, at(5, ramp(t, 4.1, 4.5)));
-    ch.forEach((e, i) => reveal(e, at(5, ramp(t, 4.5 + 0.12 * i, 5.0 + 0.12 * i))));
+    op(spin, b === 5 ? fade(t, 1.5) : 0);
+    set(spin, 'transform', `rotate(${b === 5 ? f(180 * ramp(t, 2.4, 2.7)) : 0})`);
+    reveal(sf, at(5, ramp(t, 2.7, 3.2)));
+    reveal(to2, at(5, ramp(t, 3.8, 4.2)));
+    op(o2box, b === 5 ? ramp(t, 4.1, 4.4) * (1 - ramp(t, 5.0, 5.3)) : 0);
+    op(sox, b === 5 ? ramp(t, 4.1, 4.4) : 0);
+    reveal(toc, at(5, ramp(t, 4.6, 5.0)));
+    ch.forEach((e, i) => reveal(e, at(5, ramp(t, 5.0 + 0.12 * i, 5.5 + 0.12 * i))));
 
     dot(0, pa, oa, ea);
     dot(1, posB, ob, eb);
 
     // The stopwatch: its hand sweeps once while the step happens; the pill says the time scale.
-    const sweep = [[1.9, 3.5], [1.5, 2.6], [1.4, 3.6], [1.4, 3.7], [0, 0], [2.3, 3.4]][b];
+    const sweep = [[2.4, 4.0], [1.7, 2.8], [1.5, 3.7], [1.8, 4.1], [0, 0], [2.7, 3.8]][b];
     const kh = sweep[1] > sweep[0] ? ramp(t, sweep[0], sweep[1]) : 0;
     set(hand, 'transform', `rotate(${f(360 * kh)} ${CK[0]} ${CK[1]})`);
-    op(clock, b === 0 ? fade(t, 1.7) : b === 4 ? 1 - fade(t, 0) : b === 5 ? fade(t, 0.2) : 1);
-    cts.forEach((e, i) => op(e, i === b ? (b === 0 ? fade(t, 1.7) : fade(t, 0.15)) : i === b - 1 ? 1 - fade(t, 0) : 0));
+    op(clock, b === 0 ? fade(t, 2.1) : b === 4 ? 1 - fade(t, 0) : b === 5 ? fade(t, 0.2) : 1);
+    cts.forEach((e, i) => op(e, i === b ? (b === 0 ? fade(t, 2.1) : fade(t, 0.15)) : i === b - 1 ? 1 - fade(t, 0) : 0));
   };
 }
+
+// One click per scene, as in the sky and life animations (lecturer, 27 Oct 2026): no holds inside a beat.
 
 export const STAGING: Staging = {
   id: 'a',

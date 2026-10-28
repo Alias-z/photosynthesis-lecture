@@ -1,15 +1,21 @@
 // Style pilot: Figure-first pages on Bristol paper. Each slide switches between its lecture version (its lead
 // page if it has one, otherwise the figure with the three claims) and its handout version (the study page the
 // PDF keeps). The slide 6 animation runs in two looks. Double-clicking a page picks or unpicks the variant shown.
+// In the picking view a page with reference boards (refs.ts) has a References button that opens them over the page,
+// and a page with hook questions (hooks.ts) has a ? button in its left margin that opens its question set.
 import './pilot.css';
 import { grain } from '../lib/canvas';
 import { ANIMATIONS } from './anim';
 import { mountAnimation } from './anim/player';
 import type { Staging } from './anim/types';
 import { mountExcitation } from './excitation';
+import { hookSet, hooksFor } from './hooks';
+import { hooksView } from './hooksView';
 import { installPapers } from './papers';
 import { pickStore } from './picks';
-import { LEADS, PLATES, fitTitles, leadHtml, lectureHtml, plateHtml } from './plates';
+import { LEADS, PLATES, fitPage, leadHtml, lectureHtml, plateHtml } from './plates';
+import { boardsFor, refBoard } from './refs';
+import { refsView } from './refsView';
 
 type Mode = 'lecture' | 'handout';
 type Kind = 'lead' | 'lecture' | 'handout';
@@ -18,12 +24,8 @@ const MODES = [
   { id: 'lecture', name: 'Lecture' },
   { id: 'handout', name: 'Handout' },
 ] as const;
-const LOOKS = [
-  { id: 'plate', name: 'Plate look', note: 'Same paper-and-ink language as the original plates.' },
-  { id: 'story', name: 'Story look', note: 'Dark stage and hand lettering, like the existing sky animation.' },
-] as const;
 
-/** Picking shows each play button's variant and the player's variant switch; lecture mode hides both, as in class. */
+/** Picking shows the player's title and variant switch (double-click the player to pick); lecture mode hides both, as in class. */
 const VIEWS = [
   { id: 'picking', name: 'Picking' },
   { id: 'lecture', name: 'Lecture mode' },
@@ -37,18 +39,35 @@ const seg = (group: string, items: ReadonlyArray<{ id: string; name: string }>, 
  *  are the same page, so it shows one page with its play button and no switch (lecturer, 26 Oct 2026). */
 const twoVersions = (p: (typeof PLATES)[number]): boolean => !!LEADS[p.n] && !p.leadOnly;
 /** A lead page keeps its own picks and note under lead-<n>; the lecture and handout versions share the slide's figure. */
-const pickKey = (i: number, kind: Kind): string => (kind === 'lead' ? `lead-${PLATES[i].n}` : PLATES[i].n);
-const frame = (i: number, kind: Kind): string => `<div class="frame" data-s="${i}" data-kind="${kind}"><div class="plate"></div></div>`;
+const pickKey = (i: number, kind: Kind): string => (kind === 'lead' ? `lead-${PLATES[i].n}` : PLATES[i].pick ?? PLATES[i].n);
+/** Reference boards and hook questions name pages by the number shown, which a moved slide's pick key is not. */
+const pageKey = (i: number, kind: Kind): string => (kind === 'lead' ? `lead-${PLATES[i].n}` : PLATES[i].n);
+/** The References button of a page with boards; it sits on the frame, outside the page, and shows only while picking. */
+const refsButton = (key: string): string => {
+  const boards = boardsFor(key);
+  return boards.length ? `<button type="button" class="ref-open" data-refs="${key}" title="${boards.map(b => b.title).join(' · ').replace(/&/g, '&amp;').replace(/"/g, '&quot;')}">References</button>` : '';
+};
+/** The ? button of a page that a chunk's hook questions are for; it sits on the frame in the page's left margin and
+ *  shows only while picking. */
+const hooksButton = (key: string): string => {
+  const sets = hooksFor(key);
+  return sets.length ? `<button type="button" class="hook-open" data-hooks="${key}" aria-label="Questions" title="${sets.map(h => h.title).join(' · ').replace(/&/g, '&amp;').replace(/"/g, '&quot;')}">?</button>` : '';
+};
+const frame = (i: number, kind: Kind): string =>
+  `<div class="frame" data-s="${i}" data-kind="${kind}"><div class="plate"></div>${refsButton(pageKey(i, kind))}${hooksButton(pageKey(i, kind))}</div>`;
 const noteBox = (key: string, label: string): string =>
   `<textarea class="pick-note" rows="2" data-n="${key}" placeholder="Note for ${label}: what to keep, combine or change"></textarea>`;
 
 const app = document.getElementById('pilot') as HTMLElement;
+// Animations play only from a slide's ▶ button (lecturer, 27 Oct 2026). The page keeps one animation block only for the
+// screenshot view ?anim=<key>&v=<id>&beat=<n>&t=<s>.
+const animQuery = new URLSearchParams(location.search).get('anim');
 app.innerHTML = `
   <header class="top">
     <h1>Style pilot</h1>
     <p>A slide with a lead page has a lecture version (the lead page, shown live) and a handout version (the study page, which the PDF keeps). Every other slide is one page, the same live and in the PDF; its play button shows only live.</p>
     <p>Double-click a page to pick the variant shown; double-click again to unpick. Picked variants get a ✓ on their button. Picks and notes save automatically.</p>
-    <div class="bar-r"><span>View</span>${seg('view', VIEWS, 'picking')}</div>
+    <div class="bar-r"><span>View</span>${seg('view', VIEWS, 'picking')}<button type="button" class="ref-index" data-refs-index>References</button><button type="button" class="ref-index hook-index" data-hooks-index>Questions</button></div>
   </header>
   <span class="pick-status" aria-live="polite"></span>
   <section class="block">
@@ -62,21 +81,13 @@ app.innerHTML = `
           ${p.variants.length > 1 && !p.leadOnly ? `<div class="var-row" data-for="${lead ? 'handout' : 'both'}"><span>${lead ? 'Handout' : 'Figure'}</span>${seg(`variant-${i}`, p.variants)}</div>` : ''}
         </div>
         ${lead ? `<div class="lead-part">${frame(i, 'lead')}${noteBox(`lead-${p.n}`, `slide ${p.n} lecture page`)}</div>` : ''}
-        ${p.leadOnly ? '' : `${frame(i, 'handout')}${noteBox(p.n, `slide ${p.n}`)}`}
+        ${p.leadOnly ? '' : `${frame(i, 'handout')}${noteBox(p.pick ?? p.n, `slide ${p.n}`)}`}
       </section>`;
     }).join('')}</div>
   </section>
-  ${ANIMATIONS.map((a, i) => `<section class="block anim-block">
-    <div class="bar"><h2>Animation · ${a.title}</h2>${seg(`anim-${i}`, a.stagings)}</div>
-    <p class="note" data-note="anim-${i}"></p>
-    <div class="frame anim-frame" data-a="${i}"><div></div></div>
-    ${noteBox(`anim-${a.key}`, `the ${a.title} animation`)}
-  </section>`).join('')}
-  <section class="block" id="animation">
-    <div class="bar"><h2>Animation · Follow an excitation</h2>${seg('look', LOOKS)}</div>
-    <p class="note" data-note="look"></p>
-    <div class="frame"><div class="stage"></div></div>
-  </section>`;
+  ${ANIMATIONS.filter(a => a.key === animQuery).map(a => `<section class="block anim-block">
+    <div class="frame anim-frame" data-a="${ANIMATIONS.indexOf(a)}"><div></div></div>
+  </section>`).join('')}`;
 
 // Paper grain for the animation's Plate look, matching the lecture's canvas texture.
 const g = document.createElement('canvas');
@@ -86,7 +97,6 @@ if (gc) { gc.fillStyle = grain(gc); gc.fillRect(0, 0, 160, 160); }
 document.documentElement.style.setProperty('--grain', `url(${g.toDataURL()})`);
 installPapers(document.documentElement);
 
-const note = (k: string): HTMLElement => app.querySelector(`[data-note="${k}"]`) as HTMLElement;
 const state = {
   variants: PLATES.map(p => p.variants[0].id),
   leads: PLATES.map(p => LEADS[p.n]?.VARIANTS[0].id ?? ''),
@@ -99,7 +109,9 @@ const shown = (i: number, kind: Kind): string => (kind === 'lead' ? state.leads[
 // (a slide with a lead page has no separate lecture page).
 const query = new URLSearchParams(location.search);
 const [, soloPrefix, soloN] = /^(?:(lead|lecture)-)?(.+)$/.exec(query.get('solo') ?? '') ?? [];
-const solo = soloN === undefined ? -1 : PLATES.findIndex((p, i) => p.n === soloN || `${i}` === soloN);
+/** The slide whose number is <page>, else the plate at index <page> (slide numbers like 4a shift the indices). */
+const soloByN = soloN === undefined ? -1 : PLATES.findIndex(p => p.n === soloN);
+const solo = soloN === undefined ? -1 : soloByN >= 0 ? soloByN : PLATES.findIndex((_, i) => `${i}` === soloN);
 if (solo >= 0) {
   const kind = (soloPrefix === 'lead' || (soloPrefix === 'lecture' && LEADS[PLATES[solo].n]) ? soloPrefix : 'handout') as Kind;
   document.body.classList.add('solo');
@@ -122,10 +134,10 @@ if (soloAnim >= 0) {
 function showAnim(i: number): void {
   const a = ANIMATIONS[i], s = a.stagings.find(x => x.id === stagings[i]) ?? a.stagings[0];
   stopAnim[i]();
-  const host = app.querySelector(`.anim-frame[data-a="${i}"]`)?.firstElementChild as HTMLElement;
+  const host = app.querySelector(`.anim-frame[data-a="${i}"]`)?.firstElementChild as HTMLElement | null;
+  if (!host) return;
   const solo = i === soloAnim;
   stopAnim[i] = mountAnimation(host, a, s, solo ? { beat: Number(query.get('beat') ?? 0), freeze: query.has('t') ? Number(query.get('t')) : undefined } : {});
-  note(`anim-${i}`).textContent = s.note;
   app.querySelectorAll<HTMLElement>(`[data-group="anim-${i}"] button`).forEach(b => b.setAttribute('aria-pressed', `${b.dataset.v === s.id}`));
 }
 
@@ -141,7 +153,7 @@ function render(): void {
     // A slide without a lead page is one page: the handout with its play button (print hides the button).
     plate.innerHTML = !isShown(i, kind) ? '' : kind === 'lead' ? leadHtml(p, LEADS[p.n].draw(state.leads[i])) : twoVersions(p) ? plateHtml(p, state.variants[i]) : lectureHtml(p, state.variants[i]);
   });
-  fitTitles(app);
+  fitPage(app);
   syncPicks();
 }
 
@@ -159,7 +171,7 @@ function applyModes(): void {
 }
 
 // Picks: a ✓ on each picked variant's button, an outline on a page whose shown variant is picked, and the notes.
-const store = pickStore(app.querySelector('.pick-status') as HTMLElement, () => { syncPicks(); openOnPicks(); });
+const store = pickStore(app.querySelector('.pick-status') as HTMLElement, () => { syncPicks(); openOnPicks(); refs.sync(); hooks.sync(); });
 /** Once the saved picks are in, each slide and animation opens on its first picked variant (in list order), unless the
  *  page was opened on a given variant (?v=…). Runs once, so later picks don't jump the page under the lecturer. */
 let pickedDefaults = false;
@@ -168,7 +180,7 @@ function openOnPicks(): void {
   pickedDefaults = true;
   if (query.has('v')) return;
   PLATES.forEach((p, i) => {
-    const v = p.variants.find(x => store.has(p.n, x.id)), lv = LEADS[p.n]?.VARIANTS.find(x => store.has(`lead-${p.n}`, x.id));
+    const v = p.variants.find(x => store.has(p.pick ?? p.n, x.id)), lv = LEADS[p.n]?.VARIANTS.find(x => store.has(`lead-${p.n}`, x.id));
     if (v) state.variants[i] = v.id;
     if (lv) state.leads[i] = lv.id;
   });
@@ -181,7 +193,7 @@ function openOnPicks(): void {
 }
 function syncPicks(): void {
   PLATES.forEach((p, i) => {
-    for (const [group, key] of [[`variant-${i}`, p.n], [`lead-${i}`, `lead-${p.n}`]]) {
+    for (const [group, key] of [[`variant-${i}`, p.pick ?? p.n], [`lead-${i}`, `lead-${p.n}`]]) {
       app.querySelectorAll<HTMLElement>(`[data-group="${group}"] button`).forEach(b => b.classList.toggle('picked', store.has(key, b.dataset.v as string)));
     }
   });
@@ -196,7 +208,6 @@ function syncPicks(): void {
   app.querySelectorAll<HTMLTextAreaElement>('.pick-note').forEach(box => {
     if (document.activeElement !== box) box.value = store.note(box.dataset.n as string);
   });
-  labelPlayButtons();
 }
 app.addEventListener('dblclick', e => {
   const af = (e.target as Element).closest('.anim-frame') as HTMLElement | null;
@@ -206,7 +217,7 @@ app.addEventListener('dblclick', e => {
     return;
   }
   const fr = (e.target as Element).closest('.plates .frame') as HTMLElement | null;
-  if (!fr) return;
+  if (!fr || (e.target as Element).closest('.ref-open, .hook-open')) return;
   const i = Number(fr.dataset.s), kind = fr.dataset.kind as Kind;
   store.set(pickKey(i, kind), shown(i, kind), !store.has(pickKey(i, kind), shown(i, kind)));
 });
@@ -217,22 +228,16 @@ app.addEventListener('input', e => {
   if (t.classList.contains('pick-note')) store.setNote(t.dataset.n as string, t.value);
 });
 
-let stageRef = app.querySelector('.stage') as HTMLElement, stopAnimation = (): void => undefined;
-function setLook(id: 'plate' | 'story'): void {
-  stopAnimation();
-  const fresh = document.createElement('div');
-  stageRef.replaceWith(fresh);
-  stopAnimation = mountExcitation(fresh, id);
-  stageRef = fresh;
-  note('look').textContent = LOOKS.find(l => l.id === id)?.note ?? '';
-  fit();
-}
 
 app.addEventListener('click', e => {
   const b = (e.target as Element).closest('button');
   if (!b) return;
-  if (b.hasAttribute('data-anim')) { document.getElementById('animation')?.scrollIntoView({ behavior: 'smooth' }); stageRef.focus(); return; }
+  if (b.hasAttribute('data-play-excitation')) { playExcitation(); return; }
   if (b.dataset.play) { play(b.dataset.play); return; }
+  if (b.dataset.refs) { const ids = boardsFor(b.dataset.refs).map(x => x.id); refs.show(ids[0], ids); return; }
+  if (b.hasAttribute('data-refs-index')) { refs.show(null); return; }
+  if (b.dataset.hooks) { const ids = hooksFor(b.dataset.hooks).map(x => x.id); hooks.show(ids[0], ids); return; }
+  if (b.hasAttribute('data-hooks-index')) { hooks.show(null); return; }
   const group = (b.closest('.seg') as HTMLElement | null)?.dataset.group;
   const v = b.dataset.v;
   if (!group || !v) return;
@@ -240,7 +245,6 @@ app.addEventListener('click', e => {
   if (group === 'view') {
     lectureMode = v === 'lecture';
     document.body.classList.toggle('lecture-mode', lectureMode);
-    labelPlayButtons();
     return;
   }
   if (group.startsWith('mode-')) { state.modes[Number(group.slice(5))] = v as Mode; applyModes(); }
@@ -262,7 +266,6 @@ app.addEventListener('click', e => {
     showAnim(i);
     syncPicks();
   }
-  else setLook(v as 'plate' | 'story');
 });
 
 // Every 1600 x 900 frame is scaled to the column width; a hidden version is sized when it is shown.
@@ -289,12 +292,6 @@ const playStaging = (i: number): Staging => {
   const a = ANIMATIONS[i];
   return a.stagings.find(x => store.has(`anim-${a.key}`, x.id)) ?? a.stagings.find(x => x.id === stagings[i]) ?? a.stagings[0];
 };
-function labelPlayButtons(): void {
-  app.querySelectorAll<HTMLButtonElement>('[data-play]').forEach(b => {
-    const i = ANIMATIONS.findIndex(a => a.key === b.dataset.play);
-    if (i >= 0) b.textContent = lectureMode ? `▶ ${ANIMATIONS[i].title}` : `▶ ${ANIMATIONS[i].title} · ${playStaging(i).name}`;
-  });
-}
 function fitPlayer(): void {
   const bar = 72, k = Math.min(innerWidth / 1600, (innerHeight - bar) / 900), fr = player.querySelector('.player-frame') as HTMLElement;
   fr.style.width = `${1600 * k}px`;
@@ -330,6 +327,20 @@ function play(key: string): void {
   fitPlayer();
   mountPlaying(playStaging(playing));
 }
+/** Slide 6's older "Follow an excitation" animation (its own controls), in the same player. */
+function playExcitation(): void {
+  playing = -1;
+  (player.querySelector('.player-seg') as HTMLElement).innerHTML = '';
+  (player.querySelector('.player-title') as HTMLElement).textContent = 'Follow an excitation';
+  player.hidden = false;
+  fitPlayer();
+  stopPlayer();
+  const host = player.querySelector('.player-frame > div') as HTMLElement, stage = document.createElement('div');
+  host.innerHTML = '';
+  host.append(stage);
+  stopPlayer = mountExcitation(stage, 'plate');
+  stage.focus();
+}
 function closePlayer(): void {
   stopPlayer();
   stopPlayer = (): void => undefined;
@@ -342,9 +353,32 @@ player.addEventListener('click', e => {
   if (v) { const s = ANIMATIONS[playing].stagings.find(x => x.id === v); if (s) mountPlaying(s); return; }
   if (e.target === player || (e.target as Element).closest('.player-close')) closePlayer();
 });
+// In picking mode a double-click on the playing animation picks (or unpicks) its variant; the switch marks it with a ✓.
+player.addEventListener('dblclick', e => {
+  if (lectureMode || playing < 0 || !(e.target as Element).closest('.player-frame')) return;
+  const a = ANIMATIONS[playing], v = (player.querySelector('.player-seg [aria-pressed="true"]') as HTMLElement | null)?.dataset.v;
+  if (!v) return;
+  store.set(`anim-${a.key}`, v, !store.has(`anim-${a.key}`, v));
+  player.querySelectorAll<HTMLElement>('.player-seg button').forEach(b => b.classList.toggle('picked', store.has(`anim-${a.key}`, b.dataset.v as string)));
+});
+player.addEventListener('mousedown', e => { if (e.detail > 1) e.preventDefault(); });
 addEventListener('keydown', e => { if (e.key === 'Escape' && !player.hidden) closePlayer(); });
 addEventListener('resize', () => { if (!player.hidden) fitPlayer(); });
 
+// References over the page: a page's button opens its boards (tabs when several), the top bar the index of all boards.
+// ?refs=<board-id> opens that board on load (an unknown id opens the index).
+const refsRoot = document.createElement('div');
+document.body.append(refsRoot);
+const refs = refsView(refsRoot, store, { overlay: true });
+if (query.has('refs')) refs.show(refBoard(query.get('refs') as string) ? query.get('refs') : null);
+
+// Hook questions over the page: a page's ? button opens its chunk (tabs when several), the top bar the index of all
+// chunks. ?hooks=<chunk-id> opens that chunk on load (an unknown id opens the index).
+const hooksRoot = document.createElement('div');
+document.body.append(hooksRoot);
+const hooks = hooksView(hooksRoot, store);
+if (query.has('hooks')) hooks.show(hookSet(query.get('hooks') as string) ? query.get('hooks') : null);
+
 applyModes();
 ANIMATIONS.forEach((_, i) => { if (soloAnim < 0 || i === soloAnim) showAnim(i); });
-if (solo < 0 && soloAnim < 0) setLook('plate');
+

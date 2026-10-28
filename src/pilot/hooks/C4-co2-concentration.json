@@ -1,0 +1,77 @@
+{
+  "title": "C₃ → C₂ → C₄, and CAM: where CO₂ meets RuBisCO",
+  "chunk": "Lecture 2 · chunk 4",
+  "slides": ["C11", "C12", "C13"],
+  "questions": [
+    {
+      "id": "a",
+      "question": "Do leaves breathe out CO₂ even in sunlight, and do they just lose it?",
+      "story": "In sunlight a leaf also releases CO₂: whenever RuBisCO grabs O₂ instead of CO₂, the mitochondria later release CO₂ (photorespiration). In 2013 Florian Busch, Rowan Sage and colleagues switched the air around rice and wheat leaves from ordinary ¹²CO₂ to ¹³CO₂ and followed the ¹²CO₂ still coming out of the leaf. At 30 °C, 26–29 % of the photorespired CO₂ never left the cell where it was made: it was fixed again. Their electron micrographs showed why: chloroplasts and thin stroma-filled tubules (stromules) cover 92–99 % of the cell wall facing the air spaces, and the mitochondria sit behind them.",
+      "steps": [
+        "RuBisCO also reacts with O₂; recycling the product releases CO₂ in the mitochondria (photorespiration).",
+        "In rice and wheat the chloroplasts form an almost closed layer on the cell wall facing the air; the mitochondria lie behind that layer.",
+        "So the CO₂ has to cross chloroplast stroma on its way out, and RuBisCO refixes 26–29 % of it; net CO₂ uptake rises by 9–11 %.",
+        "C₂ plants go further: glycine moves into the bundle sheath, and its CO₂ is released there next to RuBisCO. This is a step on the way to C₄."
+      ],
+      "concepts": ["Photorespired CO₂ release in mitochondria", "Refixation in C₃ leaves", "C₂ photosynthesis", "Path to C₄"],
+      "see": "Busch et al. 2013 Fig. 4 (rice and wheat TEMs: chloroplasts, stromules, mitochondria behind them) and Fig. 5 (more chloroplast cover, lower C*); Sage, Khoshravesh & Sage 2014 Fig. 2 (Flaveria C₃ → C₄).",
+      "status": "Busch, Sage, Cousins & Sage 2013, Plant Cell Environ 36:200: full text read (Wiley). Sage & Sage 2009, Plant Cell Physiol 50:756: abstract only (OUP bot check)."
+    },
+    {
+      "id": "b",
+      "question": "Why does maize thrive in a hot summer, while wheat prefers a cool spring?",
+      "story": "In 1977 James Ehleringer and Olle Björkman measured how much CO₂ a leaf fixes per photon it absorbs, from 14 to 38 °C, in a C₃ plant (Encelia californica) and a C₄ plant (Atriplex rosea). The C₃ leaf fell from 0.069 at 14 °C to 0.042 at 38 °C; the C₄ leaf stayed at 0.053 at every temperature. Below about 30 °C the C₃ leaf did better; above it, the C₄ leaf did.",
+      "steps": [
+        "As a leaf warms, RuBisCO reacts more often with O₂, so a C₃ leaf loses more of its fixed carbon to photorespiration.",
+        "C₄ plants first fix carbon with PEP carboxylase, which does not react with O₂, into a four-carbon acid in the mesophyll.",
+        "The acid moves into the bundle-sheath cells around the veins (Kranz anatomy) and releases CO₂ next to RuBisCO, so photorespiration nearly stops.",
+        "The pump costs 2 ATP per CO₂: it pays only where photorespiration is high, in hot, bright conditions. Maize, sugarcane and sorghum are C₄; wheat and rice are C₃."
+      ],
+      "concepts": ["C₄ photosynthesis", "PEP carboxylase", "Kranz anatomy", "Cost and benefit of the CO₂ pump"],
+      "see": "Ehleringer & Björkman 1977 Fig. 3 (quantum yield vs leaf temperature, C₃ vs C₄); a maize leaf section with its Kranz wreaths (board d).",
+      "status": "Ehleringer & Björkman 1977, Plant Physiol 59:86: full scan read (fact-check subagent). Cost: von Caemmerer 2021, J Exp Bot 72:6003, full text."
+    },
+    {
+      "id": "c",
+      "question": "Why do some succulent leaves taste sour in the morning and not in the evening?",
+      "story": "Succulents such as Kalanchoë and agave store acid overnight. In agave leaves grown on a 12-hour day, malic acid falls to about 5 mg per gram of fresh leaf during the light and climbs to about 24 mg by the end of the night (Abraham et al. 2016). In the C₃ plant Arabidopsis it stays below 0.5 mg. The sour taste is the CO₂ that the leaf took up at night, parked as acid.",
+      "steps": [
+        "At night the stomata open; PEP carboxylase fixes CO₂ (as HCO₃⁻), and the product is stored as malic acid in the vacuole: the leaf turns sour.",
+        "By day the stomata close; malic acid leaves the vacuole and releases CO₂ inside the leaf.",
+        "RuBisCO fixes that CO₂ with ATP and NADPH from the light reactions: the leaf turns bland again.",
+        "Uptake and RuBisCO are separated in time, not in space as in C₄: crassulacean acid metabolism (CAM)."
+      ],
+      "concepts": ["CAM", "Night uptake by PEP carboxylase", "Malic acid store", "Day fixation by RuBisCO behind closed stomata"],
+      "see": "Abraham et al. 2016 Fig. 1 (Agave night uptake and malic acid vs Arabidopsis); Borland et al. 2009 Fig. 3 (Kalanchoë day–night CO₂ trace with the four phases).",
+      "status": "Abraham et al. 2016, Nature Plants 2:16178: full text via eScholarship (fact-check subagent); values read from Fig. 1c. The historical 'morning-sour leaf' report (Heyne 1815, Trans Linn Soc 11:213) is metadata only: not used in the story until read."
+    },
+    {
+      "id": "d",
+      "question": "Why does a cactus keep its pores shut on a sunny day?",
+      "story": "A leaf cannot take up CO₂ without losing water through the same stomata. Hot, dry midday air pulls water out fastest. CAM plants open their stomata at night instead, when the air is cooler and more humid, and keep them shut through most of the day. Borland and colleagues (2009) list the CO₂ gained per water lost: 0.5–1.5 mmol CO₂ per mol H₂O for C₃ plants, 1–2 for C₄ plants and 4–10 for CAM plants.",
+      "steps": [
+        "Stomata let CO₂ in and water vapour out; the drier and warmer the air, the more water each CO₂ costs.",
+        "CAM plants take up CO₂ at night and store it as malic acid.",
+        "By day, with stomata shut, the stored CO₂ is released inside the leaf and fixed by RuBisCO.",
+        "So each CO₂ costs less water: CAM plants (agave, pineapple, cacti) live where water is scarce."
+      ],
+      "concepts": ["Stomata trade CO₂ for water", "CAM", "Water-use efficiency"],
+      "see": "Borland et al. 2009 Table 2 drawn as three bars; an agave field (board r).",
+      "status": "Borland, Griffiths, Hartwell & Smith 2009, J Exp Bot 60:2879: full text (fact-check subagent). Night air cooler and more humid: Töpfer et al. 2020, Plant Cell (full text)."
+    },
+    {
+      "id": "e",
+      "question": "If C₄ is so efficient, why aren't all plants C₄?",
+      "story": "C₄ photosynthesis has evolved independently in 61 plant lineages (Sage 2016), in grasses, sedges and eudicots, yet only about 8,100 species are C₄. Ehleringer and Björkman (1977) showed the catch: below about 30 °C a C₃ leaf fixes more CO₂ per photon than a C₄ leaf, because the C₄ pump costs extra ATP.",
+      "steps": [
+        "Photorespiration is small in cool air and large in hot air.",
+        "C₃ leaves already recapture part of their photorespired CO₂; C₂ plants recapture more by moving glycine to the bundle sheath.",
+        "C₄ plants pump CO₂ to RuBisCO at 2 ATP per CO₂, which pays only when photorespiration is high.",
+        "So C₃, C₂ and C₄ are steps of one trade-off, and C₄ won where it is hot, bright and dry."
+      ],
+      "concepts": ["Refixation in C₃", "C₂ photosynthesis", "C₄ cost and benefit", "C₄ evolved more than 60 times"],
+      "see": "Sage, Sage & Kocacinar 2012 Fig. 2 (phylogeny with C₄ lineages in red); Ehleringer & Björkman 1977 Fig. 3.",
+      "status": "Sage 2016, J Exp Bot 67:4039: 61 lineages, ≈ 8,100 species (full text via the fact-check). Ehleringer & Björkman 1977 as in b."
+    }
+  ]
+}

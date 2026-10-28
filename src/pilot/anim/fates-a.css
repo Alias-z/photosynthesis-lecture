@@ -50,7 +50,8 @@
 .ani-fates-a .fa-pmr{fill:#faf9f5;stroke:#d97757;stroke-width:2.4}
 .ani-fates-a .fa-stop{fill:none;stroke:#8a877d;stroke-width:5;stroke-linecap:round}
 .ani-fates-a .fa-acc{fill:#fffdf8;stroke:#4f7f3f;stroke-width:2}
-.ani-fates-a .fa-e{fill:#2350e6;stroke:#1b3db0;stroke-width:1.2}
+/* e⁻: a dark dot (the deck's glyph standard, 28 Oct 2026) */
+.ani-fates-a .fa-e{fill:#2b2a27;stroke:#141413;stroke-width:1.2}
 .ani-fates-a .fa-car{fill:none;stroke:#e07a1f;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
 .ani-fates-a .fa-car-ring{fill:#fdeedd;stroke:#e07a1f;stroke-width:2.2;stroke-linejoin:round}
 .ani-fates-a .fa-ros{fill:#fbeee6;stroke:#d97757;stroke-width:1.8}

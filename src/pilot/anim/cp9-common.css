@@ -1,0 +1,6 @@
+/* Measuring leaf gas exchange (cp9-common.ts): the dark chamber's shade and the question mark at C_c. The slide
+   figures keep figs/cp.css's look. */
+.ani .cp9-shade{fill:#2b2a27;fill-opacity:.24}
+.ani .fig text.cp9-q{font-family:Newsreader,Georgia,serif;font-size:32px;font-weight:600;fill:#a2461f}
+.ani-stage text.cp9-tag{font-size:26px;font-weight:600;fill:#141413}
+.ani-stage text.cp9-eq{font-family:Newsreader,Georgia,serif;font-size:30px;fill:#141413}

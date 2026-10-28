@@ -1,0 +1,65 @@
+/* Slide 7 (redo) figure styles, scoped under .theme-editorial and prefixed .fs07- */
+.theme-editorial .fig text.fs07-l{font-size:19px;fill:#3d3d3a}
+.theme-editorial .fig text.fs07-h{font-size:21px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fs07-hd{font-size:22px;font-weight:700;fill:#141413}
+.theme-editorial .fig text.fs07-k{font-size:17px;fill:#3d3d3a}
+.theme-editorial .fig text.fs07-side{font-size:18px;font-weight:600;fill:#6b6a64;letter-spacing:.02em}
+.theme-editorial .fig text.fs07-zone{font-size:22px;font-weight:600;fill:#8a877d;letter-spacing:.03em}
+.theme-editorial .fig text.fs07-el{font-size:18px;font-weight:700;fill:#2457a8}
+.theme-editorial .fig text.fs07-hl{font-size:19px;font-weight:700;fill:#a8321c}
+.theme-editorial .fig text.fs07-cof{font-size:17px;font-weight:700;fill:#141413}
+.theme-editorial .fig text.fs07-cofs{font-size:12px;font-weight:700;fill:#141413}
+.theme-editorial .fig text.fs07-cofk{font-size:18px;font-weight:600;fill:#2f5a1c}
+.theme-editorial .fig tspan.fs07-sub{font-size:.72em}
+
+/* real images: credits, pills, leaders */
+.theme-editorial .fig text.fs07-cr{font-size:13px;fill:#fffdf8}
+.theme-editorial .fig text.fs07-crd{font-size:14px;fill:#8a877d}
+.theme-editorial .fig text.fs07-pill{font-size:17px;font-weight:600;fill:#141413}
+.theme-editorial .fs07-pill-w{fill:#fffdf8;opacity:.94}
+.theme-editorial .fs07-pill-t{fill:#f3f1ea;stroke:#d8d5cb;stroke-width:1}
+.theme-editorial .fs07-pill-m{fill:#fbe9c6;stroke:#e2b452;stroke-width:1.2}
+.theme-editorial .fs07-credbg{fill:#141413;opacity:.55}
+.theme-editorial .fs07-mult{mix-blend-mode:multiply}
+.theme-editorial .fs07-ldh{fill:none;stroke:#fffdf8;stroke-width:4.2;stroke-linecap:round;opacity:.9}
+.theme-editorial .fs07-ldk{fill:none;stroke:#141413;stroke-width:1.5;stroke-linecap:round}
+.theme-editorial .fs07-tipd{fill:#141413;stroke:#fffdf8;stroke-width:1.5}
+
+/* electron, proton, excitation and plastoquinone arrows; distances */
+.theme-editorial .fs07-eh{fill:none;stroke:#fffdf8;stroke-width:8;stroke-linecap:round;opacity:.85}
+.theme-editorial .fs07-e{fill:none;stroke:#2457a8;stroke-width:3.6;stroke-linecap:round}
+.theme-editorial .fs07-eh2{fill:#2457a8}
+.theme-editorial .fs07-hp{fill:none;stroke:#a8321c;stroke-width:3.2;stroke-linecap:round}
+.theme-editorial .fs07-hh{fill:#a8321c}
+.theme-editorial .fs07-x{fill:none;stroke:#d99a1e;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fs07-xs{fill:none;stroke:#d99a1e;stroke-width:3.2;stroke-linecap:round}
+.theme-editorial .fs07-xh{fill:#d99a1e}
+.theme-editorial .fs07-pq{fill:none;stroke:#8a5a14;stroke-width:3;stroke-dasharray:7 5;stroke-linecap:round}
+.theme-editorial .fs07-kh{fill:#8a5a14}
+.theme-editorial .fs07-br{fill:none;stroke:#8a877d;stroke-width:1.6}
+.theme-editorial .fs07-dh{fill:none;stroke:#fffdf8;stroke-width:6;stroke-linecap:round;opacity:.9}
+.theme-editorial .fs07-d{fill:none;stroke:#141413;stroke-width:2;stroke-dasharray:5 4}
+
+/* the drawn membrane (7d) */
+.theme-editorial .fs07-mem{fill:#efe4c8;opacity:.7}
+.theme-editorial .fs07-memf{fill:none;stroke:#c9b98e;stroke-width:3}
+.theme-editorial .fs07-lhc{fill:#cfe3c3;stroke:#5f8f4a;stroke-width:1.6}
+.theme-editorial .fs07-ps{fill:#e3ebd3;stroke:#6f8a52;stroke-width:1.8;opacity:.92}
+.theme-editorial .fs07-cP{fill:#7fb35e;stroke:#2f5a1c;stroke-width:1.6}
+.theme-editorial .fs07-cPh{fill:#d8d9a6;stroke:#7d7f3a;stroke-width:1.6}
+.theme-editorial .fs07-cQ{fill:#f2c98a;stroke:#a8681a;stroke-width:1.6}
+.theme-editorial .fs07-cPQ{fill:#f2c98a;stroke:#a8681a;stroke-width:1.6}
+.theme-editorial .fs07-mn{fill:#d9c8e6;stroke:#7b3fa0;stroke-width:1.6}
+/* merged slide 7: halos, O₂ and water arrows, key lines */
+.theme-editorial .fs07-hh0{fill:none;stroke:#fffdf8;stroke-width:7.5;stroke-linecap:round;opacity:.85}
+.theme-editorial .fs07-op{fill:none;stroke:#4f7f9e;stroke-width:3.2;stroke-linecap:round}
+.theme-editorial .fs07-oh{fill:#4f7f9e}
+.theme-editorial .fig text.fs07-ol{font-size:19px;font-weight:700;fill:#3c6a88}
+.theme-editorial .fs07-xw{fill:none;stroke:#fffdf8;stroke-width:7;stroke-linecap:round;opacity:.8}
+.theme-editorial .fs07-kp{fill:none;stroke:#a8321c;stroke-width:3.2}
+.theme-editorial .fs07-ko{fill:none;stroke:#4f7f9e;stroke-width:3.2}
+/* 7e key, colours as in Bhowmick et al. 2023, Fig. 5: H⁺ cyan, water red dashed, O₂ red solid */
+.theme-editorial .fs07-kc{fill:none;stroke:#3fb6dc;stroke-width:3.2}
+.theme-editorial .fs07-kw{fill:none;stroke:#e0362b;stroke-width:3.2;stroke-dasharray:5 4}
+.theme-editorial .fs07-ko2{fill:none;stroke:#e0362b;stroke-width:3.2}
+.theme-editorial .fs07-kt{stroke-dasharray:none}

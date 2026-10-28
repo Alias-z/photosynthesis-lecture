@@ -1,0 +1,83 @@
+/* Chunk cc animations (cc11–cc13): the slide's figure card, the story's glyphs, labels, readouts and clippings.
+   The slide figures keep figs/cc.css; everything here is prefixed .cca- and scoped under .ani (stage px). */
+.ani .cca-slidecard{fill:rgba(255,254,250,.58);stroke:rgba(120,100,60,.10);stroke-width:1}
+.ani .cca-veil{fill:#f6f3ea}
+
+/* CO₂ is the deck's glyph (anim/l2-glyphs.ts: pilot.css atom balls, ¹³C a purple isotope ball, inline-styled letters) */
+.ani .cca-fix{fill:none;stroke:#3f8f3a;stroke-width:3.5}
+.ani .cca-gly{fill:#e9a676;stroke:#7d3417;stroke-width:2}
+.ani .cca-c4a{fill:#7cc2b8;stroke:#1d6b64;stroke-width:2}
+.ani .cca-pyr{fill:#d7ece8;stroke:#237a72;stroke-width:2}
+.ani .cca-mal{fill:#c9a3cb;stroke:#6e3f70;stroke-width:2}
+
+/* labels on paper pills, with leaders */
+.ani .cca-pill{fill:#fffdf8;stroke:#d8d5cb;stroke-width:1;opacity:.96}
+.ani .cca-pill-t{fill:#f3f1ea;stroke:#d8d5cb;stroke-width:1}
+.ani text.cca-pt{font-size:23px;font-weight:600;fill:#141413}
+.ani text.cca-pt.cca-co2t{fill:#9b3e1e}
+.ani text.cca-pt.cca-glyt{fill:#a9532f}
+.ani text.cca-pt.cca-c4t{fill:#1d6b64}
+.ani text.cca-pt.cca-malt{fill:#6e3f70}
+.ani text.cca-pt.cca-greyt{fill:#6b6a64}
+.ani .cca-ldh{fill:none;stroke:#fffdf8;stroke-width:5;stroke-linecap:round;opacity:.9}
+.ani .cca-ldk{fill:none;stroke:#141413;stroke-width:1.8;stroke-linecap:round}
+.ani .cca-tip{fill:#141413;stroke:#fffdf8;stroke-width:1.6}
+.ani text.cca-h{font-size:30px;font-weight:600;fill:#141413}
+.ani text.cca-b{font-size:25px;font-weight:600;fill:#141413}
+.ani text.cca-l{font-size:23px;fill:#3d3d3a}
+.ani text.cca-s{font-size:20px;fill:#6b6a64}
+.ani text.cca-it{font:italic 400 23px Inter,"Helvetica Neue",Arial,sans-serif;fill:#6b6a64}
+.ani text.cca-big{font-size:44px;font-weight:600;fill:#141413}
+.ani text.cca-cr{font-size:15px;fill:#8a877d}
+.ani text.cca-co2c{fill:#9b3e1e}
+.ani text.cca-glyc{fill:#a9532f}
+.ani text.cca-c4c{fill:#1d6b64}
+.ani text.cca-malc{fill:#6e3f70}
+.ani text.cca-greyc{fill:#8a877d}
+
+/* clippings and cards */
+.ani text.cca-clip-journal{font:600 17px Inter,"Helvetica Neue",Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;fill:#5c5a52}
+.ani text.cca-clip-title{font:500 30px Newsreader,Georgia,serif;fill:#2b2a27}
+.ani text.cca-clip-auth{font:italic 400 21px Newsreader,Georgia,serif;fill:#3d3d3a}
+.ani .cca-clip-rule{fill:none;stroke:#2b2a27;stroke-width:1.2}
+.ani .cca-card{fill:#fbf8f0;stroke:#d6d0bf;stroke-width:1}
+.ani .cca-frame{fill:none;stroke:#cfcabb;stroke-width:1.2}
+.ani .cca-mult{mix-blend-mode:multiply}
+
+/* readouts */
+.ani .cca-ro{fill:#fffdf8;stroke:#d6d2c6;stroke-width:1.4}
+.ani text.cca-ro-h{font-size:22px;font-weight:600;fill:#a9532f}
+.ani text.cca-ro-l{font-size:21px;fill:#3d3d3a}
+.ani text.cca-ro-v{font-size:44px;font-weight:600;fill:#141413}
+.ani text.cca-ro-v.cca-co2c{fill:#9b3e1e}
+.ani text.cca-ro-v.cca-greyc{fill:#8a877d}
+
+/* drawn helpers of the stories */
+.ani .cca-r{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.ani .cca-r-k{stroke:#3d3d3a;stroke-width:3}
+.ani .cca-r-c{stroke:#9b3e1e;stroke-width:3.4}
+.ani .cca-r-x{stroke:#8f8c82;stroke-width:3.4;stroke-dasharray:1 8}
+.ani .cca-bar-in{fill:#5a8645}
+.ani .cca-bar-ias{fill:#a6cc8a}
+.ani .cca-bar-out{fill:#c9c4b5}
+.ani .cca-bar-all{fill:#8f8c82}
+.ani .cca-axl{fill:none;stroke:#3d3d3a;stroke-width:2}
+.ani .cca-tk{fill:none;stroke:#3d3d3a;stroke-width:1.6}
+.ani .cca-brk{fill:none;stroke:#3d3d3a;stroke-width:2}
+.ani .cca-air{fill:#f6f7f9;stroke:none}
+.ani .cca-epi{fill:#eef0e6;stroke:#a7a68f;stroke-width:2}
+.ani .cca-valve{fill:#fffdf8;stroke:#3d3d3a;stroke-width:2}
+.ani .cca-glow{fill:#f4cc4f;opacity:.35}
+.ani text.cca-white{fill:#fffdf8}
+.ani .cca-cover{fill:#fcfbf6}
+.ani .cca-hl{fill:none;stroke:#a9532f;stroke-width:3.5}
+.ani .cca-cover.cca-cardfill{fill:#fbf8f0}
+.ani text.cca-port{font-size:36px}
+.ani text.cca-port-y{font-size:34px}
+.ani .cca-tube{fill:#f8faf3;stroke:#8a5a8c;stroke-width:2}
+.ani .cca-photon{fill:#f4cc4f;stroke:#c9962a;stroke-width:1.5}
+.ani .cca-bar-bg{fill:#efece3}
+.ani .cca-bar-c3{fill:#5a8645}
+.ani .cca-bar-c4{fill:#237a72}
+.ani .cca-merc{fill:#c4683f}
+.ani .cca-bar-cam{fill:#8a5a8c}

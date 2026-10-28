@@ -1,0 +1,23 @@
+/* Slide 5 lead page, scoped under .theme-editorial and prefixed .fld05- (sun and leaf styles come from s2.css) */
+
+/* Text. */
+.theme-editorial .lead-fig text.fld05-prompt{font-size:30px;fill:#6b6a64}
+.theme-editorial .lead-fig text.fld05-lab{font-size:28px;fill:#3d3d3a}
+.theme-editorial .lead-fig text.fld05-credit{font-size:16px;fill:#8a877d}
+.theme-editorial .lead-fig text.fld05-cap{font-size:18px;fill:#3d3d3a}
+
+/* Photos: a paper mat under an inset photo, and a hairline edge. */
+.theme-editorial .fld05-mat{fill:#fffdf8}
+.theme-editorial .fld05-edge{fill:none;stroke:rgba(120,100,60,.16);stroke-width:1}
+
+/* Under the canopy: sunlight, crowns, trunks and the dim floor. */
+.theme-editorial .fld05-sun-shaft{fill:#f7d774;fill-opacity:.5}
+.theme-editorial .fld05-fleck{fill:#f7d774;fill-opacity:.55}
+.theme-editorial .fld05-shade{fill:#3d3a30;fill-opacity:.11}
+.theme-editorial .fld05-crown{fill:#cfe3b4;stroke:#6f9a5a;stroke-width:2}
+.theme-editorial .fld05-crown.fld05-back{fill:#b9d59c;stroke:#5f8a4c}
+.theme-editorial .fld05-crown.fld05-fill{stroke:none}
+.theme-editorial .fld05-trunk{fill:none;stroke:#8b5a2b;stroke-width:9;stroke-linecap:round}
+.theme-editorial .fld05-ground{fill:none;stroke:#8b7a5a;stroke-width:3;stroke-linecap:round}
+.theme-editorial .fld05-stalk{fill:none;stroke:#6f9a5a;stroke-width:4;stroke-linecap:round}
+.theme-editorial .f2-leaf.fld05-taro{fill:#a9cf8a}

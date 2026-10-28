@@ -1,0 +1,191 @@
+{
+  "title": "Calvin–Benson–Bassham cycle, with sucrose and starch",
+  "slides": [
+    "C1",
+    "C2",
+    "C3",
+    "C4"
+  ],
+  "images": [
+    {
+      "id": "a",
+      "file": "helmont1648-willow-page.jpg",
+      "kind": "history",
+      "caption": "Van Helmont's willow (Latin original): 5 lb grew to 169 lb in five years; the soil lost ≈2 oz",
+      "credit": "van Helmont JB 1648, Ortus medicinae (Amsterdam: L. Elzevir), p. 109; Wellcome Collection copy via Internet Archive (b33276079, scan leaf 0155), Public Domain Mark",
+      "url": "https://archive.org/details/b33276079",
+      "note": "Where does plant mass come from? He answered 'water'; the carbon from the air is the cycle's job. The passage starts at the foot of p. 108."
+    },
+    {
+      "id": "b",
+      "file": "staehelin2020-chloroplast-stroma-tem.jpg",
+      "kind": "micrograph",
+      "caption": "Tobacco chloroplast in TEM: granular stroma (S) around grana (GT) and stroma thylakoids (ST), inside the envelope (EM)",
+      "credit": "Staehelin & Paolillo 2020, Photosynth Res 145:237, Fig. 3 (micrograph from Staehelin 1986); CC BY 4.0",
+      "url": "https://doi.org/10.1007/s11120-020-00782-3",
+      "note": "The compartment where the cycle runs. Unaltered figure with the authors' labels; scale bar 0.5 µm per the caption. The deck's chloroplast-tem.jpg is a relabelled crop of it."
+    },
+    {
+      "id": "c",
+      "file": "michelet2013-cycle-thioredoxin.jpg",
+      "kind": "schematic",
+      "caption": "The 11 cycle enzymes per 3 CO₂; thioredoxin-activated enzymes in blue, RuBisCO activase green, CP12 red",
+      "credit": "Michelet et al. 2013, Front Plant Sci 4:470, Fig. 1; CC BY",
+      "url": "https://doi.org/10.3389/fpls.2013.00470",
+      "note": "The one image for light activation: shows which steps light switches on (PRK, GAPDH, FBPase, SBPase) on the whole cycle."
+    },
+    {
+      "id": "d",
+      "file": "sharkey2019-cycle-carbon-counts.jpg",
+      "kind": "schematic",
+      "caption": "Cycle counted per 3 CO₂: 3 RuBP → 6 PGA → 6 GAP; one GAP leaves, five rebuild 3 Ru5P",
+      "credit": "Sharkey 2019, Photosynth Res 140:235, Fig. 3; © Springer Nature",
+      "url": "https://doi.org/10.1007/s11120-018-0600-2",
+      "note": "Carbon counts and costs in one picture (3 + 6 ATP, 6 NADPH per 3 CO₂): the template for the C3 cycle redraw."
+    },
+    {
+      "id": "e",
+      "file": "govindjee2019-calvin-benson-bassham.jpg",
+      "kind": "history",
+      "caption": "(a) Calvin with Jacques Mayaudon and Andrew Benson, 1950s; (b) Bassham, Benson and Alex Wilson at the Radiation Laboratory",
+      "credit": "Govindjee, Nonomura & Lichtenthaler 2019, Photosynth Res 143:1, Fig. 2 (archives of A. Nonomura); © Springer Nature",
+      "url": "https://doi.org/10.1007/s11120-019-00693-y",
+      "note": "All three names of the cycle in period photos. Panel b names are printed under the photo; panel a order is not printed."
+    },
+    {
+      "id": "f",
+      "file": "lbl-calvin-1961.jpg",
+      "kind": "history",
+      "caption": "Melvin Calvin in 1961, the year he alone received the Nobel Prize in Chemistry",
+      "credit": "Donald Cooksey / Berkeley Lab, 26 Oct 1961 (LBNL Biosciences, 'Calvin cycle continued'); © The Regents of the University of California",
+      "url": "https://biosciences.lbl.gov/calvin-cycle-continued/",
+      "note": "Same photo as Govindjee et al. 2019 Fig. 8b (tie with porphyrin motifs made by his mother)."
+    },
+    {
+      "id": "g",
+      "file": "benson-lab-microculture.jpg",
+      "kind": "history",
+      "caption": "Andrew Benson tending the culture system that grew the algae for the lollipop experiments",
+      "credit": "Courtesy Dee Benson; Nonomura et al. 2017, Photosynth Res 134:93, Fig. 2 (caption as given by LBNL Biosciences)",
+      "url": "https://doi.org/10.1007/s11120-017-0410-y",
+      "note": "Only 388 px wide. Alternative: 'Dr Andrew Benson 2007', Jess Gordon, Wikimedia Commons, CC BY-SA 3.0 (668 px)."
+    },
+    {
+      "id": "h",
+      "file": "lbl-bassham.jpg",
+      "kind": "history",
+      "caption": "James A. Bassham, later director of chemical biodynamics at the Lawrence Radiation Laboratory",
+      "credit": "Steve Gerber / Berkeley Lab, archive no. XBD9705-02084 (LBNL Biosciences); © The Regents of the University of California",
+      "url": "https://biosciences.lbl.gov/calvin-cycle-continued/",
+      "note": "The only clear solo portrait of Bassham found online (528 px); photo date not given."
+    },
+    {
+      "id": "i",
+      "file": "lbl-lollipop-apparatus.jpg",
+      "kind": "history",
+      "caption": "The 'lollipop': a flat glass flask of algae lit from both sides, given ¹⁴CO₂, drained into alcohol below",
+      "credit": "Robert M. Couto / Berkeley Lab, colorized (LBNL Biosciences); © The Regents of the University of California",
+      "url": "https://biosciences.lbl.gov/calvin-cycle-continued/",
+      "note": "Colorized by LBNL. Same apparatus as Calvin's Nobel lecture Fig. 3, which is only a coarse 1-bit scan."
+    },
+    {
+      "id": "j",
+      "file": "calvin1961-autoradiogram-5s.png",
+      "kind": "history",
+      "caption": "Autoradiogram of a Chlorella extract after 5 s in ¹⁴CO₂: label mainly in PGA and sugar phosphates",
+      "credit": "Calvin 1961, Nobel lecture 'The path of carbon in photosynthesis', Fig. 6; © The Nobel Foundation 1961",
+      "url": "https://www.nobelprize.org/prizes/chemistry/1961/calvin/lecture/",
+      "note": "Short pulse: the first stable product is 3-PGA. Pair with k."
+    },
+    {
+      "id": "k",
+      "file": "calvin1961-autoradiogram-30s.png",
+      "kind": "history",
+      "caption": "Same after 30 s: label has spread to sucrose, UDPG, amino acids (alanine, serine, glycine) and organic acids",
+      "credit": "Calvin 1961, Nobel lecture 'The path of carbon in photosynthesis', Fig. 5; © The Nobel Foundation 1961",
+      "url": "https://www.nobelprize.org/prizes/chemistry/1961/calvin/lecture/",
+      "note": "Long pulse, same solvents and orientation as j, so the two can sit side by side."
+    },
+    {
+      "id": "l",
+      "file": "bassham1954-first-cycle.jpg",
+      "kind": "history",
+      "caption": "The first drawing of the cycle (1954), with 'RuBP' and enzyme names added later by Sharkey",
+      "credit": "Bassham, Benson, Kay, Harris, Wilson & Calvin 1954, J Am Chem Soc 76:1760, Fig. 7; reproduced and annotated in Sharkey 2019, Photosynth Res 140:235, Fig. 2",
+      "url": "https://doi.org/10.1021/ja01636a012",
+      "note": "How the discoverers drew it: C5 → C6 (β-keto acid) → 2 C3, with the light-driven [H] and ATP feeding in."
+    },
+    {
+      "id": "m",
+      "file": "calvin1961-light-dark-transient.png",
+      "kind": "figure",
+      "caption": "Light off: PGA jumps and RuBP falls to zero within a minute; regenerating RuBP needs light",
+      "credit": "Calvin 1961, Nobel lecture, Fig. 15 (Bassham's data, Chlorella); © The Nobel Foundation 1961",
+      "url": "https://www.nobelprize.org/prizes/chemistry/1961/calvin/lecture/",
+      "note": "The classic evidence that the cycle closes through light-dependent reduction and RuBP regeneration."
+    },
+    {
+      "id": "n",
+      "file": "goodsell2000-rubisco.jpg",
+      "kind": "structure",
+      "caption": "RuBisCO: plant L₈S₈ (spinach, PDB 1RCX; small subunits blue/purple) beside the bacterial L₂ dimer (PDB 9RUB)",
+      "credit": "Goodsell DS 2000, PDB-101 Molecule of the Month 11 'RuBisCO', doi:10.2210/rcsb_pdb/mom_2000_11; CC BY 4.0",
+      "url": "https://pdb101.rcsb.org/motm/11",
+      "note": "Space-filling atomic models; the board's only structure image (Andersson & Backlund 2008 figure is on the wanted list)."
+    },
+    {
+      "id": "o",
+      "file": "baron2019-rubisco-mass-rate.jpg",
+      "kind": "figure",
+      "caption": "Global RuBisCO: ≈7×10¹⁴ g on land fixes ≈1.2×10¹⁷ g C per year, ≈0.03 reactions per site per second",
+      "credit": "Bar-On & Milo 2019, PNAS 116:4738, Fig. 3; CC BY-NC-ND 4.0",
+      "url": "https://doi.org/10.1073/pnas.1816654116",
+      "note": "RuBisCO's bulk and slowness in one line. The paper says it is not clear that RuBisCO is the most abundant protein."
+    },
+    {
+      "id": "p",
+      "file": "sharkey2024-tpt-sucrose-starch.jpg",
+      "kind": "schematic",
+      "caption": "Triose phosphate leaves through the translocator to make sucrose in the cytosol; starch is made inside the chloroplast",
+      "credit": "Sharkey 2024, Plant Physiol 195:67, Fig. 1; CC BY-NC-ND 4.0",
+      "url": "https://doi.org/10.1093/plphys/kiad601",
+      "note": "Canonical day-time carbon export (triose phosphate utilization); redraw, do not modify (ND licence)."
+    },
+    {
+      "id": "q",
+      "file": "streb2012-starch-tem-day-night.jpg",
+      "kind": "micrograph",
+      "caption": "Leaf plastids in TEM: starch at end of day (B–E), mostly gone by end of night except guard cells (F–I)",
+      "credit": "Streb & Zeeman 2012, The Arabidopsis Book 10:e0160, Fig. 4; © American Society of Plant Biologists",
+      "url": "https://doi.org/10.1199/tab.0160",
+      "note": "Arabidopsis. Rows: epidermis, mesophyll, bundle sheath, guard cell; A is a toluidine-blue leaf section (its guard-cell inset renders blank in the PMC file). Zeeman lab, ETH Zurich."
+    },
+    {
+      "id": "r",
+      "file": "streb2012-iodine-mutants.jpg",
+      "kind": "photo",
+      "caption": "Iodine-stained rosettes: wild type, starch-poor pgm1, isa1, and starch-excess sex1, beside their diel starch curves",
+      "credit": "Streb & Zeeman 2012, The Arabidopsis Book 10:e0160, Fig. 1; © American Society of Plant Biologists",
+      "url": "https://doi.org/10.1199/tab.0160",
+      "note": "The iodine screen that found the starch mutants. Low resolution (483 px); a sharper copy is on the wanted list."
+    },
+    {
+      "id": "s",
+      "file": "graf2010-diel-starch.jpg",
+      "kind": "figure",
+      "caption": "Arabidopsis leaf starch: after an unexpected dusk at 8 h, breakdown slows so starch still lasts to dawn",
+      "credit": "Graf, Schlereth, Stitt & Smith 2010, PNAS 107:9458, Fig. 1; © National Academy of Sciences",
+      "url": "https://doi.org/10.1073/pnas.0914299107",
+      "note": "Panel A is the key: squares 12 h day, diamonds early night. Panel B (starvation genes) can be cropped off."
+    },
+    {
+      "id": "t",
+      "file": "knoblauch2016-sieve-plates.jpg",
+      "kind": "micrograph",
+      "caption": "Morning glory phloem: SEM of sieve plates at 1, 4 and 7 m along the stem, with sieve-tube dimensions",
+      "credit": "Knoblauch et al. 2016, eLife 5:e15341, Fig. 1; CC BY 4.0",
+      "url": "https://doi.org/10.7554/eLife.15341",
+      "note": "The pipe that carries sucrose out of the leaf. Same paper, Fig. 2—figure supplement 1A, shows sieve elements with companion cells."
+    }
+  ]
+}

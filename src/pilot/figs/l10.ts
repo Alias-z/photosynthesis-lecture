@@ -1,5 +1,5 @@
 // Slide L10 · A proton gradient powers ATP synthesis. Draft context; see research/figure-briefs/LECTURE_OVERVIEW.md.
-// Emphasis: protons. Water splitting and the b₆f Q cycle load the lumen; proton motive force = ΔpH + Δψ;
+// Emphasis: protons. Water oxidation and the b₆f Q cycle load the lumen; proton motive force = ΔpH + Δψ;
 // ATP synthase turns it into ATP on the stroma side. Shared drawing helpers come from ./l09.
 import type { PlateText, Variant } from '../types';
 import { text } from '../mechanisms';
@@ -13,8 +13,8 @@ export const PLATE: PlateText = {
   status: 'draft',
   lead: 'Electron flow loads the lumen with protons; their flow back through ATP synthase makes ATP in the stroma.',
   points: [
-    { claim: 'Two sources load the lumen.', text: 'Water splitting releases H⁺ inside; PQ and the b₆f Q cycle move more in from the stroma.' },
-    { claim: 'The driving force: ΔpH plus voltage (Δψ).', text: 'Lumen pH falls to about 5.7–6 in strong light, not the 4–5 of many textbooks.' },
+    { claim: 'Two sources load the lumen.', text: 'Water oxidation releases H⁺ inside; PQ and the b₆f Q cycle move more in from the stroma.' },
+    { claim: 'The driving force: ΔpH plus voltage (Δψ).', text: 'In strong light the lumen reaches about pH 6 (± 0.5), less acidic than the 4–5 often quoted.' },
     { claim: 'ATP is made in the stroma.', text: 'Returning H⁺ turn the rotor; its head makes ATP where the Calvin–Benson cycle uses it.' },
   ],
   refs: [
@@ -22,6 +22,7 @@ export const PLATE: PlateText = {
     { label: 'Jagendorf & Uribe 1966', url: 'https://doi.org/10.1073/pnas.55.1.170' },
     { label: 'Hahn et al. 2018', url: 'https://doi.org/10.1126/science.aat4318' },
     { label: 'Takizawa et al. 2007', url: 'https://doi.org/10.1016/j.bbabio.2007.07.006' },
+    { label: 'Wilson et al. 2021', url: 'https://doi.org/10.1093/plphys/kiab270' },
   ],
 };
 
@@ -51,7 +52,7 @@ const signs = (pts: [number, number][], s: '+' | '−'): string => pts.map(([x, 
 
 function protonMap(): string {
   const p = 'fl10a';
-  return svg(p, 'Thylakoid membrane with protons as the protagonists: water splitting at PSII and plastoquinone with cytochrome b6f load the lumen with H+; H+ return to the stroma through ATP synthase, which makes ATP on the stroma side', `
+  return svg(p, 'Thylakoid membrane with protons as the protagonists: water oxidation at PSII and plastoquinone with cytochrome b6f load the lumen with H+; H+ return to the stroma through ATP synthase, which makes ATP on the stroma side', `
     <rect class="fl09-lumen" x="0" y="330" width="800" height="270"/>
     ${bilayer(p, 0, 800, 250, 330)}
     ${psys(130, 290, 124, 166, 'PSII', 'lab fl09-b', 16)}
@@ -60,11 +61,11 @@ function protonMap(): string {
     ${psys(470, 290, 116, 166, 'PSI', 'lab fl09-b', 16)}
     ${atps(668, 250, 330, 26)}
     ${gPath(p, 'M150,410 L150,376')}${gPath(p, 'M194,288 L206,288')}${gPath(p, 'M262,290 L276,290')}${gPath(p, 'M340,376 Q370,420 410,392')}
-    ${text(430, 414, 'e⁻ route: page 9', 'fl10-ghost', 'start')}
+    ${text(430, 414, 'e⁻ route: page 7', 'fl10-ghost', 'start')}
 
     ${water(110, 452)}${water(152, 472)}${kPath(p, 'M126,486 L126,516')}${molecule(126, 540, 'OO', 12)}
     ${many([[200, 440], [230, 478], [196, 512]])}
-    ${num(38, 578, 1)}${text(60, 586, 'water splitting', 'sm', 'start')}
+    ${num(38, 578, 1)}${text(60, 586, 'water oxidation', 'sm', 'start')}
 
     ${hion(234, 168)}${hPath(p, 'M234,186 L234,268', true)}
     ${hPath(p, 'M318,382 L318,424')}${many([[294, 448], [342, 462], [306, 500]])}
@@ -140,7 +141,7 @@ function damTurbine(): string {
     ${text(600, 178, 'PQ + b₆f', 'sm')}${bolt(p, 690, 52, 650, 108)}
     ${hion(470, 130, 12)}${kPath(p, 'M448,130 L420,130')}
     <rect class="fl10-pump" x="24" y="110" width="88" height="44" rx="10"/>${text(68, 140, 'source', 'sm fl09-b')}
-    ${text(122, 140, 'water splitting', 'sm', 'start')}${bolt(p, 150, 60, 112, 112)}
+    ${text(122, 140, 'water oxidation', 'sm', 'start')}${bolt(p, 150, 60, 112, 112)}
     <path class="fl10-pipe2" d="M68,154 V214"/>${hPath(p, 'M68,232 L68,262', true)}
 
     <path class="fl10-dimdot" d="M446,220 H732"/>
@@ -187,29 +188,28 @@ function lumenPh(): string {
   const yOf = (ph: number): number => 96 + (8 - ph) * 104;
   const ticks = [4, 5, 6, 7, 8].map(ph => `<path class="fl10-tick" d="M150,${yOf(ph)} H168"/>${text(140, yOf(ph) + 8, `${ph}`, 'tl', 'end')}`).join('');
   const top = 96, h = 416, x = 560, w = 100;
-  return svg(p, 'Schematic: lumen pH is about 7.5 in weak light and 5.7 to 6 in strong light, not 4 to 5; the proton motive force is the sum of a voltage and a pH difference, and the voltage share varies from 10 to 70 percent', `
+  return svg(p, 'Schematic: lumen pH is about 7.5 in weak light and about 6, plus or minus 0.5, in strong light, not 4 to 5; the proton motive force is the sum of a voltage and a pH difference: the voltage dominates the first seconds of light, the pH difference most of the force in steady light, and how much voltage remains is debated', `
     <defs><linearGradient id="${p}-mix" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9d3f0"/><stop offset="1" stop-color="#c4d8ec"/></linearGradient></defs>
     ${text(170, 40, 'lumen pH in leaves', 'sm fl09-b')}
     <rect class="fl10-ruler" x="168" y="${yOf(8)}" width="26" height="${yOf(4) - yOf(8)}" rx="6"/>
     <rect class="fl10-myth" x="168" y="${yOf(5)}" width="26" height="${yOf(4) - yOf(5)}"/>
     ${ticks}
     <circle class="fl10-mark" cx="181" cy="${yOf(7.5)}" r="11"/>${text(214, yOf(7.5) + 8, 'weak light: ≈ 7.5', 'sm fl09-b', 'start')}
-    <rect class="fl10-mark" x="171" y="${yOf(6)}" width="20" height="${yOf(5.7) - yOf(6)}" rx="6"/>${text(214, yOf(5.85) + 8, 'strong light: ≈ 5.7–6', 'sm fl09-b', 'start')}
+    <rect class="fl10-mark" x="171" y="${yOf(6.5)}" width="20" height="${yOf(5.5) - yOf(6.5)}" rx="6"/>${text(214, yOf(6) + 8, 'strong light: ≈ 6', 'sm fl09-b', 'start')}
     ${kPath(p, `M240,${yOf(7.5) + 24} L240,${yOf(6) - 18}`)}${text(252, yOf(6.8) + 8, 'more light,', 'fl09-it', 'start')}${text(252, yOf(6.8) + 32, 'more acidic', 'fl09-it', 'start')}
     ${cross(229, yOf(4.5))}${text(250, yOf(4.5) + 8, 'textbook 4–5', 'sm', 'start')}
 
     ${text(610, 40, 'proton motive force', 'sm fl09-b')}
     <rect class="fl10-dph" x="${x}" y="${top}" width="${w}" height="${h}" rx="10"/>
     <path class="fl10-dpsi-top" d="M${x},${top + h * 0.1} V${top + 10} Q${x},${top} ${x + 10},${top} H${x + w - 10} Q${x + w},${top} ${x + w},${top + 10} V${top + h * 0.1} Z"/>
-    <rect x="${x}" y="${top + h * 0.1}" width="${w}" height="${h * 0.6}" fill="url(#${p}-mix)"/>
     <rect class="fl10-dph-line" x="${x}" y="${top}" width="${w}" height="${h}" rx="10"/>
     ${text(x + w / 2, top + 32, 'Δψ', 'sm fl09-b')}${text(x + w / 2, top + h - 40, 'ΔpH', 'lab fl09-b')}
-    <path class="fl10-dim" d="M${x - 16},${top + h * 0.1} V${top + h * 0.7} M${x - 24},${top + h * 0.1} H${x - 8} M${x - 24},${top + h * 0.7} H${x - 8}"/>
     ${text(x + w + 18, top + 30, 'voltage', 'sm', 'start')}
-    ${text(x - 30, top + h * 0.34, 'split varies:', 'fl09-it', 'end')}${text(x - 30, top + h * 0.34 + 26, 'Δψ is', 'sm fl09-b', 'end')}${text(x - 30, top + h * 0.34 + 52, '10–70 %', 'sm fl09-b', 'end')}
-    <path class="fl10-cut" d="M${x},${top + h * 0.1} H${x + w} M${x},${top + h * 0.7} H${x + w}"/>
+    ${text(x - 24, top + 26, 'first seconds:', 'fl09-it', 'end')}${text(x - 24, top + 52, 'mostly Δψ', 'sm fl09-b', 'end')}
+    ${text(x - 24, top + h * 0.62, 'steady light:', 'fl09-it', 'end')}${text(x - 24, top + h * 0.62 + 26, 'mostly ΔpH', 'sm fl09-b', 'end')}${text(x - 24, top + h * 0.62 + 52, '(debated)', 'fl09-it', 'end')}
+    <path class="fl10-cut" d="M${x},${top + h * 0.1} H${x + w}"/>
     ${text(x + w + 18, top + h - 48, 'pH', 'sm', 'start')}${text(x + w + 18, top + h - 22, 'difference', 'sm', 'start')}
-    ${text(400, 586, 'schematic; values from leaves (Takizawa et al. 2007)', 'fl09-key')}
+    ${text(400, 586, 'schematic · pH: Takizawa et al. 2007 · Δψ vs ΔpH: Wilson et al. 2021', 'fl09-key')}
   `);
 }
 
@@ -240,7 +240,7 @@ function sealedLeaky(): string {
     ${text(458, 82, 'H⁺ leak back, no gradient', 'sm', 'start')}
     ${half(10, false)}${half(410, true)}
     <path class="fl10-split" d="M400,24 V560"/>
-    ${text(400, 590, 'Thought experiment: the membrane must hold the gradient', 'sm')}
+    ${text(400, 590, '', 'sm')}
   `);
 }
 
@@ -335,8 +335,8 @@ function atpEquation(): string {
 function twoInOneOut(): string {
   const p = 'fl10j';
   const big = (x: number, y: number): string => `<circle class="tag-h" cx="${x}" cy="${y}" r="20"/>${text(x, y + 7, 'H⁺', 'fl10-ht')}`;
-  return svg(p, 'Minimal summary: protons enter the lumen two ways, from water splitting and through PQ and b6f; they leave one way, through ATP synthase, which makes ATP', `
-    ${text(400, 52, 'Two ways in, one way out', 'lab fl09-b')}
+  return svg(p, 'Minimal summary: protons enter the lumen two ways, from water oxidation and through PQ and b6f; they leave one way, through ATP synthase, which makes ATP', `
+    ${text(400, 52, '', 'lab fl09-b')}
     <rect class="fl09-lumen" x="0" y="330" width="800" height="270"/>
     <rect class="fl10-band" x="0" y="280" width="800" height="50"/>
     ${text(24, 110, 'stroma', 'fl09-note', 'start')}${text(790, 318, 'membrane', 'fl09-it', 'end')}${text(790, 588, 'lumen', 'fl09-note', 'end')}

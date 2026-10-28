@@ -1,0 +1,52 @@
+/* ATP synthase on the slide 10 figure (atpsm-common.ts), stagings m1 and m2. The figure keeps chain.css's look and its
+   glyphs (ringed H⁺, tags); these are the slide's figure card, the lumen's deeper blue, the pH labels, the rotor's marks
+   and glows, the counter and the Jagendorf–Uribe card. */
+:is(.ani-atps-m1,.ani-atps-m2) .am-slidecard{fill:rgba(255,254,250,.58);stroke:rgba(120,100,60,.10);stroke-width:1}
+:is(.ani-atps-m1,.ani-atps-m2) .am-acid{fill:#9dbfd6;fill-opacity:.32}
+:is(.ani-atps-m1,.ani-atps-m2) .fig text.am-ph{fill:#3d3d3a;font-weight:700}
+
+/* the rotor on the render: the c-subunits' edges, one subunit marked, the glows that name a part */
+:is(.ani-atps-m1,.ani-atps-m2) .am-cs{fill:#fffaf4;fill-opacity:.8}
+:is(.ani-atps-m1,.ani-atps-m2) .am-cm{fill:#f6b42c;fill-opacity:.85}
+:is(.ani-atps-m1,.ani-atps-m2) .am-glow{fill:#f6b42c}
+
+/* the counter: 14 H⁺ → 1 turn → 3 ATP */
+:is(.ani-atps-m1,.ani-atps-m2) .am-ctr{fill:#fffdf8;stroke:#d8d5cb;stroke-width:1.4}
+:is(.ani-atps-m1,.ani-atps-m2) .fig text.am-num{font-size:36px;font-weight:700;fill:#141413;font-variant-numeric:tabular-nums}
+:is(.ani-atps-m1,.ani-atps-m2) .fig text.am-num-s{font-size:28px}
+:is(.ani-atps-m1,.ani-atps-m2) .fig .am-unit{font-size:26px;font-weight:600;fill:#3d3d3a}
+:is(.ani-atps-m1,.ani-atps-m2) .fig text.am-op{font-size:30px;font-weight:600;fill:#6b6a64}
+:is(.ani-atps-m1,.ani-atps-m2) .am-dial{fill:#fbfaf6;stroke:#8a877d;stroke-width:1.6}
+:is(.ani-atps-m1,.ani-atps-m2) .am-dial-t{fill:none;stroke:#8a877d;stroke-width:1.6;stroke-linecap:round}
+:is(.ani-atps-m1,.ani-atps-m2) .am-dial-f{fill:#dc8fb6}
+:is(.ani-atps-m1,.ani-atps-m2) .am-dial-c{fill:#8a877d}
+
+/* the card: Jagendorf and Uribe, 1966, Table 1 and the experiment */
+:is(.ani-atps-m1,.ani-atps-m2) .am-paper{fill:#f6f1e5;stroke:#d3cdbd;stroke-width:1}
+:is(.ani-atps-m1,.ani-atps-m2) text.am-cname{font-size:32px}
+:is(.ani-atps-m1,.ani-atps-m2) text.am-year{font-size:30px}
+:is(.ani-atps-m1,.ani-atps-m2) text.am-cl{font-size:24px;font-weight:600;fill:#3d3d3a}
+:is(.ani-atps-m1,.ani-atps-m2) .am-acidl{fill:#f5cfb2}
+:is(.ani-atps-m1,.ani-atps-m2) .am-basel{fill:#cfe1ef}
+:is(.ani-atps-m1,.ani-atps-m2) .am-chl{fill:#5a9a44}
+:is(.ani-atps-m1,.ani-atps-m2) .am-glass{fill:none;stroke:#6f6c63;stroke-width:2.6;stroke-linejoin:round}
+:is(.ani-atps-m1,.ani-atps-m2) .am-lip{fill:none;stroke:#6f6c63;stroke-width:4.5;stroke-linecap:round}
+:is(.ani-atps-m1,.ani-atps-m2) .am-ar{fill:none;stroke:#3d3d3a;stroke-width:3;stroke-linecap:round}
+:is(.ani-atps-m1,.ani-atps-m2) .am-arh{fill:#3d3d3a}
+:is(.ani-atps-m1,.ani-atps-m2) .am-sunc{fill:#f6c453;stroke:#e3a21a;stroke-width:2}
+:is(.ani-atps-m1,.ani-atps-m2) .am-sun{fill:none;stroke:#e3a21a;stroke-width:2.6;stroke-linecap:round}
+:is(.ani-atps-m1,.ani-atps-m2) .am-slash{fill:none;stroke:#2b2a27;stroke-width:3.4;stroke-linecap:round}
+
+/* m2: the cut-away. Rotor (c-ring, central stalk) in ATP synthase's darker tint, the head lighter, the stator (subunit a,
+   peripheral stalk) darkest; the half-channels in subunit a as pale grooves */
+.ani-atps-m2 .am-rot{fill:#d17fa8;stroke:#8e4c6c;stroke-width:1}
+.ani-atps-m2 .am-head{fill:#e9b2cd;stroke:#8e4c6c;stroke-width:1}
+.ani-atps-m2 .am-stat{fill:#b56890;stroke:#7d4060;stroke-width:1}
+.ani-atps-m2 .am-ol{fill:none;stroke:#8e4c6c;stroke-width:1}
+.ani-atps-m2 .am-chan{fill:none;stroke:#fbeef4;stroke-width:6.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* the counter's second line, and the third ATP, part made (dashed, its made part filled from the left) */
+:is(.ani-atps-m1,.ani-atps-m2) .am-ctr-rule{fill:none;stroke:#e4e1d8;stroke-width:1.2}
+:is(.ani-atps-m1,.ani-atps-m2) .am-part-o{fill:#fffdf8;stroke:none}
+:is(.ani-atps-m1,.ani-atps-m2) .am-part-f{fill:#f5c7a9}
+:is(.ani-atps-m1,.ani-atps-m2) .am-part-d{fill:none;stroke:#d97757;stroke-width:1.6;stroke-dasharray:4 3}

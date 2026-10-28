@@ -1,4 +1,6 @@
 // Slide C08 · C₂ photosynthesis moves CO₂ release. Draft context; see research/figure-briefs/LECTURE_OVERVIEW.md.
+// Since 27 Oct 2026 (order variant 1, research/figure-briefs/ORDER_LECTURE2.md) this slide also carries C07's material:
+// its text opens with C₃ refixation (Busch 2013), and C07's ten figures are listed here as k–t, drawn by C07's module.
 // Also exports the leaf-anatomy kit that C09 reuses, so the C₃ → C₂ → C₄ comparison runs on one anatomy:
 // a Kranz ring (vein, bundle-sheath wreath, mesophyll ring) and a two-cell pair (mesophyll | bundle sheath | vein).
 // Vocabulary: carbon = dark bead (white bead = carbon that entered as CO₂), glycine route = clay dashed,
@@ -7,21 +9,23 @@ import type { PlateText, Variant } from '../types';
 import { illusHeads, molecule } from '../illus';
 import { text } from '../mechanisms';
 import './c08.css';
+import { draw as drawC07, VARIANTS as C07_VARIANTS } from './c07';
 
 export const PLATE: PlateText = {
-  n: 'C8',
+  n: 'C9',
   title: 'C₂ photosynthesis moves CO₂ release',
   status: 'draft',
-  lead: 'In C₂ plants, glycine from the mesophyll is decarboxylated only in the bundle sheath, releasing CO₂ next to Rubisco.',
+  lead: 'A leaf has two photosynthetic cell types: mesophyll, and bundle sheath around each vein. In C₂ plants, glycine is decarboxylated mainly in the bundle sheath, next to RuBisCO.',
   points: [
-    { claim: 'Glycine decarboxylase moves to the bundle sheath.', text: 'Immunogold labelling found GDC only in bundle-sheath mitochondria of C₃–C₄ intermediates.' },
-    { claim: 'A glycine shuttle concentrates CO₂.', text: 'Released beside Rubisco, the CO₂ is refixed instead of escaping the leaf.' },
-    { claim: 'No C₄ cycle needed.', text: 'In Brassicaceae, C₂ reuses a bundle-sheath GDC switch already present in C₃ plants.' },
+    { claim: 'C₃ leaves already refix some CO₂.', text: 'Rice and wheat refix 24–38 % of the CO₂ their mitochondria release.' },
+    { claim: 'Glycine decarboxylase moves to the bundle sheath.', text: 'Photorespiration’s GDC step (slide C6) runs mainly in bundle-sheath mitochondria, as immunogold labelling showed.' },
+    { claim: 'A glycine shuttle concentrates CO₂.', text: 'Released beside RuBisCO, the CO₂ is refixed; chloroplast CO₂ rises about 3-fold.' },
   ],
   refs: [
+    { label: 'Busch et al. 2013', url: 'https://doi.org/10.1111/j.1365-3040.2012.02567.x' },
     { label: 'Rawsthorne et al. 1988', url: 'https://doi.org/10.1007/BF00401016' },
-    { label: 'Hylton et al. 1988', url: 'https://doi.org/10.1007/BF00393064' },
     { label: 'Leung et al. 2024', url: 'https://doi.org/10.1111/pce.15069' },
+    { label: 'Keerberg et al. 2014', url: 'https://doi.org/10.1093/jxb/eru239' },
     { label: 'Dickinson et al. 2025', url: 'https://doi.org/10.1038/s44319-025-00461-1' },
   ],
 };
@@ -37,9 +41,15 @@ export const VARIANTS: Variant[] = [
   { id: 'h', name: 'Trait by trait', anim: true },
   { id: 'i', name: 'Atom ledger' },
   { id: 'j', name: 'Hidden switch' },
+  // C07's figures, merged into this slide on 27 Oct 2026: k–t draw C07's a–j.
+  ...C07_VARIANTS.map((v, i) => ({ ...v, id: 'klmnopqrst'[i], name: `${v.name} (from C7)` })),
 ];
 
+/** This slide's ids k–t map to C07's a–j. */
+const FROM_C07: Record<string, string> = Object.fromEntries([...'klmnopqrst'].map((k, i) => [k, 'abcdefghij'[i]]));
+
 export function draw(id: string): string {
+  if (FROM_C07[id]) return drawC07(FROM_C07[id]);
   const f: Record<string, () => string> = {
     a: shuttleSvg, b: compareSvg, c: iconSvg, d: parcelSvg, e: goldSvg,
     f: tribulusSvg, g: stepsSvg, h: traitsSvg, i: ledgerSvg, j: switchSvg,
@@ -104,8 +114,8 @@ export function mito(x: number, y: number, rx: number, ry: number, rot = 0, stat
 
 export const perox = (x: number, y: number, r: number): string => `<circle class="fc08-px" cx="${n1(x)}" cy="${n1(y)}" r="${r}"/>`;
 
-/** Rubisco as the deck draws it: a warm grey block. */
-export const rub = (x: number, y: number, w = 104, h = 34, label = 'Rubisco'): string =>
+/** RuBisCO as the deck draws it: a warm grey block. */
+export const rub = (x: number, y: number, w = 104, h = 34, label = 'RuBisCO'): string =>
   `<rect class="node node-rub" x="${n1(x - w / 2)}" y="${n1(y - h / 2)}" width="${w}" height="${h}" rx="9"/>${label ? text(x, y + 7.5, label, 'sm fc08-b') : ''}`;
 
 /** An enzyme pill. */
@@ -212,7 +222,7 @@ export function ring(cx: number, cy: number, R: number, o: RingOpt = {}): string
 
 function shuttleSvg(): string {
   const p = 'fc08a';
-  return figure(p, 'C₂ glycine shuttle: Rubisco takes up O₂ in a mesophyll chloroplast, glycine forms in the peroxisome and moves into the bundle-sheath cell, where glycine decarboxylase in the mitochondrion releases CO₂ beside two chloroplasts whose Rubisco refixes it', `
+  return figure(p, 'C₂ glycine shuttle: RuBisCO takes up O₂ in a mesophyll chloroplast, glycine forms in the peroxisome and moves into the bundle-sheath cell, where glycine decarboxylase in the mitochondrion releases CO₂ beside two chloroplasts whose RuBisCO refixes it', `
     ${text(205, 32, 'mesophyll cell', 'sm fc08-b')}${text(541, 32, 'bundle-sheath cell', 'sm fc08-b')}${text(752, 32, 'vein', 'sm fc08-b')}
     <rect class="fc08-m" x="40" y="50" width="330" height="426" rx="46"/>
     <rect class="fc08-bs" x="382" y="48" width="318" height="430" rx="30"/>
@@ -263,17 +273,18 @@ function compareSvg(): string {
     return route(p, 'g', `M${n1(x0)},${n1(y0)} L${n1(x1)},${n1(y1)}`);
   }).join('');
   const inner = [-135, -45, 45, 135].map(a => { const [x, y] = polar(Rx, cy, rb0 + (rb1 - rb0) * 0.35, a); return co2s(x, y, 4.5); }).join('');
-  return figure(p, 'The same leaf anatomy twice. C₃: every mitochondrion carries GDC, so photorespired CO₂ is released throughout the mesophyll and much escapes. C₂: only bundle-sheath mitochondria carry GDC; glycine moves inwards and CO₂ is released next to bundle-sheath Rubisco', `
+  return figure(p, 'The same leaf anatomy twice. C₃: every mitochondrion carries GDC, so photorespired CO₂ is released throughout the mesophyll and much escapes. C₂: mainly bundle-sheath mitochondria carry GDC; glycine moves inwards and CO₂ is released next to bundle-sheath RuBisCO', `
     ${text(L, 58, 'C₃ leaf', 'lab fc08-b')}${text(Rx, 58, 'C₂ leaf', 'lab fc08-b')}
     ${ring(L, cy, R, { gdc: 'both', mMt: true, bsMt: 'outer', bsCp: 1 })}${esc}
     ${ring(Rx, cy, R, { gdc: 'bs', mMt: true, bsMt: 'inner', bsCp: 3 })}${gly}${inner}
     ${text(L, 480, 'GDC in every mitochondrion', 'sm')}
-    ${text(Rx, 480, 'GDC only in the bundle sheath', 'sm')}
+    ${text(Rx, 480, 'GDC mainly in the bundle sheath', 'sm')}
     <path class="fc08-rule" d="M30,512 H770"/>
     ${mito(58, 544, 15, 9, 0, 'on', false)}${text(82, 551, 'with GDC', 'sm', 'start')}
     ${mito(212, 544, 15, 9, 0, 'off', false)}${text(236, 551, 'no GDC', 'sm', 'start')}
     ${route(p, 'g', 'M352,544 L398,544')}${text(410, 551, 'glycine', 'sm', 'start')}
-    ${route(p, 'x', 'M520,544 L566,544')}${co2s(588, 544, 5)}${text(608, 551, 'CO₂ escaping', 'sm', 'start')}`);
+    ${route(p, 'x', 'M520,544 L566,544')}${co2s(588, 544, 5)}${text(608, 551, 'CO₂ escaping', 'sm', 'start')}
+    ${text(400, 588, 'each leaf, outside in: mesophyll · bundle sheath · vein', 'sm fc08-grey')}`);
 }
 
 /* ---------- c · icon sum ---------- */
@@ -288,7 +299,7 @@ function iconSvg(): string {
     return route(p, 'g', `M${n1(x0)},${n1(y0)} L${n1(x1)},${n1(y1)}`, 'fc08-thin');
   }).join('');
   const inner = [-135, -45, 90].map(a => { const [x, y] = polar(xs[2], cy, 0.36 * R, a); return co2s(x, y, 5); }).join('');
-  return figure(p, 'Icon sum: photorespiration plus glycine decarboxylase present only in the bundle sheath equals a CO₂ pump, with CO₂ released next to Rubisco', `
+  return figure(p, 'Icon sum: photorespiration plus glycine decarboxylase mainly in the bundle sheath equals a CO₂ pump, with CO₂ released next to RuBisCO', `
     ${disc(xs[0])}${disc(xs[1])}${disc(xs[2])}
     ${chain(xs[0] - 30, 146, 2, { cls: 'bead bead-pr' })}${chain(xs[0] + 30, 146, 2, { cls: 'bead bead-pr' })}
     ${route(p, 'k', `M${xs[0]},164 L${xs[0]},204`)}${text(xs[0] + 12, 192, 'GDC', 'sm fc08-b', 'start')}
@@ -297,9 +308,9 @@ function iconSvg(): string {
     ${ring(xs[2], cy, R, { nb: 6, nm: 10, gdc: 'bs', mMt: true, bsMt: 'inner', bsCp: 2 })}${gly}${inner}
     ${text(266, cy + 12, '+', 'fc08-big')}${text(534, cy + 12, '=', 'fc08-big')}
     ${lines(xs[0], 344, ['photorespiration', '4 C → 3 C + CO₂'])}
-    ${lines(xs[1], 344, ['GDC only in', 'the bundle sheath'])}
-    ${lines(xs[2], 344, ['CO₂ released', 'beside Rubisco'])}
-    ${text(400, 452, 'C₂ = photorespiration + sheath-only GDC', 'fc08-big')}
+    ${lines(xs[1], 344, ['GDC mainly in', 'the bundle sheath'])}
+    ${lines(xs[2], 344, ['CO₂ released', 'beside RuBisCO'])}
+    ${text(400, 452, 'C₂ = photorespiration + GDC moved to the sheath', 'fc08-big')}
     <path class="fc08-rule" d="M60,494 H740"/>
     ${mito(126, 528, 15, 9, 0, 'on', false)}${text(150, 535, 'with GDC', 'sm fc08-grey', 'start')}
     ${mito(290, 528, 15, 9, 0, 'off', false)}${text(314, 535, 'no GDC', 'sm fc08-grey', 'start')}
@@ -318,7 +329,7 @@ function parcelSvg(): string {
     `<g${cls ? ` class="${cls}"` : ''}><path class="fc08-sc" d="M${x - 14},${y - 9} L${x + 28},${y + 8} M${x - 14},${y + 9} L${x + 28},${y - 8}"/>` +
     `<circle class="fc08-sc-loop" cx="${x - 22}" cy="${y - 12}" r="8.5"/><circle class="fc08-sc-loop" cx="${x - 22}" cy="${y + 12}" r="8.5"/></g>`;
   const wind = [222, 248, 274].map(y => route(p, 'x', `M50,${y} C40,${y - 6} 30,${y + 6} 14,${y}`)).join('');
-  return figure(p, 'Analogy mapped to C₂: parcels (glycine) are made in the front room (mesophyll) by an open door (air spaces), but the only opener (GDC) is in the back room (bundle sheath), so the contents (CO₂) land at the workbench (Rubisco)', `
+  return figure(p, 'Analogy mapped to C₂: parcels (glycine) are made in the front room (mesophyll) by an open door (air spaces), but the openers (GDC) are mainly in the back room (bundle sheath), so the contents (CO₂) land at the workbench (RuBisCO)', `
     <g transform="translate(0 44)"><rect class="fc08-room" x="60" y="40" width="340" height="380" stroke="none"/>
     <rect class="fc08-room fc08-room-b" x="400" y="40" width="340" height="380" stroke="none"/>
     <path class="fc08-room" fill="none" d="M60,198 V40 H740 V420 H60 V298 M400,40 V206 M400,290 V420"/>
@@ -333,7 +344,7 @@ function parcelSvg(): string {
     ${pairLabel(624, 176, 'contents', 'CO₂')}
     ${route(p, 'k', 'M652,238 L688,262')}
     <rect class="fc08-bench" x="698" y="120" width="32" height="270" rx="6"/>
-    ${pairLabel(684, 356, 'workbench', 'Rubisco', 'end')}
+    ${pairLabel(684, 356, 'workbench', 'RuBisCO', 'end')}
     ${pairLabel(60, 458, 'open door', 'air spaces, stomata', 'start')}</g>`);
 }
 
@@ -374,7 +385,7 @@ function goldSvg(): string {
     ${text(595, 42, 'C₃–C₄ intermediate', 'sm fc08-b')}<text class="sm fc08-sp" x="595" y="70" text-anchor="middle">Moricandia arvensis</text>
     ${panel(30, true)}${panel(420, false)}
     ${text(205, 454, 'gold in both cell types', 'sm')}
-    ${text(595, 454, 'gold in bundle sheath only', 'sm')}
+    ${text(595, 454, 'gold mainly in bundle sheath', 'sm')}
     <path class="fc08-rule" d="M30,486 H770"/>
     <circle class="fc08-dot" cx="44" cy="518" r="3.4"/><circle class="fc08-dot" cx="54" cy="512" r="3.4"/><circle class="fc08-dot" cx="56" cy="524" r="3.4"/>
     ${text(72, 525, 'gold particle: marks glycine decarboxylase (GDC)', 'sm', 'start')}
@@ -397,11 +408,11 @@ function tribulusSvg(): string {
     const h = v * 1.6, y = b2 - h;
     return `<rect class="${cls[i]}"${i === 1 ? ' style="opacity:.6"' : ''} x="${xs[i] - w / 2}" y="${n1(y)}" width="${w}" height="${n1(h)}" rx="4"/>${text(xs[i], y - 12, `${v}`, 'sm fc08-b')}`;
   }).join('');
-  return figure(p, 'Tribulus data at 42 °C: the share of glycine decarboxylase in the bundle sheath rises from 11 % in C₃ species to 30 % in sub-C₂ T. astrocarpus and 86 % in C₂ T. cristatus, while the CO₂ compensation point C* falls from 73 to 55 to 21 µmol mol⁻¹', `
+  return figure(p, 'Tribulus data at 42 °C: the share of glycine decarboxylase in the bundle sheath rises from 11 % in C₃ species to 30 % in sub-C₂ T. astrocarpus and 86 % in C₂ T. cristatus, while C*, the CO₂ compensation point without respiration, falls from 73 to 55 to 21 µmol mol⁻¹', `
     ${text(400, 46, 'Share of GDC in the bundle sheath', 'lab fc08-b')}
     <path class="fc08-axis" d="M140,${b1} H660"/>${top}
-    ${text(400, 286, 'CO₂ compensation point at 42 °C', 'lab fc08-b')}
-    ${text(400, 314, 'C*, µmol mol⁻¹ · lower: less CO₂ lost', 'sm fc08-grey')}
+    ${text(400, 286, 'C*: CO₂ compensation point without respiration', 'lab fc08-b')}
+    ${text(400, 314, 'µmol mol⁻¹ at 42 °C · lower: less CO₂ lost', 'sm fc08-grey')}
     <path class="fc08-axis" d="M140,${b2} H660"/>${bot}
     ${lines(xs[0], 522, ['C₃ species', '(mean)'])}
     <text class="sm fc08-sp" x="${xs[1]}" y="522" text-anchor="middle">T. astrocarpus</text>${text(xs[1], 549, 'sub-C₂', 'sm')}
@@ -431,9 +442,9 @@ function stepsSvg(): string {
       ${g(4, route(p, 'k', `M${px + 280},${py + 158} L${px + 272},${py + 136}`))}
       ${n === 1 ? text(px + 22, py + 262, 'mesophyll', 'fc08-tiny', 'start') + text(px + 272, py + 262, 'bundle sheath', 'fc08-tiny') : ''}`;
   };
-  return figure(p, 'Four steps of the C₂ shuttle: Rubisco takes up O₂ in the mesophyll and glycine forms; glycine moves into the bundle sheath; GDC releases CO₂ in the bundle-sheath mitochondrion; Rubisco next door refixes the CO₂', `
-    ${panel(10, 8, 1, 'Rubisco adds O₂ to RuBP')}${panel(410, 8, 2, 'Glycine moves inwards')}
-    ${panel(10, 306, 3, 'GDC releases CO₂')}${panel(410, 306, 4, 'Rubisco refixes the CO₂')}`);
+  return figure(p, 'Four steps of the C₂ shuttle: RuBisCO takes up O₂ in the mesophyll and glycine forms; glycine moves into the bundle sheath; GDC releases CO₂ in the bundle-sheath mitochondrion; RuBisCO next door refixes the CO₂', `
+    ${panel(10, 8, 1, 'RuBisCO adds O₂ to RuBP')}${panel(410, 8, 2, 'Glycine moves inwards')}
+    ${panel(10, 306, 3, 'GDC releases CO₂')}${panel(410, 306, 4, 'RuBisCO refixes the CO₂')}`);
 }
 
 /* ---------- h · trait by trait: C₃ → proto-Kranz → C₂ → C₄ (C07 folded in) ---------- */
@@ -445,7 +456,7 @@ function traitsSvg(): string {
     const [x0, y0] = polar(cx, cy, R * 0.97, a), [x1, y1] = polar(cx, cy, rg(R).rb1 + 3, a);
     return route(p, kind, `M${n1(x0)},${n1(y0)} L${n1(x1)},${n1(y1)}`, 'fc08-thin');
   }).join('');
-  return figure(p, 'Four leaves on one anatomy, traits added one at a time: C₃ with GDC in every cell; proto-Kranz with more and larger bundle-sheath organelles; C₂ with GDC only in the bundle sheath; C₄ with a PEPC cycle that pumps C₄ acids inwards', `
+  return figure(p, 'Four leaves on one anatomy, traits added one at a time: C₃ with GDC in every cell; proto-Kranz with more and larger bundle-sheath organelles; C₂ with GDC mainly in the bundle sheath; C₄ with a PEPC cycle that pumps C₄ acids inwards', `
     <g transform="translate(0 20)">${text(400, 40, 'Traits accumulate one at a time', 'lab fc08-b')}
     ${route(p, 'w', 'M60,74 L740,74')}
     ${text(xs[0], 132, 'C₃', 'lab fc08-b')}${text(xs[1], 132, 'proto-Kranz', 'lab fc08-b')}${text(xs[2], 132, 'C₂', 'lab fc08-b')}${text(xs[3], 132, 'C₄', 'lab fc08-b')}
@@ -455,7 +466,7 @@ function traitsSvg(): string {
     ${ring(xs[3], cy, R, { nb: 7, nm: 11, bsCp: 3 })}${inward(xs[3], 'm', [-150, -30, 90])}
     ${lines(xs[0], 372, ['GDC in', 'every cell'])}
     ${lines(xs[1], 372, ['more, larger', 'sheath organelles'])}
-    ${lines(xs[2], 372, ['GDC only in', 'bundle sheath'])}
+    ${lines(xs[2], 372, ['GDC mainly in', 'bundle sheath'])}
     ${lines(xs[3], 372, ['+ C₄ acids', 'carry CO₂ in'])}
     <path class="fc08-rule" d="M30,432 H770"/>
     ${mito(92, 464, 14, 8.5, 0, 'on', false)}${text(114, 471, 'mitochondrion with GDC', 'sm', 'start')}
@@ -471,7 +482,7 @@ function ledgerSvg(): string {
   const p = 'fc08i';
   const card = (x: number, title: string, rows: string[], hi = false): string =>
     `<rect class="${hi ? 'fc08-halo' : 'fc08-panel'}" x="${x}" y="300" width="230" height="142" rx="18"/>${text(x + 115, 340, title, 'lab fc08-b')}${lines(x + 115, 374, rows)}`;
-  return figure(p, 'The glycine decarboxylase reaction, 2 glycine → serine + CO₂ + NH₃, with each product traced: serine returns to the mesophyll, CO₂ is released in the bundle sheath beside Rubisco, NH₃ is also released there and recycled', `
+  return figure(p, 'The glycine decarboxylase reaction, 2 glycine → serine + CO₂ + NH₃, with each product traced: serine returns to the mesophyll, CO₂ is released in the bundle sheath beside RuBisCO, NH₃ is also released there and recycled', `
     <g transform="translate(0 0)">
     <rect class="fc08-halo" x="436" y="96" width="92" height="54" rx="14"/>
     ${text(140, 134, '2 glycine', 'fc08-big')}${route(p, 'k', 'M218,124 L282,124')}${text(250, 104, 'GDC', 'sm fc08-b')}
@@ -480,7 +491,7 @@ function ledgerSvg(): string {
     ${text(140, 226, '4 C', 'sm fc08-grey')}${text(345, 226, '3 C', 'sm fc08-grey')}${text(482, 226, '1 C', 'sm fc08-grey')}
     ${route(p, 'k', 'M330,238 L190,294', 'fc08-thin')}${route(p, 'k', 'M470,238 L420,294', 'fc08-thin')}${route(p, 'k', 'M620,150 C640,220 660,250 660,294', 'fc08-thin')}
     ${card(40, 'serine', ['back to mesophyll', '3 of 4 C kept'])}
-    ${card(305, 'CO₂', ['released beside', 'sheath Rubisco'], true)}
+    ${card(305, 'CO₂', ['released beside', 'sheath RuBisCO'], true)}
     ${card(570, 'NH₃', ['released there,', 'then recycled'])}
     ${text(400, 500, 'Same chemistry as C₃, different place', 'sm fc08-b')}</g>`);
 }
@@ -506,6 +517,6 @@ function switchSvg(): string {
     <text class="lab fc08-b" x="40" y="334">C₂ leaf · <tspan class="fc08-sp">Moricandia</tspan></text>
     ${row(414, true)}
     ${ring(680, 416, 92, { nb: 7, nm: 11, mCp: false, bsCp: 0, bsCls: 'fc08-expr' })}
-    ${text(680, 540, 'bundle sheath only', 'sm')}
+    ${text(680, 540, 'mainly bundle sheath', 'sm')}
     <text class="fc08-tiny" x="40" y="566">Dickinson et al. 2025; mechanism shown mainly in <tspan class="fc08-sp">Arabidopsis</tspan></text></g>`);
 }

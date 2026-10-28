@@ -99,3 +99,6 @@
 .theme-editorial .fc10-lens-ring{fill:none;stroke:#6b6a64;stroke-width:2}
 .theme-editorial .fc10-zoombox{fill:none;stroke:#6b6a64;stroke-width:1.8}
 .theme-editorial .fc10-zoomline{fill:none;stroke:#8a877d;stroke-width:1.4;stroke-dasharray:4 5}
+/* the deck's one glyph set (28 Oct 2026): CO₂ and water-vapour paths neutral grey, molecule names in ink */
+.theme-editorial .fc10-k-c,.theme-editorial .fc10-k-water{stroke:#6b6a64}.theme-editorial .fc10-hd-c,.theme-editorial .fc10-hd-water{fill:#6b6a64}
+.theme-editorial .fig text.fc10-blue{fill:#141413}

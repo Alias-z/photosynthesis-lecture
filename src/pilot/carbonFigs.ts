@@ -1,5 +1,5 @@
 // Carbon-fixation figures after the FvCB scheme in the lecturer's MSc thesis (Fig. 2b, itself a redraw of
-// von Caemmerer 2000, Fig. 2.1): Rubisco's two reactions, PGA reduction, RuBP regeneration, export,
+// von Caemmerer 2000, Fig. 2.1): RuBisCO's two reactions, PGA reduction, RuBP regeneration, export,
 // and where each FvCB limitation acts.
 import { illusHeads, molecule, tag } from './illus';
 import { arrow, beads, text } from './mechanisms';
@@ -24,9 +24,9 @@ const limit = (x: number, y: number, term: string, lines: string[], cls: 'lim-c'
 
 export function fvcbSchemeSvg(): string {
   const p = 'fvs';
-  return `<svg class="fig-svg" viewBox="0 0 800 600" role="img" aria-label="FvCB scheme: Rubisco carboxylation and oxygenation, PGA reduction, RuBP regeneration and export, with the three limitations">
+  return `<svg class="fig-svg" viewBox="0 0 800 600" role="img" aria-label="FvCB scheme: RuBisCO carboxylation and oxygenation, PGA reduction, RuBP regeneration and export, with the three limitations">
     ${illusHeads(p)}
-    <rect class="node node-rub" x="340" y="482" width="120" height="44" rx="14"/>${text(400, 511, 'Rubisco', 'lab lab-b')}
+    <rect class="node node-rub" x="340" y="482" width="120" height="44" rx="14"/>${text(400, 511, 'RuBisCO', 'lab lab-b')}
     ${rubp(400, 444)}
     ${molecule(296, 566, 'OCO')}${arrow(p, 'ink', 'M316,548 L350,526')}${molecule(504, 566, 'OO')}${arrow(p, 'clay', 'M486,548 L452,526')}
     ${arrow(p, 'ink', 'M376,420 L320,334')}${text(330, 392, 'carboxylation', 'lab lab-b lim-c', 'end')}
@@ -44,7 +44,7 @@ export function fvcbSchemeSvg(): string {
     ${arrow(p, 'ink', 'M512,148 L590,110')}${text(548, 176, '1/6 carbon gain', 'lab lab-b lim-p', 'start')}
     ${pill(690, 94, 'sugars (cytosol)', 190, 'node node-out')}${tag(774, 40, '', 'pi')}${arrow(p, 'ink', 'M760,52 L724,74', 'dashed')}
     ${limit(22, 470, 'Aj ~ Jmax', ['RuBP regeneration', 'limited by electron transport'], 'lim-j')}
-    ${limit(560, 470, 'Ac ~ Vcmax', ['Rubisco limited', 'by CO₂'], 'lim-c')}
+    ${limit(560, 470, 'Ac ~ Vcmax', ['RuBisCO limited', 'by CO₂'], 'lim-c')}
     ${limit(22, 40, 'Ap ~ TPU', ['export limited by', 'triose-phosphate use'], 'lim-p')}
   </svg>`;
 }
@@ -53,7 +53,7 @@ export function fvcbSchemeSvg(): string {
 
 export function fvcbMapSvg(): string {
   const p = 'fvm';
-  // Illustrative response: Vcmax 60, J 110, TPU 7.5 µmol m⁻² s⁻¹; Rubisco kinetics at 25 °C.
+  // Illustrative response: Vcmax 60, J 110, TPU 7.5 µmol m⁻² s⁻¹; RuBisCO kinetics at 25 °C.
   const vcmax = 60, j = 110, tpu = 7.5, kc = 404.9, ko = 278.4, o = 210, gs = 42.75, rl = 1;
   const ac = (c: number): number => (vcmax * c) / (c + kc * (1 + o / ko)) * (1 - gs / c) - rl;
   const aj = (c: number): number => (j * c) / (4 * (c + 2 * gs)) * (1 - gs / c) - rl;
@@ -74,8 +74,8 @@ export function fvcbMapSvg(): string {
     <rect class="halo halo-j" x="40" y="160" width="400" height="244" rx="26"/>
     <rect class="halo halo-p" x="40" y="20" width="400" height="124" rx="26"/>
     ${molecule(78, 520, 'OCO')}${arrow(p, 'ink', 'M100,520 L118,520')}
-    <rect class="node node-rub" x="120" y="496" width="120" height="48" rx="14"/>${text(180, 527, 'Rubisco', 'lab lab-b')}
-    ${text(426, 466, 'Ac', 'lab lab-b lim-c', 'end')}${text(426, 490, 'Rubisco capacity', 'sm', 'end')}${text(426, 512, '(Vcmax) and CO₂', 'sm', 'end')}
+    <rect class="node node-rub" x="120" y="496" width="120" height="48" rx="14"/>${text(180, 527, 'RuBisCO', 'lab lab-b')}
+    ${text(426, 466, 'Ac', 'lab lab-b lim-c', 'end')}${text(426, 490, 'RuBisCO capacity', 'sm', 'end')}${text(426, 512, '(Vcmax) and CO₂', 'sm', 'end')}
     ${arrow(p, 'ink', 'M180,494 L180,410')}${pill(180, 388, '2 PGA', 110)}
     ${arrow(p, 'ink', 'M180,366 L180,290', 'boost')}${tag(258, 342, 'ATP', 'atp')}${tag(274, 300, 'NADPH', 'nadph')}
     ${pill(180, 268, 'triose-P', 120)}
@@ -91,7 +91,7 @@ export function fvcbMapSvg(): string {
   </svg>`;
 }
 
-/* ---------- 3 · bookkeeping per Rubisco reaction ---------- */
+/* ---------- 3 · bookkeeping per RuBisCO reaction ---------- */
 
 export function fvcbBalanceSvg(): string {
   const p = 'fvb';
@@ -99,7 +99,7 @@ export function fvcbBalanceSvg(): string {
     `<rect class="box ${cls}" x="${x}" y="24" width="360" height="430" rx="22"/>${text(x + 180, 64, title, 'lab lab-b')}` +
     rows.map(([a, b], i) => text(x + 24, 196 + i * 64, a, 'sm lab-b', 'start') + text(x + 24, 220 + i * 64, b, 'sm', 'start')).join('') +
     `<path class="rule" d="M${x + 24},392 H${x + 336}"/>${text(x + 24, 426, total, 'sm lab-b', 'start')}${text(x + 336, 426, net, 'sm lab-b lbl-pr', 'end')}`;
-  return `<svg class="fig-svg" viewBox="0 0 800 600" role="img" aria-label="ATP, NADPH and carbon per Rubisco carboxylation and per oxygenation, and the FvCB carbon balance">
+  return `<svg class="fig-svg" viewBox="0 0 800 600" role="img" aria-label="ATP, NADPH and carbon per RuBisCO carboxylation and per oxygenation, and the FvCB carbon balance">
     ${illusHeads(p)}
     ${col(24, 'One carboxylation', 'box-c', [
       ['reduce 2 PGA', '2 ATP + 2 NADPH'],

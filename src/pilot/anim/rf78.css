@@ -1,0 +1,51 @@
+/* rf7 (slide C7) and rf8 (slide C8) animations (rf78-common.ts): the two cards, the instrument panel, the story's glyphs.
+   The schema keeps rf-schema.css; FvCB colours as there (A_c red, A_j cyan, A_p purple). */
+:is([class*="ani-rf7-"],[class*="ani-rf8-"]) .rfs g{transition:none}
+:is([class*="ani-rf7-"],[class*="ani-rf8-"]) .rf78-card{fill:rgba(255,254,250,.58);stroke:rgba(120,100,60,.10);stroke-width:1}
+:is([class*="ani-rf7-"],[class*="ani-rf8-"]) .rf78-mult{mix-blend-mode:multiply}
+
+/* readout */
+.theme-editorial text.rf78-rl{font-size:21px;font-weight:600;fill:#6b6a64}
+.theme-editorial text.rf78-val{font-size:36px;font-weight:700;fill:#141413;font-variant-numeric:tabular-nums}
+.theme-editorial text.rf78-unit{font-size:20px;fill:#6b6a64}
+.theme-editorial text.rf78-lim{font-size:23px;font-weight:700}
+.theme-editorial text.rf78-kc{fill:#b23a2e}.theme-editorial text.rf78-kj{fill:#137a8b}.theme-editorial text.rf78-kp{fill:#6b4c99}
+.theme-editorial text.rf78-ka{fill:#8a5a06}.theme-editorial text.rf78-kk{fill:#141413}
+
+/* plot */
+.rf78-pot,.rf78-pot-over{fill:none;stroke-width:2.6;stroke-dasharray:8 7;stroke-linecap:round;opacity:.9}
+.rf78-env{fill:none;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.rf78-sc{stroke:#c94a3c}.rf78-sj{stroke:#1a9bb0}.rf78-sp{stroke:#7a5aa6}.rf78-sk{stroke:#2b2a27}.rf78-sg{stroke:#8a877d}
+.rf78-dot{fill:#141413;stroke:#fffdf8;stroke-width:3}
+.rf78-dc{fill:#b23a2e}.rf78-dj{fill:#137a8b}.rf78-dp{fill:#6b4c99}
+.rf78-drop{fill:none;stroke:#8a877d;stroke-width:1.5;stroke-dasharray:4 4}
+.rf78-today{fill:none;stroke:#6b6a64;stroke-width:1.8;stroke-dasharray:6 5}
+.rf78-slope{fill:none;stroke:#a86c06;stroke-width:2.4;stroke-dasharray:9 6;stroke-linecap:round}
+.rf78-trace{fill:none;stroke:#2b2a27;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.rf78-ghost{fill:none;stroke:#cfcac0;stroke-width:2.2;stroke-dasharray:3 6;stroke-linecap:round}
+.rf78-pt{fill:#fffdf8;stroke:#2b2a27;stroke-width:2}.rf78-ptk{fill:#2b2a27;stroke:#fffdf8;stroke-width:1.5}
+
+/* paper cards */
+.theme-editorial text.rf78-cw{font-size:17px;font-weight:700;fill:#2b2a27}
+.theme-editorial text.rf78-cj{font-family:Newsreader,Georgia,serif;font-style:italic;font-size:20px;fill:#2b2a27}
+.theme-editorial text.rf78-ct{font-family:Newsreader,Georgia,serif;font-size:18px;fill:#3d3d3a}
+.theme-editorial text.rf78-clab{font-size:20px;font-weight:700;fill:#2b2a27;paint-order:stroke;stroke:#f1ece0;stroke-width:5px;stroke-linejoin:round}
+
+/* glyphs (figure units, counter-scaled with the camera) */
+.rf78-tp{fill:#efe4bd;stroke:#8f7a3a;stroke-width:1.4}
+.rf78-tag{stroke-width:1.2}
+.rf78-ph{fill:#f6c84a;stroke:#b98d12;stroke-width:1.2}
+.rf78-ph-halo{fill:#f6c453;opacity:.28}
+.rf78-glow{fill:#f6c453}
+
+/* rf8 C: windows on the schema, and their marks on the map */
+.rf78-win{fill:none;stroke:rgba(120,100,60,.22);stroke-width:1.5}
+.rf78-win.rf78-win-on{stroke-width:4}
+.rf78-win.rf78-win-on.rf78-sc{stroke:#c94a3c}.rf78-win.rf78-win-on.rf78-sj{stroke:#1a9bb0}.rf78-win.rf78-win-on.rf78-sp{stroke:#7a5aa6}
+.rf78-mark{fill:none;stroke-width:2.4}
+.ani-rf8-c [data-k^="s-"] .rfs-cr{display:none}
+.theme-editorial text.rf78-cx{font-size:15px;font-weight:700;fill:#2b2a27;paint-order:stroke;stroke:#faf9f5;stroke-width:4px;stroke-linejoin:round}
+/* rf7 D: the shade-grown leaf's curve and dot */
+.rf78-trace.rf78-trace-g{stroke:#8a877d}
+.rf78-dot.rf78-dot-g{fill:#8a877d}
+.ani-rf7-d [data-k^="s-"] .rfs-cr{display:none}

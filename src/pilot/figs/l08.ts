@@ -10,7 +10,7 @@ import { bilayer, bolt, epath, illusHeads } from '../illus';
 import './l08.css';
 
 export const PLATE: PlateText = {
-  n: '8',
+  n: '9',
   title: 'Water supplies electrons—and oxygen',
   status: 'draft',
   lead: 'PSII replaces each electron it loses with one taken from water. The by-product is the O₂ we breathe.',

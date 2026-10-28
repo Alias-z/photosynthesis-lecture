@@ -17,7 +17,7 @@ export const PLATE: PlateText = {
   lead: 'Light that meets matter is reflected, transmitted, absorbed or scattered, depending on its wavelength.',
   points: [
     { claim: 'Sky: Rayleigh scattering.', text: 'Air redirects short wavelengths most<br>Scattered blue reaches you from the whole sky' },
-    { claim: 'Leaf: absorption.', text: 'Chlorophyll removes blue and red<br>The green left over is reflected and transmitted' },
+    { claim: 'Leaf: absorption.', text: 'Chlorophyll removes most blue and red<br>Less green is absorbed, so more is reflected and transmitted' },
     { claim: 'Redirect vs remove.', text: 'A scattered photon keeps its energy<br>An absorbed photon gives its energy to the pigment' },
   ],
   refs: [
@@ -29,7 +29,6 @@ export const PLATE: PlateText = {
 
 // The lecturer's picks; since 26 Oct 2026 they are the summary slide 5b, after the pigments. Unlisted variants (j, l, m, n, o) still draw by id.
 export const VARIANTS: Variant[] = [
-  { id: 'a', name: 'Redirect vs remove', anim: true },
   { id: 'k', name: 'Scene and key', anim: true },
 ];
 // Kept for reference and still drawn by id: b Mirror diptych, c Photo paths, d Spectra at eye, e Close-ups,

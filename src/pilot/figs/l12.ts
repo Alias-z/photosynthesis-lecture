@@ -1,5 +1,6 @@
 // Slide L12 · Four fates of an excitation. Draft context; see research/figure-briefs/LECTURE_OVERVIEW.md.
-// Times used, and no others: absorption fs; S₂→S₁ heat < 1 ps; charge separation < 100 ps; S₁ lifetime ns;
+// Times used, and no others: absorption fs; Sₙ→S₁ heat < 1 ps; trapping by an open PSII in leaves ≈ 0.3 ns (van Amerongen
+// & Croce 2013; Wientjes et al. 2013; < 100 ps only in isolated cores); S₁ lifetime ns;
 // triplet µs and longer; fluorescence ≈ 685 nm. Triplet → ¹O₂ is the fourth fate (REVIEW_SUMMARY.md §4 #5).
 // Variants a, c, e and f are the strongest earlier concepts, imported unchanged from ./s12.ts.
 // One ink per exit throughout: photochemistry green, heat grey wave, fluorescence red wave, triplet clay, excitation amber.
@@ -15,15 +16,16 @@ export const PLATE: PlateText = {
   status: 'draft',
   lead: 'An excited chlorophyll keeps its energy for only nanoseconds and loses it by photochemistry, heat, fluorescence or triplet formation.',
   points: [
-    { claim: 'Blue and red end in the same state.', text: 'Blue’s extra energy becomes heat within a picosecond: photons count, not their energy.' },
+    { claim: 'The fates compete.', text: 'Their yields add up to 1, and the fastest wins<br>With reaction centres open, PSII uses 84–91 % (Fv/Fm ≈ 0.8, slide 14)' },
     { claim: 'Fluorescence reports the competition.', text: 'It rises when reaction centres close and falls when heat dissipation (non-photochemical quenching, NPQ) grows.' },
-    { claim: 'Triplets are the risky fate.', text: 'Triplet chlorophyll passes energy to O₂, forming singlet oxygen; carotenoids quench both.' },
+    { claim: 'Triplets are the risky fate.', text: 'Triplet chlorophyll passes energy to O₂, forming singlet oxygen; carotenoids catch triplets in the antenna, but not in the PSII reaction centre.' },
   ],
   play: 'fates',
   refs: [
     { label: 'van Amerongen & Croce 2013', url: 'https://doi.org/10.1007/s11120-013-9824-3' },
     { label: 'Murchie & Lawson 2013', url: 'https://doi.org/10.1093/jxb/ert208' },
     { label: 'Krieger-Liszkay 2005', url: 'https://doi.org/10.1093/jxb/erh237' },
+    { label: 'Telfer 2014', url: 'https://doi.org/10.1093/pcp/pcu040' },
     { label: 'van Amerongen & Croce 2025', url: 'https://doi.org/10.1093/plcell/koaf240' },
   ],
 };
@@ -94,7 +96,7 @@ const rc = (x: number, y: number, w: number, h: number): string =>
 
 /** Singlet oxygen in the clay danger box, drawn as an O₂ molecule. */
 const o2box = (x: number, y: number, w = 96, h = 72): string =>
-  `<rect class="ros" x="${x}" y="${y}" width="${w}" height="${h}" rx="14"/>${molecule(x + w / 2, y + 22, 'OO', 10)}${t(x + w / 2, y + h - 12, '¹O₂', 'fl12-h fl12-c-clay')}`;
+  `<rect class="ros" x="${x}" y="${y}" width="${w}" height="${h}" rx="14"/>${molecule(x + w / 2, y + 22, 'OO', 10)}${t(x + w / 2, y + h - 12, '¹O₂', 'fl12-h')}`;
 
 /** A carotenoid: a polyene zigzag with a ring at each end. */
 function carotenoid(x: number, y: number, len: number): string {
@@ -129,7 +131,7 @@ function energyTime(): string {
   return svg('Energy levels of chlorophyll drawn against logarithmic time: absorption in femtoseconds, blue’s extra energy lost as heat in under a picosecond, charge separation in under 100 picoseconds, the remaining excited state lasting nanoseconds, and a triplet that lasts microseconds and longer and makes singlet oxygen', `
     ${defs(p, fade(`${p}-s1`, xs, xe, 'fl12-s0', 'fl12-s1') + fade(`${p}-t1`, xt, X(-3), 'fl12-c0', 'fl12-c1', 0.6))}<g transform="translate(0 -14)">
     ${ar(p, 'ink', 'M40,510 L40,70', 'fl12-axis')}<text class="fl12-ax" transform="translate(28 300) rotate(-90)" text-anchor="middle">energy</text>
-    ${t(104, S2 + 9, 'S₂', 'fl12-lv', 'end')}${t(104, S1 + 9, 'S₁', 'fl12-lv', 'end')}${t(104, S0 + 9, 'S₀', 'fl12-lv', 'end')}
+    ${t(104, S2 + 9, 'Sₙ', 'fl12-lv', 'end')}${t(104, S1 + 9, 'S₁', 'fl12-lv', 'end')}${t(104, S0 + 9, 'S₀', 'fl12-lv', 'end')}
     ${lvl(X(-15), X(-3), S0)}${lvl(X(-15), X(-12.3), S2)}
     ${lvl(X(-14.6), xs, S1, 'fl12-lvl-thick')}<path class="fl12-lvl-fade" stroke="url(#${p}-s1)" d="M${xs},${S1} H${xe}"/>
     <path class="fl12-lvl-fade" stroke="url(#${p}-t1)" d="M${xt},${T1} H${X(-3)}"/>
@@ -143,7 +145,7 @@ function energyTime(): string {
 
     ${ar(p, 'green', `M${xs},${S1 - 6} L${xs},108`)}
     ${rc(290, 34, 214, 72)}${rcDot(320, 70)}${t(414, 64, 'charge', 'fl12-h')}${t(414, 90, 'separation', 'fl12-h')}
-    ${t(xs + 14, 148, 'photochemistry', 'fl12-h fl12-c-green', 'start')}${badge(xs + 14, 180, '< 100 ps', 'ps', 'start')}
+    ${t(xs + 14, 148, 'photochemistry', 'fl12-h fl12-c-green', 'start')}${badge(xs + 14, 180, '~300 ps', 'ps', 'start')}
     ${badge(290, S1 + 44, 'S₁ lasts ns', 'ns')}
 
     ${wv(p, 'grey', X(-9.5), S1 + 8, X(-9.5), S0 - 6, 6, 8)}${wv(p, 'red', X(-9.05), S1 + 8, X(-9.05), S0 - 6, 6, 8)}
@@ -151,8 +153,8 @@ function energyTime(): string {
     ${t(X(-9.5) - 10, S0 + 30, 'heat (NPQ)', 'fl12-l', 'end')}${t(X(-9.05) + 10, S0 + 30, 'fluorescence ≈ 685 nm', 'fl12-l fl12-c-red', 'start')}
     ${t(xt + 18, 316, 'spin flip', 'fl12-l fl12-c-clay', 'start')}
     ${t(xt + 30, T1 - 12, 'T₁ triplet', 'fl12-lv', 'start')}${badge(640, T1 + 32, 'lasts µs and longer', 'us')}
-    ${ar(p, 'clay', `M738,${T1 - 4} L738,${T1 - 26}`)}${t(726, T1 - 8, '+ O₂', 'fl12-s', 'end')}${o2box(690, T1 - 100, 96, 72)}
-    ${t(790, 192, 'carotenoids', 'fl12-l fl12-c-orange', 'end')}${carotenoid(706, 222, 78)}
+    ${ar(p, 'clay', `M738,${T1 - 4} L738,${T1 - 26}`)}${t(696, T1 - 8, '+', 'fl12-s', 'end')}${molecule(714, T1 - 14, 'OO', 8)}${o2box(690, T1 - 100, 96, 72)}
+    ${t(790, 192, 'carotenoids (antenna)', 'fl12-l fl12-c-orange', 'end')}${carotenoid(706, 222, 78)}
 
     ${axis}${t(X(-9), 590, 'time after absorption (log scale)', 'fl12-ax')}
   </g>`);
@@ -184,8 +186,8 @@ function timeZoom(): string {
     ${bar(x0 + 4, x0 + W * 0.55, r1 + A, 'fl12-bar-blue', 'blue: extra energy → heat')}${bar(x0 + W * 0.55, x1, r1 + A, 'fl12-bar-amber', 'S₁', true)}
     ${bar(x0 + 4, x1, r1 + B, 'fl12-bar-amber', 'red: straight to S₁', true)}
 
-    ${name(r2, 'nanosecond')}${ruler(r2, '1 ns', [W * 0.1, '100 ps'])}
-    ${bar(x0 + 4, x0 + W * 0.085, r2 + A, 'fl12-bar-green')}${t(x0 + W * 0.1 + 14, r2 + A + 7, 'open reaction centre: charge separation', 'fl12-l fl12-c-green', 'start')}
+    ${name(r2, 'nanosecond')}${ruler(r2, '1 ns', [W * 0.3, '300 ps'])}
+    ${bar(x0 + 4, x0 + W * 0.3, r2 + A, 'fl12-bar-green')}${t(x0 + W * 0.3 + 14, r2 + A + 7, 'open reaction centre: charge separation', 'fl12-l fl12-c-green', 'start')}
     ${bar(x0 + 4, x1, r2 + B, 'fl12-bar-amber', 'otherwise S₁ stays excited', true)}
 
     ${name(r3, 'microsecond')}${ruler(r3, '1 µs')}
@@ -195,7 +197,7 @@ function timeZoom(): string {
     ${name(r4, 'millisecond')}${ruler(r4, '1 ms')}
     <rect x="${x0 + 4}" y="${r4 + B - 11}" width="${W - 4}" height="22" rx="11" fill="url(#${p}-tr)" class="fl12-bar-fade"/>${t(x0 + 16, r4 + B + 6, 'triplet lasts µs and longer', 'fl12-in', 'start')}
     ${t(x0 + 16, r4 + A + 7, '³Chl + O₂ → ¹O₂', 'fl12-l fl12-c-clay', 'start')}
-    ${carotenoid(472, r4 + A + 1, 56)}${t(540, r4 + A + 7, 'carotenoids', 'fl12-s fl12-c-orange', 'start')}
+    ${carotenoid(472, r4 + A + 1, 56)}${t(540, r4 + A + 7, 'carotenoids (antenna)', 'fl12-s fl12-c-orange', 'start')}
   </g>`);
 }
 
@@ -208,7 +210,7 @@ function fourSteps(): string {
      ${t(x0 + 52, y0 + 42, title, 'fl12-h', 'start')}${badge(x0 + 356, y0 + 76, b, sc, 'end')}${body}`;
   /** Mini energy levels, centred in a card. */
   const mini = (x0: number, y0: number): string =>
-    `${lvl(x0 + 86, x0 + 300, y0 + 118)}${t(x0 + 76, y0 + 125, 'S₂', 'fl12-h', 'end')}${lvl(x0 + 86, x0 + 300, y0 + 178)}${t(x0 + 76, y0 + 185, 'S₁', 'fl12-h', 'end')}
+    `${lvl(x0 + 86, x0 + 300, y0 + 118)}${t(x0 + 76, y0 + 125, 'Sₙ', 'fl12-h', 'end')}${lvl(x0 + 86, x0 + 300, y0 + 178)}${t(x0 + 76, y0 + 185, 'S₁', 'fl12-h', 'end')}
      ${lvl(x0 + 86, x0 + 300, y0 + 252)}${t(x0 + 76, y0 + 259, 'S₀', 'fl12-h', 'end')}`;
   const c1 = card(14, 14, 1, 'A photon is absorbed', 'fs', 'fs', `
     ${mini(14, 14)}
@@ -218,7 +220,7 @@ function fourSteps(): string {
     ${mini(414, 14)}
     ${ar(p, 'blue', 'M540,264 L540,136', 'fl12-faint')}${wv(p, 'grey', 566, 138, 566, 186, 5, 4)}
     ${ar(p, 'red', 'M644,264 L644,196', 'fl12-faint')}${glow(p, 606, 192, 16)}`);
-  const c3 = card(14, 306, 3, 'Open reaction centre wins', '< 100 ps', 'ps', `
+  const c3 = card(14, 306, 3, 'Open reaction centre wins', '~300 ps', 'ps', `
     ${lvl(54, 124, 466)}${t(90, 496, 'S₁', 'fl12-h')}${glow(p, 90, 462, 18)}
     ${ar(p, 'green', 'M122,462 L176,462')}
     ${rc(182, 420, 184, 84)}${rcDot(210, 462)}${t(296, 456, 'charge', 'fl12-h')}${t(296, 482, 'separation', 'fl12-h')}
@@ -251,8 +253,8 @@ function membrane(): string {
     ${bolt(p, 236, 150, 258, 268)}${t(250, 146, 'light', 'fl12-it', 'start')}
     ${glow(p, 270, 316, 16)}<path class="fl12-hop" d="M286,320 C330,300 380,356 446,342" marker-end="url(#${p}-amber)"/>
 
-    ${ar(p, 'red', 'M492,340 L640,340', 'fl12-dash')}${t(604, 330, 'e⁻', 'fl12-e')}
-    ${t(580, 212, 'photochemistry', 'fl12-h fl12-c-green', 'start')}${badge(580, 246, '< 100 ps', 'ps', 'start')}${t(652, 347, 'to PQ', 'fl12-s', 'start')}
+    ${ar(p, 'ink', 'M492,340 L640,340')}${t(604, 330, 'e⁻', 'fl12-e')}
+    ${t(580, 212, 'photochemistry', 'fl12-h fl12-c-green', 'start')}${badge(580, 246, '~300 ps', 'ps', 'start')}${t(652, 347, 'to PQ', 'fl12-s', 'start')}
 
     ${wv(p, 'grey', 84, 262, 70, 190, 5, 5)}${wv(p, 'grey', 126, 262, 138, 190, 5, 5)}
     ${t(40, 112, 'heat (NPQ)', 'fl12-h', 'start')}${t(40, 138, 'mostly in LHCII', 'fl12-s', 'start')}${badge(160, 172, 'ns', 'ns')}
@@ -262,7 +264,7 @@ function membrane(): string {
     ${ar(p, 'clay', 'M474,434 L474,480', 'fl12-dash')}
     <rect class="ros" x="384" y="486" width="180" height="56" rx="14"/>${t(474, 520, '³Chl + O₂ → ¹O₂', 'fl12-h fl12-c-clay')}
     ${badge(474, 566, 'µs and longer', 'us')}
-    ${carotenoid(600, 498, 70)}${t(600, 532, 'carotenoids', 'fl12-s fl12-c-orange', 'start')}
+    ${carotenoid(600, 498, 70)}${t(600, 532, 'carotenoids (antenna)', 'fl12-s fl12-c-orange', 'start')}
     ${t(780, 60, 'stroma', 'fl12-it', 'end')}${t(24, 576, 'lumen', 'fl12-it', 'start')}
   `);
 }
@@ -312,7 +314,7 @@ function lightTerm(): string {
     ${t(462, 94, 'C₆H₁₂O₆ + 6 O₂ + 6 H₂O', 'fl12-eq', 'start')}
     ${branches}
     ${glow(p, 400, 196, 26)}${t(446, 150, 'excited', 'fl12-s', 'start')}${t(446, 172, 'chlorophyll (S₁)', 'fl12-s', 'start')}
-    ${dest(130, 'photochemistry', 'fl12-c-green', 'charge separation', '< 100 ps', 'ps')}
+    ${dest(130, 'photochemistry', 'fl12-c-green', 'charge separation', '~300 ps', 'ps')}
     ${dest(320, 'heat (NPQ)', '', 'adjustable', 'ns', 'ns')}
     ${dest(530, 'fluorescence', 'fl12-c-red', '≈ 685 nm', 'ns', 'ns')}
     ${dest(700, 'triplet → ¹O₂', 'fl12-c-clay', '³Chl + O₂', 'µs and longer', 'us')}

@@ -1,0 +1,63 @@
+{
+  "title": "Electron transport routes, with ATP synthesis",
+  "chunk": "Lecture 1 · chunk 5",
+  "slides": ["8", "9", "10"],
+  "questions": [
+    {
+      "id": "a",
+      "question": "If stacking catches more light, why isn't the whole thylakoid membrane stacked?",
+      "story": "This is the lecturer's own question. In 1980 Bertil Andersson and Jan Anderson broke spinach thylakoids into small fragments and separated the stacked pieces from the unstacked ones. Almost all photosystem II and its antenna were in the stacks; almost all photosystem I and ATP synthase were outside them. The membrane is not one uniform sheet: it is divided into two kinds of territory.",
+      "steps": [
+        "Stacked membranes (grana) hold PSII and its antenna, LHCII.",
+        "Unstacked membranes (stroma lamellae) hold PSI and ATP synthase: their large parts reach into the stroma, and they need what is there (NADP⁺, ADP).",
+        "Cytochrome b₆f sits in both. Plastoquinone (in the membrane) and plastocyanin (in the lumen) carry electrons between the two territories.",
+        "Keeping the photosystems apart also stops PSI, which traps energy faster, from draining PSII's antenna."
+      ],
+      "concepts": ["Grana and stroma lamellae", "Where each complex sits", "Electron carriers between them"],
+      "see": "A real in-situ cryo-ET map of thylakoids with the complexes placed (Wietrzynski et al. 2020), then the drawn chain on the membrane: PSII in the stack, b₆f, plastocyanin, PSI and ATP synthase on the lamella.",
+      "status": "Andersson & Anderson 1980, Biochim Biophys Acta 593:427, checked. This opens chunk 5 as the overview of the chain (CHUNK_MAP placement)."
+    },
+    {
+      "id": "b",
+      "question": "Why does a plant need two photosystems instead of one?",
+      "story": "In 1943 Robert Emerson found that the yield of photosynthesis per photon collapses in deep-red light beyond about 680 nm, although chlorophyll still absorbs there: the 'red drop'. In 1957 he added a little shorter-wavelength light to the deep red, and the yield became larger than the two lights gave separately: the 'enhancement effect'. Two light reactions had to be working together. In 1960 Robert Hill and Fay Bendall drew them in series, the Z-scheme.",
+      "steps": [
+        "Each photosystem gives an electron one push, of about 1.8 eV, from one photon.",
+        "Moving an electron from water up to NADP⁺ needs more than one push, so two photosystems work one after the other.",
+        "PSII pulls electrons from water; PSI pushes them up to ferredoxin and NADP⁺, making NADPH in the stroma.",
+        "Between them, plastoquinone, cytochrome b₆f and plastocyanin carry the electrons downhill."
+      ],
+      "concepts": ["Two photosystems in series", "Z-scheme", "PSI and NADPH"],
+      "see": "Emerson's red-drop and enhancement data (board L5, image d); halftone portraits; the Z-scheme drawn on a redox axis, built up step by step.",
+      "status": "Emerson & Lewis 1943; Emerson, Chalmers & Cederstrand 1957, PNAS 43:133; Hill & Bendall 1960, Nature 186:136. On the electron-transport board."
+    },
+    {
+      "id": "c",
+      "question": "What is the acid in the lumen good for?",
+      "story": "In 1961 Peter Mitchell proposed that cells make ATP not by a chemical intermediate but with a gradient of protons across a membrane. Almost nobody believed him, and he continued the work in his own small laboratory in a Cornish country house. In 1966 André Jagendorf and Ernest Uribe soaked chloroplasts in acid in the dark, then moved them into a basic buffer with ADP and phosphate: they made ATP, with no light at all. Mitchell received the Nobel Prize in 1978. In 1997 a rotating ATP synthase was filmed under the microscope, turning an attached filament.",
+      "steps": [
+        "Water splitting (chunk 4) and cytochrome b₆f load the lumen with H⁺: the lumen becomes acidic.",
+        "The H⁺ can flow back to the stroma only through ATP synthase.",
+        "The flow turns its rotor, and the rotation joins ADP and phosphate into ATP.",
+        "Electron transport and ATP synthesis are coupled only through this H⁺ gradient: chemiosmosis."
+      ],
+      "concepts": ["Proton gradient", "ATP synthase", "Chemiosmosis"],
+      "see": "Mitchell's halftone portrait; Jagendorf & Uribe's acid-bath result (board L5, image l); the real chloroplast ATP synthase structure (Hahn et al. 2018) turning as H⁺ pass.",
+      "status": "Mitchell 1961, Nature 191:144; Jagendorf & Uribe 1966, PNAS 55:170; Noji et al. 1997, Nature 386:299. On the electron-transport board. This answers chunk 4's cliffhanger directly."
+    },
+    {
+      "id": "d",
+      "question": "How does a leaf keep making the right mix of ATP and NADPH when the light keeps changing?",
+      "story": "The Calvin–Benson–Bassham cycle needs 3 ATP for every 2 NADPH, but the straight route from water to NADP⁺ gives only about 2.6 ATP per 2 NADPH. In 1969 two groups, Charles Bonaventura and Jack Myers, and Norio Murata, found that algae shift their light-harvesting antenna between the two photosystems when the light colour changes: state transitions. Plants that cannot recycle electrons around PSI (cyclic electron flow) grow poorly (Munekage et al. 2004).",
+      "steps": [
+        "Linear electron flow, water → PSII → PSI → NADP⁺, makes both ATP and NADPH, but too little ATP for the cycle.",
+        "Cyclic electron flow sends electrons from PSI back to plastoquinone; it pumps H⁺ and makes ATP only.",
+        "State transitions: when PSII gets more light than PSI, part of LHCII leaves the grana and joins PSI, so both work at a similar rate.",
+        "So the leaf tunes ATP and NADPH by switching routes and moving its antenna."
+      ],
+      "concepts": ["Linear and cyclic electron flow", "ATP : NADPH balance", "State transitions"],
+      "see": "The two routes drawn on the membrane map from hook a; the Arabidopsis cyclic-flow mutants (board L5, image r); LHCII moving from the stack to PSI.",
+      "status": "Bonaventura & Myers 1969; Murata 1969; Munekage et al. 2004, Nature 429:579; Kramer & Evans 2011 for the 2.6 vs 3 ratio. The 1969 papers are still to check."
+    }
+  ]
+}

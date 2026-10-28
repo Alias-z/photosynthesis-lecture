@@ -15,6 +15,13 @@ export function molecule(x: number, y: number, atoms: string, r = 13): string {
 export const water = (x: number, y: number): string =>
   `<circle class="atom atom-H" cx="${x - 12}" cy="${y + 9}" r="7"/><circle class="atom atom-H" cx="${x + 12}" cy="${y + 9}" r="7"/>${molecule(x, y, 'O', 12)}`;
 
+/** O₂ and CO₂ as atom balls, and H⁺ as a ringed mark: the deck's one glyph set (lecturer, 28 Oct 2026). Every figure and
+ *  animation draws molecules with these (or with figs/chain.ts's glyph mode, which uses the same classes). */
+export const o2 = (x: number, y: number, r = 11): string => molecule(x, y, 'OO', r);
+export const co2 = (x: number, y: number, r = 11): string => molecule(x, y, 'OCO', r);
+export const hplus = (x: number, y: number, r = 12): string =>
+  `<circle class="tag-h" cx="${x}" cy="${y}" r="${r}"/><text class="tag-ht" x="${x}" y="${(y + r * 0.42).toFixed(1)}" text-anchor="middle" style="font-size:${(r * 1.08).toFixed(1)}px">H⁺</text>`;
+
 /** A tagged energy carrier or a proton. */
 export function tag(x: number, y: number, s: string, kind: 'atp' | 'nadph' | 'pi' | 'h' | 'plain'): string {
   if (kind === 'h') return `<circle class="tag-h" cx="${x}" cy="${y}" r="13"/><text class="tag-ht" x="${x}" y="${y + 5}" text-anchor="middle">H⁺</text>`;

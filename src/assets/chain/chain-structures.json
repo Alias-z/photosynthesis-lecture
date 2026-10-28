@@ -1,0 +1,94 @@
+{
+ "psii": {
+  "w": 496,
+  "h": 299,
+  "pxPerA": 2.4,
+  "membraneY": 102,
+  "widthA": 194.6,
+  "heightA": 112.4,
+  "stromaA": 36.5,
+  "lumenA": 75.9,
+  "anchors": {
+   "oec": [
+    165.6,
+    169.4
+   ],
+   "qb": [
+    151.2,
+    73
+   ],
+   "oec2": [
+    330.3,
+    169.3
+   ],
+   "qb2": [
+    344.8,
+    73
+   ]
+  },
+  "rot": 90
+ },
+ "b6f": {
+  "w": 328,
+  "h": 292,
+  "pxPerA": 2.4,
+  "membraneY": 121.3,
+  "widthA": 124.5,
+  "heightA": 109.6,
+  "stromaA": 44.6,
+  "lumenA": 65,
+  "anchors": {
+   "hemes": [
+    163.8,
+    121.3
+   ],
+   "cytf": [
+    66.6,
+    228.2
+   ],
+   "cytf2": [
+    261.4,
+    227.5
+   ]
+  },
+  "rot": 0
+ },
+ "psi": {
+  "w": 398,
+  "h": 282,
+  "pxPerA": 2.4,
+  "membraneY": 158.1,
+  "widthA": 154,
+  "heightA": 105.7,
+  "stromaA": 59.9,
+  "lumenA": 45.8,
+  "anchors": {
+   "fab": [
+    218.1,
+    69.4
+   ],
+   "p700": [
+    216.7,
+    187.1
+   ]
+  },
+  "rot": 90
+ },
+ "atps": {
+  "w": 343,
+  "h": 557,
+  "pxPerA": 2.4,
+  "membraneY": 462.8,
+  "widthA": 130.9,
+  "heightA": 220,
+  "stromaA": 186.8,
+  "lumenA": 33.1,
+  "anchors": {
+   "cring": [
+    146.6,
+    463.8
+   ]
+  },
+  "rot": 0
+ }
+}

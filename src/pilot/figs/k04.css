@@ -1,0 +1,56 @@
+/* Slide C4 (k04) figure styles, scoped under .theme-editorial and prefixed .fk04- (lecture 2 redo, 27 Oct 2026) */
+
+/* text */
+.theme-editorial .fig text.fk04-h{font-size:22px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fk04-l{font-size:20px;fill:#3d3d3a}
+.theme-editorial .fig text.fk04-s{font-size:17px;fill:#3d3d3a}
+.theme-editorial .fig text.fk04-node{font-size:21px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fk04-big{font-size:26px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fk04-ax{font-size:19px;fill:#4a4945}
+.theme-editorial .fig text.fk04-tk{font-size:17px;fill:#6b6a64}
+.theme-editorial .fig text.fk04-crd{font-size:13.5px;fill:#8a877d}
+.theme-editorial .fig text.fk04-pill{font-size:17px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fk04-band{font-size:17px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fk04-band-d{font-size:17px;font-weight:600;fill:#fffdf8}
+.theme-editorial .fig text.fk04-c-green,.theme-editorial .fig tspan.fk04-c-green{fill:#24812f}
+.theme-editorial .fig text.fk04-c-blue,.theme-editorial .fig tspan.fk04-c-blue{fill:#2350e6}
+.theme-editorial .fig text.fk04-c-amber,.theme-editorial .fig tspan.fk04-c-amber{fill:#9a5a0c}
+.theme-editorial .fig text.fk04-c-red,.theme-editorial .fig tspan.fk04-c-red{fill:#b8301b}
+.theme-editorial .fig text.fk04-c-grey,.theme-editorial .fig tspan.fk04-c-grey{fill:#6b6a64}
+.theme-editorial .fig text.fk04-c-paper{fill:#fffdf8}
+.theme-editorial .fig tspan.fk04-it{font-style:italic}
+.theme-editorial .fig tspan.fk04-b{font-weight:700}
+
+/* real figures: multiplied white ground, label pills, leaders, credits, frames */
+.theme-editorial .fk04-mult{mix-blend-mode:multiply}
+.theme-editorial .fk04-pillbg{fill:#fffdf8;opacity:.95}
+.theme-editorial .fk04-pillbg-t{fill:#f3f1ea;stroke:#d8d5cb;stroke-width:1}
+.theme-editorial .fk04-ldh{fill:none;stroke:#fffdf8;stroke-width:4.2;stroke-linecap:round;opacity:.9}
+.theme-editorial .fk04-ldk{fill:none;stroke:#141413;stroke-width:1.5;stroke-linecap:round}
+.theme-editorial .fk04-tipd{fill:#141413;stroke:#fffdf8;stroke-width:1.5}
+.theme-editorial .fk04-frame{fill:none;stroke:#d8d5cb;stroke-width:1}
+
+/* redrawn axes over scans */
+.theme-editorial .fk04-axis{fill:none;stroke:#4a4945;stroke-width:1.6}
+.theme-editorial .fk04-gd{fill:none;stroke:#6b6a64;stroke-width:1.5;stroke-dasharray:5 5}
+.theme-editorial .fk04-band-l{fill:#f4e3a6}
+.theme-editorial .fk04-band-k{fill:#4a4945}
+.theme-editorial .fk04-band-c{fill:#dfe9f2}
+.theme-editorial .fk04-mark{fill:none;stroke:#b8301b;stroke-width:2.2;stroke-dasharray:6 5}
+
+/* drawn schematics: boxes, arrows */
+.theme-editorial .fk04-box{fill:#fffdf8;stroke:#3d3d3a;stroke-width:1.6}
+.theme-editorial .fk04-box-t{fill:#f3f1ea;stroke:#a8a59a;stroke-width:1.4}
+.theme-editorial .fk04-ar{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fk04-thin{stroke-width:2}
+.theme-editorial .fk04-dash{stroke-dasharray:7 6}
+.theme-editorial .fk04-k-ink{stroke:#3d3d3a}.theme-editorial .fk04-hd-ink{fill:#3d3d3a}
+.theme-editorial .fk04-k-grey{stroke:#8a877d}.theme-editorial .fk04-hd-grey{fill:#8a877d}
+.theme-editorial .fk04-k-green{stroke:#2a963a}.theme-editorial .fk04-hd-green{fill:#2a963a}
+.theme-editorial .fk04-k-blue{stroke:#2350e6}.theme-editorial .fk04-hd-blue{fill:#2350e6}
+.theme-editorial .fk04-k-amber{stroke:#c07a12}.theme-editorial .fk04-hd-amber{fill:#c07a12}
+.theme-editorial .fk04-k-red{stroke:#c8361e}.theme-editorial .fk04-hd-red{fill:#c8361e}
+.theme-editorial .fk04-x{fill:none;stroke:#c8361e;stroke-width:3.4;stroke-linecap:round}
+.theme-editorial .fk04-chl{fill:#eef3e6;stroke:#4f7f3f;stroke-width:2.2}
+.theme-editorial .fk04-tr{fill:#fffdf8;stroke:#3d3d3a;stroke-width:1.8}
+.theme-editorial .fk04-ln{fill:none;stroke:#3d3d3a;stroke-width:3}

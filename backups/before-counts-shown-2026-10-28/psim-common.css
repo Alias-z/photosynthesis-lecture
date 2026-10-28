@@ -1,0 +1,104 @@
+/* Photosystem I on the slide 9 figure, stagings m1–m4 (psim-common.ts and psi-m1 … psi-m4). The figure keeps chain.css's
+   look. These are the slide's figure card, the story's glyphs (e⁻ dark, as chain.css), the red (680 nm, #c8361e) and
+   far-red (> 700 nm, #7a1f17) light of the Emerson beats, the lamps, the panel and its illustration, and the clipping. */
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-slidecard{fill:rgba(255,254,250,.58);stroke:rgba(120,100,60,.10);stroke-width:1}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-panel{fill:#fdfcf8;stroke:rgba(120,100,60,.14);stroke-width:1}
+
+/* glyphs (drawn at the slide's size, counter-scaled with the camera) */
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-e{fill:#2b2a27;stroke:#fbfaf6;stroke-width:1.6}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-ring{fill:#fbfaf6;fill-opacity:.9;stroke:#2b2a27;stroke-width:1.8;stroke-dasharray:2.6 2.4}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .fig text.pm-elab{font-size:20px;font-weight:700;fill:#2b2a27}
+
+/* the light: waves as chain.css draws light, in the colour of their wavelength */
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-wred{fill:none;stroke:#c8361e;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-wredh{fill:#c8361e}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-wred.pm-thin{stroke-width:2.2}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-wfr{fill:none;stroke:#7a1f17;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-wfrh{fill:#7a1f17}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .fig text.pm-wl{font-size:20px;font-weight:700}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .fig text.pm-wn{font-size:18px;font-weight:600}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .fig text.pm-wl-red{fill:#c8361e}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .fig text.pm-wl-fr{fill:#7a1f17}
+/* lamps: grey housing, a lens in the light's colour, pale when off */
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-lampb{fill:#6b6a64;stroke:#3d3d3a;stroke-width:1.4;stroke-linejoin:round}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-lens{stroke-width:1.6;opacity:.45}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-lens.pm-on{opacity:1}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-lens-red{fill:#c8361e;stroke:#8a2414}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-lens-fr{fill:#7a1f17;stroke:#4a120d}
+
+/* the clipping */
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) text.pm-cname{font-size:32px}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) text.pm-cyear{font-size:32px}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) text.pm-ckey{font-size:16px}
+
+/* the panel: text in ink, light words in their colour, axes grey */
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .fig text.pm-h{font-size:22px;font-weight:700;fill:#141413}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .fig text.pm-t{font-size:21px;font-weight:600;fill:#141413}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .fig text.pm-say{font-size:21px;font-weight:600;fill:#141413}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .fig text.pm-s{font-size:16px;font-weight:500;fill:#6b6a64}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .fig text.pm-ax{font-size:17px;font-weight:600;fill:#3d3d3a}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .fig text.pm-tick{font-size:16px;font-weight:500;fill:#5c5a52}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .fig text.pm-cr{font-size:14px;fill:#8a877d}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .fig text .pm-red,:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .fig text.pm-red{fill:#c8361e;font-weight:700}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .fig text .pm-fr,:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .fig text.pm-fr{fill:#7a1f17;font-weight:700}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .fig text .pm-ii,:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .fig text.pm-ii{fill:#4e8a2e;font-weight:700}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .fig text .pm-i,:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .fig text.pm-i{fill:#2a7f73;font-weight:700}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-axis{fill:none;stroke:#3d3d3a;stroke-width:1.8}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-axh{fill:#3d3d3a}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-grid{fill:none;stroke:#e4e1d8;stroke-width:1}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-tk{fill:none;stroke:#3d3d3a;stroke-width:1.4}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-sum{fill:none;stroke:#6b6a64;stroke-width:1.8;stroke-dasharray:6 5}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-rule{fill:none;stroke:#d8d5cb;stroke-width:1.2}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-bar-fr{fill:#7a1f17}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-bar-red{fill:#c8361e}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-band-red{fill:#c8361e;opacity:.18}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-band-fr{fill:#7a1f17;opacity:.2}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-c2{fill:none;stroke:#4e8a2e;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-c1{fill:none;stroke:#2a7f73;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-cv{fill:none;stroke:#2b2a27;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-cv.pm-dot{stroke-dasharray:.1 7;stroke-width:4.2}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-pt{fill:#2b2a27}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-mk{fill:#fdfcf8;stroke-width:3}
+/* the Z-scheme */
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-lvl{stroke-width:1.4}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-lvl-ii{fill:#8cc068;stroke:#4e8a2e}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-lvl-i{fill:#5cb3a7;stroke:#2a7f73}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-lvl-c{fill:#fffdf8;stroke:#8a877d}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-down{fill:none;stroke:#2b2a27;stroke-width:3;stroke-linecap:round}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-downh{fill:#2b2a27}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-lift-off{fill:none;stroke:#b9b5aa;stroke-width:5;stroke-dasharray:8 7}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-lift-offh{fill:#b9b5aa}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-lift-red{fill:none;stroke:#c8361e;stroke-width:7}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-lift-redh{fill:#c8361e}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-lift-fr{fill:none;stroke:#7a1f17;stroke-width:7}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-lift-frh{fill:#7a1f17}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .fig text.pm-strip{font-size:16px;font-weight:700;fill:#fff}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .fig text.pm-lt{font-size:18px;font-weight:700;fill:#2b2a27}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .fig text.pm-miss{font-size:17px;font-weight:600;font-style:italic;fill:#8a877d}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-zgrey{fill:none;stroke:#b9b5aa;stroke-width:2.2;stroke-linecap:round}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-zgreyh{fill:#b9b5aa}
+/* the red drop (beat 3): light absorbed as a pale area */
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-abs{fill:#e3eed5;stroke:#7d9f5c;stroke-width:2}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .fig text.pm-absl{fill:#5b7f3b}
+/* the rule, its caveats and the note (beats 4–5) */
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .fig text.pm-rl{font-size:19px;font-weight:600;fill:#141413}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .fig text.pm-xs{font-size:15px;font-weight:600;fill:#6b6a64}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .fig text.pm-note{font-size:15px;font-weight:600;fill:#3d3d3a}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .fig text .pm-b{font-weight:800}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .fig text.pm-waste{fill:#9a978d;font-style:italic}
+/* the photons, paired off: PSII green, PSI teal, wasted grey; a link per electron through */
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-ph{stroke-width:1.6}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-ph-ii{fill:#8cc068;stroke:#4e8a2e}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-ph-i{fill:#5cb3a7;stroke:#2a7f73}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-ph.pm-ph-w{fill:#e9e7e1;stroke:#c3bfb4}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-link{fill:none;stroke:#2b2a27;stroke-width:2.4;stroke-linecap:round}
+/* push and pull (beat 3): the push a pale-amber block arrow (light lifts the electron), the pull a dashed arrow into the hole */
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-push{fill:#f6d58a;stroke:#a86c06;stroke-width:1.6;stroke-linejoin:round;opacity:.92}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-pull{fill:none;stroke:#2b2a27;stroke-width:2;stroke-dasharray:5 4;stroke-linecap:round}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-pull.pm-pull-strong{stroke-width:3.6}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-pullh{fill:#2b2a27}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .fig text.pm-pushl{fill:#8a5a06}
+/* the per-O₂ readout of beat 2 (as the other animations' ledgers) */
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-lgp{fill:#fffdf8;stroke:#d8d3c6;stroke-width:1.2}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .fig text.pm-lgh{font-size:22px;font-weight:700;fill:#141413}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .fig text.pm-lg{font-size:21px;font-weight:600;fill:#141413}

@@ -59,6 +59,8 @@
 .ani-fates-b .ftb-hd-q{fill:#e07a1f}
 .ani-fates-b .ftb-e{fill:#3d3d3a;stroke:#fffdf8;stroke-width:1.6}
 .ani-fates-b .ftb-o{fill:#f4cc4f;stroke:#b8902a;stroke-width:1.6}
+/* the O balls carry their letter (the deck's glyph standard, 28 Oct 2026) */
+.ani-fates-b text.ftb-ot{font-size:19px;font-weight:700;fill:#5a4a1a}
 .ani-fates-b .ftb-car{fill:none;stroke:#e07a1f;stroke-width:3.2;stroke-linejoin:round;stroke-linecap:round}
 .ani-fates-b .ftb-car-ring{fill:#fdeedd;stroke:#e07a1f;stroke-width:2.4;stroke-linejoin:round}
 

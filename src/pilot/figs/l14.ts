@@ -25,7 +25,7 @@ export const PLATE: PlateText = {
   n: '14',
   title: 'Reading photosynthesis through fluorescence',
   status: 'draft',
-  lead: 'Leaves re-emit 0.5–3 % of absorbed light as red fluorescence, which competes with photochemistry and heat dissipation.',
+  lead: 'Leaves re-emit 0.5–3 % of absorbed light as red fluorescence.',
   points: [
     { claim: 'A saturating pulse closes PSII.', text: `In the dark, ${nw(`${F('v')}/${F('m')} = (${F('m')} − ${F('o')})/${F('m')} ≈ 0.8`)} is PSII’s maximum quantum yield.` },
     { claim: `${F('m')}′ below ${F('m')} reveals NPQ.`, text: `In light, heat dissipation lowers the pulse peak; ${nw(`Φ${sb('PSII')} = (${F('m')}′ − ${F('s')})/${F('m')}′`)} is the operating PSII yield.` },
@@ -36,6 +36,7 @@ export const PLATE: PlateText = {
     { label: 'Murchie & Lawson 2013', url: 'https://doi.org/10.1093/jxb/ert208' },
     { label: 'Porcar-Castell et al. 2014', url: 'https://doi.org/10.1093/jxb/eru191' },
     { label: 'Porcar-Castell et al. 2021', url: 'https://doi.org/10.1038/s41477-021-00980-4' },
+    { label: 'Verhoeven 2014', url: 'https://doi.org/10.1111/nph.12466' },
   ],
 };
 
@@ -370,7 +371,7 @@ const emw = (s: string): number => [...s].reduce((w, ch) => w + (/[₀-₉]/.tes
 
 /** 6 CO₂ + 12 H₂O → C₆H₁₂O₆ + 6 O₂ + 6 H₂O with light over the arrow, each term underlined as photo or synthesis. */
 function equation(y: number, size: number): string {
-  // Carbon terms brown, water and O₂ blue, as in the deck's colour code.
+  // Every term in ink: molecule names are never coloured (the deck's glyph standard, 28 Oct 2026).
   const toks: Array<[string, 'term' | 'op' | 'arrow', string, string?]> = [['6 CO₂', 'term', 'synthesis', 'c'], ['+', 'op', ''], ['12 H₂O', 'term', 'photo', 'w'], ['', 'arrow', ''],
     ['C₆H₁₂O₆', 'term', 'synthesis', 'c'], ['+', 'op', ''], ['6 O₂', 'term', 'photo', 'w'], ['+', 'op', ''], ['6 H₂O', 'term', '', 'w']];
   const gap = 0.32 * size, ws = toks.map(([str, k]) => (k === 'arrow' ? 2.4 * size : k === 'op' ? 0.62 * size : emw(str) * size));
@@ -423,7 +424,7 @@ function restedSvg(): string {
   const reg = (t: number): number => t < tOff ? 0.3 : 0.8 - 0.5 * Math.exp(-(t - tOff) / 0.05);
   const dmg = (t: number): number => t < tOff ? 0.3 : 0.5 - 0.2 * Math.exp(-(t - tOff) / 0.05) + 0.24 * (1 - Math.exp(-(t - tOff - 0.0) / 0.9));
   const pts = (fn: (t: number) => number): [number, number][] => Array.from({ length: 201 }, (_, i) => i / 200).map(t => [X(t), Y(fn(t))]);
-  return svg('Schematic dark test. Two leaves both show a low PSII yield in strong light. After at least 20 minutes of darkness, a leaf that was only regulating returns to an Fv/Fm near 0.8; a photoinhibited leaf stays low and recovers only over hours', `
+  return svg('Schematic dark test. Two leaves both show a low PSII yield in strong light. After at least 20 minutes of darkness, a leaf that was only regulating returns to an Fv/Fm near 0.8; a leaf that stays low has damaged PSII or locked-in quenching, and recovers only over hours or longer', `
     ${defs(p)}<g transform="translate(-20 32)">
     <rect class="fl14-act" x="${X(0)}" y="64" width="${X(tOff) - X(0)}" height="30" rx="4"/>
     <rect class="fl14-darkband" x="${X(tOff)}" y="64" width="${X(1) - X(tOff)}" height="30" rx="4"/>
@@ -436,7 +437,7 @@ function restedSvg(): string {
     <path class="fl14-curve-dmg fl14-dash" d="${poly(pts(dmg))}"/>
     ${T(X(0.02), Y(0.3) + 34, 'both low in strong light:', 'fl14-in', 'start')}${T(X(0.02), Y(0.3) + 58, 'low ΦPSII is not proof of damage', 'fl14-s', 'start')}
     ${T(X(0.62), Y(0.8) - 16, 'regulation only', 'fl14-in fl14-c-green', 'middle')}
-    ${T(X(0.98), Y(0.55) + 30, 'photoinhibited: stays low,', 'fl14-in fl14-c-clay', 'end')}${T(X(0.98), Y(0.55) + 54, 'recovers over hours', 'fl14-in fl14-c-clay', 'end')}
+    ${T(X(0.98), Y(0.55) + 30, 'stays low: damaged PSII', 'fl14-in fl14-c-clay', 'end')}${T(X(0.98), Y(0.55) + 54, 'or locked-in quenching', 'fl14-in fl14-c-clay', 'end')}${T(X(0.98), Y(0.55) + 78, 'recovers over hours or longer', 'fl14-in fl14-c-clay', 'end')}
   </g>`);
 }
 

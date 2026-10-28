@@ -121,12 +121,16 @@ export function mini(x: number, y: number, k: 'atp' | 'nadph'): string {
 export const pill = (x: number, y: number, w: number, s: string, cls = 'node', h = 44, lcls = 'sm lab-b'): string =>
   `<rect class="${cls}" x="${f1(x - w / 2)}" y="${f1(y - h / 2)}" width="${w}" height="${h}" rx="${h / 2}"/>${T(x, y + 8, s, lcls)}`;
 
+/** A small sun: marks an enzyme that light switches on (thioredoxin; slide C1). */
+export const lit = (x: number, y: number, r = 5): string =>
+  `<path class="f2-ray" d="${Array.from({ length: 8 }, (_, i) => { const a = (i * Math.PI) / 4; return `M${f1(x + Math.cos(a) * (r + 2.5))},${f1(y + Math.sin(a) * (r + 2.5))}L${f1(x + Math.cos(a) * (r + 6))},${f1(y + Math.sin(a) * (r + 6))}`; }).join('')}"/><circle class="f2-sun" cx="${x}" cy="${y}" r="${r}"/>`;
+
 /* ---------- a · the thesis scheme (MSc thesis Fig. 2b), photorespiration removed; shared with C04 a ---------- */
 
 export function scheme(p: string, mode: 'count' | 'cost'): string {
   const X = 360, cnt = mode === 'count';
   const core = `
-    <rect class="node node-rub" x="${X - 64}" y="506" width="128" height="44" rx="14"/>${T(X, 535, 'Rubisco', 'sm lab-b')}
+    <rect class="node node-rub" x="${X - 64}" y="506" width="128" height="44" rx="14"/>${T(X, 535, 'RuBisCO', 'sm lab-b')}
     ${pent(X, 452, 40)}${T(X, 454, 'RuBP', 'sm lab-b')}${T(X, 474, '5 C', 'tiny')}
     ${co2(120, 568)}${co2(175, 568)}${co2(230, 568)}${ar(p, 'M262,562 L292,546')}
     ${T(175, 538, '3 CO₂', 'sm lab-b')}
@@ -136,7 +140,7 @@ export function scheme(p: string, mode: 'count' | 'cost'): string {
     ${tag(X + 66, 246, '6 ATP', 'atp')}${tag(X + 82, 290, '6 NADPH', 'nadph')}
     ${pill(X, 182, 150, '6 triose-P')}
     <path class="ar ar-ink" d="M285,182 C160,182 112,330 140,402 S286,468 318,454" marker-end="url(#${p}-ink)"/>
-    ${T(186, 122, 'regeneration', 'sm lab-b fc03-acc')}${T(186, 148, '5 of 6', 'sm')}
+    ${cnt ? `${T(160, 72, 'regeneration', 'sm lab-b fc03-acc')}${T(160, 98, '5 of 6', 'sm')}` : `${T(186, 122, 'regeneration', 'sm lab-b fc03-acc')}${T(186, 148, '5 of 6', 'sm')}`}
     ${tag(126, 318, '3 ATP', 'atp')}
     ${ar(p, `M${X + 76},166 L${X + 150},120`)}`;
   if (cnt) {
@@ -145,7 +149,10 @@ export function scheme(p: string, mode: 'count' | 'cost'): string {
       ${T(X + 48, 460, '× 3', 'sm lab-b', 'start')}
       ${pill(604, 100, 176, '1 of 6 leaves', 'node node-out')}
       ${brace(520, 160, 364, 1)}${T(546, 254, '6 × 3 C', 'lab lab-b', 'start')}${T(546, 290, '= 18 C', 'lab lab-b', 'start')}
-      ${brace(470, 410, 584, 1)}${T(496, 488, '15 C + 3 C', 'lab lab-b', 'start')}${T(496, 524, '= 18 C', 'lab lab-b', 'start')}</g>`);
+      ${brace(470, 410, 584, 1)}${T(496, 488, '15 C + 3 C', 'lab lab-b', 'start')}${T(496, 524, '= 18 C', 'lab lab-b', 'start')}
+      ${lit(X - 106, 291)}${T(X - 14, 298, 'GAPDH', 'sm', 'end')}
+      ${lit(50, 124)}${T(70, 131, 'FBPase · SBPase · PRK', 'sm', 'start')}${T(70, 155, 'TPI acts here too', 'tiny', 'start')}</g>
+      ${lit(26, 588)}${T(44, 594, 'switched on by light', 'tiny', 'start')}`);
   }
   // The total per 3 CO₂ (9 ATP + 6 NADPH) is the C4 lead's, so the figure shows only what each step costs.
   return wrap(p, 'Calvin–Benson cycle in the thesis style with its costs: carboxylation needs no ATP or NADPH, reduction 6 ATP + 6 NADPH, regeneration 3 ATP; one net triose phosphate leaves for sucrose and starch.',
@@ -182,7 +189,7 @@ function wheel(): string {
     ${box(cx, 122, 170, 3, 6, '6 PGA')}
     ${box(610, cy, 170, 3, 6, '6 triose-P')}
     ${box(cx, 514, 170, 3, 5, '5 triose-P')}
-    <rect class="node node-rub" x="${f1(rx1 - 58)}" y="${f1(ry1 - 20)}" width="116" height="40" rx="12"/>${T(rx1, ry1 + 8, 'Rubisco', 'sm lab-b')}
+    <rect class="node node-rub" x="${f1(rx1 - 58)}" y="${f1(ry1 - 20)}" width="116" height="40" rx="12"/>${T(rx1, ry1 + 8, 'RuBisCO', 'sm lab-b')}
     ${pill(rx2, ry2, 140, 'reduction', 'node fc03-phase', 40)}
     ${pill(rx3, ry3, 160, 'regeneration', 'node fc03-phase', 40)}
     ${T(62, 118, '3 CO₂', 'sm lab-b')}${co2(62, 150, 10)}${co2(62, 186, 10)}${co2(62, 222, 10)}
@@ -193,7 +200,10 @@ function wheel(): string {
     ${ar(p, 'M697,318 L724,318')}${chip(760, 318, 'fc03-chip fc03-chip-out', 62, 28)}
     ${T(760, 286, '1 out', 'sm lab-b fc03-out')}
     ${T(cx, 314, '15 + 3 = 18', 'pl')}
-    ${T(cx, 352, '= 6 × 3', 'lab lab-b')}`);
+    ${T(cx, 352, '= 6 × 3', 'lab lab-b')}
+    ${lit(424, 236)}${T(444, 243, 'GAPDH', 'sm', 'start')}
+    ${lit(246, 404)}${T(266, 411, 'FBPase · SBPase · PRK', 'sm', 'start')}${T(266, 435, 'TPI acts here too', 'tiny', 'start')}
+    ${lit(26, 588)}${T(44, 594, 'switched on by light', 'tiny', 'start')}`);
 }
 
 /* ---------- c · carbon count: each row is the cycle's 18 carbons, regrouped ---------- */
@@ -222,7 +232,7 @@ function countChart(): string {
     ${T(164, rows[1] + 8, '6 × 3-PGA', 'sm lab-b', 'end')}
     ${T(164, rows[2] + 8, '6 triose-P', 'sm lab-b', 'end')}
     ${T(164, rows[3] - 4, '3 RuBP', 'sm lab-b', 'end')}${T(164, rows[3] + 22, '+ 1 out', 'sm lab-b fc03-out', 'end')}
-    ${ar(p, `M${X(9)},${rows[0] + 22} V${rows[1] - 24}`)}${T(X(9) + 14, 192, 'Rubisco', 'sm', 'start')}
+    ${ar(p, `M${X(9)},${rows[0] + 22} V${rows[1] - 24}`)}${T(X(9) + 14, 192, 'RuBisCO', 'sm', 'start')}
     ${ar(p, `M${X(9)},${rows[1] + 22} V${rows[2] - 24}`)}${T(X(9) - 14, 302, 'reduction', 'sm', 'end')}${tag(X(9) + 62, 296, '6 ATP', 'atp')}${tag(X(9) + 176, 296, '6 NADPH', 'nadph')}
     ${ar(p, `M${X(7.5)},${rows[2] + 22} V${rows[3] - 24}`)}${T(X(7.5) - 14, 418, 'regeneration', 'sm', 'end')}${tag(X(7.5) + 58, 412, '3 ATP', 'atp')}
     ${ar(p, `M${X(16.5)},${rows[2] + 22} V${rows[3] - 24}`)}${T(X(16.5) + 14, 418, 'leaves', 'sm fc03-out', 'start')}
@@ -250,7 +260,7 @@ function seedGrain(): string {
     ${[440, 476, 512, 548, 584, 620].map(x => sprout(x, 172)).join('')}
     ${co2(470, 70, 9)}${co2(560, 54, 9)}${co2(640, 76, 9)}
     ${ar(p, 'M470,84 L478,112', 'ink', 'fc03-thin')}${ar(p, 'M560,68 L556,112', 'ink', 'fc03-thin')}${ar(p, 'M636,90 L626,112', 'ink', 'fc03-thin')}
-    ${T(532, 222, 'Growth: + 1 sack', 'sm lab-b')}${real(532, 248, '= Rubisco fixes 3 CO₂')}
+    ${T(532, 222, 'Growth: + 1 sack', 'sm lab-b')}${real(532, 248, '= RuBisCO fixes 3 CO₂')}
     ${ar(p, 'M532,264 L532,336')}
     ${T(552, 290, 'fuel and work', 'sm', 'start')}${real(552, 316, '= ATP + NADPH', 'start')}
     ${[[482, 372], [532, 372], [582, 372], [482, 416], [532, 416]].map(([x, y]) => sack(x, y)).join('')}${sack(582, 416, 'fc03-sack fc03-sack-out')}
@@ -324,13 +334,13 @@ function keepVsExport(): string {
       ${[-80, 0, 80].map(dx => keep ? pentC(cx + dx, 300, 34) : pent(cx + dx, 300, 34, '', 'fc03-ghost')).join('')}
       ${T(cx, 362, keep ? '3 RuBP rebuilt' : 'no RuBP', 'sm lab-b')}
       ${keep ? ar(p, `M${cx},372 L${cx},406`) : ''}
-      <rect class="node node-rub" x="${cx - 70}" y="410" width="140" height="44" rx="14"/>${T(cx, 439, 'Rubisco', 'sm lab-b')}
+      <rect class="node node-rub" x="${cx - 70}" y="410" width="140" height="44" rx="14"/>${T(cx, 439, 'RuBisCO', 'sm lab-b')}
       ${co2(ox + 54, 402, 9)}${co2(ox + 54, 432, 9)}${co2(ox + 54, 462, 9)}
       ${keep ? ar(p, `M${ox + 82},432 L${cx - 76},432`) : `<path class="fc03-gone-ar" d="M${ox + 82},432 L${cx - 80},432"/>`}
       ${keep ? `${tick(cx - 112, 530)}${T(cx - 84, 538, '3 CO₂ fixed again', 'sm lab-b', 'start')}`
         : `${cross(cx - 82, 530)}${T(cx - 58, 538, 'no CO₂ fixed', 'sm lab-b', 'start')}`}`;
   };
-  return wrap(p, 'With and without regeneration: keeping 5 of 6 triose phosphates rebuilds 3 RuBP so Rubisco can fix the next 3 CO₂; exporting all 6 leaves no RuBP and fixation stops',
+  return wrap(p, 'With and without regeneration: keeping 5 of 6 triose phosphates rebuilds 3 RuBP so RuBisCO can fix the next 3 CO₂; exporting all 6 leaves no RuBP and fixation stops',
     `${panel(10, true)}${panel(410, false)}`);
 }
 
@@ -346,7 +356,7 @@ function fourSteps(): string {
   const six = (x: number, y: number, cls = 'fc03-chip', w = 50): string =>
     [0, 1, 2, 3, 4, 5].map(i => chip(x + (i % 2) * (w + 8), y + Math.floor(i / 2) * 30, cls, w, 22)).join('');
   const [a, b, c, d] = P;
-  return wrap(p, 'Four steps in a loop: 1 Rubisco adds 3 CO₂ to 3 RuBP, giving 6 PGA; 2 reduce them with 6 ATP and 6 NADPH to 6 triose phosphates; 3 one leaves and five stay; 4 the five rebuild 3 RuBP with 3 ATP',
+  return wrap(p, 'Four steps in a loop: 1 RuBisCO adds 3 CO₂ to 3 RuBP, giving 6 PGA; 2 reduce them with 6 ATP and 6 NADPH to 6 triose phosphates; 3 one leaves and five stay; 4 the five rebuild 3 RuBP with 3 ATP',
     `${frame(0, 'Fix')}${frame(1, 'Reduce')}${frame(2, 'Split')}${frame(3, 'Regenerate')}
     ${[0, 1, 2].map(i => pentC(a[0] + 40 + i * 42, a[1] + 120, 19)).join('')}${T(a[0] + 82, a[1] + 186, '3 RuBP', 'sm')}
     ${T(a[0] + 154, a[1] + 129, '+', 'lab')}${co2(a[0] + 190, a[1] + 92, 8)}${co2(a[0] + 190, a[1] + 120, 8)}${co2(a[0] + 190, a[1] + 148, 8)}${T(a[0] + 190, a[1] + 186, '3 CO₂', 'sm')}
@@ -376,7 +386,7 @@ function lightOff(): string {
   const p = 'fc03h', x0 = 96, x1 = 530, y0 = 490, y1 = 118, xt = 280;
   /** Vertical position from the original 130…460 layout grid. */
   const M = (v: number): string => f1(y1 + ((v - 130) * (y0 - y1)) / 330);
-  return wrap(p, 'Schematic light-off experiment: when the light is switched off, PGA piles up and RuBP runs out, because reduction and regeneration need ATP and NADPH from light while Rubisco does not',
+  return wrap(p, 'Schematic light-off experiment: when the light is switched off, PGA piles up and RuBP runs out, because reduction and regeneration need ATP and NADPH from light while RuBisCO does not',
     `<rect class="fc03-dark" x="${xt}" y="${y1 - 12}" width="${x1 - xt}" height="${y0 - y1 + 12}"/>
     ${T((x0 + xt) / 2, y1 - 24, 'light on', 'sm lab-b')}${T((xt + x1) / 2, y1 - 24, 'light off', 'sm lab-b')}
     <path class="axis" d="M${x0},${y1 - 14} V${y0} H${x1 + 10}"/>
@@ -407,7 +417,7 @@ function sumOfSteps(): string {
   const op = (i: number, y: number, s = '+'): string => T(ops[i], y + 9, s, 'lab lab-b fc03-op');
   const row = (n: number, y: number, name: string): string => `${badge(22, y - 46, n)}${T(46, y - 40, name, 'sm fc03-acc', 'start')}`;
   return wrap(p, 'The three steps as equations: carboxylation, reduction and regeneration. RuBP, PGA and five triose phosphates appear on both sides and cancel, leaving 3 CO₂ + 9 ATP + 6 NADPH → 1 triose phosphate',
-    `${row(1, 86, 'carboxylation (Rubisco)')}
+    `${row(1, 86, 'carboxylation (RuBisCO)')}
     ${term(0, 86, '3 CO₂', 'c', false, '3 C')}${op(0, 86)}${term(1, 86, '3 RuBP', 'c', true, '15 C')}${op(2, 86, '→')}${term(3, 86, '6 PGA', 'c', true, '18 C')}
     ${row(2, 210, 'reduction')}
     ${term(0, 210, '6 PGA', 'c', true, '18 C')}${op(0, 210)}${term(1, 210, '6 ATP', 'atp')}${op(1, 210)}${term(2, 210, '6 NADPH', 'nadph')}${op(2, 210, '→')}

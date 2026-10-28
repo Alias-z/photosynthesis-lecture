@@ -1,0 +1,80 @@
+/* Reference boards on the deck's Bristol paper: an index of boards, a grid of cards per board, a lightbox. */
+.refs{--rf-ink:#141413;--rf-ink2:#3d3d3a;--rf-mute:#6b6a64;--rf-rule:#c9c6bb;--rf-clay:#a9532f;--rf-panel:#f0eee6;min-height:100vh;box-sizing:border-box;color:var(--rf-ink);font-family:Inter,"Helvetica Neue",Arial,sans-serif;background-color:var(--paper-bristol-base,#fcfbf8);background-image:var(--paper-bristol);background-blend-mode:multiply}
+.refs-overlay{position:fixed;inset:0;z-index:30;overflow:auto;overscroll-behavior:contain}
+.refs-overlay[hidden]{display:none}
+html.refs-lock{overflow:hidden}
+/* The pilot's save status stays in sight over the overlay. */
+html.refs-lock .pick-status{z-index:35}
+.rf-page{max-width:1560px;margin:0 auto;padding:30px 40px 80px}
+.rf-head{display:flex;align-items:flex-start;justify-content:space-between;gap:24px}
+.rf-head h1{margin:0;font:400 46px/1.12 Newsreader,Georgia,serif;letter-spacing:-.012em;text-wrap:balance}
+.rf-kicker{display:flex;align-items:center;flex-wrap:wrap;gap:14px;margin:0 0 14px;font:500 15px/1.3 Inter,sans-serif;color:var(--rf-mute)}
+.rf-crumb{font:500 15px/1 Inter,sans-serif;color:var(--rf-ink2);background:var(--rf-panel);border:0;border-radius:999px;padding:9px 16px;cursor:pointer}
+.rf-crumb::before{content:"← "}
+.rf-crumb:hover{background:#e6e3d8}
+.rf-x{flex:none;width:48px;height:48px;border-radius:50%;border:0;background:var(--rf-panel);color:var(--rf-ink);font:400 30px/1 Inter,sans-serif;cursor:pointer}
+.rf-x:hover{background:#e6e3d8}
+.rf-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.rf-tabs button{max-width:380px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:400 15px/1 Inter,sans-serif;color:var(--rf-ink2);background:transparent;border:1.5px solid var(--rf-rule);border-radius:999px;padding:10px 16px;cursor:pointer}
+.rf-tabs button b{font-weight:600;margin-right:4px}
+.rf-tabs button[aria-selected="true"]{background:var(--rf-ink);border-color:var(--rf-ink);color:#faf9f5}
+.rf-note{display:block;width:100%;box-sizing:border-box;margin:22px 0 28px;padding:12px 14px;font:16px/1.45 Inter,sans-serif;color:var(--rf-ink);border:1px solid var(--rf-rule);border-radius:12px;background:#fffdf8;resize:vertical}
+.rf-empty{margin-top:26px;font-size:17px;color:var(--rf-mute)}
+
+/* One card per image: the image on a light panel, its kind and Pick toggle, caption, credit and an optional note. */
+.rf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:22px}
+.rf-card{display:flex;flex-direction:column;padding:14px 14px 18px;border-radius:18px;background:rgba(255,254,250,.62);box-shadow:inset 0 0 0 1px rgba(120,100,60,.14),0 14px 30px -24px rgba(70,50,20,.45)}
+.rf-card.picked{box-shadow:0 0 0 3px var(--rf-clay),0 14px 30px -24px rgba(70,50,20,.45)}
+.rf-img{position:relative;display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:4/3;padding:8px;box-sizing:border-box;border:0;border-radius:12px;background:#fffdf8;cursor:zoom-in}
+.rf-img img{position:absolute;inset:8px;width:calc(100% - 16px);height:calc(100% - 16px);object-fit:contain}
+.rf-card.picked .rf-img::after{content:"✓";position:absolute;top:10px;left:10px;width:34px;height:34px;border-radius:50%;background:var(--rf-clay);color:#faf9f5;font:700 19px/34px Inter,sans-serif;text-align:center}
+.rf-missing{font-size:14px;color:var(--rf-clay)}
+.rf-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:14px 0 10px}
+.rf-kind{font:600 12px/1 Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;padding:6px 10px;border-radius:999px;background:#ece9df;color:#5a5850}
+.rf-kind[data-kind="figure"]{background:#dce9f6;color:#3d6a99}
+.rf-kind[data-kind="structure"]{background:#d3e7c3;color:#3f6b45}
+.rf-kind[data-kind="micrograph"]{background:#e3e1da;color:#4a4945}
+.rf-kind[data-kind="schematic"]{background:#fbe3d3;color:#8a4126}
+.rf-kind[data-kind="photo"]{background:#f3ead0;color:#7a6420}
+.rf-kind[data-kind="history"]{background:#e2ddf2;color:#5b4e96}
+.rf-pick{font:500 14px/1 Inter,sans-serif;color:var(--rf-ink);background:transparent;border:1.5px solid var(--rf-ink);border-radius:999px;padding:8px 16px;cursor:pointer}
+.rf-pick[aria-pressed="true"]{background:var(--rf-clay);border-color:var(--rf-clay);color:#faf9f5}
+.rf-cap{margin:0;font:400 17px/1.4 Inter,sans-serif;color:var(--rf-ink);text-wrap:pretty}
+.rf-credit{margin:8px 0 0;font:400 14px/1.4 Inter,sans-serif;color:var(--rf-mute)}
+.rf-credit a,.rf-box-cap a{color:inherit;text-decoration:underline;text-decoration-color:var(--rf-rule);text-underline-offset:3px}
+.rf-credit a:hover{color:var(--rf-ink);text-decoration-color:var(--rf-ink2)}
+.rf-said{margin:8px 0 0;font:italic 400 17px/1.4 Newsreader,Georgia,serif;color:var(--rf-mute)}
+
+/* Index: one tile per board. */
+.rf-tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;margin-top:28px}
+.rf-tile{display:flex;flex-direction:column;gap:8px;padding:12px 12px 16px;text-align:left;font:inherit;color:inherit;border:0;border-radius:18px;background:rgba(255,254,250,.62);box-shadow:inset 0 0 0 1px rgba(120,100,60,.14),0 14px 30px -24px rgba(70,50,20,.45);cursor:pointer}
+.rf-tile:hover{box-shadow:inset 0 0 0 1.5px var(--rf-ink2),0 14px 30px -24px rgba(70,50,20,.45)}
+.rf-thumb{position:relative;aspect-ratio:16/10;margin-bottom:4px;border-radius:12px;background:#fffdf8;overflow:hidden}
+.rf-thumb img{position:absolute;inset:8px;width:calc(100% - 16px);height:calc(100% - 16px);object-fit:contain}
+.rf-tile-t{font:400 23px/1.2 Newsreader,Georgia,serif;color:var(--rf-ink)}
+.rf-tile-m{font:400 14px/1.35 Inter,sans-serif;color:var(--rf-mute)}
+.rf-count{color:var(--rf-clay);font-weight:500}
+
+/* Lightbox: one image as large as the window allows. */
+.rf-box{position:fixed;inset:0;z-index:40;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:28px 84px;box-sizing:border-box;background:rgba(20,20,19,.9)}
+.rf-box[hidden]{display:none}
+.rf-box img{display:block;max-width:100%;max-height:calc(100vh - 160px);object-fit:contain;background:#fffdf8;border-radius:6px}
+.rf-box-cap{max-width:1100px;margin:0;text-align:center;font:400 17px/1.45 Inter,sans-serif;color:#f3f1ea}
+.rf-box-cap span{font-size:14px;color:#c9c6bb}
+.rf-box .rf-x{position:fixed;top:14px;right:18px}
+
+/* refs.html: the save status. */
+.refs-page{margin:0}
+.rf-status{position:fixed;right:18px;bottom:18px;z-index:45;padding:8px 14px;border-radius:999px;font:14px Inter,sans-serif;color:#3d3d3a;background:#f2f3ee;box-shadow:0 0 0 1px rgba(31,42,58,.2)}
+.rf-status:empty{display:none}
+
+/* Pilot: the button on a page that has boards (picking view only) and the entry in the top bar. */
+.frame>.ref-open{left:auto;right:12px;top:12px;width:auto;height:auto;z-index:3;font:500 14px/1 Inter,"Helvetica Neue",Arial,sans-serif;color:#141413;background:#fffdf8;border:1px solid #c9c6bb;border-radius:999px;padding:8px 14px;cursor:pointer;box-shadow:0 6px 16px -8px rgba(60,40,20,.45)}
+.frame>.ref-open:hover{background:#f0eee6}
+body.lecture-mode .ref-open,body.solo .ref-open{display:none}
+.ref-index{font:500 16px/1 var(--sans);color:var(--ink);background:#f2f3ee;border:1.5px solid var(--ink);padding:10px 16px;cursor:pointer}
+.ref-index:hover{background:#e6e8e0}
+@media print{
+  .ref-open,.ref-index,.refs-overlay{display:none!important}
+  html.refs-lock{overflow:visible}
+}

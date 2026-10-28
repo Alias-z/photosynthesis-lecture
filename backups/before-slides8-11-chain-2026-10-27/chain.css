@@ -1,0 +1,129 @@
+/* The light-reaction chain schema (figs/chain.ts), scoped under .theme-editorial and prefixed .chn-.
+   One colour per complex, the same in every style. A part is lit (.chn-on) or dimmed (.chn-off): dimmed shapes turn
+   pale grey, dimmed lines light grey, dimmed labels mid grey (still readable). */
+
+/* ---------- text ---------- */
+.theme-editorial .fig text.chn-name{font-size:21px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.chn-in{font-size:20px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.chn-mol{font-size:20px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.chn-hl{font-size:20px;font-weight:700;fill:#c2401f}
+.theme-editorial .fig text.chn-ol{font-size:20px;font-weight:600;fill:#3c6a88}
+.theme-editorial .fig text.chn-light{font-size:20px;font-weight:600;fill:#a86c06}
+.theme-editorial .fig text.chn-zone{font-size:20px;font-weight:600;fill:#8a877d;letter-spacing:.03em}
+.theme-editorial .fig text.chn-key{font-size:17px;fill:#6b6a64}
+.theme-editorial .fig text.chn-keyb{font-size:18px;font-weight:700;fill:#3d3d3a}
+.theme-editorial .fig text.chn-cr{font-size:14px;fill:#8a877d}
+.theme-editorial .fig text.chn-axis{font-size:19px;font-weight:600;fill:#6b6a64}
+.theme-editorial .fig tspan.chn-it{font-style:italic}
+.theme-editorial .fig text.chn-halo{paint-order:stroke;stroke:#fbfaf6;stroke-width:6px;stroke-linejoin:round}
+.theme-editorial .fig .chn-off text.chn-name,.theme-editorial .fig .chn-off text.chn-in,.theme-editorial .fig .chn-off text.chn-mol{fill:#8f8c83;font-weight:500}
+.theme-editorial .fig .chn-off text.chn-hl{fill:#c9a99d;font-weight:600}
+.theme-editorial .fig .chn-off text.chn-ol{fill:#9fb0bb;font-weight:500}
+.theme-editorial .fig .chn-off text.chn-light{fill:#cdb98f;font-weight:500}
+
+/* ---------- compartments ---------- */
+.theme-editorial .chn-mem{fill:#efe4c8}
+.theme-editorial .chn-memline{fill:none;stroke:#d6c497;stroke-width:2}
+.theme-editorial .chn-lumen{fill:#e8eef0;opacity:.75}
+.theme-editorial .chn-brk{fill:none;stroke:#b9b5aa;stroke-width:1.6}
+.theme-editorial .chn-off .chn-brk{stroke:#dcd9d0}
+
+/* ---------- complexes, flat (c1, c3, c6): fill only ---------- */
+.theme-editorial .chn-psii{fill:#8cc068}
+.theme-editorial .chn-pq{fill:#efc55a}
+.theme-editorial .chn-b6f{fill:#e8935c}
+.theme-editorial .chn-pc{fill:#73a3da}
+.theme-editorial .chn-psi{fill:#5cb3a7}
+.theme-editorial .chn-fd{fill:#cf8c74}
+.theme-editorial .chn-fnr{fill:#ad94d4}
+.theme-editorial .chn-atps{fill:#dc8fb6}
+.theme-editorial .chn-off .chn-body{fill:#e3e0d8}
+/* darker inner part of a complex (PSII core, b₆f cytochrome f, ATP synthase stalk) */
+.theme-editorial .chn-psii.chn-dk{fill:#74ad52}
+.theme-editorial .chn-b6f.chn-dk{fill:#d97f47}
+.theme-editorial .chn-atps.chn-dk{fill:#c9779f}
+.theme-editorial .chn-off .chn-body.chn-dk{fill:#d9d6cd}
+
+/* ---------- complexes, plate (c5): ink outline under a pale fill ---------- */
+.theme-editorial .chn-ol-u{fill:none;stroke:#3d3d3a;stroke-width:4;stroke-linejoin:round}
+.theme-editorial .chn-off .chn-ol-u{stroke:#c3bfb4;stroke-width:3.2}
+.theme-editorial .chn-pl.chn-psii{fill:#e3efd6}
+.theme-editorial .chn-pl.chn-pq{fill:#fbefc8}
+.theme-editorial .chn-pl.chn-b6f{fill:#f8e0cd}
+.theme-editorial .chn-pl.chn-pc{fill:#dde9f7}
+.theme-editorial .chn-pl.chn-psi{fill:#d7efeb}
+.theme-editorial .chn-pl.chn-fd{fill:#f4e1d9}
+.theme-editorial .chn-pl.chn-fnr{fill:#ebe3f6}
+.theme-editorial .chn-pl.chn-atps{fill:#f7e0eb}
+.theme-editorial .chn-off .chn-pl{fill:#fbfaf6}
+.theme-editorial .chn-pool0{stop-color:#f8c75a;stop-opacity:.55}
+.theme-editorial .chn-pool1{stop-color:#f8d98a;stop-opacity:.28}
+.theme-editorial .chn-pool2{stop-color:#fbe6b0;stop-opacity:0}
+.theme-editorial .chn-memp{fill:#f6efdc}
+.theme-editorial .chn-memlp{fill:none;stroke:#3d3d3a;stroke-width:1.8}
+
+/* ---------- arrows: electrons dark, H⁺ red dots, water and O₂ blue-grey, light amber ---------- */
+.theme-editorial .chn-halo-l{fill:none;stroke:#fbfaf6;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;opacity:.9}
+.theme-editorial .chn-e{fill:none;stroke:#2b2a27;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .chn-eh{fill:#2b2a27}
+.theme-editorial .chn-h{fill:none;stroke:#d1492a;stroke-width:3.4;stroke-linecap:round;stroke-dasharray:.1 7.5}
+.theme-editorial .chn-hh{fill:#d1492a}
+.theme-editorial .chn-hd{fill:#d1492a;stroke:#fbfaf6;stroke-width:1.5}
+.theme-editorial .chn-o{fill:none;stroke:#5b88a8;stroke-width:3;stroke-linecap:round}
+.theme-editorial .chn-oh{fill:#5b88a8}
+.theme-editorial .chn-lw{fill:none;stroke:#e3a21a;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .chn-lwh{fill:#e3a21a}
+.theme-editorial .chn-off .chn-e{stroke:#c9c5ba;stroke-width:2.6}
+.theme-editorial .chn-off .chn-eh{fill:#c9c5ba}
+.theme-editorial .chn-off .chn-h{stroke:#e7bfb3}
+.theme-editorial .chn-off .chn-hh,.theme-editorial .chn-off .chn-hd{fill:#e7bfb3}
+.theme-editorial .chn-off .chn-o{stroke:#c3cfd6}
+.theme-editorial .chn-off .chn-oh{fill:#c3cfd6}
+.theme-editorial .chn-off .chn-lw{stroke:#ecd9ad}
+.theme-editorial .chn-off .chn-lwh{fill:#ecd9ad}
+
+/* ---------- c2: real structures; a dimmed structure is grey ---------- */
+.theme-editorial .chn-memr{fill:#efe4c8;opacity:.85}
+.theme-editorial .chn-memrl{fill:none;stroke:#d6c497;stroke-width:1.6}
+
+/* ---------- c3: grana and unstacked membrane ---------- */
+.theme-editorial .chn-thy{fill:#e8eef0;stroke:#d6c497;stroke-width:9}
+.theme-editorial .chn-thy-in{fill:#e8eef0}
+.theme-editorial .chn-thyb{fill:none;stroke:#efe4c8;stroke-width:6}
+
+/* ---------- c4: the path ---------- */
+.theme-editorial .chn-box{stroke:#3d3d3a;stroke-width:1.8}
+.theme-editorial .chn-off .chn-box{fill:#fbfaf6;stroke:#c9c5ba;stroke-width:1.5}
+.theme-editorial .chn-wire{fill:none;stroke:#c9c5ba;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .chn-on .chn-wire{stroke:#2457a8;stroke-width:6.5}
+.theme-editorial .chn-wireh{fill:#c9c5ba}
+.theme-editorial .chn-on .chn-wireh{fill:#2457a8}
+.theme-editorial .chn-memthin{fill:#f3ecd9}
+.theme-editorial .chn-memthinl{fill:none;stroke:#d6c497;stroke-width:1.6}
+
+/* ---------- c6: the energy view ---------- */
+.theme-editorial .chn-zax{fill:none;stroke:#8a877d;stroke-width:1.8}
+.theme-editorial .chn-zaxh{fill:#8a877d}
+.theme-editorial .chn-guide{fill:none;stroke:#d8d5cb;stroke-width:1.4;stroke-dasharray:3 5}
+.theme-editorial .chn-lift{fill:none;stroke:#e3a21a;stroke-width:7;stroke-linecap:butt}
+.theme-editorial .chn-lifth{fill:#e3a21a}
+.theme-editorial .chn-off .chn-lift{stroke:#ecd9ad;stroke-width:5}
+.theme-editorial .chn-off .chn-lifth{fill:#ecd9ad}
+.theme-editorial .chn-rule{fill:none;stroke:#d8d5cb;stroke-width:1.2}
+
+/* ---------- c2 variations ---------- */
+.theme-editorial .chn-bil{fill:#f8f2e0}
+.theme-editorial .chn-head{fill:#d8bf86}
+.theme-editorial .chn-tail{fill:none;stroke:#e6d7b0;stroke-width:1.1}
+.theme-editorial .chn-stromaf{fill:#f4f3ea;opacity:.8}
+.theme-editorial .chn-lumenf{fill:#e3ecf1;opacity:.85}
+.theme-editorial .chn-pdb-glow .chn-off .chn-body{fill:#f3f1ec;stroke:#aca89d;stroke-width:1.2}
+.theme-editorial .chn-ld{fill:none;stroke:#6b6a64;stroke-width:1.3}
+.theme-editorial .chn-ldh{fill:none;stroke:#fbfaf6;stroke-width:4;opacity:.85}
+.theme-editorial .chn-ldt{fill:#6b6a64;stroke:#fbfaf6;stroke-width:1.2}
+.theme-editorial .chn-off .chn-ld{stroke:#c3bfb4}
+.theme-editorial .chn-off .chn-ldt{fill:#c3bfb4}
+/* c2c5: the detailed, curved bilayer */
+.theme-editorial .chn-bilt{fill:none;stroke:#f8f0da}
+.theme-editorial .chn-headt{fill:#d2b474;stroke:#b8995a;stroke-width:.8}
+.theme-editorial .chn-tailt{fill:none;stroke:#dcc89a;stroke-width:1.2;stroke-linejoin:round}

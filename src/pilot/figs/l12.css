@@ -11,7 +11,8 @@
 .theme-editorial .fl12 text.fl12-bt{font-size:19px;font-weight:600;fill:#2b2a27}
 .theme-editorial .fl12 text.fl12-nt{font-size:17px;font-weight:700;fill:#fffdf8}
 .theme-editorial .fl12 text.fl12-eq{font-size:25px;fill:#8a877d}
-.theme-editorial .fl12 text.fl12-e{font-size:19px;font-weight:700;fill:#b8321c}
+/* e⁻ in ink, on a solid ink arrow (the deck's glyph standard, 28 Oct 2026) */
+.theme-editorial .fl12 text.fl12-e{font-size:19px;font-weight:700;fill:#141413}
 .theme-editorial .fl12 text.fl12-wt{font-size:17px;font-weight:600;fill:#fffdf8}
 .theme-editorial .fl12 text.fl12-c-red{fill:#b8301b}
 .theme-editorial .fl12 text.fl12-c-blue{fill:#2350e6}

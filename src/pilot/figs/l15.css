@@ -91,3 +91,6 @@
 
 /* small "schematic" marks and source credits */
 .theme-editorial .fig text.fl15-cr{font:italic 400 17px Newsreader,Georgia,serif;fill:#6b6a64}
+/* the deck's one glyph set (28 Oct 2026): water and O₂ in the equation as plain tags with ink names */
+.theme-editorial .fl15-eq-water{fill:#fffdf8;stroke:#c9c6bb}
+.theme-editorial .fig text.fl15-eq-t-water{fill:#141413}

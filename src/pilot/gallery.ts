@@ -4,7 +4,7 @@ import './pilot.css';
 import './gallery.css';
 import { installPapers } from './papers';
 import { pickStore } from './picks';
-import { PAGES, fitTitles } from './plates';
+import { PAGES, fitPage } from './plates';
 
 const app = document.getElementById('gallery') as HTMLElement;
 installPapers(document.documentElement);
@@ -62,7 +62,7 @@ function show(n: string, v: string): void {
   modalPick.checked = store.has(n, v);
   modal.hidden = false;
   fit();
-  fitTitles(plateEl);
+  fitPage(plateEl);
 }
 const close = (): void => { modal.hidden = true; open = null; };
 

@@ -1,0 +1,5 @@
+/* To the reaction centre, staging B "Newspaper desk": the clipping on the desk and the newsprint sheet the structure
+   is printed on. Shared parts: antenna-common.css. */
+.ani-antenna-b .anb-scene *{vector-effect:non-scaling-stroke}
+.ani-antenna-b .anb-rule{fill:none;stroke:#b9b29c;stroke-width:1.4}
+.ani-antenna-b .an-sheet{fill:#f1ece0;stroke:#d3cdbd;stroke-width:1}

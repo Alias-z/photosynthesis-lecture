@@ -1,0 +1,23 @@
+/* Cyclic electron flow on the slide 10b schema (cyc10b-common.ts), stagings A and B. The schema keeps chain.css's look;
+   these are the slide's figure card, the story's glyphs (electron dark, H⁺ red as chain.css), the ATP : NADPH readout
+   (ATP in ATP synthase's pink, NADPH in FNR's violet) and the labels on the Munekage clipping. */
+:is(.ani-cyclic-a,.ani-cyclic-b) .c10-slidecard{fill:rgba(255,254,250,.58);stroke:rgba(120,100,60,.10);stroke-width:1}
+
+/* glyphs (drawn at the slide's size, counter-scaled with the camera) */
+:is(.ani-cyclic-a,.ani-cyclic-b) .c10-e{fill:#2b2a27;stroke:#fbfaf6;stroke-width:1.6}
+:is(.ani-cyclic-a,.ani-cyclic-b) .c10-ring{fill:#fbfaf6;fill-opacity:.9;stroke:#2b2a27;stroke-width:1.8;stroke-dasharray:2.6 2.4}
+:is(.ani-cyclic-a,.ani-cyclic-b) .fig text.c10-elab{font-size:20px;font-weight:700;fill:#2b2a27}
+
+/* the readout */
+:is(.ani-cyclic-a,.ani-cyclic-b) .c10-robox{fill:rgba(255,254,250,.72);stroke:rgba(120,100,60,.16);stroke-width:1}
+:is(.ani-cyclic-a,.ani-cyclic-b) text.c10-ro1{font-size:19px;font-weight:500;fill:#6b6a64}
+:is(.ani-cyclic-a,.ani-cyclic-b) text.c10-ro2{font-size:21px;font-weight:700;fill:#3d3d3a}
+:is(.ani-cyclic-a,.ani-cyclic-b) tspan.c10-atp{fill:#b4507f}
+:is(.ani-cyclic-a,.ani-cyclic-b) tspan.c10-nadph{fill:#7a5fb0}
+:is(.ani-cyclic-a,.ani-cyclic-b) .c10-bar-atp{fill:#dc8fb6}
+:is(.ani-cyclic-a,.ani-cyclic-b) .c10-bar-nadph{fill:#ad94d4}
+:is(.ani-cyclic-a,.ani-cyclic-b) .c10-bar-extra{fill:#dc8fb6;fill-opacity:.55}
+:is(.ani-cyclic-a,.ani-cyclic-b) .c10-gap{fill:none;stroke:#c46a95;stroke-width:1.6;stroke-dasharray:4 3}
+
+/* the clipping: white labels on the photo, as the paper sets them */
+:is(.ani-cyclic-a,.ani-cyclic-b) text.c10-plab{font-size:21px;font-weight:600;fill:#fbfaf6;paint-order:stroke;stroke:#2b2a27;stroke-width:5px;stroke-linejoin:round}

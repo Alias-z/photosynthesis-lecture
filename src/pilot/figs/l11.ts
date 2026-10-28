@@ -1,10 +1,25 @@
-// Slide L11 · Electron routes make the system flexible. Draft context; see research/figure-briefs/LECTURE_OVERVIEW.md.
-// Checked facts only (research/review-2026-10-23-claude/B_L07-L11.md, REVIEW_SUMMARY.md §4 #4, §6, §7 #3):
-// linear flow ≈ 1.29 ATP per NADPH (at 14 H⁺ per 3 ATP; ≈ 1.5 at ≈ 4 H⁺ per ATP) against 1.5 for the Calvin cycle;
-// cyclic flow and routes to O₂ pump H⁺ without net NADPH; malate export removes spare NADPH;
-// cyclic ΔpH slows b₆f and protects PSI, which has no dedicated repair cycle and recovers slowly (consensus);
-// its ATP role is debated (Degen 2026: PGR5- (and NDH-) deficient Arabidopsis, detached leaves, ≤ 400 µmol m⁻² s⁻¹, CO₂-saturated).
-// One ink and one dash pattern per route in every variant: linear red, cyclic violet, to O₂ teal; protons blue dots.
+// Slide L11 · Electron routes make the system flexible. Draft context; see research/figure-briefs/LECTURE_OVERVIEW.md and the
+// approved plan research/figure-briefs/DRAFT_LOCATION_ROUTES.md §3 (26 Oct 2026). Checked facts only (sources re-read 26 Oct 2026):
+// linear flow ≈ 1.3 ATP per NADPH (18/14 = 1.29) at 14 H⁺ per 3 ATP (c₁₄ ring) and a full Q cycle; the Calvin–Benson cycle needs 1.5
+// (Kramer & Evans 2011). Cyclic flow pumps H⁺ and makes no NADPH; PGR5 is the main pathway in flowering plants, NDH (NADH
+// dehydrogenase-like complex) the second; PGR5 protects PSI (Suorsa et al. 2012); whether C₃ leaves need cyclic flow for ATP is
+// debated (Degen et al. 2026). To O₂: in flowering plants the water–water cycle (O₂ reduced to water at PSI via superoxide and H₂O₂;
+// Asada 1999) carries < 10 % of electron flow (Badger et al. 2000), so the flowering-plant O₂ route is always drawn thin.
+// Flavodiiron proteins (FLV) reduce O₂ straight to water with no reactive oxygen, act fast after a light increase and protect PSI
+// in fluctuating light; they work in cyanobacteria, green algae, mosses and all non-flowering plant groups up to conifers and were
+// lost in flowering plants (Ilík et al. 2017); put back into Arabidopsis (Yamamoto et al. 2016), rice (Wada et al. 2018) and
+// tobacco (Rizzetto et al. 2025), they protect PSI in fluctuating light. Spare NADPH leaves the chloroplast as malate (one arrow).
+// The older variants a, c, e–j (kept, not listed) also use: the ≈ 4.0 H⁺ per ATP of Turina et al. 2016 is a thermodynamic
+// ratio, not the H⁺ that pass per ATP; an acid lumen slows b₆f and PSI has no fast repair cycle (Suorsa 2012, Degen 2023);
+// whether PGR5 acts through cyclic flow or by braking ATP synthase is open (Degen 2026; Nikkanen 2026); PGR5- (and NDH-)
+// deficient Arabidopsis keep their ATP level (Degen 2026: detached leaves, ≤ 400 µmol m⁻² s⁻¹, CO₂-saturated).
+// Variants k–o (FLV round): k thylakoid + family strip, l railway with the FLV track removed and a malate exit, m pipes,
+// n moss vs flowering plant, o the gap and three ways to close it. In m and n, "after a light increase" qualifies the wide
+// FLV outlet (FLV act fast after a light increase); m's main network is a flowering plant. o's "large with FLV": in
+// Chlamydomonas FLV drive most electron flow during the induction of photosynthesis (Chaux et al. 2017).
+// One ink and one dash pattern per route in every variant: linear red, cyclic violet, to O₂ teal. Protons are the deck's
+// ringed H⁺ (white disc, red ring and letters) on red dotted paths (glyph standard, lecturer 28 Oct 2026).
+// A wider stroke of the same pattern (class fl11-w) or a wider pipe means a larger share of electrons (qualitative).
 import type { PlateText, Variant } from '../types';
 import { text as t, wave } from '../mechanisms';
 import { bilayer, bolt, illusHeads, molecule, tag, water } from '../illus';
@@ -14,31 +29,30 @@ export const PLATE: PlateText = {
   n: '11',
   title: 'Electron routes make the system flexible',
   status: 'draft',
-  lead: 'Electrons can take several routes. Switching between them tunes the ATP-to-NADPH ratio and protects PSI.',
+  lead: 'After PSI, electrons go to NADPH (linear), back to PQ (cyclic) or to O₂; the mix sets how many H⁺ are pumped per NADPH and keeps PSI safe.',
   points: [
-    { claim: 'Linear flow alone is short of ATP.', text: 'It gives ≈ 1.29 ATP per NADPH; the Calvin–Benson cycle needs 1.5.' },
-    { claim: 'Cyclic flow makes ATP only.', text: 'Electrons loop around PSI, pumping H⁺ but making no NADPH.' },
-    { claim: 'Cyclic flow protects PSI.', text: 'Its ΔpH slows electron flow to PSI, which has no dedicated repair cycle.' },
+    { claim: 'Linear flow alone is short of ATP.', text: '≈ 1.3 ATP per NADPH (14 H⁺ per 3 ATP)<br>The Calvin–Benson cycle needs 1.5' },
+    { claim: 'Cyclic flow adds H⁺, not NADPH.', text: 'PGR5 (main) and NDH return electrons to PQ<br>PGR5 protects PSI; whether C₃ leaves need cyclic flow for ATP is debated' },
+    { claim: 'Flowering plants lost the fast O₂ outlet.', text: 'Cyanobacteria to conifers pass surplus electrons to O₂ with flavodiiron proteins (FLV)<br>In flowering plants the water–water cycle takes &lt; 10 % of electrons' },
   ],
   refs: [
     { label: 'Kramer & Evans 2011', url: 'https://doi.org/10.1104/pp.110.166652' },
-    { label: 'Asada 1999', url: 'https://doi.org/10.1146/annurev.arplant.50.1.601' },
+    { label: 'Badger et al. 2000', url: 'https://doi.org/10.1098/rstb.2000.0704' },
+    { label: 'Ilík et al. 2017', url: 'https://doi.org/10.1111/nph.14536' },
     { label: 'Suorsa et al. 2012', url: 'https://doi.org/10.1105/tpc.112.097162' },
     { label: 'Degen et al. 2026', url: 'https://doi.org/10.1038/s41477-026-02374-w' },
   ],
 };
 
+/** The picks (b, d) first, then the five variants of the FLV round (k–o). The older variants stay drawable by id through draw(). */
 export const VARIANTS: Variant[] = [
-  { id: 'a', name: 'Route map' },
   { id: 'b', name: 'Thylakoid', anim: true },
-  { id: 'c', name: 'Two bars' },
   { id: 'd', name: 'Railway', anim: true },
-  { id: 'e', name: 'Zoom to PSI' },
-  { id: 'f', name: 'Calm vs jump', anim: true },
-  { id: 'g', name: 'Four steps', anim: true },
-  { id: 'h', name: 'Agreed vs debated', anim: true },
-  { id: 'i', name: 'Equation terms' },
-  { id: 'j', name: 'Three icons' },
+  { id: 'k', name: 'Thylakoid + family tree' },
+  { id: 'l', name: 'Railway, two eras' },
+  { id: 'm', name: 'Three outlets as pipes' },
+  { id: 'n', name: 'Moss vs flowering plant' },
+  { id: 'o', name: 'Gap and outlets' },
 ];
 
 export function draw(id: string): string {
@@ -52,6 +66,11 @@ export function draw(id: string): string {
     case 'h': return agreedDebated();
     case 'i': return equationTerms();
     case 'j': return threeIcons();
+    case 'k': return thylakoidTree();
+    case 'l': return railwayEras();
+    case 'm': return pipes();
+    case 'n': return mossVsFlowering();
+    case 'o': return gapOutlets();
     default: return routeMap();
   }
 }
@@ -77,7 +96,7 @@ const rt = (p: string, k: Rt, d: string, head = true): string =>
 const band = (p: string, k: 'lin' | 'cyc' | 'oxy' | 'k', d: string, w: number, head = true): string =>
   `<path class="fl11-band fl11-band-${k}" style="stroke-width:${w}px" d="${d}"${head ? ` marker-end="url(#${p}-b${k})"` : ''}/>`;
 
-/** A proton: white ball, blue outline. */
+/** A proton: the deck's ringed H⁺, a white disc ringed red with red letters. */
 const H = (x: number, y: number, r = 13): string =>
   `<circle class="tag-h" cx="${x}" cy="${y}" r="${r}"/>${t(x, y + 5, 'H⁺', 'fl11-ht')}`;
 
@@ -147,7 +166,7 @@ function routeMap(): string {
 
     ${sample(p, 'lin', 30, 490)}${t(90, 497, 'linear', 'fl11-h fl11-c-lin', 'start')}${t(178, 497, 'NADPH and H⁺ gradient', 'fl11-l', 'start')}
     ${sample(p, 'cyc', 30, 534)}${t(90, 541, 'cyclic', 'fl11-h fl11-c-cyc', 'start')}${t(178, 541, 'H⁺ gradient only', 'fl11-l', 'start')}
-    ${sample(p, 'oxy', 30, 578)}${t(90, 585, 'to O₂', 'fl11-h fl11-c-oxy', 'start')}${t(178, 585, 'H⁺ gradient only', 'fl11-l', 'start')}
+    ${sample(p, 'oxy', 30, 578)}${t(90, 585, 'to O₂', 'fl11-h fl11-c-oxy', 'start')}${t(178, 585, 'H⁺ gradient only; small in flowering plants', 'fl11-l', 'start')}
   `);
 }
 
@@ -184,7 +203,7 @@ function thylakoid(): string {
     ${t(388, 34, 'cyclic: back to PQ', 'fl11-h fl11-c-cyc')}
 
     ${rt(p, 'oxy', 'M548,236 L598,236')}${molecule(620, 236, 'OO', 11)}${rt(p, 'oxy', 'M642,236 L664,236')}${water(686, 232)}
-    ${t(650, 206, 'to O₂', 'fl11-h fl11-c-oxy')}
+    ${t(650, 194, 'to O₂', 'fl11-h fl11-c-oxy')}${t(712, 216, 'small in flowering plants', 'fl11-xs', 'end')}
 
     ${H(316, 190)}${rt(p, 'h', 'M316,206 L316,222')}${rt(p, 'h', 'M316,380 L316,418')}
     ${H(128, 452)}${H(214, 488)}${H(270, 520)}${H(330, 450)}${H(392, 506)}${H(470, 462)}${H(546, 500)}${H(616, 458)}
@@ -199,7 +218,7 @@ function twoBars(): string {
   const p = 'fl11c', base = 440, k = 220, yOf = (v: number): number => base - v * k;
   const y129 = yOf(18 / 14), y15 = yOf(1.5);
   const ticks = [0, 0.5, 1, 1.5].map(v => `<path class="fl11-tick" d="M82,${yOf(v)} H90"/>${t(76, yOf(v) + 7, v === 0 ? '0' : v.toFixed(1), 'fl11-s', 'end')}`).join('');
-  return svg(p, 'Two bars: linear flow supplies about 1.29 ATP per NADPH, the Calvin cycle needs 1.5; cyclic flow, electrons to O₂ and malate export close the gap', `
+  return svg(p, 'Two bars: linear flow supplies about 1.29 ATP per NADPH, the Calvin cycle needs 1.5; cyclic flow, electrons to O₂ (small in flowering plants) and malate export close the gap', `
     <path class="fl11-axis" d="M90,${yOf(1.72)} V${base} H404"/>${ticks}
     <text class="fl11-l" transform="translate(30 ${(base + yOf(1.5)) / 2}) rotate(-90)" text-anchor="middle">ATP made per NADPH</text>
     <rect class="fl11-bar" x="118" y="${y129}" width="108" height="${base - y129}" rx="4"/>
@@ -214,11 +233,11 @@ function twoBars(): string {
     ${t(448, 112, 'Routes that close the gap', 'fl11-h', 'start')}
     <path class="fl11-guide" d="M434,140 V420"/>
     ${sample(p, 'cyc', 450, 172)}${t(506, 179, 'cyclic flow', 'fl11-h fl11-c-cyc', 'start')}${t(506, 206, 'H⁺ pumped, no NADPH', 'fl11-l', 'start')}
-    ${sample(p, 'oxy', 450, 270)}${t(506, 277, 'electrons to O₂', 'fl11-h fl11-c-oxy', 'start')}${t(506, 304, 'H⁺ pumped, no NADPH', 'fl11-l', 'start')}
+    ${sample(p, 'oxy', 450, 270)}${t(506, 277, 'electrons to O₂', 'fl11-h fl11-c-oxy', 'start')}${t(506, 304, 'H⁺ pumped, no NADPH', 'fl11-l', 'start')}${t(506, 331, 'small in flowering plants', 'fl11-l', 'start')}
     ${sample(p, 'g', 450, 368)}${t(506, 375, 'malate export', 'fl11-h', 'start')}${t(506, 402, 'removes spare NADPH', 'fl11-l', 'start')}
     ${rt(p, 'k', `M434,142 C402,84 268,72 238,${y15 + 14}`)}
 
-    ${t(400, 572, 'assumes 14 H⁺ per 3 ATP (c₁₄ ring); at ≈ 4 H⁺ per ATP the gap closes', 'fl11-s')}
+    ${t(400, 572, 'assumes 14 H⁺ per 3 ATP (c₁₄ ring) and a full Q cycle', 'fl11-s')}
   `);
 }
 
@@ -261,7 +280,7 @@ function railway(): string {
 
     <rect class="fl11-buffer" x="690" y="${y + 132}" width="12" height="36" rx="3"/>
     ${molecule(724, y + 150, 'OO', 11)}${rt(p, 'oxy', `M744,${y + 150} L758,${y + 150}`)}${water(776, y + 146)}
-    ${t(690, 556, 'siding', 'fl11-it')}${t(690, 584, 'to O₂ → water', 'fl11-h fl11-c-oxy')}
+    ${t(690, 547, 'siding', 'fl11-it')}${t(690, 571, 'to O₂ → water', 'fl11-h fl11-c-oxy')}${t(690, 593, 'small in flowering plants', 'fl11-xs')}
 
     ${wagon(170, y, 'k')}${wagon(420, 140, 'cyc')}${wagon(640, y, 'lin')}${wagon(654, y + 150, 'oxy')}
   `);
@@ -308,7 +327,7 @@ function zoomToPsi(): string {
     ${rt(p, 'lin', 'M478,452 C500,434 514,422 526,414')}
     ${rt(p, 'lin', 'M560,386 C588,344 616,322 644,314')}${tag(706, 312, 'NADPH', 'nadph')}${t(706, 356, 'linear', 'fl11-h fl11-c-lin')}
     ${rt(p, 'oxy', 'M570,410 L626,426')}${molecule(650, 430, 'OO', 11)}${rt(p, 'oxy', 'M672,430 L696,430')}${water(720, 426)}
-    ${t(684, 400, 'to O₂', 'fl11-h fl11-c-oxy')}
+    ${t(684, 400, 'to O₂', 'fl11-h fl11-c-oxy')}${t(684, 466, 'small in flowering plants', 'fl11-xs')}
     ${rt(p, 'cyc', 'M530,390 C440,330 190,330 116,494')}${t(318, 338, 'cyclic: back to PQ', 'fl11-h fl11-c-cyc')}
     ${t(760, 572, 'lumen', 'fl11-it', 'end')}
   `);
@@ -320,7 +339,7 @@ function calmVsJump(): string {
   const p = 'fl11f';
   const panel = (y0: number, jump: boolean): string => {
     const y = y0 + 158;
-    const w = jump ? { lin: 6, cyc: 15, oxy: 5 } : { lin: 16, cyc: 4, oxy: 3 };
+    const w = jump ? { lin: 6, cyc: 15, oxy: 2 } : { lin: 16, cyc: 4, oxy: 2 };
     const nH = jump ? 8 : 2;
     const hs = Array.from({ length: nH }, (_, i) => H(58 + i * 29, y + 62 + (i % 2) * 14, 12)).join('');
     return `
@@ -334,7 +353,7 @@ function calmVsJump(): string {
       ${band(p, 'lin', `M362,${y} H604`, w.lin)}${tag(670, y, 'NADPH', 'nadph')}${t(480, y - 16, 'linear', 'fl11-h fl11-c-lin')}
       ${band(p, 'cyc', `M346,${y - 26} C346,${y - 92} 206,${y - 92} 206,${y - 38}`, w.cyc)}${t(364, y - 62, 'cyclic', 'fl11-h fl11-c-cyc', 'start')}
       ${band(p, 'oxy', `M362,${y + 14} C420,${y + 14} 470,${y + 62} 560,${y + 70}`, w.oxy)}${molecule(592, y + 70, 'OO', 11)}${rt(p, 'oxy', `M614,${y + 70} L638,${y + 70}`)}${water(660, y + 66)}
-      ${t(468, y + 96, 'to O₂', 'fl11-h fl11-c-oxy')}`;
+      ${t(468, y + 96, 'to O₂', 'fl11-h fl11-c-oxy')}${t(504, y + 96, 'small in flowering plants', 'fl11-xs', 'start')}`;
   };
   return svg(p, 'The same chain in two states: when the Calvin cycle keeps up, most electrons take the linear route; after a light jump, more go round the cyclic loop, the lumen acidifies and b6f is slowed', `
     ${panel(4, false)}
@@ -396,7 +415,7 @@ function agreedDebated(): string {
   };
   const by = 360;
   return svg(p, 'Evidence. Agreed: without PGR5, PSI is lost in fluctuating light, and PSI has no dedicated repair cycle (schematic after Suorsa 2012). Debated: PGR5- (and NDH-) deficient mutants have a smaller proton gradient but keep their chloroplast ATP level (schematic after Degen 2026; Arabidopsis, detached leaves, up to 400 µmol m⁻² s⁻¹, CO₂-saturated)', `<g transform="translate(0 34)">
-    ${t(30, 46, 'Agreed: it protects PSI', 'fl11-h fl11-c-green', 'start')}
+    ${t(30, 46, 'Agreed: PGR5 protects PSI', 'fl11-h fl11-c-green', 'start')}
     ${blocks}${t(62, 95, 'light', 'fl11-s', 'end')}
     <path class="fl11-axis" d="M70,112 V${by} H382"/>
     <text class="fl11-l" transform="translate(44 ${(112 + by) / 2}) rotate(-90)" text-anchor="middle">PSI still working</text>
@@ -448,7 +467,7 @@ function equationTerms(): string {
     <path class="fl11-guide" d="M20,122 H780"/>
     ${row(194, 'linear', 'lin', { light: 'on', h2o: 'on', o2: 'on', nadph: 'on', atp: 'on' }, 'PSII + PSI')}
     ${row(318, 'cyclic', 'cyc', { light: 'on', h2o: 'off', o2: 'off', nadph: 'off', atp: 'on' }, 'PSI only')}
-    ${row(442, 'to O₂', 'oxy', { light: 'on', h2o: 'cyc', o2: 'cyc', nadph: 'off', atp: 'on' }, 'PSII + PSI')}
+    ${row(442, 'to O₂', 'oxy', { light: 'on', h2o: 'cyc', o2: 'cyc', nadph: 'off', atp: 'on' }, 'PSII + PSI')}${t(30, 494, 'small in', 'fl11-xs', 'start')}${t(30, 514, 'flowering plants', 'fl11-xs', 'start')}
     ${rt(p, 'oxy', `M${C.o2},464 C${C.o2 - 10},500 ${C.h2o + 10},500 ${C.h2o},468`)}${t(C.arrow, 520, 'O₂ is used again', 'fl11-s')}
     <path class="fl11-guide" d="M20,540 H780"/>
     ${t(400, 580, 'All pump H⁺; only linear makes NADPH', 'fl11-h')}
@@ -461,7 +480,7 @@ function threeIcons(): string {
   const p = 'fl11j', iy = 166;
   const checks = (cx: number, nadph: boolean): string =>
     `${tag(cx - 34, 392, 'NADPH', 'nadph')}${nadph ? yes(cx + 54, 392) : no(cx + 54, 392)}${H(cx - 34, 444, 15)}${yes(cx + 54, 444)}`;
-  return svg(p, 'Three icons: linear flow takes electrons from water to NADPH; cyclic flow circles around PSI; the route to O2 reduces O2 to water. All three pump protons; only linear flow makes NADPH. Cyclic flow protects PSI; its ATP role is debated', `<g transform="translate(0 16)">
+  return svg(p, 'Three icons: linear flow takes electrons from water to NADPH; cyclic flow circles around PSI; the route to O2 reduces O2 to water. All three pump protons; only linear flow makes NADPH. An acid lumen, which needs PGR5, protects PSI; the ATP role of cyclic flow is debated', `<g transform="translate(0 16)">
     ${water(44, iy)}${rt(p, 'lin', `M66,${iy} L150,${iy}`)}${tag(204, iy, 'NADPH', 'nadph')}
     ${t(140, 286, 'Linear', 'fl11-b fl11-c-lin')}${t(140, 318, 'water → NADPH', 'fl11-l')}
 
@@ -471,14 +490,266 @@ function threeIcons(): string {
 
     ${t(574, 102, 'e⁻', 'fl11-e', 'start')}${rt(p, 'oxy', `M596,110 C638,118 650,148 652,${iy - 22}`)}${molecule(660, iy, 'OO', 14)}
     ${rt(p, 'oxy', `M688,${iy} L716,${iy}`)}${water(744, iy - 4)}
-    ${t(660, 286, 'To O₂', 'fl11-b fl11-c-oxy')}${t(660, 318, 'O₂ reduced to water', 'fl11-l')}
+    ${t(660, 286, 'To O₂', 'fl11-b fl11-c-oxy')}${t(660, 318, 'O₂ reduced to water', 'fl11-l')}${t(660, 344, 'small in flowering plants', 'fl11-xs')}
 
     <path class="fl11-guide" d="M270,70 V470 M530,70 V470"/>
     ${checks(140, true)}${checks(400, false)}${checks(660, false)}</g>
 
     <path class="fl11-guide" d="M20,494 H780"/>
     <path class="fl11-shield" d="M34,514 L76,502 L118,514 V548 C118,574 96,588 76,594 C56,588 34,574 34,548Z"/>${t(76, 558, 'PSI', 'fl11-in')}
-    ${t(140, 540, 'protected by the cyclic-flow ΔpH', 'fl11-h', 'start')}
+    ${t(140, 540, 'protected by an acid lumen (needs PGR5)', 'fl11-h', 'start')}
     ${t(140, 572, 'ATP role of cyclic flow: debated', 'fl11-l', 'start')}
+  `);
+}
+
+/* ---------- parts for the FLV round (k–o) ---------- */
+
+/** A wider stroke of a route's own pattern: a larger share of electrons (qualitative); its head grows with it. */
+const rtw = (p: string, k: 'cyc' | 'oxy', d: string, head = true): string =>
+  `<path class="fl11-r fl11-r-${k} fl11-w" d="${d}"${head ? ` marker-end="url(#${p}-b${k})"` : ''}/>`;
+
+/** A shield (protection), drawn around a part. */
+const shield = (cx: number, top: number, w: number, h: number): string => {
+  const x0 = cx - w / 2, x1 = cx + w / 2, s = h / 92;
+  return `<path class="fl11-shield" d="M${x0},${top + 12 * s} L${cx},${top} L${x1},${top + 12 * s} V${top + 46 * s} C${x1},${top + 72 * s} ${cx + w * 0.26},${top + 86 * s} ${cx},${top + h} C${cx - w * 0.26},${top + 86 * s} ${x0},${top + 72 * s} ${x0},${top + 46 * s}Z"/>`;
+};
+
+/** A small rounded chip for a complex. */
+const chipBox = (cx: number, cy: number, w: number, h: number, s: string, cls = 'blob-ps'): string =>
+  `<rect class="${cls}" x="${cx - w / 2}" y="${cy - h / 2}" width="${w}" height="${h}" rx="${Math.min(14, h / 2)}"/>${t(cx, cy + 7.5, s, 'fl11-in')}`;
+
+/* ---------- K · the picked thylakoid (b), compacted, above a family strip: who keeps the fast O₂ outlet ---------- */
+
+function thylakoidTree(): string {
+  const p = 'fl11k', mt = 164, mb = 224, my = 194, lb = 364;
+  const top = `
+    <rect class="fl11-lumen" x="0" y="${mb}" width="800" height="${lb - mb}"/>
+    ${bilayer(p, 0, 800, mt, mb)}
+    ${psys(140, my, 112, 120, 'PSII')}
+    ${pq(236, my)}
+    ${b6f(316, my, 30, 54)}
+    ${small(398, 284, 20, 'PC')}
+    ${psys(486, my, 116, 120, 'PSI')}
+    ${small(572, 96, 20, 'Fd')}
+    ${atps(752, mt, mb)}
+    ${tag(752, 56, 'ATP', 'atp')}${rt(p, 'k', 'M752,96 L752,80')}
+    ${tag(656, 32, 'NADPH', 'nadph')}
+
+    ${bolt(p, 64, 52, 104, 128)}${t(72, 40, 'light', 'fl11-it', 'start')}
+    ${bolt(p, 452, 70, 474, 126)}${t(444, 92, 'light', 'fl11-it', 'end')}
+
+    ${molecule(48, 300, 'OO', 11)}${rt(p, 'k', 'M112,300 L84,300')}${water(128, 292)}${water(154, 304)}
+    ${t(48, 340, 'O₂', 'fl11-s')}${t(140, 340, '2 H₂O', 'fl11-s')}
+    ${rt(p, 'lin', 'M134,282 L134,266')}
+    ${rt(p, 'lin', 'M186,194 L210,194')}${rt(p, 'lin', 'M258,194 L278,194')}
+    ${rt(p, 'lin', 'M328,250 C336,270 352,282 372,284')}
+    ${rt(p, 'lin', 'M418,276 C426,272 432,266 436,262')}
+    ${rt(p, 'lin', 'M530,132 C536,122 542,116 550,112')}
+    ${rt(p, 'lin', 'M584,80 C592,68 600,60 606,56')}
+    ${t(622, 84, 'linear', 'fl11-h fl11-c-lin', 'start')}
+
+    ${rt(p, 'cyc', 'M558,82 C490,16 300,24 244,176')}
+    ${t(400, 26, 'cyclic: back to PQ', 'fl11-h fl11-c-cyc')}
+
+    ${rt(p, 'oxy', 'M548,146 L596,146')}${molecule(618, 146, 'OO', 11)}${rt(p, 'oxy', 'M640,146 L660,146')}${water(684, 138)}${water(710, 150)}
+    ${t(650, 116, 'to O₂', 'fl11-h fl11-c-oxy')}
+
+    ${H(346, 112)}${rt(p, 'h', 'M340,127 L330,138')}${rt(p, 'h', 'M316,252 L316,270')}
+    ${H(316, 290)}${H(214, 302)}${H(258, 326)}${H(470, 314)}${H(540, 296)}${H(612, 326)}${H(676, 292)}
+    ${rt(p, 'h', 'M200,350 H700 C735,350 752,336 752,306 V262')}
+    ${t(20, 150, 'stroma', 'fl11-it', 'start')}${t(20, 252, 'lumen', 'fl11-it', 'start')}`;
+
+  // the strip: who has FLV
+  const sy = 464, lx = 47;
+  const strip = `
+    ${t(20, 406, 'cyanobacteria → green algae → mosses → conifers', 'fl11-l', 'start')}
+    ${t(686, 406, 'flowering plants', 'fl11-l')}
+    <path class="fl11-guide" d="M576,384 V594"/>
+    ${chipBox(82 + lx, sy, 72, 44, 'PSI')}
+    ${rtw(p, 'oxy', `M${124 + lx},${sy} L${300 + lx},${sy}`)}
+    ${t(196 + lx, sy - 18, 'FLV', 'fl11-h fl11-c-oxy')}${yes(248 + lx, sy - 26)}
+    ${molecule(334 + lx, sy, 'OO', 11)}${rtw(p, 'oxy', `M${358 + lx},${sy} L${386 + lx},${sy}`)}${water(418 + lx, sy - 4)}
+    ${t(212 + lx, sy + 40, 'flavodiiron proteins', 'fl11-s')}
+
+    ${shield(618, sy - 36, 64, 74)}${t(618, sy + 8, 'PSI', 'fl11-in')}
+    ${rt(p, 'oxy', `M656,${sy} L690,${sy}`)}${molecule(716, sy, 'OO', 11)}${rt(p, 'oxy', `M738,${sy} L750,${sy}`)}${water(772, sy - 4)}
+    ${t(618, sy + 62, 'PGR5', 'fl11-h fl11-c-green')}
+    ${t(700, sy - 28, 'FLV', 'fl11-h fl11-off')}${no(738, sy - 36)}
+    ${t(722, sy + 38, 'water–water cycle', 'fl11-xs')}
+
+    ${t(20, 548, 'PGR5: proton gradient regulation 5', 'fl11-key', 'start')}
+    ${t(20, 570, 'after Asada 1999; Ilík et al. 2017;', 'fl11-key', 'start')}
+    ${t(20, 592, 'Yamamoto et al. 2016; Wada et al. 2018; Rizzetto et al. 2025', 'fl11-key', 'start')}
+    <rect class="fl11-card" x="584" y="546" width="210" height="50" rx="10"/>
+    ${t(689, 566, 'put back: Arabidopsis 2016', 'fl11-key')}${t(689, 587, 'rice 2018 · tobacco 2025', 'fl11-key')}`;
+
+  return svg(p, 'Top: the thylakoid with its three electron routes after PSI (linear to NADPH, cyclic back to PQ, a thin route to O2). Bottom: cyanobacteria, green algae, mosses and conifers pass surplus electrons to O2 through flavodiiron proteins (FLV); flowering plants lost FLV, keep only the thin water–water cycle and rely on PGR5 to protect PSI; FLV was put back into Arabidopsis (2016), rice (2018) and tobacco (2025)', top + strip);
+}
+
+/* ---------- L · the picked railway (d), two eras: the FLV track removed, a narrow water–water siding, a malate exit ---------- */
+
+function railwayEras(): string {
+  const p = 'fl11l', y = 330, jx = 520;
+  const main = `M40,${y} H${jx}`;
+  const toEnd = `M${jx},${y} H712`;
+  const loop = `M${jx},${y} C${jx + 56},${y} 600,${y - 30} 600,${y - 80} V170 C600,130 578,110 536,110 H300 C255,110 222,135 222,180 V${y - 60} C222,${y - 20} 240,${y} 280,${y}`;
+  const ny = 440, fy = 556;
+  const narrow = `M${jx},${y} C${jx + 70},${y} 606,${y + 42} 614,${y + 74} C622,${ny - 16} 644,${ny} 690,${ny}`;
+  const flv = `M${jx},${y} C${jx + 28},${y} 552,${y + 50} 552,${y + 100} V${fy - 56} C552,${fy - 20} 572,${fy} 608,${fy} H690`;
+  const tracks: [string, string][] = [[main, 'k'], [toEnd, 'lin'], [loop, 'cyc']];
+  const wagon = (x: number, yy: number, k: string): string =>
+    `<rect class="fl11-wagon fl11-wagon-${k}" x="${x - 23}" y="${yy - 25}" width="46" height="28" rx="7"/><circle class="fl11-wheel" cx="${x - 12}" cy="${yy + 5}" r="4.5"/><circle class="fl11-wheel" cx="${x + 12}" cy="${yy + 5}" r="4.5"/>${t(x, yy - 4, 'e⁻', `fl11-e${k === 'k' ? '' : ` fl11-c-${k}`}`)}`;
+  return svg(p, 'Analogy: electrons as trains. After the PSI booster, points send each train to the NADPH terminal (linear flow), round a loop back through the b6f toll gate (cyclic flow), or into a narrow siding to O2 (the water–water cycle). A wider track for flavodiiron proteins (FLV) lies dismantled: flowering plants lost it. Spare NADPH leaves the terminal as malate', `
+    <path class="fl11-sleep fl11-sleep-x" d="${flv}"/>
+    <rect class="fl11-loose" x="708" y="548" width="80" height="6" rx="2" transform="rotate(-3 748 551)"/>
+    <rect class="fl11-loose" x="704" y="564" width="80" height="6" rx="2" transform="rotate(2 744 567)"/>
+    <path class="fl11-sleep fl11-thin" d="${narrow}"/><path class="fl11-rail fl11-thin" d="${narrow}"/><path class="fl11-bed fl11-bed-oxy fl11-thin" d="${narrow}"/>
+    ${tracks.map(([d]) => `<path class="fl11-sleep" d="${d}"/>`).join('')}
+    ${tracks.map(([d]) => `<path class="fl11-rail" d="${d}"/>`).join('')}
+    ${tracks.map(([d, k]) => `<path class="fl11-bed fl11-bed-${k}" d="${d}"/>`).join('')}
+
+    <path class="fl11-shed-ps" d="M52,${y - 6} V${y - 46} L88,${y - 72} L124,${y - 46} V${y - 6}Z"/>${t(88, y - 22, 'PSII', 'fl11-in')}
+    ${t(112, 232, 'depot', 'fl11-it', 'start')}
+    ${bolt(p, 26, 130, 58, 254)}${t(30, 120, 'light', 'fl11-it', 'start')}
+    ${water(88, 448)}${rt(p, 'k', `M88,428 L88,${y + 18}`)}${t(88, 492, 'water gives e⁻', 'fl11-s')}
+
+    <rect class="fl11-shed-b6f" x="306" y="${y - 40}" width="48" height="80" rx="12"/>${t(330, y + 8, 'b₆f', 'fl11-in')}
+    ${t(330, 236, 'toll gate', 'fl11-it')}${t(330, 262, 'b₆f pumps H⁺', 'fl11-h')}
+    ${rt(p, 'h', `M330,${y + 44} L330,${y + 96}`)}${H(330, y + 116)}
+
+    <rect class="fl11-shed-ps" x="404" y="${y - 40}" width="60" height="80" rx="14"/>${t(434, y + 8, 'PSI', 'fl11-in')}
+    ${t(432, 192, 'booster', 'fl11-it')}${t(432, 218, 'PSI', 'fl11-h')}
+    ${bolt(p, 500, 162, 462, 282)}${t(506, 166, 'light', 'fl11-it', 'start')}
+
+    <path class="fl11-lever" d="M${jx - 12},${y + 22} L${jx - 28},${y + 46}"/><circle class="fl11-wheel" cx="${jx - 28}" cy="${y + 48}" r="6"/>
+    ${t(444, 412, 'points', 'fl11-it')}${t(444, 438, 'after PSI (Fd)', 'fl11-h')}
+
+    <rect class="fl11-buffer" x="712" y="${y - 18}" width="12" height="36" rx="3"/>
+    ${tag(716, 262, 'NADPH', 'nadph')}${t(716, 376, 'terminal', 'fl11-it')}${t(716, 402, 'linear', 'fl11-h fl11-c-lin')}
+    ${rt(p, 'g', 'M716,244 L716,176')}
+    ${t(712, 98, 'freight exit', 'fl11-it')}${t(712, 128, 'spare NADPH', 'fl11-l')}${t(712, 154, 'leaves as malate', 'fl11-l')}
+
+    ${t(416, 50, 'loop line', 'fl11-it')}${t(416, 78, 'cyclic: back to PQ', 'fl11-h fl11-c-cyc')}
+
+    <rect class="fl11-buffer" x="690" y="${ny - 18}" width="12" height="36" rx="3"/>
+    ${molecule(724, ny, 'OO', 11)}${rt(p, 'oxy', `M744,${ny} L758,${ny}`)}${water(776, ny - 4)}
+    ${t(794, 486, 'narrow siding', 'fl11-it', 'end')}${t(794, 512, 'water–water cycle', 'fl11-h fl11-c-oxy', 'end')}
+    ${t(520, 500, 'rails removed', 'fl11-it', 'end')}${t(520, 526, 'FLV track', 'fl11-h fl11-c-oxy', 'end')}${t(520, 548, 'lost in flowering plants', 'fl11-xs', 'end')}
+    ${t(20, 592, 'FLV: flavodiiron proteins · after Asada 1999; Ilík et al. 2017', 'fl11-key', 'start')}
+
+    ${wagon(170, y, 'k')}${wagon(420, 110, 'cyc')}${wagon(640, y, 'lin')}${wagon(650, ny, 'oxy')}
+  `);
+}
+
+/* ---------- M · pipes: PSI as a junction, pipe width = share of electrons ---------- */
+
+function pipes(): string {
+  const p = 'fl11m';
+  const pipe = (k: 'lin' | 'cyc' | 'oxy' | 'k', d: string, w: number): string =>
+    `<path class="fl11-pw fl11-pw-${k}" style="stroke-width:${w + 5}px" d="${d}"/><path class="fl11-pi fl11-pi-${k}" style="stroke-width:${w}px" d="${d}"/>`;
+  /** A flow head at a pipe's end, in the route's ink. */
+  const head = (k: 'lin' | 'cyc' | 'oxy' | 'k', x: number, y: number, ang: number, s: number): string =>
+    `<path class="fl11-fill-${k}" transform="translate(${x} ${y}) rotate(${ang}) scale(${s})" d="M-6,-8 L6,0 L-6,8Z"/>`;
+  const valve = (x: number, y: number): string =>
+    `<path class="fl11-valve-h" d="M${x},${y} V${y - 22} M${x - 9},${y - 22} H${x + 9}"/><path class="fl11-valve" d="M${x - 13},${y - 11} L${x + 13},${y + 11} V${y - 11} L${x - 13},${y + 11}Z"/>`;
+  const W = { lin: 30, pgr: 12, ndh: 5, oxy: 5 };
+  const my = 300;
+  return svg(p, 'PSI drawn as a junction with three outlet pipes whose widths show the share of electrons (qualitative): a wide pipe to NADPH, a medium cyclic pipe back to PQ through the PGR5 (main) and NDH valves, and a narrow pipe to O2 (water–water cycle). Inset: in a moss after a light increase the O2 pipe is wide, through flavodiiron proteins (FLV)', `
+    ${pipe('k', `M94,${my} H150`, W.lin + W.oxy)}
+    ${pipe('k', `M150,${my} H404`, W.lin + W.oxy + W.pgr + W.ndh)}
+    ${pipe('cyc', `M478,${my - 62} V108 Q478,84 454,84 H160 Q136,84 136,108 V${my - 26}`, W.pgr)}${head('cyc', 136, my - 42, 90, 1.5)}
+    ${pipe('cyc', `M422,${my - 62} V188 Q422,164 398,164 H188 Q164,164 164,188 V${my - 26}`, W.ndh)}${head('cyc', 164, my - 40, 90, 1.0)}
+    ${pipe('lin', `M496,${my} H576 Q608,${my} 608,${my - 32} V130 Q608,98 640,98 H680`, W.lin)}${head('lin', 688, 98, 0, 2.4)}
+    ${pipe('oxy', `M466,${my + 60} V404 Q466,420 482,420 H558`, W.oxy)}${head('oxy', 564, 420, 0, 1.1)}
+    ${valve(300, 84)}${valve(300, 164)}
+    ${chipBox(58, my, 72, 56, 'PSII')}
+    <ellipse class="blob-pq" cx="150" cy="${my}" rx="34" ry="31"/>${t(150, my + 7, 'PQ', 'fl11-in')}
+    <ellipse class="blob-b6f" cx="252" cy="${my}" rx="30" ry="40"/>${t(252, my + 8, 'b₆f', 'fl11-in')}
+    ${small(336, my, 24, 'PC')}
+    ${psys(450, my, 96, 124, 'PSI', 12)}
+    ${t(24, 364, 'flowering plant', 'fl11-it', 'start')}
+
+    ${t(307, 44, 'cyclic: back to PQ', 'fl11-h fl11-c-cyc')}
+    ${t(300, 126, 'PGR5', 'fl11-h fl11-c-cyc')}${t(300, 206, 'NDH', 'fl11-h fl11-c-cyc')}
+    ${tag(742, 98, 'NADPH', 'nadph')}${t(636, 214, 'linear', 'fl11-h fl11-c-lin', 'start')}
+    ${molecule(590, 420, 'OO', 11)}${rt(p, 'oxy', 'M612,420 L632,420')}${water(656, 416)}
+    ${t(622, 462, 'to O₂', 'fl11-h fl11-c-oxy')}${t(622, 484, 'water–water cycle', 'fl11-xs')}
+
+    <rect class="fl11-card" x="24" y="388" width="396" height="176" rx="14"/>
+    ${t(44, 420, 'moss', 'fl11-h', 'start')}${t(118, 420, 'after a light increase', 'fl11-s', 'start')}
+    ${pipe('lin', 'M136,464 H268', W.lin)}${head('lin', 276, 464, 0, 2.4)}${tag(332, 464, 'NADPH', 'nadph')}
+    ${pipe('oxy', 'M136,532 H262', 24)}${head('oxy', 270, 532, 0, 2.1)}
+    ${psys(104, 498, 64, 108, 'PSI', 9)}
+    ${molecule(298, 532, 'OO', 11)}${rt(p, 'oxy', 'M320,532 L334,532')}${water(358, 528)}
+    ${t(150, 508, 'FLV', 'fl11-h fl11-c-oxy', 'start')}${t(196, 508, 'flavodiiron proteins', 'fl11-key', 'start')}
+
+    ${t(790, 526, 'pipe width: share of electrons (qualitative)', 'fl11-key', 'end')}
+    ${t(790, 548, 'PGR5: proton gradient regulation 5', 'fl11-key', 'end')}
+    ${t(790, 570, 'NDH: NADH dehydrogenase-like complex', 'fl11-key', 'end')}
+    ${t(790, 592, 'after Asada 1999; Ilík et al. 2017', 'fl11-key', 'end')}
+  `);
+}
+
+/* ---------- N · the same route twice: a moss passes surplus electrons to O₂ (FLV); a flowering plant leans on PGR5 ---------- */
+
+function mossVsFlowering(): string {
+  const p = 'fl11n';
+  const panel = (x0: number, moss: boolean): string => {
+    const X = (u: number): number => x0 + u;
+    const mt = 384, mb = 444, my = 414, oy = 362;
+    const cyc = `M${X(128)},${my - 72} C${X(118)},170 ${X(40)},170 ${X(30)},${my - 16}`;
+    const oxy = `M${X(208)},${oy} L${X(268)},${oy}`;
+    return `
+      <rect class="fl11-lumen" x="${X(0)}" y="${mb}" width="380" height="56"/>
+      ${bilayer(`${p}${moss ? 'a' : 'b'}`, X(0), X(380), mt, mb)}
+      ${t(X(190), 50, moss ? 'moss' : 'flowering plant', 'fl11-b')}
+      ${pq(X(28), my)}${b6f(X(86), my, 24, 54)}
+      ${psys(X(162), my, 88, 140, 'PSI')}
+      ${rt(p, 'lin', `M${X(162)},${my - 74} V140`)}${tag(X(162), 116, 'NADPH', 'nadph')}${t(X(176), 244, 'linear', 'fl11-h fl11-c-lin', 'start')}
+      ${moss ? rt(p, 'cyc', cyc) : rtw(p, 'cyc', cyc)}
+      ${t(X(72), 194, moss ? 'cyclic' : 'cyclic (PGR5)', 'fl11-h fl11-c-cyc')}
+      ${moss ? rtw(p, 'oxy', oxy) : rt(p, 'oxy', oxy)}
+      ${molecule(X(292), oy, 'OO', 11)}${(moss ? rtw : rt)(p, 'oxy', `M${X(314)},${oy} L${X(326)},${oy}`)}${water(X(352), oy - 4)}
+      ${t(X(196), 324, moss ? 'FLV' : 'water–water cycle', 'fl11-l fl11-c-oxy', 'start')}`;
+  };
+  return svg(p, 'The same route drawn twice, after a light increase. Moss: surplus electrons go to O2 through flavodiiron proteins (FLV), a thick outlet, and cyclic flow is thin. Flowering plant: no FLV; cyclic flow through PGR5 is thicker, and only a thin water–water cycle goes to O2', `
+    ${panel(10, true)}${panel(410, false)}
+    <path class="fl11-guide" d="M400,20 V500"/>
+    ${t(400, 542, 'after a light increase · line width: share of electrons (qualitative)', 'fl11-key')}
+    ${t(400, 564, 'FLV: flavodiiron proteins · PGR5: proton gradient regulation 5', 'fl11-key')}
+    ${t(400, 586, 'after Asada 1999; Ilík et al. 2017', 'fl11-key')}
+  `);
+}
+
+/* ---------- O · the bookkeeping view: the gap (≈ 1.3 vs 1.5) and three ways to close it ---------- */
+
+function gapOutlets(): string {
+  const p = 'fl11o', base = 440, k = 220, yOf = (v: number): number => base - v * k;
+  const y13 = yOf(18 / 14), y15 = yOf(1.5);
+  const ticks = [0, 0.5, 1, 1.5].map(v => `<path class="fl11-tick" d="M82,${yOf(v)} H90"/>${t(76, yOf(v) + 7, v === 0 ? '0' : v.toFixed(1), 'fl11-s', 'end')}`).join('');
+  const plusH = (x: number, y: number): string => `${t(x - 26, y + 8, '+', 'fl11-b')}${H(x, y, 15)}`;
+  return svg(p, 'Bookkeeping: linear flow supplies about 1.3 ATP per NADPH, the Calvin–Benson cycle needs 1.5. Three ways close the gap: cyclic flow adds H+ without NADPH; electrons to O2 add H+ without NADPH (small in flowering plants, large with flavodiiron proteins); malate export removes NADPH', `
+    <path class="fl11-axis" d="M90,${yOf(1.72)} V${base} H404"/>${ticks}
+    <text class="fl11-l" transform="translate(30 ${(base + yOf(1.5)) / 2}) rotate(-90)" text-anchor="middle">ATP made per NADPH</text>
+    <rect class="fl11-bar" x="118" y="${y13}" width="108" height="${base - y13}" rx="4"/>
+    <rect class="fl11-gap" x="118" y="${y15}" width="108" height="${y13 - y15}" rx="4"/>
+    <rect class="fl11-bar-need" x="280" y="${y15}" width="108" height="${base - y15}" rx="4"/>
+    <path class="fl11-target" d="M90,${y15} H404"/>
+    ${t(172, y13 + 42, '≈ 1.3', 'fl11-b')}${t(334, y15 + 42, '1.5', 'fl11-b')}
+    ${t(172, y15 + 31, 'gap', 'fl11-l fl11-c-clay')}
+    ${t(172, base + 34, 'linear flow', 'fl11-h')}${t(172, base + 60, 'supplies', 'fl11-l')}
+    ${t(334, base + 34, 'Calvin–Benson', 'fl11-h')}${t(334, base + 60, 'cycle needs', 'fl11-l')}
+
+    ${t(448, 112, '', 'fl11-h', 'start')}
+    <path class="fl11-guide" d="M434,140 V440"/>
+    ${sample(p, 'cyc', 450, 172)}${t(506, 179, 'cyclic flow', 'fl11-h fl11-c-cyc', 'start')}${plusH(752, 172)}
+    ${sample(p, 'oxy', 450, 250)}${t(506, 257, 'to O₂', 'fl11-h fl11-c-oxy', 'start')}${plusH(752, 250)}
+    ${rt(p, 'oxy', 'M472,290 H512', false)}${t(526, 297, 'small in flowering plants', 'fl11-l', 'start')}
+    ${rtw(p, 'oxy', 'M475,326 H511', false)}${t(526, 333, 'large with FLV', 'fl11-l', 'start')}
+    ${sample(p, 'g', 450, 400)}${t(506, 407, 'malate export', 'fl11-h', 'start')}${t(690, 408, '−', 'fl11-b', 'end')}${tag(740, 400, 'NADPH', 'nadph')}
+    ${rt(p, 'k', `M434,142 C402,84 268,72 238,${y15 + 14}`)}
+
+    ${t(400, 548, 'assumes 14 H⁺ per 3 ATP (c₁₄ ring) and a full Q cycle', 'fl11-s')}
+    ${t(400, 576, 'FLV: flavodiiron proteins, after Ilík et al. 2017; Chaux et al. 2017', 'fl11-key')}
   `);
 }

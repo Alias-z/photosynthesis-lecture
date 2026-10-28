@@ -1,0 +1,84 @@
+{
+  "title": "The Rubisco story: evolution, temperature and engineering",
+  "chunk": "Lecture 2 · Rubisco story (after C2 and C5)",
+  "slides": [
+    "lead-C5a",
+    "C5a",
+    "C5b",
+    "C5c"
+  ],
+  "questions": [
+    {
+      "id": "a",
+      "question": "If Rubisco keeps grabbing O₂ by mistake, why hasn’t evolution fixed it in 3 billion years?",
+      "story": "Rubisco is ≈ 3 billion years old (Bouvier, Emms & Kelly 2024). When it evolved, the air held at least 100 × today’s CO₂ and at most 0.1 % of today’s O₂, so its O₂ reaction cost nothing. O₂ rose in the Great Oxidation Event, ≈ 2.4–2.2 billion years ago (Poulton et al. 2021), and CO₂ fell. Across ≈ 300 Rubiscos, the more specific ones tend to be slower (Tcherkez et al. 2006; Flamholz et al. 2019), and plant Rubisco changes by 1 amino acid per 7.2 million years.",
+      "steps": [
+        "Rubisco evolved in air with much CO₂ and almost no O₂: oxygenation was rare and harmless.",
+        "O₂ rose and CO₂ fell; oxygenation became a real cost.",
+        "Telling CO₂ from O₂ apart makes Rubisco slower: specificity and speed trade off.",
+        "Crop Rubisco is tuned to ≈ 210 ppm CO₂, the mean of the last 400,000 years; industry has pushed the air to 427 ppm, faster than Rubisco can evolve.",
+        "So plants manage the cost instead: photorespiration (C6), refixation (C11), C₄ and CAM (C12, C13)."
+      ],
+      "concepts": [
+        "Evolution of Rubisco",
+        "Specificity–speed trade-off",
+        "CO₂ optimum of crop Rubisco"
+      ],
+      "see": "Rubisco with CO₂ and O₂ heading for one active site (lead page a); then the 3.5-billion-year timeline and the 800,000-year ice-core CO₂ curve with the 210 ppm optimum (C5a).",
+      "status": "Facts checked (rb report): Bouvier 2024 full text; Poulton 2021, Zhu 2004 abstracts; Bereiter 2015 data; NOAA 2025."
+    },
+    {
+      "id": "b",
+      "question": "Is there a better Rubisco somewhere in nature, and could crops use it?",
+      "story": "In 1997 Uemura and colleagues found Rubisco in hot-spring red algae (Galdieria partita) that tells CO₂ from O₂ apart 2.4–2.5 times better than plant Rubisco. In 2001 Whitney and colleagues put red-algal Rubisco genes into tobacco chloroplasts: the subunits were made, but never assembled into a working enzyme.",
+      "steps": [
+        "Rubiscos differ: CO₂/O₂ specificity from 7–15 (bacteria) to 238 (Galdieria partita); crops ≈ 82–100.",
+        "The most specific Rubiscos are slow: Galdieria partita 1.6 s⁻¹ per site, tobacco 3.1.",
+        "Plant Rubisco has 16 chains and needs 5 chaperone systems to assemble; red-algal Rubisco does not assemble in plants.",
+        "Faster cyanobacterial Rubisco works in tobacco, but only at ≥ 0.9 % CO₂.",
+        "Gains so far are small: plant Rubisco improved in E. coli (+29 % carboxylation rate, 2026; ancestral Rubisco 4.4 vs 3.5 s⁻¹, 2022)."
+      ],
+      "concepts": [
+        "Red-algal Rubisco",
+        "Rubisco assembly",
+        "Engineering Rubisco"
+      ],
+      "see": "Goodsell’s spinach and bacterial Rubiscos (lead page c); the specificity bars and the 2001–2026 timeline (C5c).",
+      "status": "Whitney 2001, Aigner 2017, Zhou 2023 abstracts; Occhialini 2016, Lin 2022, McDonald 2026 full text (rb report)."
+    },
+    {
+      "id": "c",
+      "question": "In a warmer world with more CO₂, will Rubisco work better or worse?",
+      "story": "Jordan and Ogren (1984) measured spinach Rubisco from 5 to 40 °C: its CO₂/O₂ specificity fell from ≈ 160 to ≈ 50. Two thirds of the rise of photorespiration with temperature come from Rubisco itself, one third from CO₂ dissolving less well than O₂ in warm water.",
+      "steps": [
+        "Both gases dissolve less in warm water; CO₂ loses more (CO₂ : O₂ solubility ratio 29 at 15 °C, 24 at 35 °C).",
+        "Rubisco’s own specificity falls with temperature (≈ 160 at 5 °C, 82 at 25 °C, ≈ 50 at 40 °C).",
+        "At 200 ppm in the chloroplast: 25 oxygenations per 100 carboxylations at 15 °C, 43 at 25 °C, 70 at 35 °C.",
+        "More CO₂ pushes back: at 35 °C, 328 ppm in the chloroplast restores 43."
+      ],
+      "concepts": [
+        "Temperature and photorespiration",
+        "Gas solubility",
+        "CO₂/O₂ specificity"
+      ],
+      "see": "Rubisco between a thermometer and a CO₂ molecule (lead page d); the two flasks and the oxygenation curve (C5b).",
+      "status": "Jordan & Ogren 1984 abstract; Sander 2023 solubility fits; Bernacchi 2001 Γ* via open citing papers (rb report)."
+    },
+    {
+      "id": "d",
+      "question": "Why do plants make so much Rubisco?",
+      "story": "Rubisco is ≈ 20 % of the nitrogen of a C₃ leaf, the most abundant protein on Earth. One active site fixes only ≈ 3 CO₂ per second, and in today’s air it also reacts with O₂.",
+      "steps": [
+        "Each site is slow (≈ 3 s⁻¹) and also wastes part of its turns on O₂.",
+        "A faster Rubisco would be less specific: the trade-off.",
+        "So plants make it in bulk; its evolution, temperature and engineering explain why it is still this way."
+      ],
+      "concepts": [
+        "Rubisco abundance",
+        "Specificity–speed trade-off"
+      ],
+      "see": "Slide C2’s numbers, then C5a–C5c.",
+      "status": "Overlaps slide C2 (already taught): use only if C2 comes after the story."
+    }
+  ]
+}

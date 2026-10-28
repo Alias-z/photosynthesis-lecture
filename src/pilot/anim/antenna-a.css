@@ -1,0 +1,3 @@
+/* To the reaction centre, staging A "One continuous zoom": the bench's strokes keep their weight while the camera
+   zooms. Shared parts: antenna-common.css. */
+.ani-antenna-a .ana-scene *{vector-effect:non-scaling-stroke}

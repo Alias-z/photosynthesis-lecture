@@ -1,6 +1,6 @@
 // Slide C02 · Carbon enters the Calvin–Benson–Bassham cycle. Draft context; see research/figure-briefs/LECTURE_OVERVIEW.md.
 // Checked facts only (research/review-2026-10-23-claude/D_C01-C06.md, claims 10–21, 50; E claim 4; REVIEW_SUMMARY.md):
-// Rubisco adds CO₂ (1 C) to RuBP (5 C); the six-carbon species is an enzyme-bound intermediate, never released, and
+// RuBisCO adds CO₂ (1 C) to RuBP (5 C); the six-carbon species is an enzyme-bound intermediate, never released, and
 // splits into 2 × 3-PGA (3 C). "C₃" names this first stable product, not the exported three-carbon sugar.
 // Calvin, Benson, Bassham and co-workers fed ¹⁴CO₂ to unicellular algae, killed them in hot alcohol after short
 // intervals and separated labelled compounds by 2-D paper chromatography and autoradiography: a short pulse labels
@@ -8,28 +8,32 @@
 // ATP or NADPH. Lowering CO₂ makes RuBP rise and PGA fall (Bassham 2003 retrospective; no lollipop apparatus).
 // C₄ contrast: a short pulse labels four-carbon acids first (Hatch & Slack 1966). The light-off transient is drawn in C03.
 // Vocabulary: carbon = dark bead, carbon arriving as CO₂ = hollow bead (as in C03), phosphate = orange ball,
-// RuBP = pentagon (thesis symbol), 3-PGA = triangle, Rubisco = warm grey block, CO₂ = atom balls.
+// RuBP = pentagon (thesis symbol), 3-PGA = triangle, RuBisCO = warm grey block, CO₂ = atom balls.
 // The draft title "Following carbon into the Calvin–Benson–Bassham cycle" does not fit on one line at the page's title size.
 import type { PlateText, Variant } from '../types';
 import './c02.css';
 import { illusHeads, molecule, tag } from '../illus';
 import { arrow } from '../mechanisms';
+import { gasAr, iso14 } from './l2-glyphs';
 
 export const PLATE: PlateText = {
   n: 'C2',
   title: 'Carbon enters the Calvin–Benson–Bassham cycle',
   status: 'draft',
-  lead: 'Rubisco adds CO₂ to the five-carbon sugar ribulose-1,5-bisphosphate (RuBP), giving two molecules of three-carbon 3-phosphoglycerate (3-PGA).',
+  lead: 'RuBisCO adds CO₂ to the five-carbon sugar ribulose-1,5-bisphosphate (RuBP), giving two molecules of three-carbon 3-phosphoglycerate (3-PGA).',
   points: [
-    { claim: 'A short-lived six-carbon step.', text: 'CO₂ and RuBP form an enzyme-bound intermediate that splits in two.' },
+    { claim: 'RuBisCO must be switched on.', text: 'A CO₂ and Mg²⁺ bind its active site first; activase uses ATP to clear blocked sites. In heat, RuBisCO deactivates.' },
     { claim: 'The label appears first in 3-PGA.', text: 'In algae fed ¹⁴CO₂ for seconds, the first labelled product was 3-PGA.' },
-    { claim: 'C₃ is named after 3-PGA.', text: 'Fixing CO₂ costs no ATP or NADPH; they are spent next, to reduce 3-PGA.' },
+    { claim: 'C₃ is named after 3-PGA.', text: 'Fixing CO₂ costs no ATP or NADPH; they are spent later, to reduce 3-PGA and to rebuild RuBP.' },
   ],
   refs: [
     { label: 'Bassham et al. 1954', url: 'https://doi.org/10.1021/ja01636a012' },
     { label: 'Bassham 2003', url: 'https://doi.org/10.1023/A:1024929725022' },
     { label: 'Andersson 2008', url: 'https://doi.org/10.1093/jxb/ern091' },
     { label: 'Sharkey 2024', url: 'https://doi.org/10.1093/plphys/kiad601' },
+    { label: 'Lorimer et al. 1976', url: 'https://doi.org/10.1021/bi00648a012' },
+    { label: 'Yamori 2026', url: 'https://doi.org/10.1111/pce.70617' },
+    { label: 'Scafaro et al. 2023', url: 'https://doi.org/10.1038/s41467-023-38496-4' },
   ],
 };
 
@@ -39,7 +43,7 @@ export const VARIANTS: Variant[] = [
   { id: 'c', name: 'Tracer strip' },
   { id: 'd', name: 'First label' },
   { id: 'e', name: 'Why “C₃”' },
-  { id: 'f', name: 'Zoom to Rubisco' },
+  { id: 'f', name: 'Zoom to RuBisCO' },
   { id: 'g', name: 'CO₂-drop test', anim: true },
   { id: 'h', name: 'Chain analogy' },
   { id: 'i', name: 'You are here' },
@@ -106,13 +110,13 @@ function drawA(): string {
   const p = 'fc02a';
   const bx = 300, bw = 232, cx = bx + bw / 2;
   const x0 = cx - 72; // the six-carbon skeleton: P C1 C2 C3 C4 C5 P, with the new carbon on C2
-  return svg(p, 'RuBP, five carbons with two phosphates, and CO₂, one carbon, meet inside Rubisco. There they form a six-carbon intermediate, with the new carbon on the second carbon, that stays bound to the enzyme. It splits into two 3-PGA of three carbons each; one carries the carbon from CO₂. Each 3-PGA keeps one phosphate. The step uses no ATP or NADPH.', `
+  return svg(p, 'RuBP, five carbons with two phosphates, and CO₂, one carbon, meet inside RuBisCO. There they form a six-carbon intermediate, with the new carbon on the second carbon, that stays bound to the enzyme. It splits into two 3-PGA of three carbons each; one carries the carbon from CO₂. Each 3-PGA keeps one phosphate. The step uses no ATP or NADPH.', `
     ${T(120, 64, 'CO₂', 'lab lab-b')}${molecule(120, 104, 'OCO', 16)}${T(120, 148, '1 C', 'sm')}
     ${pent(120, 282, 46, 'RuBP')}
     ${chainOf(120, 372, 'PCCCCCP')}${T(120, 410, '5 C', 'sm')}${T(120, 436, 'ribulose-1,5-bisphosphate', 'tiny')}
     ${arrow(p, 'ink', `M152,118 L${bx - 6},210`)}${arrow(p, 'ink', `M170,286 L${bx - 6},286`)}
 
-    <rect class="node node-rub" x="${bx}" y="156" width="${bw}" height="252" rx="28"/>${T(cx, 196, 'Rubisco', 'lab lab-b')}
+    <rect class="node node-rub" x="${bx}" y="156" width="${bw}" height="252" rx="28"/>${T(cx, 196, 'RuBisCO', 'lab lab-b')}
     <path class="fc02-bond" d="M${x0 + 48},286 V256"/>
     ${chainOf(cx, 286, 'PCCCCCP')}<circle class="bead bead-co2" cx="${x0 + 48}" cy="250" r="9"/>
     <path class="fc02-cut" d="M${x0 + 60},264 V308"/>
@@ -136,7 +140,7 @@ function drawB(): string {
   const rows = [150, 260, 370];
   return svg(p, 'Counting carbons for three CO₂. Each row is one carboxylation: RuBP with five carbons plus CO₂ with one gives two 3-PGA with three carbons each. Three RuBP bring 15 carbons, three CO₂ bring 3, and six 3-PGA carry 18: 15 + 3 = 18 = 6 × 3.', `
     <g transform="translate(18 0)">
-    ${T(150, 70, '3 RuBP', 'lab lab-b')}${T(330, 70, '3 CO₂', 'lab lab-b')}${T(410, 118, 'Rubisco', 'sm')}${T(610, 70, '6 × 3-PGA', 'lab lab-b')}
+    ${T(150, 70, '3 RuBP', 'lab lab-b')}${T(330, 70, '3 CO₂', 'lab lab-b')}${T(410, 118, 'RuBisCO', 'sm')}${T(610, 70, '6 × 3-PGA', 'lab lab-b')}
     ${rows.map(y => `
       ${pent(70, y, 24)}${chainOf(170, y, 'CCCCC', 20, 8)}
       ${T(250, y + 10, '+', 'pl')}
@@ -162,7 +166,7 @@ function drawC(): string {
     `<rect class="fc02-paper" x="${x}" y="${y}" width="${w}" height="${h}" rx="6"/>` +
     spots.map(([sx, sy, r, o]) => `<ellipse class="fc02-spot" cx="${x + sx}" cy="${y + sy}" rx="${r}" ry="${f(r * 0.8)}" style="opacity:${o}"/>`).join('');
   return svg(p, 'The tracer experiment, schematic. One: ¹⁴CO₂ is fed to algae in the light. Two: after a short pulse the algae are killed in hot alcohol. Three: the extract is separated by two-dimensional paper chromatography and the paper exposed to X-ray film. After a short pulse a single dark spot appears, 3-PGA; after a longer pulse the label has spread to many compounds, including sugar phosphates.', `
-    ${molecule(60, 74, 'OCO', 9)}${arrow(p, 'ink', 'M76,86 L112,104')}
+    ${iso14(molecule(60, 74, 'OCO', 9))}${gasAr(p, 'M76,86 L112,104')}
     <path class="fc02-flask" d="M118,82 V112 A44,44 0 1 0 146,112 V82 Z"/>${algae}
     <path class="bolt" d="M204,56 L196,84 L210,88 L194,120" marker-end="url(#${p}-bolt)"/>
     ${arrow(p, 'ink', 'M196,160 L314,160')}
@@ -223,12 +227,12 @@ function drawD(): string {
 
 function drawE(): string {
   const p = 'fc02e';
-  return svg(p, 'Why C₃. In C₃ plants such as wheat and rice, Rubisco joins CO₂ to RuBP and the first stable product, 3-PGA, has three carbons: that is the name. In C₄ plants such as maize and sugarcane, a short ¹⁴CO₂ pulse labels four-carbon acids first (Hatch and Slack 1966). The name does not refer to the three-carbon sugar the cycle exports.', `
+  return svg(p, 'Why C₃. In C₃ plants such as wheat and rice, RuBisCO joins CO₂ to RuBP and the first stable product, 3-PGA, has three carbons: that is the name. In C₄ plants such as maize and sugarcane, a short ¹⁴CO₂ pulse labels four-carbon acids first (Hatch and Slack 1966). The name does not refer to the three-carbon sugar the cycle exports.', `
     <g transform="translate(0 12)">
     <rect class="fc02-card" x="16" y="24" width="768" height="246" rx="18"/>
     ${T(40, 68, 'C₃ plants', 'lab lab-b', 'start')}${T(178, 68, 'e.g. wheat, rice', 'sm fc02-mute', 'start')}
     ${molecule(80, 160, 'OCO', 12)}${T(130, 170, '+', 'pl')}${pent(196, 160, 38, 'RuBP')}
-    ${arrow(p, 'ink', 'M250,160 L350,160')}${T(300, 144, 'Rubisco', 'sm')}
+    ${arrow(p, 'ink', 'M250,160 L350,160')}${T(300, 144, 'RuBisCO', 'sm')}
     ${tri(410, 156, 44)}
     ${chainOf(526, 160, 'CCC', 26, 10)}
     <circle class="fc02-badge" cx="696" cy="130" r="48"/>${T(696, 144, 'C₃', 'fc02-badge-t')}
@@ -236,7 +240,7 @@ function drawE(): string {
 
     <rect class="fc02-card" x="16" y="290" width="768" height="206" rx="18"/>
     ${T(40, 334, 'C₄ plants', 'lab lab-b', 'start')}${T(178, 334, 'e.g. maize, sugarcane', 'sm fc02-mute', 'start')}
-    ${molecule(80, 410, 'OCO', 12)}${arrow(p, 'ink', 'M118,410 L350,410')}${T(234, 394, 'short ¹⁴CO₂ pulse', 'sm')}
+    ${iso14(molecule(80, 410, 'OCO', 12))}${gasAr(p, 'M118,410 L350,410')}${T(234, 394, 'short ¹⁴CO₂ pulse', 'sm')}
     ${chainOf(456, 410, 'CCCC', 26, 10)}
     <circle class="fc02-badge fc02-badge-4" cx="696" cy="404" r="46"/>${T(696, 418, 'C₄', 'fc02-badge-t')}
     ${T(456, 466, 'four-carbon acids', 'sm')}${T(696, 480, 'Hatch & Slack 1966', 'tiny')}
@@ -247,7 +251,7 @@ function drawE(): string {
   `);
 }
 
-/* ---------- f · Zoom to Rubisco: leaf → cell → chloroplast → active site ---------- */
+/* ---------- f · Zoom to RuBisCO: leaf → cell → chloroplast → active site ---------- */
 
 function drawF(): string {
   const p = 'fc02f';
@@ -266,7 +270,7 @@ function drawF(): string {
     [0, 1, 2, 3].map(k => `<rect class="fc02-disc" x="${x - 14}" y="${y - 14 + k * 7}" width="28" height="6" rx="3"/>`).join('');
   const dots = [[452, 200], [478, 170], [512, 218], [534, 182], [470, 232], [550, 214], [500, 156], [440, 172]]
     .map(([x, y]) => `<circle class="fc02-rub-dot" cx="${x}" cy="${y}" r="5"/>`).join('');
-  return svg(p, 'Zooming in four steps. A leaf: CO₂ enters through stomata. A leaf cell full of chloroplasts. A chloroplast: Rubisco molecules sit in the stroma between the thylakoid stacks. Rubisco itself: CO₂ joins RuBP in the active site, where the six-carbon intermediate is held until it splits into two 3-PGA.', `
+  return svg(p, 'Zooming in four steps. A leaf: CO₂ enters through stomata. A leaf cell full of chloroplasts. A chloroplast: RuBisCO molecules sit in the stroma between the thylakoid stacks. RuBisCO itself: CO₂ joins RuBP in the active site, where the six-carbon intermediate is held until it splits into two 3-PGA.', `
     <defs>${clip}</defs>
     <g transform="translate(0 -26)">
     ${frame(0, `<rect class="fc02-leafbg" x="10" y="100" width="190" height="200"/>${stoma(80, 214)}${stoma(126, 172)}${stoma(70, 150)}${stoma(140, 244)}
@@ -279,7 +283,7 @@ function drawF(): string {
     ${cone(0, 126, 172, 16)}${cone(1, 300, 140, 20)}${cone(2, 534, 182, 12)}
     ${T(100, 318, 'leaf', 'sm lab-b')}${T(100, 344, 'CO₂ via stomata', 'sm')}
     ${T(300, 318, 'cell', 'sm lab-b')}${T(300, 344, 'chloroplasts', 'sm')}
-    ${T(500, 318, 'chloroplast', 'sm lab-b')}${T(500, 344, 'Rubisco in stroma', 'sm')}
+    ${T(500, 318, 'chloroplast', 'sm lab-b')}${T(500, 344, 'RuBisCO in stroma', 'sm')}
     ${T(700, 318, 'active site', 'sm lab-b')}${T(700, 344, 'CO₂ meets RuBP', 'sm')}
 
     <path class="rule" d="M30,384 H770"/>
@@ -287,7 +291,7 @@ function drawF(): string {
     ${arrow(p, 'ink', 'M252,494 L300,494')}
     <rect class="node node-rub" x="306" y="436" width="214" height="116" rx="24"/>
     <path class="fc02-bond" d="M362,494 V476"/>${chainOf(410, 494, 'PCCCCCP', 20, 7)}<circle class="bead bead-co2" cx="362" cy="470" r="7"/>
-    ${T(413, 536, 'bound to Rubisco', 'sm')}
+    ${T(413, 536, 'bound to RuBisCO', 'sm')}
     ${arrow(p, 'ink', 'M526,470 L590,446')}${arrow(p, 'ink', 'M526,518 L590,542')}
     ${tri(624, 440, 26)}${tri(624, 548, 26)}${T(664, 450, '3-PGA', 'sm lab-b', 'start')}${T(664, 558, '3-PGA', 'sm lab-b', 'start')}
     ${T(413, 426, 'six-carbon intermediate', 'sm lab-b')}
@@ -342,7 +346,7 @@ function drawH(): string {
   };
   const row = (y: number, a: string, b: string): string =>
     T(40, y, a, 'sm lab-b', 'start') + T(408, y, '=', 'sm fc02-mute') + T(436, y, b, 'sm', 'start');
-  return svg(p, 'Analogy. A five-link chain with a tag at each end (RuBP: five carbons, two phosphates) and a loose link (CO₂) go into a clamp (Rubisco). The clamp holds them as one six-link chain (the enzyme-bound six-carbon intermediate) and never lets it go whole; it snaps it into two three-link pieces, each with one tag (two 3-PGA, one phosphate each). The new link ends up in one piece.', `
+  return svg(p, 'Analogy. A five-link chain with a tag at each end (RuBP: five carbons, two phosphates) and a loose link (CO₂) go into a clamp (RuBisCO). The clamp holds them as one six-link chain (the enzyme-bound six-carbon intermediate) and never lets it go whole; it snaps it into two three-link pieces, each with one tag (two 3-PGA, one phosphate each). The new link ends up in one piece.', `
     <g transform="translate(0 16)">
     ${links(130, 94, 'N')}${T(130, 64, 'loose link', 'sm')}
     ${links(130, 180, 'PLLLLLP')}${T(130, 240, '5-link chain', 'sm')}
@@ -358,7 +362,7 @@ function drawH(): string {
     <path class="rule" d="M30,288 H770"/>
     ${row(342, '5 links, 2 end tags', 'RuBP (5 C, 2 phosphates)')}
     ${row(390, 'loose link', 'CO₂ (1 C)')}
-    ${row(438, 'clamp', 'Rubisco')}
+    ${row(438, 'clamp', 'RuBisCO')}
     ${row(486, '6 links, clamped', 'enzyme-bound 6-C intermediate')}
     ${row(534, 'two pieces, 1 tag each', '2 × 3-PGA, 1 phosphate each')}
     </g>
@@ -371,7 +375,7 @@ function drawI(): string {
   const p = 'fc02i';
   const pill = (x: number, y: number, w: number, s: string, cls = 'node'): string =>
     `<rect class="${cls}" x="${x - w / 2}" y="${y - 22}" width="${w}" height="44" rx="22"/>${T(x, y + 8, s, 'sm lab-b')}`;
-  return svg(p, 'The Calvin–Benson–Bassham cycle after the MSc thesis scheme. Lit: carboxylation, where Rubisco joins CO₂ to RuBP, giving 2 PGA; this slide. Faded: reduction of PGA to triose phosphate with ATP and NADPH, regeneration of RuBP from five of six triose phosphates with ATP, and export of one in six as sugar, which the next slides cover.', `
+  return svg(p, 'The Calvin–Benson–Bassham cycle after the MSc thesis scheme. Lit: carboxylation, where RuBisCO joins CO₂ to RuBP, giving 2 PGA; this slide. Faded: reduction of PGA to triose phosphate with ATP and NADPH, regeneration of RuBP from five of six triose phosphates with ATP, and export of one in six as sugar, which the next slides cover.', `
     <rect class="fc02-halo" x="236" y="300" width="330" height="290" rx="26"/>
     ${T(636, 460, 'this slide', 'lab lab-b fc02-clay', 'start')}
     <g class="fc02-faded">
@@ -383,12 +387,10 @@ function drawI(): string {
       ${arrow(p, 'ink', 'M446,138 L500,98')}${T(514, 132, '1 of 6', 'sm lab-b', 'start')}
       ${pill(560, 74, 116, 'sugar')}${tag(456, 50, '', 'pi')}${arrow(p, 'ink', 'M450,68 L424,134', 'dashed')}
     </g>
-    ${T(636, 260, 'next slide', 'sm lab-b', 'start')}
-    ${T(636, 82, 'after that', 'sm lab-b', 'start')}
-
-    <rect class="node node-rub" x="336" y="494" width="128" height="44" rx="14"/>${T(400, 523, 'Rubisco', 'sm lab-b')}
+        
+    <rect class="node node-rub" x="336" y="494" width="128" height="44" rx="14"/>${T(400, 523, 'RuBisCO', 'sm lab-b')}
     ${pent(400, 452, 42, 'RuBP')}
-    ${molecule(290, 572, 'OCO', 12)}${arrow(p, 'ink', 'M318,560 L344,542')}${T(258, 548, 'CO₂', 'sm lab-b', 'end')}
+    ${molecule(290, 572, 'OCO', 12)}${gasAr(p, 'M318,560 L344,542')}${T(258, 548, 'CO₂', 'sm lab-b', 'end')}
     ${arrow(p, 'ink', 'M400,414 L400,364')}${T(388, 396, 'carboxylation', 'sm lab-b', 'end')}
     ${pill(400, 340, 120, '2 PGA')}
   `);
@@ -398,11 +400,11 @@ function drawI(): string {
 
 function drawJ(): string {
   const p = 'fc02j';
-  return svg(p, 'Minimal summary: a five-carbon RuBP plus one-carbon CO₂ gives, through Rubisco, two three-carbon 3-PGA. 5 C + 1 C → 2 × 3 C.', `
+  return svg(p, 'Minimal summary: a five-carbon RuBP plus one-carbon CO₂ gives, through RuBisCO, two three-carbon 3-PGA. 5 C + 1 C → 2 × 3 C.', `
     ${pent(150, 252, 74, '5 C', 'node node-rubp', 'fc02-big')}${T(150, 372, 'RuBP', 'sm lab-b')}
     ${T(268, 268, '+', 'fc02-big')}
     ${molecule(336, 252, 'OCO', 16)}${T(336, 372, 'CO₂', 'sm lab-b')}${T(336, 306, '1 C', 'fc02-big')}
-    ${arrow(p, 'ink', 'M396,252 L496,252', 'boost')}${T(446, 230, 'Rubisco', 'sm')}
+    ${arrow(p, 'ink', 'M396,252 L496,252', 'boost')}${T(446, 230, 'RuBisCO', 'sm')}
     ${tri(600, 168, 66, '3 C', 'fc02-tri', 'fc02-big')}${tri(600, 356, 66, '3 C', 'fc02-tri', 'fc02-big')}
     ${T(690, 182, '3-PGA', 'sm lab-b', 'start')}${T(690, 370, '3-PGA', 'sm lab-b', 'start')}
     ${T(400, 520, '5 C + 1 C → 2 × 3 C', 'fc02-huge')}

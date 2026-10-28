@@ -1,0 +1,13 @@
+/* Slide C2 lead page (Rubisco chunk), scoped under .theme-editorial and prefixed .flc2- */
+.theme-editorial .lead-fig text.flc2-credit{font-size:16px;fill:#8a877d}
+.theme-editorial .lead-fig text.flc2-nt{font-size:22px;font-weight:700;fill:#1f3550}
+.theme-editorial .flc2-mat{fill:#fffdf8}
+.theme-editorial .flc2-edge{fill:none;stroke:rgba(120,100,60,.16);stroke-width:1}
+.theme-editorial .flc2-n{fill:#9dbbdb;stroke:#3f6f99;stroke-width:2}
+.theme-editorial .flc2-trail{fill:none;stroke:#b3b0a6;stroke-width:2;stroke-linecap:round}
+.theme-editorial .flc2-pellet{fill:#fbfaf6;stroke:#9b988e;stroke-width:1.6}
+.theme-editorial .flc2-soil{fill:#d9cdb4}
+.theme-editorial .flc2-stem{fill:none;stroke:#7a9a3c;stroke-width:4;stroke-linecap:round}
+.theme-editorial .flc2-leaf{fill:#8fb34e;stroke:#6d8f33;stroke-width:1.2}
+.theme-editorial .flc2-grain{fill:#a9c25e;stroke:#7a9a3c;stroke-width:1.2}
+.theme-editorial .flc2-back{opacity:.6}

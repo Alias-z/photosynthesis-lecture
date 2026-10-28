@@ -67,7 +67,7 @@ const NORM = Object.fromEntries((Object.keys(BANDS) as Pig[]).map(k => [k, Math.
 /** Relative absorption of a pigment (peak = 1). */
 export const absorb = (k: Pig, nm: number): number => raw(k, nm) / NORM[k];
 export const INK: Record<Pig, string> = { a: 'chla', b: 'chlb', car: 'car', pe: 'f5-pe' };
-export const NAME: Record<Pig, string> = { a: 'Chl a', b: 'Chl b', car: 'β-carotene', pe: 'phycoerythrin' };
+export const NAME: Record<Pig, string> = { a: 'Chl <tspan font-style="italic">a</tspan>', b: 'Chl <tspan font-style="italic">b</tspan>', car: 'β-carotene', pe: 'phycoerythrin' };
 
 /** Schematic leaf absorptance: about 0.9 in blue and red, about 0.7 in green (inside the stated 80–95 % and 50–90 %). */
 export const leafAbs = (nm: number): number => 0.92 - 0.24 * gauss(nm, 550, 33);

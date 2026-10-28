@@ -1,0 +1,23 @@
+/* Photosystem I on the slide 9 schema (psi9-common.ts), stagings A and B. The schema keeps chain.css's look; these are
+   the slide's figure card, the story's glyphs (electrons dark, H⁺ red as chain.css), the two photons of beat 4
+   (650 nm orange-red, far-red deep red) and the Emerson card. */
+:is(.ani-psi-a,.ani-psi-b) .p9-slidecard{fill:rgba(255,254,250,.58);stroke:rgba(120,100,60,.10);stroke-width:1}
+
+/* glyphs (drawn at the slide's size, counter-scaled with the camera) */
+:is(.ani-psi-a,.ani-psi-b) .p9-e{fill:#2b2a27;stroke:#fbfaf6;stroke-width:1.6}
+:is(.ani-psi-a,.ani-psi-b) .p9-ring{fill:#fbfaf6;fill-opacity:.9;stroke:#2b2a27;stroke-width:1.8;stroke-dasharray:2.6 2.4}
+:is(.ani-psi-a,.ani-psi-b) .fig text.p9-elab{font-size:20px;font-weight:700;fill:#2b2a27}
+
+/* the photons: waves as chain.css's light, in the colour of their wavelength */
+:is(.ani-psi-a,.ani-psi-b) .p9-w650{fill:none;stroke:#e2581d;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+:is(.ani-psi-a,.ani-psi-b) .p9-w650h{fill:#e2581d}
+:is(.ani-psi-a,.ani-psi-b) .p9-wfr{fill:none;stroke:#8e1d1d;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+:is(.ani-psi-a,.ani-psi-b) .p9-wfrh{fill:#8e1d1d}
+:is(.ani-psi-a,.ani-psi-b) .fig text.chn-light.p9-l650{fill:#cc4c14}
+:is(.ani-psi-a,.ani-psi-b) .fig text.chn-light.p9-lfr{fill:#8e1d1d}
+
+/* the card: Emerson, 1957, and his graph printed on newsprint */
+:is(.ani-psi-a,.ani-psi-b) .p9-paper{fill:#f6f1e5;stroke:#d3cdbd;stroke-width:1}
+:is(.ani-psi-a,.ani-psi-b) text.p9-cname{font-size:30px}
+:is(.ani-psi-a,.ani-psi-b) text.p9-year{font-size:32px}
+:is(.ani-psi-a,.ani-psi-b) .p9-mult{mix-blend-mode:multiply}

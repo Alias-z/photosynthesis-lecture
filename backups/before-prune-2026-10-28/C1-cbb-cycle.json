@@ -1,0 +1,91 @@
+{
+  "title": "The Calvin–Benson–Bassham cycle, with sucrose and starch",
+  "chunk": "Lecture 2 · chunk 1",
+  "slides": ["C1", "C2", "C3", "C4"],
+  "questions": [
+    {
+      "id": "a",
+      "question": "A tree weighs tonnes. Where does all that wood come from?",
+      "story": "In his book of 1648, Jan Baptist van Helmont described planting a 5 lb willow in 200 lb of dried soil and giving it only water for five years. The willow then weighed 169 lb; the soil had lost about 2 oz. He concluded that the wood was made of water. He was half right: the hydrogen comes from water, but the carbon of the wood came out of the air, as CO₂.",
+      "steps": [
+        "Wood, leaves and grain are built mostly from sugars (cellulose, starch, sucrose). Their carbon comes from CO₂ in the air, not from the soil.",
+        "In the stroma of the chloroplast, Rubisco adds CO₂ to the five-carbon sugar RuBP: carboxylation.",
+        "ATP and NADPH from the light reactions reduce the product to triose phosphate; five of every six triose phosphates rebuild RuBP, so the cycle keeps turning.",
+        "The sixth is the gain. It becomes sucrose, which the plant sends to its growing parts, where it is built into new cells and wood, or starch for the night."
+      ],
+      "concepts": ["Carbon fixation from CO₂", "Calvin–Benson–Bassham cycle", "Triose phosphate → sucrose"],
+      "see": "Van Helmont's 1648 page as a clipping (board C1, image a); then the drawn wheel of the cycle (C1 v1) with one triose phosphate leaving.",
+      "status": "Van Helmont 1648, Ortus medicinae p. 109 (board image a); numbers from the board caption and Hershey 2003 (read by review A, 27 Oct). Wood as cellulose made from sucrose is textbook."
+    },
+    {
+      "id": "b",
+      "question": "What does a plant live on at night?",
+      "story": "Leaves make sugar only in light, yet plants keep growing in the dark. In Arabidopsis, part of the day's carbon is stored as starch inside the chloroplasts and broken down at night at an almost constant rate, so that about 95 % is used by dawn. In 2010 Alexander Graf, Alison Smith and colleagues gave plants used to 12-hour days an unexpected night after only 8 hours. The plants slowed their starch breakdown at once, and the smaller store still lasted until the usual dawn. Mutants that cannot make leaf starch stop growing before the end of every night.",
+      "steps": [
+        "By day, the cycle makes triose phosphate faster than the plant can use it.",
+        "Part leaves the chloroplast and becomes sucrose, for growth now; part stays in the chloroplast and becomes starch.",
+        "At night, the starch is broken down to sugars, which leave the chloroplast and become sucrose.",
+        "The breakdown rate is set so that the store lasts until dawn, even when night comes early."
+      ],
+      "concepts": ["Sucrose and starch", "Starch degradation at night", "Carbon supply through day and night"],
+      "see": "Electron micrographs of Arabidopsis chloroplasts at the end of the day and of the night (Streb & Zeeman 2012, board image q); Graf's early-night starch curve (board image s).",
+      "status": "Graf et al. 2010, PNAS 107:9458 (full text read); Smith & Stitt 2007, Plant Cell Environ 30:1126 (full text read; pgm mutants stop growing before the end of the night); Streb & Zeeman 2012 (figure captions read)."
+    },
+    {
+      "id": "c",
+      "question": "The “dark reactions” of photosynthesis: can a leaf really make sugar in the dark?",
+      "story": "Textbooks long called the Calvin–Benson–Bassham cycle the “dark reactions”. In Melvin Calvin's laboratory in Berkeley, James Bassham followed carbon-14 in the alga Chlorella in steady light, then switched the lamp off. Within a minute, the label in 3-PGA jumped to more than twice its level, and RuBP fell to near zero.",
+      "steps": [
+        "Rubisco itself needs no light: for a short while it keeps turning RuBP and CO₂ into 3-PGA in the dark.",
+        "Reducing 3-PGA needs ATP and NADPH, and rebuilding RuBP needs ATP; in the dark the light reactions stop making them.",
+        "So 3-PGA piles up and RuBP is used up; without RuBP, Rubisco stops fixing CO₂.",
+        "Per CO₂ fixed, the cycle uses 3 ATP and 2 NADPH from the light reactions."
+      ],
+      "concepts": ["Reduction", "Regeneration", "3 ATP + 2 NADPH per CO₂"],
+      "see": "Bassham's light-off curves as printed in Calvin's Nobel lecture (board image m), and redrawn; the wheel with reduction and regeneration lit.",
+      "status": "Calvin 1961, Nobel lecture, Fig. 15 and its text (full text read in the OSTI report UCRL-9966)."
+    },
+    {
+      "id": "d",
+      "question": "Why do farmers spread so much nitrogen fertiliser on a wheat field?",
+      "story": "Nitrogen is built into proteins, and one leaf protein dominates: Rubisco, the enzyme that fixes CO₂, holds about a fifth of all the nitrogen in a C₃ leaf and about 40 % of its soluble protein. The reason is speed. Each active site of Rubisco fixes only about three CO₂ per second, so a leaf needs a great deal of the enzyme to fix CO₂ as fast as light allows.",
+      "steps": [
+        "Rubisco carries out the first step of the cycle: it adds CO₂ to RuBP.",
+        "Its turnover number is low: about 3 CO₂ per second per active site.",
+        "To fix enough CO₂, leaves hold large amounts of Rubisco: about 20 % of leaf nitrogen.",
+        "Nitrogen is the raw material of this enzyme; it also goes into chlorophyll, other proteins and DNA."
+      ],
+      "concepts": ["Rubisco", "Carboxylation", "Turnover number and abundance"],
+      "see": "Goodsell's picture of spinach Rubisco (board image n) beside a bar of a leaf's nitrogen with the Rubisco share coloured.",
+      "status": "Evans & Clarke 2019, J Exp Bot 70:7 (full text read: ≈ 20 % of leaf N, ≈ 40 % of soluble protein); Bar-On & Milo 2019, PNAS 116:4738 (full text read: k_cat ≈ 3 s⁻¹ at 25 °C). Fertiliser feeds much more than Rubisco: the question is a door, not a claim."
+    },
+    {
+      "id": "e",
+      "question": "Why is the sugar in our kitchen sucrose, from sugar beet and sugar cane?",
+      "story": "Sucrose is the sugar a leaf sends to the rest of the plant. Sugar beet stores it in its root and sugar cane in its stem: both hold the sucrose that their leaves exported.",
+      "steps": [
+        "In the chloroplast, the cycle makes triose phosphate.",
+        "Triose phosphate leaves the chloroplast through the envelope, in exchange for phosphate.",
+        "In the cytosol, it is built into sucrose, which the leaf exports to growing and storing organs.",
+        "Starch is the other product: it stays inside the chloroplast as the leaf's store for the night."
+      ],
+      "concepts": ["Triose phosphate export", "Sucrose", "Starch"],
+      "see": "A drawn mesophyll cell with the two routes (C4 v5), then a photo of a sugar beet field or a cane stem (not yet collected).",
+      "status": "Smith & Stitt 2007 (full text read: day carbon partitioned between sucrose for growth and starch); Sharkey 2024, Plant Physiol 195:67 (triose phosphate/phosphate exchange; full text read by review A). Beet and cane storage are textbook. A beet or cane photo would still have to be found."
+    },
+    {
+      "id": "f",
+      "question": "How can anyone see what a leaf makes in its first second of photosynthesis?",
+      "story": "From 1945, carbon-14 became cheap, made in the new nuclear reactors. Melvin Calvin, Andrew Benson and James Bassham fed it as CO₂ to green algae in a flat glass flask, the “lollipop”, and after a set time dropped them into alcohol. Paper chromatography and X-ray film then showed which compounds carried the label. After 30 seconds, dozens of spots; after 5 seconds, mainly sugar phosphates; after fractions of a second, over 80 % of the label was in one compound, 3-PGA. Calvin recalled that it took ten years “to properly label those blackened areas”.",
+      "steps": [
+        "Carbon-14 marks where the carbon from CO₂ goes.",
+        "The shortest pulses show the first stable product: 3-PGA, with three carbons, hence “C₃ photosynthesis”.",
+        "Longer pulses show the path onward: sugar phosphates, then sucrose and amino acids.",
+        "The order of the spots revealed the cycle, and its first enzyme, Rubisco."
+      ],
+      "concepts": ["¹⁴C tracer", "3-PGA, the first product", "Calvin–Benson–Bassham cycle"],
+      "see": "The lollipop apparatus (board image i); the 5 s and 30 s chromatograms (board images j and k); portraits of Calvin, Benson and Bassham (board images e, f, h).",
+      "status": "Calvin 1961, Nobel lecture (full text read via OSTI: carbon-14 cheap from 1945; four volumes of alcohol; over 80–90 % in PGA at fractions of a second; ten years to name the spots). Sharkey 2019 notes that the lollipop is a textbook simplification for the shortest pulses (abstract only; full text not reachable)."
+    }
+  ]
+}

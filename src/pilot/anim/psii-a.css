@@ -1,0 +1,7 @@
+/* Photosystem II, staging A "One continuous zoom": the alga between the flask and the membrane. Shared parts:
+   psii-common.css. Strokes keep their weight at every camera scale. */
+.ani-psii-a [data-k="w-alga"] *,.ani-psii-a [data-k="w-flask"] *{vector-effect:non-scaling-stroke}
+.ani-psii-a .psa-wall{fill:#f1f6e8;stroke:#6f9a5a;stroke-width:3}
+.ani-psii-a .psa-cup{fill:#cfe3b4;stroke:#6f9a5a;stroke-width:2.4}
+.ani-psii-a .psa-thy{fill:none;stroke:#3f7a33;stroke-width:2.6;stroke-linecap:round}
+.ani-psii-a .psa-nuc{fill:#efe9dd;stroke:#b9b4a6;stroke-width:2}

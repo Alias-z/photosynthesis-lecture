@@ -1,0 +1,189 @@
+{
+ "title": "Electron transport routes and ATP synthesis",
+ "slides": [
+  "8",
+  "9",
+  "10"
+ ],
+ "images": [
+  {
+   "id": "a",
+   "file": "nelson2004-membrane-overview.png",
+   "kind": "schematic",
+   "caption": "The four thylakoid complexes: grana vs stroma lamellae (a); chain from water to NADPH and ATP on real structures (b)",
+   "credit": "Nelson & Ben-Shem 2004, Nat Rev Mol Cell Biol 5:971, Fig. 1",
+   "url": "https://doi.org/10.1038/nrm1525",
+   "note": "The field's standard one-picture overview of the whole chain, including the cyclic loop and plastocyanin"
+  },
+  {
+   "id": "b",
+   "file": "govindjee2017-zscheme.png",
+   "kind": "schematic",
+   "caption": "Z-scheme on a midpoint-potential axis: every carrier from water to NADP+, with transfer times",
+   "credit": "Govindjee, Shevela & Björn 2017, Photosynth Res 133:5, Fig. 6 (modified from Demeter & Govindjee 1989)",
+   "url": "https://doi.org/10.1007/s11120-016-0333-z",
+   "note": "Govindjee's canonical Z in its peer-reviewed form; image only 387 × 717 px"
+  },
+  {
+   "id": "c",
+   "file": "govindjee2017-hill-bendall-1960.png",
+   "kind": "history",
+   "caption": "Hill & Bendall's 1960 scheme, redrawn: two light reactions in series, linked by cytochromes b6 and f",
+   "credit": "Govindjee, Shevela & Björn 2017, Photosynth Res 133:5, Fig. 2 (after Hill & Bendall 1960, Nature 186:136)",
+   "url": "https://doi.org/10.1007/s11120-016-0333-z",
+   "note": "The first Z-scheme; a modern redraw, as the 1960 original is only in the Nature PDF (see wanted list)"
+  },
+  {
+   "id": "d",
+   "file": "emerson1957-enhancement.png",
+   "kind": "history",
+   "caption": "Chlorella quantum yield drops beyond 680 nm (red drop) but stays high when shorter-wave light is added",
+   "credit": "Emerson, Chalmers & Cederstrand 1957, PNAS 43:133, Fig. 3 (PMC page scan)",
+   "url": "https://doi.org/10.1073/pnas.43.1.133",
+   "note": "Solid: 20 °C; dashed: 5 °C; dotted: 20 °C with supplementary light. The evidence for two photosystems"
+  },
+  {
+   "id": "e",
+   "file": "wietrzynski2020-grana-vs-stroma-lamellae.jpg",
+   "kind": "micrograph",
+   "caption": "In situ cryo-ET membranograms: PSII and b6f in appressed membranes; PSI and ATP synthase in non-appressed ones",
+   "credit": "Wietrzynski et al. 2020, eLife 9:e53740, Fig. 2 · CC BY 4.0",
+   "url": "https://doi.org/10.7554/eLife.53740",
+   "note": "Chlamydomonas; panel D models the real positions. Spinach equivalent: Wietrzynski et al. 2025 eLife Fig. 5 (already in the deck)"
+  },
+  {
+   "id": "f",
+   "file": "malone2019-b6f-cryoem.jpg",
+   "kind": "structure",
+   "caption": "Cryo-EM map and model of the spinach cytochrome b6f dimer, seen in the membrane plane and face-on",
+   "credit": "Malone et al. 2019, Nature 575:535, Fig. 1 (PDB 6RQF)",
+   "url": "https://doi.org/10.1038/s41586-019-1746-6",
+   "note": "Cyt b6 green, cyt f magenta, Rieske ISP yellow, subunit IV cyan"
+  },
+  {
+   "id": "g",
+   "file": "malone2021-q-cycle.jpg",
+   "kind": "schematic",
+   "caption": "The Q cycle on the b6f structure, step by step: 4 H+ to the lumen per 2 e−; carrier potentials",
+   "credit": "Malone et al. 2021, BBA Bioenerg 1862:148380, Fig. 3",
+   "url": "https://doi.org/10.1016/j.bbabio.2021.148380",
+   "note": "Simpler CC BY alternative already in the deck: Johnson 2016 Essays Biochem Fig. 14B"
+  },
+  {
+   "id": "h",
+   "file": "pdb2pcf-plastocyanin-cytf.jpg",
+   "kind": "structure",
+   "caption": "Plastocyanin (green) docked at the haem of cytochrome f (orange): where it takes the electron from b6f",
+   "credit": "RCSB PDB 2PCF, Mol* image; structure Ubbink et al. 1998, Structure 6:323 (NMR)",
+   "url": "https://www.rcsb.org/structure/2PCF",
+   "note": "Pairs with the next image, where plastocyanin delivers to PSI"
+  },
+  {
+   "id": "i",
+   "file": "nelson2004-psi-pc-fd.png",
+   "kind": "structure",
+   "caption": "Plant PSI with plastocyanin docked on the lumen side and ferredoxin on the stroma side; cofactors P700 to FB",
+   "credit": "Nelson & Ben-Shem 2004, Nat Rev Mol Cell Biol 5:971, Fig. 5 (PDB 1QZV, 1AG6, 1A70)",
+   "url": "https://doi.org/10.1038/nrm1525",
+   "note": "Both mobile carriers at PSI in one image"
+  },
+  {
+   "id": "j",
+   "file": "pdb1gaq-ferredoxin-fnr.jpg",
+   "kind": "structure",
+   "caption": "Maize ferredoxin (orange, 2Fe-2S) bound to ferredoxin–NADP+ reductase (green, FAD), the last step to NADPH",
+   "credit": "RCSB PDB 1GAQ, Mol* image; structure Kurisu et al. 2001, Nat Struct Biol 8:117",
+   "url": "https://www.rcsb.org/structure/1GAQ",
+   "note": "The paper's own Fig. 1a is a small stereo pair, so the PDB image is shown instead"
+  },
+  {
+   "id": "k",
+   "file": "mitchell-portrait-1986.jpg",
+   "kind": "history",
+   "caption": "Peter D. Mitchell in 1986; he proposed chemiosmotic coupling in 1961 (Nobel Prize in Chemistry 1978)",
+   "credit": "Photo Willy Pragher 1986, Landesarchiv Baden-Württemberg, Staatsarchiv Freiburg W 134 Nr. 125218c, via Wikimedia Commons · CC BY 3.0 DE",
+   "url": "https://commons.wikimedia.org/wiki/File:36._Tagung_1986_Chemiker;_Pressekonferenz_Peter_D._Mitchell_-_W134Nr.125218c_-_Willy_Pragher_(cropped).jpg"
+  },
+  {
+   "id": "l",
+   "file": "jagendorf1966-acid-bath-table1.png",
+   "kind": "history",
+   "caption": "Chloroplasts make ATP in the dark after an acid-to-base jump: 141 (acid stage pH 3.8) vs 12 (pH 7.0)",
+   "credit": "Jagendorf & Uribe 1966, PNAS 55:170, Table 1 (PMC page scan)",
+   "url": "https://doi.org/10.1073/pnas.55.1.170",
+   "note": "Units: mµmol (nmol) ATP per mg chlorophyll; the paper has no figure of the protocol itself"
+  },
+  {
+   "id": "m",
+   "file": "hahn2018-atp-synthase.jpg",
+   "kind": "structure",
+   "caption": "Cryo-EM map of spinach chloroplast ATP synthase: α3β3 head, γ/ε rotor, c14 ring and subunit a in the membrane",
+   "credit": "Hahn et al. 2018, Science 360:eaat4318, Fig. 1 (PDB 6FKF)",
+   "url": "https://doi.org/10.1126/science.aat4318",
+   "note": "Panel A is the whole enzyme; B shows the γ redox regulatory loop, D subunits a and c"
+  },
+  {
+   "id": "n",
+   "file": "seelert2000-c14-ring-afm.jpg",
+   "kind": "micrograph",
+   "caption": "Atomic force micrographs of spinach ATP synthase c-rings; one ring with its 14 subunits numbered",
+   "credit": "Seelert et al. 2000, Nature 405:418, Fig. 2",
+   "url": "https://doi.org/10.1038/35013148",
+   "note": "14 c-subunits per 3 ATP gives 4.67 H+ per ATP"
+  },
+  {
+   "id": "o",
+   "file": "kinosita1998-f1-rotation-assay.jpg",
+   "kind": "history",
+   "caption": "Rotation assay: F1 fixed on glass, a fluorescent actin filament on γ; video frames show the filament turning",
+   "credit": "Kinosita, Yasuda, Noji, Ishiwata & Yoshida 1998, Cell 93:21, Fig. 2",
+   "url": "https://doi.org/10.1016/S0092-8674(00)81142-3",
+   "note": "The Noji et al. 1997 experiment as drawn by the same group; the Nature 1997 original is PDF-only (see wanted list)"
+  },
+  {
+   "id": "p",
+   "file": "kramer2011-atp-nadph-ratio.jpg",
+   "kind": "figure",
+   "caption": "ATP/NADPH needed for CO2 fixation plus photorespiration (≈1.5–1.67) vs linear-flow supply (dashed; 1.29 at 4.67 H+/ATP)",
+   "credit": "Kramer & Evans 2011, Plant Physiol 155:70, Fig. 1",
+   "url": "https://doi.org/10.1104/pp.110.166652",
+   "note": "The ATP : NADPH gap in one graph; panel B: share of light PSI vs PSII must absorb to close it"
+  },
+  {
+   "id": "q",
+   "file": "malone2021-linear-cyclic-routes.jpg",
+   "kind": "schematic",
+   "caption": "Linear flow and two cyclic routes around PSI (CET1 via FNR to b6f; CET2 via NDH-1), with H+ moved",
+   "credit": "Malone et al. 2021, BBA Bioenerg 1862:148380, Fig. 1",
+   "url": "https://doi.org/10.1016/j.bbabio.2021.148380",
+   "note": "Same style as Johnson 2016 Fig. 4 (in the deck) with the cyclic routes added"
+  },
+  {
+   "id": "r",
+   "file": "munekage2004-cyclic-mutants.jpg",
+   "kind": "photo",
+   "caption": "Arabidopsis wild type, pgr5 and crr mutants; plants lacking both cyclic routes (crr pgr5) grow poorly",
+   "credit": "Munekage et al. 2004, Nature 429:579, Fig. 2",
+   "url": "https://doi.org/10.1038/nature02598",
+   "note": "pgr5: PGR5-dependent route; crr: NDH-dependent route"
+  },
+  {
+   "id": "s",
+   "file": "minagawa2011-state-transitions.jpg",
+   "kind": "schematic",
+   "caption": "State 1 to State 2: reduced PQ activates the Stt7 kinase, phosphorylated LHCII moves from PSII to PSI",
+   "credit": "Minagawa 2011, BBA Bioenerg 1807:897, Fig. 2",
+   "url": "https://doi.org/10.1016/j.bbabio.2010.11.005",
+   "note": "Chlamydomonas model (Stt7 = plant STN7); State 2 also shows the algal cyclic-flow supercomplex"
+  },
+  {
+   "id": "t",
+   "file": "pan2018-psi-lhcii.jpg",
+   "kind": "structure",
+   "caption": "Maize PSI–LHCI with an LHCII trimer docked next to PsaO: the State 2 complex, top and side views",
+   "credit": "Pan et al. 2018, Science 360:1109, Fig. 1 (PDB 5ZJI)",
+   "url": "https://doi.org/10.1126/science.aat1156",
+   "note": "Structural proof of where mobile LHCII binds PSI"
+  }
+ ]
+}

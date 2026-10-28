@@ -1,0 +1,25 @@
+/* ATP synthase on the slide 10 schema (atps10-common.ts), stagings A and B. The schema keeps chain.css's look; these
+   are the slide's figure card, the lumen's deeper blue, the rotor's bands and the Jagendorf–Uribe card. */
+:is(.ani-atps-a,.ani-atps-b) .a10-slidecard{fill:rgba(255,254,250,.58);stroke:rgba(120,100,60,.10);stroke-width:1}
+:is(.ani-atps-a,.ani-atps-b) .a10-acid{fill:#9dbfd6;fill-opacity:.32}
+/* the rotor's bands, light on the render */
+:is(.ani-atps-a,.ani-atps-b) .a10-sh0{stop-color:#fffaf4;stop-opacity:0}
+:is(.ani-atps-a,.ani-atps-b) .a10-sh1{stop-color:#fffaf4;stop-opacity:.85}
+
+/* the card: Jagendorf and Uribe, 1966, Table 1 and the experiment */
+:is(.ani-atps-a,.ani-atps-b) .a10-paper{fill:#f6f1e5;stroke:#d3cdbd;stroke-width:1}
+:is(.ani-atps-a,.ani-atps-b) text.a10-cname{font-size:32px}
+:is(.ani-atps-a,.ani-atps-b) text.a10-year{font-size:30px}
+:is(.ani-atps-a,.ani-atps-b) text.a10-cl{font-size:24px;font-weight:600;fill:#3d3d3a}
+:is(.ani-atps-a,.ani-atps-b) text.a10-atp{font-size:36px;font-weight:700;fill:#141413}
+:is(.ani-atps-a,.ani-atps-b) .a10-acidl{fill:#f5cfb2}
+:is(.ani-atps-a,.ani-atps-b) .a10-basel{fill:#cfe1ef}
+:is(.ani-atps-a,.ani-atps-b) .a10-chl{fill:#5a9a44}
+:is(.ani-atps-a,.ani-atps-b) .a10-h{fill:#d1492a}
+:is(.ani-atps-a,.ani-atps-b) .a10-glass{fill:none;stroke:#6f6c63;stroke-width:2.6;stroke-linejoin:round}
+:is(.ani-atps-a,.ani-atps-b) .a10-lip{fill:none;stroke:#6f6c63;stroke-width:4.5;stroke-linecap:round}
+:is(.ani-atps-a,.ani-atps-b) .a10-ar{fill:none;stroke:#3d3d3a;stroke-width:3;stroke-linecap:round}
+:is(.ani-atps-a,.ani-atps-b) .a10-arh{fill:#3d3d3a}
+:is(.ani-atps-a,.ani-atps-b) .a10-sunc{fill:#f6c453;stroke:#e3a21a;stroke-width:2}
+:is(.ani-atps-a,.ani-atps-b) .a10-sun{fill:none;stroke:#e3a21a;stroke-width:2.6;stroke-linecap:round}
+:is(.ani-atps-a,.ani-atps-b) .a10-slash{fill:none;stroke:#2b2a27;stroke-width:3.4;stroke-linecap:round}

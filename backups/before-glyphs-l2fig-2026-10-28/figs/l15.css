@@ -1,0 +1,93 @@
+/* Slide L15 figure styles, scoped under .theme-editorial and prefixed .fl15- */
+/* Inks: amber = photons (initial slope), brown = downstream capacity (plateau),
+   red / blue / purple = the FvCB limits Rubisco-CO₂ / electron transport / TPU, grey = heat. */
+
+.theme-editorial .fig text.fl15-b{font-weight:600;fill:#141413}
+.theme-editorial .fig text.fl15-amber{fill:#a8650b}
+.theme-editorial .fig text.fl15-brown{fill:#7a4a2a}
+.theme-editorial .fig text.fl15-green{fill:#3f6b45}
+.theme-editorial .fig text.fl15-grey{fill:#6b6a64}
+.theme-editorial .fig text.fl15-red{fill:#b8321c}
+.theme-editorial .fig text.fl15-c{fill:#c0442a}
+.theme-editorial .fig text.fl15-j{fill:#3d6a99}
+.theme-editorial .fig text.fl15-p{fill:#7a5aa6}
+.theme-editorial .fig text.fl15-t15{font-size:16px}
+.theme-editorial .fig text.fl15-h{font-size:24px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fl15-num-t{font-size:17px;font-weight:700;fill:#fffdf8}
+.theme-editorial .fl15 text.atom-t{font-size:14px}
+
+/* arrows and axes */
+.theme-editorial .fl15-ar{fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fl15-k-ink{stroke:#3d3d3a}.theme-editorial .fl15-hd-ink{fill:#3d3d3a}
+.theme-editorial .fl15-k-grey{stroke:#8a877d}.theme-editorial .fl15-hd-grey{fill:#8a877d}
+.theme-editorial .fl15-k-amber{stroke:#e0961a}.theme-editorial .fl15-hd-amber{fill:#e0961a}
+.theme-editorial .fl15-k-brown{stroke:#8a5a3c}.theme-editorial .fl15-hd-brown{fill:#8a5a3c}
+.theme-editorial .fl15-k-red{stroke:#c8361e}.theme-editorial .fl15-hd-red{fill:#c8361e}
+.theme-editorial .fl15-k-c{stroke:#c0442a}.theme-editorial .fl15-hd-c{fill:#c0442a}
+.theme-editorial .fl15-k-j{stroke:#3d6a99}.theme-editorial .fl15-hd-j{fill:#3d6a99}
+.theme-editorial .fl15-k-p{stroke:#7a5aa6}.theme-editorial .fl15-hd-p{fill:#7a5aa6}
+.theme-editorial .fl15-ar.fl15-e{stroke-dasharray:7 5}
+.theme-editorial .fl15-ax{fill:none;stroke:#8a877d;stroke-width:1.8}
+.theme-editorial .fl15-heat{fill:none;stroke:#8a877d;stroke-width:2.4;stroke-linecap:round}
+.theme-editorial .fl15-div{fill:none;stroke:#c9c6bb;stroke-width:1.4;stroke-dasharray:2 6}
+.theme-editorial .fl15-brace{fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fl15-brace-brown{stroke:#8a5a3c}.theme-editorial .fl15-brace-j{stroke:#3d6a99}
+
+/* curves */
+.theme-editorial .fl15-curve{fill:none;stroke:#2b2a27;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fl15-curve-g{fill:none;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fl15-s-amber{stop-color:#e0961a}.theme-editorial .fl15-s-brown{stop-color:#8a5a3c}
+.theme-editorial .fl15-ghost{fill:none;stroke:#c9c6bb;stroke-width:2.4;stroke-dasharray:5 6}
+.theme-editorial .fl15-slope{fill:none;stroke:#e0961a;stroke-width:2.6;stroke-dasharray:9 7;stroke-linecap:round}
+.theme-editorial .fl15-cap{fill:none;stroke:#8a5a3c;stroke-width:2.4;stroke-dasharray:9 7;stroke-linecap:round}
+.theme-editorial .fl15-dot{fill:#2b2a27;stroke:#fffdf8;stroke-width:2.5}
+.theme-editorial .fl15-corner{fill:none;stroke:#2b2a27;stroke-width:2.4}
+.theme-editorial .fl15-zone{fill:#efe9dd}
+.theme-editorial .fl15-num{fill:#3d3d3a}
+.theme-editorial .fl15-line{fill:none;stroke-width:4;stroke-linecap:round}
+.theme-editorial .fl15-line-lo{stroke:#2b2a27}
+.theme-editorial .fl15-line-air{stroke:#e0961a;stroke-dasharray:12 9}
+
+/* sun */
+.theme-editorial .fl15-sun{fill:#fbd77a;stroke:#e0961a;stroke-width:1.8}
+.theme-editorial .fl15-sun-off{fill:#f0eee6;stroke:#b9b5aa;stroke-width:1.8}
+.theme-editorial .fl15-ray{fill:none;stroke:#e0961a;stroke-width:2.6;stroke-linecap:round}
+
+/* 15B funnel */
+.theme-editorial .fl15-funnel{fill:none;stroke:#6b6a64;stroke-width:3.2;stroke-linejoin:round;stroke-linecap:round}
+.theme-editorial .fl15-fill{fill:#f6c45c}
+
+/* 15C leaf layers */
+.theme-editorial .fl15-epi{fill:#f6f3ea;stroke:#c9c6bb;stroke-width:1.2}
+.theme-editorial .fl15-cell{fill:#eef4e6;stroke:#9db08a;stroke-width:1.4}
+.theme-editorial .fl15-chl{fill:#6f9a5a}
+.theme-editorial .fl15-fade0{stop-color:#f6c45c;stop-opacity:.42}.theme-editorial .fl15-fade1{stop-color:#f6c45c;stop-opacity:0}
+.theme-editorial .fl15-band{stroke:#fffdf8;stroke-width:1.5}
+.theme-editorial .fl15-band1{fill:#a9c793}.theme-editorial .fl15-band2{fill:#c9dcb8}.theme-editorial .fl15-band3{fill:#e4eedb}
+
+/* 15F supply line */
+.theme-editorial .fl15-stroma{fill:#f6f7f1}
+.theme-editorial .fl15-ant{fill:#e7f1de;stroke:#9cbd88;stroke-width:1.5}
+
+/* 15H equation */
+.theme-editorial .fl15-eq{stroke-width:1.8}
+.theme-editorial .fl15-eq-light{fill:#fdf0d5;stroke:#e0961a}
+.theme-editorial .fl15-eq-water{fill:#e3edf8;stroke:#4f7cac}
+.theme-editorial .fl15-eq-next{fill:none;stroke:#8a5a3c;stroke-dasharray:6 5}
+.theme-editorial .fig text.fl15-eq-t-light{fill:#a8650b}
+.theme-editorial .fig text.fl15-eq-t-water{fill:#3d6a99}
+.theme-editorial .fig text.fl15-eq-t-next{fill:#7a4a2a}
+.theme-editorial .fl15-eqar{fill:none;stroke:#6b6a64;stroke-width:2.4}
+.theme-editorial .fl15-eqhd{fill:#6b6a64}
+
+/* 15I recap */
+.theme-editorial .fl15-pig{fill:#d3e7c3;stroke:#6f9a5a;stroke-width:1.8}
+
+/* 15J unused light */
+.theme-editorial .fl15-wedge{fill:#ebe8df}
+.theme-editorial .fl15-used{fill:#dce6d0}
+.theme-editorial .fl15-brace-amber{stroke:#e0961a}.theme-editorial .fl15-brace-p{stroke:#7a5aa6}.theme-editorial .fl15-brace-c{stroke:#c0442a}
+.theme-editorial .fig text.fl15-eqt{font-size:25px;font-weight:600}
+
+/* small "schematic" marks and source credits */
+.theme-editorial .fig text.fl15-cr{font:italic 400 17px Newsreader,Georgia,serif;fill:#6b6a64}

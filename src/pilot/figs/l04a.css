@@ -1,0 +1,144 @@
+/* Slide 4a figure styles, scoped under .theme-editorial and prefixed .fl4a- */
+/* text */
+.theme-editorial .fig text.fl4a-b{font-weight:600;fill:#141413}
+.theme-editorial .fig text.fl4a-size{font-size:19px;fill:#6b6a64}
+.theme-editorial .fig text.fl4a-note{font:italic 400 23px Newsreader,Georgia,serif;fill:#6b6a64}
+.theme-editorial .fig text.fl4a-tick{font-size:17px;fill:#6b6a64}
+.theme-editorial .fig text.fl4a-band{font:italic 400 21px Newsreader,Georgia,serif;fill:#8a877d}
+.theme-editorial .fig text.fl4a-credit{font-size:13px;fill:#fffdf8}
+.theme-editorial .fig text.fl4a-credit-d{font-size:14px;fill:#8a877d}
+.theme-editorial .fig text.fl4a-pill{font-size:17px;font-weight:600;fill:#141413}
+.theme-editorial .fl4a-pillbg{fill:#fffdf8;opacity:.94}
+.theme-editorial .fl4a-credbg{fill:#141413;opacity:.45}
+/* frames, leaders, zoom marks */
+.theme-editorial .fl4a-ld{fill:none;stroke:#6b6a64;stroke-width:1.3}
+.theme-editorial .fl4a-panel{fill:#fffdf8;stroke:#d8d5cb;stroke-width:1.4}
+.theme-editorial .fl4a-lens{fill:#fffdf8}
+.theme-editorial .fl4a-ring-o{fill:none;stroke:#a8a59a;stroke-width:1.8}
+.theme-editorial .fl4a-zl{fill:none;stroke:#a8a59a;stroke-width:1.3;stroke-dasharray:5 4}
+.theme-editorial .fl4a-zh{fill:#a8a59a}
+.theme-editorial .fl4a-zb{fill:none;stroke:#a9532f;stroke-width:2}
+.theme-editorial .fl4a-zbw{fill:none;stroke:#fffdf8;stroke-width:2.6}
+.theme-editorial .fl4a-scale{fill:none;stroke:#3d3d3a;stroke-width:3;stroke-linecap:butt}
+/* leaf and cells */
+.theme-editorial .fl4a-leaf{fill:#a9c793;stroke:#5f8a4b;stroke-width:2}
+.theme-editorial .fl4a-vein{fill:none;stroke:#5f8a4b;stroke-width:1.5;stroke-linecap:round}
+.theme-editorial .fl4a-air{fill:#fbfaf5}
+.theme-editorial .fl4a-secline{fill:none;stroke:#c9c6bb;stroke-width:1.4}
+.theme-editorial .fl4a-epi{fill:#f3f0e4;stroke:#c9bd9a;stroke-width:1.2}
+.theme-editorial .fl4a-cell{fill:#f4f7ee;stroke:#a9bd94;stroke-width:1.6}
+.theme-editorial .fl4a-guard{fill:#dfe9cf;stroke:#8fb07a;stroke-width:1.2}
+.theme-editorial .fl4a-cp{fill:#7fa866;stroke:#5f8a4b;stroke-width:.8}
+.theme-editorial .fl4a-wall{fill:#b9cfa3}
+.theme-editorial .fl4a-celltop{fill:#f1f6e9;stroke:#9cb684;stroke-width:1;stroke-linejoin:round}
+.theme-editorial .fl4a-cpd{fill:#7fa866;stroke:#5f8a4b;stroke-width:.8}
+/* chloroplast */
+.theme-editorial .fl4a-env{fill:#d6e5c5;stroke:#5f8a4b;stroke-width:2.2}
+.theme-editorial .fl4a-stroma{fill:#eef4e6;stroke:#6f9a5a;stroke-width:1.4}
+.theme-editorial .fl4a-st0{stop-color:#f6faef}
+.theme-editorial .fl4a-st1{stop-color:#e2edd3}
+.theme-editorial .fl4a-gr{fill:#6f9a5a}
+.theme-editorial .fl4a-grin{fill:none;stroke:#cfe0bd;stroke-linecap:round}
+.theme-editorial .fl4a-lam{fill:none;stroke:#8fb07a;stroke-linecap:round}
+.theme-editorial .fl4a-lamin{fill:none;stroke:#e3eed8;stroke-linecap:round}
+/* the micrograph look */
+.theme-editorial .fl4a-tenv{fill:#bdbbb3;stroke:#2f2e2b;stroke-width:1.6}
+.theme-editorial .fl4a-tstroma{stroke:#2f2e2b;stroke-width:1.3}
+.theme-editorial .fl4a-tbg{fill:#d4d2ca}
+.theme-editorial .fl4a-tdot{fill:#b3b1a9}
+.theme-editorial .fl4a-tgr{fill:#2f2e2b}
+.theme-editorial .fl4a-tlam{fill:none;stroke:#3f3e3a;stroke-linecap:round}
+/* membranes, side-on */
+.theme-editorial .fl4a-memb{fill:#f8f1e1}
+.theme-editorial .fl4a-sac{fill:none;stroke:#c9b789;stroke-width:1.2}
+.theme-editorial .fl4a-sacline{fill:none;stroke:#c9b789;stroke-width:1.4}
+.theme-editorial .fl4a-lumen{fill:#eaf1f8}
+.theme-editorial .fl4a-head{fill:#f1e4c6;stroke:#c9b789;stroke-width:.7}
+.theme-editorial .fl4a-tail{fill:none;stroke:#dccda6;stroke-width:.9}
+.theme-editorial .fl4a-cx{fill:#d3e7c3;stroke:#6f9a5a;stroke-width:1.6}
+.theme-editorial .fl4a-chl{fill:#3f6b45}
+/* stacked discs (c) */
+.theme-editorial .fl4a-coin{fill:#9cc283;stroke:#4f7a3c;stroke-width:.9}
+.theme-editorial .fl4a-coinside{fill:#5f8a4b;stroke:#4f7a3c;stroke-width:.9}
+.theme-editorial .fl4a-lamband{fill:#b7d3a0;stroke:#5f8a4b;stroke-width:.9}
+/* 3-D slab (h) */
+.theme-editorial .fl4a-top{fill:#efe2c0;stroke:#c9b789;stroke-width:1.2}
+.theme-editorial .fl4a-side{fill:#e3d2a6;stroke:#b9a676;stroke-width:1}
+.theme-editorial .fl4a-sidelu{fill:#d5e2ef}
+.theme-editorial .fl4a-pt{fill:#a9cf8f;stroke:#4f7a3c;stroke-width:1}
+.theme-editorial .fl4a-ptsh{fill:#4f7a3c;opacity:.3}
+/* size ladder (d) */
+.theme-editorial .fl4a-axis{fill:none;stroke:#6b6a64;stroke-width:1.8}
+.theme-editorial .fl4a-b1{fill:#f6f3ea}
+.theme-editorial .fl4a-b2{fill:#eef4e6}
+.theme-editorial .fl4a-b3{fill:#e9eef5}
+.theme-editorial .fl4a-stem{fill:none;stroke:#b9b5aa;stroke-width:1.2;stroke-dasharray:3 4}
+.theme-editorial .fl4a-ring{fill:#e6efdb;stroke:#3f6b45;stroke-width:2}
+.theme-editorial .fl4a-mg{fill:#3f6b45}
+/* real images (j–m) */
+.theme-editorial .fl4a-mult{mix-blend-mode:multiply}
+.theme-editorial .fl4a-frame{fill:none;stroke:#d8d5cb;stroke-width:1.2}
+.theme-editorial .fl4a-ldh{fill:none;stroke:#fffdf8;stroke-width:4.2;stroke-linecap:round;opacity:.9}
+.theme-editorial .fl4a-ldk{fill:none;stroke:#141413;stroke-width:1.5;stroke-linecap:round}
+.theme-editorial .fl4a-tipd{fill:#141413;stroke:#fffdf8;stroke-width:1.5}
+.theme-editorial .fl4a-zbh{fill:none;stroke:#fffdf8;stroke-width:4.6;opacity:.85}
+/* n–w: colour key for the LHCII render, membrane at scale (v), bracket */
+.theme-editorial .fl4a-kprot{fill:#cfcac0;stroke:#8f8a80;stroke-width:1}
+.theme-editorial .fl4a-kchl{fill:#2e7d32}
+.theme-editorial .fl4a-kcar{fill:#ef8a17}
+.theme-editorial .fl4a-mband{fill:#efe6cf;opacity:.55}
+.theme-editorial .fl4a-lhead{fill:#f1e4c6;stroke:#c9b789;stroke-width:1}
+.theme-editorial .fl4a-ltail{fill:none;stroke:#d8c79c;stroke-width:1.6;stroke-linecap:round}
+.theme-editorial .fl4a-brk{fill:none;stroke:#6b6a64;stroke-width:1.6}
+/* r1–r5: dim-light adaptation. Cells, chloroplasts and light as in the "Into the leaf" animation (leaf-a.css) */
+.theme-editorial .fl4a-rwall{fill:#f6f8ef;stroke:#a9c092}
+.theme-editorial .fl4a-rpm{fill:none;stroke:#c9d8b8;stroke-width:1}
+.theme-editorial .fl4a-rcp{fill:#8dbb6c;stroke:#4f7a3c;stroke-width:1}
+.theme-editorial .fl4a-rcpg{fill:none;stroke:#3d6332;stroke-linecap:round}
+.theme-editorial .fl4a-larr{fill:none;stroke:#e3a51c;stroke-linecap:round}
+.theme-editorial .fl4a-larr-d{stroke-width:2.2;opacity:.85}
+.theme-editorial .fl4a-larr-b{stroke-width:4.2}
+.theme-editorial .fl4a-lhd{fill:#e3a51c}
+/* the chloroplast drawn to scale (r4) */
+.theme-editorial .fl4a-renv{fill:#e8f0da;stroke:#6f9a5a;stroke-width:2}
+.theme-editorial .fl4a-renv2{fill:none;stroke:#6f9a5a;stroke-width:1.2}
+.theme-editorial .fl4a-rlam{fill:none;stroke:#4f7a3c;stroke-linecap:round}
+.theme-editorial .fl4a-rgr{fill:#4f7a3c}
+.theme-editorial .fl4a-rgrl{fill:none;stroke:#c2d9ad;stroke-width:.7}
+/* outlines drawn over the micrographs (r5): clay in a light halo */
+.theme-editorial .fl4a-ovh{fill:none;stroke:#fffdf8;stroke-width:5.4;opacity:.85;stroke-linejoin:round;stroke-linecap:round}
+.theme-editorial .fl4a-ov{fill:none;stroke:#a9532f;stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round}
+.theme-editorial .fl4a-ovd{stroke-dasharray:7 4}
+/* scale bars on the micrographs, large numbers */
+.theme-editorial .fl4a-sbar{fill:#141413}
+.theme-editorial .fig text.fl4a-sbt{font-size:15px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fl4a-num{font-size:26px;font-weight:700;fill:#141413}
+.theme-editorial .fl4a-rule{fill:none;stroke:#e3e0d6;stroke-width:1.2}
+/* colour keys from the source legends (p, s1, s2): Midorikawa et al. 2022 (cell), Yuv345 (chloroplast model) */
+.theme-editorial .fl4a-sw-cp{fill:#a8dc8e;stroke:#6f9a5a;stroke-width:1}
+.theme-editorial .fl4a-sw-mit{fill:#2bb3dc;stroke:#1a7d9c;stroke-width:1}
+.theme-editorial .fl4a-sw-nuc{fill:#f0e24d;stroke:#a89a1c;stroke-width:1}
+.theme-editorial .fl4a-sw-per{fill:#e58ee0;stroke:#a8559f;stroke-width:1}
+.theme-editorial .fl4a-sw-gr{fill:#efe38a;stroke:#a89a3c;stroke-width:1}
+.theme-editorial .fl4a-sw-lam{fill:#36ad49;stroke:#23762f;stroke-width:1}
+.theme-editorial .fl4a-sw-pg{fill:#8200de;stroke:#55009a;stroke-width:1}
+.theme-editorial .fl4a-sw-env{fill:#a9a9e6;stroke:#6b6bb8;stroke-width:1}
+/* pigments of LHCII (s1, s2): as rendered from PDB 2BHW */
+.theme-editorial .fl4a-kchla{fill:#2e7d32}
+.theme-editorial .fl4a-kchlb{fill:#93c95a}
+/* n1–n6 (less is more): labels at 20 px; thylakoids side-on (membrane around its lumen, in the stroma); photosystem II blue and
+   photosystem I green, as on slide 9 and in the leaf animation */
+.theme-editorial .fig text.fl4a-pillL{font-size:20px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fl4a-keyg{font-size:19px;fill:#6b6a64}
+.theme-editorial .fl4a-nstr{fill:#edf3e3}
+.theme-editorial .fl4a-nmem{fill:#ecdfbc;stroke:#c2a66a;stroke-width:1.2}
+.theme-editorial .fl4a-nlum{fill:#d9e6f3;stroke:#c2a66a;stroke-width:1}
+.theme-editorial .fl4a-nmemg{fill:#5f8a4b}
+.theme-editorial .fl4a-nlumg{fill:#d9e6f3}
+.theme-editorial .fl4a-nenv{fill:#edf3e3;stroke:#6f9a5a;stroke-width:5}
+.theme-editorial .fl4a-nenvi{fill:none;stroke:#edf3e3;stroke-width:2}
+.theme-editorial .fl4a-nps2{fill:#b4c8f2;stroke:#2a5fc9;stroke-width:1.6}
+.theme-editorial .fl4a-nps1{fill:#bfe0a8;stroke:#3f9a1f;stroke-width:1.6}
+.theme-editorial .fl4a-nbm{fill:none;stroke:#4f7a3c;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fl4a-nbl{fill:none;stroke:#d9e6f3;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fig text.fl4a-sub{font-size:17px;fill:#6b6a64}

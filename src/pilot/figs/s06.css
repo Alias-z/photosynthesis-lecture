@@ -1,0 +1,47 @@
+/* Slide 6 (redo) figure styles, scoped under .theme-editorial and prefixed .fs06- */
+.theme-editorial .fig text.fs06-l{font-size:19px;fill:#3d3d3a}
+.theme-editorial .fig text.fs06-h{font-size:21px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fs06-k{font-size:17px;fill:#3d3d3a}
+.theme-editorial .fig text.fs06-lv{font-size:21px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fs06-ax{font-size:17px;fill:#6b6a64}
+.theme-editorial .fig text.fs06-note{font-size:16px;fill:#6b6a64}
+.theme-editorial .fig tspan.fs06-sub{font-size:.72em}
+
+/* real images: credits, pills, leaders */
+.theme-editorial .fig text.fs06-cr{font-size:13px;fill:#fffdf8}
+.theme-editorial .fig text.fs06-crd{font-size:14px;fill:#8a877d}
+.theme-editorial .fig text.fs06-pill{font-size:17px;font-weight:600;fill:#141413}
+.theme-editorial .fs06-pill-w{fill:#fffdf8;opacity:.94}
+.theme-editorial .fs06-pill-t{fill:#f3f1ea;stroke:#d8d5cb;stroke-width:1}
+.theme-editorial .fs06-pill-m{fill:#fbe9c6;stroke:#e2b452;stroke-width:1.2}
+.theme-editorial .fs06-credbg{fill:#141413;opacity:.55}
+.theme-editorial .fs06-mult{mix-blend-mode:multiply}
+.theme-editorial .fs06-ldh{fill:none;stroke:#fffdf8;stroke-width:4.2;stroke-linecap:round;opacity:.9}
+.theme-editorial .fs06-ldk{fill:none;stroke:#141413;stroke-width:1.5;stroke-linecap:round}
+.theme-editorial .fs06-tipd{fill:#141413;stroke:#fffdf8;stroke-width:1.5}
+
+/* keys: render discs (the render's own colours), path, Kouřil's arrow colours, spectrum lines */
+.theme-editorial .fs06-chla{fill:#2e7d32;stroke:#faf8f3;stroke-width:1.4}
+.theme-editorial .fs06-chlb{fill:#93c95a;stroke:#faf8f3;stroke-width:1.4}
+.theme-editorial .fs06-pathk{fill:none;stroke:#e07b00;stroke-width:4;stroke-linecap:round}
+.theme-editorial .fs06-ak{fill:none;stroke-width:5}
+.theme-editorial .fs06-akh{stroke:none}
+.theme-editorial .fs06-ky.fs06-ak{stroke:#d9b13a}.theme-editorial .fs06-ky.fs06-akh{fill:#d9b13a}
+.theme-editorial .fs06-kb.fs06-ak{stroke:#8ec5f5}.theme-editorial .fs06-kb.fs06-akh{fill:#8ec5f5}
+.theme-editorial .fs06-kg.fs06-ak{stroke:#a6e86a}.theme-editorial .fs06-kg.fs06-akh{fill:#a6e86a}
+.theme-editorial .fs06-lred{fill:none;stroke:#d8231c;stroke-width:3.5}
+.theme-editorial .fs06-lblk{fill:none;stroke:#141413;stroke-width:3.5}
+.theme-editorial .fs06-axl{fill:none;stroke:#6b6a64;stroke-width:1.5}
+.theme-editorial .fs06-tick{fill:none;stroke:#6b6a64;stroke-width:1.5}
+
+/* the drawn level diagram (6d) */
+.theme-editorial .fs06-lb{fill:none;stroke:#7fb24a;stroke-width:5;stroke-linecap:round}
+.theme-editorial .fs06-ba{fill:#cfe3c3;stroke:#2e7d32;stroke-width:1.6}
+.theme-editorial .fs06-lp{fill:none;stroke:#141413;stroke-width:5;stroke-linecap:round}
+.theme-editorial .fs06-bred{fill:#f2d0c8;stroke:#b8301b;stroke-width:1.6}
+.theme-editorial .fs06-dar{fill:none;stroke:#3d3d3a;stroke-width:2.6}
+.theme-editorial .fs06-uar{fill:none;stroke:#b8301b;stroke-width:2.6;stroke-dasharray:6 5}
+.theme-editorial .fs06-hd{fill:#3d3d3a}.theme-editorial .fs06-hdu{fill:#6b6a64}.theme-editorial .fs06-hdr{fill:#b8301b}
+.theme-editorial .fs06-br{fill:none;stroke:#8a877d;stroke-width:1.6}
+/* pigment key of Kouřil Fig. 2 (6f), colours as in the figure */
+.theme-editorial .fs06-dg{fill:#79d33f}.theme-editorial .fs06-db{fill:#3b3fd0}.theme-editorial .fs06-do{fill:#d67a26}.theme-editorial .fs06-dy{fill:#e2c63a}

@@ -1,0 +1,3 @@
+/* Photosystem II, staging B "Newspaper desk": the desk's flask keeps its stroke weights at every camera scale. Shared
+   parts: psii-common.css. */
+.ani-psii-b [data-k="desk"] *{vector-effect:non-scaling-stroke}

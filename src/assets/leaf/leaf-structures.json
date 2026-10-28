@@ -1,0 +1,34 @@
+{
+ "pepc": {
+  "w": 356,
+  "h": 314,
+  "pxPerA": 2.4,
+  "widthA": 140.4,
+  "heightA": 122.9,
+  "chains": 4
+ },
+ "ca": {
+  "w": 318,
+  "h": 261,
+  "pxPerA": 2.4,
+  "widthA": 124.6,
+  "heightA": 100.6,
+  "chains": 8
+ },
+ "me": {
+  "w": 361,
+  "h": 332,
+  "pxPerA": 2.4,
+  "widthA": 142.6,
+  "heightA": 130.2,
+  "chains": 4
+ },
+ "ppdk": {
+  "w": 392,
+  "h": 242,
+  "pxPerA": 2.4,
+  "widthA": 155.5,
+  "heightA": 92.9,
+  "chains": 2
+ }
+}

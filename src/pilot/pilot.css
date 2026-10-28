@@ -20,7 +20,8 @@ html,body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--s
 .var-row>span{min-width:72px;font:500 14px/1 var(--sans);color:var(--ink2)}
 /* The row whose version is not on show is dimmed, so it is clear which buttons the page reflects. */
 .slide[data-mode="handout"] .var-row[data-for="lecture"] .seg,.slide[data-mode="lecture"] .var-row[data-for="handout"] .seg{opacity:.5}
-.seg{display:flex;border:1.5px solid var(--ink)}
+/* a long row of variants wraps instead of widening the page (lecturer, 28 Oct 2026) */
+.seg{display:flex;flex-wrap:wrap;max-width:100%;border:1.5px solid var(--ink)}
 .seg button{font:500 16px/1 var(--sans);color:var(--ink);background:#f2f3ee;border:0;padding:10px 16px;cursor:pointer}
 .seg button+button{border-left:1.5px solid var(--ink)}
 .seg button[aria-pressed="true"]{background:var(--ink);color:#f2f3ee}
@@ -45,6 +46,14 @@ html,body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--s
 .theme-editorial .p-points{list-style:none;padding:0;display:grid;gap:22px}
 .theme-editorial .p-points li{font:400 27px/1.42 Inter,"Helvetica Neue",Arial,sans-serif;color:#3d3d3a;text-wrap:pretty}
 .theme-editorial .p-points b{font-weight:600;color:#a9532f}
+/* the numbers of a point, as equations, set apart from its reading text */
+.theme-editorial .p-points .p-eq{display:block;margin-top:8px;padding:6px 0 6px 14px;border-left:3px solid #d8cdb8;font-size:.86em;line-height:1.5;color:#2b2a27;font-variant-numeric:tabular-nums}
+.theme-editorial .p-points .p-eq .p-line{display:block}
+/* the per-O₂ ledger of a slide's components */
+.theme-editorial .p-led{border-collapse:collapse;font-size:.9em;line-height:1.3;margin:2px 0}
+.theme-editorial .p-led th{text-align:left;font-weight:600;color:#6b6a64;padding:0 18px 3px 0}
+.theme-editorial .p-led td{padding:3px 18px 3px 0;border-top:1px solid #e6e0d3;vertical-align:top}
+.theme-editorial .p-led tr.p-led-tot td{font-weight:700;border-top:1.5px solid #b9b2a2}
 /* Math signs the text face lacks at full size, such as ∝. */
 .theme-editorial .p-points .math{font-family:"STIX Two Math",STIXGeneral,"Cambria Math",serif;font-size:1.1em}
 /* A reaction arrow with its condition over it, in running text. */
@@ -54,14 +63,14 @@ html,body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--s
 .theme-editorial .rxn-arrow::after{content:"";position:absolute;right:-.3em;top:-.29em;border-left:.36em solid currentColor;border-top:.25em solid transparent;border-bottom:.25em solid transparent}
 .theme-editorial .fig{margin:0}
 .theme-editorial .fig svg{display:block;width:100%;height:100%;overflow:visible}
-.theme-editorial .p-src{left:96px;top:848px;width:1240px;font:400 19px/1.3 Inter,sans-serif;color:#6b6a64}
+.theme-editorial .p-src{left:96px;top:848px;width:1330px;font:400 19px/1.3 Inter,sans-serif;color:#6b6a64}
 .theme-editorial .p-src a{color:#3d3d3a;text-decoration:underline;text-decoration-color:#c9c6bb;text-underline-offset:4px}
 .theme-editorial .p-src a:hover{text-decoration-color:#3d3d3a}
 .theme-editorial .p-src span{margin:0 12px;color:#b0ada3}
 .theme-editorial .p-num{right:96px;top:846px;font:400 20px Inter,sans-serif;color:#8a877d}
 .theme-editorial .p-anim{font:500 22px/1 Inter,sans-serif;color:#141413;background:#f0eee6;border:0;border-radius:999px;padding:14px 24px;cursor:pointer}
 .theme-editorial .p-anim:hover{background:#e6e3d8}
-.theme-editorial .p-play{right:96px;top:76px;z-index:2;font:500 24px/1 Inter,sans-serif;color:#fffdf8;background:#a9532f;border:0;border-radius:999px;padding:16px 28px;cursor:pointer;box-shadow:0 6px 18px -8px rgba(60,30,10,.5)}
+.theme-editorial .p-play{right:96px;top:72px;z-index:2;width:68px;height:68px;display:flex;align-items:center;justify-content:center;font:400 26px/1 Inter,sans-serif;color:#fffdf8;background:#a9532f;border:0;border-radius:50%;padding:0 0 0 5px;cursor:pointer;box-shadow:0 6px 18px -8px rgba(60,30,10,.5)}
 .theme-editorial .p-play:hover{background:#8f4426}
 .theme-editorial .fig text{font-family:Inter,"Helvetica Neue",Arial,sans-serif;fill:#3d3d3a}
 .theme-editorial .lab{font-size:27px}.theme-editorial .lab-b{font-weight:600;fill:#141413}
@@ -120,7 +129,8 @@ html,body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--s
 .theme-editorial .tag-atp{fill:#fbe3d3;stroke:#d97757;stroke-width:1.4}.theme-editorial .tag-nadph{fill:#dce9f6;stroke:#4f7cac;stroke-width:1.4}
 .theme-editorial .tag-plain{fill:#fffdf8;stroke:#c9c6bb;stroke-width:1.4}
 .theme-editorial .tag-pi{fill:#f3a65f;stroke:#c7742b;stroke-width:1.4}.theme-editorial .tag-t{font-size:20px;font-weight:600;fill:#2b2a27}
-.theme-editorial .tag-h{fill:#fffdf8;stroke:#4f7cac;stroke-width:1.6}.theme-editorial .tag-ht{font-size:13px;font-weight:700;fill:#3d6a99}
+/* H⁺ is ringed red everywhere (the deck's one glyph set, 28 Oct 2026) */
+.theme-editorial .tag-h{fill:#fffdf8;stroke:#c2401f;stroke-width:1.7}.theme-editorial .tag-ht{font-size:13px;font-weight:700;fill:#c2401f}
 .theme-editorial .bolt{fill:none;stroke:#f0a316;stroke-width:3.4;stroke-linejoin:round;stroke-linecap:round}.theme-editorial .hd-bolt{fill:#f0a316}
 .theme-editorial .lip-bg{fill:#f8f1e1}.theme-editorial .lip-head{fill:#f1e4c6;stroke:#c9b789;stroke-width:1}.theme-editorial .lip-tail{fill:none;stroke:#dccda6;stroke-width:1.4}
 .theme-editorial .blob-ps{fill:#d3e7c3;stroke:#6f9a5a;stroke-width:1.8}.theme-editorial .blob-b6f{fill:#f7d6a6;stroke:#c98a3a;stroke-width:1.8}
@@ -175,6 +185,19 @@ html,body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--s
 .lay-figure .p-points{gap:26px}
 .lay-figure .p-points li{font-size:23px;line-height:1.45;color:#4a4945}
 .lay-figure .p-points b{display:block;margin-bottom:3px;font-size:24px}
+.theme-editorial .p-points .p-line{display:block}
+.theme-editorial .p-points .p-line + .p-line{margin-top:8px}
+.lay-figure .p-text.tight-1 .p-points .p-line + .p-line,.lay-figure .p-text.tight-2 .p-points .p-line + .p-line{margin-top:5px}
+/* A reading column too long for its box (set by fitPage in plates.ts): tighter spacing first, then smaller type. */
+.lay-figure .p-text.tight-1{gap:24px}
+.lay-figure .p-text.tight-1 .p-points{gap:16px}
+.lay-figure .p-text.tight-2 .p-lead{font-size:28px}
+.lay-figure .p-text.tight-2 .p-points li{font-size:21px;line-height:1.4}
+.lay-figure .p-text.tight-2 .p-points b{font-size:22px}
+.lay-figure .p-text.tight-3 .p-lead{font-size:26px}
+.lay-figure .p-text.tight-3 .p-points{gap:12px}
+.lay-figure .p-text.tight-3 .p-points li{font-size:20px;line-height:1.36}
+.lay-figure .p-text.tight-3 .p-points b{font-size:21px}
 /* A page without a title: the figure and the text column start at the top margin. */
 .lay-figure .no-title .fig,.lay-figure .no-title .p-text,.lay-figure .no-title .p-claims{top:62px;height:748px}
 /* Lecture version: the three claims alone, numbered, where the reading column would be. */
@@ -288,5 +311,5 @@ body.solo .block{margin:0}
 .player-close{position:fixed;top:14px;right:18px;width:48px;height:48px;border-radius:50%;border:0;background:#f0eee6;color:#141413;font:400 30px/1 Inter,sans-serif;cursor:pointer}
 @media print{.player{display:none!important}.p-play{display:none!important}}
 /* Lecture mode: no variant names or switches in the player, as it will run in class. */
-body.lecture-mode .player-seg{display:none}
+body.lecture-mode .player-seg,body.lecture-mode .player-title{display:none}
 .top .bar-r{margin-top:14px}

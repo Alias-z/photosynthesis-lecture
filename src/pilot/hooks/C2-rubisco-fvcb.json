@@ -1,0 +1,102 @@
+{
+ "title": "RuBisCO's two reactions, photorespiration and the FvCB model",
+ "chunk": "Lecture 2 · chunk 2",
+ "slides": [
+  "C5",
+  "C6",
+  "C7",
+  "C8"
+ ],
+ "questions": [
+  {
+   "id": "a",
+   "question": "Why do greenhouse growers pump extra CO₂ into their greenhouses?",
+   "story": "Vegetable growers in the Netherlands burn natural gas or buy liquid CO₂ and blow it among their tomato plants, and the plants grow faster. Air already contains CO₂, so why should more help? The answer sits in one enzyme. In 1971 George Bowes, William Ogren and Richard Hageman found that RuBisCO, the enzyme that fixes CO₂, also reacts with O₂. The two gases compete for the same site, and air holds about 500 O₂ for every CO₂.",
+   "steps": [
+    "RuBisCO adds CO₂ to RuBP (carboxylation), but O₂ can take the same place (oxygenation).",
+    "Oxygenation makes 2-phosphoglycolate, which the plant must recycle through photorespiration, losing CO₂ on the way.",
+    "More CO₂ around RuBisCO wins more of the competition and also speeds up the RuBisCO-limited rate.",
+    "The FvCB model shows that a C₃ leaf in today's air is mostly limited by RuBisCO, so extra CO₂ raises uptake until RuBP regeneration or triose-phosphate use limits it."
+   ],
+   "concepts": [
+    "Carboxylation vs oxygenation",
+    "Photorespiration",
+    "FvCB: RuBisCO-limited rate"
+   ],
+   "see": "The whole schema with RuBisCO lit, CO₂ and O₂ balls arriving at one active site; then the A/Cᵢ curve with today's CO₂ marked on the RuBisCO-limited part.",
+   "status": "Bowes, Ogren & Hageman 1971 (title checked). The greenhouse practice is common knowledge; no number is put on screen."
+  },
+  {
+   "id": "b",
+   "question": "If plants make the oxygen we breathe, why does oxygen slow them down?",
+   "story": "In 1920 Otto Warburg found that the alga Chlorella photosynthesised faster when he took O₂ away. In 1966 Forrester, Krotkov and Nelson showed the same in soybean leaves: net CO₂ uptake fell steadily as they raised O₂ from 0 to 100 %, and more CO₂ took some of the loss back. The cause was found five years later: O₂ competes with CO₂ at RuBisCO.",
+   "steps": [
+    "RuBisCO evolved when the air held almost no O₂; today the air is 21 % O₂.",
+    "O₂ and CO₂ compete for the same active site of RuBisCO.",
+    "Every oxygenation makes 2-phosphoglycolate; recycling it releases CO₂ that had already been fixed.",
+    "So more O₂ means less net CO₂ uptake, and more CO₂ takes it back."
+   ],
+   "concepts": [
+    "Substrate competition at RuBisCO",
+    "Oxygenation",
+    "Photorespiratory CO₂ loss"
+   ],
+   "see": "Forrester et al. 1966, Fig. 2 (soybean, net CO₂ uptake against O₂ at two CO₂ levels), then the schema with the two reactions lit.",
+   "status": "Forrester et al. 1966 abstract read (O₂ raises the CO₂ compensation point); the figure is on board C2 (g). Warburg 1920 via the 1928 reprint title only."
+  },
+  {
+   "id": "c",
+   "question": "Do plants breathe out CO₂ in sunlight too?",
+   "story": "Leaves fix CO₂ in the light, yet in 1955 John Decker saw a leaf give off a burst of CO₂ for a minute after he switched the light off: some CO₂ had been released in the light all along and was suddenly no longer refixed. This 'respiration in the light' turned out to be photorespiration, a pathway that runs through three organelles.",
+   "steps": [
+    "When RuBisCO takes O₂ instead of CO₂, it makes 2-phosphoglycolate, which the cycle cannot use.",
+    "The chloroplast exports it as glycolate to the peroxisome, which makes glycine.",
+    "In the mitochondrion two glycine become serine, CO₂ and NH₃: this is the CO₂ the leaf releases in light.",
+    "Serine returns through the peroxisome as glycerate to the chloroplast: 3 of 4 carbons come back as PGA, at a cost of ATP and reductant."
+   ],
+   "concepts": [
+    "Photorespiratory pathway",
+    "Three organelles",
+    "Cost: CO₂, NH₃, ATP"
+   ],
+   "see": "The real electron micrograph of a tobacco leaf with a peroxisome pressed between chloroplasts and a mitochondrion beside it (Frederick & Newcomb 1969), then the schema with the loop lit.",
+   "status": "Decker 1955 Plant Physiol 30:82 (title only; post-illumination burst is textbook). Pathway checked in Peterhänsel et al. 2010 (full text)."
+  },
+  {
+   "id": "d",
+   "question": "Why does a houseplant by the window grow faster than one in the corner, but a plant in full sun is not twice as fast as one in half sun?",
+   "story": "Plant physiologists measure this with the light-response curve: CO₂ uptake of one leaf at increasing light. Tobacco leaves grown in full sun level off at about 22 µmol CO₂ m⁻² s⁻¹; leaves grown in shade level off at about 13, and at lower light (Huang et al. 2014).",
+   "steps": [
+    "Light drives the electron transport that makes ATP and NADPH.",
+    "ATP and NADPH reduce PGA and regenerate RuBP, so in dim light CO₂ uptake rises in proportion to light: the slope is the quantum yield.",
+    "In bright light the light reactions supply more than the cycle can use; uptake levels off at the leaf's capacity.",
+    "Which step sets that capacity depends on CO₂: RuBisCO, RuBP regeneration or triose-phosphate use (FvCB)."
+   ],
+   "concepts": [
+    "Light-response curve",
+    "Quantum yield, light compensation point",
+    "Light saturation, FvCB limits"
+   ],
+   "see": "The schema with the light reactions supplying ATP and NADPH lit; Huang et al. 2014 sun and shade curves.",
+   "status": "Huang, Zhang & Hu 2014 (full text): 21.8 vs 13.1 µmol m⁻² s⁻¹ at 2000 µmol m⁻² s⁻¹."
+  },
+  {
+   "id": "e",
+   "question": "Why do plants lose more of the carbon they fix on a hot day?",
+   "story": "As a leaf warms, RuBisCO tells CO₂ from O₂ less well: spinach RuBisCO prefers CO₂ about 160-fold at 5 °C but only about 50-fold at 40 °C (Jordan & Ogren 1984). At the same time less CO₂ dissolves relative to O₂. So a warm leaf oxygenates more often, and photorespiration gives back more of the CO₂ it has just fixed. Above 30–35 °C, photorespiration exceeds 25 % of the photosynthesis rate of a C₃ leaf in today's air (Sage, Sage & Kocacinar 2012).",
+   "steps": [
+    "RuBisCO's preference for CO₂ over O₂ falls as the leaf warms (about 2/3 of the effect).",
+    "CO₂ solubility falls more with temperature than O₂ solubility (about 1/3).",
+    "So oxygenation, and the photorespiratory CO₂ loss, rise relative to carboxylation in warm C₃ leaves.",
+    "Models put the yield cost of photorespiration at 36 % for US soybean and 20 % for US wheat (Walker et al. 2016)."
+   ],
+   "concepts": [
+    "Temperature and RuBisCO specificity",
+    "Photorespiratory CO₂ loss",
+    "Cost for C₃ crops"
+   ],
+   "see": "Sage, Sage & Kocacinar 2012, Fig. 4: modelled photorespiration/photosynthesis rising with leaf temperature and falling with chloroplast CO₂.",
+   "status": "Jordan & Ogren 1984 (abstract): ≈ 160 at 5 °C, ≈ 50 at 40 °C, 2/3 vs 1/3; Sage et al. 2012 p. 28 (secondary quote); Walker et al. 2016 (abstract)."
+  }
+ ]
+}

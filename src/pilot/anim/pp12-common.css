@@ -1,0 +1,17 @@
+/* Slide 12's animations (pp12-*.ts): what pp-anim.css lacks. */
+.ani .pp12-cloud{fill:#f4f2ee;stroke:#a8a59a;stroke-width:2}
+.ani .pp12-newd1{fill:#8fd07a;stroke:#24812f;stroke-width:2.4}
+.ani .pp12-ring{fill:none;stroke:#c8361e;stroke-width:3.4}
+.ani .pp12-bar-amber{fill:#f0c35a}.ani .pp12-bar-red{fill:#e58a72}.ani .pp12-bar-grey{fill:#a9a59a}
+.ani text.pp12-violet{fill:#8a6a12}
+.ani text.pp12-green{fill:#24812f}
+.ani .pp12-band{fill:#efece3}
+.ani .pp12-dark{fill:#3d3d3a}
+.ani text.pp12-s{font-size:20px;font-weight:500;fill:#5b5a55}
+.ani .pp12-d1ok{fill:#8fc06f;stroke:#4b7a37;stroke-width:1.8}
+.ani .pp12-d1gone{fill:#fbfaf6;stroke:#8a877d;stroke-width:1.8;stroke-dasharray:5 4}
+.ani .pp12-d1new{fill:#6fb35a;stroke:#24812f;stroke-width:2.6}
+.ani .pp12-panel{fill:#fbfaf6;stroke:rgba(120,100,60,.22);stroke-width:1.4}
+.ani .pp12-nopsbs{fill:none;stroke:#8a877d;stroke-width:2;stroke-dasharray:5 4}
+.ani text.pp12-title{font-size:26px;font-weight:600;fill:#141413}
+.ani .pp12-opaque{fill:#fbfaf6;stroke:rgba(120,100,60,.16);stroke-width:1}

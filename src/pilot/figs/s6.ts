@@ -117,8 +117,8 @@ export function funnelSvg(p = 'f6a'): string {
     ${rc(R[0], R[1], rr)}
     ${routes.map(trail).join('')}
     ${bolt(p, 58, 84, 95, 180)}${bolt(p, 742, 84, 705, 180)}
-    ${text(150, 128, 'Chl b', 'lab lab-b f6-lb')}${text(650, 128, 'Chl b', 'lab lab-b f6-lb')}
-    ${text(318, 414, 'Chl a', 'lab lab-b f6-la')}${text(482, 414, 'Chl a', 'lab lab-b f6-la')}
+    ${text(150, 128, 'Chl <tspan font-style="italic">b</tspan>', 'lab lab-b f6-lb')}${text(650, 128, 'Chl <tspan font-style="italic">b</tspan>', 'lab lab-b f6-lb')}
+    ${text(318, 414, 'Chl <tspan font-style="italic">a</tspan>', 'lab lab-b f6-la')}${text(482, 414, 'Chl <tspan font-style="italic">a</tspan>', 'lab lab-b f6-la')}
     ${text(400, 214, 'only energy moves', 'lab f6-amb')}
     ${epath(p, `M${R[0]},${NOTCH + 4} L${R[0]},548`)}
     ${text(386, 458, 'reaction centre', 'sm', 'end')}
@@ -151,7 +151,7 @@ export function relaySvg(p = 'f6b'): string {
     ${text(baton[0], baton[1] - 40, 'energy', 'lab lab-b f6-amb')}
     ${bolt(p, 60, 120, 86, 252)}${text(52, 146, 'light', 'f6-note', 'end')}
     ${epath(p, `M${R[0] + 40},${y} L774,${y}`)}${text(722, y - 18, 'e⁻', 'lab lbl-e')}
-    ${text(137, y + 104, 'Chl b', 'lab lab-b f6-lb')}${text(362, y + 104, 'Chl a', 'lab lab-b f6-la')}
+    ${text(137, y + 104, 'Chl <tspan font-style="italic">b</tspan>', 'lab lab-b f6-lb')}${text(362, y + 104, 'Chl <tspan font-style="italic">a</tspan>', 'lab lab-b f6-la')}
     ${text(R[0], y + 122, 'reaction centre', 'lab')}
     <path class="bracket" d="M44,${y + 140} v12 H500 v-12"/>
     <path class="bracket" d="M540,${y + 158} v12 H684 v-12"/>
@@ -211,18 +211,18 @@ export function topViewBody(p: string, legend = true): string {
   const arcs = routes.map(([a, R, deg, k]): Arc => { const b = onRing(R, R === R1 ? 27 : 24, deg); return [a, bow(a, b, k), b]; });
   return `
     ${defs(p)}
-    ${text(242, 56, 'LHCII → PSII', 'lab lab-b')}${text(653, 56, 'LHCI → PSI', 'lab lab-b')}
+    ${text(242, 56, 'PSII + LHCII', 'lab lab-b')}${text(653, 56, 'PSI + LHCI', 'lab lab-b')}
     ${shapes}${dots(pigs)}
     ${arcs.map(a => hop(p, a, true)).join('')}
     ${routes.map(([a]) => glow(p, a, 0.62)).join('')}
     ${R2.map(([a, b]) => rc(a, b, 16)).join('')}${rc(R1[0], R1[1], 16)}
     ${text(80, cy + 98, 'LHCII', 'sm')}${text(404, cy - 80, 'LHCII', 'sm')}${text(242, cy + 120, 'PSII core', 'sm')}
     ${text(653, 96, 'PSI core', 'sm')}${text(653, 406, 'LHCI', 'sm')}
-    ${text(242, 450, 'Chl b‑rich · a:b ≈ 1.3', 'lab')}
-    ${text(653, 450, 'Chl a‑rich · a:b ≈ 3.7', 'lab')}
+    ${text(242, 450, 'Chl <tspan font-style="italic">b</tspan>‑rich · <tspan font-style="italic">a</tspan>:<tspan font-style="italic">b</tspan> ≈ 1.3', 'lab')}
+    ${text(653, 450, 'Chl <tspan font-style="italic">a</tspan>‑rich · <tspan font-style="italic">a</tspan>:<tspan font-style="italic">b</tspan> ≈ 3.7', 'lab')}
     ${legend ? `<g transform="translate(22 556)">
-      ${pig(8, -8, false, 7)}${text(24, 0, 'Chl a', 'sm', 'start')}
-      ${pig(112, -8, true, 6.5)}${text(128, 0, 'Chl b', 'sm', 'start')}
+      ${pig(8, -8, false, 7)}${text(24, 0, 'Chl <tspan font-style="italic">a</tspan>', 'sm', 'start')}
+      ${pig(112, -8, true, 6.5)}${text(128, 0, 'Chl <tspan font-style="italic">b</tspan>', 'sm', 'start')}
       ${glow(p, [222, -8], 0.6)}${hop(p, [[222, -8], [250, -24], [280, -8]])}${text(292, 0, 'energy hops', 'sm', 'start')}
       ${rc(462, -8, 15)}${text(486, 0, 'reaction centre: e⁻ moves', 'sm', 'start')}
     </g>` : ''}
@@ -311,8 +311,8 @@ export function twoPartsSvg(p = 'f6d'): string {
     ${defs(p)}${strip(`${p}-strip`)}
     ${text(20, 38, 'Different colours', 'lab lab-b', 'start')}
     ${chlHead(108, 142, 0.68, '–CH₃')}${chlHead(322, 142, 0.68, '–CHO')}
-    ${pig(70, 252, false, 9)}${text(86, 261, 'Chl a', 'lab lab-b f6-la', 'start')}<path class="curve chla" d="M86,276 H150"/>
-    ${pig(284, 252, true, 8.5)}${text(300, 261, 'Chl b', 'lab lab-b f6-lb', 'start')}<path class="curve chlb" d="M300,276 H364"/>
+    ${pig(70, 252, false, 9)}${text(86, 261, 'Chl <tspan font-style="italic">a</tspan>', 'lab lab-b f6-la', 'start')}<path class="curve chla" d="M86,276 H150"/>
+    ${pig(284, 252, true, 8.5)}${text(300, 261, 'Chl <tspan font-style="italic">b</tspan>', 'lab lab-b f6-lb', 'start')}<path class="curve chlb" d="M300,276 H364"/>
     <text class="tl" x="${x0}" y="62" text-anchor="start">absorption</text>
     <path class="axis" d="M${x0},${top - 8} V${base} H${x1}"/>
     ${curve('b')}${curve('a')}
@@ -374,8 +374,8 @@ export function membraneSvg(p = 'f6e'): string {
     ${epath(p, `M${R1[0]},${R1[1] - 22} L${R1[0]},124`)}${text(R1[0] + 14, 140, 'e⁻', 'lab lbl-e', 'start')}
     ${text(96, 408, 'LHCII', 'sm lab-b')}${text(368, 408, 'LHCII', 'sm lab-b')}${text(232, 394, 'PSII', 'sm lab-b')}
     ${text(568, 394, 'PSI', 'sm lab-b')}${text(712, 408, 'LHCI', 'sm lab-b')}
-    ${text(232, 486, 'LHCII: Chl b‑rich · a:b ≈ 1.3', 'sm')}
-    ${text(618, 486, 'LHCI: Chl a‑rich · a:b ≈ 3.7', 'sm')}
+    ${text(232, 486, 'LHCII: Chl <tspan font-style="italic">b</tspan>‑rich · <tspan font-style="italic">a</tspan>:<tspan font-style="italic">b</tspan> ≈ 1.3', 'sm')}
+    ${text(618, 486, 'LHCI: Chl <tspan font-style="italic">a</tspan>‑rich · <tspan font-style="italic">a</tspan>:<tspan font-style="italic">b</tspan> ≈ 3.7', 'sm')}
     ${text(618, 514, 'red forms absorb beyond 700 nm', 'sm f6-mut')}
     <g transform="translate(26 570)">
       ${bolt(p, 0, -46, 20, 8)}${text(40, 0, 'light', 'sm', 'start')}

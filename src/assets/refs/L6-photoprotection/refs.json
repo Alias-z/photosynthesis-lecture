@@ -1,0 +1,181 @@
+{
+ "title": "Photoprotection and chlorophyll fluorescence",
+ "slides": [
+  "11",
+  "12",
+  "13"
+ ],
+ "images": [
+  {
+   "id": "a",
+   "file": "wilhelm2011-energy-balance.jpg",
+   "kind": "schematic",
+   "caption": "Absorbed light rises linearly while CO2 assimilation saturates; the excess goes to qE, alternative electron flow or damage",
+   "credit": "Wilhelm & Selmar 2011, J Plant Physiol 168:79, Fig. 1",
+   "url": "https://doi.org/10.1016/j.jplph.2010.07.012",
+   "note": "Same three sinks as Rosenqvist slide 25, which names no source; likely its origin. Only 339 px"
+  },
+  {
+   "id": "b",
+   "file": "porcarcastell2021-fates-to-sif.png",
+   "kind": "schematic",
+   "caption": "Absorbed light splits at PSII into photochemistry, heat (NPQ) and fluorescence, with the leaf emission spectrum",
+   "credit": "Porcar-Castell et al. 2021, Nat Plants 7:998, Fig. 1",
+   "url": "https://doi.org/10.1038/s41477-021-00980-4",
+   "note": "Links the three fates to satellite SIF in one figure"
+  },
+  {
+   "id": "c",
+   "file": "pospisil2016-singlet-oxygen-psii.jpg",
+   "kind": "structure",
+   "caption": "Where singlet oxygen forms: chlorophyll triplets in the LHCII antenna (A) and at P680 in the PSII reaction centre (B)",
+   "credit": "Pospíšil 2016, Front Plant Sci 7:1950, Fig. 1; CC BY 4.0",
+   "url": "https://doi.org/10.3389/fpls.2016.01950",
+   "note": "Drawn on the real structures; ROS origin at both antenna and reaction centre"
+  },
+  {
+   "id": "d",
+   "file": "tyystjarvi1996-damage-vs-light.png",
+   "kind": "figure",
+   "caption": "Rate constant of PSII photoinhibition, with repair blocked by lincomycin, rises in direct proportion to light",
+   "credit": "Tyystjärvi & Aro 1996, PNAS 93:2213, Fig. 2",
+   "url": "https://doi.org/10.1073/pnas.93.5.2213",
+   "note": "Pumpkin leaves; damage occurs at every light level. Scanned page, low resolution"
+  },
+  {
+   "id": "e",
+   "file": "murchie2011-thylakoid-npq.jpg",
+   "kind": "schematic",
+   "caption": "Thylakoid map of photoprotection: electron flow builds ΔpH, which protonates PsbS and VDE; xanthophyll cycle, PSII repair",
+   "credit": "Murchie & Niyogi 2011, Plant Physiol 155:86, Fig. 2",
+   "url": "https://doi.org/10.1104/pp.110.168831",
+   "note": "The canonical membrane schematic; only 558 px"
+  },
+  {
+   "id": "f",
+   "file": "wilhelm2011-psbs-zeaxanthin.jpg",
+   "kind": "schematic",
+   "caption": "Excess light builds ΔpH; protons activate PsbS and the de-epoxidase; zeaxanthin lets the antenna dissipate energy",
+   "credit": "Wilhelm & Selmar 2011, J Plant Physiol 168:79, Fig. 2",
+   "url": "https://doi.org/10.1016/j.jplph.2010.07.012",
+   "note": "Exact source of Rosenqvist slide 28 (she cites it); her slide 29B redraws it"
+  },
+  {
+   "id": "g",
+   "file": "wilhelm2011-xanthophyll-cycle.jpg",
+   "kind": "schematic",
+   "caption": "Xanthophyll cycle: violaxanthin to antheraxanthin to zeaxanthin (de-epoxidase) and back (epoxidase), with structures",
+   "credit": "Wilhelm & Selmar 2011, J Plant Physiol 168:79, Fig. 3",
+   "url": "https://doi.org/10.1016/j.jplph.2010.07.012",
+   "note": "Basis of Rosenqvist slide 27 ('similar to Wilhelm and Selmar 2011')"
+  },
+  {
+   "id": "h",
+   "file": "fan2015-psbs-structure.jpg",
+   "kind": "structure",
+   "caption": "Crystal structure of spinach PsbS in the thylakoid membrane; lumen-side glutamates E69 and E173 sense lumen acidity",
+   "credit": "Fan et al. 2015, Nat Struct Mol Biol 22:729, Fig. 1a,b,d (PDB 4RI2)",
+   "url": "https://doi.org/10.1038/nsmb.3068",
+   "note": "The only atomic structure of PsbS"
+  },
+  {
+   "id": "i",
+   "file": "li2000-npq4-psbs.jpg",
+   "kind": "figure",
+   "caption": "Arabidopsis npq4 (no PsbS) keeps fluorescence high and builds little NPQ; adding psbS back restores it",
+   "credit": "Li et al. 2000, Nature 403:391, Fig. 1",
+   "url": "https://doi.org/10.1038/35000131",
+   "note": "Discovery of PsbS; panel b adds npq1 (no zeaxanthin); panel c is a video image of NPQ"
+  },
+  {
+   "id": "j",
+   "file": "ruban2016-grana-npq-state.jpg",
+   "kind": "schematic",
+   "caption": "Putative grana arrangement of PSII cores and LHCII in the dark (A) and the NPQ state, LHCII quenched (B)",
+   "credit": "Ruban 2016, Plant Physiol 170:1903, Fig. 3",
+   "url": "https://doi.org/10.1104/pp.15.01935",
+   "note": "Population view of quenched antenna; a field-drawn reference for the Rosenqvist slide 34 dot grids"
+  },
+  {
+   "id": "k",
+   "file": "jarvi2015-d1-repair-cycle.jpg",
+   "kind": "schematic",
+   "caption": "PSII repair cycle: D1 damaged in grana, PSII moves to stroma lamellae, D1 degraded and resynthesized, PSII reassembled",
+   "credit": "Järvi, Suorsa & Aro 2015, BBA Bioenergetics 1847:900, Fig. 1; CC BY-NC-ND 4.0",
+   "url": "https://doi.org/10.1016/j.bbabio.2015.01.006",
+   "note": "Plant cycle from the Aro lab; Aro et al. 1993 BBA original not reachable"
+  },
+  {
+   "id": "l",
+   "file": "kaiser2018-sunflecks.jpg",
+   "kind": "figure",
+   "caption": "Light logged every second above and under wheat and mustard canopies on cloudless days: sunflecks last seconds",
+   "credit": "Kaiser, Morales & Harbinson 2018, Plant Physiol 176:977, Fig. 1",
+   "url": "https://doi.org/10.1104/pp.17.01250",
+   "note": "Published counterpart of Rosenqvist slide 50 (her own unpublished 2018 logs). Only 464 px"
+  },
+  {
+   "id": "m",
+   "file": "kromdijk2016-sun-shade-npq.jpg",
+   "kind": "schematic",
+   "caption": "Sun to shade: NPQ stays on in the shade and limits CO2 fixation until zeaxanthin is converted back",
+   "credit": "Kromdijk et al. 2016, Science 354:857, Fig. 1",
+   "url": "https://doi.org/10.1126/science.aai8878",
+   "note": "Rationale for overexpressing VDE, PsbS and ZEP (VPZ lines)"
+  },
+  {
+   "id": "n",
+   "file": "kromdijk2016-field-tobacco.jpg",
+   "kind": "figure",
+   "caption": "Field tobacco: VPZ lines gain 14–20 % dry weight, more leaf area and height; aerial view of the trial",
+   "credit": "Kromdijk et al. 2016, Science 354:857, Fig. 5",
+   "url": "https://doi.org/10.1126/science.aai8878",
+   "note": "Photo (D) by D. Drag; Urbana, Illinois, 2016"
+  },
+  {
+   "id": "o",
+   "file": "desouza2022-soy-yield.jpg",
+   "kind": "figure",
+   "caption": "Field soybean, 2020: VPZ lines with faster NPQ relaxation yield up to 33 % more seed than wild type",
+   "credit": "De Souza et al. 2022, Science 377:851, Fig. 1B",
+   "url": "https://doi.org/10.1126/science.adc9831",
+   "note": "The 2021 season gave no significant gain (paper text)"
+  },
+  {
+   "id": "p",
+   "file": "kautsky-portrait.jpg",
+   "kind": "history",
+   "caption": "Hans Kautsky (1891–1966), who discovered the fluorescence induction effect with Hirsch in 1931; Marburg, 1949–1959",
+   "credit": "Schreiber & Lichtenthaler 2025, Photosynthetica 63:28, Fig. 2 (photos provided by H.K. Lichtenthaler); CC BY-NC-ND 4.0",
+   "url": "https://doi.org/10.32615/ps.2025.007",
+   "note": "Not public domain; ND licence, so show unaltered. No Kautsky portrait on Wikimedia Commons"
+  },
+  {
+   "id": "q",
+   "file": "ruban2016-pam-trace.jpg",
+   "kind": "figure",
+   "caption": "Real PAM trace of an Arabidopsis leaf: Fo, Fm, actinic light with pulses (Fm′, Fs), dark recovery; NPQ marked",
+   "credit": "Ruban 2016, Plant Physiol 170:1903, Fig. 1A",
+   "url": "https://doi.org/10.1104/pp.15.01935",
+   "note": "Stand-in for Maxwell & Johnson 2000 Fig. 2 (blocked); same saturation-pulse protocol, also shows qE and qI"
+  },
+  {
+   "id": "r",
+   "file": "porcarcastell2021-sif-imaging.jpg",
+   "kind": "photo",
+   "caption": "Maple and oak photographed and imaged for SIF at 760 nm; crop plots from the air, RGB versus SIF",
+   "credit": "Porcar-Castell et al. 2021, Nat Plants 7:998, Fig. 3",
+   "url": "https://doi.org/10.1038/s41477-021-00980-4",
+   "note": "Fluorescence imaging from tree to field scale"
+  },
+  {
+   "id": "s",
+   "file": "guanter2014-global-sif.jpg",
+   "kind": "figure",
+   "caption": "Global map of maximum monthly SIF at 740 nm, 2009, from satellite (GOME-2); the US Corn Belt is highest",
+   "credit": "Guanter et al. 2014, PNAS 111:E1327, Fig. 1",
+   "url": "https://doi.org/10.1073/pnas.1320008111",
+   "note": "Crop photosynthesis seen from space"
+  }
+ ]
+}

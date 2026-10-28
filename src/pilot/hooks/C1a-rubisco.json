@@ -1,0 +1,66 @@
+{
+  "title": "RuBisCO: carboxylation and oxygenation",
+  "chunk": "Lecture 2 · RuBisCO chunk (lead-C2, C2)",
+  "slides": [
+    "C2"
+  ],
+  "questions": [
+    {
+      "id": "a",
+      "question": "Why does the O₂ that plants release inhibit their own photosynthesis?",
+      "story": "1920: Otto Warburg saw O₂ inhibit photosynthesis in Chlorella; 1966 Forrester et al. measured it in soybean leaves; 1971 Bowes, Ogren and Hageman found the cause: RuBisCO also oxygenates RuBP.",
+      "steps": [
+        "RuBisCO binds CO₂ but also O₂ at the same active site (C2)",
+        "Oxygenation gives 2-phosphoglycolate instead of a second 3-PGA (C5)",
+        "RuBisCO evolved in air with almost no O₂ (C5a)",
+        "Warmer leaves oxygenate more (C5b)",
+        "No better RuBisCO works in crops yet (C5c)"
+      ],
+      "concepts": [
+        "carboxylation",
+        "oxygenation",
+        "CO₂/O₂ specificity",
+        "Great Oxidation Event"
+      ],
+      "see": "RuBisCO with CO₂ and O₂ arriving at the same active site.",
+      "status": "draft, 28 Oct 2026; replaces the fertiliser question (C2 no longer covers abundance)"
+    },
+    {
+      "id": "b",
+      "question": "Is there a better RuBisCO somewhere in nature, and could crops use it?",
+      "story": "In 1997 Uemura and colleagues found RuBisCO in hot-spring red algae (Galdieria partita) that tells CO₂ from O₂ apart 2.4–2.5 times better than plant RuBisCO. In 2001 Whitney and colleagues put red-algal RuBisCO genes into tobacco chloroplasts: the subunits were made, but never assembled into a working enzyme.",
+      "steps": [
+        "RuBisCOs differ: CO₂/O₂ specificity from 7–15 (bacteria) to 238 (Galdieria partita); crops ≈ 82–100.",
+        "The most specific RuBisCOs are slow: Galdieria partita 1.6 s⁻¹ per site, tobacco 3.1.",
+        "Plant RuBisCO has 16 chains and needs 5 chaperone systems to assemble; red-algal RuBisCO does not assemble in plants.",
+        "Faster cyanobacterial RuBisCO works in tobacco, but only at ≥ 0.9 % CO₂.",
+        "Gains so far are small: plant RuBisCO improved in E. coli (+29 % carboxylation rate, 2026; ancestral RuBisCO 4.4 vs 3.5 s⁻¹, 2022)."
+      ],
+      "concepts": [
+        "Red-algal RuBisCO",
+        "RuBisCO assembly",
+        "Engineering RuBisCO"
+      ],
+      "see": "Goodsell’s spinach and bacterial RuBisCOs (lead page c); the specificity bars and the 2001–2026 timeline (C5c).",
+      "status": "Whitney 2001, Aigner 2017, Zhou 2023 abstracts; Occhialini 2016, Lin 2022, McDonald 2026 full text (rb report)."
+    },
+    {
+      "id": "c",
+      "question": "In a warmer world with more CO₂, will RuBisCO work better or worse?",
+      "story": "Jordan and Ogren (1984) measured spinach RuBisCO from 5 to 40 °C: its CO₂/O₂ specificity fell from ≈ 160 to ≈ 50. Two thirds of the rise of photorespiration with temperature come from RuBisCO itself, one third from CO₂ dissolving less well than O₂ in warm water.",
+      "steps": [
+        "Both gases dissolve less in warm water; CO₂ loses more (CO₂ : O₂ solubility ratio 29 at 15 °C, 24 at 35 °C).",
+        "RuBisCO’s own specificity falls with temperature (≈ 160 at 5 °C, 82 at 25 °C, ≈ 50 at 40 °C).",
+        "At 200 ppm in the chloroplast: 25 oxygenations per 100 carboxylations at 15 °C, 43 at 25 °C, 70 at 35 °C.",
+        "More CO₂ pushes back: at 35 °C, 328 ppm in the chloroplast restores 43."
+      ],
+      "concepts": [
+        "Temperature and photorespiration",
+        "Gas solubility",
+        "CO₂/O₂ specificity"
+      ],
+      "see": "RuBisCO between a thermometer and a CO₂ molecule (lead page d); the two flasks and the oxygenation curve (C5b).",
+      "status": "Jordan & Ogren 1984 abstract; Sander 2023 solubility fits; Bernacchi 2001 Γ* via open citing papers (rb report)."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+/* Photosystem II on the slide 7 schema (psii7-common.ts), stagings C and D. The schema keeps chain.css's look; these
+   are the slide's figure card, the story's glyphs (electrons dark, H⁺ red as chain.css, water and O₂ blue-grey, heavy
+   oxygen purple) and the Ruben–Kamen card. */
+:is(.ani-psii-c,.ani-psii-d) .p7-slidecard{fill:rgba(255,254,250,.58);stroke:rgba(120,100,60,.10);stroke-width:1}
+
+/* glyphs (drawn at the slide's size, counter-scaled with the camera) */
+:is(.ani-psii-c,.ani-psii-d) .p7-e{fill:#2b2a27;stroke:#fbfaf6;stroke-width:1.6}
+:is(.ani-psii-c,.ani-psii-d) .p7-ring{fill:#fbfaf6;fill-opacity:.9;stroke:#2b2a27;stroke-width:1.8;stroke-dasharray:2.6 2.4}
+:is(.ani-psii-c,.ani-psii-d) .p7-hat{fill:#f4f2ec;stroke:#8a877d;stroke-width:1.2}
+:is(.ani-psii-c,.ani-psii-d) .p7-o{fill:#5b88a8;stroke:#fbfaf6;stroke-width:1.4}
+:is(.ani-psii-c,.ani-psii-d) .p7-o18{fill:#7b4bb0;stroke:#fbfaf6;stroke-width:1.4}
+:is(.ani-psii-c,.ani-psii-d) .p7-c{fill:#57554f;stroke:#fbfaf6;stroke-width:1.4}
+:is(.ani-psii-c,.ani-psii-d) .fig text.p7-elab{font-size:20px;font-weight:700;fill:#2b2a27}
+
+/* the card: Ruben and Kamen, 1941, and the experiment */
+:is(.ani-psii-c,.ani-psii-d) .p7-paper{fill:#f6f1e5;stroke:#d3cdbd;stroke-width:1}
+:is(.ani-psii-c,.ani-psii-d) text.p7-cname{font-size:27px}
+:is(.ani-psii-c,.ani-psii-d) text.p7-year{font-size:30px}
+:is(.ani-psii-c,.ani-psii-d) text.p7-cl{font-size:22px;font-weight:600;fill:#3d3d3a}
+:is(.ani-psii-c,.ani-psii-d) text.p7-cl-o18{fill:#7b4bb0}
+:is(.ani-psii-c,.ani-psii-d) text.p7-cl-o{fill:#3c6a88}
+:is(.ani-psii-c,.ani-psii-d) text.p7-key{font-size:19px;font-weight:500;fill:#5c5a52}
+:is(.ani-psii-c,.ani-psii-d) .p7-water{fill:#dbe9ef}
+:is(.ani-psii-c,.ani-psii-d) .p7-alga{fill:#5a9a44}
+:is(.ani-psii-c,.ani-psii-d) .p7-glass{fill:rgba(255,255,255,.3);stroke:#6f6c63;stroke-width:2.6;stroke-linejoin:round}
+:is(.ani-psii-c,.ani-psii-d) .p7-lip{fill:none;stroke:#6f6c63;stroke-width:4.5;stroke-linecap:round}
+:is(.ani-psii-c,.ani-psii-d) .p7-bub{fill:rgba(255,255,255,.8);stroke:#5f7f8f;stroke-width:1.6}

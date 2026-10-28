@@ -1,0 +1,66 @@
+/* Chunk cr animations (cr14 Rising CO₂, cr15 From leaf to loaf), 28 Oct 2026. Stage units: labels ≥ 23 px, credits 16 px.
+   C₃ = clay, C₄ = teal, as on the slides (figs/cr.css). Embedded slide figures keep figs/cr.css under .fig. */
+
+/* the slide's figure card */
+.theme-editorial .cra-card{fill:rgba(255,254,250,.58);stroke:rgba(120,100,60,.10);stroke-width:1}
+.theme-editorial .cra-panel{fill:rgba(255,254,250,.62);stroke:rgba(120,100,60,.12);stroke-width:1}
+.theme-editorial .cra-mult{mix-blend-mode:multiply}
+
+/* text */
+.theme-editorial text.cra-h{font-size:32px;font-weight:600;fill:#141413}
+.theme-editorial text.cra-l{font-size:26px;font-weight:500;fill:#3d3d3a}
+.theme-editorial text.cra-lb{font-size:26px;font-weight:600;fill:#141413}
+.theme-editorial text.cra-s{font-size:23px;fill:#4a4945}
+.theme-editorial text.cra-ax{font-size:23px;fill:#4a4945}
+.theme-editorial text.cra-tk{font-size:22px;fill:#6b6a64}
+.theme-editorial text.cra-val{font-size:28px;font-weight:700;fill:#141413}
+.theme-editorial text.cra-big{font-size:44px;font-weight:700;fill:#141413}
+.theme-editorial text.cra-huge{font-size:60px;font-weight:700;fill:#141413}
+.theme-editorial text.cra-crd{font-size:16px;fill:#8a877d}
+.theme-editorial text.cra-pill{font-size:24px;font-weight:600;fill:#141413}
+.theme-editorial text.cra-halo{paint-order:stroke;stroke:#fcfbf8;stroke-width:7px;stroke-linejoin:round}
+.theme-editorial text.cra-c3,.theme-editorial tspan.cra-c3{fill:#a9532f}
+.theme-editorial text.cra-c4,.theme-editorial tspan.cra-c4{fill:#237a72}
+.theme-editorial text.cra-red,.theme-editorial tspan.cra-red{fill:#b8301b}
+.theme-editorial text.cra-green,.theme-editorial tspan.cra-green{fill:#2f7a37}
+.theme-editorial text.cra-grey,.theme-editorial tspan.cra-grey{fill:#8a877d}
+.theme-editorial text.cra-amber,.theme-editorial tspan.cra-amber{fill:#9a5a0c}
+.theme-editorial tspan.cra-it{font-style:italic}
+
+/* clippings: newsprint, the deck's serif (figs/clipping.css gives .clip-paper) */
+.theme-editorial text.cra-cjour{font-family:Inter,"Helvetica Neue",Arial,sans-serif;font-size:20px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;fill:#5c5a52}
+.theme-editorial text.cra-cyear{font-family:Newsreader,Georgia,serif;font-size:26px;font-style:italic;fill:#2b2a27}
+.theme-editorial text.cra-ctitle{font-family:Newsreader,Georgia,serif;font-size:30px;font-weight:500;fill:#2b2a27}
+.theme-editorial text.cra-cauth{font-family:Newsreader,Georgia,serif;font-size:24px;font-style:italic;fill:#4a4842}
+.theme-editorial text.cra-cname{font-family:Newsreader,Georgia,serif;font-size:32px;font-weight:500;fill:#2b2a27}
+.theme-editorial text.cra-csub{font-family:Newsreader,Georgia,serif;font-size:24px;font-style:italic;fill:#4a4842}
+.theme-editorial .cra-crule{fill:none;stroke:#b9b29c;stroke-width:1.4}
+
+/* pills and leaders on images */
+.theme-editorial .cra-pillbg{fill:#fffdf8;opacity:.95}
+.theme-editorial .cra-ldh{fill:none;stroke:#fffdf8;stroke-width:5;stroke-linecap:round;opacity:.9}
+.theme-editorial .cra-ldk{fill:none;stroke:#141413;stroke-width:2;stroke-linecap:round}
+.theme-editorial .cra-tip{fill:#141413;stroke:#fffdf8;stroke-width:1.6}
+
+/* bars and readouts */
+.theme-editorial .cra-track{fill:#ece9e0}
+.theme-editorial .cra-bar-g{fill:#8a877d}
+.theme-editorial .cra-bar-c3{fill:#a9532f}
+.theme-editorial .cra-bar-c4{fill:#237a72}
+.theme-editorial .cra-bar-up{fill:#5f9a52}
+.theme-editorial .cra-bar-dn{fill:#c8613f}
+.theme-editorial .cra-box{fill:#fffdf8;stroke:#c9c6bb;stroke-width:1.6}
+.theme-editorial .cra-zero{fill:none;stroke:#6b6a64;stroke-width:2;stroke-dasharray:6 6}
+
+/* the Keeling curve */
+.theme-editorial .cra-axis{fill:none;stroke:#4a4945;stroke-width:2}
+.theme-editorial .cra-grid{fill:none;stroke:#e3dfd4;stroke-width:1.4}
+.theme-editorial .cra-co2{fill:none;stroke:#b8301b;stroke-width:2.4;stroke-linejoin:round}
+.theme-editorial .cra-dot{fill:#b8301b;stroke:#fffdf8;stroke-width:2.5}
+.theme-editorial .cra-ring{fill:none;stroke:#b8301b;stroke-width:4}
+.theme-editorial .cra-ring-k{fill:none;stroke:#141413;stroke-width:3.4}
+
+/* drawn glyphs */
+.theme-editorial .cra-puff{fill:#f6c64a;fill-opacity:.0}
+.theme-editorial .cra-sq-sun{fill:#fbe7a8;stroke:#d9a52a;stroke-width:1.6}
+.theme-editorial .cra-flow{fill:#c07a12;stroke:#fffdf8;stroke-width:1.5}

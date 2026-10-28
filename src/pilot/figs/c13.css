@@ -88,3 +88,8 @@
 /* The reaction arrow of the equation, with light written over it (as fl01-eq-ar on slide 1). */
 .theme-editorial .fc13-eq-ar{fill:none;stroke:#3d3d3a;stroke-linecap:round}
 .theme-editorial .fc13-eq-hd{fill:#3d3d3a}
+/* the deck's one glyph set (28 Oct 2026): molecule names in ink; atoms in the shared colours (O yellow, C red-orange, H white) */
+.theme-editorial .fig text.fc13-w,.theme-editorial .fig .fc13-w,.theme-editorial .fig text.fc13-c,.theme-editorial .fig .fc13-c{fill:#141413}
+.theme-editorial .fc13-ow,.theme-editorial .fc13-oc{fill:#f4cc4f;stroke:#b8902a;stroke-width:1.4}
+.theme-editorial .fc13-hw{fill:#fffdf8;stroke:#a8a59a;stroke-width:1.4}
+.theme-editorial .fc13-cb{fill:#d9633a;stroke:#9b3e1e;stroke-width:1.4}

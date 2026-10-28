@@ -1,0 +1,26 @@
+# Slides 4a, 4b, 6–14 in the style of slides 1–5 (27 Oct 2026, for approval; nothing changed)
+
+Leads: one plain defining sentence. Headings: terms. Lines: short facts.
+
+## 4a and 4b: headings only (lines stay as live)
+
+| # | Now | New |
+|---|---|---|
+| 4a | Absorption needs a match. · Energy above S₁ becomes heat. · Photons count, not their energy. | Absorption bands. · Internal conversion. · Lowest excited state (S₁). |
+| 4b | Longer conjugation, longer wavelengths. · Several pigments, a wider band. · Green is still used. | Conjugated double bonds. · Accessory pigments. · Green light. |
+
+## 6–14
+
+| # | Title | Lead | 1 | 2 | 3 |
+|---|---|---|---|---|---|
+| 6 | Light harvesting | Light-harvesting complexes collect light and pass its energy to the reaction centres. | **Antenna.** Hundreds of chlorophylls and carotenoids per reaction centre / In full sun one chlorophyll absorbs ~10 photons per second / PSII: LHCII · PSI: LHCI | **Excitation energy transfer.** Between pigments 1–2 nm apart / From carotenoids and Chl b to Chl a, towards lower energy | **Trapping.** The PSII reaction centre traps the energy within ~150 ps / 84–91 % of the photons absorbed by PSII drive charge separation |
+| 7 | Charge separation | In the reaction centre, light energy is converted into separated electric charge. | **Primary charge separation.** Excited P680 passes an electron to pheophytin within picoseconds / P680: the reaction-centre chlorophylls of PSII | **Stabilisation.** The electron moves on to Q_A, then Q_B, across the membrane / Each step is faster than recombination | **Products.** P680⁺ (≈ +1.25 V), which oxidises water / Plastoquinol (PQH₂), formed when Q_B takes two electrons and two H⁺ |
+| 8 | Water oxidation | PSII takes electrons from water and releases O₂. | **Mn₄CaO₅ cluster.** Stores one oxidising equivalent per charge separation: S₀ → S₄ / At S₄: 2 H₂O → O₂ + 4 H⁺ + 4 e⁻ | **Flash O₂ yield.** O₂ peaks on every fourth flash, first on flash 3 (Joliot 1969) / Kok cycle: the cluster rests in S₁ in the dark (Kok 1970) | **Products.** O₂: the source of atmospheric oxygen / H⁺: released into the lumen |
+| 9 | Two photosystems in series | Electrons flow from water to NADP⁺ through PSII and PSI in series: the Z-scheme. | **PSII and PSI.** PSII forms a strong oxidant (P680⁺, ≈ +1.25 V) that oxidises water / PSI forms a strong reductant that reduces NADP⁺ via ferredoxin / Water: +0.82 V · NADP⁺: −0.32 V | **Emerson enhancement effect.** Far-red light (> 685 nm) alone drives O₂ evolution poorly / With added shorter-wavelength light the rate exceeds the sum of both (Emerson 1957) | **Electron carriers.** Plastoquinol → cytochrome b₆f → plastocyanin → PSI → ferredoxin → NADPH / PSII sits in the grana, PSI in the stroma lamellae |
+| 10 | ATP synthesis | Electron transport builds a proton gradient across the thylakoid membrane; ATP synthase uses it to make ATP. | **Proton gradient.** 12 H⁺ into the lumen per O₂: 4 from water, 8 from the Q cycle at cytochrome b₆f / Stored as ΔpH and membrane voltage | **ATP synthase.** H⁺ flow back to the stroma through its rotor / 14 H⁺ per 3 ATP | **Jagendorf acid-bath experiment.** Thylakoids moved from pH 3.8 to pH 8 make ATP in the dark (1966) / Evidence for Mitchell's chemiosmotic theory |
+| 11 | Balancing ATP and NADPH | The Calvin–Benson cycle uses 3 ATP per 2 NADPH; electron transport adjusts to supply this ratio. | **Linear electron flow.** ≈ 2.6 ATP per 2 NADPH (12 H⁺ ÷ 4.67 H⁺ per ATP) | **Cyclic electron flow.** Electrons from PSI return to plastoquinone / Adds H⁺ and ATP, no NADPH / Mutants lacking it lose PSI in fluctuating light | **State transitions.** Over-excited PSII: part of LHCII moves to PSI / Balances excitation between the two photosystems |
+| 12 | Fates of absorbed energy | An excited chlorophyll loses its energy by photochemistry, heat or fluorescence. | **Competing pathways.** Their yields add up to 1 / The fastest pathway takes the largest share | **Excess light.** Absorption rises with light; CO₂ fixation saturates / Closed reaction centres: more heat and fluorescence | **Singlet oxygen.** Long-lived excitations form triplet chlorophyll / Triplets turn O₂ into singlet O₂, which damages PSII / Carotenoids quench triplets in the antenna |
+| 13 | Photoprotection and repair | In excess light, leaves dissipate energy as heat and repair damaged PSII. | **Non-photochemical quenching (NPQ).** Triggered by low lumen pH / Needs PsbS and zeaxanthin (from violaxanthin) / Dissipates excess energy as heat in the antenna | **Photoinhibition and repair.** PSII damage rises in proportion to light / The D1 protein is replaced continuously | **NPQ relaxation.** Takes minutes after shading, lowering CO₂ fixation / Faster relaxation raised field yield in tobacco and soybean (2016, 2022) |
+| 14 | Chlorophyll fluorescence | Fluorescence competes with photochemistry and heat, so it reports on both. | **Saturating pulse.** Closes all PSII: Fo (open) → Fm (closed) / Fv/Fm = (Fm − Fo)/Fm ≈ 0.83 in healthy dark-adapted leaves | **ΦPSII and NPQ.** In light: ΦPSII = (Fm′ − Fs)/Fm′ / NPQ = Fm/Fm′ − 1 | **Solar-induced fluorescence (SIF).** Measured by satellites over whole regions / Tracks crop photosynthesis (Guanter 2014) |
+
+To verify before landing: ~10 photons s⁻¹ per chlorophyll in full sun; "hundreds" of pigments per reaction centre.

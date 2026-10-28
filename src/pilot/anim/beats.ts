@@ -13,6 +13,9 @@ const DOMINY: Cite = { label: 'Dominy & Lucas 2001, Nature', url: 'https://doi.o
 const BRISCOE: Cite = { label: 'Briscoe & Chittka 2001, Annu. Rev. Entomol.', url: 'https://doi.org/10.1146/annurev.ento.46.1.471' };
 const KOSKI: Cite = { label: 'Koski & Ashman 2015, Nature Plants', url: 'https://doi.org/10.1038/nplants.2014.7' };
 const JACOBS: Cite = { label: 'Jacobs 2009, Phil. Trans. R. Soc. B', url: 'https://doi.org/10.1098/rstb.2009.0039' };
+const MELIN: Cite = { label: 'Melin et al. 2017, PNAS', url: 'https://doi.org/10.1073/pnas.1705957114' };
+const PEITSCH: Cite = { label: 'Peitsch et al. 1992, J. Comp. Physiol. A', url: 'https://doi.org/10.1007/BF00190398' };
+const TELFER: Cite = { label: 'Telfer 2014, Plant Cell Physiol.', url: 'https://doi.org/10.1093/pcp/pcu040' };
 
 /** Animation 1, after the slide 2 lead page: light is a wave, and air scatters the short wavelengths most. */
 export const SKY: Beat[] = [
@@ -36,8 +39,8 @@ export const LIFE: Beat[] = [
     say: 'Our ancestors moved onto land. Most mammals see red and green as one colour.',
     cite: [{ label: 'Daeschler et al. 2006, Nature', url: 'https://doi.org/10.1038/nature04639' }, JACOBS],
   },
-  { tag: 'Primates', say: 'Primates evolved an extra colour receptor: ripe fruit stands out against the leaves.', cite: [JACOBS, DOMINY] },
-  { tag: 'Bees', say: 'Bees see ultraviolet but not red. Many flowers show them ultraviolet patterns that we cannot see.', cite: [BRISCOE, KOSKI] },
+  { tag: 'Primates', say: 'Our primate ancestors gained a third colour receptor: red fruit and young leaves stand out against green.', cite: [JACOBS, DOMINY, MELIN] },
+  { tag: 'Bees', say: 'Bees see ultraviolet, blue and green; red looks dark to them. Many flowers show them ultraviolet patterns that we cannot see.', cite: [BRISCOE, PEITSCH, KOSKI] },
   {
     tag: 'Plants',
     say: 'Plants use light to make sugar. Their chlorophyll absorbs mostly blue and red.',
@@ -51,13 +54,14 @@ const LICHTENTHALER: Cite = { label: 'Lichtenthaler 1987, Methods Enzymol.', url
 const CROCE14: Cite = { label: 'Croce & van Amerongen 2014, Nat. Chem. Biol.', url: 'https://doi.org/10.1038/nchembio.1555' };
 const VAN_AM13: Cite = { label: 'van Amerongen & Croce 2013, Photosynth. Res.', url: 'https://doi.org/10.1007/s11120-013-9824-3' };
 
-/** Animation 3, played from slide 4b: why pigments differ (ANIM_PIGMENTS_FATES.md, approved 26 Oct 2026). */
+/** Animation 3, played from slide 4b: why pigments differ (ANIM_PIGMENTS_FATES.md, approved 26 Oct 2026). Pigments in the
+ *  order chlorophyll a, chlorophyll b, carotenoids (lecturer, 27 Oct 2026). */
 export const PIGMENTS: Beat[] = [
   { tag: 'Into the molecule', say: 'Chlorophyll’s absorbing electrons spread over its ring of alternating single and double bonds.', cite: [CROCE14] },
-  { tag: 'The room sets the gap', say: 'A longer chain gives the electrons more room: smaller gaps, so longer wavelengths are absorbed.', cite: [KUHN] },
+  { tag: 'Chl <i>a</i> → Chl <i>b</i>', say: 'Chlorophyll <i>b</i> differs by one group, which shifts both of its absorption bands.', cite: [LICHTENTHALER] },
+  { tag: 'Longer chain, longer wavelength', say: 'Electrons that can move along a longer chain need less energy to jump, so they absorb longer wavelengths.', cite: [KUHN] },
   { tag: 'Carotenoids', say: 'Carotenoids’ long chain absorbs blue to blue-green light.', cite: [CROCE14, LICHTENTHALER] },
-  { tag: 'Chl a → Chl b', say: 'Chlorophyll b differs by one group, which shifts both of its absorption bands.', cite: [LICHTENTHALER] },
-  { tag: 'Together', say: 'Different structures, different gaps: together they catch more light.', cite: [CROCE14] },
+  { tag: 'Together', say: 'Chl <i>a</i>, Chl <i>b</i> and carotenoids absorb at different wavelengths; together they absorb most blue and red, and least green.', cite: [CROCE14] },
 ];
 
 /** Animation 4, played from slide 12: the fates of an excitation (ANIM_PIGMENTS_FATES.md, approved 26 Oct 2026). */
@@ -67,7 +71,34 @@ export const FATES: Beat[] = [
   { tag: 'Photochemistry', say: 'With the reaction centre open, most excitations end in photochemistry.', cite: [VAN_AM13] },
   { tag: 'Fluorescence', say: 'With the reaction centre closed, more energy leaves as fluorescence.', cite: [{ label: 'Murchie & Lawson 2013, J. Exp. Bot.', url: 'https://doi.org/10.1093/jxb/ert208' }] },
   { tag: 'Heat (NPQ)', say: 'In excess light, protective quenching (NPQ) turns more of it into heat.', cite: [{ label: 'Murchie & Lawson 2013, J. Exp. Bot.', url: 'https://doi.org/10.1093/jxb/ert208' }] },
-  { tag: 'Triplet', say: 'Rarely, a triplet forms and can make damaging singlet oxygen; carotenoids quench it.', cite: [{ label: 'Krieger-Liszkay 2005, J. Exp. Bot.', url: 'https://doi.org/10.1093/jxb/erh237' }] },
+  { tag: 'Triplet', say: 'When excitation lingers, a triplet can form and make damaging singlet oxygen. Carotenoids catch triplets in the antenna, but not in the reaction centre.', cite: [{ label: 'Krieger-Liszkay 2005, J. Exp. Bot.', url: 'https://doi.org/10.1093/jxb/erh237' }, TELFER] },
+];
+
+/** Animation 5, played from slide 5: dim vs bright light, side by side at three scales, with no dive (the pigments
+ *  animation from slide 4a already zooms from leaf to chloroplast; lecturer, 27 Oct 2026). */
+export const LEAF: Beat[] = [
+  { tag: 'Chloroplasts move', say: '1908, Gustav Senn: chloroplasts move within minutes. In dim light they gather on the walls that face the light; in bright light they move to the side walls.', cite: [{ label: 'Chazdon & Pearcy 1991, BioScience', url: 'https://doi.org/10.2307/1311725' }, { label: 'Kataoka 2015, J. Integr. Plant Biol.', url: 'https://doi.org/10.1111/jipb.12311' }] },
+  { tag: 'Grana', say: 'Thylakoid membranes stack into grana: up to ≈ 100 thylakoids per granum in deep shade, < 10 in sun leaves.', cite: [{ label: 'Anderson 1986, Annu. Rev. Plant Physiol.', url: 'https://doi.org/10.1146/annurev.pp.37.060186.000521' }] },
+  { tag: 'Stacked and unstacked', say: 'The stacks hold photosystem II (PSII) and its antenna. Photosystem I (PSI) and ATP synthase have stroma-side parts too large for the 3–4 nm gap between stacked membranes, so they sit in the unstacked membranes. <b>Do all these chlorophylls do the chemistry?</b>', cite: [{ label: 'Andersson & Anderson 1980, Biochim. Biophys. Acta', url: 'https://doi.org/10.1016/0005-2728(80)90078-X' }] },
+];
+
+/** Animation 6, played from slide 6: from the flash experiment to the reaction centre (PLAN_SLIDES_5-6, 27 Oct 2026). */
+export const ANTENNA: Beat[] = [
+  { tag: 'Emerson & Arnold', say: '1932, Emerson and Arnold: even the brightest flash gives 1 O₂ per ~2,400 chlorophylls. Most chlorophylls only collect light.', cite: [{ label: 'Emerson & Arnold 1932, J. Gen. Physiol.', url: 'https://doi.org/10.1085/jgp.16.2.191' }] },
+  { tag: 'Antenna', say: 'They form an antenna: each O₂ takes 8 reaction-centre turnovers, so ≈ 2,400 ÷ 8 ≈ 300 chlorophylls serve 1 reaction centre. The pea photosystem II drawn here binds 157 of them; more LHCII joins it in the membrane.', cite: [{ label: 'Emerson & Arnold 1932, J. Gen. Physiol.', url: 'https://doi.org/10.1085/jgp.16.2.191' }, { label: 'Su et al. 2017, Science', url: 'https://doi.org/10.1126/science.aan0327' }] },
+  { tag: 'To the reaction centre', say: 'The energy hops from pigment to pigment, downhill from Chl <i>b</i> to Chl <i>a</i>, until the reaction centre traps it. <b>What does the reaction centre do with it?</b>', cite: [CROCE14] },
+];
+
+const SHEVELA23: Cite = { label: 'Shevela et al. 2023, Photosynth. Res.', url: 'https://doi.org/10.1007/s11120-022-00991-y' };
+
+/** Animation 7, played from slide 7: on the slide's chain, the reaction centre sends an electron to plastoquinone, takes a
+ *  new one from water, and plastoquinone carries two on (script approved by the lecturer, 27 Oct 2026; stagings psii7-a,
+ *  psii7-b). */
+export const PSII: Beat[] = [
+  { tag: 'Charge separation', say: 'The reaction centre uses the energy to send an electron across the membrane, to plastoquinone. <b>Where does it get a new electron?</b>', cite: [SHEVELA23] },
+  { tag: 'Water or CO₂?', say: '1941, Ruben and Kamen gave algae heavy oxygen, either in the water or in the CO₂. Only heavy water gave heavy O₂: the O₂, and the electrons, come from water.', cite: [{ label: 'Ruben, Randall, Kamen & Hyde 1941, J. Am. Chem. Soc. 63: 877', url: 'https://doi.org/10.1021/ja01848a512' }] },
+  { tag: 'Water splitting', say: 'Photosystem II splits water: 2 H₂O → O₂ + 4 H⁺ + 4 e⁻. The electrons refill the reaction centre; the H⁺ stay in the lumen.', cite: [SHEVELA23] },
+  { tag: 'Plastoquinone', say: 'Plastoquinone takes two electrons, with two H⁺ from the stroma, and carries them on in the membrane. <b>Where do they go next?</b>', cite: [SHEVELA23] },
 ];
 
 /** Round 1 (staged by sky A and B). */
@@ -118,4 +149,51 @@ export const LIFE_R1: Beat[] = [
     ],
   },
   { tag: 'So which band?', say: 'Eyes and leaves work in almost the same band of light. <b>Which band, and why that one?</b>', cite: [] },
+];
+
+/** Animation after slide 8, cytochrome b₆f (script approved by the lecturer, 27 Oct 2026; staged by b6f8-a and b6f8-b). */
+const MALONE19: Cite = { label: 'Malone et al. 2019, Nature', url: 'https://doi.org/10.1038/s41586-019-1746-6' };
+const MALONE21: Cite = { label: 'Malone et al. 2021, BBA Bioenerg.', url: 'https://doi.org/10.1016/j.bbabio.2021.148380' };
+export const B6F: Beat[] = [
+  { tag: 'Hand-over', say: 'Plastoquinone docks at cytochrome b₆f and hands over its two electrons; its two H⁺ are released into the lumen.', cite: [MALONE19] },
+  { tag: 'Plastocyanin', say: 'Cytochrome b₆f passes the electrons one at a time to plastocyanin, a small copper protein that carries each through the lumen.', cite: [MALONE19] },
+  { tag: 'H⁺ in the lumen', say: 'With every plastoquinone, more H⁺ collect in the lumen. <b>Where does plastocyanin take the electron?</b>', cite: [MALONE21] },
+];
+
+const MAZOR17: Cite = { label: 'Mazor et al. 2017, Nature Plants', url: 'https://doi.org/10.1038/nplants.2017.14' };
+
+/** Animation 9, played from slide 9: on the slide's chain, light at photosystem I sends an electron to ferredoxin,
+ *  plastocyanin refills the reaction centre, FNR makes NADPH; Emerson's enhancement; the two photosystems' spectra
+ *  (script approved by the lecturer, 28 Oct 2026; stagings psi9-a, psi9-b). */
+export const PSI: Beat[] = [
+  { tag: 'Second light reaction', say: 'Light at photosystem I sends an electron across the membrane to ferredoxin; plastocyanin refills the reaction centre.', cite: [MAZOR17] },
+  { tag: 'NADPH', say: 'Ferredoxin passes the electrons to FNR, which makes NADPH from NADP⁺ + H⁺ in the stroma.', cite: [MAZOR17] },
+  { tag: 'Emerson’s enhancement', say: '1957, Emerson: far-red light (beyond 680 nm) alone gave little O₂ per photon; added to shorter red light, it gave more than the two separately.', cite: [{ label: 'Emerson, Chalmers & Cederstrand 1957, PNAS', url: 'https://doi.org/10.1073/pnas.43.1.133' }] },
+  { tag: 'Two spectra', say: 'Photosystem II, rich in Chl <i>b</i>, absorbs more at ≈ 470 and 650 nm; photosystem I also absorbs far-red. Both are needed in series. <b>What else does the chain make besides NADPH?</b>', cite: [{ label: 'Nelson & Ben-Shem 2004, Nat. Rev. Mol. Cell Biol.', url: 'https://doi.org/10.1038/nrm1525' }] },
+];
+
+const KRAMER11: Cite = { label: 'Kramer & Evans 2011, Plant Physiol.', url: 'https://doi.org/10.1104/pp.110.166652' };
+
+/** Animation 8, played from slide 10b: on the slide's chain, linear flow's ATP gap, the cycle around photosystem I, the
+ *  plants that lack it, and the extra ATP it makes (script approved by the lecturer, 28 Oct 2026; stagings cyc10b-a,
+ *  cyc10b-b). */
+export const CYCLIC: Beat[] = [
+  { tag: 'The gap', say: 'Linear flow makes ≈ 2.6 ATP per 2 NADPH, but fixing CO₂ needs 3 ATP per 2 NADPH.', cite: [KRAMER11] },
+  {
+    tag: 'The cycle',
+    say: 'In cyclic flow, ferredoxin returns electrons to plastoquinone. They cycle through cytochrome b₆f and photosystem I, moving more H⁺ into the lumen.',
+    cite: [{ label: 'Malone et al. 2021, BBA Bioenerg.', url: 'https://doi.org/10.1016/j.bbabio.2021.148380' }],
+  },
+  { tag: 'Without it', say: '2004: <i>Arabidopsis</i> plants lacking both routes of cyclic flow grow poorly.', cite: [{ label: 'Munekage et al. 2004, Nature', url: 'https://doi.org/10.1038/nature02598' }] },
+  { tag: 'Extra ATP', say: 'The extra H⁺ make extra ATP without NADPH, closing the gap. <b>What happens when light brings more energy than the chain can use?</b>', cite: [KRAMER11] },
+];
+
+/** Slide 10 animation, ATP synthase (script approved by the lecturer, 28 Oct 2026): the H⁺ gradient, Jagendorf and
+ *  Uribe's acid bath, the rotor, back to the whole chain. */
+const HAHN18: Cite = { label: 'Hahn et al. 2018, Science', url: 'https://doi.org/10.1126/science.aat4318' };
+export const ATPS: Beat[] = [
+  { tag: 'Proton gradient', say: 'H⁺ from water splitting and from cytochrome b₆f collect in the lumen: it becomes more acidic than the stroma.', cite: [HAHN18] },
+  { tag: 'ATP in the dark', say: '1966, Jagendorf and Uribe soaked chloroplasts in acid, then moved them to a basic buffer with ADP: they made ATP in the dark. The H⁺ gradient alone drives ATP synthesis.', cite: [{ label: 'Jagendorf & Uribe 1966, PNAS', url: 'https://doi.org/10.1073/pnas.55.1.170' }] },
+  { tag: 'The rotor', say: 'H⁺ flow back to the stroma through ATP synthase; the flow turns its rotor, and its head makes ATP from ADP + Pᵢ.', cite: [HAHN18, { label: 'Noji et al. 1997, Nature', url: 'https://doi.org/10.1038/386299a0' }] },
+  { tag: 'NADPH and ATP', say: 'Light has made NADPH and ATP in the stroma. <b>Does the chain make them in the right ratio?</b>', cite: [HAHN18] },
 ];

@@ -1,0 +1,14 @@
+/* Slide C5a lead page (Rubisco story), scoped under .theme-editorial and prefixed .fl5a- */
+.theme-editorial .lead-fig text.fl5a-lab{font-size:30px;fill:#3d3d3a}
+.theme-editorial .lead-fig text.fl5a-name{font-size:32px;font-weight:600;fill:#141413}
+.theme-editorial .lead-fig text.fl5a-credit{font-size:16px;fill:#8a877d}
+.theme-editorial .lead-fig text.fl5a-qm{font-family:Newsreader,Georgia,serif;font-size:120px;fill:#a9532f}
+.theme-editorial .lead-fig text.fl5a-halo{paint-order:stroke;stroke:#fcfbf8;stroke-width:8px;stroke-linejoin:round}
+.theme-editorial .lead-fig .fl5a-sb{font-size:68%;baseline-shift:-.24em}
+.theme-editorial .fl5a-ring{fill:none;stroke:#a9532f;stroke-width:4;stroke-dasharray:9 7}
+.theme-editorial .fl5a-gas{fill:none;stroke:#6b6a64;stroke-width:3.4;stroke-dasharray:2 9;stroke-linecap:round}
+.theme-editorial .fl5a-line{fill:none;stroke:#3d3d3a;stroke-width:4}
+.theme-editorial .fl5a-tick{fill:none;stroke:#3d3d3a;stroke-width:3}
+.theme-editorial .fl5a-mult{mix-blend-mode:multiply}
+.theme-editorial .fl5a-th{fill:#fffdf8;stroke:#8a877d;stroke-width:2}
+.theme-editorial .fl5a-thf{fill:#b8301b}

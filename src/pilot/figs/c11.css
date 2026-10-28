@@ -106,3 +106,7 @@
 .theme-editorial .fc11-c-mid{fill:#dcc8b4;stroke:#8a5a3c;stroke-width:1.6}
 .theme-editorial .fc11-c-small{fill:#ece0d3;stroke:#8a5a3c;stroke-width:1.6}
 .theme-editorial .fc11-f-c{fill:#8a5a3c}.theme-editorial .fc11-f-w{fill:#4f7cac}
+/* the deck's one glyph set (28 Oct 2026): CO₂ and water-vapour paths neutral grey, molecule names in ink */
+.theme-editorial .fc11-k-c,.theme-editorial .fc11-k-water{stroke:#6b6a64}.theme-editorial .fc11-hd-c,.theme-editorial .fc11-hd-water{fill:#6b6a64}
+.theme-editorial .fig text.fc11-blue{fill:#141413}
+.theme-editorial .fc11-flow-c,.theme-editorial .fc11-flow-w{stroke:#6b6a64}.theme-editorial .fc11-f-c,.theme-editorial .fc11-f-w{fill:#6b6a64}

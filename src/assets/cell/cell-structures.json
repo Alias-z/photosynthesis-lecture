@@ -1,0 +1,91 @@
+{
+ "prk": {
+  "w": 292,
+  "h": 170,
+  "pxPerA": 2.4,
+  "widthA": 113.8,
+  "heightA": 62.8,
+  "chains": 2
+ },
+ "gapdh": {
+  "w": 234,
+  "h": 236,
+  "pxPerA": 2.4,
+  "widthA": 89.4,
+  "heightA": 90.2,
+  "chains": 4
+ },
+ "tpt": {
+  "w": 159,
+  "h": 263,
+  "pxPerA": 2.4,
+  "widthA": 58.1,
+  "heightA": 101.7,
+  "chains": 2,
+  "memX": 83.7
+ },
+ "gox": {
+  "w": 252,
+  "h": 252,
+  "pxPerA": 2.4,
+  "widthA": 97,
+  "heightA": 97,
+  "chains": 4
+ },
+ "cat": {
+  "w": 264,
+  "h": 250,
+  "pxPerA": 2.4,
+  "widthA": 101.9,
+  "heightA": 96.2,
+  "chains": 4
+ },
+ "gdcp": {
+  "w": 302,
+  "h": 222,
+  "pxPerA": 2.4,
+  "widthA": 118,
+  "heightA": 84.4,
+  "chains": 2
+ },
+ "gdch": {
+  "w": 128,
+  "h": 111,
+  "pxPerA": 2.4,
+  "widthA": 45.1,
+  "heightA": 38.1,
+  "chains": 1
+ },
+ "shmt": {
+  "w": 300,
+  "h": 226,
+  "pxPerA": 2.4,
+  "widthA": 116.8,
+  "heightA": 86.2,
+  "chains": 4
+ },
+ "glyk": {
+  "w": 178,
+  "h": 149,
+  "pxPerA": 2.4,
+  "widthA": 66.4,
+  "heightA": 54,
+  "chains": 1
+ },
+ "gs": {
+  "w": 310,
+  "h": 311,
+  "pxPerA": 2.4,
+  "widthA": 121,
+  "heightA": 121.6,
+  "chains": 10
+ },
+ "gogat": {
+  "w": 262,
+  "h": 246,
+  "pxPerA": 2.4,
+  "widthA": 101.1,
+  "heightA": 94.6,
+  "chains": 1
+ }
+}

@@ -1,0 +1,77 @@
+{
+  "title": "Photoprotection and chlorophyll fluorescence",
+  "chunk": "Lecture 1 · chunk 6",
+  "slides": ["11", "12", "13"],
+  "questions": [
+    {
+      "id": "a",
+      "question": "If plants need sunlight, why doesn't the midday sun burn their leaves?",
+      "story": "At noon a crop leaf in full sun absorbs far more light than it can turn into sugar: the light it absorbs keeps rising with the sun, but its CO₂ fixation levels off well before full sunlight. The excess has to go somewhere harmless. It turns most of it into heat inside the antenna, re-emits a little as red fluorescence, and still loses a little to damage, which it repairs all day.",
+      "steps": [
+        "Absorbed light rises with light intensity; CO₂ fixation saturates, so strong light brings excess energy.",
+        "Each absorbed excitation leaves photosystem II one of three ways: photochemistry, heat or fluorescence.",
+        "Unused excitation forms singlet oxygen, which damages the D1 protein of photosystem II.",
+        "The acidic lumen switches the antenna to heat dissipation (NPQ, with PsbS and zeaxanthin), and damaged D1 is replaced continuously."
+      ],
+      "concepts": ["Excess light", "Fates of absorbed energy", "NPQ", "Photoinhibition and D1 repair"],
+      "see": "Murchie & Niyogi 2011 Fig. 1A (absorbed light vs CO₂ fixation); measured yields of photochemistry, heat and the rest against light in oak leaves (Rodríguez-Calcerrada et al. 2008); the chain with photosystem II lit and its three exits.",
+      "status": "Murchie & Niyogi 2011 (full text, PMC3075776); Rodríguez-Calcerrada et al. 2008 read off the figure as shown by E. Rosenqvist (slide 56), original to read. Opens chunk 6 and follows the cyclic-flow animation's closing question."
+    },
+    {
+      "id": "b",
+      "question": "Why does a leaf glow red under a UV lamp, and why does the glow fade after a minute?",
+      "story": "In 1931, in a darkened room at the University of Heidelberg, Hans Kautsky and A. Hirsch shone strong UV light on leaves that had been kept in the dark. With bare eyes they saw a deep red glow that rose to a bright peak within about a second, then faded over minutes to a low steady level. They concluded: the larger the share of absorbed energy turned into chemical energy, the weaker the fluorescence. Cold and poisons that stop photosynthesis stopped the fading.",
+      "steps": [
+        "Chlorophyll re-emits part of the absorbed energy as red light: fluorescence.",
+        "Fluorescence competes with photochemistry and heat for the same excitations.",
+        "In a dark-adapted leaf the reaction centres close at first, so the glow rises; once CO₂ fixation starts, photochemistry takes over and the glow fades.",
+        "A saturating light pulse closes every reaction centre: comparing Fo and Fm gives Fv/Fm, the maximum yield of photosystem II."
+      ],
+      "concepts": ["Chlorophyll fluorescence", "Kautsky effect", "Saturating pulse and Fv/Fm"],
+      "see": "Kautsky's 1931 observation as a clipping with the translated sentence; a real PAM trace (Ruban 2016 Fig. 1A) with Fo, Fm, Fs, Fm′.",
+      "status": "Kautsky & Hirsch 1931, Naturwissenschaften 19: 964, as translated and described by Schreiber & Lichtenthaler 2025, Photosynthetica 63: 28 (full text read). The Kautsky portrait on the board is CC BY-NC-ND: show it unaltered, no halftone."
+    },
+    {
+      "id": "c",
+      "question": "Can a satellite tell how well a cornfield is growing?",
+      "story": "Sunlit plants glow faintly in red and far-red light. In 2014, Luis Guanter and colleagues mapped this glow from the GOME-2 satellite instrument over the whole Earth. The brightest land on the map was the US Corn Belt in summer, brighter even than the tropical rainforests. On 15 September 2026, the European Space Agency launched FLEX, a satellite built to measure this plant fluorescence.",
+      "steps": [
+        "Every leaf in sunlight re-emits a small share of its absorbed energy as fluorescence.",
+        "Satellite spectrometers separate this faint glow from reflected sunlight: solar-induced fluorescence (SIF).",
+        "Fluorescence competes with photochemistry and heat, so SIF tracks how much light the canopy absorbs and uses.",
+        "SIF maps crop photosynthesis across regions and through the season."
+      ],
+      "concepts": ["Solar-induced fluorescence (SIF)", "Fluorescence as a measure of photosynthesis"],
+      "see": "Guanter et al. 2014 Fig. 1 (global SIF map); Porcar-Castell et al. 2021 Fig. 3 (SIF image of two trees); the FLEX launch photo.",
+      "status": "Guanter et al. 2014, PNAS 111: E1327 (figure and caption, 27 Oct review); FLEX launch: ESA, 15 Sep 2026 (27 Oct review). Satellite method (Fraunhofer lines) to verify."
+    },
+    {
+      "id": "d",
+      "question": "Does a passing cloud cost a farmer part of the harvest?",
+      "story": "When a cloud covers the sun, the leaves of a crop suddenly receive little light, but their heat-dissipation switch, NPQ, stays on for many minutes. In that time they waste light they could have used. In 2016, Johannes Kromdijk, Stephen Long and colleagues gave tobacco extra copies of three genes that switch NPQ on and off (VDE, PsbS, ZEP). The plants switched off faster in shade, and in field trials in Illinois they made about 15 % more dry matter.",
+      "steps": [
+        "In full sun, the acidic lumen switches on NPQ: PsbS and zeaxanthin turn excess energy into heat.",
+        "In sudden shade, zeaxanthin is converted back to violaxanthin only slowly, so NPQ stays on and wastes light.",
+        "Speeding up the xanthophyll cycle shortens this waste.",
+        "VPZ tobacco gained ≈ 15 % dry weight in the field."
+      ],
+      "concepts": ["NPQ", "Xanthophyll cycle", "NPQ relaxation and crop yield"],
+      "see": "Kromdijk et al. 2016 Fig. 1 (sun to shade schematic), Fig. 5A and 5D (field dry weight and aerial photo); Li et al. 2000 NPQ image of plants without PsbS.",
+      "status": "Kromdijk et al. 2016, Science 354: 857 (abstract read tonight; Fig. 5A 14–20 % in the 27 Oct review). De Souza et al. 2022 soybean (+ up to 33 % seed in 2020, no gain in 2021) is the follow-up; later crops (Arabidopsis, potato, rice) showed no gain or losses."
+    },
+    {
+      "id": "e",
+      "question": "Do leaves wear out in the sun, like a solar panel?",
+      "story": "They do, every day, and they repair themselves just as fast. In 1996 Esa Tyystjärvi and Eva-Mari Aro blocked protein synthesis in pumpkin leaves with the antibiotic lincomycin and kept them in light. Photosystem II lost activity at every light level, even in very dim light, and the damage rate rose in direct proportion to the light. Leaves with working repair kept their starting value in dim light.",
+      "steps": [
+        "Light damages photosystem II all the time, mainly its D1 protein, in proportion to light intensity.",
+        "The leaf removes the damaged D1 and inserts a newly made copy; photosystem II works again.",
+        "Photoinhibition appears only when damage outpaces repair.",
+        "Fv/Fm measured with a fluorometer shows it: ≈ 0.83 in healthy leaves, lower when damage wins."
+      ],
+      "concepts": ["Photoinhibition", "D1 repair cycle", "Fv/Fm as a stress measure"],
+      "see": "Tyystjärvi & Aro 1996 Fig. 1A (Fv/Fm in light with and without repair) and Fig. 2A (damage rate ∝ light); the repair cycle after Järvi et al. 2015 Fig. 1.",
+      "status": "Tyystjärvi & Aro 1996, PNAS 93: 2213 (abstract and Fig. 1 caption read on the PMC scan, 28 Oct). Järvi et al. 2015 full text not reachable tonight (ScienceDirect error): to read."
+    }
+  ]
+}

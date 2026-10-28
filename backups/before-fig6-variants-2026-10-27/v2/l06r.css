@@ -1,0 +1,77 @@
+/* Slide 6 · round 3 (r1–r5) figure styles, scoped under .theme-editorial and prefixed .fl06r- (l06r.ts). Pigment
+   colours are the render's own (as in the slide-6 animation): Chl a dark green, Chl b light green, carotenoid orange. */
+.theme-editorial .fig text.fl06r-lab{font-size:21px;font-weight:600;fill:#141413;paint-order:stroke;stroke:#fcfbf8;stroke-width:6px;stroke-linejoin:round}
+.theme-editorial .fig text.fl06r-k{font-size:19px;fill:#3d3d3a}
+.theme-editorial .fig text.fl06r-h{font-size:23px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fl06r-ax{font-size:17px;fill:#6b6a64}
+.theme-editorial .fig text.fl06r-ax-s{font-size:16px}
+.theme-editorial .fig text.fl06r-cr{font-size:14px;fill:#8a877d}
+.theme-editorial .fig text.fl06r-nm{font-size:19px;font-weight:600;fill:#3d3d3a}
+.theme-editorial .fig text.fl06r-nm-p{fill:#a9532f}
+.theme-editorial .fig text.fl06r-name{font-family:Newsreader,Georgia,serif;font-size:17px;font-weight:500;fill:#2b2a27}
+.theme-editorial .fig text.fl06r-c-lhc{fill:#3f8a32}
+.theme-editorial .fig text.fl06r-c-min{fill:#6c7f25}
+.theme-editorial .fig text.fl06r-c-core{fill:#24702f}
+.theme-editorial .fig text.fl06r-c-rc{fill:#a9532f}
+.theme-editorial .fig text.fl06r-c-a{fill:#24702f;font-weight:600}
+.theme-editorial .fig text.fl06r-c-b{fill:#5f9a2f;font-weight:600}
+
+/* the render and its pigments */
+.theme-editorial .fl06r-render{mix-blend-mode:multiply}
+.theme-editorial .fl06r-mult{mix-blend-mode:multiply}
+.theme-editorial .fl06r-pa{fill:#2e7d32;stroke:#fcfbf8;stroke-width:1.1}
+.theme-editorial .fl06r-pb{fill:#93c95a;stroke:#fcfbf8;stroke-width:1.1}
+.theme-editorial .fl06r-ph{fill:#a8a08f;stroke:#fcfbf8;stroke-width:1.1}
+.theme-editorial .fl06r-car{fill:none;stroke:#e08a2c;stroke-width:2.4;stroke-linecap:round;stroke-opacity:.85}
+.theme-editorial .fl06r-car-k{stroke-width:4.5;stroke-opacity:1}
+.theme-editorial .fl06r-rcring{fill:none;stroke:#a9532f;stroke-width:2.2;stroke-dasharray:6 5}
+
+/* leaders */
+.theme-editorial .fl06r-ld{fill:none;stroke:#5c5a52;stroke-width:1.5}
+.theme-editorial .fl06r-ldh{fill:none;stroke:#fcfbf8;stroke-width:4.5;stroke-opacity:.9}
+.theme-editorial .fl06r-ldt{fill:#5c5a52;stroke:#fcfbf8;stroke-width:1.6}
+
+/* route arrows (after Kouřil et al. 2012), amber like every energy mark in the deck */
+.theme-editorial .fl06r-rt{fill:none;stroke:#f0a316;stroke-width:8;stroke-linecap:butt}
+.theme-editorial .fl06r-rh{fill:#f0a316}
+.theme-editorial .fl06r-rth{fill:none;stroke:#fcfbf8;stroke-width:13;stroke-opacity:.9}
+.theme-editorial .fl06r-rhh{fill:#fcfbf8;stroke:#fcfbf8;stroke-width:5;stroke-linejoin:round;stroke-opacity:.9}
+
+/* the hop path and the inset staircase */
+.theme-editorial .fl06r-trail{fill:none;stroke:#f0a316;stroke-width:4.2;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fl06r-trailh{fill:none;stroke:#fcfbf8;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:.85}
+.theme-editorial .fl06r-rung{fill:none;stroke:#3d3d3a;stroke-width:2.6;stroke-linejoin:round;stroke-linecap:round}
+.theme-editorial .fl06r-axl{fill:none;stroke:#8a877d;stroke-width:1.6;stroke-linejoin:round}
+
+/* the photosynthetic unit */
+.theme-editorial .fl06r-dot{fill:#6f9a5a}
+.theme-editorial .fl06r-dot-on{fill:#3f6b45}
+.theme-editorial .fl06r-rcbg{fill:#fcfbf8}
+.theme-editorial .fl06r-rcring2{fill:none;stroke:#a9532f;stroke-width:2.4}
+
+/* the drawn staircase */
+.theme-editorial .fl06r-lv{fill:none;stroke:#3d3d3a;stroke-width:4;stroke-linecap:round}
+.theme-editorial .fl06r-lv-car{stroke:#e08a2c}
+.theme-editorial .fl06r-lv-b{stroke:#7fb24a}
+.theme-editorial .fl06r-lv-a{stroke:#2e7d32}
+.theme-editorial .fl06r-lv-p{stroke:#a9532f}
+.theme-editorial .fl06r-band{fill:#e3eed8}
+.theme-editorial .fl06r-tick{fill:none;stroke:#8a877d;stroke-width:1.6}
+.theme-editorial .fl06r-brk{fill:none;stroke:#8a877d;stroke-width:1.6}
+.theme-editorial .fl06r-base{fill:none;stroke:#d8d5cb;stroke-width:1.2}
+
+/* sun and shade schematics: union outlines (stroke under, fill over) */
+.theme-editorial .fl06r-o{stroke-width:3.4;stroke-linejoin:round}
+.theme-editorial .fl06r-o-lhc{fill:#8fb07a;stroke:#8fb07a}
+.theme-editorial .fl06r-o-min{fill:#b3bd7a;stroke:#b3bd7a}
+.theme-editorial .fl06r-o-core{fill:#a8a59a;stroke:#a8a59a}
+.theme-editorial .fl06r-i-lhc{fill:#f1f6ea}
+.theme-editorial .fl06r-i-min{fill:#f3f4e4}
+.theme-editorial .fl06r-i-core{fill:#eeece4}
+.theme-editorial .fl06r-sc-x .fl06r-o{stroke-dasharray:5 4}
+.theme-editorial .fl06r-rule{fill:none;stroke:#d8d5cb;stroke-width:1.2}
+.theme-editorial .f6-hop.fl06r-route{stroke-width:3.6}
+.theme-editorial .fl06r-sa{fill:#2e7d32}
+.theme-editorial .fl06r-sb{fill:#8cc451;stroke:#5f8f34;stroke-width:.8}
+.theme-editorial .fl06r-sh{fill:#a8a08f}
+.theme-editorial .fl06r-rcring-s{stroke-width:2;stroke-dasharray:4 3.5}

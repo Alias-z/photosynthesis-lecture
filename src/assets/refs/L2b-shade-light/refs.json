@@ -1,0 +1,143 @@
+{
+  "title": "Collecting light in the shade: chloroplasts, grana, antenna",
+  "slides": [
+    "5",
+    "6"
+  ],
+  "images": [
+    {
+      "id": "a",
+      "file": "forest-spruce-oxalis-estonia.jpg",
+      "kind": "photo",
+      "caption": "Wood sorrel (Oxalis acetosella) carpeting the floor of a dark spruce forest, Estonia; horsetail in the sunfleck",
+      "credit": "Maris Juuse 2012, Wikimedia Commons, CC BY-SA 3.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Metsosi_ja_harilik_j%C3%A4nesekapsas.JPG",
+      "note": "Classic shade plant under a closed canopy; the dark trunks behind show how little light gets through."
+    },
+    {
+      "id": "b",
+      "file": "forest-spruce-holma-sweden.jpg",
+      "kind": "photo",
+      "caption": "Dense old spruce stand, Sweden: bare lower branches, wood sorrel and ferns on the dim floor",
+      "credit": "W.carter 2017, Wikimedia Commons, CC0",
+      "url": "https://commons.wikimedia.org/wiki/File:Spruce_forest_at_Holma.jpg",
+      "note": "The wide view: canopy shades the floor so strongly that the trees shed their own lower branches."
+    },
+    {
+      "id": "c",
+      "file": "forest-oxalis-carpet-muenster.jpg",
+      "kind": "photo",
+      "caption": "Flowering wood sorrel covering a forest floor in spring, Münster, Germany",
+      "credit": "Dietmar Rabich 2019, Wikimedia Commons, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:M%C3%BCnster,_Boniburger_Wald_--_2019_--_4294.jpg",
+      "note": "Close-up of the shade plant itself; works as the camera target of the zoom."
+    },
+    {
+      "id": "d",
+      "file": "forest-alocasia-rainforest-queensland.jpg",
+      "kind": "photo",
+      "caption": "Giant taro (Alocasia macrorrhizos) in dim subtropical rainforest understory, Lamington National Park, Australia",
+      "credit": "John Robert McPherson 2013, Wikimedia Commons, CC BY-SA 4.0",
+      "url": "https://commons.wikimedia.org/wiki/File:Alocasia_macrorrhizos_National_Park_Rd_Lamington_National_Park_Queensland_P1310260.jpg",
+      "note": "Alocasia is the classic deep-shade plant of the grana literature (giant grana; Goodchild et al. 1972, Chow et al. 1988)."
+    },
+    {
+      "id": "e",
+      "file": "senn-portrait-photopress.jpg",
+      "kind": "history",
+      "caption": "Gustav Senn (1875–1945), Basel botanist who showed in 1908 how chloroplasts change shape and position with light",
+      "credit": "Photopress AG, between 1915 and 1935; Universitätsbibliothek Basel, UBH Portr BS Senn G 1875, 2 (no licence stated in the record)",
+      "url": "https://swisscollections.ch/Record/991100683099705501",
+      "note": "Closest and sharpest of four UB Basel portraits; scan colour chart cropped off. Best for a halftone avatar."
+    },
+    {
+      "id": "f",
+      "file": "senn1933-portrait-lafayette.jpg",
+      "kind": "history",
+      "caption": "Gustav Senn in 1933, signed portrait on its card mount",
+      "credit": "Lafayette Ltd., 1933; Universitätsbibliothek Basel, UBH Portr BS Senn G 1875, 1b (no licence stated in the record)",
+      "url": "https://swisscollections.ch/Record/991139882019705501",
+      "note": "Alternative: later, calmer portrait with his signature; scan colour chart cropped off."
+    },
+    {
+      "id": "o",
+      "file": "senn1895-vallisneria-drawing.jpg",
+      "kind": "history",
+      "caption": "Senn's student drawing, 1895: chloroplasts moving in Vallisneria leaf cells, arrows show their paths",
+      "credit": "G. Senn 1895, in Honegger 2022, Bauhinia 28:63, Abb. 3a (CC BY 4.0)",
+      "url": "https://eterna.unibas.ch/bauhinia/article/view/1607"
+    },
+    {
+      "id": "g",
+      "file": "wada2016-chloroplast-positions.jpg",
+      "kind": "micrograph",
+      "caption": "A: chloroplast positions in dark, weak and strong light; B: matching Arabidopsis leaf sections; D: avoidance spelling 光 (light)",
+      "credit": "Wada 2016, Proc Jpn Acad Ser B 92:387, Fig. 1 (CC BY)",
+      "url": "https://doi.org/10.2183/pjab.92.387",
+      "note": "The field’s own schematic of accumulation vs avoidance, next to real sections; only 758 px wide on PMC."
+    },
+    {
+      "id": "h",
+      "file": "kasahara2002-avoidance-fig1.jpg",
+      "kind": "micrograph",
+      "caption": "Arabidopsis mesophyll after 1 h strong light, seen from above: wild type moves chloroplasts to side walls; phot2 mutant cannot",
+      "credit": "Kasahara et al. 2002, Nature 420:829, Fig. 1",
+      "url": "https://doi.org/10.1038/nature01213",
+      "note": "a: leaf transmittance rises with light as chloroplasts flee (WT, phot1) but not in phot2 or chup1; b at 500 µmol m⁻² s⁻¹, scale 20 µm. Legend read on nature.com."
+    },
+    {
+      "id": "i",
+      "file": "wada2016-mougeotia-fern-moss.jpg",
+      "kind": "micrograph",
+      "caption": "Model organisms of chloroplast movement; B: Mougeotia ribbon chloroplast face-on (left) and edge-on (right), red chlorophyll fluorescence",
+      "credit": "Wada 2016, Proc Jpn Acad Ser B 92:387, Fig. 2 (CC BY; panel B after the PNAS cover of 20 Sep 2005)",
+      "url": "https://doi.org/10.2183/pjab.92.387",
+      "note": "Only panel B (Mougeotia) is on topic, and it is small (figure 757 px wide); F is a TEM of chloroplasts pressed to the plasma membrane in a dark-adapted palisade cell."
+    },
+    {
+      "id": "j",
+      "file": "shao2014-shade-grana-tem.jpg",
+      "kind": "micrograph",
+      "caption": "TEM of a shade orchid grown at 50, 30, 20 and 5 % light: dimmer light, taller and broader grana",
+      "credit": "Shao et al. 2014, PLoS One 9:e85996, Fig. 6 (CC BY 4.0)",
+      "url": "https://doi.org/10.1371/journal.pone.0085996",
+      "note": "Anoectochilus roxburghii, a forest-floor herb; each row runs cell → chloroplast → grana (bars 5 µm, 0.5 µm, 0.2 µm)."
+    },
+    {
+      "id": "k",
+      "file": "emerson-arnold1932-fig1-flash-saturation.jpg",
+      "kind": "figure",
+      "caption": "Chlorella photosynthesis per flash against flash intensity: the yield levels off at the brightest flashes",
+      "credit": "Emerson & Arnold 1932, J Gen Physiol 16:191, Fig. 1 (p. 194)",
+      "url": "https://doi.org/10.1085/jgp.16.2.191",
+      "note": "Saturation is what makes the per-flash yield a count of units. Page scan from Internet Archive (Digital Library of India copy, item in.ernet.dli.2015.66762, leaf n204); cropped to figure and legend."
+    },
+    {
+      "id": "l",
+      "file": "emerson-arnold1932-fig2-2480-chl.jpg",
+      "kind": "figure",
+      "caption": "CO₂ reduced per saturating flash rises in proportion to chlorophyll: 2480 chlorophylls per CO₂ molecule per flash",
+      "credit": "Emerson & Arnold 1932, J Gen Physiol 16:191, Fig. 2 and text (p. 195)",
+      "url": "https://doi.org/10.1085/jgp.16.2.191",
+      "note": "The photosynthetic-unit number itself, in the authors’ words below the legend. They measured CO₂ reduced (manometrically), not O₂; leaf n205 of the same scan."
+    },
+    {
+      "id": "m",
+      "file": "bielczynski2016-antenna-per-psii.jpg",
+      "kind": "figure",
+      "caption": "Arabidopsis grown at 200, 600, 1800 µmol m⁻² s⁻¹: less LHCII (Lhcb1,2) and CP24 per PSII core in high light",
+      "credit": "Bielczynski, Schansker & Croce 2016, Front Plant Sci 7:105, Fig. 3 (CC BY 4.0)",
+      "url": "https://doi.org/10.3389/fpls.2016.00105",
+      "note": "Optional antenna-size figure. The effect is modest here (Lhcb1,2 about −17 %, CP24 about −36 % from 200 to 1800); no true deep-shade treatment."
+    },
+    {
+      "id": "n",
+      "file": "priestley1774-apparatus.jpg",
+      "kind": "history",
+      "caption": "Priestley 1774 frontispiece: pneumatic trough, a mouse under a jar, a plant sprig in an inverted jar (right)",
+      "credit": "Priestley J 1774, Experiments and Observations on Different Kinds of Air, vol. 1, frontispiece; copy at AIP Niels Bohr Library; Wikimedia Commons, public domain",
+      "url": "https://commons.wikimedia.org/wiki/File:Priestly-3.jpg",
+      "note": "Kept from the oxygen-story detour, placed last; bleed-through and a library stamp are visible in this photo of the page."
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+/* Lecture 2 chunk 1 animations (cb1–cb4): the shared look on the 1600 × 740 stage. The slide figures keep cb.css
+   (figs); these are the stage's own pieces: the slide's figure card, pills, cards, readouts, credits, atoms. Sizes are
+   stage pixels (the stage shows 1:1 at 1600 wide). */
+.ani .cbk-slidecard{fill:rgba(255,254,250,.58);stroke:rgba(120,100,60,.10);stroke-width:1}
+.ani .cbk-card{fill:#fffdf8;stroke:rgba(120,100,60,.14);stroke-width:1}
+.ani .cbk-frame{fill:none;stroke:#d8d5cb;stroke-width:1.2}
+.ani .cbk-mult{mix-blend-mode:multiply}
+
+/* text */
+.ani text.cbk-h{font-size:30px;font-weight:600;fill:#141413}
+.ani text.cbk-l{font-size:24px;fill:#3d3d3a}
+.ani text.cbk-s{font-size:21px;fill:#4a4945}
+.ani text.cbk-big{font-size:40px;font-weight:600;fill:#141413}
+.ani text.cbk-huge{font-size:64px;font-weight:600;fill:#141413}
+.ani text.cbk-crd{font-size:14px;fill:#8a877d}
+.ani text.cbk-name{fill:#2b2a27}
+.ani text.cbk-serif{font-family:Newsreader,Georgia,serif;fill:#2b2a27}
+.ani text.cbk-it,.ani tspan.cbk-it{font-style:italic}
+.ani tspan.cbk-b{font-weight:700}
+.ani text.cbk-green,.ani tspan.cbk-green{fill:#24812f}
+.ani text.cbk-blue,.ani tspan.cbk-blue{fill:#2350e6}
+.ani text.cbk-amber,.ani tspan.cbk-amber{fill:#9a5a0c}
+.ani text.cbk-red,.ani tspan.cbk-red{fill:#b8301b}
+.ani text.cbk-rust,.ani tspan.cbk-rust{fill:#a9532f}
+.ani text.cbk-grey,.ani tspan.cbk-grey{fill:#6b6a64}
+.ani text.cbk-paper{fill:#fffdf8}
+
+/* pills */
+.ani .cbk-pill{fill:#fffdf8;stroke:#d8d5cb;stroke-width:1.2}
+.ani .cbk-pill-green{fill:#e3f0de;stroke:#2a963a;stroke-width:1.6}
+.ani .cbk-pill-blue{fill:#e1e8fb;stroke:#2350e6;stroke-width:1.6}
+.ani .cbk-pill-amber{fill:#f6e8cf;stroke:#c07a12;stroke-width:1.6}
+.ani .cbk-pill-rust{fill:#f3e0d6;stroke:#a9532f;stroke-width:1.6}
+.ani .cbk-pill-ink{fill:#2b2a27;stroke:#2b2a27}
+.ani text.cbk-pt{font-weight:600;fill:#141413}
+.ani .cbk-pill-ink + text.cbk-pt{fill:#fffdf8}
+
+/* leaders onto images */
+.ani .cbk-ldh{fill:none;stroke:#fffdf8;stroke-width:4.4;stroke-linecap:round;opacity:.9}
+.ani .cbk-ldk{fill:none;stroke:#141413;stroke-width:1.7;stroke-linecap:round}
+.ani .cbk-tip{fill:#141413;stroke:#fffdf8;stroke-width:1.5}
+
+/* rings and marks */
+.ani .cbk-ring{fill:none;stroke-width:3.4}
+.ani .cbk-ring-green{stroke:#2a963a}.ani .cbk-ring-blue{stroke:#2350e6}.ani .cbk-ring-amber{stroke:#c07a12}.ani .cbk-ring-rust{stroke:#a9532f}
+.ani .cbk-dash{fill:none;stroke:#141413;stroke-width:1.8;stroke-dasharray:6 5}
+.ani .cbk-arrow{fill:none;stroke:#3d3d3a;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+
+/* readouts */
+.ani .cbk-meter{fill:#efece3;stroke:#d3d0c6;stroke-width:1.2}
+.ani .cbk-fill-green{fill:#2a963a}
+.ani .cbk-fill-amber{fill:#c07a12}
+.ani .cbk-fill-red{fill:#c8361e}
+.ani .cbk-fill-blue{fill:#2350e6}
+.ani .cbk-fill-pale{fill:#bcd7a6}
+
+
+/* light and dark */
+.ani .cbk-lamp{fill:#f7c948;stroke:#9a7a1c;stroke-width:1.6}
+.ani .cbk-lamp-off{fill:#d3d0c6;stroke:#8a877d;stroke-width:1.6}
+.ani .cbk-beam{fill:#f7c948;opacity:.22}
+.ani .cbk-night{fill:#2b2a27;opacity:.1}
+
+/* moving parts */
+.ani .cbk-drop{fill:#6aa84f;stroke:#2f6b2a;stroke-width:1.4}
+.ani .cbk-tok-blue{fill:#2350e6;stroke:#fffdf8;stroke-width:1.4}
+.ani .cbk-tok-amber{fill:#c07a12;stroke:#fffdf8;stroke-width:1.4}
+.ani .cbk-tok-rust{fill:#a9532f;stroke:#fffdf8;stroke-width:1.4}
+.ani .cbk-tok-green{fill:#2a963a;stroke:#fffdf8;stroke-width:1.4}
+.ani .cbk-pulse{fill:none;stroke-width:4}
+.ani .cbk-pulse-green{stroke:#2a963a}.ani .cbk-pulse-blue{stroke:#2350e6}.ani .cbk-pulse-amber{stroke:#c07a12}.ani .cbk-pulse-rust{stroke:#a9532f}
+.ani .cbk-veil{fill:#f6f4ee;opacity:.86}
+.ani .cbk-pill-red{fill:#f6dfd6;stroke:#c8361e;stroke-width:1.6}
+.ani .cbk-site{fill:#e3f0de;stroke:#2a963a;stroke-width:2}
+.ani .cbk-site-on{fill:#2a963a;stroke:#1d6b29;stroke-width:2}
+.ani .cbk-donut{fill:none;stroke:#e3e0d6;stroke-linecap:butt}
+.ani .cbk-donut-fill{fill:none;stroke:#2a963a;stroke-linecap:butt}
+.ani .cbk-donut-fill2{fill:none;stroke:#6dbb72;stroke-linecap:butt}
+.ani .cbk-tok-red{fill:#c8361e;stroke:#fffdf8;stroke-width:1.4}
+.ani .cbk-pulse-red{stroke:#c8361e}
+.ani .cbk-veil2{fill:#f8f6f0}
+.ani .cbk-cursor{fill:none;stroke:#c8361e;stroke-width:3}
+.ani .cbk-ray{fill:none;stroke:#e0a91a;stroke-width:4;stroke-linecap:round}
+.ani .cbk-flask{fill:#f3f1ea;stroke:#6b6a64;stroke-width:2}
+.ani .cbk-algae{fill:#7fb069;stroke:none}
+.ani .cbk-stroma{fill:#eef3e2;stroke:none}

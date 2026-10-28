@@ -1,0 +1,76 @@
+/* Photosystem II: the parts both stagings share (psii-common.ts), scoped to the two stagings. Colours follow slide 7:
+   electrons blue, H⁺ red-brown, O₂ and water steel blue, plastoquinone amber-brown, Mn purple. */
+
+/* Labels: at least 22 px. */
+:is(.ani-psii-a,.ani-psii-b) text.ps-lab{font-size:26px;font-weight:500;fill:#3d3d3a;paint-order:stroke;stroke:#fcfbf8;stroke-width:8px;stroke-linejoin:round}
+:is(.ani-psii-a,.ani-psii-b) text.ps-lab-key{fill:#141413;font-weight:600}
+:is(.ani-psii-a,.ani-psii-b) text.ps-lab-psii{font-size:28px;font-weight:600;fill:#141413}
+:is(.ani-psii-a,.ani-psii-b) text.ps-lab-zone{fill:#8a877d;font-weight:600;letter-spacing:.03em}
+:is(.ani-psii-a,.ani-psii-b) text.ps-lab-acid{fill:#a8321c;font-weight:600}
+:is(.ani-psii-a,.ani-psii-b) text.ps-lab-light{fill:#c8361e;font-weight:600}
+:is(.ani-psii-a,.ani-psii-b) text.ps-lab-w{fill:#3c6a88;font-weight:600}
+:is(.ani-psii-a,.ani-psii-b) text.ps-lab-e{fill:#2457a8;font-weight:700}
+:is(.ani-psii-a,.ani-psii-b) text.ps-lab-o18{fill:#8a3d1f;font-weight:600}
+:is(.ani-psii-a,.ani-psii-b) text.ps-lab-nm{font-size:23px;fill:#141413;font-weight:600}
+:is(.ani-psii-a,.ani-psii-b) text.ps-lab-st{font-size:23px;font-weight:600;fill:#3d3d3a}
+:is(.ani-psii-a,.ani-psii-b) tspan.ps-sub{font-size:19px}
+:is(.ani-psii-a,.ani-psii-b) text.ps-ax{font-size:23px;fill:#6b6a64}
+:is(.ani-psii-a,.ani-psii-b) .ps-lead{fill:none;stroke:#5c5a52;stroke-width:1.8}
+:is(.ani-psii-a,.ani-psii-b) .ps-lead-h{fill:none;stroke:#fcfbf8;stroke-width:5.5;stroke-opacity:.9}
+:is(.ani-psii-a,.ani-psii-b) .ps-lead-dot{fill:#5c5a52;stroke:#fcfbf8;stroke-width:2}
+
+/* The structure: membrane, protein, cofactors as sticks of their real atoms (scaled with the camera). */
+:is(.ani-psii-a,.ani-psii-b) .ps-memedge{fill:none;stroke-width:3;vector-effect:non-scaling-stroke}
+:is(.ani-psii-a,.ani-psii-b) .ps-prot-a{opacity:.42}
+:is(.ani-psii-a,.ani-psii-b) .ps-prot-b{opacity:.62}
+:is(.ani-psii-a,.ani-psii-b) .ps-sheet{fill:#f1ece0;stroke:#d3cdbd;stroke-width:1;vector-effect:non-scaling-stroke}
+:is(.ani-psii-a,.ani-psii-b) .ps-halo{fill:none;stroke:#fcfbf8;stroke-width:5.6;stroke-linecap:round;stroke-opacity:.85}
+:is(.ani-psii-a,.ani-psii-b) .ps-chl{fill:none;stroke:#2e7d32;stroke-width:2.8;stroke-linecap:round}
+:is(.ani-psii-a,.ani-psii-b) .ps-chl-pale{fill:none;stroke:#b9d6a4;stroke-width:2.8;stroke-linecap:round}
+:is(.ani-psii-a,.ani-psii-b) .ps-pheo{fill:none;stroke:#8b8d3a;stroke-width:2.8;stroke-linecap:round}
+:is(.ani-psii-a,.ani-psii-b) .ps-pq{fill:none;stroke:#d08a22;stroke-width:3.2;stroke-linecap:round}
+:is(.ani-psii-a,.ani-psii-b) .ps-pqh2{fill:none;stroke:#8a5a14;stroke-width:3.2;stroke-linecap:round}
+:is(.ani-psii-a,.ani-psii-b) .ps-hat{fill:#fcfbf8;stroke:#8a5a14;stroke-width:1.4}
+:is(.ani-psii-a,.ani-psii-b) .ps-oexb{fill:none;stroke:#6b6a64;stroke-width:1.6}
+:is(.ani-psii-a,.ani-psii-b) .ps-x0{fill:#8a4cb0;stroke:#4f2468;stroke-width:1.1}
+:is(.ani-psii-a,.ani-psii-b) .ps-x1{fill:#e3c13a;stroke:#8f7616;stroke-width:1.1}
+:is(.ani-psii-a,.ani-psii-b) .ps-x2{fill:#d0472c;stroke:#7d2414;stroke-width:1}
+
+/* Moving glyphs: electron, H⁺, water, O₂, photon. */
+:is(.ani-psii-a,.ani-psii-b) .ps-e circle{fill:#2457a8;stroke:#fcfbf8;stroke-width:2.4}
+:is(.ani-psii-a,.ani-psii-b) .ps-e text{font-size:22px;font-weight:700;fill:#fff}
+:is(.ani-psii-a,.ani-psii-b) .ps-h circle{fill:#a8321c;stroke:#fcfbf8;stroke-width:2.4}
+:is(.ani-psii-a,.ani-psii-b) .ps-h text{font-size:22px;font-weight:700;fill:#fff}
+:is(.ani-psii-a,.ani-psii-b) .ps-wo{fill:#4f7f9e;stroke:#fcfbf8;stroke-width:2}
+:is(.ani-psii-a,.ani-psii-b) .ps-wh{fill:#f4f2ec;stroke:#8a877d;stroke-width:1.6}
+:is(.ani-psii-a,.ani-psii-b) .ps-photon{fill:none;stroke:#c8361e;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+
+/* Cards: the absorption inset and the energy staircase. */
+:is(.ani-psii-a,.ani-psii-b) .ps-card{fill:#fffdf8;stroke:#c9c6bb;stroke-width:1.4}
+:is(.ani-psii-a,.ani-psii-b) .ps-axis{fill:none;stroke:#8a877d;stroke-width:1.8}
+:is(.ani-psii-a,.ani-psii-b) .ps-axhead{fill:none;stroke:#8a877d;stroke-width:1.8;stroke-linejoin:round}
+:is(.ani-psii-a,.ani-psii-b) .ps-abs{fill:none;stroke:#2e7d32;stroke-width:3.2;stroke-linejoin:round}
+:is(.ani-psii-a,.ani-psii-b) .ps-tick{fill:none;stroke:#141413;stroke-width:2}
+:is(.ani-psii-a,.ani-psii-b) .ps-rung{fill:none;stroke:#3d3d3a;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+:is(.ani-psii-a,.ani-psii-b) .ps-sdot{fill:#2457a8;stroke:#fcfbf8;stroke-width:2}
+
+/* The flask, the lamp and the heavy-oxygen water. */
+:is(.ani-psii-a,.ani-psii-b) .ps-bench{fill:#ebe5d8;stroke:#b9b4a6;stroke-width:1.4}
+:is(.ani-psii-a,.ani-psii-b) .ps-stand{fill:none;stroke:#6b6a64;stroke-width:7;stroke-linecap:round}
+:is(.ani-psii-a,.ani-psii-b) .ps-lamp{fill:#57554f;stroke:#2f2e2b;stroke-width:2;stroke-linejoin:round}
+:is(.ani-psii-a,.ani-psii-b) .ps-lampwin{fill:none;stroke:#f3e7b8;stroke-width:4;stroke-linecap:round}
+:is(.ani-psii-a,.ani-psii-b) .ps-beam{mix-blend-mode:multiply}
+:is(.ani-psii-a,.ani-psii-b) .ps-liquid{fill:#9cc97a}
+:is(.ani-psii-a,.ani-psii-b) .ps-alga{fill:#4f8f3a}
+:is(.ani-psii-a,.ani-psii-b) .ps-mix{fill:#c9845f}
+:is(.ani-psii-a,.ani-psii-b) .ps-glass{fill:rgba(255,255,255,.35);stroke:#6f6c63;stroke-width:3;stroke-linejoin:round}
+:is(.ani-psii-a,.ani-psii-b) .ps-lip{fill:none;stroke:#6f6c63;stroke-width:5;stroke-linecap:round}
+:is(.ani-psii-a,.ani-psii-b) .ps-glint{fill:none;stroke:#fff;stroke-width:6;stroke-linecap:round;opacity:.7}
+:is(.ani-psii-a,.ani-psii-b) .ps-pipglass{fill:rgba(255,255,255,.55);stroke:#6f6c63;stroke-width:2;stroke-linejoin:round}
+:is(.ani-psii-a,.ani-psii-b) .ps-pipliq{fill:#c9845f;opacity:.85}
+:is(.ani-psii-a,.ani-psii-b) .ps-bulb{fill:#8a3d1f;stroke:#5c2812;stroke-width:1.4}
+:is(.ani-psii-a,.ani-psii-b) .ps-drop{fill:#c9845f;stroke:#8a3d1f;stroke-width:1.4}
+:is(.ani-psii-a,.ani-psii-b) .ps-bub{fill:rgba(255,255,255,.75);stroke:#5f7f8f;stroke-width:1.6}
+:is(.ani-psii-a,.ani-psii-b) .ps-o18{fill:#a9532f;stroke:#fcfbf8;stroke-width:1}
+:is(.ani-psii-a,.ani-psii-b) .ps-trail{fill:none;stroke:#2457a8;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:.55;stroke-dasharray:2 9}
+:is(.ani-psii-a,.ani-psii-b) .ps-trailhead{fill:none;stroke:#2457a8;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:.55}

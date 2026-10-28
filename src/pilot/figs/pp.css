@@ -1,0 +1,96 @@
+/* Slides 11–13, photoprotection and chlorophyll fluorescence (chunk pp, 28 Oct 2026): figure styles, prefix .pp- */
+
+/* text */
+.theme-editorial .fig text.pp-h{font-size:23px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.pp-hb{font-size:26px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.pp-l{font-size:21px;fill:#3d3d3a}
+.theme-editorial .fig text.pp-lb{font-size:21px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.pp-s{font-size:20px;fill:#5b5a55}
+.theme-editorial .fig text.pp-lv{font-size:26px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.pp-ax{font-size:21px;fill:#3d3d3a}
+.theme-editorial .fig text.pp-tk{font-size:20px;fill:#5b5a55}
+.theme-editorial .fig text.pp-pill{font-size:20px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.pp-cr{font-size:14px;fill:#8a877d}
+.theme-editorial .fig text.pp-crw{font-size:14px;fill:#fffdf8}
+.theme-editorial .fig text.pp-big{font-size:30px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.pp-num{font-size:34px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.pp-halo{paint-order:stroke;stroke:#fbfaf6;stroke-width:6px;stroke-linejoin:round}
+.theme-editorial .fig text.pp-c-red{fill:#b8301b}
+.theme-editorial .fig text.pp-c-green{fill:#24812f}
+.theme-editorial .fig text.pp-c-grey{fill:#6b6a64}
+.theme-editorial .fig text.pp-c-clay{fill:#8f4f2c}
+.theme-editorial .fig text.pp-c-orange{fill:#b9620f}
+.theme-editorial .fig text.pp-c-amber{fill:#9a6a0c}
+.theme-editorial .fig text.pp-c-blue{fill:#2350e6}
+.theme-editorial .fig text.pp-c-violet{fill:#8a6a12}
+.theme-editorial .fig text.pp-c-paper{fill:#fffdf8}
+.theme-editorial .fig tspan.pp-i{font-style:italic}
+.theme-editorial .fig text.pp-hp{font-weight:700;fill:#b8301b}
+
+/* lines, arrows, axes */
+.theme-editorial .pp-axis{fill:none;stroke:#6b6a64;stroke-width:1.8}
+.theme-editorial .pp-grid{fill:none;stroke:#dcd8cc;stroke-width:1.2}
+.theme-editorial .pp-guide{fill:none;stroke:#a8a59a;stroke-width:1.5;stroke-dasharray:5 6}
+.theme-editorial .pp-ar{fill:none;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .pp-thin{stroke-width:2.4}
+.theme-editorial .pp-thick{stroke-width:5}
+.theme-editorial .pp-dash{stroke-dasharray:8 7}
+.theme-editorial .pp-dot{stroke-dasharray:2 7}
+.theme-editorial .pp-k-ink{stroke:#3d3d3a}.theme-editorial .pp-hd-ink{fill:#3d3d3a}
+.theme-editorial .pp-k-red{stroke:#c8361e}.theme-editorial .pp-hd-red{fill:#c8361e}
+.theme-editorial .pp-k-green{stroke:#2a963a}.theme-editorial .pp-hd-green{fill:#2a963a}
+.theme-editorial .pp-k-grey{stroke:#8a877d}.theme-editorial .pp-hd-grey{fill:#8a877d}
+.theme-editorial .pp-k-clay{stroke:#a65a32}.theme-editorial .pp-hd-clay{fill:#a65a32}
+.theme-editorial .pp-k-orange{stroke:#d9821e}.theme-editorial .pp-hd-orange{fill:#d9821e}
+.theme-editorial .pp-k-amber{stroke:#e0a21a}.theme-editorial .pp-hd-amber{fill:#e0a21a}
+.theme-editorial .pp-k-blue{stroke:#2350e6}.theme-editorial .pp-hd-blue{fill:#2350e6}
+.theme-editorial .pp-k-violet{stroke:#c9a227}.theme-editorial .pp-hd-violet{fill:#c9a227}
+
+/* data marks */
+.theme-editorial .pp-line{fill:none;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .pp-mk{stroke-width:1.8}
+.theme-editorial .pp-area-green{fill:#cfe6c7}.theme-editorial .pp-area-grey{fill:#e3e0d6}.theme-editorial .pp-area-red{fill:#f6d3c9}
+.theme-editorial .pp-area-excess{fill:#f7dcc4;opacity:.85}
+.theme-editorial .pp-band{fill:#f3efe2}
+.theme-editorial .pp-dark{fill:#3d3d3a}
+
+/* drawn objects */
+.theme-editorial .pp-box{fill:#fffdf8;stroke:#8a877d;stroke-width:1.8}
+.theme-editorial .pp-card{fill:#fffdf8;stroke:#d8d5cb;stroke-width:1.2}
+.theme-editorial .pp-frame{fill:none;stroke:#cfccc1;stroke-width:1.6;stroke-dasharray:7 6}
+.theme-editorial .pp-mem{fill:#ece5cf;stroke:#d6c497;stroke-width:1.4}
+.theme-editorial .pp-memhead{fill:#e9dcb4}
+.theme-editorial .pp-lumen{fill:#e4ecf3}
+.theme-editorial .pp-stroma{fill:#f6f4ec}
+.theme-editorial .pp-lhc{fill:#dcebcc;stroke:#5d8a48;stroke-width:1.8}
+.theme-editorial .pp-core{fill:#a9cf8f;stroke:#4b7a37;stroke-width:1.8}
+.theme-editorial .pp-core-dmg{fill:#f2c6b8;stroke:#b8301b;stroke-width:2.2}
+.theme-editorial .pp-psbs{fill:#f6df8a;stroke:#b9901c;stroke-width:1.6}
+.theme-editorial .pp-h{fill:#fbe3dc;stroke:#c8361e;stroke-width:1.4}
+.theme-editorial .pp-hdot{fill:#d9573b}
+.theme-editorial .pp-xv{fill:#f2cf4a;stroke:#b9901c;stroke-width:1.2}
+.theme-editorial .pp-xz{fill:#f08c2a;stroke:#b9620f;stroke-width:1.2}
+.theme-editorial .pp-xchain{fill:none;stroke-width:3.4;stroke-linejoin:round;stroke-linecap:round}
+.theme-editorial .pp-o2{fill:#fbe3dc;stroke:#a65a32;stroke-width:1.6}
+.theme-editorial .pp-burst{fill:#f6d3c9;stroke:#c8361e;stroke-width:2}
+.theme-editorial .pp-dot-open{fill:#fffdf8;stroke:#c8361e;stroke-width:2.2}
+.theme-editorial .pp-dot-closed{fill:#d9573b;stroke:#b8301b;stroke-width:1.6}
+.theme-editorial .pp-dot-quench{fill:#3d3d3a;stroke:#141413;stroke-width:1.2}
+.theme-editorial .pp-leaf{fill:#b9d89a;stroke:#5d8a48;stroke-width:2}
+.theme-editorial .pp-leaf-dk{fill:#8fbf6c;stroke:#4b7a37;stroke-width:2}
+.theme-editorial .pp-dev{fill:#e9e6dc;stroke:#6b6a64;stroke-width:2}
+.theme-editorial .pp-devdk{fill:#3d3d3a;stroke:#141413;stroke-width:1.6}
+.theme-editorial .pp-sun{fill:#f6c64a;stroke:#d99a14;stroke-width:1.6}
+.theme-editorial .pp-glow0{stop-color:#f6b42c;stop-opacity:.75}
+.theme-editorial .pp-glow1{stop-color:#f6b42c;stop-opacity:.28}
+.theme-editorial .pp-glow2{stop-color:#f6b42c;stop-opacity:0}
+.theme-editorial .pp-ldh{fill:none;stroke:#fffdf8;stroke-width:4.5;stroke-linecap:round;opacity:.9}
+.theme-editorial .pp-ld{fill:none;stroke:#3d3d3a;stroke-width:1.6;stroke-linecap:round}
+.theme-editorial .pp-ldt{fill:#3d3d3a;stroke:#fffdf8;stroke-width:1.4}
+.theme-editorial .pp-pillbg{fill:#fffdf8;stroke:#d8d5cb;stroke-width:1.2}
+.theme-editorial .pp-pillbg-t{fill:#fffdf8;opacity:.94}
+.theme-editorial .pp-mask{fill:#ffffff}
+.theme-editorial .pp-mult{mix-blend-mode:multiply}
+.theme-editorial .pp-imgframe{fill:none;stroke:#d8d5cb;stroke-width:1.2}
+.theme-editorial .pp-map{fill:#fbfaf6;stroke:#d8d5cb;stroke-width:1.2}
+.theme-editorial .pp-ring{fill:none;stroke:#e0a21a;stroke-width:3}

@@ -1,0 +1,48 @@
+/* Slide 13 figure styles (block L1c, 27 Oct 2026), scoped under .theme-editorial and prefixed .fx13- */
+
+/* text */
+.theme-editorial .fig text.fx13-h{font-size:21px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fx13-l{font-size:19px;fill:#3d3d3a}
+.theme-editorial .fig text.fx13-lv{font-size:25px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fx13-ax{font-size:19px;fill:#3d3d3a}
+.theme-editorial .fig text.fx13-tk{font-size:18px;fill:#3d3d3a}
+.theme-editorial .fig text.fx13-bt{font-size:17px;font-weight:600;fill:#2b2a27}
+.theme-editorial .fig text.fx13-pill{font-size:18px;font-weight:600;fill:#141413}
+.theme-editorial .fig text.fx13-crd{font-size:14px;fill:#8a877d}
+.theme-editorial .fig text.fx13-cr{font-size:13px;fill:#fffdf8}
+.theme-editorial .fig text.fx13-c-red{fill:#b8301b}
+.theme-editorial .fig text.fx13-c-green{fill:#24812f}
+.theme-editorial .fig text.fx13-c-grey{fill:#6b6a64}
+.theme-editorial .fig text.fx13-c-clay{fill:#8f4f2c}
+.theme-editorial .fig text.fx13-c-orange{fill:#b9620f}
+.theme-editorial .fig text.fx13-c-amber{fill:#9a6a0c}
+.theme-editorial .fig text.fx13-c-blue{fill:#2350e6}
+.theme-editorial .fig tspan.fx13-i{font-style:italic}
+
+/* real figures and photos: credits, label pills, leaders, masks */
+.theme-editorial .fx13-pillbg{fill:#fffdf8;opacity:.94}
+.theme-editorial .fx13-pillbg-t{fill:#f3f1ea;stroke:#d8d5cb;stroke-width:1}
+.theme-editorial .fx13-credbg{fill:#141413;opacity:.45}
+.theme-editorial .fx13-mult{mix-blend-mode:multiply}
+.theme-editorial .fx13-ldh{fill:none;stroke:#fffdf8;stroke-width:4.2;stroke-linecap:round;opacity:.9}
+.theme-editorial .fx13-ldk{fill:none;stroke:#141413;stroke-width:1.5;stroke-linecap:round}
+.theme-editorial .fx13-tipd{fill:#141413;stroke:#fffdf8;stroke-width:1.5}
+.theme-editorial .fx13-badge{fill:#fbf3df;stroke:#e0b04a;stroke-width:1.4}
+
+/* axes and drawn lines */
+.theme-editorial .fx13-axis{fill:none;stroke:#6b6a64;stroke-width:1.6}
+.theme-editorial .fx13-guide{fill:none;stroke:#a8a59a;stroke-width:1.4;stroke-dasharray:4 5}
+.theme-editorial .fx13-lvl{fill:none;stroke:#3d3d3a;stroke-width:3;stroke-linecap:round}
+.theme-editorial .fx13-sub{fill:none;stroke:#cfccc1;stroke-width:1.3;stroke-linecap:round}
+.theme-editorial .fx13-ar{fill:none;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .fx13-thin{stroke-width:2.2}
+.theme-editorial .fx13-dash{stroke-dasharray:7 6}
+.theme-editorial .fx13-k-ink{stroke:#3d3d3a}.theme-editorial .fx13-hd-ink{fill:#3d3d3a}
+.theme-editorial .fx13-k-red{stroke:#c8361e}.theme-editorial .fx13-hd-red{fill:#c8361e}
+.theme-editorial .fx13-k-green{stroke:#2a963a}.theme-editorial .fx13-hd-green{fill:#2a963a}
+.theme-editorial .fx13-k-grey{stroke:#8a877d}.theme-editorial .fx13-hd-grey{fill:#8a877d}
+.theme-editorial .fx13-k-clay{stroke:#a65a32}.theme-editorial .fx13-hd-clay{fill:#a65a32}
+.theme-editorial .fx13-k-orange{stroke:#d9821e}.theme-editorial .fx13-hd-orange{fill:#d9821e}
+.theme-editorial .fx13-k-blue{stroke:#2350e6}.theme-editorial .fx13-hd-blue{fill:#2350e6}
+.theme-editorial .fx13-e{fill:#f0a316;stroke:#c98410;stroke-width:1.4}
+.theme-editorial .fx13-box{fill:#fffdf8;stroke:#8a877d;stroke-width:1.6}

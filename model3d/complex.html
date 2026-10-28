@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LHCII pigment–protein complex</title>
+<!-- 3Dmol.js, pinned version, cdnjs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/3Dmol/2.5.5/3Dmol-min.js"></script>
+<style>
+  :root {
+    --paper: #faf8f3;
+    --ink: #2b2a27;
+    --muted: #77726a;
+    --line: #8a857c;
+    --prot: #e4dfd5;
+    --chla: #2e7d32;
+    --chlb: #93c95a;
+    --car: #ef8a17;
+    --membrane: rgba(196, 178, 132, 0.22);
+    --membrane-edge: rgba(150, 132, 90, 0.45);
+  }
+  html, body { margin: 0; height: 100%; background: var(--paper); overflow: hidden; }
+  body { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: var(--ink); }
+  /* fixed 1600 x 900 drawing, scaled to the window */
+  #stage { position: absolute; left: 0; top: 0; width: 1600px; height: 900px; transform-origin: 0 0; background: var(--paper); }
+  .viewer { position: absolute; z-index: 1; }
+  #top  { left: 280px; top: 100px; width: 570px; height: 760px; }
+  #side { left: 1010px; top: 100px; width: 590px; height: 760px; }
+  #band { position: absolute; left: 870px; width: 730px; background: var(--membrane);
+          border-top: 1.5px solid var(--membrane-edge); border-bottom: 1.5px solid var(--membrane-edge);
+          -webkit-mask-image: linear-gradient(to right, transparent 0, #000 70px); mask-image: linear-gradient(to right, transparent 0, #000 70px); }
+  svg#overlay { position: absolute; z-index: 5; will-change: transform; left: 0; top: 0; width: 1600px; height: 900px; pointer-events: none; overflow: visible; }
+  .lab { position: absolute; z-index: 6; text-shadow: 0 0 4px var(--paper), 0 0 4px var(--paper), 0 0 2px var(--paper); font-size: 30px; line-height: 1; white-space: nowrap; pointer-events: none; }
+  .lab .sw { display: inline-block; width: 22px; height: 22px; border-radius: 50%; margin-right: 12px; vertical-align: -3px; }
+  .chip { background: rgba(250, 248, 243, 0.92); padding: 3px 9px 5px; border-radius: 8px; text-shadow: none; }
+  .cap { position: absolute; font-size: 24px; color: var(--muted); letter-spacing: 0.02em; }
+  .side-lab { position: absolute; z-index: 6; font-size: 26px; color: var(--muted); }
+  .credit { position: absolute; right: 28px; bottom: 18px; font-size: 15px; color: var(--muted); }
+  .dbg { position: absolute; font: 11px/1 Menlo, monospace; color: #c00; pointer-events: none; transform: translate(4px, -12px); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="band"></div>
+  <div id="top" class="viewer"></div>
+  <div id="side" class="viewer"></div>
+  <svg id="overlay"></svg>
+
+  <div class="cap" style="left:300px; top:50px">seen from the stroma</div>
+  <div class="cap" style="left:880px; top:50px">side view</div>
+
+  <div class="lab" id="lab-prot"><span class="sw" style="background:var(--prot)"></span>protein</div>
+  <div class="lab" id="lab-chla"><span class="sw" style="background:var(--chla)"></span>chlorophyll a</div>
+  <div class="lab" id="lab-chlb"><span class="sw" style="background:var(--chlb)"></span>chlorophyll b</div>
+  <div class="lab" id="lab-car"><span class="sw" style="background:var(--car)"></span>carotenoid</div>
+  <div class="lab chip" id="lab-nm">≈ 1 nm</div>
+
+  <div class="side-lab" id="lab-stroma">stroma</div>
+  <div class="side-lab" id="lab-membrane">membrane</div>
+  <div class="side-lab" id="lab-lumen">lumen</div>
+
+  <div class="credit">LHCII trimer (pea), PDB 2BHW, Standfuss et al. 2005 · membrane position from OPM</div>
+</div>
+
+<script>
+(async function () {
+  const params = new URLSearchParams(location.search);
+  const DEBUG = params.has('debug');
+  const STRUCT = 'data/rcsb/2BHW.pdb';            // local copy of https://files.rcsb.org/download/2BHW.pdb
+  const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const COL = { prot: css('--prot'), chla: css('--chla'), chlb: css('--chlb'), car: css('--car') };
+  const CAROTENOIDS = ['LUX', 'LUT', 'NEX', 'XAT', 'VIO'];
+  const PHYTOL = /^C\d+$/;                         // phytol tail atoms C1..C20 (hidden)
+  // OPM (opm.phar.umich.edu, entry 2bhw): hydrocarbon core half-thickness 14.7 A,
+  // centre 2.19 A from the protein centroid towards the lumen (C-terminal side).
+  const MEM_HALF = 14.7, MEM_SHIFT = 2.19;
+
+  // ---------- scale the 1600x900 stage to the window ----------
+  const stage = document.getElementById('stage');
+  let S = 1;
+  function fit() {
+    S = Math.min(innerWidth / 1600, innerHeight / 900);
+    stage.style.transform = S === 1 ? "none" : `scale(${S})`;
+    stage.style.left = (innerWidth - 1600 * S) / 2 + 'px';
+    stage.style.top = (innerHeight - 900 * S) / 2 + 'px';
+  }
+  fit();
+
+  const pdb = await (await fetch(STRUCT)).text();
+
+  // ---------- membrane frame: z = membrane normal, +z = stroma, origin = trimer axis at membrane centre ----------
+  const v = {
+    sub: (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]],
+    dot: (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2],
+    cross: (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]],
+    norm: a => { const l = Math.hypot(...a); return a.map(x => x / l); },
+    mean: L => { const s = [0, 0, 0]; L.forEach(p => { s[0] += p[0]; s[1] += p[1]; s[2] += p[2]; }); return s.map(x => x / L.length); },
+  };
+  function frameOf(atoms) {
+    const P = a => [a.x, a.y, a.z];
+    const prot = atoms.filter(a => !a.hetflag);
+    const cen = ['A', 'B', 'C'].map(c => v.mean(prot.filter(a => a.chain === c).map(P)));
+    const C = v.mean(cen);
+    let n = v.norm(v.cross(v.sub(cen[1], cen[0]), v.sub(cen[2], cen[0])));
+    // N-terminus is stromal: make n point to the stroma
+    const nTerm = prot.find(a => a.chain === 'A' && a.atom === 'CA');
+    if (v.dot(v.sub(P(nTerm), C), n) < 0) n = n.map(x => -x);
+    // in-plane axes: e1 towards chain A centroid, rotated by ROT degrees
+    const ROT = (parseFloat(params.get('rot')) || 0) * Math.PI / 180;
+    let a1 = v.sub(cen[0], C); a1 = v.norm(v.sub(a1, n.map(x => x * v.dot(a1, n))));
+    const a2 = v.cross(n, a1);
+    const e1 = a1.map((x, i) => Math.cos(ROT) * x + Math.sin(ROT) * a2[i]);
+    const e2 = v.cross(n, e1);
+    // membrane centre lies MEM_SHIFT towards the lumen, i.e. at -MEM_SHIFT along n
+    const O = C.map((x, i) => x - MEM_SHIFT * n[i]);
+    return { O, e1, e2, n };
+  }
+  function toFrame(atoms, F, mode) {
+    atoms.forEach(a => {
+      const d = [a.x - F.O[0], a.y - F.O[1], a.z - F.O[2]];
+      const x = v.dot(d, F.e1), y = v.dot(d, F.e2), z = v.dot(d, F.n);
+      if (mode === 'top') { a.x = x; a.y = y; a.z = z; }          // camera looks down from +z (stroma)
+      else { a.x = x; a.y = z; a.z = -y; }                         // side: membrane normal points up
+    });
+  }
+
+  function makeViewer(id, mode) {
+    const viewer = $3Dmol.createViewer(document.getElementById(id), {
+      backgroundColor: 'white', backgroundAlpha: 0, antialias: true, orthographic: true,
+    });
+    const m = viewer.addModel(pdb, 'pdb');
+    const atoms = m.selectedAtoms({});
+    toFrame(atoms, frameOf(atoms), mode);
+    viewer.setStyle({}, {});
+    viewer.setStyle({ hetflag: false }, { cartoon: { color: COL.prot, thickness: 0.6 } });
+    const head = a => !PHYTOL.test(a.atom);
+    viewer.setStyle({ resn: 'CLA', predicate: head }, { stick: { color: COL.chla, radius: 0.32 } });
+    viewer.setStyle({ resn: 'CHL', predicate: head }, { stick: { color: COL.chlb, radius: 0.32 } });
+    viewer.setStyle({ resn: CAROTENOIDS }, { stick: { color: COL.car, radius: 0.32 } });
+    return { viewer, m, atoms };
+  }
+
+  // ---------- bare still for the slide figures: ?bare=1&view=top|side|chl[&w=&h=&scale=&stick=&onechl=1&prot=hex] ----------
+  // One view, no HTML labels, no title, no membrane band, transparent ground. The projected positions of the label anchors
+  // (and, for the side view, of the two membrane faces) are written into <pre id="anchors"> for the SVG labels.
+  if (params.has('bare')) {
+    const VIEW = params.get('view') || 'top', W = +params.get('w') || 1000, H = +params.get('h') || 1000;
+    const R = parseFloat(params.get('stick')) || 0.32;
+    if (params.has('onechl')) COL.chlb = COL.chla;
+    if (params.get('prot')) COL.prot = '#' + params.get('prot');
+    document.querySelectorAll('.cap, .lab, .side-lab, .credit, #overlay, #band').forEach(e => { e.style.display = 'none'; });
+    document.documentElement.style.background = document.body.style.background = 'transparent';
+    Object.assign(stage.style, { background: 'transparent', width: W + 'px', height: H + 'px', transform: 'none', left: '0px', top: '0px' });
+    const id = VIEW === 'side' ? 'side' : 'top';
+    document.getElementById(id === 'top' ? 'side' : 'top').remove();
+    Object.assign(document.getElementById(id).style, { left: '0px', top: '0px', width: W + 'px', height: H + 'px' });
+    const viewer = $3Dmol.createViewer(document.getElementById(id), { backgroundColor: 'white', backgroundAlpha: 0, antialias: true, orthographic: true });
+    const m = viewer.addModel(pdb, 'pdb');
+    const atoms = m.selectedAtoms({});
+    const head = a => !PHYTOL.test(a.atom);
+    let F;
+    if (VIEW === 'chl') {
+      // one chlorophyll a (chain C, 607), seen face-on: origin at Mg, normal of the plane of its four ring nitrogens
+      const P = a => [a.x, a.y, a.z];
+      const res = atoms.filter(a => a.resn === 'CLA' && a.chain === 'C' && a.resi === 607);
+      const g = n => P(res.find(a => a.atom === n));
+      const O = g('MG');
+      let n = v.norm(v.cross(v.sub(g('NB'), g('NA')), v.sub(g('ND'), g('NA'))));
+      const e1 = v.norm(v.sub(v.sub(g('NA'), g('NC')), n.map(x => x * v.dot(v.sub(g('NA'), g('NC')), n))));
+      F = { O, e1, e2: v.cross(n, e1), n };
+      toFrame(atoms, F, 'top');
+      viewer.setStyle({}, {});
+      viewer.setStyle({ resn: 'CLA', chain: 'C', resi: 607, predicate: head }, { stick: { color: COL.chla, radius: R } });
+      viewer.setStyle({ resn: 'CLA', chain: 'C', resi: 607, atom: 'MG' }, { sphere: { color: COL.chlb, radius: 0.75 } });
+    } else {
+      F = frameOf(atoms);
+      toFrame(atoms, F, VIEW === 'side' ? 'side' : 'top');
+      viewer.setStyle({}, {});
+      viewer.setStyle({ hetflag: false }, { cartoon: { color: COL.prot, thickness: 0.6 } });
+      viewer.setStyle({ resn: 'CLA', predicate: head }, { stick: { color: COL.chla, radius: R } });
+      viewer.setStyle({ resn: 'CHL', predicate: head }, { stick: { color: COL.chlb, radius: R } });
+      viewer.setStyle({ resn: CAROTENOIDS }, { stick: { color: COL.car, radius: R } });
+    }
+    const V = { viewer, m, atoms };
+    const px = parseFloat(params.get('scale')) || 10;
+    viewer.zoomTo();
+    const w0 = viewer.getView(); w0[0] = w0[1] = w0[2] = 0; viewer.setView(w0);
+    for (let i = 0; i < 3; i++) {
+      const a = project(V, id, { x: 0, y: 0, z: 0 }), b = project(V, id, { x: 20, y: 0, z: 0 });
+      viewer.zoom(px / (Math.abs(b.x - a.x) / 20));
+    }
+    viewer.render();
+    const out = { view: VIEW, w: W, h: H, pxPerA: px, anchors: {} };
+    const spec = { prot: { chain: 'C', resi: 170, atom: 'CA' }, chla: { chain: 'C', resi: 607, atom: 'MG' }, chlb: { chain: 'B', resi: 611, atom: 'MG' },
+      car: { chain: 'B', resi: 503, atom: 'C7' }, nm1: { chain: 'B', resi: 602, atom: 'MG' }, nm2: { chain: 'B', resi: 607, atom: 'MG' } };
+    for (const extra of (params.get('anchors') || '').split(';').filter(Boolean)) {   // name:chain:resi:atom
+      const [k, c, r, at] = extra.split(':'); spec[k] = { chain: c, resi: +r, atom: at };
+    }
+    for (const [k, sel] of Object.entries(spec)) {
+      const a = atoms.find(q => q.chain === sel.chain && q.resi === sel.resi && q.atom === sel.atom);
+      if (a) { const p = project(V, id, a); out.anchors[k] = [+p.x.toFixed(1), +p.y.toFixed(1)]; }
+    }
+    if (VIEW === 'side') {
+      out.memTop = +project(V, id, { x: 0, y: MEM_HALF, z: 0 }).y.toFixed(1);
+      out.memBot = +project(V, id, { x: 0, y: -MEM_HALF, z: 0 }).y.toFixed(1);
+    }
+    const pre = document.createElement('pre'); pre.id = 'anchors'; pre.style.display = 'none'; pre.textContent = JSON.stringify(out);
+    document.body.appendChild(pre);
+    window.__ready = true;
+    return;
+  }
+
+  const T = makeViewer('top', 'top');
+  const Sd = makeViewer('side', 'side');
+
+  // identical scale in both views (px per angstrom), centred on the trimer axis at the membrane centre
+  const PX_PER_A = parseFloat(params.get('scale')) || 7.0;
+  function setScale(V, id) {
+    V.viewer.zoomTo();
+    const w = V.viewer.getView(); w[0] = w[1] = w[2] = 0; V.viewer.setView(w);
+    for (let i = 0; i < 3; i++) {
+      const a = project(V, id, { x: 0, y: 0, z: 0 }), b = project(V, id, { x: 20, y: 0, z: 0 });
+      V.viewer.zoom(PX_PER_A / (Math.abs(b.x - a.x) / 20));
+    }
+    V.viewer.render();
+  }
+
+  // ---------- anchors ----------
+  const find = (V, sel) => V.atoms.find(a => Object.entries(sel).every(([k, val]) => a[k] === val));
+  const A = {};
+  const anchorSpec = {
+    prot: { chain: 'C', resi: 170, atom: 'CA' },   // stromal loop/helix between 2nd and 3rd TM helix
+    chla: { chain: 'C', resi: 607, atom: 'MG' },
+    chlb: { chain: 'B', resi: 611, atom: 'MG' },
+    car:  { chain: 'B', resi: 503, atom: 'C7' },   // neoxanthin polyene where it sticks out of the complex
+    nm1:  { chain: 'B', resi: 602, atom: 'MG' },   // Mg-Mg 9.8 A (computed below from the file)
+    nm2:  { chain: 'B', resi: 607, atom: 'MG' },
+  };
+  for (const [k, sel] of Object.entries(anchorSpec)) A[k] = find(T, sel);
+  const dist = (a, b) => Math.hypot(a.x - b.x, a.y - b.y, a.z - b.z);
+  const mgmg = dist(A.nm1, A.nm2);
+  document.getElementById('lab-nm').title = `Mg–Mg ${mgmg.toFixed(1)} Å`;
+  console.log('Mg-Mg', anchorSpec.nm1, anchorSpec.nm2, mgmg.toFixed(2), 'A');
+
+  // label boxes (design px): label text placed at fixed spots, leader to anchor
+  const LABELS = {
+    prot: { x: 40, y: 230 },
+    chla: { x: 40, y: 345 },
+    chlb: { x: 40, y: 470 },
+    car:  { x: 40, y: 640 },
+  };
+
+  // screen position of an atom inside the stage (design px)
+  function project(V, id, a) {
+    const p = V.viewer.modelToScreen({ x: a.x, y: a.y, z: a.z });
+    const r = document.getElementById(id).getBoundingClientRect();
+    const el = document.getElementById(id);
+    return { x: el.offsetLeft + (p.x - r.left - scrollX) , y: el.offsetTop + (p.y - r.top - scrollY) };
+  }
+
+  setScale(T, 'top'); setScale(Sd, 'side');
+
+  const svg = document.getElementById('overlay');
+  function draw() {
+    let s = '';
+    for (const k of ['prot', 'chla', 'chlb', 'car']) {
+      const lab = document.getElementById('lab-' + k), L = LABELS[k];
+      lab.style.left = L.x + 'px'; lab.style.top = L.y + 'px';
+      const w = lab.offsetWidth, h = lab.offsetHeight;
+      const p = project(T, 'top', A[k]);
+      const sx = L.x + w + 14, sy = L.y + h / 2;
+      s += `<path d="M${sx},${sy} L${p.x},${p.y}" stroke="${css('--paper')}" stroke-width="6" stroke-linecap="round" fill="none"/>`;
+      s += `<path d="M${sx},${sy} L${p.x},${p.y}" stroke="${css('--ink')}" stroke-width="2" fill="none"/>`;
+      s += `<circle cx="${p.x}" cy="${p.y}" r="5" fill="${css('--ink')}" stroke="${css('--paper')}" stroke-width="2.5"/>`;
+    }
+    // distance marker between two Mg atoms
+    const p1 = project(T, 'top', A.nm1), p2 = project(T, 'top', A.nm2);
+    s += `<line x1="${p1.x}" y1="${p1.y}" x2="${p2.x}" y2="${p2.y}" stroke="${css('--paper')}" stroke-width="7" stroke-linecap="round"/>`;
+    s += `<line x1="${p1.x}" y1="${p1.y}" x2="${p2.x}" y2="${p2.y}" stroke="${css('--ink')}" stroke-width="2.6"/>`;
+    for (const q of [p1, p2]) s += `<circle cx="${q.x}" cy="${q.y}" r="5" fill="${css('--ink')}" stroke="${css('--paper')}" stroke-width="2.5"/>`;
+    const nm = document.getElementById('lab-nm');
+    const mx = (p1.x + p2.x) / 2, my = (p1.y + p2.y) / 2;
+    nm.style.left = (mx - nm.offsetWidth / 2) + 'px'; nm.style.top = (Math.max(p1.y, p2.y) + 12) + 'px';
+
+    // membrane band and side labels
+    const sideEl = document.getElementById('side');
+    const up = project(Sd, 'side', { x: 0, y: MEM_HALF, z: 0 }), lo = project(Sd, 'side', { x: 0, y: -MEM_HALF, z: 0 });
+    const band = document.getElementById('band');
+    band.style.top = up.y + 'px'; band.style.height = (lo.y - up.y) + 'px';
+    const place = (id, x, y) => { const e = document.getElementById(id); e.style.left = x + 'px'; e.style.top = y + 'px'; };
+    const bx = band.offsetLeft + 12;
+    place('lab-stroma', bx, up.y - 40);
+    place('lab-membrane', bx, (up.y + lo.y) / 2 - 13);
+    place('lab-lumen', bx, lo.y + 14);
+    svg.innerHTML = s;
+  }
+
+  if (DEBUG) {
+    const box = document.getElementById('stage');
+    const add = (V, id, a, txt) => { const p = project(V, id, a); const d = document.createElement('div'); d.className = 'dbg';
+      d.style.left = p.x + 'px'; d.style.top = p.y + 'px'; d.textContent = txt; box.appendChild(d); };
+    T.atoms.filter(a => a.atom === 'MG').forEach(a => add(T, 'top', a, a.chain + a.resi + (a.resn === 'CHL' ? 'b' : 'a')));
+    T.atoms.filter(a => CAROTENOIDS.includes(a.resn) && a.atom === 'C20').forEach(a => add(T, 'top', a, a.chain + a.resn));
+    T.atoms.filter(a => !a.hetflag && a.atom === 'CA' && a.resi % 20 === 0).forEach(a => add(T, 'top', a, a.chain + a.resi));
+  }
+
+  draw();
+  addEventListener('resize', () => { fit(); draw(); });
+
+  // optional slow rotation about the membrane normal: ?spin=1 or press "r"
+  let spinning = params.has('spin');
+  function tick() {
+    if (spinning) { T.viewer.rotate(0.12, 'z'); Sd.viewer.rotate(0.12, 'y'); draw(); }
+    requestAnimationFrame(tick);
+  }
+  addEventListener('keydown', e => { if (e.key === 'r') spinning = !spinning; });
+  T.viewer.setViewChangeCallback && T.viewer.setViewChangeCallback(() => draw());
+  requestAnimationFrame(tick);
+  window.__ready = true; if (DEBUG) window.__dbg = { T, Sd, project };
+})();
+</script>
+</body>
+</html>

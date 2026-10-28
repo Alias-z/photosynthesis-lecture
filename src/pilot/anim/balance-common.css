@@ -1,0 +1,52 @@
+/* Slide 10b animation, "Balancing ATP and NADPH" (balance-common.ts): the indicators, in the deck's tag colours (ATP clay,
+   NADPH blue), the route colours of slide 10c (cyclic violet, to O₂ teal), the condition labels. The figure card, the
+   electron, the rotor's arrow and the icons use cyclicm-common.css (imported by cyclicm-common.ts). */
+:is(.ani-cyclic-s1,.ani-cyclic-s2,.ani-cyclic-s3) .ani-stage .cym-slidecard{fill:rgba(255,254,250,.58);stroke:rgba(120,100,60,.10);stroke-width:1}
+:is(.ani-cyclic-s1,.ani-cyclic-s2,.ani-cyclic-s3) .ani-stage .cym-robox{fill:#fdfcf8;stroke:rgba(120,100,60,.16);stroke-width:1}
+:is(.ani-cyclic-s1,.ani-cyclic-s2,.ani-cyclic-s3) .ani-stage .cym-e{fill:#2b2a27;stroke:#fbfaf6;stroke-width:1.6}
+:is(.ani-cyclic-s1,.ani-cyclic-s2,.ani-cyclic-s3) .ani-stage .cym-turn-bg{fill:none;stroke:#fbfaf6;stroke-width:7;stroke-linecap:round;opacity:.8}
+:is(.ani-cyclic-s1,.ani-cyclic-s2,.ani-cyclic-s3) .ani-stage .bal-turn{fill:none;stroke:#2b2a27;stroke-width:3.2;stroke-linecap:round}
+:is(.ani-cyclic-s1,.ani-cyclic-s2,.ani-cyclic-s3) .ani-stage .bal-glow{fill:none;stroke:#f0a316;stroke-width:5;stroke-opacity:.7}
+:is(.ani-cyclic-s1,.ani-cyclic-s2,.ani-cyclic-s3) .ani-stage .cym-ic-bg{fill:#f3efe4;stroke:#d8d2c1;stroke-width:1.2}
+:is(.ani-cyclic-s1,.ani-cyclic-s2,.ani-cyclic-s3) .ani-stage .cym-ic-sun{fill:#f6c453;stroke:#c98a12;stroke-width:1.6}
+:is(.ani-cyclic-s1,.ani-cyclic-s2,.ani-cyclic-s3) .ani-stage .cym-ic-ray{fill:none;stroke:#e0a020;stroke-width:3;stroke-linecap:round}
+:is(.ani-cyclic-s1,.ani-cyclic-s2,.ani-cyclic-s3) .ani-stage .cym-ic-snow{fill:none;stroke:#5d86b0;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+:is(.ani-cyclic-s1,.ani-cyclic-s2,.ani-cyclic-s3) .ani-stage .bal-horizon{fill:none;stroke:#8a877d;stroke-width:2.4;stroke-linecap:round}
+:is(.ani-cyclic-s1,.ani-cyclic-s2,.ani-cyclic-s3) .ani-stage text.bal-cond{font-size:21px;font-weight:600;fill:#141413}
+:is(.ani-cyclic-s1,.ani-cyclic-s2,.ani-cyclic-s3) .ani-stage text.cym-plab{font-size:21px;font-weight:600;fill:#fbfaf6;paint-order:stroke;stroke:#2b2a27;stroke-width:5px;stroke-linejoin:round}
+
+/* s1: the beam balance */
+.ani-cyclic-s1 .ani-stage .bal-stand{fill:none;stroke:#8a877d;stroke-width:7;stroke-linecap:round}
+.ani-cyclic-s1 .ani-stage .bal-base{fill:#d8d2c1;stroke:#8a877d;stroke-width:1.4}
+.ani-cyclic-s1 .ani-stage .bal-level{fill:none;stroke:#a8a59a;stroke-width:1.4;stroke-dasharray:5 5}
+.ani-cyclic-s1 .ani-stage .bal-beam{fill:#6b6a64}
+.ani-cyclic-s1 .ani-stage .bal-pivot{fill:#fdfcf8;stroke:#6b6a64;stroke-width:3}
+.ani-cyclic-s1 .ani-stage .bal-str{fill:none;stroke:#8a877d;stroke-width:1.8}
+.ani-cyclic-s1 .ani-stage .bal-pan{fill:#e9e5da;stroke:#8a877d;stroke-width:1.8}
+.ani-cyclic-s1 .ani-stage .bal-heap-atp{fill:#e89a78;stroke:#d97757;stroke-width:1.4}
+.ani-cyclic-s1 .ani-stage .bal-heap-nadph{fill:#9cbbe0;stroke:#4f7cac;stroke-width:1.4}
+
+/* s2: the bars */
+.ani-cyclic-s2 .ani-stage .bal-bar-atp{fill:#e89a78;stroke:#d97757;stroke-width:1.2}
+.ani-cyclic-s2 .ani-stage .bal-bar-nadph{fill:#9cbbe0;stroke:#4f7cac;stroke-width:1.2}
+.ani-cyclic-s2 .ani-stage .bal-gap{fill:none;stroke:#d97757;stroke-width:2;stroke-dasharray:5 4}
+.ani-cyclic-s2 .ani-stage .bal-mark{fill:none;stroke:#2b2a27;stroke-width:2.2;stroke-dasharray:5 4}
+.ani-cyclic-s2 .ani-stage text.bal-mark-t{font-size:20px;font-weight:600;fill:#3d3d3a}
+
+/* s3: the gauge and the valves */
+.ani-cyclic-s3 .ani-stage .bal-g-arc{fill:none;stroke:#e3dfd3;stroke-width:26;stroke-linecap:round}
+.ani-cyclic-s3 .ani-stage .bal-g-band{fill:none;stroke:#a9c98f;stroke-width:26}
+.ani-cyclic-s3 .ani-stage text.bal-g-title{font-size:24px;font-weight:700;fill:#2b2a27}
+.ani-cyclic-s3 .ani-stage text.bal-g-need{font-size:20px;font-weight:600;fill:#3f6b35}
+.ani-cyclic-s3 .ani-stage text.bal-g-end{font-size:20px;font-weight:600;fill:#6b6a64}
+.ani-cyclic-s3 .ani-stage .bal-needle{fill:#2b2a27}
+.ani-cyclic-s3 .ani-stage .bal-hub{fill:#fdfcf8;stroke:#2b2a27;stroke-width:3}
+.ani-cyclic-s3 .ani-stage .bal-v-bg{fill:#fdfcf8;stroke:#8a877d;stroke-width:2}
+.ani-cyclic-s3 .ani-stage .bal-v-open{fill:none;stroke-width:8;stroke-linecap:round}
+.ani-cyclic-s3 .ani-stage .bal-v-cyc{stroke:#7a4fb0}.ani-cyclic-s3 .ani-stage .bal-v-oxy{stroke:#1f8a7a}.ani-cyclic-s3 .ani-stage .bal-v-mal{stroke:#6b6a64}
+.ani-cyclic-s3 .ani-stage .bal-v-handle{fill:#6b6a64}
+.ani-cyclic-s3 .ani-stage .bal-v-hub{fill:#fdfcf8;stroke:#6b6a64;stroke-width:2}
+.ani-cyclic-s3 .ani-stage text.bal-v-name{font-size:21px;font-weight:700}
+.ani-cyclic-s3 .ani-stage text.bal-v-t-cyc{fill:#6b3fa0}.ani-cyclic-s3 .ani-stage text.bal-v-t-oxy{fill:#17766a}.ani-cyclic-s3 .ani-stage text.bal-v-t-mal{fill:#3d3d3a}
+
+:is(.ani-cyclic-s1,.ani-cyclic-s2,.ani-cyclic-s3) .ani-stage text.bal-condr{font-size:16px;font-weight:400;fill:#3d3c37}

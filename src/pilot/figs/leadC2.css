@@ -1,0 +1,14 @@
+/* Slide C2 lead page (Rubisco chunk), scoped under .theme-editorial and prefixed .flc2- */
+.theme-editorial .lead-fig text.flc2-credit{font-size:16px;fill:#8a877d}
+.theme-editorial .lead-fig .flc2-sb{font-size:68%;baseline-shift:-.24em}
+.theme-editorial .flc2-mat{fill:#fffdf8}
+.theme-editorial .flc2-edge{fill:none;stroke:rgba(120,100,60,.16);stroke-width:1}
+.theme-editorial .flc2-ring{fill:none;stroke:#a9532f;stroke-width:4;stroke-dasharray:9 7}
+.theme-editorial .flc2-gas{fill:none;stroke:#6b6a64;stroke-width:3;stroke-dasharray:2 9;stroke-linecap:round}
+.theme-editorial .flc2-water{fill:#e3eef3;stroke:#c3d8e2;stroke-width:1.5}
+.theme-editorial .flc2-stem{fill:none;stroke:#5f8a34;stroke-width:6;stroke-linecap:round}
+.theme-editorial .flc2-leaf{fill:#8fb34e;stroke:#6d8f33;stroke-width:1.4}
+.theme-editorial .flc2-zoom{fill:none;stroke:#8a877d;stroke-width:1.6;stroke-dasharray:5 6}
+.theme-editorial .flc2-chl{fill:#d7e8b8;stroke:#6d8f33;stroke-width:2.4}
+.theme-editorial .flc2-env{fill:none;stroke:#8fb34e;stroke-width:1.4}
+.theme-editorial .flc2-thy{fill:#8fb34e;stroke:#6d8f33;stroke-width:1}

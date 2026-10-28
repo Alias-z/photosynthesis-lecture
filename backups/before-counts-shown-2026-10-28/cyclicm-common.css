@@ -1,0 +1,68 @@
+/* Cyclic electron flow, stagings m1–m3 (cyclicm-common.ts, cyclic-m2.ts). The figure keeps chain.css; these are the
+   slide's figure card, the story's marks (electron dark, H⁺ ringed as chain.css), the readout (ATP clay and NADPH blue,
+   the colours of the glyph tags), the condition icons, the panel and the clipping labels. */
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage .cym-slidecard{fill:rgba(255,254,250,.58);stroke:rgba(120,100,60,.10);stroke-width:1}
+
+/* the story's marks */
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage .cym-e{fill:#2b2a27;stroke:#fbfaf6;stroke-width:1.6}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage .cym-ring{fill:#fbfaf6;fill-opacity:.9;stroke:#2b2a27;stroke-width:1.8;stroke-dasharray:2.6 2.4}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage text.cym-elab{font-size:21px;font-weight:700;fill:#2b2a27}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage .cym-ld{fill:none;stroke:#6b6a64;stroke-width:1.7;vector-effect:non-scaling-stroke}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage .cym-ldh{fill:none;stroke:#fbfaf6;stroke-width:5;opacity:.85;vector-effect:non-scaling-stroke}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage .cym-ldt{fill:#6b6a64;stroke:#fbfaf6;stroke-width:1.2;vector-effect:non-scaling-stroke}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage .cym-turn-bg{fill:none;stroke:#fbfaf6;stroke-width:7;stroke-linecap:round;opacity:.8}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage .cym-turn{fill:none;stroke:#2b2a27;stroke-width:3.2;stroke-linecap:round}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage .cym-turnh{fill:#2b2a27}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage .cym-acid{fill:#e0603a;fill-opacity:.16}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage text.cym-acidl{font-size:20px;font-weight:700;fill:#b23a1c}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage .cym-heat{fill:none;stroke:#d9633a;stroke-width:3;stroke-linecap:round}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage text.cym-cons{font-size:20px;font-weight:700;fill:#141413}
+
+/* the readout */
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage .cym-robox{fill:#fdfcf8;stroke:rgba(120,100,60,.16);stroke-width:1}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage text.cym-ro-h{font-size:21px;font-weight:600;fill:#6b6a64}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage text.cym-ro-lab{font-size:21px;font-weight:500;fill:#6b6a64}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage text.cym-ro-e{font-size:24px;font-weight:600;fill:#2b2a27}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage text.cym-ro-n{font-size:28px;font-weight:700;fill:#2b2a27}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage text.cym-ro-why{font-size:20px;font-weight:500;fill:#5c5a52}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage text.cym-ro-big{font-size:50px;font-weight:700;fill:#6b6a64}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage text.cym-ro-mid{font-size:28px;font-weight:700;fill:#6b6a64}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage text.cym-ro-gapl{font-size:19px;font-weight:600;fill:#b8582f}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage tspan.cym-c-atp{fill:#b8582f}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage tspan.cym-c-nadph{fill:#3f6c9c}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage .cym-ro-rule{fill:none;stroke:#2b2a27;stroke-width:1.6}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage .cym-bar-atp{fill:#e89a78;stroke:#d97757;stroke-width:1.2}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage .cym-bar-nadph{fill:#9cbbe0;stroke:#4f7cac;stroke-width:1.2}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage .cym-gap{fill:none;stroke:#d97757;stroke-width:2;stroke-dasharray:5 4}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage .cym-need-tick{fill:none;stroke:#2b2a27;stroke-width:2;stroke-dasharray:4 3}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage .cym-ro-pulse{fill:#f6c453;fill-opacity:.22;stroke:#f0a316;stroke-width:2}
+
+/* condition icons, the m1 strip and the m3 panel */
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage .cym-ic-bg{fill:#f3efe4;stroke:#d8d2c1;stroke-width:1.2}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage .cym-ic-sun{fill:#f6c453;stroke:#c98a12;stroke-width:1.6}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage .cym-ic-ray{fill:none;stroke:#e0a020;stroke-width:3;stroke-linecap:round}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage .cym-ic-gc{fill:#9cc27a;stroke:#4f7a3a;stroke-width:1.6}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage .cym-ic-pore{fill:none;stroke:#3d5a2a;stroke-width:2;stroke-linecap:round}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage .cym-ic-snow{fill:none;stroke:#5d86b0;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage .cym-ic-mes{fill:#dfead0;stroke:#9cb884;stroke-width:1}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage .cym-ic-bs{fill:#8fb46a;stroke:#4f7a3a;stroke-width:1.2}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage .cym-ic-vein{fill:#efe6cc;stroke:#b5a57a;stroke-width:1.2}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage text.cym-cond{font-size:22px;font-weight:600;fill:#141413}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage .cym-panel{fill:#fdfcf8;stroke:rgba(120,100,60,.16);stroke-width:1}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage .cym-prule{fill:none;stroke:#e3dfd3;stroke-width:1.2}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage text.cym-pname{font-size:24px;font-weight:700;fill:#141413}
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage text.cym-pwhy{font-size:22px;font-weight:500;fill:#3d3d3a}
+
+/* the clipping: white labels on the photo, as the paper sets them */
+:is(.ani-cyclic-m1,.ani-cyclic-m2,.ani-cyclic-m3) .ani-stage text.cym-plab{font-size:21px;font-weight:600;fill:#fbfaf6;paint-order:stroke;stroke:#2b2a27;stroke-width:5px;stroke-linejoin:round}
+
+/* m2: the rotor dial (ATP synthase's c-ring seen from above, 14 slots) */
+.ani-cyclic-m2 .ani-stage .cym-dial{fill:#f6eef2;stroke:#d9b3c8;stroke-width:1.2}
+.ani-cyclic-m2 .ani-stage .cym-hub{fill:#fdfcf8;stroke:#d9b3c8;stroke-width:1.2}
+.ani-cyclic-m2 .ani-stage .cym-slot{fill:#efd3e2;stroke:#c46a9a;stroke-width:1.4}
+.ani-cyclic-m2 .ani-stage .cym-slot-gap{fill:none;stroke:#b8582f;stroke-width:2;stroke-dasharray:5 4}
+.ani-cyclic-m2 .ani-stage .cym-grp{fill:none;stroke:#f0a316;stroke-width:46;stroke-linecap:round;opacity:.35}
+.ani-cyclic-m2 .ani-stage .cym-dial-tick{fill:none;stroke:#6b6a64;stroke-width:2.4;stroke-linecap:round}
+.ani-cyclic-m2 .ani-stage text.cym-dial-n{font-size:54px;font-weight:700;fill:#2b2a27}
+.ani-cyclic-m2 .ani-stage text.cym-dial-s{font-size:21px;font-weight:600;fill:#6b6a64}
+.ani-cyclic-m2 .ani-stage text.cym-cond2{font-size:20px;font-weight:600;fill:#141413}

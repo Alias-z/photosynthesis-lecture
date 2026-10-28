@@ -1,5 +1,5 @@
 // Slide 12 figure concepts. What each must show is in research/figure-briefs/FIGURE_BRIEF.md.
-// Numbers used, and no others: absorption fs; S₂→S₁ heat < 1 ps; charge separation < 100 ps; S₁ lifetime ns;
+// Numbers used, and no others: absorption fs; Sₙ→S₁ heat < 1 ps; trapping by an open PSII in leaves ≈ 0.3 ns; S₁ lifetime ns;
 // fluorescence ≈ 685 nm; triplet µs and longer. Every other step is shown without a duration.
 // One ink per exit in every concept: photochemistry green, heat grey wave, fluorescence red wave,
 // spin flip / triplet clay dashed, excitation energy amber glow, carotenoid orange chain.
@@ -45,8 +45,6 @@ const wv = (p: string, k: K, x0: number, y0: number, x1: number, y1: number, amp
   `<path class="f12-ar f12-k-${k}${cls ? ` ${cls}` : ''}" d="${wave(x0, y0, x1, y1, amp, n)}" marker-end="url(#${p}-${k})"/>`;
 
 const lvl = (x0: number, x1: number, y: number): string => `<path class="f12-lvl" d="M${x0},${y} H${x1}"/>`;
-const sub = (x0: number, x1: number, y: number, n = 2, gap = 11): string =>
-  `<path class="f12-sub" d="${Array.from({ length: n }, (_, i) => `M${x0},${y - gap * (i + 1)} H${x1}`).join('')}"/>`;
 
 /** A time pill; its colour deepens from fs to µs, and the text always says the time. */
 function badge(x: number, y: number, s: string, sc: Sc, anchor: Anchor = 'middle'): string {
@@ -66,7 +64,7 @@ const rc = (x: number, y: number, w: number, h: number): string =>
 
 /** Singlet oxygen in the clay danger box, drawn as an O₂ molecule. */
 const o2box = (x: number, y: number, w = 96, h = 72): string =>
-  `<rect class="ros" x="${x}" y="${y}" width="${w}" height="${h}" rx="14"/>${molecule(x + w / 2, y + 22, 'OO', 10)}${t(x + w / 2, y + h - 12, '¹O₂', 'f12-h f12-c-clay')}`;
+  `<rect class="ros" x="${x}" y="${y}" width="${w}" height="${h}" rx="14"/>${molecule(x + w / 2, y + 22, 'OO', 10)}${t(x + w / 2, y + h - 12, '¹O₂', 'f12-h')}`;
 
 /** A carotenoid: a polyene zigzag with a ring at each end. */
 function carotenoid(x: number, y: number, len: number): string {
@@ -134,7 +132,7 @@ function tankSvg(): string {
     ${t(560, 212, 'small leak', 'f12-m', 'start')}${t(560, 240, 'fluorescence', 'f12-h f12-c-red', 'start')}${t(560, 266, '≈ 685 nm', 'f12-l', 'start')}
 
     ${rc(big.x, 290, 184, 100)}${rcDot(big.x + 32, 340)}${t(big.x + 112, 334, 'charge', 'f12-h')}${t(big.x + 112, 360, 'separation', 'f12-h')}
-    ${t(big.x + 92, 418, 'big pipe', 'f12-m')}${t(big.x + 92, 446, 'photochemistry', 'f12-h f12-c-green')}${badge(big.x + 92, 478, '< 100 ps', 'ps')}
+    ${t(big.x + 92, 418, 'big pipe', 'f12-m')}${t(big.x + 92, 446, 'photochemistry', 'f12-h f12-c-green')}${badge(big.x + 92, 478, '~300 ps', 'ps')}
 
     <path class="f12-valve" d="M188,${vp.y - 2} L212,${vp.y + vp.h + 2} V${vp.y - 2} L188,${vp.y + vp.h + 2}Z"/>
     <path class="f12-spoke" d="M200,${vp.y + vp.h / 2} V248"/>
@@ -148,9 +146,9 @@ function tankSvg(): string {
     ${t(nz, 528, '³Chl', 'f12-h f12-c-clay')}
     ${t(292, 452, 'slow drip', 'f12-m', 'end')}${t(292, 480, 'spin flip → triplet', 'f12-h f12-c-clay', 'end')}
     ${badge(292, 518, 'lasts µs and longer', 'us', 'end')}
-    ${ar(p, 'clay', 'M402,504 L452,504')}${t(426, 490, '+ O₂', 'f12-s')}
+    ${ar(p, 'clay', 'M402,504 L452,504')}${t(412, 490, '+', 'f12-s')}${molecule(434, 484, 'OO', 8)}
     ${o2box(458, 466, 96, 76)}
-    ${carotenoid(584, 512, 70)}${t(584, 546, 'carotenoids', 'f12-l f12-c-orange', 'start')}
+    ${carotenoid(584, 512, 70)}${t(584, 546, 'carotenoids (antenna)', 'f12-l f12-c-orange', 'start')}
   </g>`);
 }
 
@@ -162,9 +160,9 @@ function levelsTimesSvg(): string {
   return svg('Energy-level diagram of chlorophyll with the time each step takes', `
     ${defs(p)}
     ${ar(p, 'ink', 'M28,520 L28,64', 'f12-axis')}<text class="f12-ax" transform="translate(18 300) rotate(-90)" text-anchor="middle">energy</text>
-    ${lvl(78, 262, S2)}${sub(78, 180, S2)}${t(66, S2 + 9, 'S₂', 'f12-lv', 'end')}
-    ${lvl(78, 500, S1)}${sub(78, 180, S1)}${t(66, S1 + 9, 'S₁', 'f12-lv', 'end')}
-    ${lvl(78, 640, S0)}${sub(78, 180, S0)}${t(66, S0 + 9, 'S₀', 'f12-lv', 'end')}
+    ${lvl(78, 262, S2)}${t(66, S2 + 9, 'Sₙ', 'f12-lv', 'end')}
+    ${lvl(78, 500, S1)}${t(66, S1 + 9, 'S₁', 'f12-lv', 'end')}
+    ${lvl(78, 640, S0)}${t(66, S0 + 9, 'S₀', 'f12-lv', 'end')}
     ${lvl(540, 640, T1)}
 
     ${ar(p, 'blue', `M100,${S0 - 2} L100,${S2 + 4}`)}${ar(p, 'red', `M150,${S0 - 2} L150,${S1 + 4}`)}
@@ -182,12 +180,12 @@ function levelsTimesSvg(): string {
 
     ${ar(p, 'green', `M504,${S1} L590,${S1}`)}
     ${rc(596, 214, 190, 96)}${rcDot(630, S1)}${t(718, S1 - 6, 'charge', 'f12-h')}${t(718, S1 + 20, 'separation', 'f12-h')}
-    ${t(691, 160, 'photochemistry', 'f12-h f12-c-green')}${badge(691, 192, '< 100 ps', 'ps')}
+    ${t(691, 160, 'photochemistry', 'f12-h f12-c-green')}${badge(691, 192, '~300 ps', 'ps')}
 
     ${ar(p, 'clay', `M470,${S1 + 4} L540,${T1 - 4}`, 'f12-dash')}${t(546, 336, 'spin flip', 'f12-l f12-c-clay', 'start')}
     ${t(640, T1 - 12, 'T₁', 'f12-lv', 'end')}${badge(616, T1 + 34, 'µs and longer', 'us', 'end')}
-    ${ar(p, 'clay', `M646,${T1 - 6} L690,${T1 - 6}`)}${t(668, T1 + 18, '+ O₂', 'f12-s')}${o2box(694, T1 - 46, 96, 74)}
-    ${carotenoid(708, T1 + 64, 74)}${t(792, T1 + 98, 'carotenoids', 'f12-l f12-c-orange', 'end')}
+    ${ar(p, 'clay', `M646,${T1 - 6} L690,${T1 - 6}`)}${t(652, T1 + 22, '+', 'f12-s')}${molecule(674, T1 + 16, 'OO', 8)}${o2box(694, T1 - 46, 96, 74)}
+    ${carotenoid(708, T1 + 64, 74)}${t(792, T1 + 98, 'carotenoids (antenna)', 'f12-l f12-c-orange', 'end')}
   `);
 }
 
@@ -210,7 +208,7 @@ function levelsClockSvg(): string {
   return svg('Energy-level diagram with numbered steps beside a vertical logarithmic time ruler showing when each happens', `
     ${defs(p)}
     ${ar(p, 'ink', 'M24,520 L24,70', 'f12-axis')}<text class="f12-ax" transform="translate(14 300) rotate(-90)" text-anchor="middle">energy</text>
-    ${lvl(66, 196, S2)}${t(56, S2 + 9, 'S₂', 'f12-lv', 'end')}
+    ${lvl(66, 196, S2)}${t(56, S2 + 9, 'Sₙ', 'f12-lv', 'end')}
     ${lvl(66, 316, S1)}${t(56, S1 + 9, 'S₁', 'f12-lv', 'end')}
     ${lvl(66, 470, S0)}${t(56, S0 + 9, 'S₀', 'f12-lv', 'end')}
     ${lvl(332, 420, T1)}${t(428, T1 + 9, 'T₁', 'f12-lv', 'start')}
@@ -228,14 +226,14 @@ function levelsClockSvg(): string {
     <circle class="f12-watch" cx="${R}" cy="38" r="15"/><path class="f12-spoke" d="M${R},38 V28 M${R},38 L${R + 7},42 M${R - 4},19 H${R + 4}"/>
     ${ruler}
     ${item(-14.5, '1', 'absorption', 'blue or red photon: fs')}
-    ${item(-12.5, '2', 'heat: S₂ → S₁', 'blue’s extra energy: < 1 ps')}
-    ${item(-10.5, '3', 'charge separation', 'reaction centre: < 100 ps', 'f12-h f12-c-green')}
+    ${item(-12.5, '2', 'heat: Sₙ → S₁', 'blue’s extra energy: < 1 ps')}
+    ${item(-10.5, '3', 'charge separation', 'reaction centre: ~300 ps', 'f12-h f12-c-green')}
     <path class="f12-axis" d="M${R},${Y(-9)} H${R + 13}"/><circle class="f12-num" cx="${R}" cy="${Y(-9)}" r="4"/>${num(R + 26, Y(-9), '4')}${num(R + 52, Y(-9), '5')}${num(R + 78, Y(-9), '6')}
     ${t(R + 100, Y(-9) + 2, 'S₁ lasts ns', 'f12-h', 'start')}
     ${t(R + 26, Y(-9) + 34, 'fluorescence, heat (NPQ)', 'f12-s', 'start')}${t(R + 26, Y(-9) + 54, 'and spin flip compete', 'f12-s', 'start')}
     <path class="f12-span f12-span-us" d="M${R},${Y(-6)} V${Y(-3.4)}"/>
     ${item(-6, '7', 'triplet → ¹O₂', 'T₁ lasts µs and longer', 'f12-h f12-c-clay')}
-    ${carotenoid(R + 48, Y(-6) + 50, 64)}${t(R + 128, Y(-6) + 56, 'carotenoids', 'f12-s f12-c-orange', 'start')}${t(R + 48, Y(-6) + 80, 'quench ³Chl and ¹O₂', 'f12-s', 'start')}
+    ${carotenoid(R + 48, Y(-6) + 50, 64)}${t(R + 128, Y(-6) + 56, 'carotenoids', 'f12-s f12-c-orange', 'start')}${t(R + 48, Y(-6) + 80, 'catch ³Chl in the antenna', 'f12-s', 'start')}
   `);
 }
 
@@ -290,7 +288,7 @@ function openClosedSvg(): string {
 function raceSvg(): string {
   const p = 'f12e';
   const X = (e: number): number => 262 + (e + 12) * 58;
-  const lanes = [128, 226, 324, 422], ay = 530, fin = X(-10);
+  const lanes = [128, 226, 324, 422], ay = 530, fin = X(-9.5);
   const named: Record<number, string> = { [-12]: 'ps', [-9]: 'ns', [-6]: 'µs', [-3]: 'ms' };
   let axis = `<path class="f12-axis" d="M${X(-12)},${ay} H${X(-3)}"/>`;
   for (let e = -12; e <= -3; e++) {
@@ -299,10 +297,10 @@ function raceSvg(): string {
     if (named[e]) axis += t(X(e), ay + 30, named[e], 'f12-ax');
   }
   const S1y = 300, S1x = 210;
-  /** A lane; past the 100 ps mark the bar fades, because photochemistry has taken most excitations by then. */
+  /** A lane; past the ~300 ps mark the bar fades, because photochemistry has taken most excitations by then. */
   const lane = (y: number, title: string, end: number, cls: string, extra = ''): string => {
     const x0 = X(-12) + 4, x1 = X(end);
-    const bar = end <= -10 ? `<rect class="${cls}" x="${x0}" y="${y - 12}" width="${x1 - x0}" height="24" rx="12"/>`
+    const bar = end <= -9.5 ? `<rect class="${cls}" x="${x0}" y="${y - 12}" width="${x1 - x0}" height="24" rx="12"/>`
       : `<rect class="${cls} f12-late" x="${x0}" y="${y - 12}" width="${x1 - x0}" height="24" rx="12"/><path class="${cls}" d="M${x0 + 12},${y - 12} H${fin} V${y + 12} H${x0 + 12} A12,12 0 0 1 ${x0 + 12},${y - 12}Z"/>`;
     return `<rect class="f12-lane" x="${X(-12)}" y="${y - 22}" width="${X(-3) - X(-12)}" height="44" rx="22"/>` +
       `<path class="f12-guide" d="M${S1x + 4},${S1y} C${S1x + 36},${S1y} ${X(-12) - 36},${y} ${X(-12) - 4},${y}"/>` +
@@ -314,17 +312,17 @@ function raceSvg(): string {
     ${defs(p)}<g transform="translate(0 -18)">
     <rect class="f12-band" x="${X(-9)}" y="74" width="${X(-8.4) - X(-9)}" height="374"/>
     ${t(X(-8.7), 64, 'S₁ lasts ns', 'f12-s')}
-    ${lane(lanes[0], 'photochemistry', -10, 'f12-bar-green', `<path class="f12-pole" d="M${fin + 14},${lanes[0] + 12} V${lanes[0] - 16}"/><path class="f12-flag" d="M${fin + 14},${lanes[0] - 16} l20,7 l-20,7Z"/>${t(fin + 44, lanes[0] + 8, '< 100 ps', 'f12-h f12-c-green', 'start')}`)}
+    ${lane(lanes[0], 'photochemistry', -9.5, 'f12-bar-green', `<path class="f12-pole" d="M${fin + 14},${lanes[0] + 12} V${lanes[0] - 16}"/><path class="f12-flag" d="M${fin + 14},${lanes[0] - 16} l20,7 l-20,7Z"/>${t(fin + 44, lanes[0] + 8, '~300 ps', 'f12-h f12-c-green', 'start')}`)}
     ${lane(lanes[1], 'heat (NPQ)', -8.6, 'f12-bar-grey', `${knob(X(-8.6), lanes[1])}${t(X(-8.6) + 34, lanes[1] + 7, 'adjustable', 'f12-s', 'start')}`)}
     ${lane(lanes[2], 'fluorescence', -8.6, 'f12-bar-red', t(X(-8.6) + 14, lanes[2] + 7, '≈ 685 nm', 'f12-s', 'start'))}
     ${lane(lanes[3], 'spin flip → triplet', -8.6, 'f12-bar-clay')}
     ${ar(p, 'clay', `M${X(-8.6) + 4},${lanes[3]} L${X(-4.3) - 6},${lanes[3]}`, 'f12-dash')}
     ${t(600, lanes[3] - 30, 'lasts µs and longer', 'f12-s')}
     ${o2box(X(-4.3), lanes[3] - 36, 82, 72)}
-    ${t(X(-12) + 6, 478, 'paler: few excitations remain after 100 ps', 'f12-s', 'start')}
-    ${carotenoid(714, 480, 68)}${t(790, 506, 'carotenoids', 'f12-s f12-c-orange', 'end')}
+    ${t(X(-12) + 6, 478, 'paler: few excitations remain after ~300 ps', 'f12-s', 'start')}
+    ${carotenoid(714, 480, 68)}${t(790, 506, 'carotenoids (antenna)', 'f12-s f12-c-orange', 'end')}
 
-    ${lvl(40, 120, 150)}${t(32, 159, 'S₂', 'f12-lv', 'end')}
+    ${lvl(40, 120, 150)}${t(32, 159, 'Sₙ', 'f12-lv', 'end')}
     ${lvl(40, S1x, S1y)}${t(32, S1y + 9, 'S₁', 'f12-lv', 'end')}${glow(p, 194, S1y - 2, 20)}
     ${lvl(40, 200, 470)}${t(32, 479, 'S₀', 'f12-lv', 'end')}
     ${ar(p, 'blue', 'M52,468 L52,154')}${ar(p, 'red', 'M86,468 L86,304')}

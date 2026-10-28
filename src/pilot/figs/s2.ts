@@ -98,7 +98,9 @@ export function airMol(x: number, y: number, a: 'N' | 'O', ang: number, r = 13):
   const dx = Math.cos((ang * Math.PI) / 180) * r * 0.78, dy = Math.sin((ang * Math.PI) / 180) * r * 0.78;
   return [-1, 1].map(k => {
     const cx = x + k * dx, cy = y + k * dy;
-    return `<circle class="atom f2-atom-${a}" cx="${f(cx)}" cy="${f(cy)}" r="${r}"/>${r >= 12 ? T(cx, cy + 5.5, a, 'f2-atom-t', 'middle') : ''}`;
+    // Every atom ball carries its letter (the deck's glyph standard, 28 Oct 2026), at least 11 px.
+    const fs = Math.min(15, Math.max(11, r * 1.2));
+    return `<circle class="atom f2-atom-${a}" cx="${f(cx)}" cy="${f(cy)}" r="${r}"/><text class="f2-atom-t" x="${f(cx)}" y="${f(cy + fs * 0.36)}" text-anchor="middle" style="font-size:${f(fs)}px">${a}</text>`;
   }).join('');
 }
 

@@ -24,7 +24,7 @@
 .theme-editorial .lead-fig text.fld01-topic{font-weight:600;fill:#a9532f}
 .theme-editorial .lead-fig text.fld01-halfq{font-family:Newsreader,Georgia,serif;font-style:italic;fill:#141413}
 .theme-editorial .lead-fig text.fld01-term{font-weight:600}
-.theme-editorial .lead-fig text.fld01-w{fill:#2a62a0}
+.theme-editorial .lead-fig text.fld01-w,.theme-editorial .lead-fig text.fld01-m{fill:#141413}
 .theme-editorial .lead-fig text.fld01-ctitle{font-weight:600;fill:#141413}
 .theme-editorial .lead-fig text.fld01-agenda{fill:#3d3d3a}
 

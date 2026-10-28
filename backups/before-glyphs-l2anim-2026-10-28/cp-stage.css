@@ -1,0 +1,44 @@
+/* The CO₂-path animations cp9 and cp10 (cp-stage.ts). The slide figures keep figs/cp.css's look; these are the stage's
+   own pieces, in stage px: the figure card, newsprint clippings and portraits, photo frames, pills and readouts. */
+.ani .cps-card{fill:rgba(255,254,250,.58);stroke:rgba(120,100,60,.10);stroke-width:1}
+.ani .cps-mult{mix-blend-mode:multiply}
+.ani-stage text.cps-under{font-family:Inter,"Helvetica Neue",Arial,sans-serif;font-size:20px;fill:#5c5a52}
+.ani-stage text.cps-pname{font-size:30px}
+.ani-stage text.cps-pyear{font-size:30px}
+.ani .cps-photobg{fill:#fffdf8}
+.ani .cps-frame{fill:none;stroke:#d3cfc3;stroke-width:1.2}
+.ani-stage text.cps-plabel{font-size:24px;font-weight:600;fill:#141413}
+.ani-stage text.cps-credit{font-size:14px;fill:#8a877d}
+.ani-stage text.cps-head{font-size:26px;font-weight:600;fill:#141413}
+.ani-stage text.cps-lab{font-size:22px;fill:#3d3d3a}
+.ani-stage text.cps-sub{font-size:20px;fill:#5f5e58}
+.ani-stage text.cps-big{font-size:34px;font-weight:700;fill:#141413}
+.ani-stage text.cps-sym{font-family:Newsreader,Georgia,serif;font-size:30px;fill:#141413}
+.ani-stage text.cps-val{font-size:22px;fill:#3d3d3a}
+.ani-stage text.cps-q{font-family:Newsreader,Georgia,serif;font-size:40px;font-weight:600;fill:#a2461f}
+.ani-stage text.cps-c{font-size:24px;font-weight:700;fill:#a2461f}
+.ani-stage text.cps-w{font-size:24px;font-weight:700;fill:#2f62a3}
+
+.ani .cps-pill-paper{fill:#f3f1ea;stroke:#d3cfc3;stroke-width:1}
+.ani .cps-pill-dark{fill:#141413;opacity:.85}
+.ani .cps-pill-co2{fill:#a2461f}
+.ani .cps-pill-h2o{fill:#2f62a3}
+.ani-stage text.cps-pt{font-size:22px;font-weight:600;fill:#141413}
+.ani-stage text.cps-pt-dark,.ani-stage text.cps-pt-co2,.ani-stage text.cps-pt-h2o{fill:#fffdf8}
+
+/* readouts */
+.ani .cps-rcard{fill:#fffdf8;stroke:#d3cfc3;stroke-width:1.2}
+.ani .cps-bar-in{fill:#d6c8b8}
+.ani .cps-bar-co2{fill:#a2461f}
+.ani .cps-bar-h2o{fill:#2f62a3}
+.ani .cps-axis{fill:none;stroke:#3d3d3a;stroke-width:1.6}
+.ani .cps-arrow-co2{fill:none;stroke:#a2461f;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+.ani .cps-arrow-h2o{fill:none;stroke:#2f62a3;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+.ani .cps-hd-co2{fill:#a2461f}
+.ani .cps-hd-h2o{fill:#2f62a3}
+.ani .cps-halo{fill:none;stroke:#fffdf8;stroke-width:12;stroke-linecap:round;stroke-linejoin:round;opacity:.85}
+.ani .cps-wind{fill:none;stroke:#7d8fa6;stroke-width:3;stroke-linecap:round}
+.ani .cps-ring{fill:none;stroke:#f2b705;stroke-width:3}
+.ani .cps-zoomline{fill:none;stroke:#141413;stroke-width:1.6;stroke-dasharray:5 5}
+.ani .cps-back{fill:#fbfaf6;stroke:#d3cfc3;stroke-width:1}
+.ani .cps-veil{fill:#f7f5ef}

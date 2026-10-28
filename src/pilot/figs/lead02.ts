@@ -50,10 +50,10 @@ function drawF(): string {
   // The band keeps the photo's clear sky (upper left) and its sunlit leaves side by side; the text gets the
   // lower third to itself, centred, so the page reads top to bottom: look, then ask.
   const p = 'fld02f';
-  return svg(p, 'A wide photograph across the top of the page: sunlit green leaves against a clear blue sky. Below it, the question: why is the sky blue, and why are leaves green? The same sunlight falls on both.', `
+  return svg(p, 'A wide photograph across the top of the page: sunlit green leaves against a clear blue sky. Below it, the question: why is the sky blue, and why are leaves green?', `
     ${photoBox(`${p}-clip`, 0, 0, 1600, 560, [0, 70, 800, 280], 0)}
     ${ask(800, 690, 66, ['Why is the sky blue, and why are leaves green?'], 1.12, 'middle')}
-    ${T(800, 760, 'The same sunlight falls on both.', 'fld02-prompt', 'middle')}
+    ${T(800, 760, '', 'fld02-prompt', 'middle')}
     ${T(96, 866, CREDIT, 'fld02-credit')}
   `);
 }
@@ -65,7 +65,7 @@ function drawA(): string {
   return svg(p, 'Photograph looking up at sunlit green leaves against a clear blue sky, beside the question: why is the sky blue, and why are leaves green?', `
     ${photoBox(`${p}-clip`, 0, 0, 720, 900, [40, 0, 480, 600], 0)}
     ${ask(800, 350, 80, ['Why is the sky blue,', 'and why are', 'leaves green?'])}
-    ${T(802, 628, 'The same sunlight falls on both.', 'fld02-prompt')}
+    ${T(802, 628, '', 'fld02-prompt')}
     ${T(802, 866, CREDIT, 'fld02-credit')}
   `);
 }

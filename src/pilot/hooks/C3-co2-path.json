@@ -1,0 +1,77 @@
+{
+  "title": "The CO₂ path into the chloroplast, and how leaf gas exchange is measured",
+  "chunk": "Lecture 2 · chunk 3",
+  "slides": ["C9", "C10"],
+  "questions": [
+    {
+      "id": "a",
+      "question": "Why does a plant need so much water, when photosynthesis uses so little of it?",
+      "story": "For every CO₂ molecule a leaf takes in, it loses about 150 to more than 500 molecules of water through its stomata. The stomata cover less than 3 % of the leaf surface, yet almost all of the leaf's CO₂ uptake and water loss passes through them.",
+      "steps": [
+        "CO₂ is only about 0.04 % of air (420 µmol mol⁻¹), so a leaf must keep pores open for it to diffuse in.",
+        "The air inside the leaf is saturated with water vapour; the outside air is drier.",
+        "Through the same open pore, water vapour diffuses out down a far steeper gradient, and it diffuses 1.6 times faster than CO₂.",
+        "So the stomata trade water for carbon: stomatal conductance sets both CO₂ uptake and transpiration."
+      ],
+      "concepts": ["Stomata", "Stomatal conductance", "CO₂ in, water out"],
+      "see": "SEM of a stoma (tomato); the drawn single stoma with CO₂ in and H₂O out (C10 v10); the drawn path with the stomata lit (C10 v11).",
+      "status": "Verslues et al. 2023, Plant Cell 35:67 (section by Schroeder & Hsu: '∼150 to >500 water molecules … for every CO2 molecule'), full text; Lawson & Blatt 2014, Plant Physiol 164:1556 (pores < 3 % of the surface, ≈ 98 % of the flux), full text; Busch et al. 2024, Box 2 (factor 1.6), full text."
+    },
+    {
+      "id": "b",
+      "question": "How can a leaf take in enough CO₂ through holes that cover less than 1 % of its surface?",
+      "story": "In 1900 Horace Brown and Fergusson Escombe counted the stomata of a catalpa leaf: 145 per square millimetre, whose open pores covered only 0.9 % of the leaf. Yet the leaf took up CO₂ at about half the rate of an equal surface of caustic soda, which absorbs every CO₂ molecule that reaches it. Per unit of pore area, CO₂ was entering about 50 times faster than into the soda. With perforated plates they then showed that diffusion through a small hole scales with its diameter, not with its area.",
+      "steps": [
+        "CO₂ enters a leaf by diffusion, from the higher concentration outside to the lower concentration inside.",
+        "Each small pore draws CO₂ from a half-sphere of air around it, so many small pores let through nearly as much as an open surface.",
+        "A layer of still air over the leaf, the boundary layer, is the first resistance; wind makes it thinner.",
+        "Then come the stomata and the mesophyll: three conductances in series."
+      ],
+      "concepts": ["Diffusion", "Boundary layer", "Stomatal conductance"],
+      "see": "Brown & Escombe's catalpa numbers as a journal clipping; the tomato stoma SEM; Dupont et al. 2025, low vs high wind (C10 v8).",
+      "status": "Brown & Escombe 1900, Phil Trans R Soc B 193:223, pp. 223–227 (OCR text of the archive.org scan, full text; check the wording against the page scan). The half-sphere explanation is textbook diffusion physics, not a quote."
+    },
+    {
+      "id": "c",
+      "question": "How can you tell how fast a single leaf is photosynthesising?",
+      "story": "In 1959 P. Gaastra in Wageningen clamped single attached leaves of cucumber, tomato, spinach, turnip and sugar beet into a Plexiglass chamber. A recording infrared gas analyser measured the CO₂ of the air before and after the leaf, a lithium-chloride hygrometer the water vapour, thermocouples the leaf temperature. From these he calculated three resistances to CO₂: the outside air, the stomata and the mesophyll. Portable systems do the same today, in the field, in minutes.",
+      "steps": [
+        "CO₂ and water vapour absorb infrared light at their own wavelengths, so an infrared gas analyser (IRGA) measures both in air.",
+        "Air flows over a leaf in a chamber: the CO₂ drop gives the net CO₂ uptake (A), the water-vapour rise gives transpiration (E).",
+        "Transpiration and the leaf-to-air water-vapour difference give the stomatal conductance; with A, it gives the CO₂ in the leaf air spaces (Ci).",
+        "Ci is below the outside CO₂, and the CO₂ at RuBisCO (Cc) is lower still: the CO₂ path."
+      ],
+      "concepts": ["Infrared gas analyser", "Net CO₂ uptake A, transpiration E", "Stomatal conductance and Ci"],
+      "see": "Gaastra's 1959 analyser diagram beside a portable system today (C9 v6); a LI-6800 in a rice field (C9 v5); Busch et al. 2024 Box 1 (C9 v9).",
+      "status": "Gaastra 1959, Meded Landbouwhogeschool Wageningen 59(13):1–68, chapter II and Fig. 1, full text; Busch et al. 2024, Boxes 1–2, full text."
+    },
+    {
+      "id": "d",
+      "question": "Why are leaves so thin, and full of air inside?",
+      "story": "CO₂ diffuses about 10,000 times more slowly in water than in air. Inside a leaf, CO₂ travels through the air spaces as far as it can; only the last short stretch, through the wet cell wall, the membranes and the stroma, is liquid. In leaves the chloroplasts lie pressed against the cell walls that face the air spaces, which keeps that stretch short.",
+      "steps": [
+        "From the air spaces, CO₂ must dissolve and cross the cell wall, the plasma membrane, the cytosol, the chloroplast envelope and the stroma.",
+        "In water this is about 10,000 times slower than in air: the mesophyll conductance.",
+        "Leaves keep it large: chloroplasts line the walls facing the air spaces, and thin walls let more CO₂ through.",
+        "Even so, the CO₂ at RuBisCO (Cc) is well below that in the air spaces (Ci): typically 200 against 300 µmol mol⁻¹ in a C₃ leaf at 25 °C."
+      ],
+      "concepts": ["Mesophyll conductance", "Ci and Cc", "Chloroplasts against the cell wall"],
+      "see": "Clarke et al. 2021 TEM, stoma → air space → chloroplast at the wall (C10 v7); Lundgren et al. 2019 micro-CT of the air space in a wheat leaf (C10 v5).",
+      "status": "Terashima et al. 2011, Plant Physiol 155:108 (liquid-phase diffusion 4 orders of magnitude slower), full text; Knauer et al. 2022, New Phytol 236:357 (gm larger with more chloroplast surface and thinner walls), full text; Busch et al. 2024, Table 1 (typical values), full text. Caveat: leaf thickness is also shaped by light capture and water; this hook tells only the CO₂ side."
+    },
+    {
+      "id": "e",
+      "question": "Why do plants close their pores on a hot, dry afternoon, and what does it cost them?",
+      "story": "Leaves close their stomata when water runs short. That saves water, but less CO₂ gets in. Gaastra (1959) worked out from his turnip leaves that doubling the stomatal resistance cuts CO₂-limited photosynthesis by one third when the other resistances together equal the stomatal one, but only by one sixth when they are four times as large.",
+      "steps": [
+        "Closing the stomata lowers the stomatal conductance.",
+        "Less water vapour leaves; less CO₂ enters, so Ci falls.",
+        "The CO₂ at RuBisCO (Cc) falls too, and RuBisCO reacts more often with O₂.",
+        "Plants of hot, dry places keep the CO₂ at RuBisCO high in other ways."
+      ],
+      "concepts": ["Stomatal closure saves water", "Lower Ci and Cc", "Link to photorespiration and CO₂-concentrating plants"],
+      "see": "The drawn path with the stomata lit (C10 v11); Gaastra's three resistances (C10 v6).",
+      "status": "Gaastra 1959, p. 54, full text. Steps 3–4 lead into chunk 4 (C₃ → C₂ → C₄, CAM), whose slides own those facts."
+    }
+  ]
+}

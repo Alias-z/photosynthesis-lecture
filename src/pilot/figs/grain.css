@@ -1,0 +1,10 @@
+/* Wheat grain and bread slice glyphs (figs/grain.ts): flat colour, dark outline, as the deck's protein renders. */
+.theme-editorial .grn-body{fill:#d9b066;stroke:#343230;stroke-width:2.2}
+.theme-editorial .grn-crease{fill:none;stroke:#8f6a2c;stroke-width:1.8;stroke-linecap:round}
+.theme-editorial .grn-hair{fill:none;stroke:#8f6a2c;stroke-width:1.4;stroke-linecap:round}
+.theme-editorial .grn-starch{fill:#fbfaf6;stroke:#a89f88;stroke-width:1.2}
+.theme-editorial .brd-crust{fill:#c58744;stroke:#343230;stroke-width:2.2;stroke-linejoin:round}
+.theme-editorial .brd-crumb{fill:#f3e0b4}
+.theme-editorial .brd-pore{fill:#e2c48a}
+.theme-editorial .grn-card{fill:#fbfaf6;stroke:#d8d5cb;stroke-width:1.2}
+.theme-editorial .grn-link{fill:none;stroke:#8a877d;stroke-width:1.8;stroke-dasharray:5 4}

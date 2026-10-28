@@ -1,0 +1,74 @@
+/* C2 story: RuBisCO through Earth's history (dk-c2story.ts, c2story-scenes.ts). Prefixes .cs- (chart, corner) and .sc- (scenes). */
+.c2s .cs-paperbg{fill:#fbfaf6}
+.c2s .cs-sky{opacity:.45}.c2s .cs-gr{opacity:.62}
+/* scenes */
+.c2s .sc-sea0{fill:#9fb49a}.c2s .sc-sea1{fill:#8ec0b8}
+.c2s .sc-strom{fill:#b7a27c;stroke:#8f7b55;stroke-width:1.4}.c2s .sc-strom-l{fill:none;stroke:#8f7b55;stroke-width:1.2}
+.c2s .sc-cell{fill:#5f9a6e;opacity:.8}
+.c2s .sc-bub{fill:#fbfdfc;stroke:#6aa6a0;stroke-width:1.6;opacity:.9}
+.c2s .sc-swamp{fill:#9fae78}.c2s .sc-ground3{fill:#bdb684}.c2s .sc-steppe{fill:#cfc8a6}.c2s .sc-field{fill:#d8c89a}
+.c2s .sc-ground6{fill:#b8b2a6}.c2s .sc-ground7{fill:#c3c7cb}
+.c2s .sc-trunk{fill:#6f5f45}.c2s .sc-scar{fill:none;stroke:#4f432f;stroke-width:1.2}
+.c2s .sc-branch{fill:none;stroke:#6f5f45;stroke-linecap:round}.c2s .sc-lyco{fill:#5e8a43}
+.c2s .sc-frond{fill:none;stroke:#5e8a43;stroke-width:4;stroke-linecap:round}.c2s .sc-leaflet{fill:none;stroke:#6f9a4f;stroke-width:2.2;stroke-linecap:round}
+.c2s .sc-moss{fill:#6f9a4f}
+.c2s .sc-wing{fill:#eef3f5;stroke:#7d8f99;stroke-width:1.4;opacity:.92}.c2s .sc-vein{fill:none;stroke:#9aabb4;stroke-width:1}.c2s .sc-body{fill:none;stroke:#4a4a40;stroke-width:6;stroke-linecap:round}.c2s .sc-bodyc{fill:#4a4a40}
+.c2s .sc-conifer{fill:#4f7a45}.c2s .sc-cycad{fill:none;stroke:#5e8a43;stroke-width:5;stroke-linecap:round}
+.c2s .sc-dino{fill:#7f8761}.c2s .sc-eye{fill:#2b2a27}
+.c2s .sc-stem{fill:none;stroke:#5e8a43;stroke-width:3;stroke-linecap:round}.c2s .sc-petal{fill:#e7a6b8}.c2s .sc-fcentre{fill:#e9c04a}
+.c2s .sc-ice{fill:#f3f7f9;stroke:#b9cdd8;stroke-width:2}
+.c2s .sc-mam{fill:#7a5f4a}.c2s .sc-tusk{fill:none;stroke:#f6efe0;stroke-width:6;stroke-linecap:round}
+.c2s .sc-hum{fill:#5d4b3a}.c2s .sc-humb{fill:none;stroke:#5d4b3a;stroke-linecap:round}.c2s .sc-huml{fill:none;stroke:#5d4b3a;stroke-linecap:round}.c2s .sc-tool{fill:#8a877d}
+.c2s .sc-grass{fill:none;stroke:#8f9a62;stroke-width:2.4;stroke-linecap:round}
+.c2s .sc-wheats{fill:none;stroke:#b39a52;stroke-width:2.2}.c2s .sc-grain{fill:#d1b15c}
+.c2s .sc-house{fill:#c9a77c}.c2s .sc-roof{fill:#a88760}.c2s .sc-door{fill:#7d6447}
+.c2s .sc-fac{fill:#8d8a82}.c2s .sc-chim{fill:#77736b}.c2s .sc-smoke{fill:#a9a59c;opacity:.55}.c2s .sc-win{fill:#c7c2b6}
+.c2s .sc-rail{fill:none;stroke:#6b6a64;stroke-width:4}.c2s .sc-loco{fill:#55524b}.c2s .sc-wheel{fill:#3d3b36;stroke:#8a877d;stroke-width:3}
+.c2s .sc-tower{fill:#9aa3ab}.c2s .sc-twin{fill:#d7dde2}
+.c2s .sc-dc{fill:#7f8b96}.c2s .sc-rack{fill:#4f5963}.c2s .sc-led{fill:#7fd3c4}.c2s .sc-fan{fill:#c7ced4;stroke:#4f5963;stroke-width:2}.c2s .sc-fanb{fill:none;stroke:#4f5963;stroke-width:2}
+/* chart */
+.c2s .cs-plot{fill:#fbfaf6;opacity:.28}
+.c2s .cs-grid{fill:none;stroke:#d8d5cb;stroke-width:1;opacity:.8}
+.c2s .cs-axis{fill:none;stroke:#6b6a64;stroke-width:1.6}.c2s .cs-tick{fill:none;stroke:#6b6a64;stroke-width:1.4}
+.c2s .cs-band{fill:#2b2a27;opacity:.10}
+.c2s .cs-co2h{fill:none;stroke:#fbfaf6;stroke-width:8;stroke-linejoin:round;opacity:.9}
+.c2s .cs-co2{fill:none;stroke:#2b2a27;stroke-width:3.2;stroke-linejoin:round;stroke-linecap:round}
+.c2s .cs-o2{fill:none;stroke:#b8902a;stroke-width:2.6;stroke-linejoin:round}
+.c2s .cs-o2e{fill:none;stroke:#b8902a;stroke-width:2.4;stroke-dasharray:7 6}
+.c2s .cs-o2band{fill:#e0b43a;opacity:.22}
+.c2s .cs-arch{fill:none;stroke:#2b2a27;stroke-width:3;stroke-dasharray:7 6}.c2s .cs-archa{fill:none;stroke:#2b2a27;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.c2s .cs-phl{fill:none;stroke:#b8301b;stroke-width:2.4}.c2s .cs-phd{fill:#b8301b;stroke:#fbfaf6;stroke-width:2}
+.theme-editorial .c2s text.cs-tk{font-size:17px;fill:#4a4945}
+.theme-editorial .c2s text.cs-tko{font-size:16px;fill:#8a6a12}
+.theme-editorial .c2s text.cs-ax{font-size:17px;fill:#3d3d3a}
+.theme-editorial .c2s text.cs-axc{font-size:17px;font-weight:600;fill:#2b2a27}
+.theme-editorial .c2s text.cs-axo{font-size:17px;font-weight:600;fill:#8a6a12}
+.theme-editorial .c2s text.cs-lab{font-size:17px;font-weight:600;fill:#2b2a27}
+.theme-editorial .c2s text.cs-status{font-size:22px;font-weight:700;fill:#141413}
+.theme-editorial .c2s text.cs-crd{font-size:12.5px;fill:#8a877d}
+.theme-editorial .c2s text.cs-halo{paint-order:stroke;stroke:#fbfaf6;stroke-width:5px;stroke-linejoin:round}
+/* corner */
+.c2s .cs-panel{fill:#fffdf8;stroke:#d8d5cb;stroke-width:1.2}
+.theme-editorial .c2s text.cs-ph{font-size:18px;font-weight:600;fill:#6b6a64}
+.theme-editorial .c2s text.cs-pr{font-size:19px;font-weight:600;fill:#141413}
+.theme-editorial .c2s text.cs-pv{font-size:24px;font-weight:700;fill:#24812f}
+.theme-editorial .c2s text.cs-pv-o{fill:#b4532a}
+.theme-editorial .c2s text.cs-calc{font-size:15px;fill:#6b6a64}
+.theme-editorial .c2s text.cs-mn{font-size:18px;font-weight:600;fill:#141413}
+.theme-editorial .c2s text.cs-pl{font-size:16px;font-weight:600;fill:#9a5a0c}
+.theme-editorial .c2s text.cs-pl-o{fill:#b4532a}
+.c2s .cs-barbg{fill:#ece9e0}.c2s .cs-bar{fill:#2a963a}
+.c2s .cs-site{fill:rgba(255,253,248,.35);stroke:#e3a21a;stroke-width:2.4}
+.c2s .cs-flc{fill:#f6c453}.c2s .cs-flo{fill:#d9583a}
+/* thermometer and cards */
+.c2s .cs-tube{fill:#fffdf8;stroke:#6b6a64;stroke-width:2}.c2s .cs-merc{fill:#c2401f}
+.theme-editorial .c2s text.cs-thv{font-size:20px;font-weight:700;fill:#141413}
+.c2s .cs-paper{fill:#f6f1e5;stroke:#d3cdbd;stroke-width:1}
+.theme-editorial .c2s text.cs-ctitle{font-family:Newsreader,Georgia,serif;font-size:27px;font-weight:500;fill:#141413}
+.theme-editorial .c2s text.cs-ct{font-size:19px;font-weight:600;fill:#2b2a27}
+.theme-editorial .c2s text.cs-ccr{font-size:13px;fill:#8a877d}
+.c2s .cs-pho{fill:#f4cc4f;stroke:#b8902a;stroke-width:2}
+.c2s .cs-rule{fill:none;stroke:#e3e0d6;stroke-width:1.4}
+.c2s .cs-ibg{fill:#fffdf8;stroke:#d8d5cb;stroke-width:1.2;opacity:.96}
+.theme-editorial .c2s text.cs-ih{font-size:17px;font-weight:600;fill:#2b2a27}
+.c2s .sc-needle{fill:none;stroke:#5e8a43;stroke-width:2.4;stroke-linecap:round}

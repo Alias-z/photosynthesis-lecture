@@ -1,74 +1,96 @@
-/* C2 story: RuBisCO through Earth's history (dk-c2story.ts, c2story-scenes.ts). Prefixes .cs- (chart, corner) and .sc- (scenes). */
+/* C2 story v2: RuBisCO through Earth's history (dk-c2story.ts, c2story-scenes.ts). Prefixes .cs- (chart, panel, clippings) and .sc- (scenes). */
 .c2s .cs-paperbg{fill:#fbfaf6}
-.c2s .cs-sky{opacity:.45}.c2s .cs-gr{opacity:.62}
+.c2s .cs-sky{opacity:.45}.c2s .cs-gr{opacity:.66}
 /* scenes */
-.c2s .sc-sea0{fill:#9fb49a}.c2s .sc-sea1{fill:#8ec0b8}
+.c2s .sc-sea0{fill:#9fb49a}.c2s .sc-sea1{fill:#8ec0b8}.c2s .sc-foam{fill:none;stroke:#fbfaf6;stroke-width:2;opacity:.55}
 .c2s .sc-strom{fill:#b7a27c;stroke:#8f7b55;stroke-width:1.4}.c2s .sc-strom-l{fill:none;stroke:#8f7b55;stroke-width:1.2}
 .c2s .sc-cell{fill:#5f9a6e;opacity:.8}
-.c2s .sc-bub{fill:#fbfdfc;stroke:#6aa6a0;stroke-width:1.6;opacity:.9}
+.c2s .sc-bub{fill:#fbfdfc;stroke:#6aa6a0;stroke-width:1.5}
 .c2s .sc-swamp{fill:#9fae78}.c2s .sc-ground3{fill:#bdb684}.c2s .sc-steppe{fill:#cfc8a6}.c2s .sc-field{fill:#d8c89a}
 .c2s .sc-ground6{fill:#b8b2a6}.c2s .sc-ground7{fill:#c3c7cb}
 .c2s .sc-trunk{fill:#6f5f45}.c2s .sc-scar{fill:none;stroke:#4f432f;stroke-width:1.2}
-.c2s .sc-branch{fill:none;stroke:#6f5f45;stroke-linecap:round}.c2s .sc-lyco{fill:#5e8a43}
+.c2s .sc-branch{fill:none;stroke:#6f5f45;stroke-linecap:round}
 .c2s .sc-frond{fill:none;stroke:#5e8a43;stroke-width:4;stroke-linecap:round}.c2s .sc-leaflet{fill:none;stroke:#6f9a4f;stroke-width:2.2;stroke-linecap:round}
-.c2s .sc-moss{fill:#6f9a4f}
-.c2s .sc-wing{fill:#eef3f5;stroke:#7d8f99;stroke-width:1.4;opacity:.92}.c2s .sc-vein{fill:none;stroke:#9aabb4;stroke-width:1}.c2s .sc-body{fill:none;stroke:#4a4a40;stroke-width:6;stroke-linecap:round}.c2s .sc-bodyc{fill:#4a4a40}
+.c2s .sc-moss{fill:#6f9a4f}.c2s .sc-needle{fill:none;stroke:#5e8a43;stroke-width:2.4;stroke-linecap:round}
+.c2s .sc-wing{fill:#eef3f5;stroke:#7d8f99;stroke-width:1.6;opacity:.92}.c2s .sc-vein{fill:none;stroke:#9aabb4;stroke-width:1.2}.c2s .sc-bodyc{fill:#4a4a40}
 .c2s .sc-conifer{fill:#4f7a45}.c2s .sc-cycad{fill:none;stroke:#5e8a43;stroke-width:5;stroke-linecap:round}
-.c2s .sc-dino{fill:#7f8761}.c2s .sc-eye{fill:#2b2a27}
+.c2s .sc-dino{fill:#7f8761}.c2s .sc-dino-far{fill:#6c7352}.c2s .sc-eye{fill:#2b2a27}
+.c2s .sc-sd{fill:#8a7a58}.c2s .sc-sdl{fill:none;stroke:#8a7a58;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round}.c2s .sc-sdl-far{stroke:#74664a}
 .c2s .sc-stem{fill:none;stroke:#5e8a43;stroke-width:3;stroke-linecap:round}.c2s .sc-petal{fill:#e7a6b8}.c2s .sc-fcentre{fill:#e9c04a}
 .c2s .sc-ice{fill:#f3f7f9;stroke:#b9cdd8;stroke-width:2}
-.c2s .sc-mam{fill:#7a5f4a}.c2s .sc-tusk{fill:none;stroke:#f6efe0;stroke-width:6;stroke-linecap:round}
-.c2s .sc-hum{fill:#5d4b3a}.c2s .sc-humb{fill:none;stroke:#5d4b3a;stroke-linecap:round}.c2s .sc-huml{fill:none;stroke:#5d4b3a;stroke-linecap:round}.c2s .sc-tool{fill:#8a877d}
+.c2s .sc-mam{fill:#7a5f4a}.c2s .sc-mam-far{fill:#664f3d}.c2s .sc-mamt{fill:none;stroke:#7a5f4a;stroke-width:5;stroke-linecap:round}
+.c2s .sc-tusk{fill:none;stroke:#f6efe0;stroke-width:6;stroke-linecap:round}
+.c2s .sc-hum{fill:#5d4b3a}.c2s .sc-humb{fill:none;stroke:#5d4b3a;stroke-linecap:round}.c2s .sc-huml{fill:none;stroke:#5d4b3a;stroke-linecap:round;stroke-linejoin:round}
+.c2s .sc-hum-far{stroke:#4a3c2e}.c2s .sc-tunic{fill:#8a6f52}.c2s .sc-hair{fill:#3d3128}
+.c2s .sc-spear{fill:none;stroke:#8a6f4a;stroke-width:3;stroke-linecap:round}.c2s .sc-spearpt{fill:#8a877d}
 .c2s .sc-grass{fill:none;stroke:#8f9a62;stroke-width:2.4;stroke-linecap:round}
 .c2s .sc-wheats{fill:none;stroke:#b39a52;stroke-width:2.2}.c2s .sc-grain{fill:#d1b15c}
+.c2s .sc-sheaf{fill:none;stroke:#c8a84e;stroke-width:3;stroke-linecap:round}
+.c2s .sc-sickle{fill:#8a877d}.c2s .sc-sickleh{fill:none;stroke:#7d6447;stroke-width:5;stroke-linecap:round}
 .c2s .sc-house{fill:#c9a77c}.c2s .sc-roof{fill:#a88760}.c2s .sc-door{fill:#7d6447}
-.c2s .sc-fac{fill:#8d8a82}.c2s .sc-chim{fill:#77736b}.c2s .sc-smoke{fill:#a9a59c;opacity:.55}.c2s .sc-win{fill:#c7c2b6}
-.c2s .sc-rail{fill:none;stroke:#6b6a64;stroke-width:4}.c2s .sc-loco{fill:#55524b}.c2s .sc-wheel{fill:#3d3b36;stroke:#8a877d;stroke-width:3}
+.c2s .sc-fac{fill:#8d8a82}.c2s .sc-chim{fill:#77736b}.c2s .sc-smoke{fill:#a9a59c}.c2s .sc-win{fill:#c7c2b6}
+.c2s .sc-rail{fill:none;stroke:#6b6a64;stroke-width:4}.c2s .sc-sleepers{fill:none;stroke:#8a7f6c;stroke-width:4}
+.c2s .sc-loco{fill:#55524b}.c2s .sc-cabw{fill:#c7c2b6}.c2s .sc-wagon{fill:#7c6a55}.c2s .sc-wagtop{fill:#4f4a43}
+.c2s .sc-wheel{fill:#3d3b36;stroke:#8a877d;stroke-width:2.5}.c2s .sc-spoke{fill:none;stroke:#8a877d;stroke-width:2}
 .c2s .sc-tower{fill:#9aa3ab}.c2s .sc-twin{fill:#d7dde2}
-.c2s .sc-dc{fill:#7f8b96}.c2s .sc-rack{fill:#4f5963}.c2s .sc-led{fill:#7fd3c4}.c2s .sc-fan{fill:#c7ced4;stroke:#4f5963;stroke-width:2}.c2s .sc-fanb{fill:none;stroke:#4f5963;stroke-width:2}
+.c2s .sc-dc{fill:#7f8b96}.c2s .sc-dcwin{fill:#c9d3da}.c2s .sc-rack{fill:#4f5963}.c2s .sc-led{fill:#5fd0bb}
+.c2s .sc-fan{fill:#c7ced4;stroke:#4f5963;stroke-width:2}.c2s .sc-fanb{fill:none;stroke:#4f5963;stroke-width:2}
+.c2s .sc-road{fill:#8b8f93}.c2s .sc-lane{fill:none;stroke:#e8e6df;stroke-width:2.4;stroke-dasharray:18 16}
+.c2s .sc-car0{fill:#b5533c}.c2s .sc-car1{fill:#3f6f8f}.c2s .sc-car2{fill:#d0a23e}.c2s .sc-car3{fill:#5b7a5a}
+.c2s .sc-carw{fill:#dfe6ea}.c2s .sc-tyre{fill:#2f2e2b}.c2s .sc-hub{fill:#a7a49a}
+.c2s .sc-plane{fill:#7d8790}.c2s .sc-trail{fill:none;stroke:#fbfaf6;stroke-width:3;stroke-linecap:round;opacity:.9}
 /* chart */
-.c2s .cs-plot{fill:#fbfaf6;opacity:.28}
-.c2s .cs-grid{fill:none;stroke:#d8d5cb;stroke-width:1;opacity:.8}
-.c2s .cs-axis{fill:none;stroke:#6b6a64;stroke-width:1.6}.c2s .cs-tick{fill:none;stroke:#6b6a64;stroke-width:1.4}
-.c2s .cs-band{fill:#2b2a27;opacity:.10}
-.c2s .cs-co2h{fill:none;stroke:#fbfaf6;stroke-width:8;stroke-linejoin:round;opacity:.9}
-.c2s .cs-co2{fill:none;stroke:#2b2a27;stroke-width:3.2;stroke-linejoin:round;stroke-linecap:round}
-.c2s .cs-o2{fill:none;stroke:#b8902a;stroke-width:2.6;stroke-linejoin:round}
-.c2s .cs-o2e{fill:none;stroke:#b8902a;stroke-width:2.4;stroke-dasharray:7 6}
-.c2s .cs-o2band{fill:#e0b43a;opacity:.22}
+.c2s .cs-grid{fill:none;stroke:#d8d5cb;stroke-width:1;opacity:.85}
+.c2s .cs-zero{fill:none;stroke:#c0441f;stroke-width:1.2;stroke-dasharray:5 6;opacity:.45}
+.c2s .cs-axis{fill:none;stroke:#6b6a64;stroke-width:1.6}.c2s .cs-tick{fill:none;stroke:#6b6a64;stroke-width:1.4}.c2s .cs-tickt{fill:none;stroke:#c0441f;stroke-width:1.4}
+.c2s .cs-brk{fill:none;stroke:#6b6a64;stroke-width:1.8;stroke-linecap:round}
+.c2s .cs-band{fill:#2b2a27;opacity:.09}.c2s .cs-bandt{fill:#c0441f;opacity:.11}
+.c2s .cs-co2h,.c2s .cs-th{fill:none;stroke:#fbfaf6;stroke-width:8;stroke-linejoin:round;opacity:.9}
+.c2s .cs-co2{fill:none;stroke:#2b2a27;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+.c2s .cs-t{fill:none;stroke:#c0441f;stroke-width:2.6;stroke-linejoin:round;stroke-linecap:round}
+.c2s .cs-goe{fill:#4f9a8f;opacity:.28}
 .c2s .cs-arch{fill:none;stroke:#2b2a27;stroke-width:3;stroke-dasharray:7 6}.c2s .cs-archa{fill:none;stroke:#2b2a27;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
-.c2s .cs-phl{fill:none;stroke:#b8301b;stroke-width:2.4}.c2s .cs-phd{fill:#b8301b;stroke:#fbfaf6;stroke-width:2}
-.theme-editorial .c2s text.cs-tk{font-size:17px;fill:#4a4945}
-.theme-editorial .c2s text.cs-tko{font-size:16px;fill:#8a6a12}
-.theme-editorial .c2s text.cs-ax{font-size:17px;fill:#3d3d3a}
-.theme-editorial .c2s text.cs-axc{font-size:17px;font-weight:600;fill:#2b2a27}
-.theme-editorial .c2s text.cs-axo{font-size:17px;font-weight:600;fill:#8a6a12}
-.theme-editorial .c2s text.cs-lab{font-size:17px;font-weight:600;fill:#2b2a27}
+.c2s .cs-phl{fill:none;stroke:#8a877d;stroke-width:2}.c2s .cs-pdc{fill:#2b2a27;stroke:#fbfaf6;stroke-width:2}.c2s .cs-pdt{fill:#c0441f;stroke:#fbfaf6;stroke-width:2}
+.theme-editorial .c2s text.cs-tk{font-size:16px;fill:#4a4945}
+.theme-editorial .c2s text.cs-tkt{font-size:16px;fill:#a03a1c}
+.theme-editorial .c2s text.cs-ax{font-size:16px;fill:#3d3d3a}
+.theme-editorial .c2s text.cs-axc{font-size:16px;font-weight:600;fill:#2b2a27}
+.theme-editorial .c2s text.cs-axt{font-size:16px;font-weight:600;fill:#a03a1c}
+.theme-editorial .c2s text.cs-axt2{font-size:14px;fill:#a03a1c}
+.theme-editorial .c2s text.cs-lc{font-size:17px;font-weight:700;fill:#2b2a27}
+.theme-editorial .c2s text.cs-lt{font-size:17px;font-weight:700;fill:#a03a1c}
+.theme-editorial .c2s text.cs-note{font-size:14px;fill:#4a4945}
 .theme-editorial .c2s text.cs-status{font-size:22px;font-weight:700;fill:#141413}
 .theme-editorial .c2s text.cs-crd{font-size:12.5px;fill:#8a877d}
 .theme-editorial .c2s text.cs-halo{paint-order:stroke;stroke:#fbfaf6;stroke-width:5px;stroke-linejoin:round}
-/* corner */
-.c2s .cs-panel{fill:#fffdf8;stroke:#d8d5cb;stroke-width:1.2}
-.theme-editorial .c2s text.cs-ph{font-size:18px;font-weight:600;fill:#6b6a64}
-.theme-editorial .c2s text.cs-pr{font-size:19px;font-weight:600;fill:#141413}
-.theme-editorial .c2s text.cs-pv{font-size:24px;font-weight:700;fill:#24812f}
-.theme-editorial .c2s text.cs-pv-o{fill:#b4532a}
-.theme-editorial .c2s text.cs-calc{font-size:15px;fill:#6b6a64}
-.theme-editorial .c2s text.cs-mn{font-size:18px;font-weight:600;fill:#141413}
-.theme-editorial .c2s text.cs-pl{font-size:16px;font-weight:600;fill:#9a5a0c}
-.theme-editorial .c2s text.cs-pl-o{fill:#b4532a}
-.c2s .cs-barbg{fill:#ece9e0}.c2s .cs-bar{fill:#2a963a}
-.c2s .cs-site{fill:rgba(255,253,248,.35);stroke:#e3a21a;stroke-width:2.4}
-.c2s .cs-flc{fill:#f6c453}.c2s .cs-flo{fill:#d9583a}
-/* thermometer and cards */
-.c2s .cs-tube{fill:#fffdf8;stroke:#6b6a64;stroke-width:2}.c2s .cs-merc{fill:#c2401f}
-.theme-editorial .c2s text.cs-thv{font-size:20px;font-weight:700;fill:#141413}
-.c2s .cs-paper{fill:#f6f1e5;stroke:#d3cdbd;stroke-width:1}
-.theme-editorial .c2s text.cs-ctitle{font-family:Newsreader,Georgia,serif;font-size:27px;font-weight:500;fill:#141413}
-.theme-editorial .c2s text.cs-ct{font-size:19px;font-weight:600;fill:#2b2a27}
-.theme-editorial .c2s text.cs-ccr{font-size:13px;fill:#8a877d}
-.c2s .cs-pho{fill:#f4cc4f;stroke:#b8902a;stroke-width:2}
+/* panel */
+.c2s .cs-panelbg{fill:#fffdf8;stroke:#d8d5cb;stroke-width:1.2}
 .c2s .cs-rule{fill:none;stroke:#e3e0d6;stroke-width:1.4}
-.c2s .cs-ibg{fill:#fffdf8;stroke:#d8d5cb;stroke-width:1.2;opacity:.96}
-.theme-editorial .c2s text.cs-ih{font-size:17px;font-weight:600;fill:#2b2a27}
-.c2s .sc-needle{fill:none;stroke:#5e8a43;stroke-width:2.4;stroke-linecap:round}
+.c2s .cs-beam{fill:none;stroke:#4a4945;stroke-width:6;stroke-linecap:round}.c2s .cs-hook{fill:#4a4945}
+.c2s .cs-pin{fill:#fffdf8;stroke:#4a4945;stroke-width:3}
+.c2s .cs-str{fill:none;stroke:#8a877d;stroke-width:1.6}.c2s .cs-pan{fill:#d9d5c8;stroke:#8a877d;stroke-width:1.4}
+.c2s .cs-barc{fill:#e0a43a}.c2s .cs-baro{fill:#d9583a}
+.theme-editorial .c2s text.cs-bv{font-size:20px;font-weight:700;fill:#141413}
+.theme-editorial .c2s text.cs-pl{font-size:17px;font-weight:600;fill:#9a5a0c}
+.theme-editorial .c2s text.cs-pl-o{fill:#b4432a}
+.theme-editorial .c2s text.cs-mn{font-size:16px;font-weight:600;fill:#4a4945}
+.theme-editorial .c2s text.cs-pr{font-size:17px;font-weight:600;fill:#141413}
+.theme-editorial .c2s text.cs-ph{font-size:14px;fill:#6b6a64}
+.theme-editorial .c2s text.cs-pv{font-size:26px;font-weight:700;fill:#24812f}
+.theme-editorial .c2s text.cs-pv2{font-size:18px;font-weight:700;fill:#141413}
+.c2s .cs-prefbg{fill:#ece9e0}.c2s .cs-pref{fill:#3b6e8f}.c2s .cs-pref100{fill:none;stroke:#4a4945;stroke-width:1.6}
+.theme-editorial .c2s text.cs-prefv{font-size:15px;font-weight:700;fill:#3b6e8f}
+.theme-editorial .c2s text.cs-fl{font-size:16px;fill:#2b2a27}
+.theme-editorial .c2s text.cs-fv{font-size:17px;font-weight:700;fill:#4a4945}
+.theme-editorial .c2s text.cs-fv-d{fill:#24812f}.theme-editorial .c2s text.cs-fv-u{fill:#c0441f}
+.theme-editorial .c2s text.cs-calc{font-size:13.5px;fill:#6b6a64}
+/* clippings */
+.c2s .cs-cpaper{fill:#f3eddc;stroke:#d6cdb6;stroke-width:1}.c2s .cs-ctex{stroke:none}
+.c2s .cs-crule{fill:none;stroke:#3d3a33;stroke-width:1.2}.c2s .cs-crule1{fill:none;stroke:#8a877d;stroke-width:1.2}
+.theme-editorial .c2s text.cs-cyear{font-family:Newsreader,Georgia,serif;font-size:16px;font-weight:500;letter-spacing:2px;fill:#3d3a33}
+.theme-editorial .c2s text.cs-chead{font-family:Newsreader,Georgia,serif;font-size:27px;font-weight:500;fill:#141413}
+.theme-editorial .c2s text.cs-cbody{font-family:Newsreader,Georgia,serif;font-size:17px;fill:#2b2a27}
+.theme-editorial .c2s text.cs-csrc{font-size:12.5px;fill:#6b6a64}
+.theme-editorial .c2s .cs-csub{font-family:Inter,"Helvetica Neue",Arial,sans-serif;font-size:15px}
+.theme-editorial .c2s text.cs-endt{font-size:16px;font-weight:700;fill:#a03a1c}
+.theme-editorial .c2s text.cs-endc{font-size:16px;font-weight:700;fill:#2b2a27}

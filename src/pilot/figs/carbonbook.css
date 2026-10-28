@@ -1,0 +1,19 @@
+/* Carbon bookkeeping per 3 CO₂ (figs/carbonbook.ts; slide C1): the acceptor's carbon (teal halo) and the carbon fixed from
+   CO₂ (amber halo) on the deck's carbon form. Names and counts reuse cell-schema.css (.cel-mn, .cel-cnt, .cel-big). Prefix .kb-. */
+.kb-acc{fill:#2f8f86;opacity:.42}
+.kb-new{fill:#f2b705;opacity:.5}
+.theme-editorial .fig text.kb-h{font-size:17px;font-weight:700;fill:#141413}
+.theme-editorial .fig text.kb-s{font-size:15px;font-weight:500;fill:#3d3d3a}
+.theme-editorial .fig text.kb-big{font-size:24px;font-weight:700;fill:#141413}
+.theme-editorial .fig text.kb-key{font-size:14px;font-weight:500;fill:#3d3d3a}
+.theme-editorial .fig text.kb-no{font-size:26px;font-weight:800;fill:#b5532f}
+.theme-editorial .fig text.kb-ok{font-size:26px;font-weight:800;fill:#141413}
+.theme-editorial .fig text.kb-frac{font-size:22px;font-weight:700;fill:#b5532f}
+.theme-editorial .fig text.kb-whole{font-size:22px;font-weight:700;fill:#141413}
+.kb-brk{fill:none;stroke:#2f8f86;stroke-width:2}
+.kb-cut{fill:none;stroke:#b5532f;stroke-width:2.6;stroke-dasharray:6 4}
+.kb-cutok{fill:none;stroke:#141413;stroke-width:2.6}
+.kb-rule{fill:none;stroke:#d8d5cb;stroke-width:1.2}
+.kb-track{fill:none;stroke:#cfccc3;stroke-width:16;stroke-linecap:round}
+.kb-loop{fill:none;stroke:#8a877d;stroke-width:2.4;stroke-dasharray:8 6}
+.theme-editorial .dk1 text.dk-x{fill:#b5532f}

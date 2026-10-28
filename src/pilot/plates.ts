@@ -92,6 +92,8 @@ import * as cc13 from './figs/cc13';
 import * as cr14 from './figs/cr14';
 import * as cr15 from './figs/cr15';
 import * as c0 from './figs/c0';
+import * as carbonbook from './figs/carbonbook';
+import * as ce04e from './figs/ce04e';
 import { cellFigures, CELL_SLIDES, type CellSlide } from './figs/cellv';
 import { leafFigures, LEAF_SLIDES, type LeafSlide } from './figs/leafv';
 import { ANIMATIONS } from './anim';
@@ -139,6 +141,8 @@ export const PLATES: Plate[] = [
   // C3b uses C3's cell figures until its own (PRK lit) land
   // C3b · regeneration: its cell figures (PRK lit) join like the other C slides', below
   plate(cb03b, { play: 'regeneration' }),
+  // C4e · Efficiency of photosynthesis (EFFICIENCY_BRIEF.md, 29 Oct 2026): after C4, before C6
+  plate(ce04e, { play: 'eff' }),
   plate(rb5a), plate(rb5b), plate(rb5c),
 ];
 
@@ -150,7 +154,7 @@ export const PLATES: Plate[] = [
 // then C₃ photosynthesis (the Calvin–Benson–Bassham cycle, step by step), C₂, C₄, CAM, crops; the light-response curve (C7)
 // and the FvCB model (C8) move to the optional block. C5, C5b and C5c are folded into C2 and C5a and leave the deck.
 const ORDER = ['1', '2', '3', '4', '4a', '4b', '5', '6', '7', '8', '9', '10', '10b',
-  'C0', 'C2', 'C1', 'C4', 'C6', 'C10', 'C11', 'C11a', 'C12', 'C13', 'C14', 'C15',
+  'C0', 'C2', 'C1', 'C4', 'C4e', 'C6', 'C10', 'C11', 'C11a', 'C12', 'C13', 'C14', 'C15',
   '10c', '11', '12', '13', 'C7', 'C8', 'C9'];
 for (let i = PLATES.length - 1; i >= 0; i--) if (!ORDER.includes(PLATES[i].n)) PLATES.splice(i, 1);
 PLATES.sort((a, b) => ORDER.indexOf(a.n) - ORDER.indexOf(b.n));
@@ -194,6 +198,13 @@ for (const p of PLATES) {
   if (!(CELL_SLIDES as string[]).includes(p.n)) continue;
   // 28 Oct 2026, later: the old schemas go too, C6's earlier picks a and v10 included ("delete all the old schema … C0 and below")
   p.variants = p.variants.filter(v => /^m/.test(v.id));
+}
+// C1: the carbon bookkeeping per 3 CO₂ (figs/carbonbook.ts; EFFICIENCY_BRIEF.md, 29 Oct 2026), after its cell figures
+for (const p of PLATES) {
+  if (p.n !== 'C1') continue;
+  const j = joinFigures({ PLATE: p, VARIANTS: p.variants, draw: p.figure }, carbonbook, 'k');
+  p.variants = j.VARIANTS;
+  p.figure = j.draw;
 }
 // The leaf section (figs/leafv.ts): C10–C13 list only m1, m3, mc ("delete the old schemas") plus C10's own 3D leaf (v13).
 for (const p of PLATES) {

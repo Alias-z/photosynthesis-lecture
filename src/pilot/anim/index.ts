@@ -41,6 +41,8 @@ import { HISTORY } from './beats-history';
 import { RUBISCO } from './beats-rubisco';
 import { STAGING as rubiscoS } from './dk-rubisco';
 import { STAGING as cb1S } from './dk-cb1';
+// C1's carbon bookkeeping per 3 CO₂ (EFFICIENCY_BRIEF.md, 29 Oct 2026): staging k, with its own beats.
+import { STAGING as cb1K } from './dk-cb1k';
 import { STAGING as cb3S } from './dk-cb3';
 import { STAGING as cb4S } from './dk-cb4';
 import { CB4N } from './beats-cb4n';
@@ -143,6 +145,9 @@ import { STAGING as lf11M } from './lf11';
 import { STAGING as lf11aM } from './lf11a';
 import { STAGING as lf12M } from './lf12';
 import { STAGING as lf13M } from './lf13';
+// C4e · Efficiency of photosynthesis (research/redo-2026-10-29/EFFICIENCY_BRIEF.md).
+import { EFF } from './beats-eff';
+import { STAGING as effS } from './eff';
 import type { Animation, Staging } from './types';
 
 /** The same staging played `k` times faster: every staging draws as a pure function of (beat, t), so scaling t
@@ -166,12 +171,13 @@ export const ANIMATIONS: Animation[] = [
   { key: 'pp11', title: 'Excess light', beats: PP11, stagings: [pp11A, pp11B, pp11C, pp11D] },
   { key: 'pp12', title: 'Photoprotection and repair', beats: PP12, stagings: [pp12A, pp12B, pp12C, pp12D] },
   { key: 'pp13', title: 'Chlorophyll fluorescence', beats: PP13, stagings: [pp13A, pp13B, pp13C, pp13D] },
-  { key: 'cb1', title: 'How the cycle was found', beats: CB1, stagings: [cb1S] },
+  { key: 'cb1', title: 'How the cycle was found', beats: CB1, stagings: [cb1S, cb1K] },
   { key: 'cb2', title: 'RuBisCO', beats: CB2, stagings: [cb2A, cb2B, cb2C] },
   { key: 'cb3', title: 'Reduction and regeneration', beats: CB3, stagings: [cb3S] },
   { key: 'reduction', title: 'Reduction', beats: REDUCTION, stagings: [reductionS] },
   { key: 'regeneration', title: 'Regeneration', beats: REGENERATION, stagings: [regenerationS] },
   { key: 'cb4', title: 'Sucrose and starch', beats: CB4N, stagings: [cb4S] },
+  { key: 'eff', title: 'Efficiency of photosynthesis', beats: EFF, stagings: [effS] },
   { key: 'rubisco', title: 'RuBisCO', beats: RUBISCO, stagings: [rubiscoS] },
   { key: 'lf10', title: 'CO₂ uptake: from the air to RuBisCO', beats: LF10, stagings: [lf10M] },
   { key: 'lf11', title: 'C₃ photosynthesis and refixation', beats: LF11, stagings: [lf11M] },

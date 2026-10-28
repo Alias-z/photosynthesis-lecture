@@ -1,6 +1,7 @@
-// Photosystem I, staging m4: Emerson read on the Z-scheme. Beats 1–3, the rule, the photon rows and the light on the
-// chain: psim-common.ts.
-// - Beat 4 (Emerson's enhancement): above the photon rows, the Z-scheme (Hill & Bendall 1960) with energy upwards: water,
+// Photosystem I, staging m4: the red drop, Emerson's enhancement, then the Z-scheme (order of 29 Oct 2026,
+// research/redo-2026-10-29/PSI_EMERSON_BRIEF.md). All five beats, the O₂ meters, the clipping and the Z-scheme are drawn
+// by psim-common.ts; the panel and bind below (an older round's small Z-scheme over photon rows) are not drawn.
+// - Older round, beat 4 (Emerson's enhancement): above the photon rows, the Z-scheme (Hill & Bendall 1960) with energy upwards: water,
 //   photosystem II's lift (P680 → P680*), plastoquinone, cytochrome b₆f, plastocyanin, photosystem I's lift (P700 →
 //   P700*), ferredoxin, NADP⁺; PSII's levels in its green, PSI's in its teal, the carriers in their slide colours. Each
 //   lift starts as a dashed grey line and lights, per row, as strongly as its photosystem is fed: far-red alone PSII
@@ -55,7 +56,7 @@ function panel(): string {
 export const STAGING = makeStaging({
   id: 'm4',
   name: 'M4 · The Z-scheme',
-  note: 'Slide 9 figure: zoom on photosystem I, its parts named before they act; the red drop; Emerson read on the Z-scheme (Hill & Bendall 1960): per light, each lift lights as strongly as its photosystem is fed, and the photons pair off (1 / 3 / 6 electrons through).',
+  note: 'Slide 9 figure: zoom on photosystem I, its parts named before they act; the red drop (1943, Emerson’s clipping with the first far-red light); the enhancement (1957, O₂ meters: red alone, far-red alone, both); both photosystems together on the Z-scheme (Hill & Bendall 1960).',
   beats: PSIM_M4,
   lamps: false,
   table: { y0: 484, rowH: 66, o2: 'none' },

@@ -1,7 +1,10 @@
 // Captions and sources of the slide 9 animation, stagings m1–m4 (lecturer, 28 Oct 2026; research/redo-2026-10-28/
 // ETC_ANIM_BRIEF.md, "psi", and the rework of the same day: a red-drop beat before Emerson's enhancement, and the series
-// beat reworded; then a push-and-pull beat before the red drop, and the series beat folded into the enhancement). The captions are the same in every staging; only the sources of the enhancement beat follow what each
-// staging shows (m2 redraws Emerson's 1957 curves, m3 the two photosystems' spectra, m4 the Z-scheme).
+// beat reworded; then a push-and-pull beat before the red drop, and the series beat folded into the enhancement). Order of
+// 29 Oct 2026 (research/redo-2026-10-29/PSI_EMERSON_BRIEF.md): the red drop (1943), Emerson's enhancement (1957), then both
+// photosystems working together (the Z-scheme) as the ending. The captions are the same in every staging; only the
+// sources of the enhancement beat follow what each staging shows (m2 redraws Emerson's 1957 curves, m3 the two
+// photosystems' spectra, m4 the O₂ readings).
 import type { Beat, Cite } from './types';
 
 const MAZOR17: Cite = { label: 'Mazor et al. 2017, Nature Plants', url: 'https://doi.org/10.1038/nplants.2017.14' };
@@ -13,18 +16,18 @@ const HILL60: Cite = { label: 'Hill & Bendall 1960, Nature', url: 'https://doi.o
 
 const S1 = 'Light at photosystem I sends an electron across the membrane to ferredoxin; plastocyanin refills the reaction centre.';
 const S2 = 'Ferredoxin passes the electrons to FNR, which makes NADPH from NADP⁺ + H⁺ in the stroma.';
-const SSER = 'Photosystem II and photosystem I work as one chain: each lifts the electron once.';
-const SDROP = 'Far-red light reaches mostly photosystem I: alone, it gives little O₂.';
-const S3 = '1957, Emerson: add red light for photosystem II, and O₂ rises far above the two lights apart. <b>What else does the chain make besides NADPH?</b>';
+const SDROP = '1943, Emerson: far-red light alone, reaching mostly photosystem I, gives little O₂: the red drop.';
+const SENH = '1957, Emerson: red light (for photosystem II) together with far-red light gives more O₂ than the 2 lights apart.';
+const STOG = 'Photosystem II and photosystem I work in series: each electron is lifted once by each. <b>What else does the chain make besides NADPH?</b>';
 
-/** The beats with beat 3's sources as one staging shows them. */
+/** The beats with beat 4's sources as one staging shows them. */
 function beats(emerson: Cite[]): Beat[] {
   return [
     { tag: 'Second light reaction', say: S1, cite: [MAZOR17] },
     { tag: 'NADPH', say: S2, cite: [MAZOR17] },
-    { tag: 'Two photosystems in series', say: SSER, cite: [HILL60] },
-    { tag: 'Red drop', say: SDROP, cite: [LEWIS43, EMERSON57] },
-    { tag: 'Emerson’s enhancement', say: S3, cite: emerson },
+    { tag: 'Red drop', say: SDROP, cite: [LEWIS43] },
+    { tag: 'Emerson’s enhancement', say: SENH, cite: emerson },
+    { tag: 'Two photosystems work together', say: STOG, cite: [HILL60] },
   ];
 }
 
@@ -34,5 +37,5 @@ export const PSIM: Beat[] = beats([EMERSON57, EMERSON58]);
 export const PSIM_M2: Beat[] = beats([EMERSON57, EMERSON58]);
 /** m3: the two photosystems' absorption, shapes approximate. */
 export const PSIM_M3: Beat[] = beats([EMERSON57, LAISK14]);
-/** m4: the Z-scheme. */
-export const PSIM_M4: Beat[] = beats([EMERSON57, HILL60]);
+/** m4: Emerson's O₂ readings, then the Z-scheme. */
+export const PSIM_M4: Beat[] = beats([EMERSON57]);

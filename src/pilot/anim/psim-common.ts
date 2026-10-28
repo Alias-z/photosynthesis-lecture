@@ -8,27 +8,22 @@
 // - Beat 2 (holds: named; two e⁻ on FNR): a leader names "ferredoxin–NADP⁺ reductase (FNR)"; NADP⁺ (tag) and one ringed H⁺
 //   wait in the stroma. Ferredoxin's e⁻ goes to FNR; a second ferredoxin brings a second e⁻ (FNR needs two:
 //   NADP⁺ + 2 e⁻ + H⁺ → NADPH) and leaves; both e⁻ and the H⁺ join NADP⁺: the NADPH tag.
-// - Beat 3 (push and pull; hold: both named): the camera pulls back to both photosystems; at each reaction centre a ringed
-//   hole that pulls an electron in (PSII from water, strongly; PSI from plastocyanin, weakly) and a push arrow (PSII
-//   short, PSI tall); the panel's words: "Light lifts a reaction centre's electron away: it is PUSHED out, and the hole it
-//   leaves PULLS an electron in", PSII strong pull / weak push, PSI weak pull / strong push, "PSII's push feeds PSI's pull:
-//   a relay"; one electron runs the relay, water → PSII → plastoquinone → b₆f → plastocyanin → PSI → ferredoxin → NADPH.
-// - Beat 4 (red drop; hold: the curves), formerly beat 3, now told with the relay (far-red pushes PSI's electron out;
-//   PSI's hole stays empty): the camera pulls back to both photosystems; photosystem II lights (its render in
-//   colour, its name in ink), both are named "photosystem II (PSII)" and "photosystem I (PSI)"; the slide's amber light
-//   arrows give way to red (650 nm, #c8361e) and far-red (> 700 nm, #7a1f17) light. A panel holds Emerson's clipping (1943)
-//   and O₂ per absorbed photon against wavelength, 600–720 nm, with the light absorbed overlaid: flat to ≈ 680 nm, then
-//   falling while absorption is still clearly there. Then the band beyond 685 nm is marked "red drop", far-red falls on PSI
-//   on the chain, and the note "absorbed, but reaching mostly photosystem I → cannot make O₂ alone → wasted for O₂".
-// - Beat 4 (Emerson's enhancement; holds: ready, after each light): the clipping turns 1957; the rule "Each electron must
-//   pass through both photosystems, so the photosystem with fewer photons sets the pace", "O₂ follows the electrons: 4 e⁻
-//   per O₂", "photon split illustrative"; the staging's own illustration (psi-m1 … psi-m4) and, one row per light, the
-//   photons as two rows of dots (PSII, PSI) paired off one-to-one by links (each pair = one electron through); the unpaired
-//   grey out as wasted: far-red alone, 8 photons: PSII 1, PSI 7 → 1 e⁻ (6 wasted); red alone, 8: PSII 5, PSI 3 → 3 e⁻
-//   (2 wasted); both, 16: PSII 6, PSI 10 → 6 e⁻, more than 1 + 3 = 4.
-// - Beat 5 (hold: the note): "PSII alone (no PSI): stops once plastoquinone is full → ≈ 0 O₂ · PSI alone: never makes O₂";
-//   then the panel goes, the camera zooms out to the slide, photosystem II dims again, the slide's light returns, ATP
-//   synthase starts to light.
+// Beats 3–5 tell Emerson's story in the order the lecturer set on 29 Oct 2026 (research/redo-2026-10-29/
+// PSI_EMERSON_BRIEF.md): the red drop, the enhancement, then both photosystems working together.
+// - Beat 3 (red drop, Emerson 1943; no holds): the camera pulls back to both photosystems (one move), both are named
+//   "photosystem II (PSII)" and "photosystem I (PSI)", the panel comes in. Far-red light (> 700 nm, #6b1d5c) falls on PSI,
+//   which glows; PSII stays dimmed, as on the slide (nearly dark). Emerson's clipping (1943) appears with that first
+//   far-red light. P700's electron is pushed out to ferredoxin and PSI's hole stays empty; one O₂ from water; the
+//   far-red meter fills a little: "little O₂".
+// - Beat 4 (Emerson's enhancement, 1957; hold: after red alone): the clipping turns 1957; far-red goes off; red light
+//   (650 nm, #d4261c) falls on PSII, which lights up in colour; one electron runs from water to PSI's empty hole and
+//   fills it, three O₂ bubble off, the red meter fills: "some O₂" (hold). Far-red joins: P700's electron is pushed on,
+//   four electrons stream along the chain, six O₂, the third meter fills above the dashed mark of the two lights apart,
+//   added: "much more O₂". The meters are schematic, side by side: red alone, far-red alone, red + far-red.
+// - Beat 5 (two photosystems work together; hold: the electron through): the meters and the clipping go, the Z-scheme
+//   (Hill & Bendall 1960) comes in with both lifts lit, PSII's under red, PSI's under far-red; one electron runs water →
+//   NADP⁺ on the chain and on the Z, lifted once by each photosystem. Then the panel goes, the camera zooms out to the
+//   slide, photosystem II dims again, the slide's light returns, ATP synthase starts to light.
 //
 // How the slide figure is reused (chain.ts is not modified), as in psi9-common.ts: focusSvg() wraps every part's markup in
 // <g class="chn-on|off">; the part of each wrapper is found by drawing the view once per part lit, and the wrappers are
@@ -157,9 +152,9 @@ const CARD = { x: -43.3, y: -30.9, w: 886.6, h: 661.9, r: 22.7 };
 /** Labels that only the close view needs (the slide's own are out of view there). */
 const ZL = { stroma: [96, 236] as V, lumen: [96, 404] as V };
 
-/** The panel of beats 3–4 (stage units) and the clipping on its top-left corner. */
+/** The panel of beats 3–5 (stage units) and the clipping, centred at its top over the O₂ meters (beats 3–4). */
 export const PANEL = { x: 852, y: 16, w: 732, h: 708 };
-const CLIP = { x: 866, y: 28, w: 300, h: 184 };
+const CLIP = { x: 1055, y: 34, w: 300, h: 184 };
 
 /* ---------------------------------------------------------------- timing (s into each beat) */
 
@@ -186,16 +181,22 @@ const R = [4.9, 6.55, 7.95, 9.35], RFD = [0.55, 0.3, 0.3, 0.3];
 // Beat 2: FNR named, NADP⁺ 1 and an H⁺ wait (hold); ferredoxins 1, 2 bring their e⁻ to FNR → NADPH 1 (hold); NADP⁺ 2 and
 // an H⁺; ferredoxins 3, 4 → NADPH 2. Each trip: to FNR (0.45 s), the e⁻ into FNR (0.3 s), away (0.45 s).
 const B2 = { fnr: 0.05, nIn: 0.4, named: 0.9, d: [0.95, 1.6, 3.5, 4.15], trip: 0.45, give: 0.3, toN1: 2.35, toN2: 4.9, toND: 0.45, merge1: 2.85, merge2: 5.4, park: 3.0, two: 3.45, nIn2: 3.5, end: 5.8 };
-// Beat 3 (two photosystems in series): pull back to both photosystems; PSII lights, both named; the Z-scheme in the panel
-// (hold); red light lifts at PSII, one electron runs water → PSII → … → PSI; far-red lifts at PSI; on to NADP⁺.
-export const BP = { out: 0.0, outD: 1.2, flowsIn: [0.6, 1.1] as V, psii: [0.9, 1.5] as V, names: [1.2, 1.6] as V, panel: [0.85, 1.3] as V,
-  z: [1.0, 1.4] as V, hold: 1.6, red: 1.7, far: 4.0, end: 6.2 };
-// Beat 4 (red drop): red goes; far-red alone: PSI's lift lit, PSII's grey; P700's electron lifted on to NADP⁺, P700 stays
-// empty; one O₂ only; the line "far-red alone: little O₂".
-export const B3 = { redOff: [0, 0.4] as V, push: 1.0, line: [1.9, 2.3] as V, o2: 2.6, end: 4.4, hold: 99, far: 0, pushD: 0.8 };
-// Beat 5 (Emerson's enhancement): the clipping; red again: both lifts, electrons stream, many O₂; the line (hold); zoom out.
-export const B4 = { clip: [0.1, 0.5] as V, red: 0.4, line: [2.9, 3.3] as V, hold: 3.6, out: 3.7, end: 3.7 + 2.4, rows: [99, 99, 99], sum: 99 };
-const HOLDS4 = [B4.hold];
+// Beat 3 (red drop, 1943): pull back to both photosystems (one move), both named, the panel; far-red on PSI and, with it,
+// Emerson's clipping; P700's electron pushed out (its hole stays empty); one O₂; the far-red meter fills a little.
+export const DROP = { out: 0, outD: 1.4, flowsIn: [0.6, 1.1] as V, names: [1.0, 1.4] as V, panel: [1.3, 1.7] as V, far: 1.6,
+  clip: [1.6, 2.0] as V, meter: [1.9, 2.3] as V, push: 2.3, o2: 2.7, fill: [2.7, 3.5] as V, read: [3.5, 3.8] as V, end: 4.3 };
+// Beat 4 (enhancement, 1957): the clipping turns 1957, far-red off; red alone: PSII lights, one electron from water fills
+// PSI's hole, three O₂, the red meter fills (hold); far-red joins: P700's electron pushed on, four electrons stream, six
+// O₂, the third meter fills above the two apart, added.
+export const EN = { year: [0.1, 0.35, 0.6] as number[], farOff: 0.15, m0: [0.5, 0.9] as V, red: 0.8, psii: [0.8, 1.3] as V, run: 1.3,
+  ro2: [1.5, 1.85, 2.2], fill0: [1.4, 3.0] as V, read0: [3.0, 3.3] as V, hold: 3.5,
+  m2: [3.6, 4.0] as V, far: 3.7, sum: [4.0, 4.3] as V, push: 4.3, stream: 4.3, streamDt: 0.45, bo2: 4.6, fill2: [4.5, 7.0] as V,
+  read2: [7.0, 7.3] as V, end: 8.0 };
+// Beat 5 (both photosystems together): the meters and the clipping go, the Z-scheme comes with both lifts lit; one electron
+// runs water → NADP⁺ on the chain and on the Z (hold); the camera zooms out to the slide (one move), ATP synthase lights.
+export const TG = { off: [0, 0.4] as V, z: [0.35, 0.8] as V, run: 1.0, hold: 4.9, out: 5.0, outD: 1.4, end: 5.0 + 2.4 };
+/** The unlisted stagings m1–m3 still read their photon rows' times from here; their rows never show now. */
+export const B4 = { rows: [99, 99, 99], sum: 99 };
 /** Times in a row of beat 4 (s after the row starts): the photon dots appear, the pairs link up (one per electron), the
  *  unpaired grey out, the count; each electron's tally; the light goes off. */
 export const ROW_T = { dots: [0.25, 0.75] as V, link: 0.85, linkDt: 0.1, waste: [1.25, 1.5] as V, e: [1.3, 1.55] as V, o2: 1.3, o2dt: 0.12, off: 1.95 };
@@ -208,17 +209,22 @@ export const ROWS = [
   { lab: '<tspan class="pm-red">red</tspan> alone', n: 8, ii: 5, i: 3, e: 3, lim: 'i' as const },
   { lab: '<tspan class="pm-red">red</tspan> + <tspan class="pm-fr">far-red</tspan>', n: 16, ii: 6, i: 10, e: 6, lim: 'ii' as const },
 ];
-/** The light on the chain: beat 3 far-red on PSI; beat 4 one light per row, both from row 3 to the end. */
-const LIGHT_S: Step[] = [{ on: BP.red, off: 999, red: true }, { on: BP.far, off: 999, far: true }];
-const LIGHT_D: Step[] = [{ on: -5, off: 0.05, red: true }, { on: -5, off: 999, far: true }];
-const LIGHT_E: Step[] = [{ on: -5, off: 999, far: true }, { on: B4.red, off: 999, red: true }];
+/** The light on the chain: beat 3 far-red alone; beat 4 far-red off, red alone, then far-red with it; beat 5 both. */
+const LIGHT_DROP: Step[] = [{ on: DROP.far, off: 999, far: true }];
+const LIGHT_EN: Step[] = [{ on: -5, off: EN.farOff, far: true }, { on: EN.red, off: 999, red: true }, { on: EN.far, off: 999, far: true }];
+const LIGHT_TG: Step[] = [{ on: -5, off: 999, red: true }, { on: -5, off: 999, far: true }];
 /** How lit ATP synthase gets at the end: it starts to light. */
 const ATPS_END = 0.6;
-/** The relay run of beat 3 (figure units): water → PSII's hole (pulled) → pushed up → plastoquinone → b₆f → plastocyanin →
- *  PSI's hole (pulled) → pushed up → ferredoxin → FNR → NADPH (the slide's tag); when the electron reaches each point. */
+/** The run of an electron along the chain (figure units): water → PSII's reaction centre → lifted → plastoquinone → b₆f →
+ *  plastocyanin → P700 → lifted → ferredoxin → FNR → NADPH (the slide's tag); RELAY_T: when it reaches each point, at the
+ *  pace of beat 5's single electron (in step with the run on the Z). */
 const RELAY: V[] = [[88, 436], OEC, RC2, [150, 272], GEO.pq, GEO.hem, GEO.cytf, DOCK, P700, FAB, FD, FNR, [614, 70]];
 const RELAY_T = [2.0, 2.3, 2.45, 2.8, 3.15, 3.4, 3.6, 3.9, 4.15, 4.5, 4.75, 5.0, 5.4];
-const FILL2 = RELAY_T[2], FILL1 = RELAY_T[8];
+/** Beat 5's single electron (s into the beat); beat 4's runs (s after each starts), at 0.6 of that time. */
+const RUN_TG = RELAY_T.map(x => x - RELAY_T[0] + TG.run);
+const RUN_FAST = RELAY_T.map(x => (x - RELAY_T[0]) * 0.6);
+/** Beat 4: when red alone's electron reaches PSI's empty hole and fills it. */
+const REFILL = EN.run + RUN_FAST[8];
 /** Push (a block arrow up, as tall as the reaction centre lifts its electron) and pull (a dashed arrow into the hole). */
 function blockUp(x: number, y0: number, y1: number, w: number): string {
   const hh = 1.7 * w, hw = 1.15 * w;
@@ -481,7 +487,7 @@ function readoutSvg(): string {
 /** The Z-scheme (Hill & Bendall 1960), energy up, levels by approximate midpoint potentials (V; more negative = up): P680
  *  +1.2, H₂O/O₂ +0.82, PQ +0.1, cytochrome f +0.35, plastocyanin +0.37, P700 +0.45, P700* ≈ −1.3, P680* ≈ −0.8, ferredoxin
  *  −0.42, NADP⁺/NADPH −0.32 (Govindjee, Shevela & Björn 2017, Photosynth Res 133:5, Fig. 6); no numbers shown. */
-const zy = (e: number): number => 300 + 150 * e;
+const zy = (e: number): number => 360 + 170 * e;
 const ZX = { ax: 904, h2o: 962, p680: 1036, pq: 1176, b6f: 1252, pc: 1322, p700: 1404, fd: 1494, nad: 1536 };
 const ZP = {
   h2o: [ZX.h2o, zy(0.86)] as V, p680: [ZX.p680, zy(1.2)] as V, p680s: [ZX.p680, zy(-0.8)] as V, pq: [ZX.pq, zy(0.1)] as V,
@@ -489,8 +495,8 @@ const ZP = {
   fd: [ZX.fd, zy(-0.42)] as V, nad: [ZX.nad, zy(-0.3)] as V,
 };
 const ZPATH: V[] = [ZP.h2o, ZP.p680, ZP.p680s, ZP.pq, ZP.b6f, ZP.pc, ZP.p700, ZP.p700s, ZP.fd, ZP.nad];
-/** Beat 3's run on the Z (s into beat 3), in step with the run on the chain (RELAY_T). */
-const ZRUN_T = [2.0, 2.45, 2.8, 3.15, 3.4, 3.6, 3.9, 4.5, 4.75, 5.4];
+/** Beat 5's run on the Z (s into beat 5), in step with the run on the chain (RUN_TG). */
+const ZRUN_T = [2.0, 2.45, 2.8, 3.15, 3.4, 3.6, 3.9, 4.5, 4.75, 5.4].map(x => x - 2.0 + TG.run);
 function zDown(a: V, b: V, ax = 0, bx = 0): string {
   const p0: V = [a[0] + ax, a[1] + 8], q0: V = [b[0] + bx, b[1] - 11], d: V = [q0[0] - p0[0], q0[1] - p0[1]], L = Math.hypot(d[0], d[1]);
   const e: V = [q0[0] - (d[0] / L) * 10, q0[1] - (d[1] / L) * 10];
@@ -519,21 +525,38 @@ function zSvg(): string {
     ${ptext(ZP.p700[0] - 16, zy(-0.66), 'PSI', 'pm-h pm-i', 'end')}${ptext(ZP.p700[0] - 16, zy(-0.66) + 24, 'far-red light', 'pm-t pm-fr', 'end')}
     <g transform="translate(${ZP.nad[0]} ${ZP.nad[1] + 28})"><g data-k="znadp">${tagG(0, 0, 'NADP⁺', 'plain')}</g><g data-k="znadph" opacity="0" display="none">${tagG(0, 0, 'NADPH', 'nadph')}</g></g>
     ${ptext(1560, 46, 'Z-scheme, after Hill &amp; Bendall 1960', 'pm-xs', 'end')}
-    <circle data-k="zring" opacity="0" display="none" class="pm-ring" cx="${ZP.p700[0]}" cy="${ZP.p700[1]}" r="8"/>
-    ${[0, 1, 2, 3, 4, 5].map(i => `<circle data-k="ze${i}" opacity="0" display="none" class="pm-e" r="7"/>`).join('')}
-    <g data-k="zline4" opacity="0" display="none">${ptext(1110, 668, '<tspan class="pm-fr">far-red</tspan> alone: little O₂', 'pm-big')}</g>
-    <g data-k="zline5" opacity="0" display="none">${ptext(1110, 668, '<tspan class="pm-red">red</tspan> + <tspan class="pm-fr">far-red</tspan>: much more O₂', 'pm-big')}</g>
+    <circle data-k="ze0" opacity="0" display="none" class="pm-e" r="7"/>
   </g>`;
 }
-/** Emerson's clipping, small, bottom left of the panel (beat 5). */
-function clipSmall(p: string): string {
-  const x = 870, y = 584, w = 220, h = 128, pw = 78, ph = 98, px = x + 12, py = y + 14, rx = (px + pw + x + w) / 2;
-  return `<g transform="rotate(-1.4 ${x + w / 2} ${y + h / 2})">
-    <defs><filter id="${p}-clsh" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="1" dy="3" stdDeviation="4" flood-color="#3d3020" flood-opacity=".22"/></filter></defs>
-    <path class="clip-paper" d="${cutPath(x, y, w, h, 53, 3)}" filter="url(#${p}-clsh)"/>
-    <image href="${emersonImg}" x="${px}" y="${py}" width="${pw}" height="${ph}" preserveAspectRatio="xMidYMid slice"/>
-    <text class="clip-name pm-cname-s" x="${f1(rx)}" y="${py + 44}" text-anchor="middle">Emerson</text>
-    <text class="clip-find pm-cyear-s" x="${f1(rx)}" y="${py + 80}" text-anchor="middle">1957</text></g>`;
+/* ---------------------------------------------------------------- beats 3–4: Emerson's O₂ readings (stage units) */
+
+/** One O₂ meter per light, side by side under the clipping: red alone, far-red alone, red + far-red. A tube fills from the
+ *  bottom in the light's colour (red + far-red: half and half) to its reading; the third carries a dashed mark at the two
+ *  lights apart, added. The levels are schematic (no numbers shown): far-red alone little, red alone some, both clearly
+ *  above the two apart. */
+const MT = { cx: [1010, 1205, 1400], w: 56, top: 296, bot: 600, head: 278, read: 638 };
+const LV = [0.4, 0.12, 0.8];
+const LV_SUM = LV[0] + LV[1];
+const mY = (v: number): number => MT.bot - v * (MT.bot - MT.top);
+function metersSvg(p: string): string {
+  const head = ['<tspan class="pm-red">red</tspan> alone', '<tspan class="pm-fr">far-red</tspan> alone',
+    '<tspan class="pm-red">red</tspan> + <tspan class="pm-fr">far-red</tspan>'];
+  const read = ['some O₂', 'little O₂', 'much more O₂'];
+  const fill = ['class="pm-bar-red"', 'class="pm-bar-fr"', `fill="url(#${p}-mboth)"`];
+  const x0 = (i: number): number => MT.cx[i] - MT.w / 2, H = MT.bot - MT.top;
+  const tube = (i: number, cls: string): string => `<rect class="${cls}" x="${x0(i)}" y="${MT.top}" width="${MT.w}" height="${H}" rx="12"/>`;
+  const ticks = (i: number): string => [0.25, 0.5, 0.75].map(v => `<path class="pm-mtick" d="M${x0(i)},${f1(mY(v))}h10M${x0(i) + MT.w},${f1(mY(v))}h-10"/>`).join('');
+  const c3 = MT.cx[2] + MT.w / 2, ys = mY(LV_SUM);
+  return `<defs><linearGradient id="${p}-mboth" x1="0" x2="1" y1="0" y2="0"><stop offset=".5" stop-color="#d4261c"/><stop offset=".5" stop-color="#6b1d5c"/></linearGradient>
+      ${[0, 1, 2].map(i => `<clipPath id="${p}-mt${i}">${tube(i, '')}</clipPath>`).join('')}</defs>
+    ${[0, 1, 2].map(i => `<g data-k="m${i}" opacity="0" display="none">
+      ${ptext(MT.cx[i], MT.head, head[i], 'pm-t', 'middle')}${tube(i, 'pm-tube')}
+      <g clip-path="url(#${p}-mt${i})"><rect data-k="mf${i}" ${fill[i]} x="${x0(i)}" y="${MT.bot}" width="${MT.w}" height="0"/></g>
+      ${ticks(i)}${tube(i, 'pm-tube-o')}
+      <g data-k="mr${i}" opacity="0" display="none">${ptext(MT.cx[i], MT.read, read[i], 'pm-t', 'middle')}</g></g>`).join('')}
+    <g data-k="msum" opacity="0" display="none"><path class="pm-msumh" d="M${x0(2) - 8},${f1(ys)}H${c3 + 8}"/><path class="pm-msum" d="M${x0(2) - 8},${f1(ys)}H${c3 + 8}"/>
+      ${ptext(c3 + 14, ys - 4, '<tspan class="pm-red">red</tspan> alone +', 'pm-xs')}${ptext(c3 + 14, ys + 14, '<tspan class="pm-fr">far-red</tspan> alone', 'pm-xs')}</g>
+    <g data-k="mnote" opacity="0" display="none">${ptext(1562, 704, 'after Emerson, Chalmers & Cederstrand 1957', 'pm-xs', 'end')}</g>`;
 }
 
 /* ---------------------------------------------------------------- the staging */
@@ -543,14 +566,14 @@ export function makeStaging(o: Ill): Staging {
   const { svg: chain, pcLab } = scene(`${P}c`, P);
   // plastocyanin's label: below it, closer in the close view (its text is counter-scaled)
   const LAB_OFF0: V = [pcLab[0] - PC[0], pcLab[1] - PC[1]], LAB_OFFZ: V = [0, 31];
-  const TEND = [B1.end, B2.end, BP.end, B3.end, B4.end];
+  const TEND = [B1.end, B2.end, DROP.end, EN.end, TG.end];
 
   return {
     id: o.id,
     name: o.name,
     note: o.note,
     beats: o.beats,
-    holds: [[B1.named, B1.jumped], [B2.named, B2.two], [BP.hold], [], HOLDS4],
+    holds: [[B1.named, B1.jumped], [B2.named, B2.two], [], [EN.hold], [TG.hold]],
     svg: () => `
       <g data-k="cam"><g class="fig">
         <defs><filter id="${P}-sl" x="-5%" y="-5%" width="110%" height="112%"><feDropShadow dx="0" dy="8" stdDeviation="9" flood-color="#46321a" flood-opacity=".14"/></filter></defs>
@@ -561,9 +584,9 @@ export function makeStaging(o: Ill): Staging {
       <g data-k="panel" opacity="0" display="none">
         <defs><filter id="${P}-psh" x="-5%" y="-5%" width="110%" height="112%"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#46321a" flood-opacity=".16"/></filter></defs>
         <rect class="pm-panel" x="${PANEL.x}" y="${PANEL.y}" width="${PANEL.w}" height="${PANEL.h}" rx="22" filter="url(#${P}-psh)"/>
-        <g class="fig">${zSvg()}</g>
+        <g class="fig">${zSvg()}${metersSvg(P)}</g>
+        <g data-k="clip" opacity="0" display="none">${clippingSvg(P)}</g>
       </g>
-      <g data-k="clip" opacity="0" display="none">${clipSmall(P)}</g>
       ${readoutSvg()}`,
 
     bind(stage) {
@@ -632,27 +655,28 @@ export function makeStaging(o: Ill): Staging {
         last = key;
         /** Seconds into beat n: −1 before it begins, 99 after it. */
         const T = (n: number): number => (b === n ? tt : b > n ? 99 : -1);
-        const t1 = T(0), t2 = T(1), tp = T(2), tr = T(3), te = T(4);
+        // beats 1–2 (t1, t2), the red drop (td), the enhancement (tn), both together (tg)
+        const t1 = T(0), t2 = T(1), td = T(2), tn = T(3), tg = T(4);
 
-        /* ---- camera: B → Z (beat 1), Z → E (beat 3, push and pull), E → B (end of beat 5) */
-        const zin = mv(t1, B1.zoom, B1.zoomD), zE = mv(tp, BP.out, BP.outD), zOut = mv(te, B4.out, 1.2);
+        /* ---- camera, one move per beat at most: B → Z (beat 1), Z → E (beat 3), fixed (beat 4), E → B (end of beat 5) */
+        const zin = mv(t1, B1.zoom, B1.zoomD), zE = mv(td, DROP.out, DROP.outD), zOut = mv(tg, TG.out, TG.outD);
         const cam = zOut > 0 ? tween(E, B, zOut) : zE > 0 ? tween(Z, E, zE) : tween(B, Z, zin);
         const k = kOf(cam.s);
         set(q('cam'), 'transform', tfStr(cam));
         texts.forEach(({ el, x, y }) => set(el, 'transform', `matrix(${k.toFixed(4)},0,0,${k.toFixed(4)},${(x * (1 - k)).toFixed(2)},${(y * (1 - k)).toFixed(2)})`));
         groups.forEach(({ el, c }) => set(el, 'transform', `matrix(${k.toFixed(4)},0,0,${k.toFixed(4)},${(c[0] * (1 - k)).toFixed(2)},${(c[1] * (1 - k)).toFixed(2)})`));
         // the close view's own zone labels
-        const zl = tw(t1, 0.95, 1.2) * (1 - tw(tp, 0, 0.3));
+        const zl = tw(t1, 0.95, 1.2) * (1 - tw(td, 0, 0.3));
         put('zl-stroma', ZL.stroma, k, zl);
         put('zl-lumen', ZL.lumen, k, zl);
 
         /* ---- the slide's lit arrows of photosystem I give way while the story tells them, and return in beat 3 */
-        const flowsOp = b === 0 ? 1 - tw(tt, B1.flowsOut[0], B1.flowsOut[1]) : b === 1 ? 0 : tw(tp, BP.flowsIn[0], BP.flowsIn[1]);
+        const flowsOp = b === 0 ? 1 - tw(tt, B1.flowsOut[0], B1.flowsOut[1]) : b === 1 ? 0 : tw(td, DROP.flowsIn[0], DROP.flowsIn[1]);
         flows.forEach(g => op(g, flowsOp));
         ePcPsi.forEach(g => op(g, 0)); // plastocyanin is docked from the first frame: its arrow from the slide place has no start
         // light at photosystem I: the slide's wave, cleared, then drawn in from above when light arrives (beat 1); off in
         // beats 3–4 (red and far-red instead) until the zoom out ends
-        const lightBack = tw(te, B4.out + 1.2, B4.out + 1.6);
+        const lightBack = tw(tg, TG.out + 1.2, TG.out + 1.6);
         let l1Op = 0, l1Y = 1000;
         if (b === 0) {
           if (tt < B1.light - 0.05) l1Op = 1 - tw(tt, B1.flowsOut[0], B1.flowsOut[1]);
@@ -668,7 +692,7 @@ export function makeStaging(o: Ill): Staging {
         const dPc: V = [DOCK[0] - PC[0], DOCK[1] - PC[1]];
         shift(pcBody, dPc);
         // beats 1–2 are told by the numbered copies; the slide's own plastocyanin (docked) and ferredoxin return in beat 3
-        const own = b < 2 ? 0 : b === 2 ? tw(tp, 0, 0.3) : 1;
+        const own = b < 2 ? 0 : b === 2 ? tw(td, 0, 0.3) : 1;
         pcBody.forEach(g => op(g, g.getAttribute('data-p')?.includes('glow') ? 0 : own));
         fdBody.forEach(g => op(g, g.getAttribute('data-p')?.includes('glow') ? 0 : own));
         const zc = b === 0 ? zin : b === 1 ? 1 : b === 2 ? 1 - zE : 0; // (beats 4–5: the slide's offset)
@@ -676,20 +700,20 @@ export function makeStaging(o: Ill): Staging {
         shift(pcText, [DOCK[0] + lo[0] - pcLab[0], DOCK[1] + lo[1] - pcLab[1]]);
 
         /* ---- point, then do: leaders and brief glows (beats 1–2) */
-        const ldOut = 1 - tw(tp, 0, 0.3);
+        const ldOut = 1 - tw(td, 0, 0.3);
         lead('psi', tw(t1, B1.psi, B1.psi + 0.3) * ldOut, k);
         lead('rc', tw(t1, B1.rc, B1.rc + 0.3) * ldOut, k);
         lead('fd', tw(t1, B1.fd, B1.fd + 0.3) * ldOut, k);
         lead('fnr', tw(t2, B2.fnr, B2.fnr + 0.3) * ldOut, k);
-        fdText.forEach(el => op(el, b === 0 ? 1 - tw(tt, B1.fd, B1.fd + 0.3) : b === 1 ? 0 : tw(tp, 0, 0.3)));
+        fdText.forEach(el => op(el, b === 0 ? 1 - tw(tt, B1.fd, B1.fd + 0.3) : b === 1 ? 0 : tw(td, 0, 0.3)));
         // the slide's short FNR name (beside FNR) gives way in the close view, under the longer FNR leader
-        fnrText.forEach(el => op(el, b === 0 ? 1 - tw(tt, B1.zoom, B1.zoom + 0.4) : b === 1 ? 0 : tw(tp, 0, 0.3)));
+        fnrText.forEach(el => op(el, b === 0 ? 1 - tw(tt, B1.zoom, B1.zoom + 0.4) : b === 1 ? 0 : tw(td, 0, 0.3)));
 
-        /* ---- beats 3–5: the light on the chain (common), the panel, the staging's own parts */
-        const L = b === 2 ? lightAt(LIGHT_S, tp) : b === 3 ? lightAt(LIGHT_D, tr) : b === 4 ? lightAt(LIGHT_E, te) : lightAt([], 0);
+        /* ---- beats 3–5: the light on the chain, the names, the panel (Emerson's clipping and meters, then the Z-scheme) */
+        const L = b === 2 ? lightAt(LIGHT_DROP, td) : b === 3 ? lightAt(LIGHT_EN, tn) : b === 4 ? lightAt(LIGHT_TG, tg) : lightAt([], 0);
         void ill;
-        const runs = (1 - tw(te, B4.out, B4.out + 0.3));
-        // glows: named (beats 1–2), then each photosystem in the light it absorbs (beats 3–4)
+        const runs = (1 - tw(tg, TG.out, TG.out + 0.3));
+        // glows: named (beats 1–2), then each photosystem in the light it absorbs (beats 3–5)
         const g = (els: SVGGElement[], v: number): void => els.forEach(el => op(el, v));
         g(gl('psi', 'amb'), b === 0 ? named(tt, B1.psi) : 0);
         g(gl('fnr', 'amb'), b === 1 ? named(tt, B2.fnr) : 0);
@@ -697,7 +721,7 @@ export function makeStaging(o: Ill): Staging {
         g(gl('psii', 'fr'), (L.glowF2 ?? 0) * runs);
         g(gl('psi', 'red'), L.glowR1 * runs);
         g(gl('psi', 'fr'), L.glowF1 * runs);
-        // the red and far-red waves (beats 3–4), drawn in from their source
+        // the red and far-red waves, drawn in from their source each time their light comes on
         const wv = (kk: string, ck: string, w: [V, V], u: number, o2 = 1): void => {
           op(q(kk), (u > 0 ? 1 : 0) * o2 * runs);
           reveal(ck, w[0][1] - 6, w[1][1], u);
@@ -705,8 +729,8 @@ export function makeStaging(o: Ill): Staging {
         wv('w-r2', 'cw-r2', W_R2, L.red, L.redOp);
         wv('w-r1', 'cw-r1', W_R1, L.red1 ?? L.red, L.redOp);
         wv('w-f1', 'cw-f1', W_F1, L.far, L.farOp);
-        // the lamps (m1) or the light labels, shown from the opening of beat 3 to the zoom out
-        const lampOp = (b === 2 ? tw(tp, BP.names[0], BP.names[1]) : b > 2 ? 1 : 0) * runs;
+        // the lamps (m1) from the opening of beat 3 to the zoom out; each light's label while its light is on
+        const lampOp = (b === 2 ? tw(td, DROP.names[0], DROP.names[1]) : b > 2 ? 1 : 0) * runs;
         if (o.lamps) {
           put('lamp-red', LAMP_R, k, lampOp);
           put('lamp-fr', LAMP_F, k, lampOp);
@@ -715,45 +739,49 @@ export function makeStaging(o: Ill): Staging {
           q('lamp-red').querySelector('.pm-lens')?.classList.toggle('pm-on', L.red > 0 && (L.redOp ?? 1) > 0.5);
           q('lamp-fr').querySelector('.pm-lens')?.classList.toggle('pm-on', L.far > 0 && (L.farOp ?? 1) > 0.5);
         }
-        put('ll-red', LL_R, k, lampOp);
-        put('ll-fr', LL_F, k, lampOp);
-        // both photosystems named; PSII lights for beats 3–4
+        put('ll-red', LL_R, k, smooth(L.red * 2) * (L.redOp ?? 1) * runs);
+        put('ll-fr', LL_F, k, smooth(L.far * 2) * (L.farOp ?? 1) * runs);
+        // both photosystems named (beats 3–5); PSII stays dimmed, as on the slide, under far-red alone and lights up in
+        // colour when red light reaches it (beat 4), until the zoom out
         // (the slide's own names give way first and return only after these have gone, so the two never overlap)
-        const namesOp = b === 2 ? tw(tt, BP.names[0], BP.names[1]) : b === 3 ? 1 : b === 4 ? 1 - tw(tt, B4.out + 0.6, B4.out + 0.8) : 0;
-        const slideNames = b === 2 ? 1 - tw(tt, BP.names[0] - 0.2, BP.names[0]) : b === 3 ? 0 : b === 4 ? tw(tt, B4.out + 0.8, B4.out + 1.0) : 1;
+        const namesOp = b === 2 ? tw(tt, DROP.names[0], DROP.names[1]) : b === 3 ? 1 : b === 4 ? 1 - tw(tt, TG.out + 0.6, TG.out + 0.8) : 0;
+        const slideNames = b === 2 ? 1 - tw(tt, DROP.names[0] - 0.2, DROP.names[0]) : b === 3 ? 0 : b === 4 ? tw(tt, TG.out + 0.8, TG.out + 1.0) : 1;
         put('lab-psii', [112, 505], k, namesOp);
         put('lab-psi', [422, 505], k, namesOp);
         names.forEach(el => op(el, slideNames));
-        psiiLit.forEach(el => op(el, tw(tp, BP.psii[0], BP.psii[1]) * (1 - tw(te, B4.out + 0.3, B4.out + 0.9))));
-        // the panel and the clipping
-        const panelOp = tw(tp, BP.panel[0], BP.panel[1]) * (1 - tw(te, B4.out, B4.out + 0.35));
-        op(q('panel'), panelOp);
-        set(q('panel'), 'transform', `translate(${f1(40 * (1 - smooth(tw(tp, BP.panel[0], BP.panel[1]))))} 0)`);
-        op(q('clip'), tw(te, B4.clip[0], B4.clip[1]) * (1 - tw(te, B4.out, B4.out + 0.35)));
-        // the Z-scheme (beats 3–5): the lifts light with their light; electrons run on it; one line per beat (4, 5)
-        op(q('zs'), tw(tp, BP.z[0], BP.z[1]));
-        const redZ = b === 2 ? tw(tp, BP.red, BP.red + 0.4) : b === 3 ? 1 - tw(tr, B3.redOff[0], B3.redOff[1]) : b === 4 ? tw(te, B4.red, B4.red + 0.4) : 0;
-        const farZ = b === 2 ? tw(tp, BP.far, BP.far + 0.4) : b > 2 ? 1 : 0;
-        op(q('zl2'), redZ); op(q('zl1'), farZ);
+        psiiLit.forEach(el => op(el, b === 3 ? tw(tn, EN.psii[0], EN.psii[1]) : b === 4 ? 1 - tw(tg, TG.out + 0.3, TG.out + 0.9) : 0));
+        // the panel: in with the pull back, out with the zoom out
+        op(q('panel'), (b === 2 ? tw(td, DROP.panel[0], DROP.panel[1]) : b > 2 ? 1 : 0) * (1 - tw(tg, TG.out, TG.out + 0.35)));
+        set(q('panel'), 'transform', `translate(${f1(40 * (1 - smooth(tw(td, DROP.panel[0], DROP.panel[1]))))} 0)`);
+        // Emerson's clipping: with the first far-red light (1943), turning 1957 (beat 4); it goes as the Z-scheme comes
+        const off5 = b === 4 ? 1 - tw(tg, TG.off[0], TG.off[1]) : 1;
+        op(q('clip'), (b === 2 ? tw(td, DROP.clip[0], DROP.clip[1]) : b > 2 ? 1 : 0) * off5);
+        // (1943 goes, then 1957 comes: the two years never overlap)
+        const y43 = b === 3 ? 1 - tw(tn, EN.year[0], EN.year[1]) : b > 3 ? 0 : 1, y57 = b === 3 ? tw(tn, EN.year[1], EN.year[2]) : b > 3 ? 1 : 0;
+        op(q('cy43'), y43); op(q('cy57'), y57);
+        // the O₂ meters: far-red alone (beat 3), red alone and red + far-red (beat 4); each fills, then shows its reading
+        const meter = (i: number, show: number, fill: number, read: number): void => {
+          op(q(`m${i}`), show * off5);
+          const el = q(`mf${i}`), v = LV[i] * fill;
+          set(el, 'y', f1(mY(v))); set(el, 'height', f1(MT.bot - mY(v)));
+          op(q(`mr${i}`), read);
+        };
+        const mvw = (t: number, w: V): number => mv(t, w[0], w[1] - w[0]);
+        meter(1, b === 2 ? tw(td, DROP.meter[0], DROP.meter[1]) : b > 2 ? 1 : 0, b === 2 ? mvw(td, DROP.fill) : b > 2 ? 1 : 0, b === 2 ? tw(td, DROP.read[0], DROP.read[1]) : b > 2 ? 1 : 0);
+        meter(0, b === 3 ? tw(tn, EN.m0[0], EN.m0[1]) : b > 3 ? 1 : 0, b === 3 ? mvw(tn, EN.fill0) : b > 3 ? 1 : 0, b === 3 ? tw(tn, EN.read0[0], EN.read0[1]) : b > 3 ? 1 : 0);
+        meter(2, b === 3 ? tw(tn, EN.m2[0], EN.m2[1]) : b > 3 ? 1 : 0, b === 3 ? mvw(tn, EN.fill2) : b > 3 ? 1 : 0, b === 3 ? tw(tn, EN.read2[0], EN.read2[1]) : b > 3 ? 1 : 0);
+        op(q('msum'), (b === 3 ? tw(tn, EN.sum[0], EN.sum[1]) : b > 3 ? 1 : 0) * off5);
+        op(q('mnote'), (b === 2 ? tw(td, DROP.meter[0], DROP.meter[1]) : b > 2 ? 1 : 0) * off5);
+        // the Z-scheme (beat 5): both lifts lit (both lights are on); one electron runs water → NADP⁺, NADPH forms
+        op(q('zs'), b === 4 ? tw(tg, TG.z[0], TG.z[1]) : 0);
+        op(q('zl2'), b === 4 ? 1 : 0); op(q('zl1'), b === 4 ? 1 : 0);
         const zAt = (k2: string, p: V, o2: number): void => { const el = q(k2); op(el, o2); set(el, 'cx', f1(p[0])); set(el, 'cy', f1(p[1])); };
-        // beat 3: one electron, water → NADP⁺; beat 4: P700's electron lifted on to NADP⁺, P700 left empty; beat 5: a stream
-        const zRun = along(ZPATH, ZRUN_T, tp);
-        zAt('ze0', zRun, b === 2 ? tw(tp, ZRUN_T[0] - 0.2, ZRUN_T[0]) * (1 - tw(tp, ZRUN_T[9], ZRUN_T[9] + 0.25)) : 0);
-        const pT = [B3.push, B3.push + 0.55, B3.push + 0.85, B3.push + 1.3];
-        zAt('ze1', along([ZP.p700, ZP.p700s, ZP.fd, ZP.nad], pT, tr), b === 3 ? tw(tr, 0.3, 0.5) * (1 - tw(tr, pT[3], pT[3] + 0.25)) : 0);
-        op(q('zring'), b === 3 ? tw(tr, B3.push + 0.05, B3.push + 0.15) : b === 4 ? 1 - tw(te, B4.red + 0.9, B4.red + 1.0) : 0);
-        const ST = ZRUN_T.map(x => (x - ZRUN_T[0]) * 0.75);
-        for (let i = 2; i <= 5; i++) {
-          const t0 = B4.red + 0.5 + (i - 2) * 0.55, u = te - t0;
-          zAt(`ze${i}`, along(ZPATH, ST, u), b === 4 ? tw(u, -0.2, 0) * (1 - tw(u, ST[9], ST[9] + 0.25)) : 0);
-        }
-        const nadZ = b === 2 ? tw(tp, ZRUN_T[9], ZRUN_T[9] + 0.3) : b > 2 ? 1 : 0;
+        zAt('ze0', along(ZPATH, ZRUN_T, tg), b === 4 ? tw(tg, ZRUN_T[0] - 0.2, ZRUN_T[0]) * (1 - tw(tg, ZRUN_T[9], ZRUN_T[9] + 0.25)) : 0);
+        const nadZ = b === 4 ? tw(tg, ZRUN_T[9], ZRUN_T[9] + 0.3) : 0;
         op(q('znadph'), nadZ); op(q('znadp'), 1 - nadZ);
-        op(q('zline4'), b === 3 ? tw(tr, B3.line[0], B3.line[1]) : 0);
-        op(q('zline5'), b === 4 ? tw(te, B4.line[0], B4.line[1]) : 0);
 
         /* ---- beat 1: four turnovers at PSI; beat 2: four ferredoxin trips to FNR, two NADPH (all numbered) */
-        const vis = b < 2 ? 1 : b === 2 ? 1 - tw(tp, 0, 0.3) : 0;
+        const vis = b < 2 ? 1 : b === 2 ? 1 - tw(td, 0, 0.3) : 0;
         // plastocyanin n: 1 docked from the start; 2–4 arrive in turn as the one before leaves; 4 stays
         const pcAt = (n: number): [V, number] => {
           if (b >= 1) return n === 4 ? [DOCK, vis] : [PC_PARK[n - 1], vis];
@@ -783,7 +811,7 @@ export function makeStaging(o: Ill): Staging {
             const u = smooth((tt - away) / B2.trip);
             return [lerpV(FNR_DOCK, spot, u), 1]; // back to its place in the row (4: to the dock), its e⁻ given; none leaves
           }
-          return n === 4 ? [FD, vis] : [FD, 0];
+          return [spot, vis]; // (beat 3: they fade where beat 2 left them, as the plastocyanins do)
         };
         for (let n = 1; n <= 4; n++) {
           const [pa, po] = pcAt(n), [fa, fo] = fdAt(n);
@@ -796,7 +824,6 @@ export function makeStaging(o: Ill): Staging {
         // the reaction centre: a flash per turnover, the empty place from each jump to its refill
         put('rcglow', P700, k, b === 0 ? Math.max(...J.map(j => pulse(tt, j - 0.1))) : 0);
         put('rcring', P700, k, b === 0 ? Math.max(...J.map((j, i) => tw(tt, j + 0.05, j + 0.12) * (1 - tw(tt, R[i] + RFD[i] - 0.05, R[i] + RFD[i])))) : 0);
-        if (b < 3) put('rcdot', P700, k, 0);
         // the electrons: e⁻ 0 starts in P700; e⁻ n (1–4) rides plastocyanin n and refills P700 at turnover n; e⁻ 0–3 jump at
         // turnovers 1–4 to ferredoxins 1–4, ride them, go into FNR (two at a time) and on to NADP⁺; e⁻ 4 stays in P700
         const onPc = (n: number): V => { const a = pcAt(n)[0]; return [a[0] + PC_SPOT[0], a[1] + PC_SPOT[1]]; };
@@ -818,18 +845,17 @@ export function makeStaging(o: Ill): Staging {
               else at = bez(slot, [slot[0] - 10, (slot[1] + AT_NP[e % 2][1]) / 2], AT_NP[e % 2], smoother((tt - toN) / B2.toND));
               o2 = 1 - tw(tt, merge, merge + 0.2);
             }
-          } else if (b === 2 && e === 4) { at = P700; o2 = 1 - tw(tp, 0, 0.3); }
+          } // (beat 3: e⁻ 4, still in P700, is drawn as the reaction centre's own electron, rcdot)
           put(`ed${e}`, at, k, o2);
         }
         // the e⁻ label rides electron 0 from P700 to ferredoxin 1
         const eLab = b === 0 ? tw(tt, B1.rc, B1.rc + 0.2) * (1 - tw(tt, J[0] + JD[0] + 0.3, J[0] + JD[0] + 0.6)) : 0;
         const e0: V = b === 0 && tt >= J[0] ? bez(P700, [FAB[0] - 8, FAB[1] - 14], [FD[0] + FD_SPOT[0], FD[1] + FD_SPOT[1]], smooth((tt - J[0]) / JD[0])) : P700;
         put('l-e1', [e0[0] - 4 * k, e0[1] - 4 * k], k, eLab);
-        if (b < 3) put('e1', P700, k, 0);
 
         /* ---- NADP⁺ + 2 e⁻ + H⁺ → NADPH, twice (beat 2); the slide's row takes over in beat 3 */
         const toRow: V = [ROW[0] + ROW_NADPH * k, ROW[1]];
-        const glide = mv(tp, 0, 1.0), gone = 1 - tw(tp, 1.0, 1.25);
+        const glide = mv(td, 0, 1.0), gone = 1 - tw(td, 1.0, 1.25);
         const in1 = tw(t2, B2.nIn, B2.nIn + 0.3), m1 = tw(t2, B2.merge1 + 0.05, B2.merge1 + 0.25);
         const in2 = tw(t2, B2.nIn2, B2.nIn2 + 0.3), m2 = tw(t2, B2.merge2 + 0.05, B2.merge2 + 0.25);
         put('nadp1', NP, k, in1 * (1 - tw(t2, B2.merge1, B2.merge1 + 0.15)));
@@ -839,35 +865,49 @@ export function makeStaging(o: Ill): Staging {
         put('hp2', lerpV(H0, H1, mv(t2, B2.toN2, B2.toND)), k, in2 * (1 - m2));
         put('nadph2', lerpV(NP, toRow, glide), k, m2 * gone);
 
-        /* ---- the chain in beats 3–5: one electron runs the chain (beat 3); far-red alone, PSI's electron goes and P700 stays
-         *  empty, one O₂ (beat 4); with red again, electrons stream and O₂ bubbles from water (beat 5) */
+        /* ---- the chain in beats 3–5. Beat 3, far-red alone: P700's electron is pushed out to ferredoxin and PSI's hole stays
+         *  empty; one O₂. Beat 4, red alone: one electron runs from water to PSI's hole and fills it, three O₂; far-red joins:
+         *  P700's electron is pushed on, four electrons stream along the whole chain, six O₂. Beat 5: one electron runs water →
+         *  PSII (lifted) → … → PSI (lifted) → NADPH, in step with the Z-scheme. */
         for (const kk of ['pp-ii', 'pp-i']) op(q(kk), 0);
-        for (const kk of ['ppl-ii-push', 'ppl-ii-pull', 'ppl-i-push', 'ppl-i-pull', 'hole2', 'rcglow2', 'stall']) op(q(kk), 0);
-        put('erl', along(RELAY, RELAY_T, tp), k, b === 2 ? tw(tp, RELAY_T[0], RELAY_T[0] + 0.2) * (1 - tw(tp, RELAY_T[12], RELAY_T[12] + 0.25)) : 0);
-        if (b === 2) put('rcglow', P700, k, pulse(tp, RELAY_T[8] + 0.3));
-        const pushed = (tr - B3.push) / 0.55;
-        put('hole1', P700, k, b === 3 ? (pushed > 0.05 ? 1 : 0) : b === 4 ? 1 - tw(te, B4.red + 0.9, B4.red + 1.0) : 0);
-        if (b === 3) {
-          put('rcdot', P700, k, pushed < 0 ? tw(tr, 0.3, 0.5) : 0);
-          put('e1', bez(P700, [FAB[0] - 8, FAB[1] - 14], FD, smooth(pushed)), k, pushed < 0 ? 0 : 1 - tw(tr, B3.push + 1.0, B3.push + 1.3));
-          put('rcglow', P700, k, pulse(tr, B3.push - 0.05));
-        }
-        // the stream on the chain (beat 5): four electrons, each along the whole chain
-        const CT = RELAY_T.map(x => (x - RELAY_T[0]) * 0.75);
+        for (const kk of ['ppl-ii-push', 'ppl-ii-pull', 'ppl-i-push', 'ppl-i-pull', 'hole2', 'stall']) op(q(kk), 0);
+        const FAB_C: V = [FAB[0] - 8, FAB[1] - 14];
+        /** P700's electron pushed out to ferredoxin at t0 (0.55 s), carried off there; how far it has gone (< 0: not yet). */
+        const pushAt = (t: number, t0: number): number => (t - t0) / 0.55;
+        const pushE = (t: number, t0: number): void => {
+          const u = pushAt(t, t0);
+          put('e1', bez(P700, FAB_C, FD, smooth(u)), k, u < 0 ? 0 : 1 - tw(t, t0 + 1.0, t0 + 1.3));
+        };
+        const pd = pushAt(td, DROP.push);
+        if (b === 2) pushE(td, DROP.push); else if (b === 3) pushE(tn, EN.push); else put('e1', P700, k, 0);
+        // P700's own electron: in it from the pull back to the push (beat 3); again from red alone's refill to the push (beat 4)
+        put('rcdot', P700, k, b === 2 ? (pd < 0 ? 1 : 0) : b === 3 ? (tn >= REFILL && pushAt(tn, EN.push) < 0 ? 1 : 0) : 0);
+        put('hole1', P700, k, b === 2 ? (pd > 0.05 ? 1 : 0) : b === 3 ? 1 - tw(tn, REFILL - 0.06, REFILL) : 0);
+        // the electron run: red alone's, water → PSI's hole (beat 4); the one through both photosystems (beat 5)
+        const uR = tn - EN.run;
+        if (b === 3) put('erl', along(RELAY.slice(0, 9), RUN_FAST.slice(0, 9), uR), k, tn < REFILL ? tw(uR, -0.2, 0) : 0);
+        else put('erl', along(RELAY, RUN_TG, tg), k, b === 4 ? tw(tg, RUN_TG[0] - 0.2, RUN_TG[0]) * (1 - tw(tg, RUN_TG[12], RUN_TG[12] + 0.25)) : 0);
+        // the reaction centres flash as they lift (P700: rcglow; PSII: rcglow2)
+        if (b === 2) put('rcglow', P700, k, pulse(td, DROP.push - 0.05));
+        else if (b === 3) put('rcglow', P700, k, pulse(tn, EN.push - 0.05));
+        else if (b === 4) put('rcglow', P700, k, pulse(tg, RUN_TG[8] - 0.05));
+        put('rcglow2', RC2, k, b === 3 ? pulse(uR, RUN_FAST[2] - 0.05) : b === 4 ? pulse(tg, RUN_TG[2] - 0.05) : 0);
+        // the stream (beat 4, red + far-red): four electrons, each along the whole chain
         for (let i = 0; i < 4; i++) {
-          const u = te - (B4.red + 0.5 + i * 0.55);
-          put(`cs${i}`, along(RELAY, CT, u), k, b === 4 ? tw(u, -0.2, 0) * (1 - tw(u, CT[12], CT[12] + 0.25)) * runs : 0);
+          const u = tn - (EN.stream + i * EN.streamDt);
+          put(`cs${i}`, along(RELAY, RUN_FAST, u), k, b === 3 ? tw(u, -0.2, 0) * (1 - tw(u, RUN_FAST[12], RUN_FAST[12] + 0.25)) : 0);
         }
-        // O₂ from water at PSII: one in beat 4, six in beat 5
+        // O₂ from water at PSII: one under far-red alone (beat 3); three under red alone, then six with both (beat 4)
         const OB_A: V = [OEC[0] + 4, OEC[1] + 20], OB_B: V = [OEC[0] + 50, OEC[1] + 96];
-        const obT = b === 3 ? [B3.o2] : b === 4 ? [0, 1, 2, 3, 4, 5].map(i => B4.red + 0.9 + i * 0.3) : [];
+        const tB = b === 2 ? td : tn;
+        const obT = (i: number): number[] => (b === 2 ? (i === 0 ? [DROP.o2] : []) : b === 3 ? [...(i < 3 ? [EN.ro2[i]] : []), EN.bo2 + i * 0.3] : []);
         for (let i = 0; i < 6; i++) {
-          const t0 = obT[i], u = t0 === undefined ? -1 : ((b === 3 ? tr : te) - t0) / 1.1;
+          const st = obT(i).filter(x => x <= tB), u = st.length ? (tB - st[st.length - 1]) / 1.1 : -1;
           put(`ob${i}`, lerpV(OB_A, OB_B, smooth(u)), k, u < 0 || u > 1.2 ? 0 : tw(u, 0, 0.15) * (1 - tw(u, 0.8, 1.05)));
         }
 
         /* ---- beat 2: the per-O₂ readout fills (PSI, ferredoxin, FNR); it goes as beat 3 pulls back */
-        op(q('ro'), b === 0 ? tw(tt, B1.zoom + 0.9, B1.zoom + 1.2) : b === 1 ? 1 : b === 2 ? 1 - tw(tp, 0, 0.3) : 0);
+        op(q('ro'), b === 0 ? tw(tt, B1.zoom + 0.9, B1.zoom + 1.2) : b === 1 ? 1 : b === 2 ? 1 - tw(td, 0, 0.3) : 0);
         const nP = b === 0 ? cnt(J.map(j => j - 0.1), tt) : 4, nF = b === 0 ? cnt(J.map((j, i) => j + JD[i]), tt) : 4;
         const nE = b === 0 ? 0 : b === 1 ? cnt(B2.d.map(d => d + B2.trip + B2.give), tt) : 4;
         const nN = b === 0 ? 0 : b === 1 ? cnt([B2.merge1, B2.merge2], tt) : 2;
@@ -878,7 +918,7 @@ export function makeStaging(o: Ill): Staging {
         if (r3 !== ro3s) { ro3s = r3; q('ro3a').textContent = `FNR: ${nE} e⁻ + ${nN}`; q('ro3b').textContent = `(stroma) → ${nN} NADPH`; ro3(); }
 
         /* ---- ATP synthase starts to light */
-        atpsLit.forEach(el => op(el, ATPS_END * tw(te, B4.out + 1.6, B4.out + 2.2)));
+        atpsLit.forEach(el => op(el, ATPS_END * tw(tg, TG.out + 1.6, TG.out + 2.2)));
       };
     },
   };

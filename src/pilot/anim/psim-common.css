@@ -108,3 +108,9 @@
 :is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .fig text.pm-big{font-size:24px;font-weight:700;fill:#141413}
 :is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) text.pm-cname-s{font-size:24px}
 :is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) text.pm-cyear-s{font-size:24px}
+/* Emerson's O₂ readings (beats 3–4): a tube per light filling in the light's colour; the two lights apart, added, dashed */
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-tube{fill:#f4f1e8;stroke:none}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-tube-o{fill:none;stroke:#8a877d;stroke-width:1.8}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-mtick{fill:none;stroke:#8a877d;stroke-width:1.4;opacity:.7}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-msumh{fill:none;stroke:#fffdf8;stroke-width:6;stroke-linecap:round;opacity:.9}
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-msum{fill:none;stroke:#2b2a27;stroke-width:2.4;stroke-dasharray:7 5;stroke-linecap:round}

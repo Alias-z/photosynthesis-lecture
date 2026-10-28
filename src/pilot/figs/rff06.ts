@@ -26,6 +26,7 @@ export const PLATE: PlateText = {
     { label: 'Somerville & Ogren 1979', url: 'https://doi.org/10.1038/280833a0' },
     { label: 'Ehleringer & Björkman 1977', url: 'https://doi.org/10.1104/pp.59.1.86' },
     { label: 'Flügel et al. 2017', url: 'https://doi.org/10.1105/tpc.17.00256' },
+    { label: 'Michelet et al. 2013', url: 'https://doi.org/10.3389/fpls.2013.00470' },
   ],
 };
 

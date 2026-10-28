@@ -14,6 +14,6 @@ export const RF6N: Beat[] = [
   { tag: 'Respiration', say: 'Respiration takes up O₂ and releases CO₂.', cite: [] },
   { tag: 'Oxygenation of RuBP', say: 'Oxygenation of RuBP makes 2-phosphoglycolate (2-PG), which inhibits enzymes of the Calvin–Benson–Bassham cycle (Flügel et al. 2017).', cite: [BOWES71, FLUGEL17] },
   { tag: 'Recycling', say: 'Photorespiration recycles 2-PG: 3 of its 4 carbons return as 3-PGA, 1 is released as CO₂.', cite: [PETERH10] },
-  { tag: 'Why “photorespiration”', say: 'Like respiration it takes up O₂ and releases CO₂, but only in the light: photorespiration.', cite: [PETERH10] },
+  { tag: 'Why “photorespiration”', say: 'Like respiration it takes up O₂ and releases CO₂, but only in the light: in the dark, RuBisCO is switched off and RuBP is not regenerated. Hence photorespiration.', cite: [PETERH10] },
   { tag: 'Waste or function?', say: 'Often seen as a waste of carbon and energy, photorespiration also removes toxic 2-PG. <b>Why would a plant need this? Is getting CO₂ to RuBisCO so hard?</b>', cite: [EB77, SOMERVILLE79] },
 ];

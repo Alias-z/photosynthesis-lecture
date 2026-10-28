@@ -13,7 +13,7 @@ export const PLATE: PlateText = {
   status: 'draft',
   lead: 'Respiration takes up O₂ and releases CO₂.<br>Photorespiration does the same, in the light: it recycles 2-PG from the oxygenation of RuBP.',
   points: [
-    { claim: 'Why “photorespiration”.', text: 'O₂ is taken up at RuBisCO; CO₂ is released in the mitochondrion; only in the light', eq: 'per 2 O₂: 1 CO₂ released' },
+    { claim: 'Why “photorespiration”.', text: 'O₂ is taken up and CO₂ released, only in the light: in the dark RuBisCO is inactive and RuBP is not regenerated', eq: 'per 2 O₂: 1 CO₂ released' },
     { claim: 'A loss of carbon and energy.', text: 'Often seen as a wasteful process', eq: '30 °C: ≈ 29 % less CO₂ fixed per absorbed photon in air than in 2 % O₂' },
     { claim: 'Function: recycling 2-PG.', text: '2-PG is toxic: it inhibits enzymes of the cycle<br>Photorespiration returns 3 of its 4 carbons as 3-PGA', eq: '2 × 2-PG (4 C) → 3-PGA (3 C) + CO₂ (1 C)' },
   ],

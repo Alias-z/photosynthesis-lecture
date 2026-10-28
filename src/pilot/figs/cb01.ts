@@ -18,7 +18,7 @@ export const PLATE: PlateText = {
   n: 'C1',
   title: 'C₃ photosynthesis',
   status: 'draft',
-  lead: 'The Calvin–Benson–Bassham cycle fixes CO₂ into triose phosphate.<br>Counted per 3 CO₂: the smallest whole-molecule unit.',
+  lead: 'The Calvin–Benson–Bassham cycle fixes CO₂ into triose phosphate.<br>Once called the “dark reactions”, it runs only in light: light activates its enzymes.<br>Counted per 3 CO₂: the smallest whole-molecule unit.',
   points: [
     { claim: 'Carboxylation of RuBP.', text: 'RuBisCO fixes CO₂ onto RuBP, the CO₂ acceptor', eq: '3 RuBP + 3 CO₂ → 6 3-PGA' },
     { claim: 'Reduction of 3-PGA.', text: 'ATP and NADPH reduce 3-PGA to triose phosphate', eq: '6 ATP + 6 NADPH used' },

@@ -245,7 +245,7 @@ export function clippingSvg(p: string, k: string, x: number, y: number, w: numbe
     <defs><filter id="${p}-cardsh" x="-10%" y="-8%" width="120%" height="118%"><feDropShadow dx="1" dy="4" stdDeviation="6" flood-color="#3d3020" flood-opacity=".22"/></filter></defs>
     <path class="clip-paper" d="${cutPath(x, y, w, h, 41, 3.2)}" filter="url(#${p}-cardsh)"/>
     <image href="${plantsImg}" x="${f1(px)}" y="${f1(py)}" width="${f1(pw)}" height="${f1(ph)}"/>
-    ${txt('wild type', 'cym-plab', wt[0], wt[1], 'end')}${txt('no cyclic', 'cym-plab', px + pw - 10, dm[1], 'end')}${txt('electron flow', 'cym-plab', px + pw - 10, dm[1] + 24, 'end')}
+    ${txt('wild type', 'cym-plab', wt[0], wt[1], 'end')}${txt('mutant: no', 'cym-plab', px + pw - 10, dm[1], 'end')}${txt('cyclic flow', 'cym-plab', px + pw - 10, dm[1] + 24, 'end')}
     <text class="clip-find" x="${f1(x + w / 2)}" y="${f1(py + ph + 30)}" text-anchor="middle" font-size="21">Munekage et al. 2004</text></g></g>`;
 }
 

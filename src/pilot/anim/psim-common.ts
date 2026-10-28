@@ -556,7 +556,7 @@ function metersSvg(p: string): string {
       <g data-k="mr${i}" opacity="0" display="none">${ptext(MT.cx[i], MT.read, read[i], 'pm-t', 'middle')}</g></g>`).join('')}
     <g data-k="msum" opacity="0" display="none"><path class="pm-msumh" d="M${x0(2) - 8},${f1(ys)}H${c3 + 8}"/><path class="pm-msum" d="M${x0(2) - 8},${f1(ys)}H${c3 + 8}"/>
       ${ptext(c3 + 14, ys - 4, '<tspan class="pm-red">red</tspan> alone +', 'pm-xs')}${ptext(c3 + 14, ys + 14, '<tspan class="pm-fr">far-red</tspan> alone', 'pm-xs')}</g>
-    <g data-k="mnote" opacity="0" display="none">${ptext(1562, 704, 'after Emerson, Chalmers & Cederstrand 1957', 'pm-xs', 'end')}</g>`;
+    <g data-k="mnote" opacity="0" display="none">${ptext(1562, 704, 'after Emerson & Lewis 1943; Emerson et al. 1957', 'pm-xs', 'end')}</g>`;
 }
 
 /* ---------------------------------------------------------------- the staging */

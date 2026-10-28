@@ -33,23 +33,34 @@ const LIT: Part[] = [...LIT_C1, 'thyl', 'light', 'starch'];
 function breadTail(): string {
   const x = 1172;
   // the card covers GAPDH's own name (strip label right of it): named again above the render
-  return `<text class="cel-prot cel-halo" x="1030" y="146" text-anchor="middle">GAPDH</text><rect class="grn-card" x="1090" y="114" width="106" height="160" rx="12"/>
+  return `<text class="cel-prot cel-halo" x="1066" y="146" text-anchor="end">PGK + GAPDH</text><rect class="grn-card" x="1076" y="114" width="126" height="160" rx="12"/>
     <path class="grn-link" d="M${x + 16},102V126"/><text class="cel-cnt" x="${x + 8}" y="132" text-anchor="end">sucrose</text>
     ${grainG(x - 30, 156, 0.62)}<text class="cel-mn cel-halo" x="${x - 30}" y="190" text-anchor="middle">wheat grain</text>
     <path class="grn-link" d="M${x - 30},196V206"/>${breadG(x - 30, 226, 0.4)}<text class="cel-mn cel-halo" x="${x - 30}" y="266" text-anchor="middle">bread</text>`;
 }
 
+/** In the cropped views (left edge at 400), the names cut by the edge go (plastocyanin, cytochrome b₆f) and the chain's
+ *  structures line starts inside the view (accuracy review R2, 29 Oct 2026). */
+function cropChain(svg: string, x0: number): string {
+  return svg
+    .replace(/<text class="chn-in"[^>]*>plastocyanin<\/text>/g, '')
+    .replace(/<path class="chn-brk" d="M262[^"]*"\/><text class="chn-name"[^>]*>cytochrome [^]*?<\/text>/, '')
+    .replace(/<text class="chn-cr" x="[^"]*" y="([^"]*)" text-anchor="end">/, `<text class="chn-cr" x="${x0 + 8}" y="$1" text-anchor="start">`);
+}
+
 function joined(id: string, view: [number, number, number, number], tail = ''): string {
-  const chain = chainSvg(`${id}c`, 'pdb-bilayer', ALLC, { mol: true, counts: false }).replace(/^<svg[^>]*>/, '').replace(/<\/svg>$/, '');
+  const full = chainSvg(`${id}c`, 'pdb-bilayer', ALLC, { mol: true, counts: false }).replace(/^<svg[^>]*>/, '').replace(/<\/svg>$/, '');
+  const chain = view[0] >= 400 ? cropChain(full, view[0]) : full;
   const strip = cellSvg(`${id}s`, 'strip', LIT, { bare: true, join: true, unit: 'none' });
   return `<svg class="fig-svg chn chn-pdb-bilayer cel" viewBox="${view.join(' ')}" role="img" aria-label="The light-reaction chain in the thylakoid membrane (photosystem II, cytochrome b6f, photosystem I, ATP synthase as renders of their structures) with, to its right, the stroma where ATP and NADPH drive CO2 fixation: GAPDH, RuBisCO and PRK as renders, the cycle's molecules in carbon form, the chloroplast envelope with the triose-phosphate translocator.">
     <defs><clipPath id="${id}-cl"><rect x="800" y="0" width="${view[0] + view[2] - 800}" height="610"/></clipPath>
       <clipPath id="${id}-view"><rect x="${view[0]}" y="${view[1]}" width="${view[2]}" height="${view[3]}"/></clipPath></defs>
     <g clip-path="url(#${id}-view)"><g clip-path="url(#${id}-cl)"><g transform="translate(800 0)">${strip}</g></g>${chain}${tail}</g>
-    ${view[0] >= 400 ? abbrSvg(abbrLines(['RuBP', '3-PGA', 'GAPDH'], 380), view[0] + view[2] - 10, 592, 'end') : ''}</svg>`;
+    ${view[0] >= 400 ? abbrSvg(abbrLines(['RuBP', '3-PGA', 'PGK', 'GAPDH'], 380), view[0] + view[2] - 10, 592, 'end') : ''}</svg>`;
 }
 
 export function draw(id: string): string {
-  if (id === 'c') return joined('c0c', [400, 0, 800, 600], breadTail());
-  return id === 'b' ? joined('c0b', [400, 0, 800, 600]) : joined('c0a', [0, 0, 1600, 600]);
+  // 830 × 622.5 (4:3): wide enough for the strip's "triose phosphate" and "PGK + GAPDH" at the right edge
+  if (id === 'c') return joined('c0c', [400, 0, 830, 622.5], breadTail());
+  return id === 'b' ? joined('c0b', [400, 0, 830, 622.5]) : joined('c0a', [0, 0, 1600, 600]);
 }

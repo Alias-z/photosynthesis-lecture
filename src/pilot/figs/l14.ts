@@ -147,7 +147,7 @@ function traceSvg(): string {
 
     <path class="fl14-axis" d="M${x0},${yt - 26} V${yb} H${x1}"/>
     <text class="fl14-ax" transform="translate(${x0 - 22} ${(yb + yt) / 2}) rotate(-90)" text-anchor="middle">fluorescence</text>
-    ${T(x1, yb + 30, 'time (minutes) · schematic', 'fl14-ax', 'end')}
+    ${T(x1, yb + 30, 'time (minutes)', 'fl14-ax', 'end')}
     <path class="fl14-ref" d="M${X(0.07)},${Y(Fm)} H${X(0.97)}"/>
     <path class="fl14-fl" d="${poly(pts)}"/>
 
@@ -232,7 +232,7 @@ function historySvg(): string {
   return svg('From history to now: in 1931 Kautsky and Hirsch saw a dark-adapted leaf’s fluorescence rise and fall in steady light (schematic trace); in 1986 the PAM method added weak measuring light and saturating pulses; from 2011 satellites retrieved sun-induced fluorescence; on 15 September 2026 ESA launched FLEX, the first mission built for it. Satellites use sunlight only, so they give no Fv/Fm', `
     ${defs(p)}<g transform="translate(0 4)">
     <path class="fl14-axis" d="M40,${ty} H770"/>${ar(p, 'ink', 'M740,330 L776,330', 'fl14-thin')}
-    ${mini(xs[0], 250)}${T(xs[0] - 56, 150, 'lamp on', 'fl14-s', 'start')}${T(xs[0], 280, 'schematic', 'fl14-s')}${ar(p, 'ink', `M${xs[0] - 48},158 L${xs[0] - 48},178`, 'fl14-thin')}
+    ${mini(xs[0], 250)}${T(xs[0] - 56, 150, 'lamp on', 'fl14-s', 'start')}${ar(p, 'ink', `M${xs[0] - 48},158 L${xs[0] - 48},178`, 'fl14-thin')}
     ${clip(xs[1], 230, 1)}${flash(xs[1] + 40, 168, 15)}${T(xs[1], 150, 'pulse', 'fl14-s', 'end')}
     <path class="fl14-canopy" d="M${xs[2] - 70},280 Q${xs[2] - 50},250 ${xs[2] - 30},268 Q${xs[2] - 10},244 ${xs[2] + 12},266 Q${xs[2] + 34},246 ${xs[2] + 54},266 Q${xs[2] + 66},258 ${xs[2] + 72},280Z"/>
     ${satellite(xs[2] + 4, 150, 0.8)}${flu(p, xs[2] - 10, 250, xs[2] - 2, 186, 2.4, 4, 3)}
@@ -325,7 +325,7 @@ function spectrumSvg(): string {
     <path class="fl14-axis" d="M${x0},${yt - 24} V${yb} H${x1}"/>
     ${strip}
     ${[400, 500, 600, 700, 800].map(n => `<path class="fl14-axis" d="M${X(n)},${yb + 30} V${yb + 38}"/>${T(X(n), yb + 62, `${n}`, 'fl14-ax')}`).join('')}
-    ${T((x0 + x1) / 2, yb + 92, 'wavelength (nm) · schematic', 'fl14-ax')}
+    ${T((x0 + x1) / 2, yb + 92, 'wavelength (nm)', 'fl14-ax')}
     ${T(X(450), Y(0.9) - 18, 'absorbed', 'fl14-h fl14-c-green')}
     ${T(X(450), Y(0.9) + 18, 'blue', 'fl14-l')}${T(X(552), Y(0.68) + 30, 'less green', 'fl14-l')}${T(X(668), Y(0.9) + 22, 'red', 'fl14-l')}
     ${T(776, Y(0.86), 'fluorescence', 'fl14-h fl14-c-red', 'end')}${T(776, Y(0.86) + 24, '(enlarged)', 'fl14-s', 'end')}
@@ -432,7 +432,7 @@ function restedSvg(): string {
     <path class="fl14-axis" d="M${x0},${yt - 20} V${yb} H${x1}"/>
     <text class="fl14-ax" transform="translate(${x0 - 24} ${(yb + yt) / 2}) rotate(-90)" text-anchor="middle">PSII efficiency</text>
     <path class="fl14-ref" d="M${x0},${Y(0.8)} H${x1}"/>${T(x0 - 8, Y(0.8) + 7, '0.8', 'fl14-ax', 'end')}
-    ${T(x1, yb + 30, 'time · schematic', 'fl14-ax', 'end')}
+    ${T(x1, yb + 30, 'time', 'fl14-ax', 'end')}
     <path class="fl14-curve-rep" d="${poly(pts(reg))}"/>
     <path class="fl14-curve-dmg fl14-dash" d="${poly(pts(dmg))}"/>
     ${T(X(0.02), Y(0.3) + 34, 'both low in strong light:', 'fl14-in', 'start')}${T(X(0.02), Y(0.3) + 58, 'low ΦPSII is not proof of damage', 'fl14-s', 'start')}
@@ -450,7 +450,7 @@ function iconsSvg(): string {
   return svg('Icon summary: a small red leak of 0.5 to 3 percent; a saturating pulse closes PSII and gives Fv/Fm near 0.8; Fm′ below Fm shows NPQ; fluorescence reads PSII, not CO₂ uptake; satellites now see it, with ESA FLEX launched in 2026', `
     ${defs(p)}<g transform="translate(20 8)">
     ${tile(row1[0], y1)}<circle class="fl14-lhc" cx="${row1[0] - 10}" cy="${y1 + 4}" r="30"/>${glow(p, row1[0] - 10, y1 + 4, 18)}${flu(p, row1[0] + 14, y1 - 10, row1[0] + 44, y1 - 40, 2.6, 4, 3)}
-    ${T(row1[0], y1 + 96, 'a small red leak', 'fl14-h')}
+    ${T(row1[0], y1 + 96, 'fluorescence: 0.5–3 %', 'fl14-h')}
     ${tile(row1[1], y1)}${flash(row1[1] - 20, y1 - 18, 20)}<rect class="fl14-rc-off" x="${row1[1] - 8}" y="${y1 + 2}" width="52" height="36" rx="12"/>
     ${tile(row1[2], y1)}<rect class="fl14-bar-fl" x="${row1[2] - 34}" y="${y1 - 44}" width="26" height="68" rx="3"/><rect class="fl14-bar-fl" x="${row1[2] + 8}" y="${y1 - 16}" width="26" height="40" rx="3"/>
     ${T(row1[2] - 21, y1 + 46, 'Fm', 'fl14-s', 'middle')}${T(row1[2] + 21, y1 + 46, 'Fm′', 'fl14-s', 'middle')}

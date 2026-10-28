@@ -42,7 +42,7 @@ function panelSvg(): string {
     <defs><clipPath id="${P}-pc"><rect x="${a.x0}" y="${a.y0 - 4}" width="${a.w + 8}" height="${a.h + 8}"/></clipPath></defs>
     ${axesSvg(a, [0, 400, 800, 1200], [0, 10, 20, 30, 40], '<tspan font-style="italic">C</tspan>ᵢ (ppm)', 'net CO₂ uptake (µmol m⁻² s⁻¹)', { zero: true })}
     <g data-k="${P}-air" opacity="0"><path class="dk2-cursor" d="M${f(AX(a, 300))},${f(a.y0 + 20)}V${f(a.y0 + a.h)}"/>
-      <text class="dk2-gl" x="${f(AX(a, 300) - 8)}" y="${f(a.y0 + 40)}" text-anchor="end">today’s air</text></g>
+      <text class="dk2-gl" x="${f(AX(a, 300) - 8)}" y="${f(a.y0 + 40)}" text-anchor="end"><tspan font-style="italic">C</tspan>ᵢ in today’s air</text></g>
     <g clip-path="url(#${P}-pc)">${lim('c')}${lim('j')}${lim('p')}<path data-k="${P}-act" class="dk2-act" d="M0,0"/></g>
     <circle data-k="${P}-dot" class="dk2-dot" r="8"/>
     ${sym('c', AX(a, 420), AY(a, 37), 'end')}${sym('j', AX(a, 1380), AY(a, Aj(1380)) - 10, 'end')}${sym('p', AX(a, 1380), AY(a, Ap(1380)) + 28, 'end')}

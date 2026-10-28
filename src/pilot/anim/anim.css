@@ -18,3 +18,5 @@
 .ani-nav{display:flex;gap:10px}
 .ani-nav button{font:400 34px/1 Newsreader,Georgia,serif;color:#3d3d3a;background:transparent;border:1px solid #c9c6bb;border-radius:999px;width:58px;height:58px;cursor:pointer}
 .ani-nav button:hover{background:#f0eee6}
+/* Key lines on the stage (Staging.keys): big, bold rust, with a paper halo over the drawing (lecturer, 29 Oct 2026) */
+.ani .ani-stage text.ani-key{font-size:42px;font-weight:700;fill:#b0431f;paint-order:stroke;stroke:#fbfaf6;stroke-width:9px;stroke-linejoin:round;pointer-events:none}

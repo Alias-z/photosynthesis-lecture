@@ -627,7 +627,7 @@ function railwayEras(): string {
     <rect class="fl11-buffer" x="712" y="${y - 18}" width="12" height="36" rx="3"/>
     ${tag(716, 262, 'NADPH', 'nadph')}${t(716, 376, 'terminal', 'fl11-it')}${t(716, 402, 'linear', 'fl11-h fl11-c-lin')}
     ${rt(p, 'g', 'M716,244 L716,176')}
-    ${t(712, 98, 'freight exit', 'fl11-it')}${t(712, 128, 'spare NADPH', 'fl11-l')}${t(712, 154, 'leaves as malate', 'fl11-l')}
+    ${t(712, 98, 'freight exit', 'fl11-it')}${t(712, 128, 'spare NADPH', 'fl11-l')}${t(712, 154, 'makes malate, exported', 'fl11-l')}
 
     ${t(416, 50, 'loop line', 'fl11-it')}${t(416, 78, 'cyclic: back to PQ', 'fl11-h fl11-c-cyc')}
 

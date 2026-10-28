@@ -68,7 +68,7 @@ export const LEAF_PT: [number, number] = [400, 228];
 /* ---------------------------------------------------------------- the CO₂ path, C9 v7 */
 
 const { ci, gs, A, E } = SYM;
-const PILL_M = pill(120, 50, `measured: ${A}, ${E}`, { k: 'dark', big: true });
+const PILL_M = pill(120, 50, `from the chamber: ${A}, ${E}`, { k: 'dark', big: true });
 const PILL_C = pill(330, 98, `calculated: ${gs}, ${ci}`, { k: 'paper', big: true });
 /** v7's pore, where the dive lands (top 150, bottom 476: the pore at y 313). */
 export const PORE_PT: [number, number] = [259, 313];
@@ -77,8 +77,8 @@ export function pathSvg(P: string, sc: string): string {
   let s = figInner(c9('v7'), 'cp09v7', `${P}${sc}v7`);
   s = wrap(s, PILL_M, `${sc}-pm`);
   s = wrap(s, PILL_C, `${sc}-pc`);
-  const over = `<g data-k="${sc}-vals"><text class="fcp-s" x="85" y="546" text-anchor="middle">420</text>
-      <text class="fcp-s" x="376" y="546" text-anchor="middle">300</text><text class="fcp-s" x="780" y="546" text-anchor="end">µmol mol⁻¹</text></g>
+  const over = `<g data-k="${sc}-vals"><text class="fcp-s" x="85" y="546" text-anchor="middle">430</text>
+      <text class="fcp-s" x="376" y="546" text-anchor="middle">300</text><text class="fcp-s" x="780" y="546" text-anchor="end">ppm</text></g>
     <text data-k="${sc}-q" class="cp9-q" x="664" y="556" text-anchor="middle">?</text>`;
   return `${cardSvg(`${P}${sc}`)}<g data-k="${sc}-schema">${s}</g>${over}`;
 }

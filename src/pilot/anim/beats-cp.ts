@@ -18,14 +18,14 @@ const TERASHIMA11: Cite = { label: 'Terashima et al. 2011, Plant Physiol.', url:
 const CLARKE21: Cite = { label: 'Clarke et al. 2021, Interface Focus', url: 'https://doi.org/10.1098/rsfs.2020.0040' };
 const LUNDGREN19: Cite = { label: 'Lundgren et al. 2019, Nat. Commun.', url: 'https://doi.org/10.1038/s41467-019-10826-5' };
 
-const Ci = '<i>C</i><sub>i</sub>', Cc = '<i>C</i><sub>c</sub>', Cs = '<i>C</i><sub>s</sub>', gs = '<i>g</i><sub>s</sub>';
+const Ca = '<i>C</i><sub>a</sub>', Ci = '<i>C</i><sub>i</sub>', Cc = '<i>C</i><sub>c</sub>', Cs = '<i>C</i><sub>s</sub>', gs = '<i>g</i><sub>s</sub>';
 const A = '<i>A</i>', E = '<i>E</i>';
 
 /* ---------------------------------------------------------------- cp9 · from a leaf in a box to Cᵢ */
 
 const LIGHT_ON = { tag: 'Light on', say: `In the light, the leaf takes CO₂ out of the air and adds water vapour. The CO₂ drop gives the net CO₂ uptake, ${A}; the water-vapour rise gives the transpiration, ${E}.`, cite: [BUSCH24] };
-const GAASTRA = { tag: '1959', say: '1959, Wageningen: Gaastra clamped one attached leaf in a Plexiglass chamber and recorded its CO₂ uptake with an infrared gas analyser.', cite: [GAASTRA59] };
-const CALC = { tag: 'Calculated', say: `From ${E} and the water-vapour difference between leaf and air: the stomatal conductance, ${gs}. From ${A} and ${gs}: the CO₂ in the leaf air spaces, ${Ci} ≈ 300 µmol mol⁻¹.`, cite: [BUSCH24, VCF81] };
+const GAASTRA = { tag: '1959', say: '1959, Wageningen: Gaastra enclosed 1 attached leaf in a Plexiglass chamber and recorded its CO₂ uptake with an infrared gas analyser.', cite: [GAASTRA59] };
+const CALC = { tag: 'Calculated', say: `From ${E} and the water-vapour difference between leaf and air: the stomatal conductance, ${gs}. From ${A}, ${gs} and ${Ca}: the CO₂ in the leaf air spaces, ${Ci} ≈ 300 ppm.`, cite: [BUSCH24, VCF81] };
 const Q9 = { tag: 'Question', say: `${Ci} is the CO₂ in the leaf air spaces. <b>How much of it reaches RuBisCO?</b>`, cite: [BUSCH24] };
 
 /** Staging A: the slide's drawn open system, Gaastra's clippings beside it, then into the leaf. */
@@ -47,9 +47,9 @@ export const CP9_B: Beat[] = [
 /** Staging C, real images: a rice field, the LI-6800 sensor head, a stoma, then into the leaf. */
 export const CP9_C: Beat[] = [
   { tag: 'In the field', say: 'A rice leaf is clamped in the chamber of a portable gas-exchange system. Air flows over the leaf.', cite: [DU20] },
-  { tag: 'Two analysers', say: `One infrared gas analyser reads the air before the leaf, the other the air after it. The CO₂ drop gives ${A}; the water-vapour rise gives ${E}.`, cite: [LICOR, BUSCH24] },
+  { tag: '2 analysers', say: `One infrared gas analyser reads the air before the leaf, the other the air after it. The CO₂ drop gives ${A}; the water-vapour rise gives ${E}.`, cite: [LICOR, BUSCH24] },
   { tag: 'Stomata', say: `CO₂ enters and water vapour leaves through the stomata. From ${E} and the water-vapour difference between leaf and air: the stomatal conductance, ${gs}.`, cite: [BUSCH24] },
-  { tag: 'Calculated', say: `From ${A} and ${gs}: the CO₂ in the leaf air spaces, ${Ci} ≈ 300 µmol mol⁻¹, against 420 µmol mol⁻¹ in the chamber air.`, cite: [BUSCH24, VCF81] },
+  { tag: 'Calculated', say: `From ${A}, ${gs} and ${Ca}: the CO₂ in the leaf air spaces, ${Ci} ≈ 300 ppm, against ≈ 430 ppm in the chamber air.`, cite: [BUSCH24, VCF81] },
   Q9,
 ];
 /** Staging D, side by side: two chambers, one leaf lit, then into the lit leaf. */
@@ -66,7 +66,7 @@ const PATH = { tag: 'Three conductances', say: 'To reach RuBisCO, CO₂ diffuses
 const WIND = { tag: 'Boundary layer', say: `A layer of still air covers the leaf. Wind thins this boundary layer, so more CO₂ reaches the leaf surface: ${Cs} rises.`, cite: [DUPONT25] };
 const CATALPA = { tag: '1900', say: '1900, Brown and Escombe: the open pores of a catalpa leaf cover 0.9 % of its surface, yet the leaf takes up CO₂ half as fast as an equal area of caustic soda.', cite: [BROWN00] };
 const WATER = { tag: 'Water out', say: 'Water vapour leaves through the same pores: 150 to over 500 H₂O for each CO₂ taken up.', cite: [VERSLUES23, LAWSON14] };
-const MESO = { tag: 'Mesophyll', say: `In water, CO₂ diffuses ≈ 10,000 times more slowly than in air. Across cell wall, membranes and stroma, it falls from ${Ci} ≈ 300 to ${Cc} ≈ 200 µmol mol⁻¹.`, cite: [TERASHIMA11, CLARKE21, BUSCH24] };
+const MESO = { tag: 'Mesophyll', say: `In water, CO₂ diffuses ≈ 10,000 times more slowly than in air. Across cell wall, membranes and stroma, it falls from ${Ci} ≈ 300 to ${Cc} ≈ 200 ppm.`, cite: [TERASHIMA11, CLARKE21, BUSCH24] };
 const CLOSE = { tag: 'Stomata close', say: `When the air is dry, the stomata close: less water is lost, but ${Ci} and ${Cc} fall. <b>Getting CO₂ to RuBisCO is hard: how have plants coped?</b>`, cite: [LAWSON14] };
 
 /** Staging A: one camera along the slide's drawn path, each conductance lit in turn. */
@@ -76,14 +76,14 @@ export const CP10_B: Beat[] = [
   PATH,
   CATALPA,
   { tag: '1959', say: '1959: Gaastra measured all three resistances (1 / conductance) in turnip leaves. The stomatal resistance falls as light rises; in bright light the mesophyll resistance is 1 to 4 times the stomatal one.', cite: [GAASTRA59] },
-  { tag: 'Mesophyll today', say: `Micro-CT shows the air spaces, electron micrographs the wall. In water, CO₂ diffuses ≈ 10,000 times more slowly: it falls from ${Ci} ≈ 300 to ${Cc} ≈ 200 µmol mol⁻¹.`, cite: [LUNDGREN19, CLARKE21, TERASHIMA11] },
+  { tag: 'Mesophyll today', say: `Micro-CT shows the air spaces, electron micrographs the wall. In water, CO₂ diffuses ≈ 10,000 times more slowly: it falls from ${Ci} ≈ 300 to ${Cc} ≈ 200 ppm.`, cite: [LUNDGREN19, CLARKE21, TERASHIMA11] },
   CLOSE,
 ];
 /** Staging C, real images along the path: wind map, stoma (SEM), air spaces (micro-CT), wall (TEM), open and closed stomata. */
 export const CP10_C: Beat[] = [
   { tag: 'Boundary layer', say: `A layer of still air covers the leaf. At low wind it is thick and CO₂ has already fallen at the surface; wind thins it, so ${Cs} rises.`, cite: [DUPONT25] },
   { tag: 'Stoma', say: 'CO₂ enters through the stomatal pore, and water vapour leaves through it: 150 to over 500 H₂O for each CO₂ taken up.', cite: [VERSLUES23] },
-  { tag: 'Air spaces', say: `Inside, CO₂ spreads through the air spaces between the mesophyll cells: ${Ci} ≈ 300 µmol mol⁻¹.`, cite: [LUNDGREN19, BUSCH24] },
+  { tag: 'Air spaces', say: `Inside, CO₂ spreads through the air spaces between the mesophyll cells: ${Ci} ≈ 300 ppm.`, cite: [LUNDGREN19, BUSCH24] },
   MESO,
   CLOSE,
 ];
@@ -91,6 +91,6 @@ export const CP10_C: Beat[] = [
 export const CP10_D: Beat[] = [
   { tag: 'Still air and wind', say: `Two leaves, one in still air, one in wind. Wind thins the boundary layer, so more CO₂ reaches the leaf surface: ${Cs} is higher.`, cite: [DUPONT25] },
   { tag: 'Open and closed', say: 'Open stomata let CO₂ in and water vapour out: 150 to over 500 H₂O for each CO₂ taken up. Closed stomata hold both back.', cite: [VERSLUES23, LAWSON14] },
-  { tag: 'Mesophyll', say: `Behind the stomata, the mesophyll: across cell wall, membranes and stroma, CO₂ falls from ${Ci} ≈ 300 to ${Cc} ≈ 200 µmol mol⁻¹.`, cite: [TERASHIMA11, BUSCH24] },
+  { tag: 'Mesophyll', say: `Behind the stomata, the mesophyll: across cell wall, membranes and stroma, CO₂ falls from ${Ci} ≈ 300 to ${Cc} ≈ 200 ppm.`, cite: [TERASHIMA11, BUSCH24] },
   CLOSE,
 ];

@@ -34,7 +34,11 @@ const at = (ys: number[], L: number): number => {
   while (i < PPF.length - 1 && PPF[i] < L) i++;
   return lerp(ys[i - 1], ys[i], Math.max(0, Math.min(1, (L - PPF[i - 1]) / (PPF[i] - PPF[i - 1]))));
 };
-export const shares = (L: number): [number, number, number] => [at(Y_PSII, L), at(Y_NPQ, L), at(Y_NO, L)];
+/** The 3 shares at light L, normalised so they add up to 1 (the read-off curves sum to 1.01–1.02). */
+export const shares = (L: number): [number, number, number] => {
+  const v = [at(Y_PSII, L), at(Y_NPQ, L), at(Y_NO, L)], s = v[0] + v[1] + v[2];
+  return [v[0] / s, v[1] / s, v[2] / s];
+};
 export const L0 = 40, L1 = 1420;
 /** The drawn energy balance (figs/pp11f.ts v3): absorbed light, and CO₂ fixation as a non-rectangular hyperbola. */
 export const absorbed = (q: number): number => q / 2000 * 0.92;

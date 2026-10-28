@@ -20,7 +20,7 @@ export const PLATE: PlateText = {
   points: [
     { claim: 'Fv/Fm.', text: 'Measured after dark adaptation with a saturating light pulse<br>Maximum PSII efficiency: ≈ 0.8 in healthy leaves, lower under stress' },
     { claim: 'ΦPSII and NPQ.', text: 'Measured in the light<br>ΦPSII: the share of absorbed light used by PSII; NPQ: the heat dissipation' },
-    { claim: 'Solar-induced fluorescence (SIF).', text: 'Satellites detect the faint fluorescence of vegetation<br>It tracks crop photosynthesis across regions' },
+    { claim: 'Sun-induced fluorescence (SIF).', text: 'Satellites detect the faint fluorescence of vegetation<br>It tracks crop photosynthesis across regions' },
   ],
   refs: [
     { label: 'Kalaji et al. 2014', url: 'https://doi.org/10.1007/s11120-014-0024-6' },

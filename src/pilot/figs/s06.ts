@@ -25,9 +25,9 @@ export const PLATE: PlateText = {
   status: 'draft',
   lead: 'Antenna pigments collect light and pass the energy to a reaction centre, which traps it.',
   points: [
-    { claim: 'Photosynthetic unit.', text: 'Most chlorophylls only collect light', eq: '1 flash: ≈ 2,400 Chl → 1 O₂<br>1 O₂ needs 8 reaction centres (4 PSII + 4 PSI)<br>≈ 2,400 ÷ 8 ≈ 300 Chl per reaction centre' },
+    { claim: 'Photosynthetic unit.', text: 'Most chlorophylls only collect light', eq: '1 flash: ≈ 2,500 Chl → 1 O₂<br>1 O₂ needs 8 turnovers (4 at PSII + 4 at PSI), 1 per centre per flash<br>≈ 2,500 ÷ 8 ≈ 300 Chl per reaction centre' },
     { claim: 'Excitation energy transfer.', text: 'Carotenoids and Chl <i>b</i> pass energy downhill to Chl <i>a</i>' },
-    { claim: 'Antenna size.', text: 'Shade leaves build more light-harvesting complexes per reaction centre' },
+    { claim: 'Antenna size.', text: 'Shade leaves build more light-harvesting complexes (LHCII, LHCI) per reaction centre' },
   ],
   refs: [
     { label: 'Su et al. 2017', url: 'https://doi.org/10.1126/science.aan0327' },

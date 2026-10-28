@@ -320,12 +320,12 @@ function overlaySvg(p: string, o: Ill): string {
     ${glyph('lab-psii', lab('photosystem II (PSII)', 'chn-name chn-halo', 0, 0, 'middle'))}${glyph('lab-psi', lab('photosystem I (PSI)', 'chn-name chn-halo', 0, 0, 'start'))}
     <g data-k="pp-ii" opacity="0" display="none">${blockUp(128, 298, 232, 10)}${pullArrow([96, 428], [92, 366], [138, 324], 'pm-pull pm-pull-strong')}</g>
     <g data-k="pp-i" opacity="0" display="none">${blockUp(470, 300, 116, 16)}${pullArrow([484, 356], [478, 336], [498, 322], 'pm-pull')}</g>
-    ${glyph('ppl-ii-push', lab('push', 'chn-in pm-pushl chn-halo', 0, 0, 'end'))}${glyph('ppl-ii-pull', lab('pull', 'chn-in chn-halo', 0, 0, 'end'))}
-    ${glyph('ppl-i-push', lab('push', 'chn-in pm-pushl chn-halo', 0, 0, 'end'))}${glyph('ppl-i-pull', lab('pull', 'chn-in chn-halo', 0, 0, 'end'))}
+    ${glyph('ppl-ii-push', lab('e⁻ out', 'chn-in pm-pushl chn-halo', 0, 0, 'end'))}${glyph('ppl-ii-pull', lab('e⁻ in', 'chn-in chn-halo', 0, 0, 'end'))}
+    ${glyph('ppl-i-push', lab('e⁻ out', 'chn-in pm-pushl chn-halo', 0, 0, 'end'))}${glyph('ppl-i-pull', lab('e⁻ in', 'chn-in chn-halo', 0, 0, 'end'))}
     ${glyph('hole2', '<circle class="pm-ring" r="8"/>')}${glyph('hole1', '<circle class="pm-ring" r="8"/>')}
     ${glyph('rcglow2', `<circle r="24" fill="url(#${p}-rcglow)"/>`)}${glyph('erl', E_DOT)}
     ${[0, 1, 2, 3].map(i => glyph(`cs${i}`, E_DOT)).join('')}${[0, 1, 2, 3, 4, 5].map(i => glyph(`ob${i}`, o2G(0, 0))).join('')}
-    ${glyph('stall', lab('PSI’s hole stays empty', 'chn-in chn-halo', 0, 0, 'end'))}
+    ${glyph('stall', lab('PSI gets no electron back', 'chn-in chn-halo', 0, 0, 'end'))}
     ${o.world ? o.world(p) : ''}`;
 }
 
@@ -519,12 +519,13 @@ function zSvg(): string {
     ${car(ZP.pc, 'pc')}${car(ZP.fd, 'fd')}
     <g transform="translate(${ZP.h2o[0]} ${ZP.h2o[1] - 4}) scale(1.2)">${waterG(0, 0)}</g>${ptext(ZP.h2o[0], ZP.h2o[1] + 34, 'H₂O', 'pm-xs', 'middle')}
     ${ptext(ZP.p680[0] + 38, ZP.p680[1] + 6, 'P680', 'pm-xs')}${ptext(ZP.p700[0] + 38, ZP.p700[1] + 6, 'P700', 'pm-xs')}
-    ${ptext(ZP.pq[0], ZP.pq[1] + 30, 'PQ', 'pm-xs', 'middle')}${ptext(ZP.b6f[0], ZP.b6f[1] + 32, 'b₆f', 'pm-xs', 'middle')}${ptext(ZP.pc[0], ZP.pc[1] + 34, 'PC', 'pm-xs', 'middle')}
+    ${ptext(ZP.pq[0], ZP.pq[1] + 30, 'PQ', 'pm-xs', 'middle')}${ptext(ZP.b6f[0], ZP.b6f[1] + 32, 'b₆f', 'pm-xs', 'middle')}${ptext(ZP.pc[0] + 16, ZP.pc[1] + 56, 'plastocyanin (PC)', 'pm-xs', 'end')}
     ${ptext(ZP.fd[0] + 22, ZP.fd[1] - 14, 'Fd', 'pm-xs')}
-    ${ptext(ZP.p680[0] + 16, zy(0.2), 'PSII', 'pm-h pm-ii')}${ptext(ZP.p680[0] + 16, zy(0.2) + 24, 'red light', 'pm-t pm-red')}
-    ${ptext(ZP.p700[0] - 16, zy(-0.66), 'PSI', 'pm-h pm-i', 'end')}${ptext(ZP.p700[0] - 16, zy(-0.66) + 24, 'far-red light', 'pm-t pm-fr', 'end')}
+    ${ptext(ZP.p680[0] + 16, zy(0.2), 'PSII', 'pm-h pm-ii')}${ptext(ZP.p680[0] + 16, zy(0.2) + 24, 'light', 'pm-t pm-red')}
+    ${ptext(ZP.p700[0] - 16, zy(-0.66), 'PSI', 'pm-h pm-i', 'end')}${ptext(ZP.p700[0] - 16, zy(-0.66) + 24, 'light, also far-red', 'pm-t pm-fr', 'end')}
     <g transform="translate(${ZP.nad[0]} ${ZP.nad[1] + 28})"><g data-k="znadp">${tagG(0, 0, 'NADP⁺', 'plain')}</g><g data-k="znadph" opacity="0" display="none">${tagG(0, 0, 'NADPH', 'nadph')}</g></g>
     ${ptext(1560, 46, 'Z-scheme, after Hill &amp; Bendall 1960', 'pm-xs', 'end')}
+    ${ptext(PANEL.x + PANEL.w / 2, PANEL.y + PANEL.h - 44, 'Both photosystems work together', 'pm-key', 'middle')}
     <circle data-k="ze0" opacity="0" display="none" class="pm-e" r="7"/>
   </g>`;
 }
@@ -541,7 +542,7 @@ const mY = (v: number): number => MT.bot - v * (MT.bot - MT.top);
 function metersSvg(p: string): string {
   const head = ['<tspan class="pm-red">red</tspan> alone', '<tspan class="pm-fr">far-red</tspan> alone',
     '<tspan class="pm-red">red</tspan> + <tspan class="pm-fr">far-red</tspan>'];
-  const read = ['some O₂', 'little O₂', 'much more O₂'];
+  const read = ['some O₂', 'little O₂ per photon', 'much more O₂'];
   const fill = ['class="pm-bar-red"', 'class="pm-bar-fr"', `fill="url(#${p}-mboth)"`];
   const x0 = (i: number): number => MT.cx[i] - MT.w / 2, H = MT.bot - MT.top;
   const tube = (i: number, cls: string): string => `<rect class="${cls}" x="${x0(i)}" y="${MT.top}" width="${MT.w}" height="${H}" rx="12"/>`;
@@ -556,7 +557,7 @@ function metersSvg(p: string): string {
       <g data-k="mr${i}" opacity="0" display="none">${ptext(MT.cx[i], MT.read, read[i], 'pm-t', 'middle')}</g></g>`).join('')}
     <g data-k="msum" opacity="0" display="none"><path class="pm-msumh" d="M${x0(2) - 8},${f1(ys)}H${c3 + 8}"/><path class="pm-msum" d="M${x0(2) - 8},${f1(ys)}H${c3 + 8}"/>
       ${ptext(c3 + 14, ys - 4, '<tspan class="pm-red">red</tspan> alone +', 'pm-xs')}${ptext(c3 + 14, ys + 14, '<tspan class="pm-fr">far-red</tspan> alone', 'pm-xs')}</g>
-    <g data-k="mnote" opacity="0" display="none">${ptext(1562, 704, 'after Emerson & Lewis 1943; Emerson et al. 1957', 'pm-xs', 'end')}</g>`;
+    <g data-k="mnote" opacity="0" display="none">${ptext(1562, 704, 'after Emerson & Lewis 1943; Emerson et al. 1957 · portrait: NAS Biographical Memoirs', 'pm-xs', 'end')}</g>`;
 }
 
 /* ---------------------------------------------------------------- the staging */

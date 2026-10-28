@@ -100,7 +100,7 @@ function pulseV2(): string {
     ${panel(70, 'healthy leaf', 1, '≈ 0.83', 'pp-c-green')}${panel(450, 'photoinhibited leaf', 0.55, 'lower', 'pp-c-red')}
     ${T(400, 46, 'saturating pulse after dark adaptation', 'pp-l', 'middle')}
     ${TV(44, 285, 'fluorescence')}${T(220, 478, 'time', 'pp-ax')}${T(600, 478, 'time', 'pp-ax')}
-    ${credit(786, 590, `schematic; ${FVFM} ≈ 0.83: Björkman & Demmig 1987, 37 C₃ species`)}`);
+    ${credit(786, 590, `${FVFM} ≈ 0.83: Björkman & Demmig 1987, 37 C₃ species (77 K)`)}`);
 }
 
 /* ---------- v3 · Ruban 2016, Fig. 1A: a real PAM trace ---------- */
@@ -246,9 +246,9 @@ function scalesV8(): string {
     ${defs(p)}${clip}${tree.svg}${earth.svg}
     ${ar(p, 'ink', `M${cx + 90},${cy} H194`, 'pp-thin')}${ar(p, 'ink', `M${f(200 + tw + 6)},${cy} H${f(790 - ew - 6)}`, 'pp-thin')}
     ${T(cx, y + h + 54, 'leaf', 'pp-hb')}${T(cx, y + h + 82, 'leaf clip', 'pp-l')}
-    ${T(tx, y + h + 54, 'tree', 'pp-hb')}${T(tx, y + h + 82, 'SIF camera', 'pp-l')}
+    ${T(tx, y + h + 54, 'tree', 'pp-hb')}${T(tx, y + h + 82, 'imaging spectrometer', 'pp-l')}
     ${T(ex, y + h + 54, 'Earth', 'pp-hb')}${T(ex, y + h + 82, 'satellite', 'pp-l')}
-    ${T(400, 96, 'the same red fluorescence, from leaf to planet', 'pp-hb pp-c-red')}
+    ${T(400, 96, 'the same chlorophyll fluorescence, from leaf to planet', 'pp-hb pp-c-red')}
     ${credit(786, 566, 'tree: Porcar-Castell et al. 2021, Nat. Plants 7: 998, Fig. 3b · © Springer Nature')}
     ${credit(786, 590, 'Earth: Guanter et al. 2014, PNAS 111: E1327, Fig. 1 · © PNAS')}`);
 }

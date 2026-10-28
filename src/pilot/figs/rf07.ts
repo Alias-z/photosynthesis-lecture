@@ -11,10 +11,10 @@ export const PLATE: PlateText = {
   pick: 'C8',
   title: 'Light-response curve',
   status: 'draft',
-  lead: 'Light supplies the ATP and NADPH that regenerate RuBP, so CO₂ uptake rises with light until the Calvin–Benson–Bassham cycle limits it.',
+  lead: 'The light reactions supply the ATP and NADPH that reduce 3-PGA and regenerate RuBP, so CO₂ uptake rises with light until the Calvin–Benson–Bassham cycle limits it.',
   points: [
-    { claim: 'Quantum yield.', text: 'In dim light, CO₂ uptake rises linearly with light<br>Slope = CO₂ fixed per photon absorbed' },
-    { claim: 'Light compensation point.', text: 'Uptake = release by respiration and photorespiration<br>Below it, the leaf releases CO₂' },
+    { claim: 'Quantum yield.', text: 'In dim light, CO₂ uptake rises linearly with light<br>Slope = CO₂ taken up per photon' },
+    { claim: 'Light compensation point.', text: 'CO₂ fixed = CO₂ released by respiration and photorespiration<br>Below it, the leaf releases CO₂' },
     { claim: 'Light saturation.', text: 'In bright light, uptake levels off at the leaf’s capacity<br>Shade leaves saturate at lower light and lower uptake than sun leaves' },
   ],
   refs: [

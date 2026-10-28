@@ -246,12 +246,12 @@ function antenna(): string {
     <g transform="translate(0 20)">${p2.shapes}${pigmentDots(p2.pigments)}
       ${exArrow([52, 176], [158, 158])}${exArrow([348, 124], [242, 142])}
       ${p2.rc.map(rcMark).join('')}</g>
-    <text class="lab" x="200" y="296" text-anchor="middle">Chl b‑rich · a:b ≈ 1.3</text>
+    <text class="lab" x="200" y="296" text-anchor="middle">Chl b‑rich · a:b ≈ 2.2</text>
     <text class="lab" x="590" y="40" text-anchor="middle"><tspan class="lab-b">LHCI → PSI</tspan></text>
     <g transform="translate(420 6)">${p1.shapes}${pigmentDots(p1.pigments)}
       ${exArrow([125, 226], [170, 140])}${exArrow([225, 226], [190, 140])}
       ${p1.rc.map(rcMark).join('')}</g>
-    <text class="lab" x="590" y="296" text-anchor="middle">Chl a‑rich · a:b ≈ 3.7</text>
+    <text class="lab" x="590" y="296" text-anchor="middle">Chl a‑rich · a:b ≈ 11</text>
     <text class="note" x="590" y="332" text-anchor="middle">red forms absorb beyond 700 nm</text>
     <g class="legend" transform="translate(40 392)">
       <path class="ex-arrow" d="M0,0 H64" marker-end="url(#exhead)"/><text class="lab" x="80" y="9">excitation transfer</text>

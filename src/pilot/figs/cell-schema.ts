@@ -74,7 +74,7 @@ export interface CellOpts {
   clean?: boolean;
 }
 export type Unit = 'cycle' | 'perCO2' | 'reaction' | 'loop' | 'none';
-const UNIT_SAY: Record<Unit, string> = { cycle: 'numbers per 3 CO₂ fixed', perCO2: 'numbers per CO₂', reaction: 'numbers per reaction', loop: 'numbers per 2 O₂', none: '' };
+const UNIT_SAY: Record<Unit, string> = { cycle: 'numbers per 3 CO₂ fixed', perCO2: 'numbers per CO₂', reaction: 'numbers per reaction', loop: 'numbers per 2 oxygenations', none: '' };
 /** The default windows: the strip's left 800 × 600 (flush with 7m1) and its organelles; the cell section whole. */
 export const WIN = { left: [0, 0, 800] as [number, number, number], right: [560, -40, 980] as [number, number, number], export: [280, -30, 800] as [number, number, number], cell: [0, 0, 800] as [number, number, number] };
 
@@ -137,7 +137,7 @@ const LAYERS: Layer[] = ['bg', 'pool', 'mem', 'body', 'flow', 'node', 'text', 't
 type Box = [number, number, number, number];
 /** The abbreviations the cell figures use, spelled out (lecturer, 28 Oct 2026); a figure lists those it shows lit. */
 export const ABBR: Array<[string, string]> = [
-  ['RuBP', 'ribulose-1,5-bisphosphate'], ['3-PGA', '3-phosphoglycerate'], ['2-PG', '2-phosphoglycolate'], ['GAPDH', 'glyceraldehyde-3-phosphate dehydrogenase'],
+  ['RuBP', 'ribulose-1,5-bisphosphate'], ['3-PGA', '3-phosphoglycerate'], ['2-PG', '2-phosphoglycolate'], ['PGK', 'phosphoglycerate kinase'], ['GAPDH', 'glyceraldehyde-3-phosphate dehydrogenase'],
   ['PRK', 'phosphoribulokinase'], ['TPT', 'triose phosphate/phosphate translocator'], ['PLGG1', 'plastidic glycolate/glycerate translocator'],
   ['GS', 'glutamine synthetase'], ['Fd-GOGAT', 'ferredoxin-dependent glutamate synthase'], ['SHMT', 'serine hydroxymethyltransferase'],
 ];
@@ -492,13 +492,14 @@ function stripPano(d: Draw): void {
   d.add('flow', 'supply', `${arrow([n0, [100, 64], [150, 96], [gap[0] - 46, gap[1] - 34]], 'nadph')}${arrow([a0, [86, 98], [124, 146], [gap[0] - 50, gap[1] + 4]], 'atp')}`);
   if (!d.o.noMol && !d.o.join) d.add('node', 'supply', `${tag(94, 64, d.n('cycle', 'supply', '6 ') + d.n('perCO2', 'supply', '2 ') + 'NADPH', 'nadph')}${tag(70, 100, d.n('cycle', 'supply', '6 ') + d.n('perCO2', 'supply', '2 ') + 'ATP', 'atp')}`);
   // the spent carriers back; joined, the row stays inside the frame and points back to the chain's reaction rows
+  // its note goes when a crop window cuts it (left edge past 150; accuracy review R2, 29 Oct 2026)
   d.add('flow', 'supply', arrow([[gap[0] - 16, gap[1] - 50], [176, 52], [120, 32], [d.o.join ? 8 : -2, 30]], 'ret', { thin: true }));
-  d.add('node', 'supply', `${rowG(d.o.join ? 104 : 70, 30, [['NADP⁺', 'plain'], ['ADP', 'atp'], ['', 'pi']])}${d.o.join ? '' : T(176, 22, 'spent, recharged in the thylakoid', 'cel-cnt cel-halo', 'start')}`);
+  d.add('node', 'supply', `${rowG(d.o.join ? 104 : 70, 30, [['NADP⁺', 'plain'], ['ADP', 'atp'], ['', 'pi']])}${d.o.join || (d.o.win?.[0] ?? 0) > 150 ? '' : T(176, 22, 'used; recharged in the thylakoid', 'cel-cnt cel-halo', 'start')}`);
 
   // the cycle round RuBisCO: GAPDH upper left, triose phosphate on top, PRK lower right, RuBP below RuBisCO
   const { rub, pga, tp, prk, rubp, co2, o2 } = SPOT;
   prot(d, 'rubisco', 'rubisco', rub, 1, ['RuBisCO', [rub[0], rub[1] - 66]]);
-  prot(d, 'reduce', 'gapdh', gap, 1, ['GAPDH', [gap[0] + 52, gap[1] - 2], 'start']);
+  prot(d, 'reduce', 'gapdh', gap, 1, ['PGK + GAPDH', [gap[0] + 52, gap[1] - 2], 'start']);
   prot(d, 'regen', 'prk', prk, 1, ['PRK', [prk[0], prk[1] + 56]]);
   mol(d, 'pga', pga, 'CCCP', { name: d.n('perCO2', 'pga', '2 × ') + '3-PGA', c: { cycle: '6 × 3 C = 18 C', reaction: '3 C' } });
   mol(d, 'tp', tp, 'CCCP', { name: d.n('perCO2', 'tp', '2 ') + 'triose phosphate', c: { cycle: '6 × 3 C = 18 C' }, at: 'above' });
@@ -539,7 +540,7 @@ function stripPano(d: Draw): void {
   prot(d, 'export', 'tpt', SPOT.tpt, 1, ['TPT', [IN - 36, 76], 'end']);
   d.add('flow', 'export', `${arrow([[tp[0] + 48, tp[1] + 2], [560, 96], [IN, 100], [OUT + 40, 98], [OUT + 80, 76]], 'c', { halo: true })}${arrow([[OUT + 70, 148], [OUT, 128], [IN - 60, 126]], 'gas', { thin: true, halo: true })}`);
   d.add('node', 'export', `${tag(SPOT.pi[0], SPOT.pi[1], '', 'pi')}${gl(row(SPOT.sucrose[0], SPOT.sucrose[1] - 11, 'CCCCCC', { r: 9 }))}${gl(row(SPOT.sucrose[0], SPOT.sucrose[1] + 11, 'CCCCCC', { r: 9 }))}`);
-  d.add('text', 'export', `${T(OUT + 120, 92, 'sucrose', 'cel-mn cel-halo')}${d.n('cycle', 'export', T(650, 88, '1 × 3 C', 'cel-cnt cel-halo'))}`);
+  d.add('text', 'export', `${T(OUT + 120, 92, 'sucrose', 'cel-mn cel-halo')}${d.n('cycle', 'export', `${T(OUT + 120, 112, 'from 4 triose', 'cel-cnt cel-halo')}${T(OUT + 120, 128, 'phosphates', 'cel-cnt cel-halo')}`)}${d.n('cycle', 'export', T(650, 88, '1 × 3 C', 'cel-cnt cel-halo'))}`);
 
   // oxygenation → 2-phosphoglycolate → glycolate out through PLGG1 (inner envelope); glycerate back in
   const pg2 = SPOT.pg2;
@@ -629,13 +630,13 @@ function cellPano(d: Draw): void {
   // ATP and NADPH from the granum to GAPDH
   const gap: Pt = [262, 196], rub: Pt = [280, 256], prk: Pt = [418, 172];
   d.add('flow', 'supply', `${arrow([[172, 184], [212, 180], [238, 188]], 'nadph', { thin: true })}${arrow([[172, 226], [214, 222], [240, 208]], 'atp', { thin: true })}`);
-  d.add('node', 'supply', `${tag(204, 158, d.n('perCO2', 'supply', '2 ') + 'NADPH', 'nadph')}${tag(206, 244, d.n('perCO2', 'supply', '2 ') + 'ATP', 'atp')}`);
+  d.add('node', 'supply', `${tag(204, 158, d.n('perCO2', 'supply', '2 ') + 'NADPH', 'nadph')}${tag(206, 238, d.n('perCO2', 'supply', '2 ') + 'ATP', 'atp')}`);
   // the cycle: GAPDH, PRK, RuBisCO (half scale) and its molecules
   prot(d, 'rubisco', 'rubisco', rub, K2, ['RuBisCO', [rub[0], rub[1] + 50]]);
-  prot(d, 'reduce', 'gapdh', gap, K2, ['GAPDH', [gap[0] + 28, gap[1] + 6], 'start']);
+  prot(d, 'reduce', 'gapdh', gap, K2, ['PGK + GAPDH', [gap[0] + 28, gap[1] + 6], 'start']);
   prot(d, 'regen', 'prk', prk, K2, ['PRK', [prk[0] + 34, prk[1] + 6], 'start']);
   mol(d, 'tp', [318, 118], 'CCCP', { name: d.n('perCO2', 'tp', '2 ') + 'triose phosphate', at: 'right' });
-  mol(d, 'pga', [196, 290], 'CCCP', { name: d.n('perCO2', 'pga', '2 × ') + '3-PGA', at: 'above', dy: 2 });
+  mol(d, 'pga', [196, 290], 'CCCP', { name: d.n('perCO2', 'pga', '2 × ') + '3-PGA', at: 'above', dy: 6 });
   mol(d, ['rubisco', 'regen'], [440, 220], 'PCCCCCP', { name: d.n('perCO2', 'rubisco', '1 ') + 'RuBP' });
   d.add('flow', 'carbox', arrow([[rub[0] - 34, rub[1] + 12], [196 + 50, 288]], 'c', { thin: true }));
   d.add('flow', 'reduce', `${arrow([[214, 278], [246, 222]], 'c', { thin: true })}${arrow([[278, 174], [298, 130]], 'c', { thin: true })}`);
@@ -644,7 +645,8 @@ function cellPano(d: Draw): void {
   // CO₂ from the air through wall and membranes to RuBisCO; O₂ at RuBisCO
   d.add('node', 'co2', balls(612, 10, 'OCO'));
   d.add('text', 'co2', T(648, 16, d.n('perCO2', 'co2', '1 ') + 'CO₂', 'cel-mn cel-halo', 'start'));
-  d.add('flow', 'co2', arrow([[600, 24], [540, 110], [372, 196], [310, 212], [rub[0] + 6, rub[1] - 28]], 'gas', { thin: true }));
+  // the CO₂ line passes right of the triose phosphate label (accuracy review R2, 29 Oct 2026)
+  d.add('flow', 'co2', arrow([[600, 24], [552, 122], [372, 196], [310, 212], [rub[0] + 6, rub[1] - 28]], 'gas', { thin: true }));
   d.add('node', 'o2', balls(368, 262, 'OO'));
   d.add('text', 'o2', T(392, 268, 'O₂', 'cel-mn cel-halo', 'start'));
   d.add('flow', 'o2', arrow([[348, 264], [rub[0] + 36, rub[1] + 8]], 'gas', { thin: true }));
@@ -655,7 +657,7 @@ function cellPano(d: Draw): void {
   d.add('text', 'export', `${T(700, 192, 'sucrose', 'cel-mn cel-halo')}${T(cx + rx + 24, 240, 'TPT', 'cel-prot cel-halo', 'start')}`);
   d.add('flow', 'export', arrow([[624, 216], [cx + rx + 6, 208], [cx + rx - 40, 208]], 'gas', { thin: true }));
   d.add('body', 'starch', `<ellipse class="cel-starch" cx="340" cy="186" rx="26" ry="12"/><ellipse class="cel-starchr" cx="340" cy="186" rx="14" ry="6"/>`);
-  d.add('text', 'starch', T(340, 214, 'starch', 'cbb-org cel-halo'));
+  d.add('text', 'starch', T(340, 191, 'starch', 'cbb-org cel-halo')); // on its granule, clear of RuBP (R2)
   // oxygenation → 2-phosphoglycolate → PLGG1 (inner envelope, vacuole side) → peroxisome
   mol(d, 'pg2', [384, 316], 'CCP', { name: '2-PG', at: 'above' });
   d.add('flow', 'oxy', arrow([[rub[0] + 30, rub[1] + 22], [350, 314]], 'pr', { thin: true }));
@@ -688,5 +690,5 @@ function cellPano(d: Draw): void {
   // FvCB limits (C8)
   limit(d, 'c', [236, 222, 96, 100], [236, 222]);
   limit(d, 'j', [56, 130, 172, 132], [78, 130]);
-  limit(d, 'p', [300, 96, 448, 132], [740, 228]);
+  limit(d, 'p', [524, 96, 232, 132], [752, 228]);
 }

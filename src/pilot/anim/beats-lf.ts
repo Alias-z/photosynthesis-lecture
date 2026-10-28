@@ -7,17 +7,16 @@ const VC21: Cite = { label: 'von Caemmerer 2021, J. Exp. Bot.', url: 'https://do
 const FURB11: Cite = { label: 'Furbank 2011, J. Exp. Bot.', url: 'https://doi.org/10.1093/jxb/err080' };
 const LEEG02: Cite = { label: 'Leegood 2002, J. Exp. Bot.', url: 'https://doi.org/10.1093/jexbot/53.369.581' };
 const WS22: Cite = { label: 'Winter & Smith 2022, New Phytol.', url: 'https://doi.org/10.1111/nph.17790' };
-const STILL03: Cite = { label: 'Still et al. 2003, Global Biogeochem. Cycles', url: 'https://doi.org/10.1029/2001GB001807' };
 const EB77: Cite = { label: 'Ehleringer & Björkman 1977, Plant Physiol.', url: 'https://doi.org/10.1104/pp.59.1.86' };
 const BG14: Cite = { label: 'Bellasio & Griffiths 2014, J. Exp. Bot.', url: 'https://doi.org/10.1093/jxb/eru052' };
 
 /** lf12 · C₄, per 1 CO₂: CA → PEPC → the C₄ acid to the bundle sheath → NADP-ME → CO₂ at RuBisCO; pyruvate back → PPDK. */
 export const LF12: Beat[] = [
   { tag: 'CO₂ to carbonic anhydrase', say: 'CO₂ 1 enters through the stoma and diffuses into a mesophyll cell. Carbonic anhydrase (CA) turns it, with water, into bicarbonate (HCO₃⁻).', cite: [LEEG02] },
-  { tag: 'PEP carboxylase', say: 'Phosphoenolpyruvate carboxylase (PEPC) adds HCO₃⁻ to phosphoenolpyruvate (PEP) 1: a four-carbon acid, 1 C + 3 C = 4 C. PEPC does not react with O₂.', cite: [VC21, WS22] },
-  { tag: 'Into the bundle sheath', say: 'The C₄ acid moves into the bundle-sheath cell. NADP-malic enzyme (NADP-ME) releases its CO₂ next to RuBisCO, where CO₂ reaches up to about 10 times the concentration in air.', cite: [FURB11] },
+  { tag: 'PEP carboxylase', say: 'Phosphoenolpyruvate carboxylase (PEPC) adds HCO₃⁻ to phosphoenolpyruvate (PEP) 1: a C₄ acid, 1 C + 3 C = 4 C. PEPC does not react with O₂.', cite: [VC21, WS22] },
+  { tag: 'Into the bundle sheath', say: 'The C₄ acid moves into the bundle-sheath cell. In maize, NADP-malic enzyme (NADP-ME) releases its CO₂ next to RuBisCO, where CO₂ reaches up to about 10 times the concentration in air.', cite: [FURB11] },
   { tag: 'Back to PEP', say: 'Pyruvate returns to the mesophyll chloroplast. Pyruvate,phosphate dikinase (PPDK) makes PEP again from 1 ATP, split to AMP: 2 ATP equivalents per CO₂. C₄: 5 ATP + 2 NADPH per CO₂; C₃: 3 ATP + 2 NADPH.', cite: [VC21, BG14] },
-  { tag: 'Where C₄ plants grow', say: 'Above about 30 °C a C₄ leaf fixes more CO₂ per absorbed photon than a C₃ leaf, despite the 2 extra ATP: C₄ grasses dominate where the monthly mean temperature exceeds 22 °C. <b>A cactus keeps its stomata shut on a hot day: how does it get its CO₂?</b>', cite: [EB77, STILL03] },
+  { tag: 'Where C₄ plants grow', say: 'Above ≈ 30 °C a C₄ leaf fixes more CO₂ per absorbed photon than a C₃ leaf, despite the 2 extra ATP. <b>A cactus keeps its stomata shut on a hot day: how does it get its CO₂?</b>', cite: [EB77] },
 ];
 
 const BOR09: Cite = { label: 'Borland et al. 2009, J. Exp. Bot.', url: 'https://doi.org/10.1093/jxb/erp118' };
@@ -28,11 +27,11 @@ const GIL23: Cite = { label: 'Gilman et al. 2023, Ann. Bot.', url: 'https://doi.
 
 /** lf13 · CAM in one mesophyll cell, night then day, per CO₂. */
 export const LF13: Beat[] = [
-  { tag: 'Night: stomata open', say: 'At night, crassulacean acid metabolism (CAM) plants open their stomata. CO₂ 1 enters; carbonic anhydrase makes HCO₃⁻, and phosphoenolpyruvate carboxylase (PEPC) fixes it to PEP from starch. The C₄ acid is stored as malic acid in the vacuole.', cite: [WS22, MG17] },
+  { tag: 'Night: stomata open', say: 'At night, CAM plants open their stomata. CO₂ 1 enters; carbonic anhydrase makes HCO₃⁻, and PEPC fixes it to PEP from starch. The C₄ acid is stored as malic acid in the vacuole.', cite: [WS22, MG17] },
   { tag: 'The vacuole fills', say: 'Through the night, malic acid builds up in the vacuole: 1 malic acid per CO₂ taken up. Less water evaporates through the open stomata into the cooler, more humid night air.', cite: [BOR09, TOP20] },
   { tag: 'Day: stomata closed', say: 'By day the stomata stay closed. Malic acid leaves the vacuole; malic enzyme releases its CO₂, and RuBisCO fixes it behind the closed stomata, with ATP and NADPH from the light reactions. Pyruvate goes to starch.', cite: [BOR09, WS22] },
   { tag: 'The vacuole empties', say: 'Over the day the vacuole empties: the CO₂ that RuBisCO fixes was taken up the night before.', cite: [BOR09] },
-  { tag: 'Water-use efficiency', say: 'Per mol of water lost, CAM plants fix 4–10 mmol CO₂, C₃ crops 0.5–1.5 and C₄ crops 1–2. About 6–7 % of vascular plant species use CAM, e.g. pineapple, agave, cacti. <b>All three mechanisms raise CO₂ at RuBisCO: what happens to C₃ crops when the air itself holds more CO₂?</b>', cite: [BOR09, SIL10, GIL23] },
+  { tag: 'Water-use efficiency', say: 'Per mol of water lost, CAM plants fix 4–10 mmol CO₂; C₃ crops 0.5–1.5, C₄ crops 1–2. About 6–7 % of vascular plants use CAM. <b>How much of the sunlight do C₃ and C₄ plants store in biomass?</b>', cite: [BOR09, SIL10, GIL23] },
 ];
 
 const RAWS88: Cite = { label: 'Rawsthorne et al. 1988, Planta', url: 'https://doi.org/10.1007/BF00401016' };
@@ -55,8 +54,8 @@ const JO84: Cite = { label: 'Jordan & Ogren 1984, Planta', url: 'https://doi.org
 export const LF11: Beat[] = [
   { tag: 'C₃: CO₂ to RuBisCO', say: 'A temperate C₃ leaf at midday: CO₂ 1 reaches RuBisCO in a mesophyll chloroplast and is fixed into 2 3-phosphoglycerate (3-PGA).', cite: [BUSCH13] },
   { tag: 'Oxygenation', say: 'RuBisCO also takes up O₂ 1 and 2. Photorespiration turns their 2 glycolate into 2 glycine in the peroxisome; in the mitochondrion glycine decarboxylase releases CO₂ 1.', cite: [SK07] },
-  { tag: 'Refixation', say: 'In rice and wheat, chloroplasts cover 92–99 % of the wall facing the air spaces, and the mitochondria lie behind them. Of 4 photorespired CO₂, about 1 is refixed inside the cell (26–29 %); the rest leaves into the air spaces.', cite: [BUSCH13] },
-  { tag: 'Heat', say: 'As the leaf warms, RuBisCO’s preference for CO₂ over O₂ falls and oxygenation rises: at 30 °C a C₃ leaf fixes ≈ 29 % less CO₂ per absorbed photon in air than in 2 % O₂. <b>Could a leaf release photorespired CO₂ where more RuBisCO can refix it?</b>', cite: [JO84, EB77] },
+  { tag: 'Refixation', say: 'In rice and wheat, chloroplasts cover 92–99 % of the wall facing the air spaces, and the mitochondria lie behind them. Of 4 photorespired CO₂, about 1 is refixed inside the cell (24–38 %); the rest leaves into the air spaces.', cite: [BUSCH13] },
+  { tag: 'Heat', say: 'As the leaf warms, RuBisCO’s preference for CO₂ over O₂ falls and oxygenation rises. <b>Could a leaf release photorespired CO₂ where more RuBisCO can refix it?</b>', cite: [JO84] },
 ];
 
 const BUSCH24: Cite = { label: 'Busch et al. 2024, Plant Cell Environ.', url: 'https://doi.org/10.1111/pce.14815' };

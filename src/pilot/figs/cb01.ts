@@ -18,11 +18,11 @@ export const PLATE: PlateText = {
   n: 'C1',
   title: 'C₃ photosynthesis',
   status: 'draft',
-  lead: 'The Calvin–Benson–Bassham cycle fixes CO₂ into triose phosphate.<br>Once called the “dark reactions”, it runs only in light: light activates its enzymes.<br>Counted per 3 CO₂: the smallest whole-molecule unit.',
+  lead: 'The Calvin–Benson–Bassham cycle fixes CO₂ into triose phosphate, counted per 3 CO₂.<br>Once called the “dark reactions”, it runs only in light: light activates its enzymes.',
   points: [
-    { claim: 'Carboxylation of RuBP.', text: 'RuBisCO fixes CO₂ onto RuBP, the CO₂ acceptor', eq: '3 RuBP + 3 CO₂ → 6 3-PGA' },
-    { claim: 'Reduction of 3-PGA.', text: 'ATP and NADPH reduce 3-PGA to triose phosphate', eq: '6 ATP + 6 NADPH used' },
-    { claim: 'Regeneration of RuBP.', text: '5 triose phosphates rebuild 3 RuBP; 1 leaves the cycle', eq: '3 ATP used · 15 C back + 3 C out' },
+    { claim: 'Carboxylation of RuBP.', text: 'RuBisCO adds CO₂ to RuBP, the CO₂ acceptor', eq: '3 RuBP + 3 CO₂ → 6 3-PGA' },
+    { claim: 'Reduction of 3-PGA.', text: 'ATP phosphorylates 3-PGA and NADPH reduces it to triose phosphate', eq: '6 ATP + 6 NADPH used' },
+    { claim: 'Regeneration of RuBP.', text: '5 triose phosphates rebuild 3 RuBP; 1 leaves the cycle', eq: '3 RuBP = 15 C = 5 × 3 C · 3 ATP used' },
   ],
   refs: [
     { label: 'Bassham et al. 1954', url: 'https://doi.org/10.1021/ja01636a012' },

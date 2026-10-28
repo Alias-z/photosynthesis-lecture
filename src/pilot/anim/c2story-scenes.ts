@@ -17,6 +17,9 @@
 //   sickle (flint sickles are Neolithic), mud-brick houses;
 // - industry (from ≈ 1760): a factory with chimney smoke drifting, a steam train moving;
 // - today: a city skyline, a data centre with blinking status lights, cars on a road, a plane crossing.
+// Version 3 (dk-c2story3.ts, lecturer, 29 Oct 2026): the hunters' knees bend forwards and their feet point the way they
+// walk; their gait follows the distance walked, so the stance foot does not slide. Two scenes added: today's RuBisCO
+// carriers (scene 8) and the first land plants (scene 9). Version 2 never shows them and keeps its own walk.
 // Every loop is a smooth periodic function of the ambient clock `amb` (seconds); the hunters' approach plays once with
 // the beat's own time `tb`. Sways stay within ±3.5°, periods are ≥ 1.5 s, and nothing jitters.
 
@@ -212,15 +215,27 @@ function mammoth(): string {
     <path class="sc-tusk" d="M${x + 84},${y - 18} C${x + 108},${y + 8} ${x + 138},${y + 4} ${x + 146},${y - 22}"/>
     <g data-k="s4-tail"><path class="sc-mamt" d="M${x - 78},${y - 6} q-10,16 -6,30"/></g><circle class="sc-eye" cx="${x + 80}" cy="${y - 46}" r="2.6"/>`;
 }
-/** A hunter facing left, feet at (0, 0), height ≈ 120 × s; legs and the free arm turn about hip and shoulder. */
+/** A hunter facing left, feet at (0, 0), height ≈ 120 × s; the legs turn about the hip (0, −50). They face the way they
+ *  walk (left): the knees bend forwards (to −x) and the feet point forwards (version 3, lecturer, 29 Oct 2026: in v2 the
+ *  knees bent backwards, so the hunters seemed to walk backwards). */
+const LEG = 'M0,-50 L-5,-26 L0,-1 L-8,-1';
 function hunter(k: number, s: number): string {
   const L = (cls: string, n: string, d: string, w: number): string => `<g data-k="s4-h${k}${n}"><path class="${cls}" d="${d}" style="stroke-width:${f(w * s)}"/></g>`;
   return `<g data-k="s4-h${k}"><g transform="scale(${s})">
-    ${L('sc-huml sc-hum-far', 'l1', 'M0,-50 L4,-26 L0,0', 6)}
+    ${L('sc-huml sc-hum-far', 'l1', LEG, 6)}
     <path class="sc-spear" d="M24,-100 L-58,-80"/><path class="sc-spearpt" d="M-58,-80 l9,-5 l-1,9Z"/>
     <path class="sc-humb" d="M0,-98 L0,-56" style="stroke-width:11"/><path class="sc-tunic" d="M-8,-96 L8,-96 L12,-46 L-12,-46Z"/><circle class="sc-hum" cx="-2" cy="-110" r="9"/><path class="sc-hair" d="M-10,-112 C-8,-122 6,-122 8,-112 C4,-116 -4,-116 -10,-112Z"/>
     <path class="sc-huml" d="M0,-88 L-14,-78 L-26,-86 M0,-88 L10,-80 L20,-96" style="stroke-width:5"/>
-    ${L('sc-huml', 'l0', 'M0,-50 L4,-26 L0,0', 6)}</g></g>`;
+    ${L('sc-huml', 'l0', LEG, 6)}</g></g>`;
+}
+/** One leg of a walk with no foot sliding: in stance (60 % of a stride) the foot moves back under the hip exactly as fast
+ *  as the body moves forward; in swing it returns, eased and lifted. `p` is the stride phase (0–1), `D` the foot's travel
+ *  relative to the hip (= 0.6 × stride length), `len` the leg length. Returns the leg's rotation (°, positive = foot
+ *  forwards, i.e. to −x for a figure facing left) and its lift (px). */
+function gaitLeg(p: number, D: number, len: number): { a: number; lift: number; stance: boolean } {
+  const st = p < 0.6, u = st ? p / 0.6 : (p - 0.6) / 0.4;
+  const back = st ? -D / 2 + D * u : D / 2 - D * smooth(u); // foot x behind the hip (+ = behind)
+  return { a: (Math.asin(Math.max(-1, Math.min(1, back / len))) * 180) / Math.PI * -1, lift: st ? 0 : 3.2 * Math.sin(Math.PI * u), stance: st };
 }
 const HUNT: Array<[number, number]> = [[700, 1.05], [770, 0.98], [842, 1.02]];
 function iceAge(): string {
@@ -229,18 +244,25 @@ function iceAge(): string {
     ${[90, 150, 480, 560, 620, 930].map((x, k) => `<g data-k="s4-grass${k}"><path class="sc-grass" d="M${x},${G - 22} l-6,-18 M${x},${G - 22} l0,-22 M${x},${G - 22} l6,-18"/></g>`).join('')}
     ${mammoth()}${HUNT.map(([, s], k) => hunter(k, s)).join('')}`;
 }
-function iceAnim(amb: number, tb: number, S: SceneIO): void {
+/** The hunters' approach: `dur` seconds from `t0` (beat time), `dist` px towards the mammoth, eased in and out. */
+export interface Walk { t0: number; dur: number; dist: number }
+const WALK_V2: Walk = { t0: 0.4, dur: 9, dist: 150 };
+function iceAnim(amb: number, tb: number, S: SceneIO, w: Walk = WALK_V2): void {
   S.tr('s4-trunk', `rotate(${f(4 * Math.sin(TAU * amb / 3.6))} ${MAM[0] + 86} ${MAM[1] - 22})`);
   S.tr('s4-tail', `rotate(${f(8 * Math.sin(TAU * amb / 2.4))} ${MAM[0] - 78} ${MAM[1] - 6})`);
   [90, 150, 480, 560, 620, 930].forEach((x, k) => S.tr(`s4-grass${k}`, `rotate(${f(3 * Math.sin(TAU * (amb / 3 - x / 300)))} ${x} ${G - 22})`));
-  // the hunters walk 150 px towards the mammoth once (0.4–9.4 s of the beat, eased), then stand
-  const T0 = 0.4, T1 = 9.4, u = clamp((tb - T0) / (T1 - T0)), d = 150 * smooth(u), speed = 6 * u * (1 - u);
-  const ph = TAU * (tb / 1.05);
+  // the hunters walk towards the mammoth once, eased, then stand; the gait follows the distance walked, so the stance
+  // foot stays put on the ground; the stride shrinks to nothing as they start and stop
+  const u = clamp((tb - w.t0) / w.dur), d = w.dist * smooth(u), spd = 6 * u * (1 - u);
   HUNT.forEach(([x0, s], k) => {
-    const sw = 20 * speed * Math.sin(ph + k * 1.9);
-    S.tr(`s4-h${k}`, `translate(${f(x0 - d)} ${f(G - 18 - 1.5 * speed * Math.abs(Math.cos(ph + k * 1.9)))})`);
-    S.tr(`s4-h${k}l0`, `rotate(${f(sw)} 0 -50)`); S.tr(`s4-h${k}l1`, `rotate(${f(-sw)} 0 -50)`);
-    void s;
+    // leg length 50 in the figure's own units (scaled by s on stage); a stride of 1.4 leg lengths
+    const len = 50, stride = 1.4 * len * s, D = 0.6 * 1.4 * len, amp = Math.min(1, spd / 0.6);
+    const p0 = frac(d / stride + k * 0.37), p1 = frac(p0 + 0.5);
+    const g0 = gaitLeg(p0, D, len), g1 = gaitLeg(p1, D, len);
+    const sa = g0.stance ? g0.a : g1.a, drop = s * len * (1 - Math.cos((sa * amp * Math.PI) / 180));
+    S.tr(`s4-h${k}`, `translate(${f(x0 - d)} ${f(G - 18 + drop)})`);
+    S.tr(`s4-h${k}l0`, `translate(0 ${f(-g0.lift * amp)}) rotate(${f(g0.a * amp)} 0 -50)`);
+    S.tr(`s4-h${k}l1`, `translate(0 ${f(-g1.lift * amp)}) rotate(${f(g1.a * amp)} 0 -50)`);
   });
 }
 
@@ -380,6 +402,124 @@ function todayAnim(amb: number, S: SceneIO): void {
   S.tr('s7-plane', `translate(${f(wrap(amb, -120, 1300, 34))} 512)`);
 }
 
+/* ---------------------------------------------------------------- today's RuBisCO carriers (scene 8, version 3) */
+// Version 3, beats 3–4 (the RuBisCOs compared, then CO₂ concentrated): the organisms whose RuBisCO is in the balance, in
+// one sea-and-shore view; the staging spotlights one (opacity) and lights the carboxysomes. Microscopic cells sit in round
+// magnified views. Colours inline (they only show in version 3).
+// - cyanobacteria: a filament of cells (as Synechococcus is single-celled, the filament stands for the group), each with
+//   carboxysomes (hexagonal protein shells around RuBisCO; Badger & Price 2003);
+// - a green alga: Chlamydomonas, two flagella, a cup-shaped chloroplast with a pyrenoid (its CO₂-concentrating body);
+// - a red alga: Griffithsia, branched chains of large barrel-shaped cells (monilis: "necklace"), on a rock;
+// - a land plant: tobacco-like broad leaves on the shore.
+const SEA8 = 560, LENS: Array<[number, number, number]> = [[140, 640, 64], [318, 642, 60]];
+const hexP = (cx: number, cy: number, r: number): string => `M${Array.from({ length: 6 }, (_, i) => { const a = (Math.PI / 3) * i; return `${f(cx + r * Math.cos(a))},${f(cy + r * Math.sin(a))}`; }).join(' L')}Z`;
+function cyanoFil(): string {
+  // 5 cells in a row along x, centred on 0; each with 2 carboxysomes
+  let s = '';
+  for (let i = 0; i < 5; i++) {
+    const x = (i - 2) * 30;
+    s += `<rect x="${x - 14}" y="-13" width="28" height="26" rx="11" style="fill:#7fb7a6;stroke:#3f7f6f;stroke-width:2"/>`;
+    s += `<path data-k="s8-cbx${i}" d="${hexP(x - 5, -3, 5)} ${hexP(x + 5, 4, 5)}" style="fill:#e7c35a;stroke:#5a6b3a;stroke-width:1.4"/>`;
+  }
+  return s;
+}
+function chlamy(): string {
+  // cell along −y (front up), centred on 0
+  return `<g data-k="s8-flag"><path d="M-4,-27 C-12,-44 -26,-46 -34,-60 M4,-27 C12,-44 26,-46 34,-60" style="fill:none;stroke:#4f7a45;stroke-width:2.2;stroke-linecap:round"/></g>
+    <ellipse cx="0" cy="0" rx="21" ry="28" style="fill:#d9ead0;stroke:#4f7a45;stroke-width:2"/>
+    <path d="M-17,-10 C-19,14 -8,25 0,25 C8,25 19,14 17,-10 C12,6 6,12 0,12 C-6,12 -12,6 -17,-10Z" style="fill:#6f9a4f"/>
+    <circle data-k="s8-pyr" cx="0" cy="17" r="6" style="fill:#e7c35a;stroke:#4f6a2f;stroke-width:1.4"/>
+    <circle cx="-13" cy="-12" r="3" style="fill:#c0441f"/>`;
+}
+/** Griffithsia: dichotomous chains of barrel cells from a holdfast at (x, y). */
+function griffithsia(x: number, y: number): string {
+  let s = '';
+  const chain = (p: Pt, a: number, n: number, d: number): void => {
+    let q = p;
+    for (let i = 0; i < n; i++) {
+      const c: Pt = [q[0] + Math.cos(a) * 9, q[1] + Math.sin(a) * 9];
+      s += `<ellipse cx="${f(c[0])}" cy="${f(c[1])}" rx="${f(5.8 - d * 0.6)}" ry="${f(8.6 - d * 0.8)}" transform="rotate(${f((a * 180) / Math.PI + 90)} ${f(c[0])} ${f(c[1])})" style="fill:#c9677a;stroke:#8f3a4c;stroke-width:1.2"/>`;
+      q = [q[0] + Math.cos(a) * 17, q[1] + Math.sin(a) * 17];
+    }
+    if (d < 3) { chain(q, a - 0.42, n - 1, d + 1); chain(q, a + 0.42, n - 1, d + 1); }
+  };
+  chain([x, y], -Math.PI / 2, 3, 0);
+  return s;
+}
+function tobacco(x: number, y: number): string {
+  const leaf = (p: Pt, a: number, L: number, W: number): string => {
+    const ux = Math.cos(a), uy = Math.sin(a), nx = -uy, ny = ux, e: Pt = [p[0] + ux * L, p[1] + uy * L];
+    const c1: Pt = [p[0] + ux * L * 0.35 + nx * W, p[1] + uy * L * 0.35 + ny * W], c2: Pt = [p[0] + ux * L * 0.35 - nx * W, p[1] + uy * L * 0.35 - ny * W];
+    return `<path d="M${f(p[0])},${f(p[1])} Q${f(c1[0])},${f(c1[1])} ${f(e[0])},${f(e[1])} Q${f(c2[0])},${f(c2[1])} ${f(p[0])},${f(p[1])}Z" style="fill:#7fa860;stroke:#4f7a45;stroke-width:1.6"/><path d="M${f(p[0])},${f(p[1])} L${f(e[0] - ux * 6)},${f(e[1] - uy * 6)}" style="fill:none;stroke:#4f7a45;stroke-width:1.4"/>`;
+  };
+  return `<path d="M${x},${y} Q${x + 3},${y - 70} ${x},${y - 136}" style="fill:none;stroke:#5e8a43;stroke-width:5;stroke-linecap:round"/>
+    ${leaf([x, y - 22], Math.PI * 0.96, 62, 22)}${leaf([x, y - 30], Math.PI * 0.04, 66, 23)}${leaf([x + 1, y - 64], Math.PI * 1.12, 52, 18)}${leaf([x + 1, y - 72], -Math.PI * 0.1, 54, 18)}
+    ${leaf([x, y - 104], Math.PI * 1.25, 38, 13)}${leaf([x, y - 110], -Math.PI * 0.25, 38, 13)}
+    ${[-10, 0, 10].map(dx => `<path d="M${x},${y - 134} L${x + dx},${y - 150}" style="fill:none;stroke:#5e8a43;stroke-width:2"/><path d="M${x + dx - 4},${y - 150} L${x + dx},${y - 166} L${x + dx + 4},${y - 150}Z" style="fill:#e7a6b8;stroke:#b8707f;stroke-width:1.2"/>`).join('')}`;
+}
+const LAND8 = 652;
+function carriers(): string {
+  const lens = (k: number, inner: string): string => {
+    const [cx, cy, r] = LENS[k];
+    return `<clipPath id="s8-lc${k}"><circle cx="${cx}" cy="${cy}" r="${r - 2}"/></clipPath><circle cx="${cx}" cy="${cy}" r="${r}" style="fill:#f2f7f4"/>
+      <g clip-path="url(#s8-lc${k})">${inner}</g><circle cx="${cx}" cy="${cy}" r="${r}" style="fill:none;stroke:#7d8f99;stroke-width:3"/>`;
+  };
+  return `<g data-k="s8-wave">${seaBody(SEA8, 'sc-sea1')}</g><g data-k="s8-wave2">${seaLine(SEA8 + 18, 'sc-foam')}</g>
+    <path d="M0,${G - 6} Q200,${G - 14} 420,${G - 8} T${LAND8 - 40},${G - 6} V740 H0Z" style="fill:#b7a27c"/>
+    <path d="M${LAND8 - 70},740 L${LAND8 - 30},${G - 30} Q${LAND8},${G - 44} ${LAND8 + 60},${G - 40} L1600,${G - 40} V740Z" style="fill:#c4bb92"/>
+    <path d="M440,${G - 6} Q452,${G - 34} 482,${G - 30} Q506,${G - 26} 512,${G - 6}Z" style="fill:#8f8a7a"/>
+    <g data-k="s8-red"><g data-k="s8-redsw">${griffithsia(476, G - 30)}</g></g>
+    <g data-k="s8-cyano">${lens(0, `<g data-k="s8-fil">${cyanoFil()}</g>`)}</g>
+    <g data-k="s8-green">${lens(1, `<g data-k="s8-chl">${chlamy()}</g>`)}</g>
+    <g data-k="s8-plant"><g data-k="s8-plsw">${tobacco(780, G - 40)}</g></g>`;
+}
+/** Spotlight weights (0–1) of the 4 carriers and the carboxysome / pyrenoid highlight, set by the staging. */
+export interface Spot { cyano: number; green: number; plant: number; red: number; ccm: number }
+function carriersAnim(amb: number, S: SceneIO, sp?: Spot): void {
+  S.tr('s8-wave', `translate(${f(-frac(amb / 5.2) * 100)} 0)`);
+  S.tr('s8-wave2', `translate(${f(frac(amb / 8) * 100 - 100)} 0)`);
+  const [c0x, c0y] = LENS[0], [c1x, c1y] = LENS[1];
+  S.tr('s8-fil', `translate(${f(c0x + 4 * Math.sin(TAU * amb / 5.5))} ${f(c0y + 3 * Math.sin(TAU * amb / 4.1))}) rotate(${f(-18 + 6 * Math.sin(TAU * amb / 7))})`);
+  // the alga swims a slow loop, its front along the heading; flagella beat (breast-stroke-like, smooth)
+  const w = TAU / 6, p = amb * w, x = c1x + 10 * Math.sin(p), y = c1y + 6 + 8 * Math.sin(2 * p), dx = 10 * w * Math.cos(p), dy = 16 * w * Math.cos(2 * p);
+  S.tr('s8-chl', `translate(${f(x)} ${f(y)}) rotate(${f((Math.atan2(dy, dx) * 180) / Math.PI + 90)}) scale(0.82)`);
+  S.tr('s8-flag', `translate(0 -27) scale(1 ${f(0.85 + 0.15 * Math.sin(TAU * amb * 1.4))}) translate(0 27)`);
+  S.tr('s8-redsw', `rotate(${f(2.4 * Math.sin(TAU * amb / 4.4))} 476 ${G - 30})`);
+  S.tr('s8-plsw', `rotate(${f(1.2 * Math.sin(TAU * amb / 5))} 780 ${G - 40})`);
+  const s = sp ?? { cyano: 1, green: 1, plant: 1, red: 1, ccm: 0 };
+  S.op('s8-cyano', 0.25 + 0.75 * s.cyano); S.op('s8-green', 0.25 + 0.75 * s.green); S.op('s8-plant', 0.25 + 0.75 * s.plant); S.op('s8-red', 0.25 + 0.75 * s.red);
+  for (let i = 0; i < 5; i++) S.op(`s8-cbx${i}`, 0.35 + 0.65 * s.ccm);
+  S.op('s8-pyr', 0.35 + 0.65 * s.ccm);
+}
+
+/* ---------------------------------------------------------------- the first land plants (scene 9, version 3) */
+// ≈ 500 million years ago (version 3, beat 5): plants reach land. The earliest land plants were small and close to the
+// ground, like today's liverworts and mosses (Morris et al. 2018); a rocky shore with flat liverwort-like lobes, moss
+// cushions with spore capsules on thin stalks, and algal mats in the shallows. No trees, no animals on land.
+function liverwort(x: number, y: number, s: number): string {
+  return `<path d="M${x},${y} C${f(x - 14 * s)},${f(y - 10 * s)} ${f(x - 30 * s)},${f(y - 6 * s)} ${f(x - 34 * s)},${y} C${f(x - 26 * s)},${f(y - 2 * s)} ${f(x - 16 * s)},${f(y + 1 * s)} ${x},${y}Z M${x},${y} C${f(x + 14 * s)},${f(y - 12 * s)} ${f(x + 30 * s)},${f(y - 8 * s)} ${f(x + 36 * s)},${y} C${f(x + 26 * s)},${f(y - 2 * s)} ${f(x + 14 * s)},${f(y + 1 * s)} ${x},${y}Z" style="fill:#6f9a4f;stroke:#4f7a45;stroke-width:1.2"/>`;
+}
+const MOSS9: Array<[number, number]> = [[520, 3], [640, 4], [760, 3], [860, 4]];
+function firstLand(): string {
+  const cushion = ([x, n]: [number, number], k: number): string => {
+    let s = `<path d="M${x - 34},${G - 34} Q${x},${G - 62} ${x + 34},${G - 34}Z" style="fill:#7f9f52;stroke:#5e7a3a;stroke-width:1.4"/>`;
+    let st = '';
+    for (let i = 0; i < n; i++) { const sx = x - 18 + (36 * i) / Math.max(1, n - 1), h = 30 + ((i * 7 + k * 5) % 11); st += `<path d="M${sx},${G - 46} L${sx + 2},${G - 46 - h}" style="fill:none;stroke:#8a6f3a;stroke-width:1.8"/><ellipse cx="${sx + 2}" cy="${G - 50 - h}" rx="3.2" ry="5.5" style="fill:#a07a3a"/>`; }
+    return s + `<g data-k="s9-st${k}">${st}</g>`;
+  };
+  return `<g data-k="s9-wave">${seaBody(SEA8, 'sc-sea1')}</g><g data-k="s9-wave2">${seaLine(SEA8 + 18, 'sc-foam')}</g>
+    <path d="M300,740 L360,${G - 30} Q400,${G - 40} 460,${G - 36} L1600,${G - 36} V740Z" style="fill:#a89f8a"/>
+    <path d="M420,${G - 36} Q450,${G - 52} 484,${G - 40} M590,${G - 36} Q616,${G - 50} 640,${G - 36} M700,${G - 36} Q730,${G - 54} 760,${G - 38}" style="fill:none;stroke:#8a8270;stroke-width:3"/>
+    ${[[150, 704], [250, 700], [330, 706]].map(([x, y]) => `<ellipse cx="${x}" cy="${y}" rx="44" ry="7" style="fill:#7f8f5a;opacity:.8"/>`).join('')}
+    ${liverwort(440, G - 36, 1)}${liverwort(580, G - 36, 0.8)}${liverwort(700, G - 36, 1.1)}${liverwort(820, G - 36, 0.9)}${liverwort(900, G - 36, 0.8)}
+    ${MOSS9.map(cushion).join('')}`;
+}
+function firstLandAnim(amb: number, S: SceneIO): void {
+  S.tr('s9-wave', `translate(${f(-frac(amb / 4.6) * 100)} 0)`);
+  S.tr('s9-wave2', `translate(${f(frac(amb / 7.4) * 100 - 100)} 0)`);
+  MOSS9.forEach(([x], k) => S.tr(`s9-st${k}`, `rotate(${f(1.6 * Math.sin(TAU * (amb / 3.6 + k * 0.27)))} ${x} ${G - 46})`));
+}
+
 /* ---------------------------------------------------------------- the scene list */
 
 const ALL: Array<[string, string]> = [
@@ -391,18 +531,25 @@ const ALL: Array<[string, string]> = [
   [sky('#f0ead8', '#ebe2c8', 'sc5g'), farming()],
   [sky('#e8e4dc', '#e2ddd2', 'sc6g'), industry()],
   [sky('#e3e8ee', '#dfe3e6', 'sc7g'), today()],
+  [sky('#e3ece6', '#e4ebe0', 'sc8g'), carriers()],
+  [sky('#e6ebe0', '#e3e6d6', 'sc9g'), firstLand()],
 ];
 export const SKY: string[] = ALL.map(a => a[0]);
 export const GROUND: string[] = ALL.map(a => a[1]);
 export const N_SCENES = ALL.length;
+/** Scene indices added in version 3 (dk-c2story3.ts); version 2 never shows them. */
+export const SC_CARRIERS = 8, SC_FIRST_LAND = 9;
 
-/** Moves scene i: `amb` is the ambient clock (s), `tb` the time since the beat began (s). */
-export function animScene(i: number, amb: number, tb: number, S: SceneIO): void {
+/** Moves scene i: `amb` is the ambient clock (s), `tb` the time since the beat began (s). Version 3 passes the hunters'
+ *  walk and the carriers' spotlight; version 2 passes neither and keeps its own walk. */
+export function animScene(i: number, amb: number, tb: number, S: SceneIO, o: { walk?: Walk; spot?: Spot } = {}): void {
   if (i <= 1) seaAnim(i, amb, S);
   else if (i === 2) carbAnim(amb, S);
   else if (i === 3) cretAnim(amb, S);
-  else if (i === 4) iceAnim(amb, tb, S);
+  else if (i === 4) iceAnim(amb, tb, S, o.walk);
   else if (i === 5) farmAnim(amb, S);
   else if (i === 6) indAnim(amb, S);
   else if (i === 7) todayAnim(amb, S);
+  else if (i === 8) carriersAnim(amb, S, o.spot);
+  else if (i === 9) firstLandAnim(amb, S);
 }

@@ -12,6 +12,8 @@ import { hring } from '../figs/chain';
 import { GLYPH } from './dk1-common';
 import { LF13 } from './beats-lf';
 import { add, ease, flash, glide, lerp, makeLeafStaging, panelShow, panelSvg, T, type Actor, type Api, type Row, type V } from './lf-common';
+import { keyLines } from './stage-keys';
+import type { Staging } from './types';
 
 const S = SPOT;
 const cap = (w: number, r = 13): string => `<rect class="dk-cap" x="${-w / 2 - 5}" y="${-r - 5}" width="${w + 10}" height="${2 * r + 10}" rx="${r + 5}"/>`;
@@ -103,7 +105,8 @@ function frame(a: Api, beat: number, t: number): void {
   a.op('night', 0.13 * nightU);
   const gap = Math.round(2 * (beat === 0 ? lerp(0, 12, ease(t, 0.3, 1.4)) : beat === 1 ? 12 : beat === 2 ? lerp(12, 0, ease(t, 0.3, 1.4)) : 0)) / 2;
   a.html('guard', guardCells(PORE, gap, true));
-  a.op('clk', 1); a.op('moon', nightU); a.op('sun', 1 - nightU);
+  // the day card leaves before the closing question, which takes its place at the centre
+  a.op('clk', beat === 4 ? 1 - ease(t, 2.4, 2.8) : 1); a.op('moon', nightU); a.op('sun', 1 - nightU);
   a.txt('clk-t', nightU > 0.5 ? 'night' : 'day'); a.txt('clk-s', nightU > 0.5 ? 'stomata open' : 'stomata closed');
   // the starch granule: full at dusk, smaller after the night, full again by the end of the day
   const st = beat === 0 ? lerp(1, 0.75, ease(t, 2.4, 5.0)) : beat === 1 ? lerp(0.75, 0.35, ease(t, 0.2, 4.0)) : beat === 2 ? lerp(0.35, 0.6, ease(t, 3.4, 4.2)) : beat === 3 ? lerp(0.6, 1, ease(t, 1.4, 4.0)) : 1;
@@ -128,7 +131,7 @@ function frame(a: Api, beat: number, t: number): void {
 const NIGHT: LPart[] = ['stoma', 'cam-n', 'ca', 'pepc', 'pep-starch', 'vac', 'm-cp'];
 const DAY: LPart[] = ['stoma', 'vac', 'cam-d', 'cam-me', 'm-cp', 'm-rub'];
 
-export const STAGING = makeLeafStaging({
+const BASE = makeLeafStaging({
   id: 'lf13m',
   name: 'm · One cell, night and day',
   note: 'CAM in one mesophyll cell, one fixed framing: by night the stoma opens, CO₂ 1–3 → HCO₃⁻ → PEPC → malic acid 1–3 into the vacuole; by day the stoma closes and malic acid 3, 2, 1 → malic enzyme → CO₂ → RuBisCO; water-use efficiency card',
@@ -142,3 +145,17 @@ export const STAGING = makeLeafStaging({
   lit: [NIGHT, NIGHT, DAY, DAY, DAY],
   frame,
 });
+
+/** The key lines on the stage (lecturer, 29 Oct 2026): each beat's take-home and the closing question. */
+export const STAGING: Staging = { ...BASE, keys: [
+  ...keyLines(0, ['Night: CO₂ stored as malic acid'], 1160, 540, { size: 40 }),
+  ...keyLines(1, ['Less water lost at night'], 1160, 540, { size: 40 }),
+  ...keyLines(2, ['Day: fixed behind closed stomata'], 1160, 540, { size: 40 }),
+  ...keyLines(3, ['CO₂ taken up the night before'], 1160, 540, { size: 40 }),
+  // beat 5: the take-home right of the clock, after the card; the question then takes the free band between the ledger
+  // and the card, centred, once the clock has gone: its 2 lines (x 494–1106) start right of the chloroplast and fit
+  // between the dimmed PEPC and the "malic enzyme" label, hence the line height of 43
+  ...keyLines(4, ['CAM: most CO₂', 'per water lost'], 1347, 280, { size: 40, t0: 1.0 }),
+  { beat: 4, text: 'How much of the sunlight do C₃', x: 800, y: 269, size: 40, t0: 4.0 },
+  { beat: 4, text: 'and C₄ plants store in biomass?', x: 800, y: 312, size: 40, t0: 4.0 },
+] };

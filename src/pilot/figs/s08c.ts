@@ -10,7 +10,7 @@ export const PLATE: PlateText = {
   lead: 'Cytochrome b₆f passes electrons to plastocyanin and pumps H⁺ into the lumen.',
   points: [
     { claim: 'Electron transfer.', text: 'PQH₂ → cytochrome b₆f → plastocyanin' },
-    { claim: 'Q cycle.', text: 'Half the electrons loop back to plastoquinone, so more H⁺ enter the lumen', eq: 'lumen side of b₆f: 4 PQH₂ → 4 PQ + 8 H⁺ (lumen) + 8 e⁻<br>4 e⁻ → 4 plastocyanin<br>4 e⁻ → stroma side of b₆f: 2 PQ + 4 e⁻ + 4 H⁺ (stroma) → 2 PQH₂ (reused)' },
+    { claim: 'Q cycle.', text: 'Half the electrons loop back to plastoquinone, so more H⁺ enter the lumen', eq: 'per O₂: 8 H⁺ into the lumen' },
     { claim: 'Plastocyanin.', text: 'Small copper protein: carries e⁻ to photosystem I', eq: '1 trip = 1 e⁻' },
     { claim: 'Per O₂.', text: '', eq: ledger([['cytochrome b₆f', '4 in → 4 out', '+8 lumen, −4 stroma'], ['plastocyanin (4 trips)', '4', '0']]) },
   ],

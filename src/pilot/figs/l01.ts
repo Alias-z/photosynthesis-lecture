@@ -17,8 +17,8 @@ export const PLATE: PlateText = {
   lead: 'Photosynthesis converts light energy into chemical energy.',
   points: [
     { claim: 'Light reactions.', text: 'Pigments absorb light<br>Water is oxidised, O₂ is released<br>ATP and NADPH are made' },
-    { claim: 'Calvin–Benson–Bassham cycle.', text: 'RuBisCO fixes CO₂<br>ATP and NADPH make it into sugar<br>The carbon in bread comes from air' },
-    { claim: 'Overall equation.', text: `6 CO₂ + 6 H₂O ${rxn('light')} C₆H₁₂O₆ + 6 O₂` },
+    { claim: 'Calvin–Benson–Bassham cycle.', text: 'RuBisCO fixes CO₂<br>ATP and NADPH are used to reduce it to sugar<br>The carbon in bread comes from air' },
+    { claim: 'Overall equation.', text: `6 CO₂ + 12 H₂O ${rxn('light')} C₆H₁₂O₆ + 6 O₂ + 6 H₂O` },
   ],
   refs: [{ label: 'Johnson 2016', url: 'https://doi.org/10.1042/EBC20160016' }],
 };

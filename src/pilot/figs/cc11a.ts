@@ -31,7 +31,7 @@ export const PLATE: PlateText = {
   status: 'draft',
   lead: 'C₂ plants release photorespired CO₂ in the bundle sheath, next to RuBisCO,<br>so more of it is refixed.',
   points: [
-    { claim: 'Glycine shuttle.', text: 'Glycine moves to the bundle sheath, the only place with glycine decarboxylase', eq: '2 glycine → serine + CO₂ + NH₃: 2 × 2 C = 3 C + 1 C' },
+    { claim: 'Glycine shuttle.', text: 'Glycine moves to the bundle sheath, where almost all glycine decarboxylase sits', eq: '2 glycine → serine + CO₂ + NH₃: 2 × 2 C = 3 C + 1 C' },
     { claim: 'Refixation in the bundle sheath.', text: 'Bundle-sheath RuBisCO refixes the released CO₂', eq: 'CO₂ at RuBisCO, leaf mean: C₂ ≈ 3 × C₃ (<i>Flaveria</i>)' },
     { claim: 'A step towards C₄.', text: '<i>Flaveria</i> and <i>Heliotropium</i> have C₃, C₂ and C₄ species; C₂ species grow in warm climates', eq: '> 50 C₂ species in ≈ 20 lineages · C₄: 61 lineages' },
   ],

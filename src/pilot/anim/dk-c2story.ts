@@ -8,10 +8,10 @@
 //   gives the time, CO₂ and temperature (and O₂ while it matters).
 // - Below the chart, living era scenes (c2story-scenes.ts) cross-fade as the playhead passes.
 // - Lower right, a beam balance with RuBisCO (own render of PDB 8RUC) as its fulcrum: 100 carboxylations on the left pan,
-//   the calculated oxygenations on the right; the beam tilts by the difference, eased. Beside it: net CO₂ fixed, the leaf
+//   the calculated oxygenations on the right; the beam tilts by the difference, eased. Beside it: the leaf
 //   temperature, RuBisCO's CO₂ preference relative to 25 °C, and in beat 8 the CO₂ effect, the temperature effect and the
 //   net, then a hot, dry day (c2story-model.ts gives every formula).
-// - Beat 9: 4 newspaper-style clippings on engineering RuBisCO and photorespiration (generic design, no masthead).
+// - Beat 9: 3 newspaper-style clippings on engineering RuBisCO (generic design, no masthead).
 // Ambient loops run on the wall clock, so the scenes keep moving while a beat holds; with ?t= (frozen screenshots) they
 // run on t, so every frame is reproducible.
 import './dk-c2story.css';
@@ -228,9 +228,7 @@ function panelSvg(): string {
     <g data-k="cs-nlo" opacity="0">${T(BX + ARM, PY + PH - 38, 'oxygenation', 'cs-pl cs-pl-o', 'middle')}</g>
     ${T(BX, PY + PH - 38, 'RuBisCO', 'cs-mn', 'middle')}
     <g data-k="cs-ro" opacity="0">
-      ${T(QX, PY + 34, 'net CO₂ fixed', 'cs-pr')}<text data-k="cs-net" class="cs-pv" x="${QX + QW}" y="${PY + 36}" text-anchor="end">100</text>
-      ${T(QX, PY + 54, 'per 100 carboxylations', 'cs-ph')}
-      <g data-k="cs-tr" opacity="0">
+      <g transform="translate(0 -54)"><g data-k="cs-tr" opacity="0">
         ${T(QX, PY + 88, 'leaf temperature', 'cs-pr')}<text data-k="cs-leaf" class="cs-pv2" x="${QX + QW}" y="${PY + 88}" text-anchor="end">25.0 °C</text>
         ${T(QX, PY + 116, 'CO₂ preference, relative to 25 °C', 'cs-ph')}
         <rect class="cs-prefbg" x="${QX}" y="${PY + 126}" width="${QW - 56}" height="12" rx="6"/><rect data-k="cs-pref" class="cs-pref" x="${QX}" y="${PY + 126}" width="0" height="12" rx="6"/>
@@ -240,9 +238,9 @@ function panelSvg(): string {
       <g data-k="cs-fx" opacity="0">
         <text data-k="cs-fxh" class="cs-ph" x="${QX}" y="${PY + 166}"> </text>
         ${[0, 1, 2].map(k => `<g data-k="cs-fr${k}" opacity="0"><text data-k="cs-frl${k}" class="cs-fl" x="${QX}" y="${ry(k) + 16}"> </text><text data-k="cs-frv${k}" class="cs-fv" x="${QX + QW}" y="${ry(k) + 16}" text-anchor="end"> </text></g>`).join('')}
-      </g>
+      </g></g>
     </g>
-    <text data-k="cs-calc" class="cs-calc" x="${PX + 22}" y="${PY + PH - 12}" opacity="0">calculated · leaf at 25 °C + change in global mean temperature</text>
+    <text data-k="cs-calc" class="cs-calc" x="${PX + 22}" y="${PY + PH - 12}" opacity="0">calculated per 100 carboxylations · leaf: 25 °C + change in global mean temperature</text>
   </g>`;
 }
 
@@ -252,10 +250,9 @@ interface Clip { year: string; head: string[]; body: string[]; src: string }
 const CLIPS: Clip[] = [
   { year: '2001', head: ['Red-algal RuBisCO made', 'in tobacco, but not', 'assembled'], body: ['More CO₂-specific than plant', 'RuBisCO. Made in tobacco', 'chloroplasts, it did not assemble.'], src: 'Whitney et al. 2001, Plant J. 26:535' },
   { year: '2014', head: ['Faster cyanobacterial', 'RuBisCO works in', 'tobacco'], body: ['It replaced tobacco’s RuBisCO and', 'fixed CO₂ faster per enzyme; the', 'plants grew only with extra CO₂.'], src: 'Lin et al. 2014, Nature 513:547 · Occhialini et al. 2016' },
-  { year: '2019', head: ['Photorespiration', 'bypass: tobacco biomass', 'up 19–37 % in the field'], body: ['A synthetic glycolate pathway in', 'the chloroplast; glycolate export', 'to the native pathway reduced.'], src: 'South et al. 2019, Science 363:eaat9077 (corrected)' },
   { year: '2026', head: ['Machine learning', 'helps evolve a faster', 'RuBisCO'], body: ['Tobacco RuBisCO variant T391I:', 'carboxylation rate +29 %, efficiency', 'in air +43 %; selected in <tspan font-style="italic">E. coli</tspan>.'], src: 'McDonald et al. 2026, Sci. Adv.' },
 ];
-const CW = 332, CH = 270, CX0 = 102, CY = 118, CG = 22;
+const CW = 332, CH = 270, CX0 = 280, CY = 118, CG = 22;
 function clipsSvg(): string {
   return CLIPS.map((c, i) => {
     const x = CX0 + i * (CW + CG), rot = [-1.1, 0.8, -0.6, 1.0][i];
@@ -419,7 +416,6 @@ export const STAGING: Staging = {
       set('cs-bvL', 'text', shown ? String(shown.L) : ' '); set('cs-bvR', 'text', shown ? shown.ox : ' ');
       op('cs-bvL', numsOn * dip); op('cs-bvR', numsOn * dip);
       op('cs-ro', beat === 0 ? 0 : beat === 1 ? ease(t, sw - 0.1, sw + 0.4) : 1);
-      if (shown) { set('cs-net', 'text', String(Math.round(shown.net))); op('cs-net', dip); }
       op('cs-calc', beat === 0 ? 0 : beat === 1 ? ease(t, sw - 0.1, sw + 0.4) : 1);
       // the leaf temperature and CO₂ preference rows, from the first beat with a temperature record
       const trOn = beat < 3 ? 0 : beat === 3 ? ease(t, sw - 0.1, sw + 0.4) : 1;

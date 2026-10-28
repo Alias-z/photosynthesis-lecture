@@ -21,10 +21,10 @@ export const PLATE: PlateText = {
   status: 'draft',
   lead: 'The Calvin–Benson–Bassham cycle uses 3 ATP per 2 NADPH; chloroplasts adjust the supply by changing electron routes.',
   points: [
-    { claim: 'Linear electron flow.', text: 'Water → PSII → PSI → NADP⁺', eq: 'per O₂: ≈ 2.6 ATP + 2 NADPH' },
+    { claim: 'Linear electron flow.', text: 'Water → PSII → PSI → NADP⁺' },
     { claim: 'Cyclic electron flow.', text: 'PSI → plastoquinone → b₆f → PSI: ATP only' },
-    { claim: 'State transitions.', text: 'PSII gets too much light: LHCII moves to PSI; both run evenly' },
-    { claim: 'Per O₂, the whole chain.', text: '', eq: ledger([['photosystem II', '4', '+4 lumen'], ['plastoquinone', '4', '−4 stroma'], ['cytochrome b₆f', '4', '+8 lumen, −4 stroma'], ['plastocyanin', '4', '0'], ['photosystem I', '4', '0'], ['ferredoxin → FNR', '4 → 2 NADPH', '−2 stroma'], ['ATP synthase', '—', '12 lumen → stroma: ≈ 2.6 ATP']], ['total', '4: water → NADPH', '12 into the lumen, 12 back']) },
+    { claim: 'State transitions.', text: 'PSII excited more than PSI: part of LHCII moves to PSI, evening out their excitation' },
+    { claim: 'Per O₂, the whole chain.', text: '', eq: ledger([['photosystem II', '4', '+4 lumen'], ['plastoquinone', '4', '−4 stroma'], ['cytochrome b₆f', '4', '+8 lumen, −4 stroma'], ['plastocyanin', '4', '0'], ['photosystem I', '4', '0'], ['ferredoxin → FNR', '4 → 2 NADPH', '−2 stroma'], ['ATP synthase', '—', '−12 lumen → ≈ 2.6 ATP']], ['total', '4', '+12, −12 lumen']) },
   ],
   refs: [
     { label: 'Johnson 2016', url: 'https://doi.org/10.1042/EBC20160016' },

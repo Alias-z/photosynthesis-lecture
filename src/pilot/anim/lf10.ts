@@ -8,6 +8,8 @@ import { GLYPH } from './dk1-common';
 import { h2oG } from '../figs/leaf-schema';
 import { LF10 } from './beats-lf';
 import { add, ease, glide, lerp, flash, makeLeafStaging, T, type Actor, type Api, type V } from './lf-common';
+import { keyLines } from './stage-keys';
+import type { Staging } from './types';
 
 const r = SPOT.mRub;
 const cap = (w: number, rr = 13): string => `<rect class="dk-cap" x="${-w / 2 - 5}" y="${-rr - 5}" width="${w + 10}" height="${2 * rr + 10}" rx="${rr + 5}"/>`;
@@ -71,7 +73,7 @@ const LIT: LPart[][] = [
   ['stoma', 'gs', 'm-cp', 'm-rub', 'h2o'],
 ];
 
-export const STAGING = makeLeafStaging({
+const BASE = makeLeafStaging({
   id: 'lf10m',
   name: 'm · In the leaf section',
   note: 'CO₂ 1 from the air to RuBisCO in one fixed framing while H₂O 1 leaves through the same stoma; Cₐ, Cᵢ and C꜀ as bars; on a hot, dry day the stoma half-closes and Cᵢ and C꜀ fall',
@@ -85,3 +87,10 @@ export const STAGING = makeLeafStaging({
   lit: LIT,
   frame,
 });
+
+/** The key lines on the stage (lecturer, 29 Oct 2026): each beat's take-home and the closing question. */
+export const STAGING: Staging = { ...BASE, keys: [
+  ...keyLines(0, ['CO₂ in, water vapour out'], 1160, 580),
+  ...keyLines(1, ['CO₂ dissolves in the wet wall'], 1160, 580),
+  ...keyLines(2, ['Getting CO₂ to RuBisCO is hard:', 'how have plants coped?'], 800, 525, { size: 44, t0: 3.0 }),
+] };

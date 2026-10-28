@@ -19,17 +19,18 @@ export const PLATE: PlateText = {
   n: 'C4',
   title: 'Sucrose and starch',
   status: 'draft',
-  lead: '1 of every 6 triose phosphates leaves the cycle: to sucrose in the cytosol, or to starch in the chloroplast.',
+  lead: 'Triose phosphate leaves the chloroplast to make sucrose, or stays to make starch.',
   points: [
-    { claim: 'Triose phosphate/phosphate translocator (TPT).', text: 'Exchanges triose phosphate for inorganic phosphate (Pᵢ) across the inner envelope' },
-    { claim: 'Sucrose.', text: 'Made in the cytosol and exported to growing organs and the grain', eq: '4 triose phosphate (12 C) → 1 sucrose (12 C)' },
-    { claim: 'Starch.', text: 'Made in the chloroplast by day; broken down at night to make sucrose' },
+    { claim: 'Triose phosphate out, phosphate in.', text: 'The triose phosphate/phosphate translocator (TPT) takes in 1 Pᵢ from the cytosol for each triose phosphate out' },
+    { claim: 'Sucrose: made in the cytosol.', text: 'Exported to growing organs and the grain' },
+    { claim: 'Starch: made in the chloroplast by day.', text: 'Broken down at night to make sucrose, so the plant keeps growing at night' },
   ],
   refs: [
     { label: 'Graf et al. 2010', url: 'https://doi.org/10.1073/pnas.0914299107' },
     { label: 'Smith & Stitt 2007', url: 'https://doi.org/10.1111/j.1365-3040.2007.01708.x' },
     { label: 'Streb & Zeeman 2012', url: 'https://doi.org/10.1199/tab.0160' },
     { label: 'Sharkey 2024', url: 'https://doi.org/10.1093/plphys/kiad601' },
+    { label: 'Sharkey 1985', url: 'https://doi.org/10.1104/pp.78.1.71' },
   ],
 };
 

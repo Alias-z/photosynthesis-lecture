@@ -13,7 +13,7 @@ export const PLATE: PlateText = {
   points: [
     { claim: 'F<sub>v</sub>/F<sub>m</sub>.', text: 'Maximum quantum yield of photosystem II, measured with a saturating light pulse after dark adaptation<br>≈ 0.83 in healthy leaves; lower after photoinhibition or other stress' },
     { claim: 'Φ<sub>PSII</sub> and NPQ.', text: 'Pulses in the light measure photochemistry (Φ<sub>PSII</sub>) and heat dissipation (NPQ)' },
-    { claim: 'Solar-induced fluorescence (SIF).', text: 'Satellites measure the faint fluorescence of vegetation in sunlight<br>It maps crop photosynthesis across regions' },
+    { claim: 'Sun-induced fluorescence (SIF).', text: 'Satellites measure the faint fluorescence of vegetation in sunlight<br>It maps crop photosynthesis across regions' },
   ],
   refs: [
     { label: 'Björkman & Demmig 1987', url: 'https://doi.org/10.1007/BF00402983' },

@@ -13,6 +13,8 @@ import { hring, tagG } from '../figs/chain';
 import { GLYPH } from './dk1-common';
 import { LF12 } from './beats-lf';
 import { add, ease, flash, glide, life, makeLeafStaging, panelShow, panelSvg, type Actor, type Api, type Row, type V } from './lf-common';
+import { keyLines } from './stage-keys';
+import type { Staging } from './types';
 
 const cap = (w: number, r = 13): string => `<rect class="dk-cap" x="${-w / 2 - 5}" y="${-r - 5}" width="${w + 10}" height="${2 * r + 10}" rx="${r + 5}"/>`;
 const ACTORS: Actor[] = [
@@ -59,15 +61,17 @@ const ROWS: Row[] = [
   { k: 'r3', h: 36, html: '<tspan class="lfa-e">NADP-ME:</tspan> C₄ acid → CO₂ + pyruvate' },
   { k: 'r3c', h: 32, html: '4 C = 1 C + 3 C', cls: 'dk-pc' },
   { k: 'r3d', h: 32, html: 'CO₂ at RuBisCO: up to ≈ 10 × air', cls: 'dk-pc' },
-  { k: 'r4', h: 36, html: '<tspan class="lfa-e">PPDK:</tspan> pyruvate + ATP → PEP + AMP' },
+  { k: 'r4', h: 36, html: '<tspan class="lfa-e">PPDK:</tspan> pyruvate + ATP + Pᵢ → PEP + AMP + PPᵢ' },
   { k: 'r4c', h: 32, html: `ATP → AMP: ${n('n-atp', '2')} ATP equivalents`, cls: 'dk-pc' },
   { k: 'r5', h: 40, html: 'C₄: 5 ATP + 2 NADPH per CO₂', cls: 'lfa-sum' },
   { k: 'r6', h: 36, html: 'C₃: 3 ATP + 2 NADPH per CO₂', cls: 'dk-pc' },
 ];
-const PX = 1078, PY = 22, PW = 500;
+const PX = 1060, PY = 22, PW = 528;
+// the card, scaled to 0.82 and stopping at y 522 (over the dimmed RuBisCO label), leaves the band under it free: the closing question sits centred
+// there, under the CAM column it asks about, clear of the bottom edge (lecturer, 29 Oct 2026)
 const card = (): string => {
-  const svg = climateSvg('lfa12c', 'c4').replace('<svg class="', '<svg x="60" y="40" width="900" height="675" class="');
-  return `<g data-k="card" display="none"><rect class="lfa-card" x="44" y="28" width="932" height="694" rx="18"/>${svg}</g>`;
+  const svg = climateSvg('lfa12c', 'c4').replace('<svg class="', '<svg x="182" y="19" width="656" height="492" class="');
+  return `<g data-k="card" display="none"><rect class="lfa-card" x="128" y="14" width="764" height="508" rx="16"/>${svg}</g>`;
 };
 
 /* ---------------------------------------------------------------- the frame */
@@ -130,7 +134,7 @@ const LIT: LPart[][] = [
   ['m-cp', 'pyr', 'ppdk', 'atp', 'pep', 'pepc', 'me', 'bs-cp', 'bs-rub', 'ca', 'c4acid'],
 ];
 
-export const STAGING = makeLeafStaging({
+const BASE = makeLeafStaging({
   id: 'lf12m',
   name: 'm · In the leaf section',
   note: 'C₄ per 1 CO₂ in the leaf section, one fixed framing: CA, PEPC, the C₄ acid into the bundle sheath, NADP-ME, CO₂ at RuBisCO; pyruvate back to PPDK with 1 ATP; the ledger; the conditions strip at the end',
@@ -143,3 +147,14 @@ export const STAGING = makeLeafStaging({
   frame,
 });
 void life;
+
+/** The key lines on the stage (lecturer, 29 Oct 2026): each beat's take-home and the closing question. */
+export const STAGING: Staging = { ...BASE, keys: [
+  ...keyLines(0, ['CO₂ becomes', 'bicarbonate'], 1325, 545, { size: 40 }),
+  ...keyLines(1, ['PEPC does not', 'react with O₂'], 1325, 545, { size: 40 }),
+  ...keyLines(2, ['CO₂ concentrated', 'next to RuBisCO'], 1325, 545, { size: 40 }),
+  ...keyLines(3, ['2 extra ATP per CO₂'], 1325, 570, { size: 40 }),
+  // under the ledger, above the band the question takes
+  ...keyLines(4, ['Above ≈ 30 °C, C₄', 'fixes more CO₂'], 1325, 478, { size: 40 }),
+  ...keyLines(4, ['A cactus keeps its stomata shut on a hot day:', 'how does it get its CO₂?'], 800, 582, { size: 44, t0: 3.0 }),
+] };

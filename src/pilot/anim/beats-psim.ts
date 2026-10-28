@@ -16,7 +16,7 @@ const HILL60: Cite = { label: 'Hill & Bendall 1960, Nature', url: 'https://doi.o
 
 const S1 = 'Light at photosystem I sends an electron across the membrane to ferredoxin; plastocyanin refills the reaction centre.';
 const S2 = 'Ferredoxin passes the electrons to FNR, which makes NADPH from NADP⁺ + H⁺ in the stroma.';
-const SDROP = '1943, Emerson: far-red light alone, reaching mostly photosystem I, gives little O₂: the red drop.';
+const SDROP = '1943, Emerson and Lewis: far-red light, absorbed mostly by photosystem I, gives little O₂ per absorbed photon: the red drop.';
 const SENH = '1957, Emerson: red light (for photosystem II) together with far-red light gives more O₂ than the 2 lights apart.';
 const STOG = 'Photosystem II and photosystem I work in series: each electron is lifted once by each. <b>What else does the chain make besides NADPH?</b>';
 
@@ -27,7 +27,7 @@ function beats(emerson: Cite[]): Beat[] {
     { tag: 'NADPH', say: S2, cite: [MAZOR17] },
     { tag: 'Red drop', say: SDROP, cite: [LEWIS43] },
     { tag: 'Emerson’s enhancement', say: SENH, cite: emerson },
-    { tag: 'Two photosystems work together', say: STOG, cite: [HILL60] },
+    { tag: '2 photosystems work together', say: STOG, cite: [HILL60] },
   ];
 }
 

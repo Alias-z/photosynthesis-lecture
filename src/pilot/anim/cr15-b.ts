@@ -11,6 +11,7 @@ import {
 } from './cr-kit';
 import { BORLAUG, FIG, IMG, phloemAnim, southClip, squaresAnim, V1_HIDE, zhuClip } from './cr15-common';
 import type { Staging } from './types';
+import { keyLines } from './stage-keys';
 
 const P = 'c15b';
 const VX = [0, 1800, 3600, 5400, 7400, 9300, 11200];
@@ -41,7 +42,7 @@ const MOVES: Move[] = [
   { beat: 4, t0: 3.8, d: 1.0, to: slideView(END.x, END.y) },
 ];
 
-export const STAGING: Staging = {
+const BASE: Staging = {
   id: 'b',
   name: 'B · The papers on the desk',
   note: 'Zhu 2010 + field squares (v9); its Fig. 2 (v1); Borlaug + the chain (v3 → v4); South 2019 + tobacco; v5, v6; the chain.',
@@ -96,3 +97,9 @@ export const STAGING: Staging = {
     };
   },
 };
+
+/** The closing question on the stage, centred under the chain once the motion has finished (lecturer, 29 Oct 2026: on
+ *  the stage only the closing question). */
+export const STAGING: Staging = { ...BASE, keys: [
+  ...keyLines(4, ['Which link of the chain would you improve?'], 800, 600, { size: 44, t0: 3.0 }),
+] };

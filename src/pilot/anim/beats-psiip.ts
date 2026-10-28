@@ -12,5 +12,5 @@ export const PSIIP: Beat[] = [
 /** pb (28 Oct 2026, draft): per O₂ two plastoquinols, so the H⁺ count reads 4 + 4, not 4 + 2. */
 export const PSIIPB: Beat[] = [
   ...PSIIM.slice(0, 3),
-  { ...PSIIM[3], say: 'Each plastoquinone takes 2 e⁻ + 2 H⁺ from the stroma and becomes plastoquinol (PQH₂), which drops out into the membrane. Per O₂: 2 plastoquinols, so 4 H⁺ leave the stroma, while water’s 4 H⁺ stay in the lumen. <b>Where do they go next?</b>' },
+  { ...PSIIM[3], say: 'Each plastoquinone takes 2 e⁻ + 2 H⁺ from the stroma and becomes plastoquinol (PQH₂), which is released into the membrane. Per O₂: 2 plastoquinols, so 4 H⁺ leave the stroma, while water’s 4 H⁺ stay in the lumen. <b>Where do they go next?</b>' },
 ];

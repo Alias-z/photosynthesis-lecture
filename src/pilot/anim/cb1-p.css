@@ -1,0 +1,23 @@
+/* cb1, variant p · "Carbon blocks" (anim/cb1-p.ts): names in ink, the 2 kept lines, paper cards, leaders and pills, the
+   thylakoid label. Prefix .cbp-. */
+.ani-cb1-p .fig text.cbp-name{font-size:21px;font-weight:700;fill:#141413}
+.ani-cb1-p .fig text.cbp-dim{fill:#8f8c83;font-weight:600}
+.ani-cb1-p .fig text.cbp-halo{paint-order:stroke;stroke:#fffdf8;stroke-width:5px;stroke-linejoin:round}
+.ani-cb1-p .fig text.cbp-line{font-size:29px;font-weight:700;fill:#141413}
+.ani-cb1-p .fig text.cbp-title{font-family:Newsreader,Georgia,serif;font-size:27px;font-weight:500;fill:#141413}
+.ani-cb1-p .fig text.cbp-crd{font-size:13px;fill:#8a877d}
+.ani-cb1-p .fig text.cbp-zone{font-size:19px;font-weight:600;fill:#8a877d;letter-spacing:.03em}
+.ani-cb1-p .fig text.cbp-pt{font-size:20px;font-weight:700;fill:#141413}
+.ani-cb1-p .cbp-paper{fill:#f6f1e5;stroke:#d3cdbd;stroke-width:1}
+.ani-cb1-p .cbp-pill{fill:#fffdf8;stroke:#c9c6bb;stroke-width:1.2}
+.ani-cb1-p .cbp-ld{fill:none;stroke:#2b2a27;stroke-width:1.8}
+.ani-cb1-p .cbp-ldh{fill:none;stroke:#fbfaf6;stroke-width:5;opacity:.9}
+.ani-cb1-p .cbp-tip{fill:#2b2a27;stroke:#fbfaf6;stroke-width:1.2}
+.ani-cb1-p .cbp-ring{fill:none;stroke:#e3a21a;stroke-width:3.5}
+.ani-cb1-p .cbp-spot{fill:#f2b705;opacity:.22}
+.ani-cb1-p .cbp-cap{fill:#fffdf8;opacity:.85}
+.ani-cb1-p .cbp-bond{fill:none;stroke:#6b6a64;stroke-width:3.3;stroke-linecap:round}
+.ani-cb1-p .cbp-glow{fill:#f8d98a;opacity:.45;stroke:#e3a21a;stroke-width:2.5}
+.ani-cb1-p .cbp-mol{fill:#ece4d4;stroke:#d3c7ae;stroke-width:1.2}
+/* the beat 4 and 5 lines are the key lines: big, on the stage (lecturer, 29 Oct 2026) */
+.ani-cb1-p .fig text.cbp-line{font-size:38px;fill:#b0431f}

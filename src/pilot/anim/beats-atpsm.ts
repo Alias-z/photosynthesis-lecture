@@ -11,6 +11,13 @@ const NOJI97: Cite = { label: 'Noji et al. 1997, Nature', url: 'https://doi.org/
 export const ATPSM: Beat[] = [
   { tag: 'Proton gradient', say: 'H⁺ from water splitting and from cytochrome b₆f collect in the lumen: it becomes more acidic than the stroma (about pH 6 against 8).', cite: [KRAMER99] },
   { tag: 'ATP in the dark', say: '1966, Jagendorf and Uribe soaked chloroplasts in acid, then moved them to a basic buffer with ADP and phosphate: they made ATP in the dark. The H⁺ gradient alone drives ATP synthesis.', cite: [JAGENDORF66] },
-  { tag: 'The rotor', say: 'H⁺ flow back, down their gradient, through ATP synthase: the flow turns its rotor, and its head joins ADP + Pᵢ into ATP. 14 H⁺ make one turn and 3 ATP; the 12 H⁺ of one O₂ make ≈ 2.6.', cite: [HAHN18, NOJI97] },
-  { tag: 'ATP : NADPH ratio', say: 'Per O₂ the chain makes 2 NADPH and ≈ 2.6 ATP. The 2 NADPH can fix 1 CO₂ into sugar, and the bread we eat, but that needs 3 ATP: 2 H⁺ short of 1 full turn. <b>Who supplies the missing ATP?</b>', cite: [HAHN18, KRAMER11] },
+  { tag: 'The rotor', say: 'H⁺ flow back, down their gradient, through ATP synthase: the flow turns its rotor, and its head joins ADP + Pᵢ into ATP. 14 H⁺ make 1 turn and 3 ATP; the 12 H⁺ of one O₂ make ≈ 2.6.', cite: [HAHN18, NOJI97] },
+  { tag: 'ATP : NADPH ratio', say: 'Per O₂ the chain makes 2 NADPH and ≈ 2.6 ATP. The 2 NADPH can reduce 1 fixed CO₂ to sugar, but that also uses 3 ATP: 2 H⁺ short of 1 full turn. <b>Who supplies the missing ATP?</b>', cite: [HAHN18, KRAMER11] },
+];
+
+/** Staging m1 (lecturer, 29 Oct 2026): beat 4 stays on ATP synthase and shows who fills the 2 missing H⁺, cyclic electron
+ *  flow, instead of zooming out to a question. */
+export const ATPSM_C: Beat[] = [
+  ...ATPSM.slice(0, 3),
+  { tag: 'Cyclic electron flow', say: 'Per O₂: 2 NADPH but only ≈ 2.6 ATP, while turning 1 CO₂ into sugar uses 2 NADPH and 3 ATP. Cyclic electron flow adds the 2 missing H⁺, without making NADPH.', cite: [KRAMER11, HAHN18] },
 ];

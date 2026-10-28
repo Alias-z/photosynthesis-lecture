@@ -17,6 +17,10 @@
 //   then a second line 14 H⁺ = 1 turn = 3 ATP (the 2 H⁺ missing are slide 10b's question).
 //   m1 stays on the render (subunit stripes turn on the c-ring); m2 cuts the render open (atpsm-cut.ts).
 // - Beat 4: back out to the whole slide; the slide's own H⁺ path and ADP + Pᵢ → ATP return; NADPH lights beside ATP.
+//   With Close.cyclic (m1; lecturer, 29 Oct 2026: "directly on the animation show who fills the missing 2 H⁺; zooming out
+//   to a question at the bottom: no one will check it"): the camera stays on ATP synthase; H⁺ 13 and 14 come from
+//   cytochrome b₆f, pumped by cyclic electron flow, and cross the rotor; the third ATP is completed and leaves; the
+//   counter reads 14 H⁺ → 1 turn → 3 ATP, and its second line "+2 H⁺ from cyclic electron flow: 3 ATP".
 //
 // How the slide figure is reused (figs/chain.ts is not modified):
 // - focusSvg() wraps every part in <g class="chn-on|off">; the part of each wrapper is found by drawing the view once per
@@ -183,9 +187,18 @@ export function whenAt(prog: (t: number) => number, v: number): number {
 }
 /** Beat 3: the 12th H⁺ is through; the counter's second line (14 H⁺ = 1 turn = 3 ATP) comes a little later. */
 const T12 = tE(N_H - 1) + PASS.cross, ROW2 = T12 + 0.7;
-const B3END = Math.max(T12 + PASS.drift + 0.3, ROW2 + 0.6);
+/** Beat 3 ends on a big question on the stage, where the eyes are (lecturer, 29 Oct 2026: "people don't read the text
+ *  under the animation"): who supplies the 2 missing H⁺? */
+const QBIG = ROW2 + 0.8;
+const B3END = Math.max(T12 + PASS.drift + 0.3, ROW2 + 0.6, QBIG + 1.4);
 // Beat 4: zoom out; the story's glyphs go and the slide's arrows come back; the blue returns; NADPH lights.
 const B4 = { zoom: 0.05, zoomD: 1.2, glyphs: [0.35, 0.9], flowsIn: 0.8, tint: [0.3, 1.25], nadph: 1.3, end: 1.9 };
+/** Beat 4 with Close.cyclic: H⁺ 13 and 14 appear at b₆f (show), are named (lab), reach the rotor's entry at X[j], cross
+ *  in PASS.cross; the third ATP leaves once both are through (atp); the counter's second line changes (row). */
+const B4C = { show: 0.3, lab: 0.6, X: [2.2, 2.6], atp: 3.6, row: 3.9, end: 5.6 };
+const N_X = B4C.X.length;
+/** The rotor's progress t s into beat 4 with Close.cyclic: the 12 of beat 3, then H⁺ 13 and 14. */
+export const nCyclic = (t4: number): number => N_H + B4C.X.reduce((n, x) => n + Math.max(0, Math.min(1, (t4 - x) / PASS.cross)), 0);
 export const TEND = [B1.end, B2T.end, B3END, B4.end];
 export const HOLDS: number[][] = [[], [], [B3.hold], []];
 
@@ -254,9 +267,10 @@ function counterSvg(): string {
   return `<g data-k="ctr" opacity="0" class="fig"><rect data-k="c-box" class="am-ctr" x="${x}" y="${y}" width="${w}" height="${h}" rx="14"/>
     ${ctrRow(y + h / 2, '→', true)}
     <g data-k="c-row2" opacity="0"><path class="am-ctr-rule" d="M${x + 18},${y + h}H${x + w - 18}"/>
-      <path class="am-miss" d="${missPath([x + CX.dial, y + h / 2], N_H / N_C)}"/><text class="am-miss-t" x="${x + CX.dial + 30}" y="${y + 27}">2 missing</text>
-      <text class="am-row2" x="${x + w / 2}" y="${y + h + 32}" text-anchor="middle">fixing 1 CO₂ needs 3 ATP = 1 turn = 14 H⁺</text>
-      <text class="am-row2" x="${x + w / 2}" y="${y + h + 64}" text-anchor="middle">1 O₂ gives 12 H⁺: 2 H⁺ short</text></g></g>`;
+      <g data-k="c-miss"><path class="am-miss" d="${missPath([x + CX.dial, y + h / 2], N_H / N_C)}"/><text class="am-miss-t" x="${x + CX.dial + 30}" y="${y + 27}">2 missing</text></g>
+      <text class="am-row2" x="${x + w / 2}" y="${y + h + 32}" text-anchor="middle">1 CO₂ into sugar uses 3 ATP = 1 turn = 14 H⁺</text>
+      <text data-k="c-short" class="am-row2" x="${x + w / 2}" y="${y + h + 64}" text-anchor="middle">1 O₂ gives 12 H⁺: 2 H⁺ short</text>
+      <text data-k="c-fill" class="am-row2" x="${x + w / 2}" y="${y + h + 64}" text-anchor="middle" opacity="0">+2 H⁺ from cyclic electron flow: 3 ATP</text></g></g>`;
 }
 /** The dial's slots not yet filled after a fraction u of a turn, as a sector (outlined dashed). */
 function missPath(c: V, u: number): string {
@@ -356,7 +370,12 @@ export interface Close {
   adpFrom: V[]; sites: V[]; atpTo: V[];
   /** the close view's own zone names (with their pH), figure units, where the slide's are out of view */
   zones: { stroma: V; lumen?: V };
+  /** beat 4 stays in the close view: 2 H⁺ from cyclic electron flow complete the turn (the bind gets the rotor's
+   *  progress as t3 = B3_END + t4 there, see nCyclic) */
+  cyclic?: boolean;
 }
+/** The end of beat 3 (s), for a close view that runs on into beat 4 (Close.cyclic). */
+export const B3_END = B3END;
 
 /* ---------------------------------------------------------------- the staging */
 
@@ -387,11 +406,13 @@ export function makeStaging(o: Opt): Staging {
         ${glyph('zl-stroma', `${lab('stroma', 'chn-zone chn-halo', 0, 0, 'end')}${lab('pH ≈ 8', 'chn-zone am-ph chn-halo', 0, 26, 'end')}`)}
         ${C.zones.lumen ? glyph('zl-lumen', `${lab('pH ≈ 6', 'chn-zone am-ph chn-halo', 0, -26, 'end')}${lab('lumen', 'chn-zone chn-halo', 0, 0, 'end')}`) : ''}
         ${Array.from({ length: N_H }, (_, j) => numH(`h${j}`, j + 1)).join('')}
+        ${C.cyclic ? `${Array.from({ length: N_X }, (_, j) => numH(`x${j}`, N_H + j + 1)).join('')}${glyph('x-lab', lab('cyclic electron flow', 'chn-in chn-halo am-cyc', 0, 0, 'start'))}${glyph('atp2f', ATP_TAG)}` : ''}
         ${[0, 1, 2].map(i => glyph(`adp${i}`, ADP_ROW)).join('')}${[0, 1].map(i => glyph(`atp${i}`, ATP_TAG)).join('')}${glyph('atp2', ATP_PART)}
         ${glyph('per-o2', lab(`per O₂: 4 from water + 8 at ${B6F} = 12 H⁺`, 'chn-in', 0, 0, 'middle'))}
         ${glyph('tick', `<text class="chn-in" x="0" y="0" text-anchor="middle">from water <tspan data-k="tk-w">0</tspan>/4 · at ${B6F} <tspan data-k="tk-b">0</tspan>/8</text>`)}
       </g></g>
       ${counterSvg()}
+      <g class="fig"><text data-k="qbig" class="am-qbig" x="800" y="620" text-anchor="middle" opacity="0">Who supplies the 2 missing H⁺?</text></g>
       ${cardSvg(P)}`,
 
     bind(stage) {
@@ -433,21 +454,29 @@ export function makeStaging(o: Opt): Staging {
         const dl = plen(lumen) / PASS.v;
         return { j, dst: CLOUD[i], lumen, up, start: tE(j) - dl, dl, slot: C.row ? rowSlot(Z, C.row, j) : C.exits[j] };
       });
+      // beat 4 with Close.cyclic: H⁺ 13 and 14 from b₆f's lumen side, up through ATP synthase to the row's next places
+      const cyc = !!C.cyclic, XSRC: V[] = [[330, 402], [330, 426]];
+      const xroutes = XSRC.map((src, j) => {
+        const e = C.exits[(N_H + j) % C.exits.length], lumen: V[] = [src, hpath[0]], up: V[] = C.handover ? hpath : [...hpath, e];
+        const dl = plen(lumen) / PASS.v;
+        return { j, src, lumen, up, start: B4C.X[j] - dl, dl, slot: C.row ? rowSlot(Z, C.row, N_H + j) : e };
+      });
+      const tend = cyc ? [TEND[0], TEND[1], TEND[2], B4C.end] : TEND;
 
       let last = '';
       return (beatIn, t) => {
         const b = Math.max(0, Math.min(3, Math.round(beatIn)));
-        const tt = Math.max(0, Math.min(t, TEND[b]));
+        const tt = Math.max(0, Math.min(t, tend[b]));
         const key = `${b}:${tt.toFixed(3)}`;
         if (key === last) return;
         last = key;
         const T = (n: number): number => (b === n ? tt : b > n ? 99 : -1);
-        const t1 = T(0), t3 = T(2), t4 = T(3);
+        const t1 = T(0), t3 = T(2), t4 = T(3), cyc4 = cyc && b === 3;
 
         /* ---- camera: the slide; left for the card (beat 2); into ATP synthase (beat 3); back to the slide (beat 4) */
         const zIn = mv(t3, B3.zoom, B3.zoomD), zOut = mv(t4, B4.zoom, B4.zoomD);
-        const cam = b === 0 ? B : b === 1 ? tween(B, B2, mv(tt, 0, B2T.camD)) : b === 2 ? tween(B2, Z, zIn) : tween(Z, B, zOut);
-        const zoom = b === 2 ? zIn : b === 3 ? 1 - zOut : 0, k = kOf(cam.s);
+        const cam = b === 0 ? B : b === 1 ? tween(B, B2, mv(tt, 0, B2T.camD)) : b === 2 ? tween(B2, Z, zIn) : cyc ? Z : tween(Z, B, zOut);
+        const zoom = b === 2 ? zIn : b === 3 ? (cyc ? 1 : 1 - zOut) : 0, k = kOf(cam.s);
         set(q('cam'), 'transform', tfStr(cam));
         const mk = (c: V): string => `matrix(${k.toFixed(4)},0,0,${k.toFixed(4)},${(c[0] * (1 - k)).toFixed(2)},${(c[1] * (1 - k)).toFixed(2)})`;
         texts.forEach(({ el, x, y }) => set(el, 'transform', mk([x, y])));
@@ -459,14 +488,14 @@ export function makeStaging(o: Opt): Staging {
         set(q('fs1'), 'offset', ext.toFixed(3));
         set(q('fadeL'), 'width', ext > 0 ? '862' : '860');
         op(q('slidecard'), 1 - zoom);
-        const zl = tw(t3, B3.labs, B3.labs + 0.25) * (1 - tw(t4, 0, 0.3));
+        const zl = tw(t3, B3.labs, B3.labs + 0.25) * (cyc ? 1 : 1 - tw(t4, 0, 0.3));
         put('zl-stroma', C.zones.stroma, k, zl);
         if (C.zones.lumen) put('zl-lumen', C.zones.lumen, k, zl);
 
         /* ---- the slide's H⁺ path, arrow and ATP give way while the story tells them, and come back at the end */
-        const flowsOp = b === 0 ? 1 - tw(tt, 0, B1.out) : b < 3 ? 0 : tw(tt, B4.flowsIn, B4.flowsIn + 0.5);
+        const flowsOp = b === 0 ? 1 - tw(tt, 0, B1.out) : b < 3 || cyc ? 0 : tw(tt, B4.flowsIn, B4.flowsIn + 0.5);
         flows.forEach(g => op(g, flowsOp));
-        const slideHOp = b === 0 ? 1 - tw(tt, 0, 0.3) : b < 3 ? 0 : tw(tt, B4.glyphs[0], B4.glyphs[1]);
+        const slideHOp = b === 0 ? 1 - tw(tt, 0, 0.3) : b < 3 || cyc ? 0 : tw(tt, B4.glyphs[0], B4.glyphs[1]);
         slideH.forEach(g => op(g, slideHOp));
         put('per-o2', PER_O2, k, b === 0 ? tw(tt, B1.ph, B1.ph + 0.3) : b === 1 ? 1 : b === 2 ? 1 - tw(tt, 0, 0.4) : 0);
 
@@ -476,16 +505,16 @@ export function makeStaging(o: Opt): Staging {
         op(q('c-atp'), b === 1 ? tw(tt, B2T.atp, B2T.atp + 0.3) : b === 2 ? 1 : 0);
 
         /* ---- the lumen grows more acidic (beat 1) and is back to the slide's at the end; the pH labels */
-        const acid = b === 0 ? tw(tt, B1.tint[0], B1.tint[1]) : b < 3 ? 1 : 1 - tw(tt, B4.tint[0], B4.tint[1]);
+        const acid = b === 0 ? tw(tt, B1.tint[0], B1.tint[1]) : b < 3 || cyc ? 1 : 1 - tw(tt, B4.tint[0], B4.tint[1]);
         op(q('acid'), acid);
         // under the slide's zone names, scaled with them; in the close view the lumen's stays (its name is in view), the
         // stroma's hands over to the close view's own name (the slide's is out of view)
-        const ph = b === 0 ? tw(tt, B1.ph, B1.ph + 0.3) : b === 1 ? 1 : b === 2 ? 1 : 1 - tw(tt, 0, 0.35);
-        put('ph-s', ZONE_S, k, b === 2 ? ph * (1 - tw(tt, 0.3, 0.7)) : ph);
+        const ph = b === 0 ? tw(tt, B1.ph, B1.ph + 0.3) : b === 1 ? 1 : b === 2 || cyc ? 1 : 1 - tw(tt, 0, 0.35);
+        put('ph-s', ZONE_S, k, b === 2 ? ph * (1 - tw(tt, 0.3, 0.7)) : cyc4 ? 0 : ph);
         put('ph-l', ZONE_L, k, ph);
 
         /* ---- the story's H⁺: into the lumen (beat 1); through ATP synthase to the stroma, one by one (beat 3) */
-        const gone = 1 - tw(t4, B4.glyphs[0], B4.glyphs[1]);
+        const gone = cyc ? 1 : 1 - tw(t4, B4.glyphs[0], B4.glyphs[1]);
         let leftW = 0, leftB = 0;
         routes.forEach(({ j, dst, lumen, up, start, dl, slot }) => {
           const src = srcOf(G, j);
@@ -513,6 +542,24 @@ export function makeStaging(o: Opt): Staging {
           if (b === 3) o = Math.min(o, gone);
           put(`h${j}`, at, sc, o);
         });
+        if (cyc) {
+          xroutes.forEach(({ j, src, lumen, up, start, dl, slot }) => {
+            let at: V = src, sc = k;
+            if (t4 > start) {
+              if (t4 < B4C.X[j]) at = along(lumen, (t4 - start) / dl);
+              else {
+                const v = (t4 - B4C.X[j]) / PASS.cross;
+                at = along(up, smooth(v));
+                sc = k * lerp(1, C.upScale ?? 1, smooth(v));
+                const w = (t4 - B4C.X[j] - PASS.cross) / 0.7;
+                if (w > 0) { at = lerpV(at, slot, smoother(w)); sc = k * lerp(1, 0.75, smooth(w)); }
+              }
+            }
+            put(`x${j}`, at, sc, b === 3 ? tw(tt, B4C.show + 0.15 * j, B4C.show + 0.15 * j + 0.3) : 0);
+            op(q(`x${j}n`), 1);
+          });
+          put('x-lab', [318, 384], k, b === 3 ? tw(tt, B4C.lab, B4C.lab + 0.3) : 0);
+        }
         set(q('tk-w'), 'text', String(leftW));
         set(q('tk-b'), 'text', String(leftB));
         put('tick', TICK, k, b === 0 ? tw(tt, 0.1, 0.35) : b === 1 ? 1 : b === 2 ? 1 - tw(tt, 0, 0.4) : 0);
@@ -523,31 +570,43 @@ export function makeStaging(o: Opt): Staging {
           put(`adp${m}`, lerpV(C.adpFrom[m], C.sites[m], smoother(ua)), k * lerp(1, 0.7, smooth(ua)), tw(ua, -0.25, 0) * (1 - tw(ua, 0.75, 1)));
           if (m === 2) continue;
           const r = atpAt[m], ub = (t3 - r) / 0.8;
-          put(`atp${m}`, lerpV(C.sites[m], C.atpTo[m], smoother(ub)), k * lerp(0.7, 1, smooth(ub)), tw(ub, 0, 0.15) * (b === 3 ? 1 - tw(tt, 0, 0.35) : 1));
+          put(`atp${m}`, lerpV(C.sites[m], C.atpTo[m], smoother(ub)), k * lerp(0.7, 1, smooth(ub)), tw(ub, 0, 0.15) * (b === 3 && !cyc ? 1 - tw(tt, 0, 0.35) : 1));
         }
         {
           // the third ATP, part made, at its site in the head
           const a0 = adpAt[2] - 0.25, u = clamp01((t3 - a0) / Math.max(0.1, partEnd - a0));
-          put('atp2', C.sites[2], k * 0.85, t3 < 0 ? 0 : tw(t3, a0 - 0.1, a0 + 0.15) * (b === 3 ? 1 - tw(tt, 0, 0.35) : 1));
-          set(q('pfill'), 'width', f1(TAG_W * (4 / 7) * u));
+          // with Close.cyclic, H⁺ 13 and 14 make the rest of it in beat 4; then it leaves as a whole ATP
+          const fill = cyc4 ? 4 / 7 + (3 / 7) * clamp01((nCyclic(tt) - N_H) / N_X) : (4 / 7) * u;
+          const fade = b !== 3 ? 1 : cyc ? 1 - tw(tt, B4C.atp, B4C.atp + 0.15) : 1 - tw(tt, 0, 0.35);
+          put('atp2', C.sites[2], k * 0.85, t3 < 0 ? 0 : tw(t3, a0 - 0.1, a0 + 0.15) * fade);
+          set(q('pfill'), 'width', f1(TAG_W * fill));
+          if (cyc) {
+            const ub = (t4 - B4C.atp) / 0.8;
+            put('atp2f', lerpV(C.sites[2], C.atpTo[2], smoother(ub)), k * lerp(0.85, 1, smooth(ub)), b === 3 ? tw(ub, 0, 0.15) : 0);
+          }
         }
 
         /* ---- the counter */
         // an H⁺ counts once the rotor has taken it most of its 1/14 turn
-        const n = b === 2 ? Math.max(0, prog(tt)) : b > 2 ? N_H : 0;
-        const nDone = Math.min(N_H, Math.floor(n + 0.2)), done = t3 >= partEnd + 0.15;
+        const n = b === 2 ? Math.max(0, prog(tt)) : cyc4 ? nCyclic(tt) : b > 2 ? N_H : 0;
+        const nDone = Math.min(N_C, Math.floor(n + 0.2)), done = t3 >= partEnd + 0.15;
         const atps = atpAt.filter(r => t3 >= r).length;
-        op(q('ctr'), b === 2 ? tw(tt, PASS.counter, PASS.counter + 0.3) : b === 3 ? 1 - tw(tt, 0, 0.35) : 0);
+        op(q('ctr'), b === 2 ? tw(tt, PASS.counter, PASS.counter + 0.3) : b === 3 ? (cyc ? 1 : 1 - tw(tt, 0, 0.35)) : 0);
         set(q('c-h'), 'text', String(nDone));
-        set(q('c-t'), 'text', done ? '6/7' : `${nDone}/14`);
-        set(q('c-a'), 'text', done ? '≈ 2.6' : String(atps));
+        set(q('c-t'), 'text', nDone >= N_C ? '1' : nDone > N_H ? `${nDone}/14` : done ? '6/7' : `${nDone}/14`);
+        set(q('c-a'), 'text', cyc4 && tt >= B4C.atp ? '3' : done ? '≈ 2.6' : String(atps));
         const r2 = t3 < 0 ? 0 : tw(t3, ROW2, ROW2 + 0.35);
         op(q('c-row2'), r2);
+        op(q('c-miss'), cyc4 ? 1 - clamp01((n - N_H) / N_X) : 1);
+        op(q('c-short'), cyc4 ? 1 - tw(tt, B4C.row, B4C.row + 0.3) : 1);
+        op(q('c-fill'), cyc4 ? tw(tt, B4C.row + 0.2, B4C.row + 0.5) : 0);
+        // the big question (beat 3); it gives way as beat 4 answers it
+        op(q('qbig'), b === 2 ? tw(tt, QBIG, QBIG + 0.4) : b === 3 ? 1 - tw(tt, cyc ? B4C.lab : 0, (cyc ? B4C.lab : 0) + 0.4) : 0);
         set(q('c-box'), 'height', f1(lerp(CTR.h, CTR.h2, r2)));
         set(q('c-dial'), 'd', dialPath([CTR.x + CX.dial, CTR.y + CTR.h / 2], n / N_C));
 
         /* ---- the staging's close view: the rotor, its names and glows */
-        drawClose(t3, k, zoom);
+        drawClose(cyc4 ? B3END + tt : t3, k, zoom);
 
         /* ---- NADPH lights beside ATP */
         const nad = tw(t4, B4.nadph, B4.nadph + 0.5);

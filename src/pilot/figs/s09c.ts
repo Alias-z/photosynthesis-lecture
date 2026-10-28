@@ -10,8 +10,8 @@ export const PLATE: PlateText = {
   lead: 'Light at photosystem I lifts the electrons a second time, high enough to make NADPH.',
   points: [
     { claim: 'Second light reaction.', text: 'Light lifts the electron again, to ferredoxin; plastocyanin refills PSI' },
-    { claim: 'NADPH.', text: 'FNR makes NADPH in the stroma', eq: 'NADP⁺ + 2 e⁻ + H⁺ → NADPH' },
-    { claim: 'Photosystem I vs photosystem II.', text: 'Work in series; PSI also absorbs far-red (> 700 nm), so shade favours PSI', eq: 'Chl <i>a</i>/<i>b</i>: PSI–LHCI ≈ 11 · PSII–LHCII ≈ 2<br>per O₂: 4 e⁻ × 2 photons (1 at PSII + 1 at PSI) = 8 photons' },
+    { claim: 'NADPH.', text: 'Ferredoxin–NADP⁺ reductase (FNR) makes NADPH in the stroma', eq: 'NADP⁺ + 2 e⁻ + H⁺ → NADPH' },
+    { claim: 'Photosystem I vs photosystem II.', text: 'Work in series; PSI also absorbs far-red (> 700 nm)', eq: 'per O₂: 4 e⁻ × 2 photons (1 at PSII + 1 at PSI) = 8 photons' },
     { claim: 'Per O₂.', text: '', eq: ledger([['photosystem I (4 photons)', '4', '0'], ['ferredoxin (4 Fd)', '4', '0'], ['FNR → 2 NADPH', '4', '−2 stroma']]) },
   ],
   refs: [

@@ -448,7 +448,7 @@ export function rubEvent(a: Api, t: number, ev: RubEv, k: RubKeys): { tm: number
 /** Scale of a molecule resting in a pile. */
 export const PILE = 0.8;
 /** The camera on the cycle (cb1, cb3): the stroma from the thylakoid edge to TPT, the panel's room at the bottom right. */
-export const CYCLE_VIEW: Cam = { s: 1.4, c: [366, 280], at: [560, 370] };
+export const CYCLE_VIEW: Cam = { s: 1.4, c: [366, 268], at: [560, 370] }; // 12 up: the supply note fits (R2)
 /** The piles: 3-PGA in a column over its name, triose phosphate in 2 columns over its place, RuBP in a column. */
 export const PGA_AT = (i: number): V => add(G.pga, [-78 + 74 * (i % 2), 2 - 24 * Math.floor(i / 2)]);
 export const TP_AT = (j: number): V => add(G.tp, [-40 + 60 * (j % 2), -14 - 22 * Math.floor(j / 2)]);

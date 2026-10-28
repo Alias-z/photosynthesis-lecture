@@ -276,14 +276,14 @@ export function earthSvg(p: string, x: number, y: number, w: number): { svg: str
   };
 }
 const AIR = { href: sifAirJpg, w: 1600, h: 843 };
-/** Porcar-Castell et al. 2021, Fig. 3e: crop plots from the air, SIF at 760 nm (panel letter and colour bar left out). */
+/** Porcar-Castell et al. 2021, Fig. 3e: apple orchard plots from the air, SIF at 760 nm (panel letter and colour bar left out). */
 export function fieldSvg(p: string, x: number, y: number, w: number): { svg: string; at: (u: number, v: number) => V; h: number } {
   const a = shot(`${p}-air`, AIR, x, y, w, { win: [772, 445, 703, 397], rx: 12 });
   return {
     at: a.at, h: a.h,
     svg: `${a.svg}
       <rect class="ppa-box" x="${x + 16}" y="${y + 16}" width="300" height="74" rx="12"/>
-      ${lab('crop plots from the air', 'ppa-l', x + 32, y + 46)}${lab('SIF at 760 nm', 'ppa-s', x + 32, y + 74)}
+      ${lab('apple orchard plots from the air', 'ppa-l', x + 32, y + 46)}${lab('SIF at 760 nm', 'ppa-s', x + 32, y + 74)}
       <rect class="ppa-box" x="${x + 16}" y="${f1(y + a.h - 40)}" width="420" height="26" rx="8"/>
       ${lab('Porcar-Castell et al. 2021, Nat. Plants 7: 998, Fig. 3e · © Springer Nature', 'ppa-cr', x + 26, y + a.h - 22)}`,
   };

@@ -9,6 +9,8 @@ import { C3, MPER, PORE, SPOT, type LPart } from '../figs/leaf-schema';
 import { GLYPH } from './dk1-common';
 import { LF11 } from './beats-lf';
 import { add, ease, flash, glide, lerp, makeLeafStaging, panelShow, panelSvg, T, type Actor, type Api, type Row, type V } from './lf-common';
+import { keyLines } from './stage-keys';
+import type { Staging } from './types';
 
 const S = SPOT, r = S.mRub, P: V = [MPER[0], MPER[1]], M = S.mito;
 const ACTORS: Actor[] = [
@@ -35,8 +37,7 @@ const LOST = (i: number): V[] => [add(M, [-10, 20]), ...C3.lost.slice(1, -1), [1
 const ROWS: Row[] = [
   { k: 'r1', h: 38, html: '<tspan class="lfa-e">carboxylation:</tspan> CO₂ + RuBP → 2 3-PGA' },
   { k: 'r2', h: 38, html: '<tspan class="lfa-e">photorespiration:</tspan> 2 O₂ → … → 1 CO₂ released' },
-  { k: 'r3', h: 40, html: 'refixed inside the cell: 26–29 % (rice, wheat)', cls: 'lfa-sum' },
-  { k: 'r4', h: 38, html: '30 °C: ≈ 29 % less CO₂ fixed per photon (air vs 2 % O₂)', cls: 'dk-pc' },
+  { k: 'r3', h: 40, html: 'refixed inside the cell: 24–38 % (rice, wheat)', cls: 'lfa-sum' },
 ];
 const PX = 742, PY = 22, PW = 836;
 /** A thermometer on the stage (its fill set by frame). */
@@ -85,7 +86,7 @@ function frame(a: Api, beat: number, t: number): void {
   const fh = 30 + 3.2 * (temp - 25);
   a.attr('th-f', 'y', (344 - fh).toFixed(1)); a.attr('th-f', 'height', fh.toFixed(1));
   const v = (b: number, t0: number): number => (beat > b ? 1 : beat === b ? ease(t, t0, t0 + 0.4) : 0);
-  panelShow(a, 'panel', ROWS, { r1: v(0, 3.3), r2: v(1, 5.2), r3: v(2, 4.0), r4: v(3, 2.2) });
+  panelShow(a, 'panel', ROWS, { r1: v(0, 3.3), r2: v(1, 5.2), r3: v(2, 4.0) });
 }
 
 const LIT: LPart[][] = [
@@ -95,7 +96,7 @@ const LIT: LPart[][] = [
   ['m-cp', 'm-rub', 'o2', 'm-mito'],
 ];
 
-export const STAGING = makeLeafStaging({
+const BASE = makeLeafStaging({
   id: 'lf11m',
   name: 'm · In the leaf section',
   note: 'C₃ in the mesophyll cell, one fixed framing: CO₂ 1 to RuBisCO; O₂ 1–2 → glycolate → glycine → CO₂ released in the mitochondrion; of 4 photorespired CO₂, 1 refixed, 3 out; the leaf warms and oxygenation rises',
@@ -108,3 +109,13 @@ export const STAGING = makeLeafStaging({
   lit: LIT,
   frame,
 });
+
+/** The key lines on the stage (lecturer, 29 Oct 2026): each beat's take-home and the closing question. */
+export const STAGING: Staging = { ...BASE, keys: [
+  ...keyLines(0, ['RuBisCO fixes CO₂ into 3-PGA'], 1160, 540),
+  ...keyLines(1, ['Photorespiration releases CO₂'], 1160, 540),
+  ...keyLines(2, ['Chloroplasts in front refix CO₂'], 1160, 540),
+  ...keyLines(3, ['As the leaf warms, oxygenation rises'], 1160, 540),
+  // centred, over the empty vacuole of the cell it asks about, clear of the chloroplast and its label
+  ...keyLines(3, ['Could a leaf release', 'photorespired CO₂ where', 'more RuBisCO can refix it?'], 800, 538, { size: 44, t0: 3.0 }),
+] };

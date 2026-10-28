@@ -5,6 +5,7 @@
 import { camAt, clock, fd, figCard, reveal, setters, slideView, tfStr, view, type Move } from './cr-kit';
 import { drawFinding, drawKeeling, FIG, findingsSvg, GREENHOUSE, KEEL_D, keelingPanel, kimballClip } from './cr14-common';
 import type { Staging } from './types';
+import { keyLines } from './stage-keys';
 
 const P = 'c14d';
 const KP = { x: 50, y: 40, w: 840, h: 660 };
@@ -19,9 +20,11 @@ const HOME = view(KP.x + KP.w / 2, 370, 1600);
 const MOVES: Move[] = [
   { beat: 1, t0: 0, d: 1.0, to: view(800, 370, 1600) },
   { beat: 2, t0: 0, d: 1.2, to: slideView(V9.x, V9.y) },
+  // the table a little smaller and lower for its last row: the closing question sits centred above it
+  { beat: 4, t0: 0, d: 1.0, to: { s: 0.9, t: [800 - 0.9 * (V9.x + 400), 430 - 0.9 * (V9.y + 300)] } },
 ];
 
-export const STAGING: Staging = {
+const BASE: Staging = {
   id: 'd',
   name: 'D · C₃ and C₄ side by side',
   note: 'Keeling curve and Kimball 1983, then the C₃ / C₄ table (v9) fills in row by row: yield and stomata, RuBisCO, grain.',
@@ -54,3 +57,9 @@ export const STAGING: Staging = {
     };
   },
 };
+
+/** The closing question on the stage, centred above the grain once the motion has finished (lecturer, 29 Oct 2026: on
+ *  the stage only the closing question). */
+export const STAGING: Staging = { ...BASE, keys: [
+  ...keyLines(4, ['More CO₂ raised photosynthesis:', 'what else sets how much grain a field yields?'], 800, 57, { size: 44, t0: 3.0 }),
+] };

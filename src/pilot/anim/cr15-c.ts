@@ -11,6 +11,7 @@ import {
 } from './cr-kit';
 import { FIG, IMG, squaresAnim } from './cr15-common';
 import type { Staging } from './types';
+import { keyLines } from './stage-keys';
 
 const P = 'c15c';
 const VX = [0, 1800, 3600, 5400, 7200, 9300];
@@ -55,7 +56,7 @@ const MOVES: Move[] = [
   { beat: 4, t0: 3.6, d: 1.0, to: slideView(END.x, END.y) },
 ];
 
-export const STAGING: Staging = {
+const BASE: Staging = {
   id: 'c',
   name: 'C · Real images first',
   note: 'SoyFACE plot + squares (v9); the published cascade stepped down; the chain (v3 → v4); bypass tobacco; ear and endosperm SEM.',
@@ -133,3 +134,9 @@ export const STAGING: Staging = {
     };
   },
 };
+
+/** The closing question on the stage, centred under the chain once the motion has finished (lecturer, 29 Oct 2026: on
+ *  the stage only the closing question). */
+export const STAGING: Staging = { ...BASE, keys: [
+  ...keyLines(4, ['Which link of the chain would you improve?'], 800, 600, { size: 44, t0: 3.0 }),
+] };

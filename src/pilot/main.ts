@@ -13,6 +13,7 @@ import { hookSet, hooksFor } from './hooks';
 import { hooksView } from './hooksView';
 import { installPapers } from './papers';
 import { pickStore } from './picks';
+import { statusStore } from './status';
 import { LEADS, PLATES, fitPage, leadHtml, lectureHtml, plateHtml } from './plates';
 import { boardsFor, refBoard } from './refs';
 import { refsView } from './refsView';
@@ -32,8 +33,11 @@ const VIEWS = [
 ] as const;
 let lectureMode = false;
 
+/** A version's label: its place in the list, 1, 2, 3 …, then its name without a letter id in front ("k · …", "m1 · …")
+ *  (lecturer, 29 Oct 2026: "stop using letters; just numbers"); the ids stay internal, for URLs and picks. */
+const vLabel = (x: { name: string }, i: number): string => `${i + 1} · ${x.name.replace(/^[A-Za-z]{1,3}\d{0,2}[a-z]?\s*·\s*/, '')}`;
 const seg = (group: string, items: ReadonlyArray<{ id: string; name: string }>, on = items[0].id): string =>
-  `<div class="seg" data-group="${group}">${items.map(x => `<button type="button" data-v="${x.id}" aria-pressed="${x.id === on}">${x.name}</button>`).join('')}</div>`;
+  `<div class="seg" data-group="${group}">${items.map((x, i) => `<button type="button" data-v="${x.id}" aria-pressed="${x.id === on}">${vLabel(x, i)}</button>`).join('')}</div>`;
 
 /** Only a slide with a lead page (and more than that page) has two versions; on every other slide lecture and handout
  *  are the same page, so it shows one page with its play button and no switch (lecturer, 26 Oct 2026). */
@@ -67,6 +71,7 @@ app.innerHTML = `
     <h1>Style pilot</h1>
     <p>A slide with a lead page has a lecture version (the lead page, shown live) and a handout version (the study page, which the PDF keeps). Every other slide is one page, the same live and in the PDF; its play button shows only live.</p>
     <p>Double-click a page to pick the variant shown; double-click again to unpick. Picked variants get a ✓ on their button. Picks and notes save automatically.</p>
+    <div class="st-sum" aria-live="polite"></div>
     <div class="bar-r"><span>View</span>${seg('view', VIEWS, 'picking')}<button type="button" class="ref-index" data-refs-index>References</button><button type="button" class="ref-index hook-index" data-hooks-index>Questions</button></div>
   </header>
   <span class="pick-status" aria-live="polite"></span>
@@ -75,13 +80,13 @@ app.innerHTML = `
     <div class="plates">${PLATES.map((p, i) => {
       const lead = LEADS[p.n];
       return `<section class="slide" data-s="${i}" data-mode="handout">
-        <div class="slide-bar"><h3>Slide ${p.n}${p.status === 'draft' ? ' · draft' : ''}${p.leadOnly ? ' · lecture page only' : ''}</h3><div class="slide-ctl">${twoVersions(p) ? seg(`mode-${i}`, MODES, 'handout') : ''}</div></div>
+        <div class="slide-bar"><h3>Slide ${i + 1}${p.status === 'draft' ? ' · draft' : ''}${p.leadOnly ? ' · lecture page only' : ''}</h3><div class="slide-ctl"><span class="st-badge" data-st="${p.n}"></span><button type="button" class="st-freeze" data-freeze="${p.n}">❄ Freeze</button>${twoVersions(p) ? seg(`mode-${i}`, MODES, 'handout') : ''}</div></div>
         <div class="var-rows">
           ${lead && lead.VARIANTS.length > 1 ? `<div class="var-row" data-for="lecture"><span>Lecture</span>${seg(`lead-${i}`, lead.VARIANTS)}</div>` : ''}
           ${p.variants.length > 1 && !p.leadOnly ? `<div class="var-row" data-for="${lead ? 'handout' : 'both'}"><span>${lead ? 'Handout' : 'Figure'}</span>${seg(`variant-${i}`, p.variants)}</div>` : ''}
         </div>
-        ${lead ? `<div class="lead-part">${frame(i, 'lead')}${noteBox(`lead-${p.n}`, `slide ${p.n} lecture page`)}</div>` : ''}
-        ${p.leadOnly ? '' : `${frame(i, 'handout')}${noteBox(p.pick ?? p.n, `slide ${p.n}`)}`}
+        ${lead ? `<div class="lead-part">${frame(i, 'lead')}${noteBox(`lead-${p.n}`, `slide ${i + 1} lecture page`)}</div>` : ''}
+        ${p.leadOnly ? '' : `${frame(i, 'handout')}${noteBox(p.pick ?? p.n, `slide ${i + 1}`)}`}
       </section>`;
     }).join('')}</div>
   </section>
@@ -191,6 +196,30 @@ function openOnPicks(): void {
   applyModes();
   ANIMATIONS.forEach((_, i) => { if (soloAnim < 0 || i === soloAnim) showAnim(i); });
 }
+// Status (lecturer, 29 Oct 2026): a freeze button on each slide; frozen slides are left alone; a slide the assistant is
+// building says so. The summary at the top lists both, by slide number.
+const status = statusStore(syncStatus);
+function syncStatus(): void {
+  const frozen: number[] = [], building: string[] = [];
+  PLATES.forEach((p, i) => {
+    const fz = status.frozen(p.n), bd = status.building(p.n);
+    if (fz) frozen.push(i + 1);
+    if (bd) building.push(`${i + 1} (${bd})`);
+    const sec = app.querySelector<HTMLElement>(`.plates .slide[data-s="${i}"]`);
+    sec?.classList.toggle('is-frozen', fz);
+    sec?.classList.toggle('is-building', !!bd);
+    const badge = sec?.querySelector<HTMLElement>('.st-badge');
+    if (badge) badge.textContent = fz ? '❄ frozen' : bd ? `🔧 being built: ${bd}` : '';
+    const btn = sec?.querySelector<HTMLElement>('.st-freeze');
+    if (btn) btn.textContent = fz ? 'Unfreeze' : '❄ Freeze';
+  });
+  const sum = app.querySelector<HTMLElement>('.st-sum');
+  if (sum) sum.innerHTML = `<b>❄ Frozen:</b> ${frozen.length ? frozen.join(', ') : 'none yet'} · <b>🔧 Being built:</b> ${building.length ? building.join('; ') : 'nothing'}`;
+}
+app.addEventListener('click', e => {
+  const n = (e.target as Element).closest<HTMLElement>('.st-freeze')?.dataset.freeze;
+  if (n) status.toggle(n);
+});
 function syncPicks(): void {
   PLATES.forEach((p, i) => {
     for (const [group, key] of [[`variant-${i}`, p.pick ?? p.n], [`lead-${i}`, `lead-${p.n}`]]) {
@@ -322,7 +351,7 @@ function play(key: string): void {
   if (playing < 0) return;
   const a = ANIMATIONS[playing];
   (player.querySelector('.player-seg') as HTMLElement).innerHTML = a.stagings
-    .map(x => `<button type="button" data-v="${x.id}" class="${store.has(`anim-${a.key}`, x.id) ? 'picked' : ''}">${x.name}</button>`).join('');
+    .map((x, j) => `<button type="button" data-v="${x.id}" class="${store.has(`anim-${a.key}`, x.id) ? 'picked' : ''}">${vLabel(x, j)}</button>`).join('');
   player.hidden = false;
   fitPlayer();
   mountPlaying(playStaging(playing));

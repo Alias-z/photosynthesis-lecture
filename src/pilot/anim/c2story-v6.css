@@ -1,0 +1,40 @@
+/* C2 story, staging v6: molecules at the active site (c2story-v6.ts). Prefix .c6-. Strip palette (cell-schema.css,
+   chain.css): stroma #f4f3ea, lumen #e3ecf1, lipid heads #d8bf86; oxygenation rust #9a4426 (rubside.css). */
+.c6 .c6-paper{fill:#fbfaf6}
+.c6 .c6-stroma{fill:#f4f3ea;opacity:.85}
+.c6 .c6-lumen{fill:#e3ecf1;opacity:.85}
+.c6 .c6-card{fill:#fdfcf8;stroke:rgba(120,100,60,.22);stroke-width:1.2}
+.theme-editorial .c6 text.c6-halo{paint-order:stroke;stroke:#f5f4ec;stroke-width:5px;stroke-linejoin:round}
+/* era card */
+.theme-editorial .c6 text.c6-eh{font-size:22px;font-weight:700;fill:#141413;font-variant-numeric:tabular-nums}
+.theme-editorial .c6 text.c6-es{font-size:17px;font-weight:700;fill:#9a4426}
+.theme-editorial .c6 text.c6-rl{font-size:17px;font-weight:500;fill:#3d3d3a}
+.theme-editorial .c6 text.c6-rv{font-size:17px;font-weight:700;fill:#141413;font-variant-numeric:tabular-nums}
+.theme-editorial .c6 text.c6-sl{font-size:12.5px;fill:#6b6a64}
+.c6 .c6-spk{fill:none;stroke:#2b2a27;stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round}
+.c6 .c6-spb{fill:none;stroke:#d8d5cb;stroke-width:1.2}
+.c6 .c6-mk{fill:none;stroke:#9a4426;stroke-width:1.8}
+.c6 .c6-mkd{fill:#9a4426;stroke:#fdfcf8;stroke-width:2}
+/* tally */
+.theme-editorial .c6 text.c6-tw{font-size:22px;font-weight:600;fill:#3d3d3a}
+.theme-editorial .c6 tspan.c6-tn{font-size:40px;font-weight:800;fill:#9a4426;font-variant-numeric:tabular-nums}
+/* RuBisCO card */
+.theme-editorial .c6 text.c6-ch{font-size:19px;font-weight:700;fill:#141413}
+.theme-editorial .c6 text.c6-cl{font-size:15px;font-weight:600;fill:#3d3d3a}
+.c6 .c6-bart{fill:#ece9e0}.c6 .c6-bars{fill:#3b6e8f}.c6 .c6-bark{fill:#8a877d}
+/* scene */
+.theme-editorial .c6 text.c6-mn{font-size:18px;font-weight:700;fill:#141413}
+.theme-editorial .c6 text.c6-mo{fill:#9a4426}
+.theme-editorial .c6 text.c6-sh{font-size:17px;fill:#4f7d70}
+.theme-editorial .c6 text.c6-zone{font-size:19px;font-weight:600;fill:#8a877d;letter-spacing:.03em}
+.theme-editorial .c6 text.c6-cr{font-size:12px;fill:#7d7a70}
+.c6 .c6-shell{fill:none;stroke:#d5e3dc;stroke-width:20;stroke-linejoin:round}
+.c6 .c6-shellh{fill:#e4eee9;stroke:#86ab9f;stroke-width:1.4;stroke-linejoin:round}
+/* clippings (beat 8; as version 2) */
+.c6 .c6-cpaper{fill:#f3eddc;stroke:#d6cdb6;stroke-width:1}.c6 .c6-ctex{stroke:none}
+.c6 .c6-crule{fill:none;stroke:#3d3a33;stroke-width:1.2}.c6 .c6-crule1{fill:none;stroke:#8a877d;stroke-width:1.2}
+.theme-editorial .c6 text.c6-cyear{font-family:Newsreader,Georgia,serif;font-size:16px;font-weight:500;letter-spacing:2px;fill:#3d3a33}
+.theme-editorial .c6 text.c6-chead{font-family:Newsreader,Georgia,serif;font-size:27px;font-weight:500;fill:#141413}
+.theme-editorial .c6 text.c6-cbody{font-family:Newsreader,Georgia,serif;font-size:17px;fill:#2b2a27}
+.theme-editorial .c6 text.c6-csrc{font-size:12.5px;fill:#6b6a64}
+.theme-editorial .c6 .c6-csub{font-family:Inter,"Helvetica Neue",Arial,sans-serif;font-size:15px}

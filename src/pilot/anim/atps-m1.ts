@@ -4,7 +4,7 @@
 // synthase. The story, the timing, the card and the counter: atpsm-common.ts.
 import atpsHref from '../../assets/chain/atps.webp';
 import { f1, type Tf, type V } from './antenna-common';
-import { B3, glowAt, glyph, lab, leader, makeStaging, nPassed, type Close, type Geo } from './atpsm-common';
+import { B3, B3_END, glowAt, glyph, lab, leader, makeStaging, nCyclic, nPassed, type Close, type Geo } from './atpsm-common';
 
 /** ATP synthase, close: figure x ≈ 313–1113 (ATP synthase 640–776 near the middle), y 90–460 (head to the lumen's floor). */
 const Z: Tf = { s: 2.0, t: [790 - 708 * 2.0, -90 * 2.0] };
@@ -66,7 +66,8 @@ const close: Close = {
       op(q('g-rotor'), t3 < 0 || t3 > 50 ? 0 : 0.55 * glowAt(t3, B3.rotor + 0.1, 1.0));
       op(q('g-head'), t3 < 0 || t3 > 50 ? 0 : 0.5 * glowAt(t3, B3.head + 0.1, 1.0));
       // the rotor: 14 c-subunits; it moves on by 1/14 turn with each H⁺ that crosses
-      const ang = (2 * Math.PI * nPassed(Math.max(0, t3))) / N_C;
+      // in beat 4 (cyclic) t3 runs on past beat 3's end: H⁺ 13 and 14 turn the rotor to 1 full turn
+      const ang = (2 * Math.PI * (t3 > B3_END ? nCyclic(t3 - B3_END) : nPassed(Math.max(0, t3)))) / N_C;
       op(q('stripes'), zv);
       for (let i = 0; i < N_C; i++) band(`cs${i}`, ring, ang + (i * 2 * Math.PI) / N_C, 1.5, 1);
       band('cm', ring, ang + Math.PI / N_C - 0.9, (2 * Math.PI * ring.r) / N_C - 1.5, 1);
@@ -75,11 +76,12 @@ const close: Close = {
   },
   path: g => [[g.path[0][0] + 6, g.path[0][1] + 20], ...g.path],
   exits: Array.from({ length: 14 }, (_, j) => [656 + 9 * Math.sin(j * 2.4), 236 + 9 * Math.cos(j * 2.4)] as V),
-  row: { x0: 200, y: 54, dx: 30 },
+  row: { x0: 140, y: 54, dx: 30 },
   adpFrom: [[846, 170], [840, 158], [834, 170]],
   sites: [[746, 194], [714, 170], [690, 196]],
   atpTo: [[904, 200], [904, 236], [904, 272]],
   zones: { stroma: [1092, 246] },
+  cyclic: true,
 };
 
 export const STAGING = makeStaging({

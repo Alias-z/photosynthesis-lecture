@@ -62,7 +62,7 @@ export function keelingPanel(p: string, x: number, y: number, w: number, h: numb
     <defs><clipPath id="${p}-cl"><rect data-k="${p}-rev" x="${f1(x0)}" y="${f1(y0 - 20)}" width="0" height="${f1(y1 - y0 + 40)}"/></clipPath></defs>
     <path class="cra-co2" d="${d}" clip-path="url(#${p}-cl)"/>
     <circle data-k="${p}-dot" class="cra-dot" cx="${f1(X(CO2_FROM))}" cy="${f1(Y(CO2_MONTHLY[0]))}" r="10"/>
-    <rect class="cra-box" x="${f1(rx)}" y="${f1(ry)}" width="250" height="122" rx="14"/>
+    <rect class="cra-box" x="${f1(rx)}" y="${f1(ry)}" width="250" height="122" rx="14"/>${T(rx + 4, ry - 18, 'mean of 12 months', 'cra-s')}
     <text data-k="${p}-yr" class="cra-big" x="${f1(rx + 22)}" y="${f1(ry + 52)}">${CO2_FROM}</text>
     <text data-k="${p}-ppm" class="cra-big cra-red" x="${f1(rx + 22)}" y="${f1(ry + 104)}">${CO2_ANNUAL[0].toFixed(0)} ppm</text>
     ${T(x + w - 20, y + h - 16, 'data: NOAA Global Monitoring Laboratory &amp; Scripps Institution of Oceanography', 'cra-crd', 'end')}`;

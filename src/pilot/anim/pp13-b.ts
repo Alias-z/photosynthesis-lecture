@@ -44,7 +44,7 @@ function roomSvg(): string {
     <circle cx="${LEAFC[0]}" cy="${LEAFC[1]}" r="${LEAF_R * 1.6}" fill="#2b2a27" opacity=".55"/>
     <defs><radialGradient id="${P}-glow"><stop offset="0" stop-color="#ff5a3a" stop-opacity=".9"/><stop offset=".55" stop-color="#e2482c" stop-opacity=".55"/><stop offset="1" stop-color="#e2482c" stop-opacity="0"/></radialGradient></defs>
     <g data-k="glow" opacity="0" display="none"><circle cx="${LEAFC[0]}" cy="${LEAFC[1]}" r="${LEAF_R * 1.5}" fill="url(#${P}-glow)"/>${leafSvg(LEAFC[0], LEAFC[1], LEAF_R, 0, 'p13-redleaf')}</g>
-    ${lab('dark-kept leaf', 'p13-w', LEAFC[0], y + h - 20, 'middle')}
+    ${lab('dark-adapted leaf', 'p13-w', LEAFC[0], y + h - 20, 'middle')}
     <g data-k="l-glow" opacity="0" display="none">${lab('red glow', 'p13-wr', LEAFC[0] + 108, LEAFC[1] - 92)}</g>`;
 }
 

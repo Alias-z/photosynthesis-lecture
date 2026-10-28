@@ -10,6 +10,7 @@ import {
 } from './cr-kit';
 import { FIG, IMG } from './cr15-common';
 import type { Staging } from './types';
+import { keyLines } from './stage-keys';
 
 const P = 'c15d';
 const L = 60, R = 860, W = 680;
@@ -28,7 +29,7 @@ const CK = 4.2, CY = 150, CDY = 88;
 // beat 4: one plant of each (Fig. 3A, image pixels): the unmodified plant on the left, a bypass plant (AP3 with RNAi) on the right
 const PLANTS = [{ win: [24, 96, 168, 180], name: 'unmodified' }, { win: [604, 70, 168, 196], name: 'with bypass' }];
 
-export const STAGING: Staging = {
+const BASE: Staging = {
   id: 'd',
   name: 'D · Pairs side by side',
   note: 'One sheet, two panels: sunlight vs seed (to scale); C₃ vs C₄ cascade; the chain (v4); unmodified vs bypass tobacco; source vs sink.',
@@ -135,3 +136,9 @@ export const STAGING: Staging = {
     };
   },
 };
+
+/** The closing question on the stage, centred under the chain once the motion has finished (lecturer, 29 Oct 2026: on
+ *  the stage only the closing question). */
+export const STAGING: Staging = { ...BASE, keys: [
+  ...keyLines(4, ['Which link of the chain would you improve?'], 800, 600, { size: 44, t0: 3.0 }),
+] };

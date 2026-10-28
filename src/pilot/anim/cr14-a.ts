@@ -11,6 +11,7 @@ import {
   maskPills,
 } from './cr14-common';
 import type { Staging } from './types';
+import { keyLines } from './stage-keys';
 
 const P = 'c14a';
 // world layout (stage units)
@@ -29,10 +30,11 @@ const MOVES: Move[] = [
   { beat: 1, t0: 0, d: 1.0, to: view(800, 370, 1600) },
   { beat: 2, t0: 0, d: 1.2, to: slideView(V1.x, V1.y) },
   { beat: 3, t0: 0, d: 1.3, to: slideView(V3.x, V3.y, V3.k) },
-  { beat: 4, t0: 0, d: 1.6, to: slideView(V5.x, V5.y) },
+  // the grain card a little smaller and lower than on the slide: the closing question sits centred above it
+  { beat: 4, t0: 0, d: 1.6, to: { s: 0.9, t: [800 - 0.9 * (V5.x + 400), 430 - 0.9 * (V5.y + 300)] } },
 ];
 
-export const STAGING: Staging = {
+const BASE: Staging = {
   id: 'a',
   name: 'A · Zoom on the slide figures',
   note: 'Keeling curve and Kimball 1983, then the slide figures: FACE ring (v1) → dive into the leaf (v3) → the grain (v5).',
@@ -77,3 +79,9 @@ export const STAGING: Staging = {
     };
   },
 };
+
+/** The closing question on the stage, centred above the grain once the motion has finished (lecturer, 29 Oct 2026: on
+ *  the stage only the closing question). */
+export const STAGING: Staging = { ...BASE, keys: [
+  ...keyLines(4, ['More CO₂ raised photosynthesis:', 'what else sets how much grain a field yields?'], 800, 57, { size: 44, t0: 3.0 }),
+] };

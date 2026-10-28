@@ -1,0 +1,18 @@
+/* C2 story v3 (dk-c2story3.ts): the panel's RuBisCO drawing (as slide C2), the balance trays and the 3 factors. The chart,
+   the scenes and the clippings reuse v2's classes (dk-c2story.css, .c2s). Prefix .c3-. */
+.c3s .atom{stroke-width:1.4}.c3s .atom-O{fill:#f4cc4f;stroke:#b8902a}.c3s .atom-C{fill:#d9633a;stroke:#9b3e1e}
+.theme-editorial .c3s text.cel-att{font-size:13px;font-weight:700;fill:#5a4a1a}
+.theme-editorial .c3s text.cel-att-C{fill:#fff}
+.c3s .c3-tray{fill:none;stroke:#8a877d;stroke-width:3;stroke-linecap:round}
+.theme-editorial .c3s text.c3-hc{font-size:17px;font-weight:700;fill:#9a5a0c}
+.theme-editorial .c3s text.c3-ho{font-size:17px;font-weight:700;fill:#b4432a}
+.theme-editorial .c3s text.c3-mn{font-size:16px;font-weight:700;fill:#141413}
+.theme-editorial .c3s text.c3-lab{font-size:15px;fill:#6b6a64}
+.theme-editorial .c3s text.c3-lab2{font-size:15px;fill:#4a4945}
+.theme-editorial .c3s text.c3-val{font-size:17px;font-weight:700;fill:#141413}
+.theme-editorial .c3s .c3-xs text.cel-att{font-size:12px}
+.theme-editorial .c3s text.c3-shl{font-size:13px;font-weight:600;fill:#2f6f66}
+.c3s .c3-barbg{fill:#ece9e0}.c3s .c3-sbar{fill:#3b6e8f}.c3s .c3-kbar{fill:#8a877d}
+.c3s .c3-shell{fill:#4f9a8f;fill-opacity:.1;stroke:#3f7f6f;stroke-width:3;stroke-linejoin:round}
+.c3s .c3-ring{fill:none;stroke:#e3a21a;stroke-width:3.5}
+.c3s .c3-band{fill:#f3e3bf}

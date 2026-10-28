@@ -13,9 +13,9 @@ export const PLATE: PlateText = {
   status: 'draft',
   lead: 'Excess light acidifies the lumen, which switches on heat dissipation; damaged photosystem II is repaired continuously.',
   points: [
-    { claim: 'Non-photochemical quenching (NPQ).', text: 'Low lumen pH activates PsbS and turns violaxanthin into zeaxanthin<br>The antenna then dissipates excess energy as heat' },
+    { claim: 'Non-photochemical quenching (NPQ).', text: 'Low lumen pH activates PsbS and the enzyme that turns violaxanthin into zeaxanthin<br>The antenna then dissipates excess energy as heat' },
     { claim: 'Photoinhibition and D1 repair.', text: 'Light damages D1 of photosystem II, in proportion to light<br>Damaged D1 is replaced; photoinhibition: damage faster than repair' },
-    { claim: 'NPQ relaxation.', text: 'NPQ switches off slowly in shade, wasting light<br>Faster relaxation: tobacco gained ≈ 15 % dry weight in the field' },
+    { claim: 'NPQ relaxation.', text: 'NPQ switches off slowly in shade and lowers CO₂ fixation for minutes<br>Faster relaxation: tobacco made ≈ 15 % more dry weight in the field' },
   ],
   refs: [
     { label: 'Li et al. 2000', url: 'https://doi.org/10.1038/35000131' },

@@ -20,7 +20,7 @@ const TELFER: Cite = { label: 'Telfer 2014, Plant Cell Physiol.', url: 'https://
 /** Animation 1, after the slide 2 lead page: light is a wave, and air scatters the short wavelengths most. */
 export const SKY: Beat[] = [
   { tag: 'Sunlight', say: 'Sunlight is a mix of wavelengths, from ultraviolet through visible light to infrared.', cite: [GUEYMARD] },
-  { tag: 'In the air', say: 'Air scatters short wavelengths far more than long ones: blue about four times more than red.', cite: [RAYLEIGH] },
+  { tag: 'In the air', say: 'Air scatters short wavelengths far more than long ones: blue about 4 times more than red.', cite: [RAYLEIGH] },
   { tag: 'Blue sky', say: 'Scattered blue reaches you from the whole sky, so the sky looks blue.', cite: [RAYLEIGH] },
   { tag: 'Earth turns', say: 'Hours later, at sunset, sunlight crosses far more air to reach you.', cite: [KASTEN] },
   { tag: 'Sunset', say: 'On that long path most of the blue is scattered away, leaving red and orange.', cite: [RAYLEIGH, KASTEN] },
@@ -36,7 +36,7 @@ export const LIFE: Beat[] = [
   },
   {
     tag: 'On land',
-    say: 'Our ancestors moved onto land. Most mammals see red and green as one colour.',
+    say: 'Our ancestors moved onto land. Most mammals see red and green as 1 colour.',
     cite: [{ label: 'Daeschler et al. 2006, Nature', url: 'https://doi.org/10.1038/nature04639' }, JACOBS],
   },
   { tag: 'Primates', say: 'Our primate ancestors gained a third colour receptor: red fruit and young leaves stand out against green.', cite: [JACOBS, DOMINY, MELIN] },
@@ -58,7 +58,7 @@ const VAN_AM13: Cite = { label: 'van Amerongen & Croce 2013, Photosynth. Res.', 
  *  order chlorophyll a, chlorophyll b, carotenoids (lecturer, 27 Oct 2026). */
 export const PIGMENTS: Beat[] = [
   { tag: 'Into the molecule', say: 'Chlorophyll’s absorbing electrons spread over its ring of alternating single and double bonds.', cite: [CROCE14] },
-  { tag: 'Chl <i>a</i> → Chl <i>b</i>', say: 'Chlorophyll <i>b</i> differs by one group, which shifts both of its absorption bands.', cite: [LICHTENTHALER] },
+  { tag: 'Chl <i>a</i> → Chl <i>b</i>', say: 'Chlorophyll <i>b</i> differs by 1 group, which shifts both of its absorption bands.', cite: [LICHTENTHALER] },
   { tag: 'Longer chain, longer wavelength', say: 'Electrons that can move along a longer chain need less energy to jump, so they absorb longer wavelengths.', cite: [KUHN] },
   { tag: 'Carotenoids', say: 'Carotenoids’ long chain absorbs blue to blue-green light.', cite: [CROCE14, LICHTENTHALER] },
   { tag: 'Together', say: 'Chl <i>a</i>, Chl <i>b</i> and carotenoids absorb at different wavelengths; together they absorb most blue and red, and least green.', cite: [CROCE14] },
@@ -77,15 +77,15 @@ export const FATES: Beat[] = [
 /** Animation 5, played from slide 5: dim vs bright light, side by side at three scales, with no dive (the pigments
  *  animation from slide 4a already zooms from leaf to chloroplast; lecturer, 27 Oct 2026). */
 export const LEAF: Beat[] = [
-  { tag: 'Chloroplasts move', say: '1908, Gustav Senn: chloroplasts move within minutes. In dim light they gather on the walls that face the light; in bright light they move to the side walls.', cite: [{ label: 'Chazdon & Pearcy 1991, BioScience', url: 'https://doi.org/10.2307/1311725' }, { label: 'Kataoka 2015, J. Integr. Plant Biol.', url: 'https://doi.org/10.1111/jipb.12311' }] },
+  { tag: 'Chloroplasts move', say: '1908, Gustav Senn’s monograph: chloroplasts move within minutes. In dim light they gather on the walls that face the light; in bright light they move to the side walls.', cite: [{ label: 'Chazdon & Pearcy 1991, BioScience', url: 'https://doi.org/10.2307/1311725' }, { label: 'Kataoka 2015, J. Integr. Plant Biol.', url: 'https://doi.org/10.1111/jipb.12311' }] },
   { tag: 'Grana', say: 'Thylakoid membranes stack into grana: up to ≈ 100 thylakoids per granum in deep shade, < 10 in sun leaves.', cite: [{ label: 'Anderson 1986, Annu. Rev. Plant Physiol.', url: 'https://doi.org/10.1146/annurev.pp.37.060186.000521' }] },
   { tag: 'Stacked and unstacked', say: 'The stacks hold photosystem II (PSII) and its antenna. Photosystem I (PSI) and ATP synthase have stroma-side parts too large for the 3–4 nm gap between stacked membranes, so they sit in the unstacked membranes. <b>Do all these chlorophylls do the chemistry?</b>', cite: [{ label: 'Andersson & Anderson 1980, Biochim. Biophys. Acta', url: 'https://doi.org/10.1016/0005-2728(80)90078-X' }] },
 ];
 
 /** Animation 6, played from slide 6: from the flash experiment to the reaction centre (PLAN_SLIDES_5-6, 27 Oct 2026). */
 export const ANTENNA: Beat[] = [
-  { tag: 'Emerson & Arnold', say: '1932, Emerson and Arnold: even the brightest flash gives 1 O₂ per ~2,400 chlorophylls. Most chlorophylls only collect light.', cite: [{ label: 'Emerson & Arnold 1932, J. Gen. Physiol.', url: 'https://doi.org/10.1085/jgp.16.2.191' }] },
-  { tag: 'Antenna', say: 'They form an antenna: each O₂ takes 8 reaction-centre turnovers, so ≈ 2,400 ÷ 8 ≈ 300 chlorophylls serve 1 reaction centre. The pea photosystem II drawn here binds 157 of them; more LHCII joins it in the membrane.', cite: [{ label: 'Emerson & Arnold 1932, J. Gen. Physiol.', url: 'https://doi.org/10.1085/jgp.16.2.191' }, { label: 'Su et al. 2017, Science', url: 'https://doi.org/10.1126/science.aan0327' }] },
+  { tag: 'Emerson & Arnold', say: '1932, Emerson and Arnold: even the brightest flash gives 1 O₂ per ~2,500 chlorophylls. Most chlorophylls only collect light.', cite: [{ label: 'Emerson & Arnold 1932, J. Gen. Physiol.', url: 'https://doi.org/10.1085/jgp.16.2.191' }] },
+  { tag: 'Antenna', say: 'They form an antenna: each O₂ takes 8 reaction-centre turnovers, so ≈ 2,500 ÷ 8 ≈ 300 chlorophylls serve 1 reaction centre. The pea photosystem II drawn here binds 157 of them; more LHCII joins it in the membrane.', cite: [{ label: 'Emerson & Arnold 1932, J. Gen. Physiol.', url: 'https://doi.org/10.1085/jgp.16.2.191' }, { label: 'Su et al. 2017, Science', url: 'https://doi.org/10.1126/science.aan0327' }] },
   { tag: 'To the reaction centre', say: 'The energy hops from pigment to pigment, downhill from Chl <i>b</i> to Chl <i>a</i>, until the reaction centre traps it. <b>What does the reaction centre do with it?</b>', cite: [CROCE14] },
 ];
 
@@ -178,14 +178,14 @@ const KRAMER11: Cite = { label: 'Kramer & Evans 2011, Plant Physiol.', url: 'htt
  *  plants that lack it, and the extra ATP it makes (script approved by the lecturer, 28 Oct 2026; stagings cyc10b-a,
  *  cyc10b-b). */
 export const CYCLIC: Beat[] = [
-  { tag: 'The gap', say: 'Linear flow makes ≈ 2.6 ATP per 2 NADPH, but fixing CO₂ needs 3 ATP per 2 NADPH.', cite: [KRAMER11] },
+  { tag: 'ATP : NADPH', say: 'Linear flow makes ≈ 2.6 ATP per 2 NADPH, but fixing CO₂ needs 3 ATP per 2 NADPH.', cite: [KRAMER11] },
   {
     tag: 'The cycle',
     say: 'In cyclic flow, ferredoxin returns electrons to plastoquinone. They cycle through cytochrome b₆f and photosystem I, moving more H⁺ into the lumen.',
     cite: [{ label: 'Malone et al. 2021, BBA Bioenerg.', url: 'https://doi.org/10.1016/j.bbabio.2021.148380' }],
   },
   { tag: 'Without it', say: '2004: <i>Arabidopsis</i> plants lacking both routes of cyclic flow grow poorly.', cite: [{ label: 'Munekage et al. 2004, Nature', url: 'https://doi.org/10.1038/nature02598' }] },
-  { tag: 'Extra ATP', say: 'The extra H⁺ make extra ATP without NADPH, closing the gap. <b>What happens when light brings more energy than the chain can use?</b>', cite: [KRAMER11] },
+  { tag: 'Extra ATP', say: 'The extra H⁺ make extra ATP without NADPH, supplying the missing ATP. <b>With ATP and NADPH balanced, how do plants use them?</b>', cite: [KRAMER11] },
 ];
 
 /** Slide 10 animation, ATP synthase (script approved by the lecturer, 28 Oct 2026): the H⁺ gradient, Jagendorf and

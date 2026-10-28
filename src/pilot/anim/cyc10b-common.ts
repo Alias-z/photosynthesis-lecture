@@ -152,7 +152,7 @@ const RO = { x: 1300, y: 44, w: 280, pad: 18 };
 /** Bar length per ATP or NADPH: 3 ATP fill the box's inner width. */
 const PER = 80;
 /** Rows: linear flow, CO₂ fixation; each a two-line text and an ATP bar over an NADPH bar. */
-const ROW = [{ y: RO.y + RO.pad, l1: 'linear flow:', atp: '2.6', nadph: '2', a: 2.6 }, { y: RO.y + RO.pad + 111, l1: 'CO₂ fixation needs:', atp: '3', nadph: '2', a: 3 }];
+const ROW = [{ y: RO.y + RO.pad, l1: 'linear flow:', atp: '≈ 2.6', nadph: '2', a: 2.6 }, { y: RO.y + RO.pad + 111, l1: 'CO₂ fixation needs:', atp: '3', nadph: '2', a: 3 }];
 function readoutSvg(p: string): string {
   const x0 = RO.x + RO.pad, h = 200 + 2 * RO.pad;
   const rows = ROW.map((r, i) => `${lab(r.l1, 'c10-ro1', x0, r.y + 19)}

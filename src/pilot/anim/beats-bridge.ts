@@ -14,7 +14,7 @@ const EMES: Cite = { label: 'Emes et al. 2003, J. Exp. Bot. (starch in developin
 export const BRIDGE: Beat[] = [
   { tag: 'Light reactions', say: 'The light reactions leave ATP and NADPH on the stroma side of the thylakoid membrane.', cite: [SHEVELA23] },
   { tag: 'Into the stroma', say: 'ATP and NADPH are released into the stroma, the soluble interior of the chloroplast.', cite: [SHEVELA23] },
-  { tag: 'CO₂ fixation', say: 'RuBisCO joins CO₂ to ribulose-1,5-bisphosphate (RuBP), which gives 3-phosphoglycerate (3-PGA). ATP and NADPH turn 3-PGA into triose phosphate; ADP, Pᵢ and NADP⁺ return to the thylakoid.', cite: [BASSHAM54] },
-  { tag: 'Sucrose and starch', say: 'Triose phosphate becomes starch in the leaf and sucrose for the plant. In the wheat grain, sucrose is stored as starch: the carbon in bread was fixed from CO₂.', cite: [STITT, EMES] },
+  { tag: 'CO₂ fixation', say: 'RuBisCO joins CO₂ to ribulose-1,5-bisphosphate (RuBP), which gives 2 3-phosphoglycerate (3-PGA). ATP and NADPH turn 3-PGA into triose phosphate; ADP, Pᵢ and NADP⁺ return to the thylakoid.', cite: [BASSHAM54] },
+  { tag: 'Sucrose and starch', say: 'Triose phosphate becomes starch in the leaf and sucrose for the plant. In the wheat grain, sucrose is turned into starch: the carbon in bread was fixed from CO₂.', cite: [STITT, EMES] },
   { tag: 'RuBisCO', say: 'RuBisCO fixes this carbon. <b>What is RuBisCO?</b>', cite: [ANDERSSON96] },
 ];

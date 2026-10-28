@@ -50,7 +50,7 @@ export const PLATE: PlateText = {
   status: 'draft',
   lead: 'Light is captured by pigment–protein complexes in the thylakoid membranes of chloroplasts.',
   points: [
-    { claim: 'Thylakoid membranes.', text: 'Stacked into grana, joined by unstacked membranes<br>Each thylakoid encloses a space, the lumen<br>Photosystem II sits in the stacks, photosystem I in the unstacked membranes' },
+    { claim: 'Thylakoid membranes.', text: 'Stacked into grana, joined by unstacked stroma lamellae<br>Each thylakoid encloses a space, the lumen<br>Photosystem II sits in the stacks, photosystem I in the unstacked membranes' },
     { claim: 'Pigment–protein complexes.', text: 'Proteins hold chlorophylls and carotenoids at fixed positions' },
     { claim: 'Stroma.', text: 'The space around the thylakoids, where CO₂ is fixed' },
   ],
@@ -937,7 +937,7 @@ function microSvg(): string {
   const T = (k: keyof typeof SIDEA): Pt => d.at(...SIDEA[k]);
   return svg('Real images only, from different plants at each scale: a fresh leaf cross-section of an unidentified plant with its mesophyll cells; one tobacco chloroplast in an electron micrograph, with envelope, grana, stroma lamellae and stroma; spinach thylakoid membranes in a cryo-electron tomogram; and one pigment–protein complex of pea rendered from its structure', `
     ${defs(p)}
-    ${head(20, 36, 'leaf', 'unidentified plant')}
+    ${head(20, 36, 'leaf', 'cross-section')}
     ${a.svg}${pill(132, 80, 'mesophyll cell, ≈ 50 µm', cell)}${zboxP(z1[0], z1[1], 12, 12)}
     ${zar(p, [z1[0] + 7, z1[1]], [334, z1[1]])}
     ${head(340, 36, 'tobacco chloroplast', '≈ 5 µm')}
@@ -1952,7 +1952,7 @@ function micro1Svg(): string {
   const dx = d.at(0, 0)[0];
   return svg('Real images, from leaf to complex: a fresh leaf cross-section of an unidentified plant with its mesophyll cells; one tobacco chloroplast in an electron micrograph, with its grana, the unstacked membranes between them and the stroma; spinach thylakoid membranes in a cryo-electron tomogram, grana and unstacked membranes; and one pigment–protein complex of pea, photosystem II with its antenna, rendered from its structure', `
     ${defs(p)}
-    ${head(20, 36, 'leaf', 'unidentified plant')}
+    ${head(20, 36, 'leaf', 'cross-section')}
     ${a.svg}${pl(112, 76, 'mesophyll cell', cell)}${zboxP(z1[0], z1[1], 12, 12)}
     ${zar(p, [z1[0] + 7, z1[1]], [334, z1[1]])}
     ${tag(340, 36, 'tobacco', 'start')}${lab(418, 36, 'chloroplast', 'start')}

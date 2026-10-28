@@ -16,12 +16,14 @@
 import '../figs/carbonbook.css';
 import { krow } from '../figs/carbonbook';
 import { rowWidth, step } from '../figs/carbon-form';
-import { balls } from '../figs/cell-schema';
+import { balls, SPOT } from '../figs/cell-schema';
+import { tagG } from '../figs/chain';
 import { CB1K } from './beats-cb1k';
 import {
   add, AT, card, carbN, CO2_FROM, CYCLE_VIEW, ease, fromLine, G, GLYPH, glide, intoPrkN, makeStaging, panelShow, panelSvg, path,
   pileName, PILE, prkN, R, reduceN, siteRing, SITE, T, WAY, type Actor, type Api, type Part, type Row,
 } from './dk1-common';
+import { withKeys } from './stage-keys-cb';
 
 const f = (v: number): string => (Math.round(v * 100) / 100).toString();
 
@@ -73,7 +75,8 @@ const sw = (x: number, y: number, h: 'a' | 'n'): string =>
   `<circle cx="${f(x)}" cy="${f(y)}" r="13.5" style="fill:${h === 'a' ? '#2f8f86' : '#f2b705'};opacity:${h === 'a' ? 0.45 : 0.75}"/>${krow(x, y, 'C', '', 10)}`;
 const ROWS: Row[] = [
   { k: 'r-h', h: 32, html: 'per 3 CO₂', cls: 'dk-ph' },
-  { k: 'r-key', h: 32, html: '', extra: (x, y) => `${sw(x + 10, y + 16, 'a')}${T(x + 30, y + 23, 'carbon of RuBP', 'dk-pc', 'start')}${sw(x + 206, y + 16, 'n')}${T(x + 226, y + 23, 'from CO₂', 'dk-pc', 'start')}` },
+  { k: 'r-key', h: 30, html: '', extra: (x, y) => `${sw(x + 10, y + 16, 'a')}${T(x + 30, y + 23, 'carbon of the acceptor, RuBP', 'dk-pc', 'start')}` },
+  { k: 'r-key2', h: 32, html: '', extra: (x, y) => `${sw(x + 10, y + 16, 'n')}${T(x + 30, y + 23, 'carbon fixed from CO₂', 'dk-pc', 'start')}` },
   { k: 'r-in', h: 30, html: `CO₂ ${n('n-co2')} · RuBP ${n('n-rubp')}` },
   { k: 'r-pga', h: 30, html: `3-PGA ${n('n-pga')}` },
   { k: 'r-c', h: 32, html: `${n('n-c')} C = ${n('n-acc')} C (RuBP) + ${n('n-new')} C (CO₂)` },
@@ -90,7 +93,7 @@ function whyCard(p: string): string {
     const yb = 112 + 84 * i, need = 5 * c, y = yb + 30;
     const cx = (k: number): number => x0 + Math.floor(k / 3) * pitch + r + (k % 3) * s, last = need - 1, inside = last % 3 !== 2;
     const xc = inside ? cx(last) + s / 2 : x0 + Math.floor(last / 3) * pitch + w + 3.5;
-    const tps = Array.from({ length: 2 * c }, (_, j) => krow(x0 + j * pitch, y, 'CCCP', [0, 1, 2].map(q => (3 * j + q < need ? 'a' : 'n')).join('') + '.', r, 'start')).join('');
+    const tps = Array.from({ length: 2 * c }, (_, j) => krow(x0 + j * pitch, y, 'CCCP', H3[j], r, 'start')).join('');
     return `<g data-k="w-r${i}" display="none">${T(x0, yb, `${c} CO₂: ${6 * c} C · ${c} RuBP: ${need} C`, 'dk-ct', 'start')}${tps}
       <path class="${inside ? 'kb-cut' : 'kb-cutok'}" d="M${f(xc)},${f(y - 16)}V${f(y + 16)}"/>
       ${T(CX + CW - 22, yb, `${back} ${ok ? '✓' : '✗'}`, ok ? 'dk-pt' : 'dk-pt dk-x', 'end')}</g>`;
@@ -144,7 +147,7 @@ function beat3(a: Api, t: number): Tally {
 function frame(a: Api, beat: number, t: number): void {
   a.pos('site', SITE); a.op('site', 1);
   a.pos('l-co2', add(G.co2, [0, -24])); a.pos('l-rubp', add(AT.rubp(0), [-69, 6])); a.pos('l-tp', add(G.tp, [-96, -8]));
-  a.pos('f-carb', add(G.pga, [0, 50])); a.pos('f-red', add(G.tp, [-96, 12])); a.pos('l-out', add(AT.tpt, [-14, -30]));
+  a.pos('f-carb', add(G.pga, [0, 50])); a.pos('f-red', add(G.tp, [-96, 12])); a.pos('l-out', add(AT.tpt, [-60, -30]));
   const done: Tally = { co2: 3, rubp: 3, pga: 6, car: 3, red: 6, back: 5, rubp2: 3, out: 1 };
   let N: Tally;
   if (beat === 0) N = beat1(a, t);
@@ -169,7 +172,7 @@ function frame(a: Api, beat: number, t: number): void {
   const on = (b: number, t0: number): number => (beat < b ? 0 : beat > b ? 1 : ease(t, t0, t0 + 0.3));
   const out = beat === 3 ? 1 - ease(t, 0, 0.3) : 1;
   panelShow(a, 'panel', ROWS, {
-    'r-h': on(0, 0.4) * out, 'r-key': on(0, 0.4) * out, 'r-in': on(0, 0.6) * out, 'r-pga': on(0, tmOf(0) - 0.2) * out, 'r-c': on(0, tmOf(0) - 0.2) * out,
+    'r-h': on(0, 0.4) * out, 'r-key': on(0, 0.4) * out, 'r-key2': on(0, 0.4) * out, 'r-in': on(0, 0.6) * out, 'r-pga': on(0, tmOf(0) - 0.2) * out, 'r-c': on(0, tmOf(0) - 0.2) * out,
     'r-red': on(0, RED(0).t0) * out, 'r-tp': on(0, RED(0).t0) * out,
     'r-reg': on(2, TO_PRK(0)[0]) * out, 'r-out': on(2, OUT_T[0]) * out, 'r-net': on(2, NET_T) * out,
   });
@@ -187,12 +190,15 @@ const LIT: Part[][] = [
   ['co2', 'rubisco', 'carbox', 'pga', 'thyl', 'light', 'supply', 'reduce', 'tp', 'regen', 'export'],
 ];
 
-export const STAGING = makeStaging({
+/** The strip's ATP tag of NH₃ refixation (photorespiration, never lit here) sits on the frame's bottom edge: left out. */
+const NH3_ATP = `<g class="chn-g">${tagG(SPOT.nh3Atp[0], SPOT.nh3Atp[1], 'ATP', 'atp')}</g>`;
+const STAGING_BASE = makeStaging({
   id: 'k',
   name: 'k · Carbon bookkeeping per 3 CO₂',
   note: 'The cycle counted by carbon, per 3 CO₂, in the strip: the acceptor’s carbon teal, the carbon fixed from CO₂ amber (traced). 3 RuBP (15 C) + 3 CO₂ (3 C) → 3-PGA 1–6 → triose phosphate 1–6 (18 C); why 3 (1⅔ ✗, 3⅓ ✗, 5 ✓); 5 triose phosphates → 3 RuBP with 3 ATP, 1 out (15 C back, 3 C out = 3 C fixed); the ledger 9 ATP, 6 NADPH',
   beats: CB1K,
   holds: [[HOLD0], [], [], []],
+  drop: [NH3_ATP],
   dropGlyph: ['co2', 'rubisco', 'pga', 'tp'], dropName: ['co2', 'rubisco', 'tp'],
   actors: ACTORS,
   world: () => `${siteRing('site', '')}${pileName('l-co2', 'CO₂')}${pileName('l-rubp', 'RuBP', 'end')}${pileName('l-tp', 'triose phosphate', 'end')}
@@ -202,3 +208,12 @@ export const STAGING = makeStaging({
   lit: LIT,
   frame,
 });
+
+/** Each beat's key line and the closing question, big on the stage (lecturer, 29 Oct 2026: "people don't read the
+ *  text under the animation"). */
+export const STAGING = withKeys(STAGING_BASE, [
+  { beat: 0, lines: ['18 C = 15 C + 3 C'], x: 1370, y: 280, size: 38, at: 2.0 },
+  { beat: 1, lines: ['Why 3 CO₂: 15 = 3 × 5'], x: 1370, y: 690, size: 34, at: 1.5 },
+  { beat: 2, lines: ['5 back, 1 out'], x: 1370, y: 250, size: 40, at: 1.5 },
+  { beat: 3, lines: ['Where does the 1 triose', 'phosphate go?'], x: 800, y: 312, size: 36, at: 1.5 },
+]);

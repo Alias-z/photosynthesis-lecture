@@ -154,7 +154,9 @@ export const PLATES: Plate[] = [
 // then C₃ photosynthesis (the Calvin–Benson–Bassham cycle, step by step), C₂, C₄, CAM, crops; the light-response curve (C7)
 // and the FvCB model (C8) move to the optional block. C5, C5b and C5c are folded into C2 and C5a and leave the deck.
 const ORDER = ['1', '2', '3', '4', '4a', '4b', '5', '6', '7', '8', '9', '10', '10b',
-  'C0', 'C2', 'C1', 'C4', 'C4e', 'C6', 'C10', 'C11', 'C11a', 'C12', 'C13', 'C14', 'C15',
+  // 29 Oct 2026, late (lecturer): photorespiration right after sucrose and starch; efficiency after C₄ and CAM, which it compares
+  // lecturer, 29 Oct 2026, late: the C₃ refixation slide (C11) removed
+  'C0', 'C2', 'C1', 'C4', 'C6', 'C10', 'C11a', 'C12', 'C13', 'C4e', 'C14', 'C15',
   '10c', '11', '12', '13', 'C7', 'C8', 'C9'];
 for (let i = PLATES.length - 1; i >= 0; i--) if (!ORDER.includes(PLATES[i].n)) PLATES.splice(i, 1);
 PLATES.sort((a, b) => ORDER.indexOf(a.n) - ORDER.indexOf(b.n));
@@ -206,15 +208,23 @@ for (const p of PLATES) {
   p.variants = j.VARIANTS;
   p.figure = j.draw;
 }
-// The leaf section (figs/leafv.ts): C10–C13 list only m1, m3, mc ("delete the old schemas") plus C10's own 3D leaf (v13).
+// The leaf section (figs/leafv.ts): C11a–C13 list only m1, m3, mc ("delete the old schemas"). C10 lists only its CO₂
+// journeys on the own 3D leaf, n1–n3 (lecturer, 29 Oct 2026, late: "delete all the other variations … make new ones");
+// every earlier id stays drawable.
 for (const p of PLATES) {
   if (!(LEAF_SLIDES as string[]).includes(p.n)) continue;
   const lf = leafFigures(p.n as LeafSlide), j = joinFigures({ PLATE: p, VARIANTS: p.variants, draw: p.figure }, lf, 'm');
-  p.variants = [...lf.VARIANTS.map(v => ({ ...v, id: `m${v.id}` })), ...(p.n === 'C10' ? p.variants.filter(v => v.id === 'v13') : [])];
+  p.variants = p.n === 'C10' ? p.variants.filter(v => ['n1', 'n2', 'n3'].includes(v.id)) : lf.VARIANTS.map(v => ({ ...v, id: `m${v.id}` }));
   p.figure = j.draw;
 }
 // C2: the lecturer picked the Y-shape (mr3) and asked to remove the rest (28 Oct 2026)
 for (const p of PLATES) if (p.n === 'C2') p.variants = p.variants.filter(v => v.id === 'mr3');
+// C1: only the picked strip m1 (lecturer, 29 Oct 2026: "remove all the other non-picked choices"); k1–k3 stay drawable
+for (const p of PLATES) if (p.n === 'C1') p.variants = p.variants.filter(v => v.id === 'm1');
+// C15 and 13: unpicked old variants with slide references, figurative terms or a net-only equation (accuracy review R3,
+// 29 Oct 2026); they stay drawable
+for (const p of PLATES) if (p.n === 'C15') p.variants = p.variants.filter(v => !['a', 'c', 'f', 'h', 'i', 'j'].includes(v.id));
+for (const p of PLATES) if (p.n === '13') p.variants = p.variants.filter(v => v.id !== 'd');
 
 /** Lead pages for the live lecture, by slide number: the question alone, before the animation that answers it. */
 export const LEADS: Record<string, { VARIANTS: Variant[]; draw: (variant: string) => string }> = { '1': lead01, '2': lead02, '5': lead05 };
@@ -256,6 +266,10 @@ const playButton = (p: Plate): string => {
   return a ? `<button type="button" class="p-play" data-play="${a.key}" aria-label="Play the animation: ${a.title}">▶</button>` : '';
 };
 
+/** The number shown on a page: its place in the deck, 1, 2, 3 … (lecturer, 29 Oct 2026: "stop using letters for the
+ *  slides, just numbers"); the ids (C1, 10b …) stay internal, for URLs and picks. */
+const pageNum = (p: Plate): string => PAGE_NUM.get(p.n) ?? p.n;
+
 /** Handout version, which the PDF keeps: the figure with the lead and the three points; no animation buttons. */
 export function plateHtml(p: Plate, variant: string): string {
   const points = p.points.map(q => `<li><b>${claim(q.claim)}</b>${lines(q.text)}${q.eq ? `<div class="p-eq">${lines(q.eq)}</div>` : ''}</li>`).join('');
@@ -264,7 +278,7 @@ export function plateHtml(p: Plate, variant: string): string {
     <div class="p-text"><p class="p-lead">${subscripts(p.lead)}</p><ol class="p-points">${points}</ol></div>
     <figure class="fig">${p.figure(variant)}</figure>
     <p class="p-src">${sources(p)}</p>
-    <span class="p-num">${p.n}</span>
+    <span class="p-num">${pageNum(p)}</span>
   </div>`;
 }
 
@@ -277,7 +291,7 @@ export function lectureHtml(p: Plate, variant: string): string {
 /** A lead page is one full-page drawing on the paper: no reading column and no sources line; a play button if the
  *  slide leads into an animation. */
 export function leadHtml(p: Plate, svg: string): string {
-  return `<div class="plate-inner"><figure class="lead-fig">${svg}</figure>${playButton(p)}<span class="p-num">${p.n}</span></div>`;
+  return `<div class="plate-inner"><figure class="lead-fig">${svg}</figure>${playButton(p)}<span class="p-num">${pageNum(p)}</span></div>`;
 }
 
 /** Fits a page's text once the fonts have loaded: a title wider than its box shrinks, a reading column taller than its box tightens. */
@@ -294,3 +308,6 @@ export function fitPage(root: ParentNode): void {
     });
   });
 }
+
+/** Each slide's place in the deck, fixed once the deck is assembled (a solo view may trim PLATES later). */
+const PAGE_NUM = new Map(PLATES.map((p, i) => [p.n, String(i + 1)]));

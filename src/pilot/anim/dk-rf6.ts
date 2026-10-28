@@ -12,6 +12,11 @@
 // - Beat 4, why "photorespiration": the respiration inset again, beside the strip, where O₂ is taken up at RuBisCO and the
 //   CO₂ leaves the mitochondrion (both glow), with the thylakoid lit: only in the light.
 // - Beat 5, waste or function: two cards (Ehleringer & Björkman 1977; Somerville & Ogren 1979).
+// Versions w1 and w2 (lecturer, 29 Oct 2026, late): beat 5 says only why photorespiration was long seen as a waste, big,
+// and the question comes right under it; no function card (removing toxic 2-PG was told in beats 2–3).
+// - w1: one big card in the middle over the dimmed strip: the heading and its 3 reasons.
+// - w2: the heading at the top; each reason beside where it happens on the strip: the CO₂ leaving the mitochondrion, the
+//   ATP spent at glycerate kinase in the chloroplast.
 import { atomBall, row } from '../figs/carbon-form';
 import { balls } from '../figs/cell-schema';
 import { tagG } from '../figs/chain';
@@ -33,8 +38,9 @@ const num = (k: string, n: number, x: number, y: number): string => `<g data-k="
 const c2G = (k: string, n: number): string => `<ellipse data-k="${k}G" rx="44" ry="26" fill="url(#${P}-red)" opacity="0"/>`
   + `<g data-k="${k}P">${bond(0, ST)}${atomBall(ST, 0, 'P', R)}</g><g data-k="${k}N" opacity="0">${bond(0, ST)}${atomBall(ST, 0, 'N', R)}</g>`
   + `${row(-ST / 2, 0, 'CC', { r: R })}${num(k, n, -ST / 2, -18)}`;
-/** serine → glycerate → 3-PGA: a 3-C body (C at −1.5 ST … 0.5 ST) whose end atom changes (N, none, P). */
-const c3G = (k: string): string => `<g data-k="${k}N">${bond(ST / 2, 1.5 * ST)}${atomBall(1.5 * ST, 0, 'N', R)}</g><g data-k="${k}P" opacity="0">${bond(ST / 2, 1.5 * ST)}${atomBall(1.5 * ST, 0, 'P', R)}</g>${row(-ST / 2, 0, 'CCC', { r: R })}${num(k, 1, -ST / 2, -18)}`;
+/** serine → glycerate → 3-PGA: a 3-C body (C at −1.5 ST … 0.5 ST); serine's N sits above the middle carbon (its amino group,
+ *  on C2), 3-PGA's P ends the row (on C3); glycerate has neither (accuracy review R2, 29 Oct 2026). */
+const c3G = (k: string): string => `<g data-k="${k}N"><path d="M${f(-ST / 2)},0V${f(-ST)}" style="stroke:#6b6a64;stroke-width:2.42;fill:none"/>${atomBall(-ST / 2, -ST, 'N', R)}</g><g data-k="${k}P" opacity="0">${bond(ST / 2, 1.5 * ST)}${atomBall(1.5 * ST, 0, 'P', R)}</g>${row(-ST / 2, 0, 'CCC', { r: R })}${num(k, 1, -1.5 * ST, -18)}`;
 const nh3G = `<g class="chn-g"><circle class="atom atom-H" cx="-13" cy="8" r="6"/><circle class="atom atom-H" cx="13" cy="8" r="6"/><circle class="atom atom-H" cx="0" cy="-14" r="6"/><circle class="cbb-n" r="${R}"/><text class="cbb-nt" y="4.8" text-anchor="middle">N</text></g>`;
 
 const MOV: Mover[] = [
@@ -115,8 +121,28 @@ const takeSvg = (): string => `<g data-k="${P}-take" opacity="0">${cardSvg(TAKE.
 const card = (k: string, x: number, head: string, lines: string[]): string => `<g data-k="${P}-${k}" opacity="0">${cardSvg(x, 576, 492, 144)}
   <text class="dk2-cardh" x="${x + 20}" y="${606}">${head}</text>${lines.map((l, i) => `<text class="dk2-cardt" x="${x + 20}" y="${634 + i * 24}">${l}</text>`).join('')}</g>`;
 const cardsSvg = (): string =>
-  card('loss', 596, 'loss', ['at 30 °C ≈ 29 % less CO₂ fixed per absorbed', 'photon in air than in 2 % O₂', '(Ehleringer &amp; Björkman 1977)'])
-  + card('func', 1100, 'function', ['removes toxic 2-PG; mutants that cannot', 'recycle it die in air', '(Somerville &amp; Ogren 1979)']);
+  card('loss', 596, 'long seen as a waste', ['releases fixed CO₂ and spends ATP: per 100', 'CO₂ fixed, ≈ 21 are released again at 25 °C,', '≈ 35 at 35 °C'])
+  + card('func', 1100, 'in fact a function', ['removes toxic 2-PG; mutants that cannot', 'recycle it die in air', '(Somerville &amp; Ogren 1979)']);
+
+/** Versions w1, w2: why it was long seen as a waste (photorespiration takes its name from releasing CO₂, as respiration
+ *  does; the CO₂ it releases had already been fixed, and the recycling spends ATP and NADPH). */
+type Var = 's' | 'w1' | 'w2';
+const WH = 'font-size:40px;font-weight:700;fill:#141413', WL = 'font-size:30px;font-weight:500;fill:#2f2f2c';
+const WASTE = ['it releases CO₂ that was already fixed', 'it spends ATP and NADPH', 'so the leaf makes less sugar'];
+const W1 = { x: 330, y: 300, w: 940, h: 250 };
+const w1Svg = (): string => `<g data-k="${P}-w1" opacity="0">${cardSvg(W1.x, W1.y, W1.w, W1.h)}
+  <text x="${W1.x + 44}" y="${W1.y + 62}" style="${WH}">Long seen as a waste</text>
+  ${WASTE.map((l, i) => `<text data-k="${P}-w1l${i}" x="${W1.x + 44}" y="${W1.y + 120 + i * 46}" style="${WL}" opacity="0">• ${l}</text>`).join('')}</g>`;
+/** w2's reasons beside the strip's spots (stage units: the spot through the still framing). */
+const onStage = (q: V): V => [800 + (q[0] - CAM.c[0]) * CAM.s, 370 + (q[1] - CAM.c[1]) * CAM.s];
+const w2Svg = (): string => {
+  const co2 = onStage(SP.co2Lost), atp = onStage(SP.glykAtp);
+  const tag = (k: string, x: number, y: number, a: string, s: string): string =>
+    `<text data-k="${P}-${k}" x="${f(x)}" y="${f(y)}" text-anchor="${a}" class="cel-halo" style="${WL};font-weight:700" opacity="0">${s}</text>`;
+  return `<g data-k="${P}-w2" opacity="0"><text x="40" y="66" class="cel-halo" style="${WH}">Long seen as a waste</text>
+    <text data-k="${P}-w2s" x="40" y="108" class="cel-halo" style="${WL}" opacity="0">so the leaf makes less sugar</text></g>
+    ${tag('w2a', co2[0] - 64, co2[1] + 12, 'end', 'releases CO₂ that was already fixed')}${tag('w2b', atp[0] + 10, atp[1] - 58, 'middle', 'spends ATP and NADPH')}`;
+};
 
 /* ---------------------------------------------------------------- framing and lighting */
 
@@ -196,15 +222,26 @@ const NAMES: Array<[string, number, number, number, number, number, string?]> = 
   ['3-PGA', SP.pgaBack[0] - 2, SP.pgaBack[1] + 40, 2, 10.6, 99],
 ];
 
-export const STAGING: Staging = {
-  id: 's',
-  name: 's · In the protein strip',
-  note: 'One still framing of the whole strip: a respiration inset; RuBP 1–2 + O₂ 1–2 → 3-PGA 1–2 + toxic 2-PG 1–2 at RuBisCO; the 2 2-PG recycled in one run to 3-PGA 1 + CO₂ 1; O₂ in at RuBisCO and CO₂ out of the mitochondrion beside the inset; loss and function cards',
+const make = (v: Var): Staging => ({
+  id: v,
+  // only the closing question is drawn on the stage (anim/player.ts); in w1 and w2 it sits right under the reasons
+  keys: [
+    { beat: 0, text: 'Respiration takes up O₂, releases CO₂', x: 885, y: 372, size: 40 },
+    { beat: 1, text: 'Oxygenation makes toxic 2-PG', x: 700, y: 46, size: 40, anchor: 'start' },
+    { beat: 2, text: 'Photorespiration recycles 2-PG', x: 700, y: 46, size: 40, anchor: 'start' },
+    { beat: 3, text: 'Like respiration, but only in light', x: 885, y: 372, size: 40 },
+    { beat: 4, text: 'Is getting CO₂ to RuBisCO so hard?', x: 800, y: v === 'w1' ? W1.y + W1.h + 74 : v === 'w2' ? 700 : 52, size: 44 },
+  ],
+  name: v === 'w1' ? 'w1 · Waste: one big card' : v === 'w2' ? 'w2 · Waste: the reasons on the strip' : 's · In the protein strip',
+  note: v === 's'
+    ? 'One still framing of the whole strip: a respiration inset; RuBP 1–2 + O₂ 1–2 → 3-PGA 1–2 + toxic 2-PG 1–2 at RuBisCO; the 2 2-PG recycled in one run to 3-PGA 1 + CO₂ 1; O₂ in at RuBisCO and CO₂ out of the mitochondrion beside the inset; loss and function cards'
+    : v === 'w1' ? 'As s; the last beat: one big card, "long seen as a waste" and its 3 reasons, the question right under it'
+    : 'As s; the last beat: "long seen as a waste" at the top, its reasons beside the CO₂ leaving the mitochondrion and the ATP spent in the chloroplast, the question under them',
   svg: () => {
     const names = NAMES.map(([s, x, y, , , , c], i) => `<text data-k="${P}-nm${i}" class="${c ?? 'cel-mn'} cel-halo" x="${x}" y="${y}" text-anchor="middle" opacity="0">${s}</text>`).join('');
     const defs = `${poolDefs(P)}<defs><radialGradient id="${P}-red"><stop offset="0" class="dk2-red0"/><stop offset=".6" class="dk2-red1"/><stop offset="1" class="dk2-red2"/></radialGradient></defs>`;
-    const pools = `${poolSvg(P, `${P}-po2`, SP.o2, 90, 60)}${poolSvg(P, `${P}-pco2`, SP.co2Lost, 100, 56)}`;
-    const hud = `${ledgerSvg(`${P}-led`, 16, 16, 380, 'per 2 O₂', ROWS, { nameW: 150 })}${insetSvg()}${takeSvg()}${cardsSvg()}`;
+    const pools = `${poolSvg(P, `${P}-po2`, SP.o2, 90, 60)}${poolSvg(P, `${P}-pco2`, SP.co2Lost, 100, 56)}${v === 'w2' ? poolSvg(P, `${P}-patp`, SP.glykAtp, 70, 46) : ''}`;
+    const hud = `${ledgerSvg(`${P}-led`, 16, 16, 380, 'per 2 oxygenations', ROWS, { nameW: 150 })}${insetSvg()}${takeSvg()}${v === 's' ? cardsSvg() : v === 'w1' ? w1Svg() : w2Svg()}`;
     return sceneSvg(P, { under: defs + pools, over: names, movers: MOV.map(moverSvg).join(''), hud });
   },
   bind(stage) {
@@ -231,11 +268,28 @@ export const STAGING: Staging = {
       led(5, n([[2, T_GK + 0.1]]), by(beat, t, 2, T_GK + 0.4) ? 1 : 0);
       A(`${P}-led`, 'opacity', beat === 1 ? ease(t, 0.2, 0.7) : beat === 2 ? 1 : beat === 3 ? 1 - ease(t, 0, 0.4) : 0);
       A(`${P}-inset`, 'opacity', beat === 0 ? ease(t, 0.2, 0.6) : beat === 1 ? 1 - ease(t, 0, 0.3) : beat === 3 ? ease(t, 0.3, 0.7) : beat === 4 ? 1 - ease(t, 0, 0.4) : 0);
-      A(`${P}-take`, 'opacity', beat === 2 ? ease(t, T_GK + 0.8, T_GK + 1.3) : beat > 2 ? 1 : 0);
+      A(`${P}-take`, 'opacity', beat === 2 ? ease(t, T_GK + 0.8, T_GK + 1.3) : beat === 3 || (beat === 4 && v === 's') ? 1 : beat === 4 ? 1 - ease(t, 0, 0.4) : 0);
       A(`${P}-po2`, 'opacity', beat === 3 ? 0.9 * ease(t, 0.6, 1.2) : beat === 4 ? 0.9 * (1 - ease(t, 0, 0.5)) : 0);
-      A(`${P}-pco2`, 'opacity', beat === 3 ? 0.9 * ease(t, 0.6, 1.2) : beat === 4 ? 0.9 * (1 - ease(t, 0, 0.5)) : 0);
-      A(`${P}-loss`, 'opacity', beat === 4 ? ease(t, 0.4, 0.9) : 0);
-      A(`${P}-func`, 'opacity', beat === 4 ? ease(t, 1.0, 1.5) : 0);
+      A(`${P}-pco2`, 'opacity', beat === 3 ? 0.9 * ease(t, 0.6, 1.2) : beat === 4 ? 0.9 * (v === 'w2' ? 1 : 1 - ease(t, 0, 0.5)) : 0);
+      if (v === 's') {
+        A(`${P}-loss`, 'opacity', beat === 4 ? ease(t, 0.4, 0.9) : 0);
+        A(`${P}-func`, 'opacity', beat === 4 ? ease(t, 1.0, 1.5) : 0);
+      } else if (v === 'w1') {
+        // the card, then its 3 reasons one by one
+        A(`${P}-w1`, 'opacity', beat === 4 ? ease(t, 0.4, 0.9) : 0);
+        WASTE.forEach((_, i) => A(`${P}-w1l${i}`, 'opacity', beat === 4 ? ease(t, 1.0 + 0.7 * i, 1.4 + 0.7 * i) : 0));
+      } else {
+        // the heading, then each reason where it happens (its spot glows), then the consequence
+        A(`${P}-w2`, 'opacity', beat === 4 ? ease(t, 0.4, 0.9) : 0);
+        A(`${P}-w2a`, 'opacity', beat === 4 ? ease(t, 1.0, 1.4) : 0);
+        A(`${P}-w2b`, 'opacity', beat === 4 ? ease(t, 1.7, 2.1) : 0);
+        A(`${P}-patp`, 'opacity', beat === 4 ? 0.9 * ease(t, 1.7, 2.1) : 0);
+        A(`${P}-w2s`, 'opacity', beat === 4 ? ease(t, 2.4, 2.8) : 0);
+      }
     };
   },
-};
+});
+
+export const STAGING: Staging = make('s');
+export const STAGING_W1: Staging = make('w1');
+export const STAGING_W2: Staging = make('w2');

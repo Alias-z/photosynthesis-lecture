@@ -32,7 +32,7 @@ export const PLATE: PlateText = {
   pick: 'C13',
   title: 'Rising CO₂',
   status: 'draft',
-  lead: 'Higher CO₂ suppresses RuBisCO’s oxygenation, so it raises the yield of C₃ crops; C₄ crops are already CO₂-saturated.',
+  lead: 'Higher CO₂ speeds RuBisCO’s carboxylation and suppresses its oxygenation, so it raises the yield of C₃ crops; C₄ crops are already CO₂-saturated.',
   points: [
     { claim: 'C₃ crops.', text: 'Free-air CO₂ enrichment (FACE), +200 ppm: yield ≈ +18 %<br>With low nitrogen or 2 °C warming: ≈ +10 %' },
     { claim: 'C₄ crops.', text: 'No yield gain, except in drought<br>Narrower stomata save soil water' },
@@ -225,7 +225,7 @@ function drawV5(): string {
   }).join('');
   return svg(p, 'Photo of a green wheat ear. Beside it, wheat grown at about 550 ppm CO2 in free-air experiments compared with today’s air: grain yield plus 14 percent, zinc minus 9 percent, iron minus 5 percent, protein minus 6 percent.', `
     ${ph.svg}
-    ${T(300, 64, 'wheat, ≈ 550 ppm vs today’s air', 'cr-lb')}
+    ${T(300, 64, 'wheat, ≈ 550 ppm vs ambient air', 'cr-lb')}
     <path class="cr-zero" d="M${x0},${110} V${520}"/>
     ${body}
     ${credit(784, 572, `${CR.ear} | yield: Ainsworth & Long 2021, Fig. 2 · zinc, iron, protein: Myers et al. 2014`)}

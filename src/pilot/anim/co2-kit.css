@@ -1,0 +1,77 @@
+/* The CO₂-story animations of C10, C11, C11a (co2-kit.ts): the CO₂ character, drawn cells, magnifier insets, the CO₂
+   card. Prefix .co2k-. Colours from the leaf section (leaf-schema.css) and the cell strip (cell-schema.css). */
+.co2k .co2k-face{fill:none;stroke:#2b1608;stroke-linecap:round;stroke-linejoin:round}
+.co2k .co2k-eye{fill:#2b1608}
+.co2k .co2k-mouth{fill:#2b1608}
+.co2k .co2k-sweat{fill:#9cc3dd;stroke:#4f7cac;stroke-width:1.2}
+.co2k .co2k-shell{fill:#bcd8ea;fill-opacity:.5;stroke:#7ea8c4;stroke-width:1.4;stroke-dasharray:4 3}
+.theme-editorial .co2k text.co2k-att{font-weight:700;fill:#5a4a1a}
+.theme-editorial .co2k text.co2k-kl{font-size:18px}
+.theme-editorial .co2k tspan.co2k-sub{font-size:.72em}
+/* the section */
+.co2k .co2k-air{fill:#fbfaf6}
+.co2k .co2k-as{fill:#e4edf1}
+.co2k .co2k-bl0{stop-color:#d5e4ec}.co2k .co2k-bl1{stop-color:#fbfaf6}
+.co2k .co2k-blh{fill:none;stroke:#c2401f;stroke-width:2.4;stroke-dasharray:7 6}
+.co2k .co2k-epi{fill:#f8f6ee;stroke:#c9b98f;stroke-width:1.8}
+.co2k .co2k-cut{fill:none;stroke:#b9a26b;stroke-width:3;stroke-linecap:round}
+.co2k .co2k-cell{fill:#fbf9f2;stroke:#d3c49d;stroke-width:2.6}
+.co2k .co2k-cell-on{stroke:#a88f52;stroke-width:3.2}
+.co2k .co2k-vac{fill:#eef1f4;stroke:#d7dce2;stroke-width:1.2}
+.co2k .co2k-cp{fill:#9fbf6e;stroke:#6f8f45;stroke-width:1.1}
+.co2k .co2k-cp-d{fill:#cfd8bf;stroke:#a9b394}
+.co2k .co2k-gr{fill:none;stroke:#557a30;stroke-width:1.6;stroke-linecap:round}
+.co2k .co2k-mt{fill:#f6d9c9;stroke:#b8714f;stroke-width:1.4}
+.co2k .co2k-crista{fill:none;stroke:#c98b68;stroke-width:1.3;stroke-linecap:round}
+.co2k .co2k-px{fill:#fbf1d2;stroke:#c9a95a;stroke-width:1.4}
+.co2k .co2k-pxc{fill:#efd99a}
+.co2k .co2k-stromule{fill:none;stroke:#9fbf6e;stroke-width:4.2;stroke-linecap:round;stroke-linejoin:round}
+.co2k .co2k-guard{fill:#dbe8c6;stroke:#8f9f6a;stroke-width:1.8}
+.co2k .co2k-guardw{fill:none;stroke:#7d8c58;stroke-width:4;stroke-linecap:round}
+.co2k .co2k-gcp{fill:#9fbf6e}
+.co2k .co2k-xyl{fill:#f8f6ef;stroke:#bfae84;stroke-width:3.4}
+.co2k .co2k-phl{fill:#f4f0e4;stroke:#cfc3a3;stroke-width:1.4}
+.co2k .co2k-pd{fill:none;stroke:#a88f52;stroke-width:2.2;stroke-linecap:round}
+.theme-editorial .co2k text.co2k-z{font-size:17px;font-weight:600;fill:#8a877d;letter-spacing:.02em}
+.theme-editorial .co2k text.co2k-zl{font-size:18px;font-weight:700;fill:#141413}
+.theme-editorial .co2k text.co2k-note{font-size:17px;font-weight:600;fill:#3d3d3a}
+.theme-editorial .co2k text.co2k-q{font-size:19px;font-weight:700;fill:#9a4426}
+.theme-editorial .co2k text.co2k-cr{font-size:13px;fill:#6b6a64}
+/* magnifiers */
+.co2k .co2k-lens{fill:none;stroke:#3d3d3a;stroke-width:2}
+.co2k .co2k-tan{fill:none;stroke:#a8a59a;stroke-width:1.2}
+.co2k .co2k-inbg{fill:#fbfaf6}
+.co2k .co2k-inring{fill:none;stroke:#3d3d3a;stroke-width:2.6}
+.theme-editorial .co2k text.co2k-il{font-size:16px;font-weight:600;fill:#3d3d3a}
+.theme-editorial .co2k text.co2k-ilb{font-size:17px;font-weight:700;fill:#141413}
+.co2k .co2k-film{fill:#a9cde4}
+.co2k .co2k-wallb{fill:#ece2c8}
+.co2k .co2k-fib{fill:none;stroke:#d2c39c;stroke-width:1.6;stroke-linecap:round}
+.co2k .co2k-cyt{fill:#fbf9f2}
+.co2k .co2k-strm{fill:#e5efd6}
+.co2k .co2k-ias{fill:#eef3f5}
+/* the CO₂ card */
+.co2k .co2k-card{fill:#fffdf8;stroke:#d8d5cb;stroke-width:1.2}
+.co2k .co2k-bar{fill:#8fb0c6}
+.co2k .co2k-bar-old{fill:none;stroke:#8fb0c6;stroke-width:1.6;stroke-dasharray:5 4}
+.co2k .co2k-grad0{stop-color:#5e88a6}.co2k .co2k-grad1{stop-color:#e9f0f4}
+.co2k .co2k-up{fill:none;stroke:#6b6a64;stroke-width:2.4;stroke-linecap:round}
+.co2k .co2k-uph{fill:#6b6a64}
+.theme-editorial .co2k text.co2k-cl{font-size:17px;font-weight:700;fill:#141413}
+.theme-editorial .co2k text.co2k-cv{font-size:17px;font-weight:600;fill:#3d3d3a}
+.theme-editorial .co2k text.co2k-cg{font-size:16px;font-weight:600;fill:#2457a8}
+.theme-editorial .co2k text.co2k-eq{font-size:18px;font-weight:700;fill:#141413}
+.theme-editorial .co2k text.co2k-dn{font-size:17px;font-weight:700;fill:#c2401f}
+/* marks */
+.co2k .co2k-tick{fill:none;stroke:#3f7a2a;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .co2k text.co2k-tickt{font-size:16px;font-weight:700;fill:#3f7a2a}
+.co2k .co2k-th{fill:#fffdf8;stroke:#6b6a64;stroke-width:1.8}
+.co2k .co2k-thf{fill:#c2401f}
+.co2k .co2k-sun circle{fill:#f6c453;stroke:#d39a14;stroke-width:1.6}
+.co2k .co2k-sun path{fill:none;stroke:#d39a14;stroke-width:2.6;stroke-linecap:round}
+.co2k .co2k-ld{fill:none;stroke:#5a5953;stroke-width:1.4}
+.co2k .co2k-pool{fill:#f6c453;opacity:.28}
+.theme-editorial .co2k text.co2k-cbv{font-size:16px;font-weight:700;fill:#fff}
+.theme-editorial .co2k text.co2k-num{font-size:15px;font-weight:700;fill:#141413}
+.theme-editorial .co2k text.co2k-pr{font-size:19px;font-weight:600;fill:#2b2a27}
+.theme-editorial .co2k tspan.co2k-pb{font-weight:700;fill:#141413}

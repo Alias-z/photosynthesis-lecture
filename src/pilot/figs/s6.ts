@@ -218,8 +218,8 @@ export function topViewBody(p: string, legend = true): string {
     ${R2.map(([a, b]) => rc(a, b, 16)).join('')}${rc(R1[0], R1[1], 16)}
     ${text(80, cy + 98, 'LHCII', 'sm')}${text(404, cy - 80, 'LHCII', 'sm')}${text(242, cy + 120, 'PSII core', 'sm')}
     ${text(653, 96, 'PSI core', 'sm')}${text(653, 406, 'LHCI', 'sm')}
-    ${text(242, 450, 'Chl <tspan font-style="italic">b</tspan>‑rich · <tspan font-style="italic">a</tspan>:<tspan font-style="italic">b</tspan> ≈ 1.3', 'lab')}
-    ${text(653, 450, 'Chl <tspan font-style="italic">a</tspan>‑rich · <tspan font-style="italic">a</tspan>:<tspan font-style="italic">b</tspan> ≈ 3.7', 'lab')}
+    ${text(242, 450, 'Chl <tspan font-style="italic">b</tspan>‑rich · <tspan font-style="italic">a</tspan>:<tspan font-style="italic">b</tspan> ≈ 2.2', 'lab')}
+    ${text(653, 450, 'Chl <tspan font-style="italic">a</tspan>‑rich · <tspan font-style="italic">a</tspan>:<tspan font-style="italic">b</tspan> ≈ 11', 'lab')}
     ${legend ? `<g transform="translate(22 556)">
       ${pig(8, -8, false, 7)}${text(24, 0, 'Chl <tspan font-style="italic">a</tspan>', 'sm', 'start')}
       ${pig(112, -8, true, 6.5)}${text(128, 0, 'Chl <tspan font-style="italic">b</tspan>', 'sm', 'start')}
@@ -375,7 +375,7 @@ export function membraneSvg(p = 'f6e'): string {
     ${text(96, 408, 'LHCII', 'sm lab-b')}${text(368, 408, 'LHCII', 'sm lab-b')}${text(232, 394, 'PSII', 'sm lab-b')}
     ${text(568, 394, 'PSI', 'sm lab-b')}${text(712, 408, 'LHCI', 'sm lab-b')}
     ${text(232, 486, 'LHCII: Chl <tspan font-style="italic">b</tspan>‑rich · <tspan font-style="italic">a</tspan>:<tspan font-style="italic">b</tspan> ≈ 1.3', 'sm')}
-    ${text(618, 486, 'LHCI: Chl <tspan font-style="italic">a</tspan>‑rich · <tspan font-style="italic">a</tspan>:<tspan font-style="italic">b</tspan> ≈ 3.7', 'sm')}
+    ${text(618, 486, 'LHCI: Chl <tspan font-style="italic">a</tspan>‑rich · <tspan font-style="italic">a</tspan>:<tspan font-style="italic">b</tspan> ≈ 3.3', 'sm')}
     ${text(618, 514, 'red forms absorb beyond 700 nm', 'sm f6-mut')}
     <g transform="translate(26 570)">
       ${bolt(p, 0, -46, 20, 8)}${text(40, 0, 'light', 'sm', 'start')}

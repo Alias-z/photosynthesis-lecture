@@ -31,12 +31,12 @@ export const PLATE: PlateText = {
   lead: 'CO₂ and water vapour absorb infrared light, so an infrared gas analyser measures the CO₂ a leaf takes up and the water vapour it loses.',
   points: [
     { claim: 'Infrared gas analyser (IRGA).', text: 'CO₂ and H₂O each absorb their own infrared wavelengths; N₂ and O₂ do not<br>The light absorbed gives each gas’s concentration' },
-    { claim: 'Leaf chamber.', text: 'Air is analysed before and after it flows over the leaf<br>CO₂ drop: net CO₂ uptake (<i>A</i>)<br>H₂O rise: transpiration (<i>E</i>)' },
-    { claim: `Stomatal conductance and ${v('Ci')}.`, text: `${v('gs')}: from <i>E</i> and the water-vapour difference between leaf and air<br>${v('Ci')}, the CO₂ in the leaf air spaces: from <i>A</i> and ${v('gs')}` },
+    { claim: 'Leaf chamber.', text: 'Air of known flow is analysed before and after it passes the leaf<br>CO₂ drop × flow ÷ leaf area: net CO₂ uptake (<i>A</i>)<br>H₂O rise × flow ÷ leaf area: transpiration (<i>E</i>)' },
+    { claim: `Stomatal conductance and ${v('Ci')}.`, text: `${v('gs')}: from <i>E</i> and the water-vapour difference between leaf and air<br>${v('Ci')}, the CO₂ in the leaf air spaces: from <i>A</i>, ${v('gs')} and ${v('Ca')}` },
   ],
   refs: [
     { label: 'Busch et al. 2024', url: 'https://doi.org/10.1111/pce.14815' },
-    { label: 'Gaastra 1959', url: 'https://edepot.wur.nl/183268' },
+    { label: 'Gaastra 1959', url: 'https://edepot.wur.nl/291215' },
     { label: 'von Caemmerer & Farquhar 1981', url: 'https://doi.org/10.1007/BF00384257' },
     { label: 'LI-COR LI-840A manual', url: 'https://www.licor.com/support/LI-840A/topics/theory.html' },
   ],
@@ -139,7 +139,7 @@ function v2(): string {
     ${T(660, 82, 'detector', 'fcp-h', 'start')}
     ${row(196, 3, 0.85, 'less CO₂: more light reaches the detector')}
     ${row(380, 8, 0.35, 'more CO₂: less light reaches the detector')}
-    ${T(400, 540, `H₂O is read the same way, with a filter at 2.59 µm`, 'fcp-s', 'middle')}
+    ${T(400, 540, `H₂O is read the same way, with a filter at 2.595 µm`, 'fcp-s', 'middle')}
     ${credit(780, 594, 'filter wavelengths: LI-COR LI-840A manual')}
   `);
 }
@@ -162,7 +162,7 @@ function v3(): string {
     <path class="fcp-axis" d="M160,${f(yb)} H760"/>${ticks}${T(460, yb + 52, 'wavelength (µm)', 'fcp-ax', 'middle')}
     ${rows}
     ${guide(2.59)}${guide(4.26)}
-    ${pill(X(2.59) - 20, 56, 'H₂O 2.59 µm', { k: 'h2o' })}${pill(X(4.26) + 20, 56, 'CO₂ 4.26 µm', { k: 'co2' })}
+    ${pill(X(2.59) - 20, 56, 'H₂O 2.595 µm', { k: 'h2o' })}${pill(X(4.26) + 20, 56, 'CO₂ 4.26 µm', { k: 'co2' })}
     ${TV(40, 90 + a.h / 2, 'absorption', 'fcp-ax')}
     ${credit(780, 578, CR.ir1)}${credit(780, 596, CR.ir2)}
   `);
@@ -225,7 +225,7 @@ function v6(): string {
   const b = shot(`${p}-b`, GFS, 220, 296, 560, { win: [100, 60, 1200, 560] });
   const B = (u: number, w: number): Pt => b.at(u, w);
   return svg(p, 'Top: Gaastra 1959, figure 1, his infrared carbon dioxide analyser: two infrared radiators shine through a sample tube and a reference tube onto a detector, which measures the difference. Bottom: a modern portable gas-exchange system, a Walz GFS-3000, in an orchard: a leaf chamber on a tripod connected by a hose to the console.', `
-    ${T(20, 110, '1959', 'fcp-big')}${T(20, 142, 'Gaastra: one leaf,', 'fcp-s')}${T(20, 166, 'infrared CO₂', 'fcp-s')}${T(20, 190, 'analyser', 'fcp-s')}
+    ${T(20, 110, '1959', 'fcp-big')}${T(20, 142, 'Gaastra: 1 leaf,', 'fcp-s')}${T(20, 166, 'infrared CO₂', 'fcp-s')}${T(20, 190, 'analyser', 'fcp-s')}
     ${a.svg}
     ${pill(A_(420, 0)[0], 28, 'sample gas', { to: A_(430, 100) })}
     ${pill(A_(420, 0)[0] + 10, 262, 'reference gas', { to: A_(430, 228) })}
@@ -245,7 +245,7 @@ function v7(): string {
   const p = 'cp09v7';
   return svg(p, 'The drawn carbon dioxide path from the outside air to the chloroplast, with the outside air, the stomata and the air space lit and the mesophyll dimmed. Pills: measured in the chamber, A and E; calculated, the stomatal conductance and Ci.', `
     ${pathSchema(p, { lit: ['air', 'bl', 'st', 'ias', 'co2', 'h2o'], brackets: false, top: 150, bottom: 476 })}
-    ${pill(120, 50, `measured: ${A}, ${E}`, { k: 'dark', big: true })}
+    ${pill(120, 50, `from the chamber: ${A}, ${E}`, { k: 'dark', big: true })}
     ${pill(330, 98, `calculated: ${gs}, ${ci}`, { k: 'paper', big: true })}
     ${credit(780, 594, 'after Busch et al. 2024, Fig. 2')}
   `);

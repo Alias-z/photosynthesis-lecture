@@ -46,3 +46,4 @@
 /* Senn's card in beat 1: name and key line at the deck's clipping styles, sized for the lecture hall */
 :is(.ani-leaf-a,.ani-leaf-b) text.lf-cname{font-size:27px}
 :is(.ani-leaf-a,.ani-leaf-b) text.lf-key{font-size:22px}
+:is(.ani-leaf-a,.ani-leaf-b) text.lf-cred{font-size:15px;font-weight:500;fill:#8a877e}

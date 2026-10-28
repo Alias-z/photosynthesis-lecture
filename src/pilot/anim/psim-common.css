@@ -114,3 +114,5 @@
 :is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-mtick{fill:none;stroke:#8a877d;stroke-width:1.4;opacity:.7}
 :is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-msumh{fill:none;stroke:#fffdf8;stroke-width:6;stroke-linecap:round;opacity:.9}
 :is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .pm-msum{fill:none;stroke:#2b2a27;stroke-width:2.4;stroke-dasharray:7 5;stroke-linecap:round}
+/* the key message on the stage, where the eyes are (lecturer, 29 Oct 2026) */
+:is(.ani-psi-m1,.ani-psi-m2,.ani-psi-m3,.ani-psi-m4) .fig text.pm-key{font-size:40px;font-weight:700;fill:#b0431f}

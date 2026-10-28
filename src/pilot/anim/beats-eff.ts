@@ -6,9 +6,19 @@ import type { Beat, Cite } from './types';
 const ZHU08: Cite = { label: 'Zhu, Long & Ort 2008, Curr. Opin. Biotechnol.', url: 'https://doi.org/10.1016/j.copbio.2008.02.004' };
 const ZHU10: Cite = { label: 'Zhu, Long & Ort 2010, Annu. Rev. Plant Biol.', url: 'https://doi.org/10.1146/annurev-arplant-042809-112206' };
 
-export const EFF: Beat[] = [
+/** Version 1 (the band staging, unlisted). */
+export const EFF_V1: Beat[] = [
   { tag: 'Sunlight', say: 'Of the solar energy reaching a leaf, 48.7 % lies in 400–700 nm, the photosynthetically active radiation (PAR); 51.3 % is outside it.', cite: [ZHU08, ZHU10] },
   { tag: 'Leaf and photochemistry', say: 'The leaf reflects and transmits ≈ 10 % of PAR: 4.9 %. Photochemistry runs at the energy of a red photon; the extra energy of blue photons is lost as heat: 6.6 %.', cite: [ZHU10] },
   { tag: 'Carbohydrate synthesis', say: 'At least 8 photons make the 3 ATP and 2 NADPH that fix 1 CO₂; the sugar keeps about a third of their energy: 24.6 % is lost.', cite: [ZHU10] },
   { tag: 'Photorespiration and respiration', say: 'Photorespiration takes 6.1 %, respiration 1.9 %: at most 4.6 % of the solar energy is stored in biomass (C₃, 30 °C). <b>Photorespiration takes a large share: why does RuBisCO’s oxygenation cost so much?</b>', cite: [ZHU08, ZHU10] },
+];
+
+/** Version 2 (EFFICIENCY_V2_BRIEF.md, lecturer, 29 Oct 2026): the journey of sunlight through a leaf; captions exact. */
+export const EFF: Beat[] = [
+  { tag: 'Light outside 400–700 nm', say: 'Chlorophyll uses photons from 400–700 nm; the rest of sunlight, 51.3 %, drives little or no photochemistry.', cite: [ZHU08, ZHU10] },
+  { tag: 'Reflection and transmission', say: 'The leaf reflects or transmits ≈ 10 % of this light: 4.9 %.', cite: [ZHU10] },
+  { tag: 'Photochemical inefficiency', say: 'A blue photon carries more energy than a red one, but both drive 1 electron: the excess, 6.6 %, is lost as heat.', cite: [ZHU10] },
+  { tag: 'Carbohydrate synthesis', say: '8 photons drive 3 ATP + 2 NADPH per CO₂, but sugar stores only about a third of their energy: 24.6 % is lost.', cite: [ZHU10] },
+  { tag: 'Photorespiration and respiration', say: 'Photorespiration takes 6.1 % and respiration 1.9 %: at most 4.6 % of sunlight ends up in biomass. <b>What happens to C₃ crops when the air holds more CO₂?</b>', cite: [ZHU08, ZHU10] },
 ];

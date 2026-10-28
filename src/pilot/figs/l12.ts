@@ -127,7 +127,7 @@ function energyTime(): string {
     axis += `<path class="fl12-axis" d="M${X(e)},${ay - w} V${ay + w}"/>`;
     if (named[e]) axis += t(X(e), ay + 30, named[e], 'fl12-ax');
   }
-  const xs = X(-10.6), xe = X(-8.2), xt = X(-8.6);
+  const xs = X(-9.5), xe = X(-8.2), xt = X(-8.6);
   return svg('Energy levels of chlorophyll drawn against logarithmic time: absorption in femtoseconds, blue’s extra energy lost as heat in under a picosecond, charge separation in under 100 picoseconds, the remaining excited state lasting nanoseconds, and a triplet that lasts microseconds and longer and makes singlet oxygen', `
     ${defs(p, fade(`${p}-s1`, xs, xe, 'fl12-s0', 'fl12-s1') + fade(`${p}-t1`, xt, X(-3), 'fl12-c0', 'fl12-c1', 0.6))}<g transform="translate(0 -14)">
     ${ar(p, 'ink', 'M40,510 L40,70', 'fl12-axis')}<text class="fl12-ax" transform="translate(28 300) rotate(-90)" text-anchor="middle">energy</text>

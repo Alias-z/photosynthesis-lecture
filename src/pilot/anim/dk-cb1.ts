@@ -16,15 +16,18 @@
 import lolJpg from '../../assets/photos/cb-lollipop-lbl.jpg';
 import f5Png from '../../assets/photos/c2-5s.png';
 import b54Png from '../../assets/photos/cb-bassham1954.png';
+import { SPOT } from '../figs/cell-schema';
+import { tagG } from '../figs/chain';
 import { CB1 } from './beats-cb';
 import {
   add, AT, card, carbN, CO2_FROM, CYCLE_VIEW, ease, fromLine, G, GLYPH, glide, intoPrkN, life, makeStaging, numbered, numberedCo2,
   panelShow, panelSvg, path, pileName, PILE, pool, prkN, reduceN, SITE, siteRing, T, WAY, type Actor, type Api, type Part, type Row,
 } from './dk1-common';
+import { withKeys } from './stage-keys-cb';
 
-/** CB1 with the approved sentence of DARK_COUNTS_BRIEF.md added to its last caption (the beats file is unchanged). */
-const BEATS = CB1.map((b, i) => (i === CB1.length - 1
-  ? { ...b, say: b.say.replace(' <b>', ' 3 CO₂ is the smallest number for which the cycle closes with whole molecules. <b>') } : b));
+/** CB1 as it is: the why-3 sentence went from the caption to one line on screen (lecturer, 29 Oct 2026: "too much text on
+ *  the right side; only the essential"). */
+const BEATS = CB1;
 
 /* ---------------------------------------------------------------- beat 4's schedule (seconds into the beat) */
 
@@ -44,11 +47,11 @@ const ACTORS: Actor[] = [
   // the history: ¹⁴CO₂, the RuBP that rises, its 2 3-PGA; the cell's RuBP and triose phosphate, plain and labelled
   { k: 'csrc', g: C14_CO2, lab: '¹⁴CO₂', dy: -22, cls: 'cel-mn cel-halo' }, { k: 'h-rb', g: GLYPH.carbon('PCCCCCP') },
   { k: 'h-a', g: GLYPH.carbon('CCCP', 'n...') }, { k: 'h-b', g: GLYPH.carbon('CCCP') },
-  { k: 'pool-r', g: GLYPH.carbon('PCCCCCP') }, { k: 'pool-r14', g: GLYPH.carbon('PCCCCCP', '..n....') },
+  { k: 'pool-r', g: GLYPH.carbon('PCCCCCP') }, { k: 'pool-r14', g: GLYPH.carbon('PCCCCCP', '...n...') },
   { k: 'pool-t', g: GLYPH.carbon('CCCP') }, { k: 'pool-t14', g: GLYPH.carbon('CCCP', 'n...') },
-  // the count, per 3 CO₂
+  // the count, per 3 CO₂ (plain: counted, not traced; staging k traces the carbon; accuracy review R2, 29 Oct 2026)
   ...[1, 2, 3].flatMap(k => [numberedCo2(`c${k}`, k), numbered(`r${k}`, 'PCCCCCP', k)]),
-  ...[1, 2, 3, 4, 5, 6].flatMap(j => [numbered(`p${j}`, 'CCCP', j, j % 2 ? 'n...' : undefined), { k: `at${j}`, g: GLYPH.atp() }, { k: `nd${j}`, g: GLYPH.nadph() },
+  ...[1, 2, 3, 4, 5, 6].flatMap(j => [numbered(`p${j}`, 'CCCP', j), { k: `at${j}`, g: GLYPH.atp() }, { k: `nd${j}`, g: GLYPH.nadph() },
     numbered(`t${j}`, 'CCCP', j), { k: `ad${j}`, g: GLYPH.adp() }, { k: `pi${j}`, g: GLYPH.pi() }, { k: `np${j}`, g: GLYPH.nadp() }]),
   ...[1, 2, 3].flatMap(m => [{ k: `ra${m}`, g: GLYPH.atp() }, numbered(`nr${m}`, 'PCCCCCP', m), { k: `rd${m}`, g: GLYPH.adp() }]),
 ];
@@ -72,15 +75,10 @@ function cards(p: string): string {
       <image class="dk-mult" href="${b54Png}" x="${CX + 15}" y="86" width="${bw}" height="${bh.toFixed(1)}"/>
       ${T(CX + 20, 86 + bh + 26, 'J Am Chem Soc 76:1760, Fig. 7 (via Sharkey 2019, Fig. 2)', 'dk-ccr', 'start')}`, -1, 31)}`;
 }
-const n = (k: string): string => `<tspan data-k="${k}">0</tspan>`;
+// only the 2 essential lines (lecturer, 29 Oct 2026), as in staging k2
 const ROWS: Row[] = [
-  { k: 'r-h', h: 34, html: 'per 3 CO₂', cls: 'dk-ph' },
-  { k: 'r-in', h: 32, html: `CO₂ ${n('n-co2')} · RuBP ${n('n-rubp')}` },
-  { k: 'r-pga', h: 32, html: `3-PGA ${n('n-pga')}` },
-  { k: 'r-red', h: 32, html: `used: ATP ${n('n-atp')} · NADPH ${n('n-nadph')}` },
-  { k: 'r-tp', h: 32, html: `triose phosphate ${n('n-tp')}` },
-  { k: 'r-reg', h: 32, html: `triose phosphate ${n('n-back')} → RuBP ${n('n-rubp2')} · ATP ${n('n-atp2')}` },
-  { k: 'r-out', h: 34, html: `triose phosphate out of the cycle: ${n('n-out')}` },
+  { k: 'r-why', h: 34, html: '3 RuBP = 15 C = 5 × 3 C' },
+  { k: 'r-cost', h: 34, html: 'per 3 CO₂: 9 ATP + 6 NADPH used' },
 ];
 
 /* ---------------------------------------------------------------- the frame */
@@ -138,11 +136,9 @@ function count(a: Api, t: number): void {
   a.op('l-tp', ease(t, RED(0).t0 + 1.2, RED(0).t0 + 1.6) * (1 - ease(t, TO_PRK(4)[0], TO_PRK(4)[0] + 0.4)));
   a.op('f-carb', ease(t, 7.5, 7.8) * (1 - ease(t, 9.6, 10.0)));
   a.op('f-red', ease(t, 14.3, 14.6) * (1 - ease(t, 16.4, 16.8)));
-  a.txt('n-co2', String(nCo2)); a.txt('n-rubp', String(t >= 1.0 ? 3 : 0)); a.txt('n-pga', String(nPga));
-  a.txt('n-atp', String(nRed)); a.txt('n-nadph', String(nRed)); a.txt('n-tp', String(nRed));
-  a.txt('n-back', String(nBack)); a.txt('n-rubp2', String(nRubp)); a.txt('n-atp2', String(nRubp)); a.txt('n-out', String(nOut));
+  void [nCo2, nPga, nRed, nBack, nRubp, nOut];
   const on = (t0: number): number => ease(t, t0, t0 + 0.3);
-  panelShow(a, 'panel', ROWS, { 'r-h': on(0.4), 'r-in': on(0.6), 'r-pga': on(tmOf(0) - 0.2), 'r-red': on(RED(0).t0), 'r-tp': on(RED(0).t0), 'r-reg': on(TO_PRK(0)[0]), 'r-out': on(OUT_T[0]) });
+  panelShow(a, 'panel', ROWS, { 'r-why': on(TO_PRK(0)[0]), 'r-cost': on(OUT_T[1] + 0.2) });
 }
 
 function frame(a: Api, beat: number, t: number): void {
@@ -166,12 +162,15 @@ const LIT: Part[][] = [
   ['co2', 'rubisco', 'carbox', 'pga', 'thyl', 'light', 'supply', 'reduce', 'tp', 'regen'],
 ];
 
-export const STAGING = makeStaging({
+/** The strip's ATP tag of NH₃ refixation (photorespiration, never lit here) sits on the frame's bottom edge: left out. */
+const NH3_ATP = `<g class="chn-g">${tagG(SPOT.nh3Atp[0], SPOT.nh3Atp[1], 'ATP', 'atp')}</g>`;
+const STAGING_BASE = makeStaging({
   id: 's',
   name: 's · In the strip',
   note: 'The ¹⁴C history on the dark-reaction strip (the lollipop, the 5 s film, the label showing up in 3-PGA, triose phosphate, RuBP; Bassham 1954), then the cycle counted per 3 CO₂ with numbered inputs: CO₂ 1–3 + RuBP 1–3 → 3-PGA 1–6 → each with 1 ATP and 1 NADPH → triose phosphate 1–6 → 5 to PRK with 3 ATP → RuBP 1–3; triose phosphate 6 leaves the cycle',
   beats: BEATS,
   holds: [[], [], [], HOLDS],
+  drop: [NH3_ATP],
   dropGlyph: ['co2', 'rubisco', 'pga', 'tp'], dropName: ['co2', 'rubisco', 'tp'],
   actors: ACTORS,
   world: p => `${siteRing('site', '')}${pool(p, 'g-pga', 70, 34)}${pool(p, 'g-tp', 70, 34)}${pool(p, 'g-rubp', 90, 34)}
@@ -182,3 +181,13 @@ export const STAGING = makeStaging({
   lit: LIT,
   frame,
 });
+
+/** Each beat's key line and the closing question, big on the stage (lecturer, 29 Oct 2026: "people don't read the
+ *  text under the animation"). */
+export const STAGING = withKeys(STAGING_BASE, [
+  { beat: 1, lines: ['First product: 3-PGA'], x: 1370, y: 500, size: 38, at: 1.5 },
+  { beat: 2, lines: ['The path is a cycle'], x: 1370, y: 470, size: 38, at: 1.5 },
+  { beat: 3, lines: ['3 RuBP = 15 C = 5 × 3 C'], x: 1370, y: 290, size: 36, at: 14.6, hide: ['[data-k="panel"]'] },
+  { beat: 3, lines: ['per 3 CO₂: 9 ATP + 6 NADPH used'], x: 1350, y: 360, size: 28, at: 17.0 },
+  { beat: 3, lines: ['Where does the triose', 'phosphate that leaves', 'the cycle go?'], x: 800, y: 328, size: 36, at: 17.6 },
+]);

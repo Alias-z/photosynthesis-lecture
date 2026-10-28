@@ -291,14 +291,15 @@ export function makeStaging(look: Look): Staging {
     return `<g class="clip" transform="rotate(-1.5 ${f1(CX0 + CW / 2)} ${f1(CY_ + CH / 2)})">
       <path class="clip-paper" d="${cutPath(CX0, CY_, CW, CH, 13)}" filter="url(#${P}-sh)"/>
       <image href="${senn}" x="${f1(CX0 + 16)}" y="${f1(CY_ + 16)}" width="160" height="200" preserveAspectRatio="xMidYMid slice"/>
-      ${T(tx, CY_ + 58, 'Gustav Senn', 'clip-name lf-cname')}${line(0, 'described')}${line(1, 'chloroplast')}${line(2, 'movement, 1908')}</g>`;
+      ${T(tx, CY_ + 58, 'Gustav Senn', 'clip-name lf-cname')}${line(0, 'monograph on')}${line(1, 'chloroplast')}${line(2, 'movement, 1908')}</g>`;
   };
   const DX = CX0, DY = CY_ + CH + 16, DW = CW, DM = 14, DIW = DW - 2 * DM, DIH = DIW * (475 / 739), DH = DIH + 2 * DM;
   const sennDrawing = (): string => `<g class="clip" transform="rotate(1.2 ${f1(DX + DW / 2)} ${f1(DY + DH / 2)})">
       <path class="clip-paper" d="${cutPath(DX, DY, DW, DH, 23)}" filter="url(#${P}-sh)"/>
       <image href="${senn1895}" x="${f1(DX + DM)}" y="${f1(DY + DM)}" width="${f1(DIW)}" height="${f1(DIH)}" preserveAspectRatio="xMidYMid slice"/></g>
     ${T(800, DY + DH + 36, 'Senn’s drawing: chloroplasts', 'lf-lab', 'middle')}
-    <text class="lf-lab" x="800" y="${f1(DY + DH + 64)}" text-anchor="middle">moving in <tspan font-style="italic">Vallisneria</tspan> cells</text>`;
+    <text class="lf-lab" x="800" y="${f1(DY + DH + 64)}" text-anchor="middle">moving in <tspan font-style="italic">Vallisneria</tspan> cells</text>
+    ${T(800, DY + DH + 92, 'photo: Photopress AG, UB Basel · drawing: Senn 1895 (Honegger 2022), CC BY 4.0', 'lf-cred', 'middle')}`;
   /** Look B: each beat's scene on a newsprint sheet, which lies on the desk before it opens. */
   const sheet = (seed: number): string => (B ? `<path class="lfb-paper" d="${cutPath(36, 26, 1528, 688, seed)}" filter="url(#${P}-sh)"/>` : '');
 
@@ -343,6 +344,7 @@ export function makeStaging(look: Look): Staging {
       ${pointer(stA[0] + 70, 150, 'stroma', [stA[0] + 70, 158, stA[0], stA[1]])}
       ${photo(P, 'temS', temShade, CH_SHADE[0] - TEM_W / 2, TEM_Y, TEM_W, TEM_H, '5 % light')}
       ${photo(P, 'temU', temSun, CH_SUN[0] - TEM_W / 2, TEM_Y, TEM_W, TEM_H, '50 % light')}
+      ${T(800, TEM_Y + TEM_H - 4, 'TEM: Shao et al. 2014, CC BY 4.0', 'lf-cred', 'middle')}
     </g></g>`;
 
     // Beat 3: stacked (left) | unstacked (right).

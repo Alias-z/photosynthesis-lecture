@@ -1,0 +1,89 @@
+/* C2 story v4, "Three dials" (c2story-v4.ts). Prefix .c4-, scoped under .c2v4. RuBisCO, its products and arrows keep the
+   slide figure's classes (rubside.css, cbb-schema.css, cell-schema.css). */
+.c2v4 .c4-paper{fill:#fbfaf6}
+
+/* RuBisCO */
+.c2v4 .c4-gas{opacity:.75}
+.theme-editorial .c2v4 .fig text.c4-gasl{fill:#4a4945}
+.c2v4 .c4-shell{fill:#e9f1e2;stroke:#7fa66e;stroke-width:3;opacity:.95}
+.c2v4 .c4-facet{fill:none;stroke:#a9c49a;stroke-width:1.6;stroke-linejoin:round}
+.c2v4 .c4-guard{fill:#a9cf8f;stroke:#4f7a45;stroke-width:2}
+.c2v4 .c4-guardw{fill:none;stroke:#4f7a45;stroke-width:1.6;opacity:.6}
+.c2v4 .c4-pulse-c{fill:#2b2a27;stroke:#fbfaf6;stroke-width:2}
+.c2v4 .c4-pulse-o{fill:#b5532f;stroke:#fbfaf6;stroke-width:2}
+.theme-editorial .c2v4 text.c4-tag{font-size:17px;font-weight:600;fill:#4a4945;paint-order:stroke;stroke:#fbfaf6;stroke-width:5px;stroke-linejoin:round}
+.theme-editorial .c2v4 text.c4-tag-g{fill:#3f6b36}
+.theme-editorial .c2v4 text.c4-tag-r{fill:#b0401d}
+
+/* gauges */
+.c2v4 .c4-face{fill:#fffdf8;stroke:#e1ddd2;stroke-width:1.4}
+.c2v4 .c4-track{fill:none;stroke:#e6e2d7;stroke-width:11}
+.c2v4 .c4-fill-ca{fill:none;stroke:#5d5b55;stroke-width:11}
+.c2v4 .c4-fill-o2{fill:none;stroke:#c8643c;stroke-width:11}
+.c2v4 .c4-fill-s{fill:none;stroke:#3f9a4c;stroke-width:11}
+.c2v4 .c4-tick{fill:none;stroke:#9c998f;stroke-width:1.6;stroke-linecap:round}
+.c2v4 .c4-split{fill:none;stroke:#c9c5ba;stroke-width:1.4}
+.c2v4 .c4-needle{fill:#2b2a27}
+.c2v4 .c4-needle-o{fill:#a9532f}
+.c2v4 .c4-pivot{fill:#2b2a27;stroke:#fffdf8;stroke-width:2}
+.c2v4 .c4-off{fill:none;stroke:#2b2a27;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.c2v4 .c4-spdbg{fill:#e6e2d7}
+.c2v4 .c4-spdfill{fill:#3f9a4c}
+.theme-editorial .c2v4 text.c4-gt{font-size:18px;font-weight:600;fill:#141413}
+.theme-editorial .c2v4 text.c4-half{font-size:14px;font-weight:700;fill:#4a4945}
+.theme-editorial .c2v4 text.c4-half-o{fill:#a9532f}
+.theme-editorial .c2v4 text.c4-spd{font-size:13px;font-weight:600;fill:#4a4945}
+.theme-editorial .c2v4 text.c4-val{font-size:22px;font-weight:700;fill:#141413}
+.theme-editorial .c2v4 text.c4-val-o{fill:#a9532f}
+.theme-editorial .c2v4 text.c4-val-s{fill:#24812f}
+.theme-editorial .c2v4 text.c4-val-dim{fill:#8a877d;font-weight:600}
+.theme-editorial .c2v4 text.c4-name{font-size:16px;font-weight:600;fill:#24812f}
+
+/* the counter */
+.c2v4 .c4-chev{fill:none;stroke:#b9b5aa;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.theme-editorial .c2v4 text.c4-ct{font-size:19px;font-weight:600;fill:#141413}
+.theme-editorial .c2v4 text.c4-big{font-size:84px;font-weight:700;fill:#a9532f;letter-spacing:-1px}
+.c2v4 .c4-barbg{fill:#ece8de}
+.c2v4 .c4-barfill{fill:#c8643c}
+.c2v4 .c4-t1750{fill:none;stroke:#2b2a27;stroke-width:2}
+.theme-editorial .c2v4 text.c4-t1750t{font-size:14px;font-weight:600;fill:#2b2a27}
+
+/* the ribbon */
+.c2v4 .c4-rib{fill:#f1eee5}
+.c2v4 .c4-mark{fill:#fffdf8;stroke:#2b2a27;stroke-width:2.2}
+.theme-editorial .c2v4 text.c4-era{font-size:14px;font-weight:500;fill:#6b6a64}
+.theme-editorial .c2v4 text.c4-era-on{fill:#141413;font-weight:700}
+.c2v4 .c4-ground{fill:none;stroke:#a39d8c;stroke-width:1.6;stroke-linecap:round}
+.c2v4 .c4-sea0{fill:#a9bea3}.c2v4 .c4-sea1{fill:#94c4bc}
+.c2v4 .c4-strom{fill:#b7a27c;stroke:#8f7b55;stroke-width:1.2}.c2v4 .c4-strom-l{fill:none;stroke:#8f7b55;stroke-width:1}
+.c2v4 .c4-cell{fill:#4f8a5e}
+.c2v4 .c4-bub{fill:#fbfdfc;stroke:#4f8f88;stroke-width:1.3}
+.c2v4 .c4-moss{fill:#6f9a4f}
+.c2v4 .c4-stem{fill:none;stroke:#5e8a43;stroke-width:2;stroke-linecap:round}
+.c2v4 .c4-spor{fill:#a8873a}
+.c2v4 .c4-trunk{fill:#6f5f45}
+.c2v4 .c4-branch{fill:none;stroke:#6f5f45;stroke-width:2.4;stroke-linecap:round}
+.c2v4 .c4-tuft{fill:none;stroke:#5e8a43;stroke-width:2.6;stroke-linecap:round}
+.c2v4 .c4-frond{fill:none;stroke:#5e8a43;stroke-width:2.6;stroke-linecap:round}
+.c2v4 .c4-wing{fill:#eef3f5;stroke:#7d8f99;stroke-width:1}.c2v4 .c4-flyb{fill:none;stroke:#4a4a40;stroke-width:2;stroke-linecap:round}
+.c2v4 .c4-conifer{fill:#4f7a45;stroke:#4f7a45;stroke-width:2;stroke-linejoin:round}
+.c2v4 .c4-dino{fill:#7f8761}
+.c2v4 .c4-eye{fill:#2b2a27}
+.c2v4 .c4-ice{fill:#f3f7f9;stroke:#b9cdd8;stroke-width:1.4}
+.c2v4 .c4-hum{fill:#5d4b3a}
+.c2v4 .c4-huml{fill:none;stroke:#5d4b3a;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.c2v4 .c4-huma{stroke-width:2}
+.c2v4 .c4-spear{fill:none;stroke:#8a6f4a;stroke-width:1.8;stroke-linecap:round}
+.c2v4 .c4-mam{fill:#7a5f4a}
+.c2v4 .c4-mamt{fill:none;stroke:#7a5f4a;stroke-width:3.4;stroke-linecap:round}
+.c2v4 .c4-tusk{fill:none;stroke:#f6efe0;stroke-width:2.4;stroke-linecap:round}
+.c2v4 .c4-fac{fill:#8d8a82}.c2v4 .c4-chim{fill:#77736b}.c2v4 .c4-smoke{fill:#a9a59c}.c2v4 .c4-win{fill:#c7c2b6}
+.c2v4 .c4-tower{fill:#9aa3ab}.c2v4 .c4-twin{fill:#d7dde2}
+.c2v4 .c4-car{fill:#b5533c}.c2v4 .c4-tyre{fill:#2f2e2b}
+
+/* clippings */
+.c2v4 .c4-cpaper{fill:#f3eddc;stroke:#d6cdb6;stroke-width:1}.c2v4 .c4-ctex{stroke:none}
+.c2v4 .c4-crule{fill:none;stroke:#3d3a33;stroke-width:1.2}
+.theme-editorial .c2v4 text.c4-cyear{font-family:Newsreader,Georgia,serif;font-size:16px;font-weight:500;letter-spacing:2px;fill:#3d3a33}
+.theme-editorial .c2v4 text.c4-chead{font-family:Newsreader,Georgia,serif;font-size:28px;font-weight:500;fill:#141413}
+.theme-editorial .c2v4 text.c4-csrc{font-size:13px;fill:#6b6a64}

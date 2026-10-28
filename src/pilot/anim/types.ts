@@ -16,11 +16,16 @@ export interface Staging {
    *  each and waits for a click, so every click plays one step. The beat's end is always a stop and is not listed.
    *  Without holds, a beat plays through in one click. */
   holds?: number[][];
+  /** Key lines drawn big on the stage, where the eyes are (lecturer, 29 Oct 2026: "people don't read the text under the
+   *  animation"): a beat's take-home (≤ 6 words) or its closing question, in stage units; it fades in at t0 s into its beat. */
+  keys?: StageKey[];
   /** Inner markup of the stage SVG (viewBox 0 0 1600 740). */
   svg(): string;
   /** Wires the stage up once it is in the page. The returned function draws `beat` at `t` seconds after the
    *  beat began; motion plays once and then holds its last frame, so a large `t` gives the beat's end state. */
   bind(stage: SVGSVGElement): (beat: number, t: number) => void;
 }
+
+export interface StageKey { beat: number; text: string; x: number; y: number; anchor?: 'start' | 'middle' | 'end'; t0?: number; size?: number }
 
 export interface Animation { key: string; title: string; beats: Beat[]; stagings: Staging[] }

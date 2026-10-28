@@ -6,12 +6,12 @@ export const PLATE: PlateText = {
   n: '10b',
   title: 'Balancing ATP and NADPH',
   status: 'confirmed',
-  lead: 'Linear electron flow makes too little ATP for its NADPH: ATP runs short, NADPH does not.<br>Alternative pathways add ATP without NADPH, or remove excess NADPH.',
+  lead: 'Linear electron flow makes too little ATP for its NADPH.<br>Alternative pathways add ATP without NADPH, or remove excess NADPH.',
   points: [
     { claim: 'Cyclic electron flow (more ATP).', text: 'Electrons from photosystem I return to plastoquinone: ATP, no NADPH' },
     { claim: 'Water–water cycle (more ATP).', text: 'Electrons from photosystem I reduce O₂ to water: ATP, no NADPH' },
-    { claim: 'Malate valve (less NADPH).', text: 'Excess NADPH leaves the chloroplast as malate' },
-    { claim: 'When plants use these routes.', text: 'Sudden strong light: electrons arrive faster than the cycle can use NADPH<br>First minutes of light: the cycle’s enzymes are not yet activated<br>Cold: the cycle’s enzymes work slowly' },
+    { claim: 'Malate valve (less NADPH).', text: 'Excess NADPH makes malate, which carries the reducing power out of the chloroplast' },
+    { claim: 'When plants use these routes.', text: 'Sudden strong light: electrons arrive faster than the Calvin–Benson–Bassham cycle can use NADPH<br>First minutes of light: its enzymes are not yet activated<br>Cold: its enzymes work slowly' },
   ],
   refs: [
     { label: 'Yamori et al. 2011', url: 'https://doi.org/10.1111/j.1365-313X.2011.04747.x' },

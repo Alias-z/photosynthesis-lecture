@@ -10,9 +10,9 @@ export const PLATE: PlateText = {
   pick: 'C9',
   title: 'FvCB model',
   status: 'draft',
-  lead: 'The Farquhar–von Caemmerer–Berry (FvCB) model gives CO₂ uptake as the lowest of three rates, each set by one step.',
+  lead: 'The Farquhar–von Caemmerer–Berry (FvCB) model gives CO₂ uptake as the lowest of 3 rates, each set by a different process.',
   points: [
-    { claim: 'RuBisCO limit, <i>A</i><sub>c</sub>.', text: 'At low <i>C</i>ᵢ, uptake rises steeply with CO₂<br>Set by the amount of active RuBisCO (<i>V</i><sub>cmax</sub>)' },
+    { claim: 'RuBisCO limit, <i>A</i><sub>c</sub>.', text: 'At low <i>C</i>ᵢ, uptake rises steeply with CO₂<br>Set by the maximum carboxylation rate of active RuBisCO (<i>V</i><sub>cmax</sub>)' },
     { claim: 'RuBP-regeneration limit, <i>A</i><sub>j</sub>.', text: 'At higher <i>C</i>ᵢ, uptake rises slowly<br>Set by the electron transport rate (<i>J</i>) that supplies ATP and NADPH' },
     { claim: 'TPU limit, <i>A</i><sub>p</sub>.', text: 'At high <i>C</i>ᵢ, uptake stops rising<br>Set by triose-phosphate use (TPU) for sucrose and starch' },
   ],

@@ -1,0 +1,27 @@
+/* C4 animation cb4, staging d "Leaf to grain, day and night" (anim/cb4-n.ts). Prefix .cb4n. Proteins, bilayers, names
+   and arrows reuse cell-schema.css, cbb-schema.css and chain.css. */
+.theme-editorial .fig.cb4n .cb4n-wall{fill:#e6dcc4;stroke:#cdbf9c;stroke-width:1.5}
+.theme-editorial .fig.cb4n .cb4n-wallf{fill:none;stroke:#d6c9a8;stroke-width:1.2}
+.theme-editorial .fig.cb4n .cb4n-cyto{fill:#faf8f1}
+.theme-editorial .fig.cb4n .cb4n-ring{fill:none;stroke:#6b6a64;stroke-width:2.2}
+.theme-editorial .fig.cb4n .cb4n-cone{fill:none;stroke:#a9a69c;stroke-width:1.6}
+.theme-editorial .fig.cb4n .cb4n-ibg{fill:#faf8f1}
+.theme-editorial .fig.cb4n .cb4n-iring{fill:none;stroke:#6b6a64;stroke-width:2.4}
+.theme-editorial .fig.cb4n .cb4n-sieve{fill:#f6efd9;stroke:#b9a77a;stroke-width:2}
+.theme-editorial .fig.cb4n .cb4n-plate{fill:none;stroke:#b9a77a;stroke-width:3;stroke-dasharray:5 4}
+.theme-editorial .fig.cb4n .cb4n-flow{fill:none;stroke:#d9922a;stroke-width:7;stroke-linecap:round}
+.theme-editorial .fig.cb4n .cb4n-grain{fill:#efe0b4;stroke:#9c7a2c;stroke-width:2}
+.theme-editorial .fig.cb4n .cb4n-crease{fill:none;stroke:#c2a35e;stroke-width:1.8;stroke-linecap:round}
+.theme-editorial .fig.cb4n .cb4n-germ{fill:#e3cd8f;stroke:#9c7a2c;stroke-width:1.5}
+.theme-editorial .fig.cb4n .cb4n-brush{fill:none;stroke:#9c7a2c;stroke-width:1.5;stroke-linecap:round}
+.theme-editorial .fig.cb4n .cb4n-day{fill:#f8ecc4}
+.theme-editorial .fig.cb4n .cb4n-night{fill:#5b6273}
+.theme-editorial .fig.cb4n text.cb4n-bandd{font-size:19px;font-weight:600;fill:#6b5a1e}
+.theme-editorial .fig.cb4n text.cb4n-bandn{font-size:19px;font-weight:600;fill:#f3f1ea}
+.theme-editorial .fig.cb4n .cb4n-sun{fill:#f2b705;stroke:#d9922a;stroke-width:1.5}
+.theme-editorial .fig.cb4n .cb4n-ray{fill:none;stroke:#d9922a;stroke-width:2.4;stroke-linecap:round}
+.theme-editorial .fig.cb4n .cb4n-moon{fill:#f3f1ea}
+.theme-editorial .fig.cb4n .cb4n-veil{fill:#2f3b55}
+.theme-editorial .fig.cb4n .cb4n-frame{fill:none;stroke:#6b6a64;stroke-width:1.6}
+.theme-editorial .fig.cb4n text.cb4n-cr{font-size:13px;fill:#6b6a64}
+.theme-editorial .fig.cb4n .cb4n-slot{fill:#fbfaf6;stroke:#c7742b;stroke-width:1.8;stroke-dasharray:4 3}

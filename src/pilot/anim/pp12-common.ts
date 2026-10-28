@@ -295,7 +295,7 @@ export function makeStaging(o: Opt): Staging {
           return { p: (i < 2 ? lerpV(at, SITES[i], bind) : at) as V, u, o: u * (1 - out) };
         });
         acid /= MORE.length;
-        const npq = conv * (1 - 0.15 * fade(t5, B5.hOut, 1.2));
+        const npq = conv * (1 - 0.6 * fade(t5, B5.hOut, 1.2));
         drawGauges(S, G, [0.08 + 0.87 * strong, acid, npq]);
 
         const st: StoryState = { strong, cl, clOn, dots, conv, heat, fl, lb, soOn, hit: mv(t4, B4.hit, B4.hitD), flash: pulse(t4, B4.dmg), dmg, swap };

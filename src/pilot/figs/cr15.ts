@@ -32,13 +32,14 @@ export const PLATE: PlateText = {
   lead: 'Grain yield is the sunlight a crop intercepts, times the efficiency of converting it into biomass, times the share of biomass in the grain.',
   points: [
     { claim: 'Interception and harvest index.', text: 'Soybean: ≈ 90 % of the light intercepted, ≈ 60 % of the biomass in the seed<br>Breeding has brought both close to their limits' },
-    { claim: 'Conversion efficiency.', text: 'Theoretical maximum: 4.6 % of sunlight in C₃, 6 % in C₄ crops<br>A photorespiratory bypass raised tobacco biomass by 11–24 % in field trials' },
+    { claim: 'Conversion efficiency.', text: 'Theoretical maximum: 4.6 % of sunlight in C₃, 6 % in C₄ crops<br>A photorespiratory bypass raised tobacco biomass by 11–26 % in field trials' },
     { claim: 'Grain filling.', text: 'Sucrose from the leaves and the ear moves in the phloem to the grain<br>The endosperm stores it as starch' },
   ],
   refs: [
     { label: 'Zhu, Long & Ort 2010', url: 'https://doi.org/10.1146/annurev-arplant-042809-112206' },
     { label: 'South et al. 2019', url: 'https://doi.org/10.1126/science.aat9077' },
     { label: 'Cavanagh et al. 2022', url: 'https://doi.org/10.1111/pbi.13750' },
+    { label: 'Meacham-Hensold et al. 2024', url: 'https://doi.org/10.1111/gcb.17595' },
     { label: 'Sanchez-Bragado et al. 2014', url: 'https://doi.org/10.1093/jxb/eru298' },
     { label: 'Chen et al. 2024', url: 'https://doi.org/10.1093/plphys/kiae429' },
   ],

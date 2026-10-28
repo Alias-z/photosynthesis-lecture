@@ -40,3 +40,19 @@
 .theme-editorial .fig text.ef-a-big{font-size:40px;font-weight:800;fill:#141413}
 .theme-editorial .fig text.ef-a-h{font-size:22px;font-weight:700;fill:#141413}
 .theme-editorial .fig text.ef-a-unit{font-size:18px;font-weight:500;fill:#5c5a52}
+/* version 2: the journey of sunlight through a leaf (figs/ce04e-scene.ts) */
+.ef-thy{fill:#93bd6c;stroke:#5f8f4a;stroke-width:1.2}
+.ef-lead{fill:none;stroke:#8a877d;stroke-width:1.3;stroke-dasharray:3 3}
+.ef-ring{fill:none;stroke:#b9b4a6;stroke-width:1.4}
+.ef-c4edge{fill:none;stroke:#b8862a;stroke-width:1.2;stroke-dasharray:4 3}
+.theme-editorial .fig text.ef-num{font-size:19px;font-weight:800;fill:#141413}
+.theme-editorial .fig text.ef-num-pr{fill:#9a4426}
+.theme-editorial .fig text.ef-term{font-size:14px;font-weight:700;fill:#2b2a27}
+.theme-editorial .fig text.ef-why{font-size:12.5px;font-weight:500;fill:#6b6a64}
+.theme-editorial .fig text.ef-tag{font-size:12px;font-weight:600;fill:#5c5a52}
+.theme-editorial .fig text.ef-lvl{font-size:12px;font-weight:600;fill:#3d3d3a}
+.theme-editorial .fig text.ef-big{font-size:34px;font-weight:800;fill:#141413}
+.theme-editorial .fig text.ef-zone{font-size:12.5px;font-weight:600;fill:#9a978d;letter-spacing:.03em}
+.theme-editorial .fig text.ef-crd{font-size:12px;fill:#8a877d}
+.theme-editorial .fig text.ef-c4{font-size:12.5px;font-weight:700;fill:#8a6a1e}
+.theme-editorial .fig text.ef-c4b{font-size:17px;font-weight:800;fill:#8a6a1e}

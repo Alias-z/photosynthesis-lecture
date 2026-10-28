@@ -14,7 +14,7 @@ export const PLATE: PlateText = {
   points: [
     { claim: 'Light saturation.', text: 'CO₂ fixation saturates below full sunlight; absorbed light keeps rising' },
     { claim: 'Fates of absorbed energy.', text: 'Photochemistry, heat or fluorescence; their shares add up to 1<br>In strong light, heat rises and photochemistry falls' },
-    { claim: 'Reactive oxygen species.', text: 'Unused excitation forms singlet oxygen, which damages the D1 protein of photosystem II' },
+    { claim: 'Reactive oxygen species.', text: 'Unused excitation can form singlet oxygen, one cause of damage to the D1 protein of photosystem II' },
   ],
   refs: [
     { label: 'Murchie & Niyogi 2011', url: 'https://doi.org/10.1104/pp.110.168831' },

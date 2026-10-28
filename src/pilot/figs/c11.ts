@@ -106,7 +106,6 @@ const rubisco = (x: number, y: number, w = 104): string => chip(x, y, w, 'RuBisC
 const num = (x: number, y: number, n: string, r = 15): string =>
   `<circle class="fc11-num" cx="${x}" cy="${y}" r="${r}"/>${t(x, y + 6.5, n, 'fc11-num-t')}`;
 
-const SCHEMATIC = (x = 784, y = 590): string => t(x, y, 'schematic', 'note', 'end');
 
 /** Axes with arrow ends. */
 const axes = (p: string, x0: number, y0: number, x1: number, yTop: number): string =>
@@ -152,7 +151,7 @@ function pathSvg(): string {
     <path class="fc11-membrane" d="M24,424 H470 M24,446 H470 M24,452 H470"/>
     <rect class="fc11-stroma" x="24" y="456" width="446" height="132" rx="6"/>
     ${ar(p, 'c', 'M250,378 L250,502')}${rubisco(250, 526)}
-    ${lab(46, 'outside air', 'C_{a}: 425.6 ppm in 2025')}
+    ${lab(46, 'outside air', 'C_{a} ≈ 430 ppm today')}
     ${lab(128, 'stoma', 'conductance g_{s}', 'sm')}
     ${lab(236, 'air spaces inside', 'C_{i}, lower than C_{a}')}
     ${lab(410, 'cell wall, membranes', 'the mesophyll path', 'sm')}
@@ -180,7 +179,7 @@ function chamberSvg(): string {
     <path class="fc11-base" d="M612,346 H758"/>${t(643, 368, 'in', 'sm')}${t(717, 368, 'out', 'sm')}
     <path class="fc11-diff" d="M660,262 H752 M734,290 H752"/>${ar(p, 'net', 'M748,266 L748,286')}
     ${t(400, 472, 'A = flow × (CO₂ in − CO₂ out) ÷ leaf area', 'sm fc11-b')}
-    ${tm(400, 506, 'H₂O out − in gives g_{s}; C_{i} is calculated', 'sm')}</g>`);
+    ${tm(400, 506, 'H₂O out − in gives E; g_{s} and C_{i} are calculated', 'sm')}</g>`);
 }
 
 /* ---------- 11C · net bookkeeping: the equation drawn as flows (equation-anchored) ---------- */
@@ -195,7 +194,7 @@ function bookSvg(): string {
     ${term(118, 'A', 'fc11-net-t')}${term(172, '=', '')}${term(258, 'V_{c}', 'fc11-brown')}${term(340, '−', '')}
     ${term(436, '0.5 V_{o}', 'fc11-clay')}${term(530, '−', '')}${term(612, 'R_{L}', 'fc11-rl-t')}
     ${under(118, 40, 'fc11-s-net')}${under(258, 60, 'fc11-s-c')}${under(436, 110, 'fc11-s-clay')}${under(612, 60, 'fc11-s-rl')}
-    ${lines(118, 114, ['net uptake', '(measured)'], 'sm')}${lines(258, 114, ['carboxylation', '(CO₂ fixed)'], 'sm')}
+    ${lines(118, 114, ['net uptake', '(chamber)'], 'sm')}${lines(258, 114, ['carboxylation', '(CO₂ fixed)'], 'sm')}
     ${lines(436, 114, ['photorespiratory', 'release'], 'sm')}${lines(612, 114, ['other release', 'in the light'], 'sm')}
     ${t(36, 196, 'air', 'note', 'start')}
     <rect class="fc11-leaf" x="24" y="210" width="752" height="276" rx="28"/>${t(44, 470, 'leaf', 'note', 'start')}
@@ -205,9 +204,8 @@ function bookSvg(): string {
     <path class="fc11-band fc11-s-net" style="stroke-width:52" d="M404,329 V430"/>${head(404, 430, 'fc11-f-net', false, 34)}
     ${tm(346, 270, 'V_{c}', 'lab fc11-b fc11-brown', 'end')}${tm(234, 300, '0.5 V_{o}', 'lab fc11-b fc11-clay', 'end')}
     ${tm(570, 300, 'R_{L}', 'lab fc11-b fc11-rl-t', 'start')}${t(446, 424, 'A', 'lab fc11-b', 'start')}
-    ${t(756, 470, 'chamber: CO₂ in − out = A', 'sm', 'end')}
-    ${t(400, 534, 'At A = 0, RuBisCO still fixes CO₂', 'sm fc11-b')}
-    ${t(784, 590, 'band widths schematic', 'note', 'end')}`);
+    ${t(756, 470, 'chamber: A = flow × (in − out) ÷ area', 'sm', 'end')}
+    ${t(400, 534, 'At A = 0, RuBisCO still fixes CO₂', 'sm fc11-b')}`);
 }
 
 /* ---------- 11D · tanks and valves: the diffusion analogy, mapped ---------- */
@@ -253,8 +251,7 @@ function signalSvg(): string {
     ${t(X(0.56), ref - 14, 'air in (reference)', 'sm fc11-mute')}${t(X(0.56), ref + 116, 'air out, past the leaf', 'sm fc11-b')}
     ${t(X(0.16), ref - 40, 'net release', 'sm fc11-clay')}${t(X(0.92), ref - 40, 'net release', 'sm fc11-clay')}
     ${t(X(0.56), ref + 46, 'net uptake: A > 0', 'sm fc11-b fc11-brown')}
-    ${t(400, 540, 'A = flow × (in − out) ÷ leaf area', 'sm fc11-b')}
-    ${SCHEMATIC(784, 590)}`);
+    ${t(400, 540, 'A = flow × (in − out) ÷ leaf area', 'sm fc11-b')}`);
 }
 
 /* ---------- 11F · open vs shut: the stomatal trade-off ---------- */
@@ -304,8 +301,7 @@ function zeroSvg(): string {
     <path class="fc11-pin" d="M${f(X(ic))},${f(Y(vc(ic)))} V${y0}"/><circle class="fc11-dot" cx="${f(X(ic))}" cy="${f(Y(vc(ic)))}" r="7"/>
     <path class="fc11-lead" d="M${f(X(ic) + 6)},${f(Y(vc(ic)) + 8)} L${f(X(ic) + 34)},${y0 - 52}"/>
     ${t(X(ic) + 40, y0 - 66, 'light compensation point', 'sm fc11-b', 'start')}${t(X(ic) + 40, y0 - 40, '(≈ 15 µmol m⁻² s⁻¹): A = 0,', 'sm', 'start')}${t(X(ic) + 40, y0 - 14, 'yet RuBisCO is still fixing CO₂', 'sm', 'start')}
-    ${t(X(ic) - 6, y0 + 40, 'net release', 'fc11-t15 fc11-clay', 'end')}
-    ${SCHEMATIC(784, 590)}`);
+    ${t(X(ic) - 6, y0 + 40, 'net release', 'fc11-t15 fc11-clay', 'end')}`);
 }
 
 /* ---------- 11H · measured, calculated, derived, modelled: a step ladder ---------- */
@@ -318,7 +314,7 @@ function ladderSvg(): string {
   const chamberIcon = (x: number, y: number): string =>
     `<rect class="fc11-shell" x="${x - 46}" y="${y - 30}" width="92" height="26" rx="10"/><rect class="fc11-shell" x="${x - 46}" y="${y + 4}" width="92" height="26" rx="10"/><path class="fc11-leafblade" d="M${x - 62},${y} Q${x},${y - 6} ${x + 62},${y + 2} Q${x},${y + 6} ${x - 62},${y} Z"/>`;
   return svg(p, 'Four steps from the chamber to RuBisCO: measured gas concentrations, flow and leaf area; calculated A and water loss; derived gs and Ci; modelled Cc, which needs the mesophyll path. Each step adds assumptions', `
-    ${row(16, '1', 'Measured', 'CO₂ and H₂O in and out, air flow, leaf area', chamberIcon(700, 72))}
+    ${row(16, '1', 'Measured', 'CO₂, H₂O in and out; air flow; leaf area and temperature', chamberIcon(700, 72))}
     ${row(150, '2', 'Calculated', 'net CO₂ uptake A and the water lost', co2(690, 196, 9) + drop(736, 210))}
     ${row(284, '3', 'Derived', 'g_{sw} from the water lost; then C_{i} = C_{a} − 1.6 A / g_{sw}', stoma(712, 340, 0.8, 0.9))}
     ${row(418, '4', 'Modelled', 'C_{c} needs a model of the mesophyll path', `<ellipse class="fc11-chl" cx="706" cy="474" rx="60" ry="26"/>${rubisco(706, 474, 104)}`)}
@@ -351,7 +347,7 @@ function threeSvg(): string {
 
 function supplySvg(): string {
   const p = 'fc11j';
-  const x0 = 110, x1 = 740, y0 = 450, yTop = 100, cmax = 1000, amax = 30, ca = 425.6;
+  const x0 = 110, x1 = 740, y0 = 450, yTop = 100, cmax = 1000, amax = 30, ca = 430;
   const X = (c: number): number => x0 + (c / cmax) * (x1 - x0), Y = (a: number): number => y0 - (a / amax) * (y0 - yTop);
   const pts: string[] = [];
   for (let c = 60; c <= cmax; c += 5) pts.push(`${f(X(c))},${f(Y(Math.max(-1, demand(c))))}`);
@@ -371,6 +367,5 @@ function supplySvg(): string {
     ${ar(p, 'ink', `M${f(X(c1) - 6)},${f(Y(demand(c1)) + 12)} Q${f(X(c1) - 24)},${f(Y(demand(c2)) - 6)} ${f(X(c2) + 12)},${f(Y(demand(c2)) - 4)}`)}
     <path class="fc11-tick" d="M${f(X(ca))},${y0} V${y0 + 10}"/>${tm(X(ca), y0 + 32, 'C_{a}', 'sm fc11-b')}
     ${tm(X(c2), y0 + 32, 'C_{i}', 'sm fc11-brown')}${tm(X(c1), y0 + 32, 'C_{i}', 'sm fc11-brown')}
-    ${tm(X(ca) + 22, Y(6), 'supply', 'sm fc11-b fc11-brown', 'start')}
-    ${SCHEMATIC(784, 590)}`);
+    ${tm(X(ca) + 22, Y(6), 'supply', 'sm fc11-b fc11-brown', 'start')}`);
 }

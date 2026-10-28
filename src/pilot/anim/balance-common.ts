@@ -188,8 +188,8 @@ function drawGauge(S: ReturnType<typeof setters>, bl: { atp: number; nadph: numb
 /** Each condition and why NADPH accumulates in it (lecturer, 29 Oct 2026: the reason must be on screen). */
 const COND5: Array<{ c: 'light' | 'sunrise' | 'cold'; a: string; r: [string, string] }> = [
   { c: 'light', a: 'sudden strong light', r: ['electrons arrive faster', 'than NADPH is used'] },
-  { c: 'sunrise', a: 'first minutes of light', r: ['the cycle’s enzymes are', 'not yet activated'] },
-  { c: 'cold', a: 'cold', r: ['the cycle’s enzymes', 'work slowly'] },
+  { c: 'sunrise', a: 'first minutes of light', r: ['CO₂-fixing enzymes are', 'not yet activated'] },
+  { c: 'cold', a: 'cold', r: ['CO₂-fixing enzymes', 'work slowly'] },
 ];
 /** The first minute of light: the sun rising over the horizon. */
 function sunriseIcon(r = 30): string {

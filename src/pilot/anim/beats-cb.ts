@@ -21,10 +21,10 @@ const BOWES71: Cite = { label: 'Bowes, Ogren & Hageman 1971, Biochem. Biophys. R
  *  per 3 CO₂ on the slide's wheel. The lollipop is named only as the first apparatus (Calvin 1961: "initially
  *  performed in … the 'Lollipop'"); the shortest feeds are shown in Bassham's flow tube (Sharkey 2019, Fig. 6). */
 export const CB1: Beat[] = [
-  { tag: 'Carbon-14', say: 'From 1945, carbon-14 was cheap. Calvin, Benson and Bassham fed ¹⁴CO₂ to algae in light, first in a flat flask, the “lollipop”, then dropped them into alcohol to stop all reactions.', cite: [NOBEL, SHARKEY19] },
-  { tag: 'Shorter ¹⁴CO₂ feeds', say: 'The shorter the feed, the fewer the labelled compounds. After fractions of a second, over 80 % of the ¹⁴C was in one compound: 3-PGA.', cite: [{ ...NOBEL, label: 'Calvin 1961, Nobel lecture, Figs 5, 6' }, { ...SHARKEY19, label: 'flow tube: Sharkey 2019, Fig. 6' }] },
+  { tag: 'Carbon-14', say: 'After 1945, nuclear reactors made carbon-14 cheap and plentiful. Calvin, Benson and Bassham fed ¹⁴CO₂ to algae in light, first in a flat flask, the “lollipop”, then dropped them into alcohol to stop all reactions.', cite: [NOBEL, SHARKEY19] },
+  { tag: 'Shorter ¹⁴CO₂ feeds', say: 'The shorter the feed, the fewer the labelled compounds. After fractions of a second, over 80 % of the ¹⁴C was in 1 compound: 3-PGA.', cite: [{ ...NOBEL, label: 'Calvin 1961, Nobel lecture, Figs 5, 6' }, { ...SHARKEY19, label: 'flow tube: Sharkey 2019, Fig. 6' }] },
   { tag: 'Labelling order', say: 'The order in which compounds took up ¹⁴C traced the path: CO₂ → 3-PGA → triose phosphate → sugar phosphates that rebuild RuBP. In 1954 they drew it as a cycle.', cite: [BASSHAM54, NOBEL] },
-  { tag: 'Per 3 CO₂', say: 'Per 3 CO₂ fixed, the cycle makes 6 triose phosphates: 5 regenerate 3 RuBP, 1 leaves the cycle. <b>What do reduction and regeneration cost?</b>', cite: [SHARKEY19] },
+  { tag: 'Per 3 CO₂', say: 'Per 3 CO₂ fixed, the cycle makes 6 triose phosphates: 5 regenerate 3 RuBP, 1 leaves the cycle. <b>Where does the triose phosphate that leaves the cycle go?</b>', cite: [SHARKEY19] },
 ];
 
 /** C2 · RuBisCO: one site's slow pace, the bulk a leaf holds, the planet's total, back to its product. */
@@ -61,5 +61,5 @@ export const CB4: Beat[] = [
   { tag: 'Export or storage', say: 'Triose phosphate leaves the chloroplast in exchange for phosphate and becomes sucrose, for the whole plant. Part stays in the chloroplast and becomes starch.', cite: [SHARKEY24, SMITH07] },
   { tag: 'Day and night', say: 'In <i>Arabidopsis</i> leaves, starch builds up all day and is broken down at night at a near-constant rate: almost all of it is used by dawn.', cite: [GRAF10, STREB12] },
   { tag: 'Starch use at night', say: '2010: Graf and colleagues let night fall after 8 hours instead of 12. The plants slowed starch breakdown at once, and the starch still lasted until dawn.', cite: [GRAF10] },
-  { tag: 'RuBisCO and O₂', say: 'All this sugar starts with RuBisCO adding CO₂ to RuBP. <b>But RuBisCO can also take O₂ instead of CO₂: what happens then?</b>', cite: [BOWES71] },
+  { tag: 'RuBisCO and O₂', say: 'All this sugar starts with RuBisCO adding CO₂ to RuBP. <b>But RuBisCO also adds O₂: what happens to its product, 2-PG?</b>', cite: [] },
 ];

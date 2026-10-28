@@ -5,9 +5,9 @@
 //   it; the dot sits below zero.
 // - Beat 2, light compensation point: the camera moves to the chloroplast; dim light, a little ATP and NADPH, one CO₂ to
 //   RuBisCO; the dot reaches zero.
-// - Beat 3, quantum yield: light 32 → 300; electron transport (light, thylakoid, ATP and NADPH supply) is lit as the
+// - Beat 3, quantum yield: light 32 → 150 (the linear part; R3 review, 29 Oct 2026); electron transport (light, thylakoid, ATP and NADPH supply) is lit as the
 //   limit; ATP, NADPH and CO₂ come faster; the curve's straight part and its slope.
-// - Beat 4, light saturation: 300 → 2000; past the bend the limit passes to RuBisCO and the cycle (lit), the supply dims;
+// - Beat 4, light saturation: 150 → 2000; past the bend the limit passes to RuBisCO and the cycle (lit), the supply dims;
 //   ATP and NADPH back up before GAPDH; the curve levels off.
 // - Beat 5, sun and shade: the shade-grown curve draws beside the sun-grown one.
 // - Beat 6, which limit: the cycle stays lit at the plateau; ends on the caption's question.
@@ -29,12 +29,12 @@ const PPFD = [0, 20, 50, 100, 200, 300, 500, 800, 1200, 1600, 2000];
 const SUN = [-2.2, -0.8, 1.4, 4.3, 8.8, 12.4, 16.7, 19.7, 21.1, 21.8, 21.8];
 const SHADE = [-1.0, 0.0, 1.8, 3.9, 6.7, 8.6, 10.4, 11.6, 12.3, 12.9, 13.1];
 const sun = monotone(PPFD.map((q, i) => [q, SUN[i]])), shade = monotone(PPFD.map((q, i) => [q, SHADE[i]]));
-/** The light at (beat, t): one rise, 0 → 32 → 300 → 2000. */
+/** The light at (beat, t): one rise, 0 → 32 → 150 → 2000. */
 function light(beat: number, t: number): number {
   if (beat === 0) return 0;
   if (beat === 1) return 32 * ease(t, PAN + 0.3, PAN + 2.8);
-  if (beat === 2) return lerp(32, 300, ease(t, 0.5, 5.0));
-  if (beat === 3) return lerp(300, 2000, ease(t, 0.4, 5.4));
+  if (beat === 2) return lerp(32, 150, ease(t, 0.5, 5.0));
+  if (beat === 3) return lerp(150, 2000, ease(t, 0.4, 5.4));
   return 2000;
 }
 const shadeTo = (beat: number, t: number): number => (beat === 4 ? 2000 * ease(t, 0.5, 4.3) : beat > 4 ? 2000 : 0);
@@ -48,12 +48,12 @@ function panelSvg(): string {
     `<text data-k="${P}-${k}" class="${cls}" x="${f(x)}" y="${f(y)}" text-anchor="${anchor}" opacity="0">${s}</text>`;
   return `<g data-k="${P}-panel">${cardSvg(956, 22, 622, 670)}
     ${axesSvg(a, [0, 500, 1000, 1500, 2000], [-5, 0, 5, 10, 15, 20, 25], 'light (µmol photons m⁻² s⁻¹)', 'net CO₂ uptake (µmol m⁻² s⁻¹)', { zero: true })}
-    <g data-k="${P}-qy" opacity="0"><path class="dk2-cursor" d="M${f(AX(a, 0))},${f(AY(a, sun(0)))}L${f(AX(a, 420))},${f(AY(a, sun(0) + S0 * 420))}"/></g>
+    <g data-k="${P}-qy" opacity="0"><path class="dk2-cursor" d="M${f(AX(a, 0))},${f(AY(a, sun(0)))}L${f(AX(a, 250))},${f(AY(a, sun(0) + S0 * 250))}"/></g>
     <path data-k="${P}-cs" class="dk2-cur" d="M0,0"/><path data-k="${P}-ch" class="dk2-cur dk2-cur-amber" d="M0,0"/>
     <circle data-k="${P}-dot" class="dk2-dot" r="7"/><circle data-k="${P}-doth" class="dk2-dot dk2-dot-amber" r="7" opacity="0"/>
     <path data-k="${P}-lcp" class="dk2-tick" d="M${f(AX(a, 32))},${f(AY(a, 0) - 9)}v18" opacity="0"/>
     ${lab('l-lcp', AX(a, 70), AY(a, -2.6), 'light compensation point')}
-    ${lab('l-qy', AX(a, 440), AY(a, sun(0) + S0 * 420) + 6, 'slope: quantum yield')}
+    ${lab('l-qy', AX(a, 270), AY(a, sun(0) + S0 * 250) + 6, 'slope: quantum yield')}
     ${lab('l-sat', AX(a, 2000), AY(a, 21.8) - 16, 'light saturation', 'end')}
     ${lab('l-sun', AX(a, 2000), AY(a, 21.8) - 16, 'grown in 95 % sunlight', 'end')}
     ${lab('l-sh', AX(a, 2000), AY(a, 13.1) + 30, 'grown in 28 % sunlight', 'end', 'dk2-gl dk2-gl-amber')}

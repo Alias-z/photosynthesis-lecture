@@ -31,3 +31,5 @@ export const CR15: Beat[] = [
   { tag: 'Engineering the link', say: 'A synthetic pathway breaks down glycolate from photorespiration inside the chloroplast. Tobacco with it made 20 % (2016) and 24 % (2017) more biomass in the field.', cite: [SOUTH19] },
   { tag: 'Leaf to loaf', say: 'Sucrose from the leaves and the ear moves in the phloem to the grain, where the endosperm stores it as starch. <b>Which link of the chain would you improve?</b>', cite: [SANCHEZ14, CHEN24] },
 ];
+/** C15 staging A: CR15 without 'The ceiling' (lecturer, 29 Oct 2026): slide C4e already shows the energy losses. */
+export const CR15A: Beat[] = CR15.filter(b => b.tag !== 'The ceiling');

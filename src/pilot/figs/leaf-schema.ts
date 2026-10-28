@@ -77,7 +77,7 @@ export const LIT_C13N: LPart[] = ['stoma', 'cam-n', 'ca', 'pepc', 'vac', 'cam-ac
 export const LIT_C13D: LPart[] = ['stoma', 'vac', 'cam-acid', 'cam-d', 'cam-me', 'm-cp', 'm-rub', 'starch'];
 
 export type Unit = 'ppm' | 'perCO2' | 'loop' | 'none';
-const UNIT_SAY: Record<Unit, string> = { ppm: 'CO₂ in ppm (µmol mol⁻¹)', perCO2: 'numbers per CO₂', loop: 'numbers per 2 O₂', none: '' };
+const UNIT_SAY: Record<Unit, string> = { ppm: 'CO₂ in ppm (µmol mol⁻¹)', perCO2: 'numbers per CO₂', loop: 'numbers per 2 oxygenations', none: '' };
 
 export interface LeafOpts {
   /** The window [x, y, w] of the panorama in the 800 × 600 figure (height w × 0.75). Default: the whole leaf. */
@@ -589,7 +589,7 @@ export function camSvg(id: string, zoom = false): string {
   const pw = 388, s = pw / win[2], ph = win[3] * s, top = zoom ? 38 : 54, hy = top - 18;
   const panel = (k: 'n' | 'd', x0: number): string => {
     const night = k === 'n';
-    const d = new Draw(`${id}${k}`, new Set(night ? LIT_C13N : LIT_C13D), { unit: 'perCO2', win: [win[0], win[1], win[2]], gap: night ? 12 : 0, acid: night ? 4 : 1, starch: night ? 0.35 : 1, hide: ['m-perox', 'm-mito', 'ppdk', 'me', 'bs-rub', 'bs-mito'] });
+    const d = new Draw(`${id}${k}`, new Set(night ? LIT_C13N : LIT_C13D), { unit: 'perCO2', win: [win[0], win[1], win[2]], gap: night ? 12 : 0, acid: 1, starch: night ? 0.35 : 1, hide: ['m-perox', 'm-mito', 'ppdk', 'me', 'bs-rub', 'bs-mito'] });
     pano(d);
     const body = d.out([win[0], win[1], win[2], win[3]]);
     for (const m of body.matchAll(/data-s="(\w+)"/g)) ids.add(PDB[m[1]]);
@@ -638,7 +638,7 @@ export function climateSvg(id: string, lit: Clim | 'trend'): string {
   return `<svg class="fig-svg cel lf lf-clim" viewBox="0 0 800 600" role="img" aria-label="Four climates and the photosynthesis type that dominates there: temperate, cool and moist: C3, for example wheat and potato; warm: C2, for example wild rocket; tropical, hot and bright: C4, for example maize and sugarcane; arid, hot and dry: CAM, for example pineapple and agave, with its stomata closed by day and open at night.">
     ${ks.map(col).join('')}
     <g class="chn-${trendOn ? 'on' : 'off'}">${arrow([[40, 530], [760, 530]], 'pr')}
-    ${T(400, 566, 'hotter, drier: stomata close by day, photorespiration rises', trendOn ? 'lf-trend' : 'lf-trend lf-trend-d')}</g>
+    ${T(400, 566, 'hotter, drier: stomata close by day; in C₃ leaves, photorespiration rises', trendOn ? 'lf-trend' : 'lf-trend lf-trend-d')}</g>
 </svg>`;
 }
 function miniStoma(x: number, y: number, gap: number): string {

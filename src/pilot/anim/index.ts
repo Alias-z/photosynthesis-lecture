@@ -26,12 +26,13 @@ import { STAGING as b6fQB } from './b6f-qb';
 // psi: the lecturer keeps the Z-scheme staging m4 only (28 Oct 2026); m1–m3 stay in the code, unlisted.
 import { PSIM } from './beats-psim';
 import { STAGING as psiM4 } from './psi-m4';
-import { ATPSM } from './beats-atpsm';
+import { ATPSM, ATPSM_C } from './beats-atpsm';
 import { CYCLICM } from './beats-cyclicm';
 import { BALANCE } from './beats-balance';
 import { STAGING as rf5S } from './dk-rf5';
-import { STAGING as c2storyS } from './dk-c2story';
-import { C2STORY } from './beats-c2story';
+import { C2STORY, C2STORY3, C2STORY4 } from './beats-c2story';
+import { STAGING as c2storyEvo } from './c2story-evo';
+import { STAGING as c2story3S } from './dk-c2story3';
 import { REDUCTION } from './beats-reduction';
 import { REGENERATION } from './beats-regeneration';
 import { STAGING as reductionS } from './dk-reduction';
@@ -43,10 +44,24 @@ import { STAGING as rubiscoS } from './dk-rubisco';
 import { STAGING as cb1S } from './dk-cb1';
 // C1's carbon bookkeeping per 3 CO₂ (EFFICIENCY_BRIEF.md, 29 Oct 2026): staging k, with its own beats.
 import { STAGING as cb1K } from './dk-cb1k';
+import { STAGING as cb1Story } from './cb1-story';
+import { CB1V2, CB1V3 } from './beats-cb1k';
 import { STAGING as cb3S } from './dk-cb3';
 import { STAGING as cb4S } from './dk-cb4';
-import { CB4N } from './beats-cb4n';
-import { STAGING as rf6S } from './dk-rf6';
+import { CB4N, CB4V2, CB4V3 } from './beats-cb4n';
+import { STAGING as cb4Routes } from './cb4-routes';
+import { STAGING as cb4N } from './cb4-n';
+import { STAGING as cb4S2 } from './dk-cb4b';
+import { STAGING as cb4P } from './cb4-p';
+import { STAGING as rf6S, STAGING_W1 as rf6W1, STAGING_W2 as rf6W2 } from './dk-rf6';
+import { STAGING as c4Style } from './c4-style';
+import { STAGING as c2Kranz } from './c2-kranz';
+import { STAGING as c2Pair } from './c2-pair';
+import { STAGING as c2Micro } from './c2-micro';
+import { STAGING as c2Stack } from './c2-stack';
+import { C2P } from './beats-c2p';
+import { STAGING as c4Kranz } from './c4-kranz';
+import { C2K, C4K } from './beats-c24';
 import { RF6N } from './beats-rf6n';
 import { STAGING as rf7S } from './dk-rf7';
 import { STAGING as rf8S } from './dk-rf8';
@@ -129,7 +144,7 @@ import { STAGING as cc13A } from './cc13-a';
 import { STAGING as cc13B } from './cc13-b';
 import { STAGING as cc13C } from './cc13-c';
 import { STAGING as cc13D } from './cc13-d';
-import { CR14, CR15 } from './beats-cr';
+import { CR14, CR15, CR15A } from './beats-cr';
 import { STAGING as cr14A } from './cr14-a';
 import { STAGING as cr14B } from './cr14-b';
 import { STAGING as cr14C } from './cr14-c';
@@ -145,6 +160,13 @@ import { STAGING as lf11M } from './lf11';
 import { STAGING as lf11aM } from './lf11a';
 import { STAGING as lf12M } from './lf12';
 import { STAGING as lf13M } from './lf13';
+// The CO₂ story of C10–C11a (29 Oct 2026, research/redo-2026-10-29/CO2_DIFFUSION_STORY_BRIEF.md): new stagings listed
+// first, with their own beats; the picked leaf-section stagings lf10m and lf11m stay listed after them.
+import { LF10K, LF11K, LF11AK } from './beats-co2';
+import { STAGING as lf10A } from './lf10-a';
+import { STAGING as lf10B } from './lf10-b';
+import { STAGING as lf11K } from './lf11-k';
+import { STAGING as lf11aK } from './lf11a-k';
 // C4e · Efficiency of photosynthesis (research/redo-2026-10-29/EFFICIENCY_BRIEF.md).
 import { EFF } from './beats-eff';
 import { STAGING as effS } from './eff';
@@ -164,30 +186,32 @@ export const ANIMATIONS: Animation[] = [
   { key: 'psii', title: 'Photosystem II', beats: PSIIM, stagings: [psiiPB, psiiPC] },
   { key: 'b6f', title: 'Cytochrome b₆f', beats: B6FM, stagings: [b6fQB] },
   { key: 'psi', title: 'Photosystem I', beats: PSIM, stagings: [psiM4] },
-  { key: 'atps', title: 'ATP synthase', beats: ATPSM, stagings: [atpsM1, atpsM2] },
+  { key: 'atps', title: 'ATP synthase', beats: ATPSM, stagings: [{ ...atpsM1, beats: ATPSM_C }, atpsM2] },
   // the picked earlier staging a keeps its own four beats
   { key: 'cyclic', title: 'Balancing ATP and NADPH', beats: BALANCE, stagings: [balS1, balS2, balS3, { ...cyc10bA, beats: CYCLIC }] },
   { key: 'bridge', title: 'From light to CO₂ fixation', beats: BRIDGE, stagings: [bridgeA] },
   { key: 'pp11', title: 'Excess light', beats: PP11, stagings: [pp11A, pp11B, pp11C, pp11D] },
   { key: 'pp12', title: 'Photoprotection and repair', beats: PP12, stagings: [pp12A, pp12B, pp12C, pp12D] },
   { key: 'pp13', title: 'Chlorophyll fluorescence', beats: PP13, stagings: [pp13A, pp13B, pp13C, pp13D] },
-  { key: 'cb1', title: 'How the cycle was found', beats: CB1, stagings: [cb1S, cb1K] },
+  { key: 'cb1', title: 'How the cycle was found', beats: CB1, stagings: [{ ...cb1Story, beats: CB1V3 }] },  // lecturer, 29 Oct 2026: only the picked version
   { key: 'cb2', title: 'RuBisCO', beats: CB2, stagings: [cb2A, cb2B, cb2C] },
   { key: 'cb3', title: 'Reduction and regeneration', beats: CB3, stagings: [cb3S] },
   { key: 'reduction', title: 'Reduction', beats: REDUCTION, stagings: [reductionS] },
   { key: 'regeneration', title: 'Regeneration', beats: REGENERATION, stagings: [regenerationS] },
-  { key: 'cb4', title: 'Sucrose and starch', beats: CB4N, stagings: [cb4S] },
+  { key: 'cb4', title: 'Sucrose and starch', beats: CB4N, stagings: [{ ...cb4Routes, beats: CB4V3 }, { ...cb4N, beats: CB4V2 }, { ...cb4S2, beats: CB4V2 }, { ...cb4P, beats: CB4V2 }, cb4S] },
   { key: 'eff', title: 'Efficiency of photosynthesis', beats: EFF, stagings: [effS] },
   { key: 'rubisco', title: 'RuBisCO', beats: RUBISCO, stagings: [rubiscoS] },
-  { key: 'lf10', title: 'CO₂ uptake: from the air to RuBisCO', beats: LF10, stagings: [lf10M] },
-  { key: 'lf11', title: 'C₃ photosynthesis and refixation', beats: LF11, stagings: [lf11M] },
-  { key: 'lf11a', title: 'C₂ photosynthesis', beats: LF11A, stagings: [lf11aM] },
-  { key: 'lf12', title: 'C₄ photosynthesis', beats: LF12, stagings: [lf12M] },
+  { key: 'lf10', title: 'CO₂ uptake: from the air to RuBisCO', beats: LF10, stagings: [{ ...lf10A, beats: LF10K }, { ...lf10B, beats: LF10K }, lf10M] },
+  { key: 'lf11', title: 'C₃ photosynthesis and refixation', beats: LF11, stagings: [{ ...lf11K, beats: LF11K }, lf11M] },
+  { key: 'lf11a', title: 'C₂ photosynthesis', beats: LF11A, stagings: [{ ...c2Pair, beats: C2P }, { ...c2Micro, beats: C2P }, { ...c2Stack, beats: C2P }, { ...c2Kranz, beats: C2K }, { ...lf11aK, beats: LF11AK }, lf11aM] },
+  { key: 'lf12', title: 'C₄ photosynthesis', beats: LF12, stagings: [{ ...c4Kranz, beats: C4K }, lf12M] },
   { key: 'lf13', title: 'Crassulacean acid metabolism (CAM)', beats: LF13, stagings: [lf13M] },
-  { key: 'c2story', title: 'RuBisCO through Earth’s history', beats: C2STORY, stagings: [c2storyS] },
+  { key: 'c2story', title: 'RuBisCO through Earth’s history', beats: C2STORY, stagings: [{ ...c2storyEvo, beats: C2STORY4 }, { ...c2story3S, beats: C2STORY3 }] },  // lecturer, 29 Oct 2026: versions 3–6 removed
   { key: 'history', title: 'RuBisCO through Earth’s history', beats: HISTORY, stagings: [historyS] },
   { key: 'rf5', title: 'Carboxylation and oxygenation', beats: RF5, stagings: [rf5S] },
-  { key: 'rf6', title: 'Photorespiration', beats: RF6N, stagings: [rf6S] },
+  { key: 'rf6', title: 'Photorespiration', beats: RF6N, stagings: [rf6W1, rf6W2, rf6S] },
+  // style frame for the C₂ and C₄ slides (not on a slide yet; pilot.html?anim=c4style)
+  { key: 'c4style', title: 'C₂ and C₄: style frame', beats: c4Style.beats ?? [], stagings: [c4Style] },
   { key: 'rf7', title: 'Light-response curve', beats: RF7, stagings: [rf7S] },
   { key: 'rf8', title: 'FvCB model', beats: RF8, stagings: [rf8S] },
   { key: 'cp9', title: 'Measuring leaf gas exchange', beats: CP9, stagings: [cp9A, cp9B, cp9C, cp9D] },
@@ -196,5 +220,5 @@ export const ANIMATIONS: Animation[] = [
   { key: 'cc12', title: 'C₄ photosynthesis', beats: CC12, stagings: [cc12A, cc12B, cc12C, cc12D] },
   { key: 'cc13', title: 'Crassulacean acid metabolism (CAM)', beats: CC13, stagings: [cc13A, cc13B, cc13C, cc13D] },
   { key: 'cr14', title: 'Rising CO₂', beats: CR14, stagings: [cr14A, cr14B, cr14C, cr14D] },
-  { key: 'cr15', title: 'From leaf to loaf', beats: CR15, stagings: [cr15A, cr15B, cr15C, cr15D] },
+  { key: 'cr15', title: 'From leaf to yield', beats: CR15, stagings: [{ ...cr15A, beats: CR15A }, cr15B, cr15C, cr15D] },
 ];

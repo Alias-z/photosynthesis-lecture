@@ -11,7 +11,7 @@ export const PLATE: PlateText = {
   points: [
     { claim: 'Proton gradient.', text: 'H⁺ collect in the lumen', eq: 'lumen pH ≈ 6 · stroma pH ≈ 8' },
     { claim: 'ATP synthase.', text: 'H⁺ flow back and turn its rotor', eq: '14 H⁺ = 1 turn = 3 ATP<br>per O₂: only 12 H⁺ → 12/14 turn → ≈ 2.6 ATP' },
-    { claim: 'ATP for CO₂ fixation.', text: 'The 2 NADPH made per O₂ fix 1 CO₂ into sugar, which needs 3 ATP', eq: '1 CO₂ fixed: 3 ATP + 2 NADPH · per O₂: ≈ 2.6 ATP + 2 NADPH' },
+    { claim: 'ATP for CO₂ fixation.', text: 'The 2 NADPH made per O₂ reduce 1 fixed CO₂ to sugar, which also uses 3 ATP', eq: '1 CO₂ fixed: 3 ATP + 2 NADPH' },
     { claim: 'Per O₂.', text: '', eq: ledger([['water splitting', '—', '+4 lumen'], ['cytochrome b₆f', '—', '+8 lumen'], ['ATP synthase → ≈ 2.6 ATP', '—', '12 lumen → stroma']]) },
   ],
   refs: [

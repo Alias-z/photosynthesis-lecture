@@ -202,7 +202,7 @@ function thesisSvg(): string {
     ${ar(p, 'clay', 'M176,510 L326,510')}${ar(p, 'clay', 'M476,510 L626,510')}
     ${ar(p, 'blue', 'M626,534 L476,534', 'fl13-dash')}${ar(p, 'blue', 'M326,534 L176,534', 'fl13-dash')}
     ${T(251, 498, 'VDE · low pH', 'fl13-s fl13-c-clay')}${T(551, 498, 'VDE · low pH', 'fl13-s fl13-c-clay')}
-    ${T(400, 594, 'back by ZEP, slowly', 'fl13-s fl13-c-blue')}
+    ${T(400, 594, 'back again, slowly', 'fl13-s fl13-c-blue')}
   </g>`);
 }
 

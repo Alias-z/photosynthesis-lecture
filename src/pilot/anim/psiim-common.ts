@@ -254,7 +254,8 @@ function cardSvg(p: string, kind: CardKind): { svg: string; bubs: Bub[] } {
   const head = `${por(rubenImg, px0)}${por(kamenImg, px0 + pw + gap)}
     <text class="clip-name p7m-cname" x="${px0 + pw / 2}" y="${py + ph + 34}" text-anchor="middle">Ruben</text>
     <text class="clip-name p7m-cname" x="${px0 + 1.5 * pw + gap}" y="${py + ph + 34}" text-anchor="middle">Kamen</text>
-    <text class="clip-find p7m-year" x="${x + w / 2}" y="${py + ph + 72}" text-anchor="middle">1941</text>`;
+    <text class="clip-find p7m-year" x="${x + w / 2}" y="${py + ph + 72}" text-anchor="middle">1941</text>
+    <text class="p7m-key" x="${x + w / 2}" y="${y + h - 8}" text-anchor="middle" font-size="13" opacity=".75">photos: Seaborg Archive, LBNL · D. Cooksey 1938</text>`;
   const keyY = y + h - 30;
   const key = `${ball(x + w / 2 - 124, keyY - 7, 'O18')}<text class="p7m-key" x="${x + w / 2 - 100}" y="${keyY}">= ¹⁸O, an oxygen isotope</text>`;
   const bubG = (k: string, heavy: boolean, s: string): string =>

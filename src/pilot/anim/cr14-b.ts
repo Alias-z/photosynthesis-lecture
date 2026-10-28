@@ -11,6 +11,7 @@ import {
   leakeyClip, longClip, myersClip, noaaPx, puffsSvg,
 } from './cr14-common';
 import type { Staging } from './types';
+import { keyLines } from './stage-keys';
 
 const P = 'c14b';
 const VX = [0, 1700, 3400, 5100, 6800];
@@ -40,8 +41,10 @@ const W_KX = 22;
 
 const MOVES: Move[] = [1, 2, 3, 4].map(b => ({ beat: b, t0: 0, d: 1.0, to: view(VX[b] + (b === 2 ? 680 : 800), 370, 1600) }));
 MOVES[2] = { beat: 3, t0: 0, d: 1.0, to: view(VX[3] + 736, 370, 1600) };
+// the last sheet a little smaller and lower: the closing question sits centred above it
+MOVES[3] = { beat: 4, t0: 0, d: 1.0, to: { s: 0.92, t: [800 - 0.92 * (VX[4] + 800), 89] } };
 
-export const STAGING: Staging = {
+const BASE: Staging = {
   id: 'b',
   name: 'B · History, clipping by clipping',
   note: 'Keeling, Kimball 1983, Long 2006, Leakey 2009, Myers 2014 as clippings beside the real graphs; slide figure v3 for the leaf.',
@@ -111,3 +114,9 @@ export const STAGING: Staging = {
     };
   },
 };
+
+/** The closing question on the stage, centred above the grain once the motion has finished (lecturer, 29 Oct 2026: on
+ *  the stage only the closing question). */
+export const STAGING: Staging = { ...BASE, keys: [
+  ...keyLines(4, ['More CO₂ raised photosynthesis:', 'what else sets how much grain a field yields?'], 800, 57, { size: 44, t0: 3.0 }),
+] };

@@ -57,3 +57,4 @@
 :is(.ani-atps-m1,.ani-atps-m2) .fig text.am-miss-t{font-size:15px;font-weight:700;fill:#3d3d3a}
 :is(.ani-atps-m1,.ani-atps-m2) .fig text.am-row2{font-size:24px;font-weight:600;fill:#141413}
 :is(.ani-atps-m1,.ani-atps-m2) .fig text.am-note{font-size:17px}
+:is(.ani-atps-m1,.ani-atps-m2) .fig text.am-qbig{font-size:46px;font-weight:700;fill:#b0431f;paint-order:stroke;stroke:#fbfaf6;stroke-width:8px;stroke-linejoin:round}

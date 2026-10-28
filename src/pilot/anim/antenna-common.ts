@@ -151,6 +151,7 @@ export function pairClip(p: string, x: number, y: number, w: number, rot = -2, s
     <text class="clip-name" x="${f1(x + m + pw / 2)}" y="${f1(ny)}" text-anchor="middle" font-size="${f1(w * 0.082)}">Emerson</text>
     <text class="clip-name" x="${f1(x + 2 * m + 1.5 * pw)}" y="${f1(ny)}" text-anchor="middle" font-size="${f1(w * 0.082)}">Arnold</text>
     <text class="clip-find" x="${f1(x + w / 2)}" y="${f1(yy)}" text-anchor="middle" font-size="${f1(w * 0.088)}">1932</text>
+    <text class="clip-name" x="${f1(x + w / 2)}" y="${f1(y + h - w * 0.03)}" text-anchor="middle" font-size="${f1(Math.max(12, w * 0.04))}" opacity=".7">photos: NAS Biographical Memoirs</text>
   </g>`;
 }
 
@@ -255,7 +256,7 @@ export function countersSvg(x: number, y: number): string {
   const bx = x + 36, by = y + 66;
   return `<g data-k="counters"><rect class="an-cbox" x="${x}" y="${y}" width="526" height="92" rx="10"/>
     ${T(x + 66, y + 57, 'O₂ per flash: –', 'an-read-row an-read-before', 'start', 'o2-before')}
-    <text class="an-read-row" x="${x + 66}" y="${y + 57}" data-k="o2-after"><tspan class="an-read-o2">1 O₂</tspan> per <tspan class="an-read-chl">~2,400 chlorophylls</tspan></text>
+    <text class="an-read-row" x="${x + 66}" y="${y + 57}" data-k="o2-after"><tspan class="an-read-o2">1 O₂</tspan> per <tspan class="an-read-chl">~2,500 chlorophylls</tspan></text>
     <g data-k="o2bub">${o2Glyph(bx, by, 10)}</g></g>`;
 }
 /** The readout tc seconds after the flash: it switches at once (within 0.1 s) and a small O₂ (the deck's atom-ball glyph,
@@ -277,7 +278,7 @@ export function fieldSvg(): string {
   const spots = SPOTS.map((_, i) => { const c = spotAt(i); return `<circle class="an-spot-burst" data-k="spb${i}" cx="${f1(c[0])}" cy="${f1(c[1])}" r="8"/><circle class="an-spot" cx="${f1(c[0])}" cy="${f1(c[1])}" r="5.2"/>${T(c[0] + 13, c[1] - 11, `${i + 1}`, 'an-spnum')}`; }).join('');
   const ky = FIELD.y + FIELD.rows * FIELD.d + 40;
   return `<g data-k="field"><g data-k="fbody"><path class="an-fdot" data-k="fdots" d="${dots}"/>${glows}<g data-k="spots">${spots}</g></g></g>
-    <g data-k="fkey1"><circle class="an-fdot" cx="${FIELD.x + 6}" cy="${ky - 8}" r="7"/>${T(FIELD.x + 22, ky, 'collect light', 'an-lab')}${T(FIELD.x + 22, ky + 34, `${FIELD.cols} × ${FIELD.rows} = 2,400 chlorophylls`, 'an-lab')}</g>
+    <g data-k="fkey1"><circle class="an-fdot" cx="${FIELD.x + 6}" cy="${ky - 8}" r="7"/>${T(FIELD.x + 22, ky, 'collect light', 'an-lab')}${T(FIELD.x + 22, ky + 34, '≈ 2,500 chlorophylls', 'an-lab')}</g>
     <g data-k="fkey2"><circle class="an-spot" cx="${FIELD.x + 196}" cy="${ky - 8}" r="7"/>${T(FIELD.x + 212, ky, 'reaction centres (8 per O₂)', 'an-lab')}</g>`;
 }
 /** The field at t seconds since its flash: all glow, then the glow drains band by band into the 8 centres, which

@@ -3,6 +3,6 @@ import { makeBalance } from './balance-common';
 
 export const STAGING = makeBalance({
   id: 's3',
-  name: 'S3 · Valves and gauge',
+  name: 'S3 · Dials and gauge',
   note: 'The chain smaller; three valve dials under it (cyclic, to O₂, malate) and a needle gauge with a “needed” band; each beat opens its valve.',
 });

@@ -20,6 +20,6 @@ export const B6FQ: Beat[] = [
   { tag: 'First plastoquinol', say: 'Lumen side of b₆f: each PQH₂ gives 2 H⁺ to the lumen; 1 e⁻ to plastocyanin, 1 e⁻ to the stroma side.', cite: [MALONE19] },
   { tag: 'Plastocyanin', say: 'Plastocyanin carries its electron through the lumen to photosystem I.', cite: [MALONE19] },
   { tag: 'Second plastoquinol', say: 'Stroma side of b₆f: PQ + 2 e⁻ + 2 H⁺ (stroma) → PQH₂.', cite: [MALONE19, SACKSTEDER00] },
-  { tag: 'Two more plastoquinol', say: 'Round 2: 2 more PQH₂ → 4 more H⁺ into the lumen; a 2nd PQH₂ rebuilt.', cite: [MALONE19, SACKSTEDER00] },
+  { tag: '2 more plastoquinols', say: 'Round 2: 2 more PQH₂ → 4 more H⁺ into the lumen; a 2nd PQH₂ rebuilt.', cite: [MALONE19, SACKSTEDER00] },
   { tag: 'The count', say: 'Per O₂: 4 (water) + 8 (b₆f) = 12 H⁺ in the lumen. <b>What does photosystem I do with the electrons?</b>', cite: [SACKSTEDER00, MALONE19] },
 ];

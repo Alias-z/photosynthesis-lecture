@@ -1,0 +1,40 @@
+/* slide 15 RuBisCO, staging evo: part A (the tree of life) and beat 8's "learn from" row (c2story-evo.ts) */
+.ce .ce-bg{fill:#faf9f5}
+.ce .ce-sea{fill:#eef4f6}
+.ce .ce-o2{fill:#e6dff0;opacity:.85}
+.ce .ce-o2t{font-size:16px;font-weight:700;fill:#5d4a7a}
+.ce .ce-o2s{font-size:13px;fill:#5d4a7a}
+.ce .ce-endo{fill:#e4efdc;opacity:.9}
+.ce .ce-endot{font-size:14px;font-weight:700;fill:#3c6a2e}
+.ce .ce-endos{font-size:13px;fill:#3c6a2e}
+.ce .ce-endoa{stroke:#3c6a2e;stroke-width:1.6;fill:none}
+.ce .ce-endod{stroke:#3c6a2e;stroke-width:1.6;fill:none;stroke-dasharray:3 3}
+.ce .ce-gt{stroke:#7a4f9a;stroke-width:2;fill:none;stroke-dasharray:5 4}
+.ce .ce-gtt{font-size:14px;font-weight:700;fill:#7a4f9a}
+.ce .ce-ax{stroke:#141413;stroke-width:1.5;fill:none}
+.ce .ce-tk{stroke:#141413;stroke-width:1.2}
+.ce .ce-tl{font-size:15px;fill:#141413}
+.ce .ce-axl{font-size:15px;fill:#6b6a64}
+.ce .ce-grid{stroke:#dedad0;stroke-width:1}
+.ce .ce-sh{font-size:17px;font-weight:700;fill:#141413}
+.ce .ce-name{font-size:20px;font-weight:700}
+.ce [data-k="row-arc"] .ce-name{fill:#8a8780}
+.ce [data-k="row-pur"] .ce-name{fill:#7a4f9a}
+.ce [data-k="row-cya"] .ce-name{fill:#2f7f86}
+.ce [data-k="row-red"] .ce-name{fill:#b5384a}
+.ce [data-k="row-grn"] .ce-name{fill:#5b9a3c}
+.ce .ce-note{font-size:13px;fill:#6b6a64}
+.ce .ce-form{font-size:14px;fill:#141413}
+.ce .ce-line{stroke-width:5;fill:none;stroke-linecap:round}
+.ce .ce-dash{stroke-width:5;fill:none;stroke-dasharray:6 6;opacity:.65}
+.ce .ce-dot{stroke:#faf9f5;stroke-width:2}
+.ce .ce-sv{font-size:16px;font-weight:700;fill:#141413}
+.ce .ce-step{font-size:20px;font-weight:700;fill:#2f7f86}
+.ce .ce-steps{font-size:14px;fill:#2f7f86}
+.ce .ce-bigl{font-size:20px;font-weight:700;fill:#141413}
+.ce .ce-pump{font-size:15px;font-weight:700;fill:#2f7f86}
+.ce [data-k="pump-grn"] .ce-pump{fill:#5b9a3c}
+.ce .ce-cr{font-size:12.5px;fill:#6b6a64}
+.ce .ce-learnbg{fill:#fbf9f4;stroke:#e3dccb;stroke-width:1.5}
+.ce .ce-learn{font-size:24px;font-weight:700;fill:#3c7a2e}
+.ce .ce-card{fill:#fbf9f4;stroke:#e3dccb;stroke-width:3}

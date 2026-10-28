@@ -24,6 +24,7 @@ import agsPng from '../../assets/photos/cp-du-ags.png';
 import meso3dPng from '../../assets/photos/cp-own-meso3d.png';
 import agmPng from '../../assets/photos/cp-du-agm.png';
 import g21Png from '../../assets/photos/cp-gaastra-fig21.png';
+import { along, chloroG, kidG } from '../anim/co2-kit';
 
 const sub = (s: string): string => `<sub>${s}</sub>`;
 const v = (s: string): string => `<i>${s.slice(0, 1)}</i>${sub(s.slice(1))}`;
@@ -33,15 +34,17 @@ export const PLATE: PlateText = {
   pick: 'C10n',
   title: 'CO₂ uptake: from the air to RuBisCO',
   status: 'draft',
-  lead: 'CO₂ diffuses from the air through the stomata into the leaf.<br>In the mesophyll cells it dissolves and reaches RuBisCO in the chloroplast.',
+  // lecturer, 29 Oct 2026, late: "only the essential information, leave things clear" (the conductances, the ppm values
+  // and A = g × ΔC stay on the animation's card)
+  lead: 'RuBisCO uses up CO₂ in the chloroplast, so CO₂ diffuses in from the air, down its gradient.',
   points: [
-    { claim: `Stomata, stomatal conductance (${v('gs')}).`, text: 'Pores between 2 guard cells: CO₂ in, water vapour out through the same pores', eq: `air, ${v('Ca')} ≈ 430 ppm → leaf air spaces, ${v('Ci')} ≈ 300 ppm` },
-    { claim: `Mesophyll, mesophyll conductance (${v('gm')}).`, text: 'CO₂ dissolves in the cell wall and diffuses through the cell into the chloroplast', eq: `${v('Ci')} ≈ 300 ppm → chloroplast, ${v('Cc')} ≈ 200 ppm` },
-    { claim: 'Conductance.', text: 'How easily CO₂ diffuses: CO₂ uptake = conductance × CO₂ drop', eq: `<i>A</i> = <i>g</i> × Δ<i>C</i>` },
+    { claim: 'In through the stomata.', text: 'Water vapour leaves the same way' },
+    { claim: 'Then through water to the chloroplast.', text: 'CO₂ dissolves in the wet cell wall and moves ≈ 10,000 × more slowly' },
+    { claim: 'Each step lowers CO₂ at RuBisCO.', text: 'In heat and drought the stomata close' },
   ],
   refs: [
     { label: 'Busch et al. 2024', url: 'https://doi.org/10.1111/pce.14815' },
-    { label: 'Gaastra 1959', url: 'https://edepot.wur.nl/183268' },
+    { label: 'Gaastra 1959', url: 'https://edepot.wur.nl/291215' },
     { label: 'Terashima et al. 2011', url: 'https://doi.org/10.1104/pp.110.165472' },
     { label: 'Lawson & Blatt 2014', url: 'https://doi.org/10.1104/pp.114.237107' },
     { label: 'Verslues et al. 2023', url: 'https://doi.org/10.1093/plcell/koac263' },
@@ -64,6 +67,11 @@ export const VARIANTS: Variant[] = [
   { id: 'v11', name: 'Drawn path, stomata and water lit' },
   { id: 'v13', name: 'Own leaf in 3D: 22 serial sections (mesophyll cells and air spaces)' },
   { id: 'v12', name: 'Drawn path, mesophyll lit' },
+  // lecturer, 29 Oct 2026, late: the 3D leaf with stomata and bundle sheath, no tissue names, the conductances marked on
+  // the side along the CO₂'s journey (as in the MSc thesis, Fig. 3c); slide 19 lists only these three
+  { id: 'n1', name: 'Own 3D leaf: the CO₂ journey, conductances on the side' },
+  { id: 'n2', name: 'Own 3D leaf with the path’s slice enlarged, conductances on the side' },
+  { id: 'n3', name: 'Own 3D leaf above, the journey in series below' },
 ];
 
 const SUCC: Img = { href: succJpg, w: 1800, h: 1015 };
@@ -89,6 +97,7 @@ const CR = {
   g21: 'Gaastra 1959, Meded Landbouwhogeschool Wageningen 59(13), Fig. 21',
 };
 const { ca, cs, ci, cc, gb, gs, gm } = SYM;
+const gcu = `${it('g')}${sb('c')}`; // cuticular conductance
 
 /* v1 · light micrograph of a succulent leaf: two stomata over their substomatal chambers; the CO₂ path drawn from the
    outside air through the left stoma into the chamber and on to a chloroplast-lined cell wall. */
@@ -332,7 +341,229 @@ function v13(): string {
     ${credit(794, 594, '3D model from own serial sections (22 sections, Hp rep2 I)')}`);
 }
 
-const DRAW: Record<string, () => string> = { v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13 };
+/* ================ n1–n3 · the CO₂ journey on the lecturer's own 3D leaf (lecturer, 29 Oct 2026, late) ================
+   "the leaf in 3D … it has to have stomata there, bundle sheath there … not to label palisade or spongy cells … label
+   boundary layer conductance, stomatal conductance, cuticle conductance, mesophyll conductance … the exact same CO₂
+   molecule we showed in the animation, passing through the whole journey". After the lecturer's MSc thesis (UCPH 2021),
+   Fig. 3c, p. 10: the CO₂ from the air to the chloroplast, the resistances marked on the side in order along the path.
+   The render (MESO3D) shows the epidermes, the mesophyll and 2 vein faces, but no stomata (the surface model does not
+   resolve the pores) and no separate bundle sheath (the masks have no bundle-sheath label). Drawn over it, in render
+   pixels: 2 stomata in the lower epidermis (slice 22 of the same series has 2 stomata there, circled by the lecturer;
+   their places on the render are schematic); a ring of bundle-sheath cells round each vein face (outlines traced from the
+   render's grey faces, scratchpad tools/veins.py); the cuticle along the lower surface; the boundary layer below it.
+   Path: the outside air below the leaf, the boundary layer, a stoma, the substomatal air space, the air spaces up to a
+   cell wall (darker green on the render: air space, cells seen behind it), the wet wall, a chloroplast against it.
+   The CO₂ character is the animation's (anim/co2-kit.ts kidG), with the face the animation gives it at each place
+   (lf10-common.ts mood(): strained where it is slow, sweating in the stoma and the wall, glad in the air spaces; the
+   water shell from the wet wall on). */
+
+/** The two vein faces on the render (pixels), traced from its grey faces. */
+const VEIN: Pt[][] = [
+  [[552, 704], [558, 720], [564, 738], [567, 759], [564, 782], [565, 815], [541, 825], [515, 823], [491, 813], [472, 803], [454, 804], [436, 802], [422, 791], [419, 767], [422, 746], [411, 739], [397, 732], [382, 720], [376, 704], [367, 686], [363, 665], [358, 639], [361, 611], [388, 605], [422, 619], [442, 622], [453, 598], [472, 595], [491, 595], [506, 611], [517, 626], [531, 633], [556, 634], [563, 651], [554, 674], [551, 690]],
+  [[936, 761], [949, 781], [947, 802], [938, 820], [929, 840], [896, 833], [872, 824], [868, 850], [852, 852], [836, 881], [816, 871], [798, 865], [783, 853], [771, 838], [775, 812], [782, 792], [775, 784], [760, 775], [751, 761], [757, 748], [725, 697], [721, 665], [760, 672], [791, 683], [800, 665], [817, 655], [836, 650], [854, 656], [872, 662], [883, 679], [888, 699], [886, 719], [884, 733], [884, 744], [925, 746]],
+];
+/** The leaf's lower surface on the render's front face (the lowest opaque pixel of each column). */
+const LOW: Pt[] = [[50, 1015], [84, 1015], [124, 1015], [164, 1017], [204, 1006], [244, 1014], [284, 1027], [324, 1056], [364, 1066], [404, 1075], [444, 1081], [484, 1085], [524, 1092], [564, 1092], [604, 1098], [644, 1101], [684, 1112], [724, 1127], [764, 1141], [804, 1152], [844, 1153], [884, 1155], [924, 1165], [964, 1175], [990, 1168]];
+/** Stoma centres in the lower epidermis (render pixels): the one on the path, and one more. */
+const STOMA: Pt[] = [[165, 992], [640, 1078]];
+/** The path (render pixels): air, boundary layer, stoma, air space, a bend through the air spaces, wet wall, chloroplast
+ *  (n1, n3: a palisade cell; its wall faces the air channel at u 213). */
+const PATH: Pt[] = [[165, 1250], [165, 1105], [165, 992], [172, 900], [175, 760], [240, 600], [196, 470]];
+const EPI = { in: 968, out: 1017 }; // the lower epidermis at the path's stoma (render v)
+
+type At = (u: number, w: number) => Pt;
+const sty = (s: string): string => ` style="${s}"`;
+/** A smooth open curve through q (Catmull–Rom as cubic Béziers). */
+function smooth(q: Pt[]): string {
+  let d = `M${f(q[0][0])},${f(q[0][1])}`;
+  for (let i = 0; i < q.length - 1; i++) {
+    const p0 = q[Math.max(0, i - 1)], p1 = q[i], p2 = q[i + 1], p3 = q[Math.min(q.length - 1, i + 2)];
+    d += ` C${f(p1[0] + (p2[0] - p0[0]) / 6)},${f(p1[1] + (p2[1] - p0[1]) / 6)} ${f(p2[0] - (p3[0] - p1[0]) / 6)},${f(p2[1] - (p3[1] - p1[1]) / 6)} ${f(p2[0])},${f(p2[1])}`;
+  }
+  return d;
+}
+/** The point at distance d before b on the way from a. */
+const short = (a: Pt, b: Pt, d: number): Pt => { const L = Math.hypot(b[0] - a[0], b[1] - a[1]); return [b[0] - ((b[0] - a[0]) * d) / L, b[1] - ((b[1] - a[1]) * d) / L]; };
+
+/** The animation's CO₂ character, standing still at `at`: one face (n neutral, s strained, h glad), sweat, water shell,
+ *  squeeze, and an optional name above it. */
+interface Look { face?: 'n' | 's' | 'h'; sweat?: number; shell?: boolean; sx?: number; sy?: number; lab?: string }
+function kidAt(k: string, at: Pt, r: number, m: Look = {}): string {
+  let s = kidG(k, r, m.lab ?? '', -r - 12).replace(' data-actor="1" display="none"', ` transform="translate(${f(at[0])} ${f(at[1])})"`);
+  const set = (part: string, o: number): void => {
+    if (o < 1) s = s.replace(`<g data-k="${k}-${part}">`, `<g data-k="${k}-${part}"${o <= 0 ? ' display="none"' : ` opacity="${o}"`}>`);
+  };
+  const face = m.face ?? 'n';
+  set('fn', face === 'n' ? 1 : 0); set('fs', face === 's' ? 1 : 0); set('fh', face === 'h' ? 1 : 0);
+  set('sw', m.sweat ?? 0); set('sh', m.shell ? 1 : 0);
+  if ((m.sx ?? 1) !== 1 || (m.sy ?? 1) !== 1) s = s.replace(`<g data-k="${k}-b">`, `<g data-k="${k}-b" transform="scale(${m.sx ?? 1} ${m.sy ?? 1})">`);
+  return s;
+}
+/** The six looks along the journey (lf10-common.ts: speed 1 in air, 0.22 in the boundary layer, 0.13 in the pore, 1 in
+ *  the air spaces (glad), 0.12 in the wet wall, 0.4 in the stroma; the shell from the wall on). */
+const LOOKS: Look[] = [{}, { face: 's', sweat: 0.5 }, { face: 's', sweat: 1, sx: 0.55, sy: 1.08 }, { face: 'h' }, { face: 's', sweat: 1, shell: true }, { shell: true }];
+const kids = (p: string, pts: Pt[], r: number, looks: Look[] = LOOKS, labs: string[] = ['CO₂']): string =>
+  `<g class="dk1 co2k">${pts.map((q, i) => kidAt(`${p}k${i}`, q, r, { ...looks[i], lab: labs[i] ?? looks[i].lab })).join('')}</g>`;
+
+/** A stoma in cross-section on the front face: two guard cells and the pore between them (sc: scale). */
+function stomaG(c: Pt, sc: number, pore = true): string {
+  const rx = 8 * sc, ry = 11 * sc, pg = 3.5 * sc;
+  const gc = (sg: number): string => {
+    const x = c[0] + sg * (pg + rx);
+    return `<ellipse cx="${f(x)}" cy="${f(c[1])}" rx="${f(rx)}" ry="${f(ry)}"${sty(`fill:#dbe8c6;stroke:#8f9f6a;stroke-width:${f(Math.max(1, 0.18 * sc))}`)}/>
+      <path d="M${f(x - sg * rx * 0.72)},${f(c[1] - ry * 0.62)} Q${f(x - sg * rx * 1.02)},${f(c[1])} ${f(x - sg * rx * 0.72)},${f(c[1] + ry * 0.62)}"${sty(`fill:none;stroke:#7d8c58;stroke-width:${f(Math.max(1.2, 0.34 * sc))};stroke-linecap:round`)}/>
+      <circle cx="${f(x + sg * rx * 0.2)}" cy="${f(c[1] - ry * 0.3)}" r="${f(1.5 * sc)}" fill="#9fbf6e"/><circle cx="${f(x + sg * rx * 0.25)}" cy="${f(c[1] + ry * 0.32)}" r="${f(1.5 * sc)}" fill="#9fbf6e"/>`;
+  };
+  return `${pore ? `<rect x="${f(c[0] - pg)}" y="${f(c[1] - ry)}" width="${f(2 * pg)}" height="${f(2 * ry)}" fill="#eef3f5"/>` : ''}${gc(-1)}${gc(1)}`;
+}
+/** Bundle-sheath cells round each vein face, and the cuticle along the lower surface (k: figure units per pixel). */
+function sheathG(at: At, k: number): string {
+  return VEIN.map(q => along(q, 36, -15).map(({ p, a }) => {
+    const c = at(p[0], p[1]);
+    return `<ellipse cx="${f(c[0])}" cy="${f(c[1])}" rx="${f(17 * k)}" ry="${f(11.5 * k)}" transform="rotate(${f((a * 180) / Math.PI)} ${f(c[0])} ${f(c[1])})"${sty(`fill:#c9dcae;stroke:#557a30;stroke-width:${f(Math.max(0.8, 2.4 * k))}`)}/>`;
+  }).join('')).join('');
+}
+const cuticleG = (at: At, k: number, pts: Pt[] = LOW): string =>
+  `<path d="${pts.map((q, i) => `${i ? 'L' : 'M'}${f(at(q[0], q[1])[0])},${f(at(q[0], q[1])[1])}`).join(' ')}"${sty(`fill:none;stroke:#b9a26b;stroke-width:${f(Math.max(2, 6 * k))};stroke-linecap:round;stroke-linejoin:round`)}/>`;
+/** The boundary layer below the lower surface: pale air, its outer edge dashed (as in the animation). */
+function blG(p: string, at: At, d: number, pts: Pt[] = LOW): string {
+  const top = pts.map(q => at(q[0], q[1])), bot = [...top].reverse().map(q => [q[0], q[1] + d] as Pt);
+  const poly = [...top, ...bot].map((q, i) => `${i ? 'L' : 'M'}${f(q[0])},${f(q[1])}`).join(' ');
+  return `<defs><linearGradient id="${p}-bl" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#d5e4ec"/><stop offset="1" stop-color="#d5e4ec" stop-opacity=".15"/></linearGradient></defs>
+    <path d="${poly}Z" fill="url(#${p}-bl)"/>
+    <path d="${bot.map((q, i) => `${i ? 'L' : 'M'}${f(q[0])},${f(q[1])}`).join(' ')}"${sty('fill:none;stroke:#c2401f;stroke-width:2;stroke-dasharray:7 6')}/>`;
+}
+/** The wet wall (a water film on its air-facing side) and a chloroplast against it. */
+const filmG = (q: Pt[], w: number): string => `<path d="${smooth(q)}"${sty(`fill:none;stroke:#a9cde4;stroke-width:${f(w)};stroke-linecap:round`)}/>`;
+const cpG = (c: Pt, a: number, w: number, h: number): string => `<g class="co2k">${chloroG(c, a, w, h)}</g>`;
+
+/** Conductance labels: words, then the symbol (the animation's blue). */
+const gL = (x: number, y: number, s: string, a: A2 = 'start', size = 18): string =>
+  `<text x="${f(x)}" y="${f(y)}" text-anchor="${a}"${sty(`font-size:${size}px;font-weight:600;fill:#2457a8`)}>${s}</text>`;
+type A2 = 'start' | 'middle' | 'end';
+/** A vertical bracket at x over [y0, y1], its ticks towards dir (−1 left, +1 right). */
+const vBr = (x: number, y0: number, y1: number, dir: 1 | -1): string =>
+  `<path class="fcp-brace" d="M${f(x + dir * 10)},${f(y0 + 1.5)} H${f(x)} V${f(y1 - 1.5)} H${f(x + dir * 10)}"/>`;
+/** A horizontal bracket over [x0, x1] at y, its ticks towards dir (+1 down, −1 up). */
+const hBr = (x0: number, x1: number, y: number, dir: 1 | -1): string =>
+  `<path class="fcp-brace" d="M${f(x0 + 1.5)},${f(y + dir * 10)} V${f(y)} H${f(x1 - 1.5)} V${f(y + dir * 10)}"/>`;
+const level = (x0: number, x1: number, y: number): string => `<path d="M${f(x0)},${f(y)} H${f(x1)}"${sty('fill:none;stroke:#8a877d;stroke-width:1.2;stroke-dasharray:3 5')}/>`;
+const CR3D = ['3D model from own serial sections (22 sections, Hp rep2 I);', 'stomata and bundle sheath drawn in'];
+const cuticleArrow = (p: string, x: number, y0: number, y1: number): string => arr(p, 'co2', `M${f(x)},${f(y0)} V${f(y1)}`, 'fcp-ar-dash');
+
+/* n1 · the whole block, the path drawn through it, the conductances in brackets on the right at the path's levels */
+function n1(): string {
+  const p = 'cp10n1', K = 0.44;
+  const r = shot(`${p}-a`, MESO3D, 14, 8, 1048 * K, { fig: true });
+  const at = r.at;
+  const P = PATH.map(q => at(q[0], q[1]));
+  const yIn = at(0, EPI.in)[1], yOut = at(0, EPI.out)[1], blD = 60, yBl = yOut + blD;
+  const st = at(STOMA[0][0], STOMA[0][1]);
+  const route = smooth([P[0], P[1], P[2], P[3], P[4], P[5], short(P[5], P[6], 26)]);
+  const X = 500;
+  return svg(p, 'The lecturer’s own three-dimensional leaf piece, from 22 serial sections, with two stomata drawn in the lower epidermis, a ring of bundle-sheath cells round each vein and the cuticle along the lower surface. The same carbon dioxide character as in the animation travels up from below the leaf: in the outside air; strained in the boundary layer; squeezed in a stomatal pore; glad in the air space above it; dissolved with a water shell at a wet cell wall; at a chloroplast against that wall. A thin dashed arrow crosses the cuticle beside the stoma. Brackets on the right mark each stretch of the path: mesophyll conductance, from the air spaces to the chloroplast; stomatal and, beside it, cuticular conductance, across the epidermis; boundary-layer conductance, below the leaf.', `
+    ${blG(p, at, blD)}
+    ${r.svg}
+    ${sheathG(at, K)}${cuticleG(at, K)}${stomaG(at(STOMA[1][0], STOMA[1][1]), 2.27 * K)}${stomaG(st, 1.3)}
+    ${filmG([at(213, 420), at(212, 520), at(214, 640)], 4)}${cpG(P[6], 0, 88, 30)}
+    ${cuticleArrow(p, at(272, 0)[0], yOut + 22, yIn - 16)}
+    ${level(P[6][0] + 36, X - 14, P[6][1])}${level(st[0] + 40, X - 14, yIn)}${level(st[0] + 40, X - 14, yOut)}${level(P[1][0] + 40, X - 14, yBl)}
+    ${arr(p, 'co2', route, 'fcp-ar-dash')}
+    ${kids(p, [P[0], P[1], P[2], P[3], P[5], P[6]], 11)}
+    ${vBr(X, P[6][1], yIn, -1)}${gL(X + 16, (P[6][1] + yIn) / 2 + 6, `mesophyll conductance (${gm})`, 'start', 17)}
+    ${vBr(X, yIn, yOut, -1)}${gL(X + 16, yIn + 7, `stomatal conductance (${gs})`, 'start', 17)}${gL(X + 16, yIn + 30, `cuticular conductance (${gcu})`, 'start', 17)}
+    ${vBr(X, yOut, yBl, -1)}${gL(X + 16, yOut + 38, 'boundary-layer', 'start', 17)}${gL(X + 16, yOut + 60, `conductance (${gb})`, 'start', 17)}
+    ${credit(794, 556, CR3D[0])}${credit(794, 575, CR3D[1])}`);
+}
+
+/* n2 · the path's slice of the block cut out and enlarged in front of it; the conductances in brackets on the left */
+function n2(): string {
+  const p = 'cp10n2', K = 1.1, W0: [number, number, number, number] = [110, 700, 220, 365];
+  const s = shot(`${p}-s`, MESO3D, 266, 14, W0[2] * K, { fig: true, win: W0 });
+  const b = shot(`${p}-b`, MESO3D, 526, 30, 268, { fig: true });
+  const at = s.at, kb = 268 / 1048;
+  // this slice's path: stoma, the substomatal air space, the wet wall of a spongy cell, a chloroplast against it
+  const P: Pt[] = [[0, 0], [0, 0], at(165, 992), at(170, 930), at(186, 860), at(214, 795)];
+  const yIn = at(0, EPI.in)[1], yOut = at(0, EPI.out)[1], blD = 80, yBl = yOut + blD;
+  P[1] = [P[2][0], yOut + 42]; P[0] = [P[2][0], yBl + 58];
+  const low: Pt[] = [[110, 1015], ...LOW.filter(q => q[0] > 110 && q[0] < 330), [330, 1058]];
+  const route = smooth([P[0], P[1], P[2], P[3], short(P[3], P[4], 30)]);
+  const route2 = smooth([P[4], short(P[4], P[5], 34)]);
+  const X = 254;
+  const r0 = b.at(W0[0], W0[1]), r1 = b.at(W0[0] + W0[2], W0[1] + W0[3]);
+  const sR = [266, 14, 266 + W0[2] * K, 14 + W0[3] * K];
+  return svg(p, 'Right: the lecturer’s own three-dimensional leaf piece, from 22 serial sections, with two stomata drawn in the lower epidermis and a ring of bundle-sheath cells round each vein; a box marks a slice of it from the lower surface up into the mesophyll. Middle: that slice enlarged. The same carbon dioxide character as in the animation travels up through it: in the outside air below the leaf; strained in the boundary layer; squeezed in the stomatal pore between two guard cells; glad in the air space above; dissolved with a water shell at the wet wall of a mesophyll cell; at a chloroplast against that wall. A thin dashed arrow crosses the cuticle beside the stoma. Left: brackets at the same heights mark mesophyll conductance, stomatal and cuticular conductance, and boundary-layer conductance.', `
+    <defs><clipPath id="${p}-sc"><rect x="${f(sR[0])}" y="${f(sR[1])}" width="${f(sR[2] - sR[0])}" height="${f(sR[3] - sR[1])}"/></clipPath></defs>
+    ${blG(p, at, blD, low)}
+    ${b.svg}${sheathG(b.at, kb)}${cuticleG(b.at, kb)}${STOMA.map(q => stomaG(b.at(q[0], q[1]), 2.27 * kb)).join('')}
+    <rect x="${f(r0[0])}" y="${f(r0[1])}" width="${f(r1[0] - r0[0])}" height="${f(r1[1] - r0[1])}"${sty('fill:none;stroke:#9a4426;stroke-width:1.8')}/>
+    <path d="M${f(r0[0])},${f(r0[1])} L${f(sR[2])},${f(sR[1])} M${f(r0[0])},${f(r1[1])} L${f(sR[2])},${f(sR[3])}"${sty('fill:none;stroke:#9a4426;stroke-width:1.2;stroke-dasharray:5 5')}/>
+    ${s.svg}
+    <g clip-path="url(#${p}-sc)">${cuticleG(at, K, low)}</g>
+    ${stomaG(P[2], 2.27 * K)}
+    ${filmG([at(201, 762), at(201, 800), at(203, 840), at(209, 866)], 6)}${cpG(P[5], Math.PI / 2 - 0.08, 84, 34)}
+    ${cuticleArrow(p, at(282, 0)[0], at(0, 1046)[1], at(0, 962)[1])}
+    ${arr(p, 'co2', route, 'fcp-ar-dash')}${arr(p, 'co2', route2, 'fcp-ar-dash')}
+    ${kids(p, P, 12)}
+    ${vBr(X, P[5][1], yIn, 1)}${gL(X - 14, (P[5][1] + yIn) / 2 + 6, `mesophyll conductance (${gm})`, 'end', 17)}
+    ${vBr(X, yIn, yOut, 1)}${gL(X - 14, yIn + 22, `stomatal conductance (${gs})`, 'end', 17)}${gL(X - 14, yIn + 46, `cuticular conductance (${gcu})`, 'end', 17)}
+    ${vBr(X, yOut, yBl, 1)}${gL(X - 14, yOut + 36, 'boundary-layer', 'end', 17)}${gL(X - 14, yOut + 58, `conductance (${gb})`, 'end', 17)}
+    ${credit(794, 572, CR3D[0])}${credit(794, 591, CR3D[1])}`);
+}
+
+/* n3 · the block small above, its path numbered; below, the same journey in a straight strip, the conductances in series */
+function n3(): string {
+  const p = 'cp10n3', K = 0.28;
+  const r = shot(`${p}-a`, MESO3D, 253, 2, 1048 * K, { fig: true });
+  const at = r.at;
+  const B = [at(165, 1140), at(165, 1062), ...PATH.slice(2).map(q => at(q[0], q[1]))];
+  const Bp: Pt[] = [B[0], B[1], B[2], B[3], B[5], B[6]];
+  const dots = Bp.map((q, i) => `<circle cx="${f(q[0])}" cy="${f(q[1])}" r="9"${sty('fill:#fffdf8;stroke:#3d3d3a;stroke-width:1.6')}/><text x="${f(q[0])}" y="${f(q[1] + 4.6)}" text-anchor="middle"${sty('font-size:13px;font-weight:700;fill:#141413')}>${i + 1}</text>`).join('');
+  // the strip: outside air | boundary layer | epidermis (pore; cuticle below it) | air space | wet wall | cell with a chloroplast
+  const yT = 410, yB = 520, yM = 455, yC = 507;
+  const Z = [12, 130, 250, 310, 480, 562, 788];
+  const gcY = 15, gap = 11;
+  const epi = `<rect x="${Z[2]}" y="${yT}" width="${Z[3] - Z[2]}" height="${yB - yT}"${sty('fill:#f8f6ee;stroke:#c9b98f;stroke-width:1.6')}/>
+    <rect x="${Z[2] - 1}" y="${yM - gap}" width="${Z[3] - Z[2] + 2}" height="${2 * gap}" fill="#eef3f5"/>
+    <path d="M${Z[2] + 1},${yT} V${yM - gap} M${Z[2] + 1},${yM + gap} V${yB}"${sty('fill:none;stroke:#b9a26b;stroke-width:4;stroke-linecap:round')}/>
+    ${[-1, 1].map(sg => { const cy = yM + sg * (gap + gcY); return `<ellipse cx="${(Z[2] + Z[3]) / 2}" cy="${cy}" rx="26" ry="${gcY}"${sty('fill:#dbe8c6;stroke:#8f9f6a;stroke-width:1.6')}/><path d="M${(Z[2] + Z[3]) / 2 - 17},${f(cy - sg * gcY * 0.72)} Q${(Z[2] + Z[3]) / 2},${f(cy - sg * gcY * 1.05)} ${(Z[2] + Z[3]) / 2 + 17},${f(cy - sg * gcY * 0.72)}"${sty('fill:none;stroke:#7d8c58;stroke-width:3;stroke-linecap:round')}/>`; }).join('')}
+    <path d="M${Z[2] + 8},${yB - 0.5} H${Z[3] - 8}"${sty('fill:none;stroke:#c9b98f;stroke-width:1.2')}/>`;
+  const wallX = [Z[4], Z[4] + 14, Z[5] - 10];
+  const wave = Array.from({ length: 11 }, (_, i) => `Q${f(wallX[1] + 5 * (i % 2 ? 1 : -1))},${f(yT + (i + 0.5) * 10)} ${f(wallX[1])},${f(yT + (i + 1) * 10)}`).join(' ');
+  const wall = `<rect x="${wallX[1]}" y="${yT}" width="${wallX[2] - wallX[1]}" height="${yB - yT}" fill="#ece2c8"/>
+    ${Array.from({ length: 5 }, (_, i) => `<path d="M${wallX[1] + 8},${yT + 14 + i * 22} q8,-5 16,0 t16,0 t16,0"${sty('fill:none;stroke:#d2c39c;stroke-width:1.6;stroke-linecap:round')}/>`).join('')}
+    <path d="M${wallX[0]},${yT} H${wallX[1]} ${wave} H${wallX[0]} Z" fill="#a9cde4"/>
+    <rect x="${wallX[2]}" y="${yT}" width="${Z[6] - wallX[2]}" height="${yB - yT}" fill="#fbf9f2"/>
+    <path d="M${wallX[2] + 3},${yT} V${yB}"${sty('fill:none;stroke:#a88f52;stroke-width:2')}/>`;
+  const strip = `<rect x="${Z[0]}" y="${yT}" width="${Z[1] - Z[0]}" height="${yB - yT}" fill="#fbfaf6"/>
+    <defs><linearGradient id="${p}-bl" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#d5e4ec" stop-opacity=".15"/><stop offset="1" stop-color="#d5e4ec"/></linearGradient></defs>
+    <rect x="${Z[1]}" y="${yT}" width="${Z[2] - Z[1]}" height="${yB - yT}" fill="url(#${p}-bl)"/>
+    <path d="M${Z[1]},${yT} V${yB}"${sty('fill:none;stroke:#c2401f;stroke-width:2;stroke-dasharray:7 6')}/>
+    <rect x="${Z[3]}" y="${yT}" width="${Z[4] - Z[3]}" height="${yB - yT}" fill="#eef3f5"/>
+    ${wall}${epi}
+    ${cpG([686, yM], 0, 176, 72)}
+    <rect x="${Z[0]}" y="${yT}" width="${Z[6] - Z[0]}" height="${yB - yT}" rx="6"${sty('fill:none;stroke:#d3cfc3;stroke-width:1.2')}/>`;
+  const S: Pt[] = [[70, yM], [190, yM], [(Z[2] + Z[3]) / 2, yM], [395, yM], [521, yM], [686, yM]];
+  const looks: Look[] = LOOKS.map((l, i) => (i === 2 ? { face: 's', sweat: 1, sx: 1, sy: 0.8 } : l));
+  const route = `M${Z[0] + 16},${yM} H${Z[6] - 160}`;
+  return svg(p, 'Above: the lecturer’s own three-dimensional leaf piece, from 22 serial sections, with two stomata drawn in the lower epidermis and a ring of bundle-sheath cells round each vein; a dashed path with numbered points 1 to 6 runs from the air below the leaf through a stoma and the air spaces to a chloroplast. Below: the same journey laid out in a straight strip, with the same carbon dioxide character as in the animation at each point: 1 outside air; 2 boundary layer, strained; 3 squeezed in the stomatal pore between two guard cells; 4 air space, glad; 5 dissolved with a water shell in the water film of the cell wall; 6 at the chloroplast. Brackets mark the conductances in series: boundary-layer conductance, stomatal conductance, with cuticular conductance in parallel below it through the cuticle, and mesophyll conductance from the air space to the chloroplast.', `
+    ${blG(p + 'b', at, 22)}
+    ${r.svg}
+    ${sheathG(at, K)}${cuticleG(at, K)}${STOMA.map(q => stomaG(at(q[0], q[1]), 2.27 * K)).join('')}
+    <path d="${smooth(B)}"${sty('fill:none;stroke:#3d3d3a;stroke-width:2;stroke-dasharray:5 4')}/>
+    ${dots}
+    ${strip}
+    ${arr(p, 'co2', route, 'fcp-ar-dash')}
+    ${arr(p, 'co2', `M${Z[2] - 26},${yC} H${Z[3] + 30}`, 'fcp-ar-dash')}
+    ${kids(p, S, 13, looks, ['1', '2', '3', '4', '5', '6'])}
+    ${hBr(Z[2], Z[3], yT - 12, 1)}<path d="M${(Z[2] + Z[3]) / 2},${yT - 12} V${yT - 36}"${sty('fill:none;stroke:#3d3d3a;stroke-width:1.4')}/>${gL((Z[2] + Z[3]) / 2, yT - 44, `stomatal conductance (${gs})`, 'middle', 17)}
+    ${hBr(Z[3], 778, yT - 12, 1)}${gL(600, yT - 22, `mesophyll conductance (${gm})`, 'middle', 17)}
+    ${hBr(Z[1], Z[2], yB + 12, -1)}${gL((Z[1] + Z[2]) / 2, yB + 36, 'boundary-layer', 'middle', 17)}${gL((Z[1] + Z[2]) / 2, yB + 58, `conductance (${gb})`, 'middle', 17)}
+    ${hBr(Z[2], Z[3], yB + 12, -1)}${gL(Z[3] + 14, yB + 36, `cuticular conductance (${gcu})`, 'start', 17)}
+    ${credit(794, 24, CR3D[0].replace(' (22 sections, Hp rep2 I);', ''))}${credit(794, 43, '(22 sections, Hp rep2 I);')}${credit(794, 62, CR3D[1])}`);
+}
+
+const DRAW: Record<string, () => string> = { v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, n1, n2, n3 };
 
 export function draw(id: string): string {
   return (DRAW[id] ?? v1)();

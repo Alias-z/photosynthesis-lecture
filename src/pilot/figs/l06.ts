@@ -1,7 +1,7 @@
 // Slide L06 · Light-harvesting complexes. Confirmed context. Round 2 shows the picks a, c, d, g, i and the combinations k–o;
 // b, e, f, h, j stay drawable by id. a, c, d, e reuse ./s6.ts.
 // Physics kept honest throughout: Chl b's excited state lies above Chl a's, so energy flows b → a, then among Chl a to
-// the reaction centre; only there does an electron move. Numbers: a:b ≈ 1.3 / 3.7 and ≈ 2,500 Chl per CO₂ per flash
+// the reaction centre; only there does an electron move. Numbers: a:b ≈ 2.2 / 11 (PSII–LHCII, PSI–LHCI) and ≈ 2,500 Chl per CO₂ per flash
 // (FIGURE_BRIEF; Emerson & Arnold 1932, JGP 16:191), ≈ 10 photons s⁻¹ per chlorophyll in full sun (REVIEW_SUMMARY #16).
 import type { PlateText, Variant } from '../types';
 import './l06.css';
@@ -459,9 +459,9 @@ function partsFunnelSvg(): string {
     ${text(386, 444, 'reaction centre', 'sm', 'end')}${text(414, 444, 'e⁻', 'lab lab-b', 'start')}
     <path class="rule" d="M20,468 H780"/>
     ${miniPSII(92, 532, 0.62)}
-    ${text(176, 522, 'PSII + LHCII', 'sm lab-b', 'start')}${text(176, 550, 'Chl <tspan font-style="italic">b</tspan>‑rich · <tspan font-style="italic">a</tspan>:<tspan font-style="italic">b</tspan> ≈ 1.3', 'sm', 'start')}
+    ${text(176, 522, 'PSII + LHCII', 'sm lab-b', 'start')}${text(176, 550, 'Chl <tspan font-style="italic">b</tspan>‑rich · <tspan font-style="italic">a</tspan>:<tspan font-style="italic">b</tspan> ≈ 2.2', 'sm', 'start')}
     ${miniPSI(466, 516, 0.34)}
-    ${text(520, 522, 'PSI + LHCI', 'sm lab-b', 'start')}${text(520, 550, 'Chl <tspan font-style="italic">a</tspan>‑rich · <tspan font-style="italic">a</tspan>:<tspan font-style="italic">b</tspan> ≈ 3.7', 'sm', 'start')}
+    ${text(520, 522, 'PSI + LHCI', 'sm lab-b', 'start')}${text(520, 550, 'Chl <tspan font-style="italic">a</tspan>‑rich · <tspan font-style="italic">a</tspan>:<tspan font-style="italic">b</tspan> ≈ 11', 'sm', 'start')}
     ${text(20, 594, 'red peaks of Chl in solvent', 'tiny f6-tiny', 'start')}
   `);
 }
@@ -480,8 +480,8 @@ function laddersSvg(): string {
   return svg('Energy levels for both photosystems. PSII with LHCII: Chl b absorbs at a shorter wavelength than Chl a, so energy hops downhill from Chl b to Chl a to the reaction centre. PSI with LHCI: Chl a passes energy downhill to the centre; red forms absorb beyond 700 nm and sit below the centre, so their energy must climb uphill, helped by heat. Only at the centres does an electron move', `
     ${defs(p)}${lightHeads(p)}
     ${arrow(p, 'ink', 'M36,440 L36,120')}<text class="tl" transform="translate(22 280) rotate(-90)" text-anchor="middle">energy</text>
-    ${text(206, 38, 'PSII + LHCII', 'lab lab-b')}${text(206, 68, 'Chl <tspan font-style="italic">b</tspan>‑rich · <tspan font-style="italic">a</tspan>:<tspan font-style="italic">b</tspan> ≈ 1.3', 'sm')}
-    ${text(608, 38, 'PSI + LHCI', 'lab lab-b')}${text(608, 68, 'Chl <tspan font-style="italic">a</tspan>‑rich · <tspan font-style="italic">a</tspan>:<tspan font-style="italic">b</tspan> ≈ 3.7', 'sm')}
+    ${text(206, 38, 'PSII + LHCII', 'lab lab-b')}${text(206, 68, 'Chl <tspan font-style="italic">b</tspan>‑rich · <tspan font-style="italic">a</tspan>:<tspan font-style="italic">b</tspan> ≈ 2.2', 'sm')}
+    ${text(608, 38, 'PSI + LHCI', 'lab lab-b')}${text(608, 68, 'Chl <tspan font-style="italic">a</tspan>‑rich · <tspan font-style="italic">a</tspan>:<tspan font-style="italic">b</tspan> ≈ 11', 'sm')}
     <path class="rule" d="M414,20 V560"/>
     ${[xb, xa, xr, xa2, xr2, xf].map(x => lvl(x, G)).join('')}
     ${lvl(xb, Yb)}${lvl(xa, Ya)}${lvl(xr, Yr)}${lvl(xa2, Ya)}${lvl(xr2, Yr)}${lvl(xf, Yred)}
@@ -593,9 +593,9 @@ function columnsSvg(): string {
     </g>
     ${text(676, 106, 'PSII + LHCII', 'sm lab-b')}
     ${miniPSII(676, 166, 0.98, true)}
-    ${text(676, 238, 'Chl <tspan font-style="italic">b</tspan>‑rich · <tspan font-style="italic">a</tspan>:<tspan font-style="italic">b</tspan> ≈ 1.3', 'sm')}
+    ${text(676, 238, 'Chl <tspan font-style="italic">b</tspan>‑rich · <tspan font-style="italic">a</tspan>:<tspan font-style="italic">b</tspan> ≈ 2.2', 'sm')}
     ${text(676, 300, 'PSI + LHCI', 'sm lab-b')}
     ${miniPSI(676, 370, 0.62, true)}
-    ${text(676, 510, 'Chl <tspan font-style="italic">a</tspan>‑rich · <tspan font-style="italic">a</tspan>:<tspan font-style="italic">b</tspan> ≈ 3.7', 'sm')}
+    ${text(676, 510, 'Chl <tspan font-style="italic">a</tspan>‑rich · <tspan font-style="italic">a</tspan>:<tspan font-style="italic">b</tspan> ≈ 11', 'sm')}
   `);
 }

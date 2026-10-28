@@ -76,7 +76,7 @@ function cardSvg(): string {
     credit: 'Pospíšil 2016, Front. Plant Sci. 7: 1950, Fig. 1 · CC BY 4.0',
     over: at => {
       const a = at(330, 40), b = at(1180, 40);
-      return `${lab('LHCII antenna', 'ppa-l ppa-halo', a[0], a[1], 'middle')}${lab('reaction centre', 'ppa-l ppa-halo', b[0], b[1], 'middle')}`;
+      return `${lab('light-harvesting antenna (LHCII)', 'ppa-l ppa-halo', a[0], a[1], 'middle')}${lab('reaction centre', 'ppa-l ppa-halo', b[0], b[1], 'middle')}`;
     },
   }).svg;
 }

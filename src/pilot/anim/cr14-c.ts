@@ -11,6 +11,7 @@ import {
   drawFinding, drawKeeling, FIG, findingsSvg, GREENHOUSE, IMG, KEEL_D, keelingPanel, kimballClip, leafAnim,
 } from './cr14-common';
 import type { Staging } from './types';
+import { keyLines } from './stage-keys';
 
 const P = 'c14c';
 // beat 1: the photo (window of the 1400 × 811 image: Keeling and the plaque) and the drawn record
@@ -33,10 +34,11 @@ const MOVES: Move[] = [
   { beat: 1, t0: 0, d: 1.0, to: view(2500, 370, 1600) },
   { beat: 2, t0: 0, d: 1.2, to: slideView(V6.x, V6.y) },
   { beat: 3, t0: 0, d: 1.3, to: slideView(V3.x, V3.y, V3.k) },
-  { beat: 4, t0: 0, d: 1.6, to: slideView(V4.x, V4.y) },
+  // the nutrient card a little smaller and lower than on the slide: the closing question sits centred above it
+  { beat: 4, t0: 0, d: 1.6, to: { s: 0.9, t: [800 - 0.9 * (V4.x + 400), 430 - 0.9 * (V4.y + 300)] } },
 ];
 
-export const STAGING: Staging = {
+const BASE: Staging = {
   id: 'c',
   name: 'C · Real images first',
   note: 'Keeling at Mauna Loa (photo) beside the record; Kimball 1983; SoyFACE photos (v6) → dive into the soybean (v3) → Myers Fig. 1 (v4).',
@@ -83,3 +85,9 @@ export const STAGING: Staging = {
     };
   },
 };
+
+/** The closing question on the stage, centred above the grain once the motion has finished (lecturer, 29 Oct 2026: on
+ *  the stage only the closing question). */
+export const STAGING: Staging = { ...BASE, keys: [
+  ...keyLines(4, ['More CO₂ raised photosynthesis:', 'what else sets how much grain a field yields?'], 800, 57, { size: 44, t0: 3.0 }),
+] };

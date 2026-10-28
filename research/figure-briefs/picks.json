@@ -1,5 +1,5 @@
 {
-  "savedAt": "2026-10-28T18:51:07.677Z",
+  "savedAt": "2026-10-28T23:28:19.920Z",
   "slides": {
     "1": {
       "picks": [
@@ -31,22 +31,19 @@
         "e",
         "f",
         "h",
-        "u",
-        "x"
+        "x",
+        "u"
       ],
       "note": ""
     },
     "5": {
       "picks": [
-        "o",
-        "p",
-        "r3"
+        "o"
       ],
       "note": ""
     },
     "6": {
       "picks": [
-        "k",
         "r1"
       ],
       "note": ""
@@ -124,21 +121,18 @@
       "note": ""
     },
     "anim-life": {
-      "picks": [
-        "f"
-      ],
+      "picks": [],
       "note": ""
     },
     "anim-pig": {
-      "picks": [
-        "a"
-      ],
+      "picks": [],
       "note": ""
     },
     "C6": {
       "picks": [
         "a",
-        "v10"
+        "v10",
+        "m3"
       ],
       "note": ""
     },
@@ -170,7 +164,9 @@
       "note": ""
     },
     "anim-antenna": {
-      "picks": [],
+      "picks": [
+        "a"
+      ],
       "note": ""
     },
     "anim-leaf": {
@@ -193,7 +189,7 @@
     },
     "anim-cyclic": {
       "picks": [
-        "a"
+        "s1"
       ],
       "note": ""
     },
@@ -222,25 +218,23 @@
       "note": ""
     },
     "anim-psi": {
-      "picks": [
-        "m4"
-      ],
+      "picks": [],
       "note": ""
     },
     "anim-atps": {
-      "picks": [
-        "m1"
-      ],
+      "picks": [],
       "note": ""
     },
     "10b": {
       "picks": [
-        "11m1"
+        "11m2"
       ],
       "note": ""
     },
     "anim-bridge": {
-      "picks": [],
+      "picks": [
+        "a"
+      ],
       "note": ""
     },
     "C0": {
@@ -273,14 +267,12 @@
     },
     "anim-lf10": {
       "picks": [
-        "lf10m"
+        "lf10b"
       ],
       "note": ""
     },
     "anim-lf11": {
-      "picks": [
-        "lf11m"
-      ],
+      "picks": [],
       "note": ""
     },
     "C1": {
@@ -291,13 +283,23 @@
     },
     "anim-cb1": {
       "picks": [
-        "s"
+        "story"
       ],
       "note": ""
     },
     "C4": {
       "picks": [
         "m3"
+      ],
+      "note": ""
+    },
+    "anim-cb4": {
+      "picks": [],
+      "note": ""
+    },
+    "C10n": {
+      "picks": [
+        "n1"
       ],
       "note": ""
     }

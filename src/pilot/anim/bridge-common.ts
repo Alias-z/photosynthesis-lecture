@@ -6,8 +6,9 @@
 // - Beat 1: the chain; its NADPH and ATP glow.
 // - Beat 2: the strip fades in beside it; copies of NADPH and ATP glide from the chain's tags along the strip's supply
 //   arrows to GAPDH.
-// - Beat 3: CO₂ comes into the stroma to RuBisCO, RuBP comes from PRK; both go into RuBisCO and 3-PGA comes out, moves to
-//   GAPDH, meets ATP and NADPH, triose phosphate leaves; ADP + Pᵢ and NADP⁺ glide back to the chain's tags.
+// - Beat 3: CO₂ comes into the stroma to RuBisCO, RuBP comes from PRK; both go into RuBisCO and 2 3-PGA come out (6 C in,
+//   6 C out; accuracy review R2, 29 Oct 2026): one moves to GAPDH, meets ATP and NADPH, triose phosphate leaves; the
+//   other waits at the cycle's 3-PGA spot. ADP + Pᵢ and NADP⁺ glide back to the chain's tags.
 // - Beat 4, to bread (lecturer: "make the CO₂ turn into bread"): the leaf's starch granule glows (a night store); sucrose
 //   leaves the leaf and fills a wheat grain with starch granules, which turns into a slice of bread. Staging 'world': the
 //   sucrose glides off the strip's right edge into a grain drawn beyond it; staging 'inset': the grain and the bread in a
@@ -63,6 +64,8 @@ const P_NADPH: Q = [W.nadphTag, [X0 + 130, 64], [X0 + 190, 166]];
 const P_ATP: Q = [W.atpTag, [X0 + 130, 96], [X0 + 180, 208]];
 /** 3-PGA from RuBisCO's upper left up into GAPDH; triose phosphate from GAPDH up to its spot. */
 const P_PGA: Q = [[W.rub[0] - 54, W.rub[1] - 42], [W.gapdh[0] - 20, W.rub[1] - 48], [W.gapdh[0] - 20, W.gapdh[1] + 36]];
+/** The second 3-PGA, from RuBisCO's left side to the cycle's 3-PGA spot. */
+const P_PGA2: Q = [[W.rub[0] - 70, W.rub[1] + 10], [W.pga[0] + 20, W.rub[1] + 10], W.pga];
 const P_TP: Q = [[W.gapdh[0] + 30, W.gapdh[1] - 52], [W.gapdh[0] + 60, W.tp[1] + 10], [W.tp[0] - 4, W.tp[1]]];
 /** ADP + Pᵢ and NADP⁺ back along the strip's dashed return arrow to its return row (strip (104, 30) in join mode). */
 const ROW_Y = 30, P_ADP: Q = [[W.gapdh[0] - 12, W.gapdh[1] - 52], [W.gapdh[0] - 28, ROW_Y + 8], [X0 + 147, ROW_Y]], P_NADP: Q = [[W.gapdh[0] - 22, W.gapdh[1] - 46], [W.gapdh[0] - 40, ROW_Y + 6], [X0 + 62, ROW_Y]];
@@ -75,7 +78,7 @@ const RUB = { w: 548 * 0.2375, h: 471 * 0.2375 };
 const GLYPHS: Record<string, string> = {
   nadph: tagG(0, 0, 'NADPH', 'nadph'), atp: tagG(0, 0, 'ATP', 'atp'),
   nadp: tagG(0, 0, 'NADP⁺', 'plain'), adp: rowG(0, 0, [['ADP', 'atp'], ['+', 'op'], ['', 'pi']]),
-  co2: balls(0, 0, 'OCO'), rubp: row(0, 0, 'PCCCCCP', { r: 11 }), pga: row(0, 0, 'CCCP', { r: 11 }), tp: row(0, 0, 'CCCP', { r: 11 }),
+  co2: balls(0, 0, 'OCO'), rubp: row(0, 0, 'PCCCCCP', { r: 11 }), pga: row(0, 0, 'CCCP', { r: 11 }), pga2: row(0, 0, 'CCCP', { r: 11 }), tp: row(0, 0, 'CCCP', { r: 11 }),
   suc: `${row(0, -11, 'CCCCCC', { r: 9 })}${row(0, 11, 'CCCCCC', { r: 9 })}`,
 };
 const NAMES: Record<string, [string, V]> = { co2: ['CO₂', [0, -22]], rubp: ['RuBP', [0, -22]], pga: ['3-PGA', [0, 34]], tp: ['triose phosphate', [0, -22]] };
@@ -123,17 +126,20 @@ function script(beat: number, t: number, bread: 'world' | 'inset'): Record<strin
     P.co2 = { at: lerpV([W.co2[0] - 120, W.co2[1]], [W.rub[0] - 78, W.co2[1]], co2), o: ease(t, 0, 0.4) * (1 - into) };
     P.rubp = { at: lerpV(W.rubp, [W.rub[0], W.rub[1] + 66], rubp), o: ease(t, 0.3, 0.7) * (1 - into) };
     P.pga = { at: bez(P_PGA, ease(t, 2.4, 4.8)), o: ease(t, 2.3, 2.7) * (1 - ease(t, 4.8, 5.3)) };
+    P.pga2 = { at: bez(P_PGA2, ease(t, 2.5, 4.6)), o: ease(t, 2.5, 2.9) };
     const meet = ease(t, 4.9, 5.4);
     P.nadph = { at: P_NADPH[2], o: 1 - meet };
     P.atp = { at: P_ATP[2], o: 1 - meet };
     P.tp = { at: bez(P_TP, ease(t, 5.2, 6.8)), o: ease(t, 5.1, 5.5) };
-    P.adp = { at: bez(P_ADP, ease(t, 5.6, 8.0)), o: ease(t, 5.4, 5.8) * (1 - ease(t, 7.8, 8.4)) };
-    P.nadp = { at: bez(P_NADP, ease(t, 5.8, 8.2)), o: ease(t, 5.6, 6.0) * (1 - ease(t, 8.0, 8.6)) };
+    // 0.6 s after the triose phosphate sets off, so the returning glyphs never sit on it (accuracy review R2)
+    P.adp = { at: bez(P_ADP, ease(t, 6.2, 8.6)), o: ease(t, 6.0, 6.4) * (1 - ease(t, 8.4, 9.0)) };
+    P.nadp = { at: bez(P_NADP, ease(t, 6.4, 8.8)), o: ease(t, 6.2, 6.6) * (1 - ease(t, 8.6, 9.2)) };
   }
   if (beat === 3) {
     // triose phosphate fades at its spot (its way out is the export arrow); staging 'world': a sucrose leaves the static one
     // in one straight eased glide into the grain (they sit level)
     P.tp = { at: W.tp, o: 1 - ease(t, 0.2, 1.4) };
+    P.pga2 = { at: W.pga, o: 1 - ease(t, 0.2, 1.4) };
     if (bread === 'world') P.suc = { at: lerpV(W.sucrose, [W.grain[0] - 6, W.grain[1]], ease(t, 1.4, 4.4)), o: ease(t, 1.0, 1.4) * (1 - ease(t, 4.2, 4.9)) };
   }
   if (beat === 4) { P.tp = { at: W.tp, o: 0 }; }
@@ -164,6 +170,14 @@ export function makeStaging(o: Opt): Staging {
       const wG = gran('w'), iG = gran('i');
       const op = (el: SVGElement | null, v: number): void => { if (el) el.setAttribute('opacity', f(v)); };
       const mv = Object.fromEntries(Object.keys(GLYPHS).map(k => [k, q(`m-${k}`)]));
+      // after the pan the view's left edge (world x) cuts some chain names: they fade out with the pan; the chain's
+      // structures line moves inside the view (accuracy review R2, 29 Oct 2026)
+      const edge = o.cams[1].c[0] - 800 / o.cams[1].s;
+      const chainTexts = [...cam.querySelectorAll('text')].filter(el => !strip.contains(el)) as SVGTextElement[];
+      const box = (el: SVGTextElement): DOMRect | null => { try { return el.getBBox(); } catch { return null; } };
+      const credit = chainTexts.find(el => el.classList.contains('chn-cr')) ?? null;
+      const cut = chainTexts.filter(el => { const b = box(el); return el !== credit && !!b && b.width > 0 && b.x < edge + 6 && b.x + b.width > edge - 2; });
+      const cr0 = credit ? { x: credit.getAttribute('x') ?? '', a: credit.getAttribute('text-anchor') ?? '' } : null;
       const setCam = (c: Cam): void => cam.setAttribute('transform', `translate(${f(800 - c.c[0] * c.s)} ${f(370 - c.c[1] * c.s)}) scale(${f(c.s)})`);
       return (beat, t) => {
         const prev = o.cams[Math.max(0, beat - 1)], cur = o.cams[beat];
@@ -195,6 +209,13 @@ export function makeStaging(o: Opt): Staging {
         pool.setAttribute('opacity', f(hi));
         top.setAttribute('opacity', f(hi));
         name.setAttribute('opacity', f(beat === 4 ? ease(t, 1.2, 2.2) : 0));
+        const out = beat === 0 ? 0 : beat === 1 ? ease(t, (o.pan ?? 3.2) - 0.8, o.pan ?? 3.2) : 1;
+        cut.forEach(el => op(el, 1 - out));
+        if (credit && cr0) {
+          const moved = out >= 1 || (beat === 1 && t >= (o.pan ?? 3.2));
+          credit.setAttribute('x', moved ? f(edge + 12) : cr0.x); credit.setAttribute('text-anchor', moved ? 'start' : cr0.a);
+          op(credit, beat === 0 ? 1 : beat === 1 ? (moved ? ease(t, o.pan ?? 3.2, (o.pan ?? 3.2) + 0.5) : 1 - ease(t, (o.pan ?? 3.2) - 0.8, o.pan ?? 3.2)) : 1);
+        }
         const P = script(beat, t, o.bread);
         for (const [k, el] of Object.entries(mv)) {
           const pu = P[k];

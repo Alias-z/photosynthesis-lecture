@@ -9,6 +9,8 @@ import { GLYPH } from './dk1-common';
 import { LF11A } from './beats-lf';
 import { nh3G } from '../figs/leaf-schema';
 import { add, ease, flash, glide, makeLeafStaging, panelShow, panelSvg, type Actor, type Api, type Row, type V } from './lf-common';
+import { keyLines } from './stage-keys';
+import type { Staging } from './types';
 
 const S = SPOT, P: V = [MPER[0], MPER[1]];
 const ACTORS: Actor[] = [
@@ -31,7 +33,7 @@ const SER_REST: V = [748, 500];
 const GW = (k: number): V => [524, k === 1 ? 176 : 200];
 
 const ROWS: Row[] = [
-  { k: 'r0', h: 36, html: 'per 2 O₂', cls: 'dk-ph' },
+  { k: 'r0', h: 36, html: 'per 2 oxygenations', cls: 'dk-ph' },
   { k: 'r1', h: 38, html: '<tspan class="lfa-e">mesophyll:</tspan> 2 O₂ → 2 glycolate → 2 glycine' },
   { k: 'r2', h: 38, html: '<tspan class="lfa-e">bundle sheath:</tspan> 2 glycine → serine + CO₂ + NH₃' },
   { k: 'r2c', h: 32, html: '2 × 2 C = 3 C + 1 C', cls: 'dk-pc' },
@@ -69,6 +71,8 @@ function frame(a: Api, beat: number, t: number): void {
     a.put('nh3', NH3[NH3.length - 1], 1);
     a.put('ser', glide([SER_REST, ...SER.slice(3)], t, 0.3, 3.6), 1 - ease(t, 3.6, 3.9));
   }
+  // once serine is back, the leaf dims so that the closing question reads over it (as in slide C12's last beat)
+  a.op('cam', beat === 3 ? 1 - 0.6 * ease(t, 4.0, 4.6) : 1);
   const v = (b: number, t0: number): number => (beat > b ? 1 : beat === b ? ease(t, t0, t0 + 0.4) : 0);
   panelShow(a, 'panel', ROWS, { r0: v(0, 0.2), r1: v(0, 4.4), r2: v(2, 0.6), r2c: v(2, 1.2), r3: v(3, 2.0) });
 }
@@ -80,7 +84,7 @@ const LIT: LPart[][] = [
   ['bs-mito', 'ser', 'm-perox', 'bs-cp', 'bs-rub'],
 ];
 
-export const STAGING = makeLeafStaging({
+const BASE = makeLeafStaging({
   id: 'lf11am',
   name: 'm · In the leaf section',
   note: 'C₂ per 2 O₂ in the leaf section, one fixed framing: O₂ 1–2 at mesophyll RuBisCO → glycolate → glycine 1–2 → bundle-sheath glycine decarboxylase → serine, CO₂ 1 (to bundle-sheath RuBisCO) and NH₃; serine back',
@@ -93,3 +97,14 @@ export const STAGING = makeLeafStaging({
   lit: LIT,
   frame,
 });
+
+/** The key lines on the stage (lecturer, 29 Oct 2026): each beat's take-home under the ledger, and the closing
+ *  question centred over the dimmed leaf, after the motion. */
+export const STAGING: Staging = { ...BASE, keys: [
+  ...keyLines(0, ['Mesophyll RuBisCO', 'takes up O₂'], 1242, 450, { size: 40 }),
+  ...keyLines(1, ['Glycine moves', 'to the bundle sheath'], 1242, 450, { size: 40 }),
+  ...keyLines(2, ['CO₂ released', 'next to RuBisCO'], 1242, 450, { size: 40 }),
+  ...keyLines(3, ['Serine returns', 'to the mesophyll'], 1242, 450, { size: 40 }),
+  { beat: 3, text: 'What if the mesophyll fixed CO₂ first', x: 800, y: 350, size: 44, t0: 3.0 },
+  { beat: 3, text: 'and delivered it to bundle-sheath RuBisCO?', x: 800, y: 403, size: 44, t0: 3.0 },
+] };

@@ -20,10 +20,10 @@ export const PLATE: PlateText = {
   pick: 'C10',
   title: 'C₄ photosynthesis',
   status: 'draft',
-  lead: 'C₄ plants concentrate CO₂ around RuBisCO in the bundle-sheath cells.<br>There, oxygenation of RuBP and photorespiration are nearly absent.',
+  lead: 'C₄ plants concentrate CO₂ around RuBisCO in the bundle-sheath cells.<br>There, oxygenation of RuBP and photorespiration are strongly reduced.',
   points: [
     { claim: 'Phosphoenolpyruvate carboxylase (PEPC).', text: 'Adds HCO₃⁻ to phosphoenolpyruvate (PEP) in the mesophyll; does not react with O₂', eq: 'HCO₃⁻ + PEP → C₄ acid: 1 C + 3 C = 4 C' },
-    { claim: 'Kranz anatomy.', text: 'The C₄ acid moves to the bundle sheath; NADP-malic enzyme releases CO₂ next to RuBisCO', eq: 'CO₂ at RuBisCO: up to ≈ 10 × air' },
+    { claim: 'Kranz anatomy.', text: 'Bundle-sheath cells form a wreath (Kranz) around each vein; the C₄ acid moves there, and a decarboxylase releases CO₂ next to RuBisCO', eq: 'CO₂ at RuBisCO: up to ≈ 10 × air' },
     { claim: 'Energy cost.', text: 'Pyruvate,phosphate dikinase (PPDK) regenerates PEP: 2 ATP equivalents per CO₂', eq: 'per CO₂: C₄ 5 ATP + 2 NADPH · C₃ 3 ATP + 2 NADPH' },
   ],
   refs: [

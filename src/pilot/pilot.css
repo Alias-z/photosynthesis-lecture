@@ -313,3 +313,14 @@ body.solo .block{margin:0}
 /* Lecture mode: no variant names or switches in the player, as it will run in class. */
 body.lecture-mode .player-seg,body.lecture-mode .player-title{display:none}
 .top .bar-r{margin-top:14px}
+/* Slide status (lecturer, 29 Oct 2026): frozen by the lecturer, or being built by the assistant */
+.st-sum{margin:10px 0 0;padding:10px 14px;border-radius:10px;background:#eef2f6;font:500 15px/1.4 var(--sans);color:var(--ink)}
+.st-badge{font:600 14px/1.2 var(--sans);padding:4px 10px;border-radius:999px}
+.st-badge:empty{display:none}
+.slide.is-frozen .st-badge{background:#dcecf8;color:#1d5a8a}
+.slide.is-building .st-badge{background:#fbead0;color:#8a5206}
+.st-freeze{font:500 14px/1 var(--sans);padding:6px 12px;border-radius:999px;border:1px solid #9fb7cc;background:#f4f8fb;color:#1d5a8a;cursor:pointer}
+.slide.is-frozen .st-freeze{background:#1d5a8a;color:#fff;border-color:#1d5a8a}
+.slide.is-frozen .frame{box-shadow:0 0 0 3px #9cc3e3}
+.slide.is-building .frame{box-shadow:0 0 0 3px #f0c27a}
+body.lecture-mode .st-sum,body.lecture-mode .st-badge,body.lecture-mode .st-freeze{display:none}

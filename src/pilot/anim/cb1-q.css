@@ -1,0 +1,26 @@
+/* cb1 staging q (cb1-q.ts): the cycle drawn after Bassham 1954 beside the paper cards. Arrows, glyphs and tags reuse
+   cbb-schema.css, cell-schema.css and chain.css; names and lines here. Prefix .cq-. */
+.theme-editorial .cq text.cq-name{font-size:19px;font-weight:700;fill:#141413;paint-order:stroke;stroke:#f6f4ec;stroke-width:5px;stroke-linejoin:round}
+.theme-editorial .cq text.cq-prot{font-size:18px;font-weight:600;fill:#141413;paint-order:stroke;stroke:#f6f4ec;stroke-width:5px;stroke-linejoin:round}
+.theme-editorial .cq text.cq-proc{font-size:18px;font-weight:600;font-style:italic;fill:#3d3d3a;paint-order:stroke;stroke:#f6f4ec;stroke-width:5px;stroke-linejoin:round}
+.theme-editorial .cq text.cq-cnt{font-size:24px;font-weight:700;fill:#141413;paint-order:stroke;stroke:#f6f4ec;stroke-width:5px;stroke-linejoin:round}
+.theme-editorial .cq text.cq-zone{font-size:17px;font-weight:600;fill:#5d7a8c;letter-spacing:.02em}
+.theme-editorial .cq text.cq-q{font-size:34px;font-weight:800;fill:#a9532f;paint-order:stroke;stroke:#f6f4ec;stroke-width:5px}
+.theme-editorial .cq text.cq-line{font-size:28px;font-weight:700;fill:#141413}
+.theme-editorial .cq text.cq-ctitle{font-family:Newsreader,Georgia,serif;font-size:26px;font-weight:500;fill:#141413}
+.theme-editorial .cq tspan.cq-sub{font-size:18px}
+.theme-editorial .cq text.cq-ccr{font-size:13px;fill:#8a877d}
+.theme-editorial .cq text.cq-pillt{font-size:19px;font-weight:600;fill:#141413}
+.cq .cq-paper{fill:#f6f1e5;stroke:#d3cdbd;stroke-width:1}
+.cq .cq-mult{mix-blend-mode:multiply}
+.cq .cq-veil{fill:#f6f1e5;opacity:.8}
+.cq .cq-mark{fill:none;stroke:#e3a21a;stroke-width:3.2}
+.cq .cq-mark2{fill:none;stroke:#e3a21a;stroke-width:2.4;stroke-linejoin:round}
+.cq .cq-panel{fill:#fffdf8;stroke:#d8d5cb;stroke-width:1.2}
+.cq .cq-pill{fill:#fffdf8;stroke:#c9c6bb;stroke-width:1.2}
+.cq .cq-ld{fill:none;stroke:#fbfaf6;stroke-width:2}
+.cq .cq-ldt{fill:#fbfaf6;stroke:#5a5953;stroke-width:1.2}
+.cq .cq-drop{fill:#7fa66a;stroke:#4f7a3f;stroke-width:1.2}
+.cq .cq-c14{fill:#f2b705;opacity:.45}
+/* the beat 4 and 5 lines are the key lines: big, on the stage (lecturer, 29 Oct 2026) */
+.theme-editorial .cq text.cq-line{font-size:40px;fill:#b0431f}

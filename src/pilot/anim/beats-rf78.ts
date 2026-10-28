@@ -28,8 +28,8 @@ const Ci = '<i>C</i>ᵢ';
 export const RF7: Beat[] = [
   { tag: 'Darkness', say: 'In darkness, the thylakoids make no ATP or NADPH, and the leaf only releases CO₂, by respiration in its mitochondria.', cite: [HUANG14] },
   { tag: 'Light compensation point', say: 'In dim light, the CO₂ that RuBisCO fixes balances the CO₂ released by respiration and photorespiration: the light compensation point.', cite: [HUANG14] },
-  { tag: 'Quantum yield', say: 'More light, more ATP and NADPH to regenerate RuBP: CO₂ uptake rises linearly with light. The slope, CO₂ fixed per photon absorbed, is the quantum yield.', cite: [EB77] },
-  { tag: 'Light saturation', say: 'In bright light, the thylakoids supply more ATP and NADPH than the cycle uses: CO₂ uptake levels off at the leaf’s capacity.', cite: [HUANG14] },
+  { tag: 'Quantum yield', say: 'More light, more ATP and NADPH to regenerate RuBP: CO₂ uptake rises linearly with light. The slope, CO₂ taken up per photon, is the quantum yield.', cite: [EB77] },
+  { tag: 'Light saturation', say: 'In bright light, the cycle cannot use all the ATP and NADPH the thylakoids could make: CO₂ uptake levels off at the leaf’s capacity.', cite: [HUANG14] },
   { tag: 'Sun and shade', say: 'Tobacco grown in 28 % of sunlight levels off at lower light and lower uptake than tobacco grown in 95 %: ≈ 13 vs ≈ 22 µmol CO₂ m⁻² s⁻¹.', cite: [HUANG14] },
   { tag: 'Which limit?', say: '<b>In bright light, which step of the cycle sets the limit, and does that change with CO₂?</b>', cite: [] },
 ];
@@ -43,9 +43,9 @@ export const RF7_GAASTRA: Beat[] = [
 /** Animation rf8, played from slide C8: Cᵢ rises on the schema; each FvCB limit is lit in turn as the curve's dot reaches
  *  it; a Cᵢ readout and the A/Cᵢ curve react from the first frame. */
 export const RF8: Beat[] = [
-  { tag: `RuBisCO limit, <i>A</i>${sub('c')}`, say: `At low ${Ci}, RuBisCO has RuBP to spare but too little CO₂: uptake rises steeply with CO₂. The amount of active RuBisCO, <i>V</i>${sub('cmax')}, sets this rate.`, cite: [FVCB80] },
+  { tag: `RuBisCO limit, <i>A</i>${sub('c')}`, say: `At low ${Ci}, RuBisCO has RuBP to spare but too little CO₂: uptake rises steeply with CO₂. The maximum carboxylation rate of active RuBisCO, <i>V</i>${sub('cmax')}, sets this rate.`, cite: [FVCB80] },
   { tag: 'Today’s air', say: `In today’s air, ${Ci} ≈ 300 ppm: the leaf works near the switch from the RuBisCO limit to the next one.`, cite: [BUSCH24] },
-  { tag: `RuBP-regeneration limit, <i>A</i>${sub('j')}`, say: `At higher ${Ci}, RuBisCO waits for RuBP. Regenerating RuBP needs ATP and NADPH, so the electron transport rate, <i>J</i>, sets uptake.`, cite: [FVCB80] },
-  { tag: `TPU limit, <i>A</i>${sub('p')}`, say: `At very high ${Ci}, triose phosphate is made faster than sucrose and starch synthesis use it: uptake stops rising.`, cite: [SHARKEY85] },
-  { tag: 'FvCB model', say: 'CO₂ uptake follows the lowest of the three rates. 1980: Farquhar, von Caemmerer and Berry; 1985: Sharkey added triose-phosphate use. <b>How do we measure a leaf’s CO₂ uptake, and the CO₂ inside it?</b>', cite: [FVCB80, SHARKEY85] },
+  { tag: `RuBP-regeneration limit, <i>A</i>${sub('j')}`, say: `At higher ${Ci}, RuBP regeneration, not RuBisCO, limits carboxylation. Regenerating RuBP needs ATP and NADPH, so the electron transport rate, <i>J</i>, sets uptake.`, cite: [FVCB80] },
+  { tag: `TPU limit, <i>A</i>${sub('p')}`, say: `At very high ${Ci}, sucrose and starch synthesis cannot use triose phosphate any faster, so too little Pᵢ returns to make ATP: uptake stops rising.`, cite: [SHARKEY85] },
+  { tag: 'FvCB model', say: 'CO₂ uptake follows the lowest of the 3 rates. 1980: Farquhar, von Caemmerer and Berry; 1985: Sharkey added triose-phosphate use. <b>How do we measure a leaf’s CO₂ uptake, and the CO₂ inside it?</b>', cite: [FVCB80, SHARKEY85] },
 ];

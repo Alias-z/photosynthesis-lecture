@@ -24,7 +24,8 @@ export const PLATE: PlateText = {
   refs: [
     { label: 'Peterhänsel et al. 2010', url: 'https://doi.org/10.1199/tab.0130' },
     { label: 'Somerville & Ogren 1979', url: 'https://doi.org/10.1038/280833a0' },
-    { label: 'Ehleringer & Björkman 1977', url: 'https://doi.org/10.1104/pp.59.1.86' },
+    { label: 'von Caemmerer & Farquhar 1981', url: 'https://doi.org/10.1007/BF00384257' },
+    { label: 'Bernacchi et al. 2001', url: 'https://doi.org/10.1111/j.1365-3040.2001.00668.x' },
     { label: 'Flügel et al. 2017', url: 'https://doi.org/10.1105/tpc.17.00256' },
     { label: 'Michelet et al. 2013', url: 'https://doi.org/10.3389/fpls.2013.00470' },
   ],

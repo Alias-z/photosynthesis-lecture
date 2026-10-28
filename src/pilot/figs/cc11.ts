@@ -26,11 +26,11 @@ export const PLATE: PlateText = {
   n: 'C11',
   title: 'C₃ leaves: refixation of photorespired CO₂',
   status: 'draft',
-  lead: 'In C₃ leaves, RuBisCO takes CO₂ directly from the leaf air spaces.<br>Chloroplasts in front of the mitochondria refix part of the photorespired CO₂.',
+  lead: 'Low CO₂ at RuBisCO means more oxygenation and more photorespired CO₂.<br>C₃ leaves place chloroplasts in front of the mitochondria to refix part of it.',
   points: [
-    { claim: 'Chloroplast cover.', text: 'Rice, wheat: chloroplasts cover 92–99 % of the wall facing the air spaces; the mitochondria lie behind them' },
-    { claim: 'Refixation.', text: 'Part of the CO₂ released in the mitochondria is fixed again before it leaves the cell', eq: 'refixed inside the cell: 26–29 % · net CO₂ uptake: +9–11 %' },
-    { claim: 'Heat raises photorespiration.', text: 'RuBisCO’s preference for CO₂ over O₂ falls as temperature rises; C₃ plants dominate cool, temperate regions', eq: '30 °C: ≈ 29 % less CO₂ fixed per photon in air than in 2 % O₂' },
+    { claim: 'Chloroplast cover.', text: 'Rice, wheat: chloroplasts cover 92–99 % of the wall facing the air spaces<br>Most mitochondria lie behind them' },
+    { claim: 'Refixation.', text: 'Part of the CO₂ released in the mitochondria is fixed again before it leaves the cell', eq: 'refixed inside the cell: 24–38 % · <span style="white-space:nowrap">net CO₂ uptake: +8–11 %</span> (rice, wheat)' },
+    { claim: 'Heat raises photorespiration.', text: 'RuBisCO’s preference for CO₂ over O₂ falls as temperature rises<br>C₃ grasses dominate cool, temperate grasslands' },
   ],
   refs: [
     { label: 'Busch et al. 2013', url: 'https://doi.org/10.1111/j.1365-3040.2012.02567.x' },

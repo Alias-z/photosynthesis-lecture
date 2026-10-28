@@ -371,8 +371,7 @@ function c4Svg(): string {
     ${T(F.x1, 400, 'C₄ concentrates CO₂ at RuBisCO,', 'sm', 'end')}
     ${T(F.x1, 426, 'so it saturates early', 'sm', 'end')}
     ${T(120, 554, 'C₃:', 'sm lab-b', 'start')}<path class="fc12-cv fc12-cv-c" d="M164,547 H194"/>${T(204, 554, 'RuBisCO-limited', 'sm', 'start')}
-    <path class="fc12-cv fc12-cv-j" d="M384,547 H414"/>${T(424, 554, 'RuBP-regeneration-limited', 'sm', 'start')}
-    ${ILLUS(784, 590)}`);
+    <path class="fc12-cv fc12-cv-j" d="M384,547 H414"/>${T(424, 554, 'RuBP-regeneration-limited', 'sm', 'start')}`);
 }
 
 /* ---------- h · the field test: FACE, then a 20-year surprise ---------- */

@@ -17,17 +17,19 @@ import mitoJpg from '../../assets/rf/fn6-mito.jpg';
 import { metab } from './carbon-form';
 import { balls } from './cell-schema';
 import { rowG } from './chain';
+import { sceneSvg } from './ce04e-scene';
 import type { PlateText, Variant } from '../types';
 
 export const PLATE: PlateText = {
   n: 'C4e',
   title: 'Efficiency of photosynthesis',
   status: 'draft',
-  lead: 'At most ≈ 4.6 % of the solar energy<br>is stored in biomass by C₃ plants,<br>≈ 6 % by C₄ plants.',
+  lead: 'At most ≈ 4.6 % of the solar energy ends up in biomass in C₃ plants, ≈ 6 % in C₄.',
+  // the slide text of version 2 (EFFICIENCY_V2_BRIEF.md, exact)
   points: [
-    { claim: 'Carbon.', text: 'Net, 15 C return to RuBP and 3 C leave: every fixed carbon is kept<br>Carbon is lost only by photorespiration', eq: 'per 3 CO₂: 3 C in as CO₂ = 3 C out as 1 triose phosphate' },
-    { claim: 'Energy per CO₂.', text: 'ATP and NADPH are used; ADP, Pᵢ and NADP⁺ are recharged in the thylakoid', eq: '1 CO₂: 3 ATP + 2 NADPH<br>from ≥ 8 absorbed photons; ≈ 9.4 measured' },
-    { claim: 'Energy losses.', text: 'Largest losses: light outside 400–700 nm and the conversion into sugar; photorespiration 6.1 % in C₃', eq: 'C₃, % of solar energy:<br>100 − 51.3 − 4.9 − 6.6 − 24.6 − 6.1 − 1.9 = 4.6' },
+    { claim: 'Light outside PAR and reflection.', text: 'Chlorophyll uses mainly 400–700 nm; the leaf reflects or transmits ≈ 10 % of it', eq: '−51.3 · −4.9 % of solar energy' },
+    { claim: 'Photochemical inefficiency.', text: 'Every absorbed photon drives 1 electron at the energy of a red photon; the excess becomes heat', eq: '−6.6 %' },
+    { claim: 'Carbohydrate synthesis and photorespiration.', text: 'Sugar keeps about a third of the energy of the 8 photons per CO₂; photorespiration and respiration take more', eq: '−24.6 · −6.1 · −1.9 → 4.6 % left' },
   ],
   refs: [
     { label: 'Zhu, Long & Ort 2008', url: 'https://doi.org/10.1016/j.copbio.2008.02.004' },
@@ -36,7 +38,13 @@ export const PLATE: PlateText = {
   ],
 };
 
+/** Version 2 (EFFICIENCY_V2_BRIEF.md): the journey of sunlight through a leaf; the earlier charts e1–e4 stay drawable, unlisted. */
 export const VARIANTS: Variant[] = [
+  { id: 'f1', name: 'The journey of sunlight through a C₃ leaf: each loss where it happens', anim: true },
+  { id: 'f2', name: 'The same journey with C₄ as a second stream' },
+  { id: 'f3', name: 'Close up: the 3 "why" places, leaf surface, thylakoid and stroma' },
+];
+export const VARIANTS_V1: Variant[] = [
   { id: 'e1', name: 'Energy-loss waterfall, C₃: 100 % sunlight to 4.6 % biomass (after Zhu et al. 2008, Fig. 1)' },
   { id: 'e2', name: 'Sankey band, C₃: each loss peels off in order' },
   { id: 'e3', name: 'C₃ and C₄ step by step' },
@@ -205,5 +213,5 @@ function e4(): string {
     ${T(786, 578, 'C₃ leaf, 30 °C · mitochondrion: Frederick & Newcomb 1969, J Cell Biol 43:343, Fig. 6', 'ef-cr', 'end')}${T(786, 594, CREDIT, 'ef-cr', 'end')}`, grad);
 }
 
-const DRAW: Record<string, () => string> = { e1, e2, e3, e4 };
-export const draw = (id: string): string => (DRAW[id] ?? e1)();
+const DRAW: Record<string, () => string> = { e1, e2, e3, e4, f1: () => sceneSvg('ef5f1', 'f1'), f2: () => sceneSvg('ef5f2', 'f2'), f3: () => sceneSvg('ef5f3', 'f3') };
+export const draw = (id: string): string => (DRAW[id] ?? DRAW.f1)();

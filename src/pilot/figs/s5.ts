@@ -302,7 +302,7 @@ export function paletteSvg(p = 'f5d'): string {
     ${card('car', 20, 166, ['β-carotene', '450 nm'])}${card('pe', 408, 166, ['≈ 540–565 nm', 'red algae'], true)}
     ${t(20, 344, 'together they cover more', 'lab lab-b', 'start')}
     ${set(s1 - 10, ['a', 'b', 'car'])}${strip(`${p}-s1`, s1, leaf)}${t(242, s1 + 29, 'land plant', 'lab lab-b', 'end')}
-    ${t(SX(550), s1 + 28, 'green gap', 'sm f5-mute')}
+    ${t(SX(550), s1 + 28, 'green: absorbed least', 'sm f5-mute')}
     ${set(s2 - 10, ['a', 'car', 'pe'])}${strip(`${p}-s2`, s2, alga)}${t(242, s2 + 29, 'red alga', 'lab lab-b', 'end')}
     ${ticks(SX, s2 + 42, s2 + 70)}
     ${t(20, 588, 'coloured = light the pigment absorbs', 'sm f5-mute', 'start')}${t(780, 588, 'Chl and β-carotene peaks in solvent', 'tiny f5-tiny', 'end')}

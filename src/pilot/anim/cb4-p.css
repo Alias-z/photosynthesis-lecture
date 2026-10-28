@@ -1,0 +1,9 @@
+/* C4 · Sucrose and starch, staging p, "The phosphate loop" (anim/cb4-p.ts). Prefix .c4p-, scoped to its player. */
+.ani-cb4-p text.c4p-lab{font-size:21px;font-weight:700;fill:#141413;paint-order:stroke;stroke:#f6f4ec;stroke-width:6px;stroke-linejoin:round}
+.ani-cb4-p text.c4p-prot{font-size:21px;font-weight:600;fill:#141413;paint-order:stroke;stroke:#f6f4ec;stroke-width:6px;stroke-linejoin:round}
+.ani-cb4-p text.c4p-zone{font-size:22px;font-weight:600;fill:#8a877d;letter-spacing:.03em}
+.ani-cb4-p text.c4p-band{font-size:19px;font-weight:600;fill:#6b5a1e}
+.ani-cb4-p text.c4p-band-n{font-size:19px;font-weight:600;fill:#f3f1ea}
+.ani-cb4-p .c4p-day{fill:#f8ecc4}
+.ani-cb4-p .c4p-night{fill:#5b6273}
+.ani-cb4-p .c4p-veil{fill:#2f3b55}

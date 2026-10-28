@@ -1,17 +1,17 @@
 // C4 · Sucrose and starch (beats CB4N, beats-cb4n.ts), staging s: in the real-protein strip (dk2-common.ts), rebuilt per
 // triose phosphate (research/redo-2026-10-28/DARK_COUNTS_BRIEF.md). One still framing for all five beats.
-// - Beat 1, export (unit: 1 triose phosphate out, 1 Pᵢ in): triose phosphate 1 comes from GAPDH ("from 3 CO₂ fixed"),
+// - Beat 1, export (unit: 1 triose phosphate out, 1 Pᵢ in): triose phosphate 1 comes from GAPDH ("per 3 CO₂ fixed"),
 //   goes out through TPT and, at the same moment, Pᵢ 1 comes in from the cytosol's Pᵢ; they cross at TPT.
-// - Beat 2, sucrose: triose phosphates 2–4 (each from 3 CO₂ fixed) go out the same way, each crossing Pᵢ 2–4. In the
+// - Beat 2, sucrose: triose phosphates 2–4 (each per 3 CO₂ fixed) go out the same way, each crossing Pᵢ 2–4. In the
 //   cytosol the 4 × 3 C = 12 C (from 12 CO₂) become 1 sucrose: the phosphates come off and return to the cytosol's Pᵢ,
 //   and the four 3-C rows slide into sucrose's two rows of 6 C.
 // - Beat 3, day and night: beside the strip, Graf et al. 2010's starch over 24 h (Arabidopsis, 12 h light / 12 h dark,
 //   figs/cb-common GRAF_CTRL); the sucrose of beat 2 leaves for the plant. By day the thylakoid and its supply are lit
 //   and 2 triose phosphates go into the starch granule; at night it dims, the granule shrinks with the curve, and 2 sugar
 //   units of 6 C leave it for the cytosol, where they make 1 sucrose (uncounted: a concept beat).
-// - Beat 4, starch use at night: night after 8 h (GRAF_EARLY); the second curve draws, the granule follows it.
-// - Beat 5, RuBisCO and O₂: the panel goes; CO₂ and RuBP go into RuBisCO, 2 3-PGA come out; O₂ comes in from the
-//   oxygenation side and stays. Ends on the caption's question.
+// - Beat 4, RuBisCO: the panel goes; CO₂ and RuBP go into RuBisCO, 2 3-PGA come out. Ends on the caption's question.
+// The early-dusk beat (night after 8 h, GRAF_EARLY) was cut (lecturer, 29 Oct 2026); its code stays as internal beat 3,
+// which the staging skips: shown beat 3 runs internal beat 4.
 import { atomBall, row } from '../figs/carbon-form';
 import { balls } from '../figs/cell-schema';
 import { tagG } from '../figs/chain';
@@ -22,6 +22,7 @@ import {
   type LedRow, type LitMap, type Mover, type Path, type Put, type V,
 } from './dk2-common';
 import type { Staging } from './types';
+import { withKeys } from './stage-keys-cb';
 
 const P = 'dkc4';
 const R = 11, RT = 10.5;
@@ -48,7 +49,6 @@ const P_CO2 = gasPath('co2', 24);
 const P_RUBP = curve([[SP.rubp[0], SP.rubp[1] + 40], SP.rubp, SP.rubpFrom, SP.rubpTo]);
 const PGA_AT: V[] = [SP.pga, [SP.pga[0] + 20, SP.pga[1] + 34]];
 const P_PGA = (k: number): Path => curve([lerpV(SP.carboxFrom, SP.rub, 0.35), SP.carboxFrom, SP.carboxTo, PGA_AT[k]]);
-const P_O2 = gasPath('o2', 90, 24);
 
 /* ---------------------------------------------------------------- timing */
 
@@ -83,16 +83,15 @@ const MOV: Mover[] = [
   { k: 'rubp', svg: row(0, 0, 'PCCCCCP', { r: R }), label: 'RuBP', at: [-96, 6], anchor: 'end' },
   { k: 'pga0', svg: row(0, 0, 'CCCP', { r: R }), label: '3-PGA', at: [0, -20] },
   { k: 'pga1', svg: row(0, 0, 'CCCP', { r: R }) },
-  { k: 'o2', svg: `<g class="chn-g">${balls(0, 0, 'OO')}</g>`, label: 'O₂', at: [0, -22] },
 ];
 
 /* ---------------------------------------------------------------- the ledger and the panel (stage units) */
 
 const ROWS: LedRow[] = [
-  { name: 'triose phosphate out', nums: [1, 2, 3, 4], total: '= 12 C, from 12 CO₂' },
+  { name: 'triose phosphate out', nums: [1, 2, 3, 4], total: '= 12 C, as much as 12 CO₂ fixed' },
   { name: 'Pᵢ in', nums: [1, 2, 3, 4] },
 ];
-const LED = { x: 1020, y: 586, w: 560 };
+const LED = { x: 940, y: 586, w: 640 }; // room for "= 12 C, as much as 12 CO₂ fixed" (R2)
 /** The panel lies over the strip's dimmed lower part (RuBisCO, PRK), leaving the thylakoid, GAPDH, the starch granule,
  *  TPT and the cytosol's sucrose in view. */
 const PAN = { x: 470, y: 300, w: 1110, h: 428 };
@@ -107,7 +106,7 @@ function panelSvg(): string {
     <text class="dk2-band" x="${f(AX(a, 4))}" y="${f(top + 18)}" text-anchor="middle">day</text>
     <text class="dk2-band-d" x="${f(AX(a, 18))}" y="${f(top + 18)}" text-anchor="middle">night</text>
     <rect class="dk2-nshade" x="${f(AX(a, 12))}" y="${f(a.y0)}" width="${f(AX(a, 24) - AX(a, 12))}" height="${f(a.h)}"/>
-    ${axesSvg(a, [0, 4, 8, 12, 16, 20, 24], [0, 4, 8], 'hours after dawn', 'starch (mg g⁻¹)')}
+    ${axesSvg(a, [0, 4, 8, 12, 16, 20, 24], [0, 4, 8], 'hours after dawn', 'starch (mg per g fresh weight)')}
     <path data-k="${P}-cc" class="dk2-cur" d="M0,0"/><path data-k="${P}-ce" class="dk2-cur dk2-cur-amber" d="M0,0"/>
     <path data-k="${P}-cur" class="dk2-cursor" d="M0,0"/><circle data-k="${P}-dot" class="dk2-dot" r="7" opacity="0"/>
     <text data-k="${P}-l1" class="dk2-gl" x="${f(AX(a, 12.5))}" y="${f(AY(a, 6.7) - 6)}" opacity="0">night after 12 h</text>
@@ -121,7 +120,7 @@ function panelSvg(): string {
 const CAM: Cam = frame(0, 1185, 0, 1600, -60);
 const L1 = litOf(['tp', 'export', 'reduce']);
 const DAY = litOf(['light', 'thyl', 'supply', 'tp', 'starch']), NIGHT = litOf(['starch']);
-const L5 = litOf(['rubisco', 'co2', 'o2', 'carbox']);
+const L5 = litOf(['rubisco', 'co2', 'carbox']);
 const dayNight = (h: number, dusk: number): LitMap => mixLit(DAY, NIGHT, ease(h, dusk - 0.5, dusk + 0.5));
 function lit(beat: number, t: number): LitMap {
   if (beat === 0) return mixLit({}, L1, ease(t, 0.1, 0.9));
@@ -136,7 +135,7 @@ function granule(beat: number, t: number): number {
   if (beat <= 1) return 0.8;
   if (beat === 2) return lerp(0.8, gScale(ctrl(hourOf(2, t))), ease(t, 0.2, 1.2));
   if (beat === 3) return gScale(early(hourOf(3, t)));
-  return gScale(early(24));
+  return gScale(ctrl(24));
 }
 
 /* ---------------------------------------------------------------- the script */
@@ -179,12 +178,11 @@ function script(beat: number, t: number): St {
     pos.co2 = { at: glide(P_CO2, t, 1.0, 1.7), o: ease(t, 0.9, 1.3) * (1 - into) };
     pos.rubp = { at: glide(P_RUBP, t, 1.1, 1.7), o: ease(t, 1.0, 1.4) * (1 - into) };
     for (const k of [0, 1]) pos[`pga${k}`] = { at: glide(P_PGA(k), t, 3.0 + 0.45 * k, 1.4), o: ease(t, 2.9 + 0.45 * k, 3.3 + 0.45 * k) };
-    pos.o2 = { at: glide(P_O2, t, 4.4, 1.6), o: ease(t, 4.0, 4.5) };
   }
   return { pos, att };
 }
 
-export const STAGING: Staging = {
+const STAGING_BASE: Staging = {
   id: 's',
   name: 's · In the protein strip',
   note: 'One still framing of the strip, per triose phosphate: triose phosphate 1 out through TPT as Pᵢ 1 comes in; 2–4 the same, and the 4 (from 12 CO₂) make 1 sucrose; Graf’s starch day and night beside the strip, starch by day and sucrose from starch at night; the early dusk; CO₂ and O₂ at RuBisCO',
@@ -193,8 +191,8 @@ export const STAGING: Staging = {
     const over = `<text data-k="${P}-stl" class="cel-mn cel-halo" x="${GRAN[0]}" y="-32" text-anchor="middle" opacity="0">starch</text>
       <rect data-k="${P}-veil" class="dk2-nightveil" x="-200" y="-200" width="2000" height="1000" opacity="0"/>
       <text data-k="${P}-tpl" class="cel-mn cel-halo" x="${TPAT[0]}" y="52" text-anchor="middle" opacity="0">triose phosphate</text>
-      <text data-k="${P}-src" class="cel-cnt cel-halo" x="${TPAT[0]}" y="30" text-anchor="middle" opacity="0">from 3 CO₂ fixed</text>
-      <text data-k="${P}-src2" class="cel-cnt cel-halo" x="${TPAT[0]}" y="30" text-anchor="middle" opacity="0">each from 3 CO₂ fixed</text>`;
+      <text data-k="${P}-src" class="cel-cnt cel-halo" x="${TPAT[0]}" y="30" text-anchor="middle" opacity="0">per 3 CO₂ fixed</text>
+      <text data-k="${P}-src2" class="cel-cnt cel-halo" x="${TPAT[0]}" y="30" text-anchor="middle" opacity="0">each per 3 CO₂ fixed</text>`;
     const hud = `${ledgerSvg(`${P}-led`, LED.x, LED.y, LED.w, '1 triose phosphate out, 1 Pᵢ in', ROWS, { nameW: 226 })}${panelSvg()}`;
     return sceneSvg(P, { under: gran, over, movers: MOV.map(moverSvg).join(''), hud });
   },
@@ -205,7 +203,8 @@ export const STAGING: Staging = {
     const cam = stage.querySelector('[data-k="cam"]') as SVGGElement;
     cam.setAttribute('transform', camTf(CAM));
     const put = placer(stage, MOV.map(m => m.k)), led = ledgerSetter(stage, `${P}-led`, ROWS), A = attrSetter(stage);
-    return (beat, t) => {
+    return (shown, t) => {
+      const beat = shown >= 3 ? shown + 1 : shown;
       S.light(lit(beat, t));
       A(`${P}-gran`, 'transform', `translate(${GRAN[0]} ${GRAN[1]}) scale(${f(granule(beat, t))})`);
       A(`${P}-stl`, 'opacity', beat < 4 ? ease(t, beat === 0 ? 0.1 : 0, beat === 0 ? 0.9 : 0.01) : 1 - ease(t, 0.3, 1.2));
@@ -226,21 +225,30 @@ export const STAGING: Staging = {
       const pan = beat === 2 ? ease(t, 0.3, 1.0) : beat === 3 ? 1 : beat === 4 ? 1 - ease(t, 0, 0.6) : 0;
       A(`${P}-panel`, 'opacity', pan);
       if (beat >= 2) {
-        const h1 = beat === 2 ? hourOf(2, t) : 24, h2 = beat === 3 ? hourOf(3, t) : beat === 4 ? 24 : 0;
+        const h1 = beat === 2 ? hourOf(2, t) : 24, h2 = beat === 3 ? hourOf(3, t) : 0;
         A(`${P}-cc`, 'd', fnPath(AXS, ctrl, 0, h1, 120));
-        A(`${P}-ce`, 'd', beat >= 3 ? fnPath(AXS, early, 0, h2, 120) : 'M0,0');
+        A(`${P}-ce`, 'd', beat === 3 ? fnPath(AXS, early, 0, h2, 120) : 'M0,0');
         const h = beat === 2 ? h1 : h2, fn = beat === 2 ? ctrl : early;
         const on = beat === 2 ? ease(t, H0[0] - 0.4, H0[0]) : beat === 3 ? 1 : 0;
         A(`${P}-dot`, 'opacity', on);
         A(`${P}-dot`, 'cx', AX(AXS, h)); A(`${P}-dot`, 'cy', AY(AXS, fn(h)));
         A(`${P}-dot`, 'class', beat === 3 ? 'dk2-dot dk2-dot-amber' : 'dk2-dot');
         A(`${P}-cur`, 'd', on > 0 ? `M${f(AX(AXS, h))},${f(AXS.y0)}V${f(AXS.y0 + AXS.h)}` : 'M0,0');
-        A(`${P}-early`, 'opacity', beat === 3 ? ease(t, 0.1, 0.6) : beat === 4 ? 1 : 0);
+        A(`${P}-early`, 'opacity', beat === 3 ? ease(t, 0.1, 0.6) : 0);
         A(`${P}-l1`, 'opacity', beat === 2 ? ease(h1, 13, 14.5) : 1);
-        A(`${P}-l2`, 'opacity', beat >= 3 ? ease(h2, 12, 14) : 0);
+        A(`${P}-l2`, 'opacity', beat === 3 ? ease(h2, 12, 14) : 0);
         const night = beat === 2 ? ease(h1, 11.5, 12.5) * (1 - ease(h1, 23.6, 24)) : beat === 3 ? ease(h2, 7.5, 8.5) * (1 - ease(h2, 23.6, 24)) : 0;
         A(`${P}-veil`, 'opacity', 0.1 * night);
       } else A(`${P}-veil`, 'opacity', 0);
     };
   },
 };
+
+/** Each beat's key line and the closing question, big on the stage (lecturer, 29 Oct 2026: "people don't read the
+ *  text under the animation"). */
+export const STAGING = withKeys(STAGING_BASE, [
+  { beat: 0, lines: ['Triose phosphate out, Pᵢ in'], x: 1350, y: 400, size: 32, at: 1.5 },
+  { beat: 1, lines: ['Sucrose: to growing', 'organs and grain'], x: 1370, y: 420, size: 34, at: 1.5 },
+  { beat: 2, lines: ['Starch by day, sucrose at night'], x: 380, y: 45, size: 30, at: 1.5 },
+  { beat: 3, lines: ['But RuBisCO also adds O₂:', 'what happens to its product, 2-PG?'], x: 800, y: 200, size: 44, at: 1.5 },
+]);

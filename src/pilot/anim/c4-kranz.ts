@@ -10,6 +10,10 @@
 //   as CO₂, which moves the last bit to RuBisCO; the stroma then glows gently (CO₂ high).
 // - Beat 4 (these only): ATP appears on PPDK; pyruvate (3 C) glides back through the plasmodesma to PPDK; ATP becomes
 //   AMP and pyruvate becomes PEP (3 C + P), which moves up to PEPC, ready for the next HCO₃⁻. Then the closing question.
+// Polished overnight (29 Oct 2026): the molecules are the photorespiration slide's glyphs (anim/dk-rf6.ts: carbon-form
+// rows and atom balls, R = 11, no capsules); the released CO₂ is slide 19's CO₂ character (co2-kit kidG), glad once
+// RuBisCO catches it; a pause (holds) after each step: beat 1 after the names on the photo, beat 2 once the C₄ acid is
+// made, beat 3 once it reaches RuBisCO, beat 4 once pyruvate is back at PPDK.
 // PPDK: the maize enzyme, PDB 1VBG (Nakanishi et al. 2005, Biochemistry 44:1136), dimer, rendered like PEPC
 // (scripts/rf_forms_render.mjs, pair view), hue turned to purple. PPDK makes AMP (pyruvate + ATP + Pᵢ → PEP + AMP + PPᵢ),
 // so the tag turns from ATP to AMP: 2 ATP equivalents, as the caption says.
@@ -20,7 +24,8 @@ import ppdkPng from '../../assets/rf/ppdk-1vbg.png';
 import rubPng from '../../assets/rf/rubisco-8ruc.png';
 import { bilayer } from '../figs/cell-schema';
 import { tagG } from '../figs/chain';
-import { actor, bilayerE, carbG, co2G, ease, f, glide, inset, makeScene, T, type Api, type V } from './co2-kit';
+import { row } from '../figs/carbon-form';
+import { actor, bilayerE, ease, f, glide, inset, kid, kidG, makeScene, T, type Api, type V } from './co2-kit';
 import type { Staging, StageKey } from './types';
 
 const P = 'c4k';
@@ -36,7 +41,7 @@ const band = (a: number, b: number, cls: string): string => `<rect class="${cls}
 const pmV = (x: number): string => bilayer([{ L: [x, top, x, PDY - 15] }], 6, 1.6, 4.2) + bilayer([{ L: [x, PDY + 15, x, bot] }], 6, 1.6, 4.2);
 
 /** HCO₃⁻: a C with 3 O, one of them carrying the H. */
-const hco3G = (r = 11): string => `<circle class="atom atom-H" cx="${f(-1.7 * r)}" cy="${f(-1.55 * r)}" r="${f(r * 0.56)}"/>
+const hco3G = (r = R11): string => `<circle class="atom atom-H" cx="${f(-1.7 * r)}" cy="${f(-1.55 * r)}" r="${f(r * 0.56)}"/>
   <circle class="atom atom-O" cx="${f(-1.2 * r)}" cy="${f(-0.75 * r)}" r="${r}"/><circle class="atom atom-O" cx="${f(1.2 * r)}" cy="${f(-0.75 * r)}" r="${r}"/>
   <circle class="atom atom-O" cx="0" cy="${f(1.3 * r)}" r="${r}"/><circle class="atom atom-C" r="${r}"/>`;
 
@@ -47,22 +52,24 @@ const RUB = { x: 1056, y: 262, w: 122 }, RUB_H = (122 * 471) / 548;
 /** PEPC (top of the M cell) and PPDK (below it), at the scale of RuBisCO (Å per stage unit alike). */
 const PEPC = { x: 1384, y: 236, w: 132 }, PEPC_H = (132 * 517) / 608;
 const PPDK = { x: 1340, y: 452, w: 142 }, PPDK_H = (142 * 403) / 654;
-const r8 = 8, step8 = r8 * 2.15;
+/** The glyphs' atom radius and step, as on the photorespiration slide (anim/dk-rf6.ts). */
+const R11 = 11, ST = R11 * 2.15;
+const carb = (s: string): string => row(0, 0, s, { r: R11 });
 /** HCO₃⁻ from the far side of the M cell into PEPC. */
 const HCO3_IN: V[] = [[1514, 420], [1508, 372], [1484, 322]];
 /** PEP docked on PEPC's flank; the C₄ acid out of PEPC to the mouth of the plasmodesma. */
-const PEP_DOCK: V = [1370, 300];
+const PEP_DOCK: V = [1378, 300];
 const ACID_OUT: V[] = [[1416, 350], [1392, 380], [1372, 404]];
 /** The C₄ acid through the plasmodesma into the chloroplast, next to RuBisCO. */
 const STOP: V = [1200, 434];
 const ACID_IN: V[] = [ACID_OUT[2], [1334, 386], [C[0], PDY], [1256, 386], [1232, 404], STOP];
 /** Its fourth carbon (the one nearest RuBisCO) leaves as CO₂, which moves the last bit to RuBisCO. */
-const CO2_AT: V = [STOP[0] - 1.5 * step8 - 10, STOP[1] - 22], CO2_DOCK: V = [1180, 340];
-const CO2_IN: V[] = [CO2_AT, [1192, 386], CO2_DOCK];
+const CO2_AT: V = [STOP[0] - 1.5 * ST, STOP[1]], CO2_DOCK: V = [1194, 344];
+const CO2_IN: V[] = [CO2_AT, [1150, 408], [1198, 386], CO2_DOCK];
 /** Pyruvate (the 3 carbons left) back through the plasmodesma to PPDK; then PEP up to PEPC. */
-const PYR_AT: V = [STOP[0] + 0.5 * step8, STOP[1]], PYR_DOCK: V = [1404, 446];
+const PYR_AT: V = [STOP[0] + 0.5 * ST, STOP[1]], PYR_DOCK: V = [1404, 444];
 const PYR_BACK: V[] = [PYR_AT, [1238, 406], [1262, 386], [C[0], PDY], [1330, 388], [1376, 418], PYR_DOCK];
-const PEP_AT: V = [PYR_DOCK[0] + 0.5 * step8, PYR_DOCK[1]];
+const PEP_AT: V = [PYR_DOCK[0] + 0.5 * ST, PYR_DOCK[1]];
 const PEP_UP: V[] = [PEP_AT, [1402, 400], [1380, 348], PEP_DOCK];
 const ATP_DOCK: V = [1494, 478];
 
@@ -83,12 +90,12 @@ const mn = (x: number, y: number, s: string): string => T(x, y, s, 'cel-mn cel-h
 /** The molecules, each an actor drawn at the origin (labels ride with them). */
 function molecules(): string {
   return [
-    actor(`${P}-hco3`, hco3G(10)), actor(`${P}-hco3l`, mn(0, 0, 'HCO₃⁻')),
-    actor(`${P}-pep`, `${carbG('CCCP', r8)}${mn(0, -22, 'PEP')}`),
-    actor(`${P}-acid`, carbG('CCCC', r8)), actor(`${P}-acidl`, mn(0, -22, 'C₄ acid')),
-    actor(`${P}-co2`, co2G(10)),
-    actor(`${P}-pyr`, carbG('CCC', r8)), actor(`${P}-pyrl`, mn(0, -22, 'pyruvate')),
-    actor(`${P}-pep2`, carbG('CCCP', r8)), actor(`${P}-pep2l`, mn(0, -22, 'PEP')),
+    actor(`${P}-hco3`, hco3G()), actor(`${P}-hco3l`, mn(0, 0, 'HCO₃⁻')),
+    actor(`${P}-pep`, `${carb('CCCP')}${mn(0, -24, 'PEP')}`),
+    actor(`${P}-acid`, carb('CCCC')), actor(`${P}-acidl`, mn(0, -24, 'C₄ acid')),
+    kidG(`${P}-co2`, R11, 'CO₂'),
+    actor(`${P}-pyr`, carb('CCC')), actor(`${P}-pyrl`, mn(0, -24, 'pyruvate')),
+    actor(`${P}-pep2`, carb('CCCP')), actor(`${P}-pep2l`, mn(0, -24, 'PEP')),
     actor(`${P}-atp`, `<g class="chn-g">${tagG(0, 0, 'ATP', 'atp')}</g>`),
     actor(`${P}-amp`, `<g class="chn-g">${tagG(0, 0, 'AMP', 'atp')}</g>`),
   ].join('');
@@ -125,14 +132,16 @@ const KEYS: StageKey[] = [
   { beat: 3, text: 'how does it get its CO₂?', x: 800, y: 112, size: 44 },
 ];
 
-/** Beat timings (s). */
+/** Beat timings (s); the pauses (holds) come after each step. */
 const B2 = { in: [0.2, 0.7], go: [0.9, 3.0], swap: [3.0, 3.4], out: [3.6, 5.0] };
-const B3 = { go: [0.3, 3.4], lab: [3.3, 3.6], swap: [3.6, 4.0], co2: [4.2, 5.4], glow: [5.6, 6.8] };
-const B4 = { in: [0.2, 0.6], go: [0.9, 4.0], lab: [4.0, 4.3], swap: [4.3, 4.7], lab2: [4.7, 5.0], up: [5.1, 6.6] };
+const B3 = { go: [0.3, 3.4], lab: [3.6, 3.9], swap: [3.7, 4.1], co2: [4.3, 5.5], glow: [5.7, 6.9] };
+const B4 = { in: [0.2, 0.6], go: [0.9, 4.0], lab: [4.0, 4.3], swap: [4.6, 5.0], lab2: [5.0, 5.3], up: [5.4, 6.9] };
+const B1 = { vein: [0.4, 0.9], bs: [1.4, 1.9], mes: [2.4, 2.9], mag: [3.4, 4.2] };
+const HOLDS = [[B1.mes[1] + 0.2], [B2.swap[1] + 0.1], [B3.go[1] + 0.1], [B4.lab[1] + 0.1]];
 
 export const STAGING: Staging = {
   ...makeScene({
-    id: 'c4k', name: 'c4k · Micrograph and magnifier',
+    id: 'c4k', name: 'c4k · Micrograph and magnifier', holds: HOLDS,
     note: 'The maize micrograph (Kranz) with a lens on the bundle-sheath/mesophyll wall; in the magnifier HCO₃⁻ into PEPC, the C₄ acid through the plasmodesma to RuBisCO (CO₂ released), pyruvate back to PPDK (ATP → AMP) and PEP to PEPC; one mover at a time',
     svg: () => {
       const m = inset(P, `${P}-in`, LENS, 30, C, R, magnifier());
@@ -152,8 +161,8 @@ export const STAGING: Staging = {
     frame(a: Api, beat: number, t: number) {
       const at = (b: number, t0: number, t1: number): number => (beat > b ? 1 : beat === b ? ease(t, t0, t1) : 0);
       // beat 1: the names one at a time, then the lens and the magnifier
-      a.op(`${P}-vein`, at(0, 0.4, 0.9)); a.op(`${P}-bs`, at(0, 1.4, 1.9)); a.op(`${P}-mes`, at(0, 2.4, 2.9));
-      const mag = at(0, 3.4, 4.2);
+      a.op(`${P}-vein`, at(0, B1.vein[0], B1.vein[1])); a.op(`${P}-bs`, at(0, B1.bs[0], B1.bs[1])); a.op(`${P}-mes`, at(0, B1.mes[0], B1.mes[1]));
+      const mag = at(0, B1.mag[0], B1.mag[1]);
       a.op(`${P}-bs1`, mag); a.op(`${P}-in-lens`, mag); a.op(`${P}-in`, mag); a.op(`${P}-hd`, mag);
       if (beat === 0) return;
 
@@ -172,13 +181,13 @@ export const STAGING: Staging = {
       if (beat === 2) {
         const q = glide(ACID_IN, t, B3.go[0], B3.go[1]), s = ease(t, B3.swap[0], B3.swap[1]);
         a.put(`${P}-acid`, q, 1 - s); a.put(`${P}-acidl`, q, 1 - ease(t, B3.lab[0], B3.lab[1]));
-        a.put(`${P}-co2`, glide(CO2_IN, t, B3.co2[0], B3.co2[1]), s);
+        kid(a, `${P}-co2`, glide(CO2_IN, t, B3.co2[0], B3.co2[1]), s, { h: ease(t, B3.co2[1] - 0.2, B3.co2[1] + 0.2), lab: 1 - ease(t, B3.co2[0], B3.co2[0] + 0.3) });
         a.put(`${P}-pyr`, PYR_AT, s);
         a.op(`${P}-glow`, ease(t, B3.glow[0], B3.glow[1]));
         return;
       }
       // beat 4: pyruvate back to PPDK; ATP → AMP, pyruvate → PEP; PEP up to PEPC
-      a.put(`${P}-co2`, CO2_DOCK); a.op(`${P}-glow`, 1);
+      kid(a, `${P}-co2`, CO2_DOCK, 1, { h: 1 }); a.op(`${P}-glow`, 1);
       const s = ease(t, B4.swap[0], B4.swap[1]), o = ease(t, B4.in[0], B4.in[1]);
       const p = glide(PYR_BACK, t, B4.go[0], B4.go[1]), q = glide(PEP_UP, t, B4.up[0], B4.up[1]);
       a.put(`${P}-pyr`, p, 1 - s); a.put(`${P}-pyrl`, p, o * (1 - ease(t, B4.lab[0], B4.lab[1])));

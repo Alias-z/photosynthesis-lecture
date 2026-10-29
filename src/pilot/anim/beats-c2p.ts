@@ -10,7 +10,7 @@ const BUSCH13: Cite = { label: 'Busch, Sage, Cousins & Sage 2013, Plant Cell Env
 const SAGE12: Cite = { label: 'Sage, Sage & Kocacinar 2012, Annu. Rev. Plant Biol.', url: 'https://doi.org/10.1146/annurev-arplant-042811-105511' };
 
 export const C2P: Beat[] = [
-  { tag: 'C₃ and C₂ leaves', say: 'Left a C₃ grass, right a C₂ grass, both cut across a vein: around it the ring of bundle-sheath cells, outside it the mesophyll.', cite: [KHOSH16] },
+  { tag: 'C₃ and C₂ leaves', say: 'A C₃ grass and a C₂ grass, both cut across a vein: around it the ring of bundle-sheath cells, outside it the mesophyll.', cite: [KHOSH16] },
   { tag: 'Both do the same', say: 'In both, RuBisCO in the mesophyll fixes CO₂ (carboxylation) and also adds O₂ (oxygenation); oxygenation’s 2-PG is recycled to glycine.', cite: [SAGE12] },
   { tag: 'C₃: the CO₂ escapes', say: 'In the C₃ leaf, glycine releases its CO₂ in the mesophyll mitochondria, beside the air spaces: much of it escapes.', cite: [BUSCH13] },
   { tag: 'C₂: the CO₂ is held', say: 'In the C₂ leaf only the bundle-sheath mitochondria can release it: glycine moves there, and its CO₂ is released right next to bundle-sheath RuBisCO, which fixes it; CO₂ there rises. <b>What if the leaf pumped CO₂ into the bundle sheath directly?</b>', cite: [RAWS88, KEER14] },

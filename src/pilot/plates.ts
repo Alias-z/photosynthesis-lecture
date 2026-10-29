@@ -91,9 +91,15 @@ import * as cc12 from './figs/cc12';
 import * as cc13 from './figs/cc13';
 import * as cr14 from './figs/cr14';
 import * as cr15 from './figs/cr15';
+import * as cr16 from './figs/cr16';
+import * as cov from './figs/cov';
+import * as cend from './figs/cend';
+import { drawS1 } from './figs/rf06-s1';
+import * as cr17 from './figs/cr17';
 import * as c0 from './figs/c0';
 import * as carbonbook from './figs/carbonbook';
 import * as ce04e from './figs/ce04e';
+import * as c02evo from './figs/c02evo';
 import { cellFigures, CELL_SLIDES, type CellSlide } from './figs/cellv';
 import { leafFigures, LEAF_SLIDES, type LeafSlide } from './figs/leafv';
 import { ANIMATIONS } from './anim';
@@ -136,7 +142,7 @@ export const PLATES: Plate[] = [
   plate(withFigures(rf08, { ...rff08, PLATE: { ...rff08.PLATE, play: 'rf8' } }), { n: 'C8', pick: 'C9' }),
   plate(cp09, { play: 'cp9' }), plate(cp10, { play: 'cp10' }),
   plate(cc11, { play: 'cc11' }), plate(cc11a), plate(cc12, { play: 'cc12' }), plate(cc13, { play: 'cc13' }),
-  plate(cr14, { play: 'cr14' }), plate(cr15, { play: 'cr15' }),
+  plate(cr14, { play: 'cr14' }), plate(cr15, { play: 'cr15' }), plate(cr16), plate(cr17), plate(cend), plate(cov) /* no animation (lecturer, 30 Oct 2026, late: "the summary slide is the table; remove its animation, no time; compare C₃ with each type on its own slide instead") */,
   plate(c0, { play: 'bridge' }),
   // C3b uses C3's cell figures until its own (PRK lit) land
   // C3b · regeneration: its cell figures (PRK lit) join like the other C slides', below
@@ -156,8 +162,16 @@ export const PLATES: Plate[] = [
 const ORDER = ['1', '2', '3', '4', '4a', '4b', '5', '6', '7', '8', '9', '10', '10b',
   // 29 Oct 2026, late (lecturer): photorespiration right after sucrose and starch; efficiency after C₄ and CAM, which it compares
   // lecturer, 29 Oct 2026, late: the C₃ refixation slide (C11) removed
-  'C0', 'C2', 'C1', 'C4', 'C6', 'C10', 'C11a', 'C12', 'C13', 'C4e', 'C14', 'C15',
-  '10c', '11', '12', '13', 'C7', 'C8', 'C9'];
+  // lecture day, 29 Oct 2026 (lecturer): the deck ends with efficiency (C4e, a summary of the photosynthesis types),
+  // improving photosynthesis (C16) and the lecturer's own research (C17); the rest stays at the end as backup
+  // lecturer, 30 Oct 2026, late: "move my research right after the CAM plants: night opening contradicts the textbook"
+  'C0', 'C2', 'C1', 'C4', 'C6', 'C10', 'C10o', 'C11a', 'C12', 'C13', 'C17', 'C4e', 'C16',
+  // lecturer, 30 Oct 2026, late: "remove the rising CO₂ slide, the leaf-to-yield slide and slide 32" (C14, C15, 13)
+  // later 30 Oct: "remove slides 30 and 31" (light-response curve C7, FvCB model C8)
+  // lecture day, last round: "remove slide 27 as well" (10c, ATP and NADPH supply)
+  '11', '12', 'C9',
+  // the last slide: the slides online and the code on GitHub (lecture day)
+  'END'];
 for (let i = PLATES.length - 1; i >= 0; i--) if (!ORDER.includes(PLATES[i].n)) PLATES.splice(i, 1);
 PLATES.sort((a, b) => ORDER.indexOf(a.n) - ORDER.indexOf(b.n));
 
@@ -177,7 +191,7 @@ for (const p of PLATES) if (LEAF_PLAY[p.n]) p.play = LEAF_PLAY[p.n];
  *  picks.json; a slide whose picks match none of its figures keeps its list. */
 const PICKED: Record<string, string[]> = {
   '1': ['h', 'f', 'b', 'o'], '2': ['k'], '3': ['a', 'e', 'h', 'y', 'x'], '4': ['e', 'f', 'h', 'u', 'x'], '4a': ['s'], '4b': ['c', 'm'],
-  '5': ['o', 'p', 'r3'], '6': ['k', 'r1'], '7': ['wb', '7m1'], '10': ['l', 'k', 'a'], '11': ['a', 'b'], '12': ['b'],
+  '5': ['o', 'p', 'r3'], '6': ['k', 'r1'], '7': ['wb', '7m1'], '10': ['l', 'k', 'a'], '11': ['a', 'b', 'a2'], '12': ['b'],
   // lecture 2: C6 keeps its 2 picked schemas (lecturer, 28 Oct 2026)
   C6: ['a', 'v10'],
 };
@@ -214,11 +228,29 @@ for (const p of PLATES) {
 for (const p of PLATES) {
   if (!(LEAF_SLIDES as string[]).includes(p.n)) continue;
   const lf = leafFigures(p.n as LeafSlide), j = joinFigures({ PLATE: p, VARIANTS: p.variants, draw: p.figure }, lf, 'm');
-  p.variants = p.n === 'C10' ? p.variants.filter(v => ['n1', 'n2', 'n3'].includes(v.id)) : lf.VARIANTS.map(v => ({ ...v, id: `m${v.id}` }));
-  p.figure = j.draw;
+  // C11a–C13: new page versions p1, p2, … in the slide's own file come first (overnight, 29 Oct 2026: "make more variants")
+  p.variants = p.n === 'C10' ? [...p.variants.filter(v => ['n1', 'n2', 'n3'].includes(v.id)), { id: 'n1c', name: 'n1 with the molecules cut out clean (no white cap)' }]
+    : [...p.variants.filter(v => /^[pqrst]\d/.test(v.id)), ...lf.VARIANTS.map(v => ({ ...v, id: `m${v.id}` }))];
+  // lecturer, 30 Oct 2026: slides 20 and 21 keep only the picked page figure (C₂ p1, C₄ p2) and the new q-variants built on it
+  // late 30 Oct: only the picked q2 and its polished variants r1, r2, …
+  // later 30 Oct: the picked r1 and its polished variants s1, s2, …
+  // lecture day, last round (lecturer: "remove all the unpicked variants for slide 21 and above"): only the picks
+  if (p.n === 'C11a') p.variants = p.variants.filter(v => v.id === 'r1' || /^t\d/.test(v.id));  // t1, t2: much simpler versions of r1
+  // late 30 Oct: the picked p2 and its new two-compartment variants r1, r2, … (the old q-variants unlisted)
+  if (p.n === 'C12') p.variants = p.variants.filter(v => v.id === 'r3');
+  // the picked p2 and its new variants r1, r2, … drawn after the picked animation lf13m (lecture day, last)
+  if (p.n === 'C13') p.variants = p.variants.filter(v => v.id === 'p2' || /^r\d/.test(v.id));
+  // slide 19 (frozen): n1c is n1 with the molecules cut out clean (lecturer, 30 Oct 2026, late)
+  p.figure = p.n === 'C10' ? (v: string): string => (v === 'n1c' ? j.draw('n1').replace(/<svg class="([^"]*)"/, '<svg class="$1 nocap"') : j.draw(v)) : j.draw;
 }
 // C2: the lecturer picked the Y-shape (mr3) and asked to remove the rest (28 Oct 2026)
-for (const p of PLATES) if (p.n === 'C2') p.variants = p.variants.filter(v => v.id === 'mr3');
+// overnight, 29 Oct 2026: the RuBisCO evolution graphs (figs/c02evo.ts, ids e…) join after the picked mr3
+for (const p of PLATES) {
+  if (p.n !== 'C2') continue;
+  const j = joinFigures({ PLATE: p, VARIANTS: p.variants, draw: p.figure }, c02evo, 'e');
+  p.variants = j.VARIANTS.filter(v => v.id === 'mr3' || /^eg\d/.test(v.id));
+  p.figure = j.draw;
+}
 // C1: only the picked strip m1 (lecturer, 29 Oct 2026: "remove all the other non-picked choices"); k1–k3 stay drawable
 for (const p of PLATES) if (p.n === 'C1') p.variants = p.variants.filter(v => v.id === 'm1');
 // C15 and 13: unpicked old variants with slide references, figurative terms or a net-only equation (accuracy review R3,
@@ -252,6 +284,11 @@ const subscripts = (s: string): string => s.replace(/[₀-₉]/g, d => `<sub>${d
 
 /** The page title, unless the variant's figure names the topic itself and takes the space instead. */
 const noTitle = (p: Plate, variant: string): boolean => p.variants.find(v => v.id === variant)?.noTitle ?? false;
+/** Pages whose molecules are drawn without the white cap behind them (the slides that are not frozen; lecturer, 30 Oct
+ *  2026, late). Slide 19 (C10, frozen) has the clean variant n1c instead. */
+const NOCAP_PAGES = ['C2', 'C10o', 'C11a', 'C12', 'C13', 'C4e', 'C16', 'C17'];
+/** The figure spans the page; no reading column. */
+const wide = (p: Plate, variant: string): boolean => p.variants.find(v => v.id === variant)?.wide ?? false;
 const title = (p: Plate, variant: string): string => (noTitle(p, variant) ? '' : `<h1 class="p-title">${subscripts(p.title)}</h1>`);
 /** Each line of a point is one fact: it gets its own block, so a new fact reads apart from a wrapped line. */
 const lines = (s: string): string => s.split(/<br\s*\/?>/).map(l => `<span class="p-line">${l.trim()}</span>`).join('');
@@ -273,9 +310,9 @@ const pageNum = (p: Plate): string => PAGE_NUM.get(p.n) ?? p.n;
 /** Handout version, which the PDF keeps: the figure with the lead and the three points; no animation buttons. */
 export function plateHtml(p: Plate, variant: string): string {
   const points = p.points.map(q => `<li><b>${claim(q.claim)}</b>${lines(q.text)}${q.eq ? `<div class="p-eq">${lines(q.eq)}</div>` : ''}</li>`).join('');
-  return `<div class="plate-inner${noTitle(p, variant) ? ' no-title' : ''}">
+  return `<div class="plate-inner${noTitle(p, variant) ? ' no-title' : ''}${wide(p, variant) ? ' wide' : ''}${NOCAP_PAGES.includes(p.n) ? ' nocap' : ''}">
     ${title(p, variant)}
-    <div class="p-text"><p class="p-lead">${subscripts(p.lead)}</p><ol class="p-points">${points}</ol></div>
+    ${wide(p, variant) ? '' : `<div class="p-text"><p class="p-lead">${subscripts(p.lead)}</p><ol class="p-points">${points}</ol></div>`}
     <figure class="fig">${p.figure(variant)}</figure>
     <p class="p-src">${sources(p)}</p>
     <span class="p-num">${pageNum(p)}</span>
@@ -307,6 +344,22 @@ export function fitPage(root: ParentNode): void {
       for (const c of ['tight-1', 'tight-2', 'tight-3']) if (t.scrollHeight > t.clientHeight) t.classList.add(c);
     });
   });
+}
+
+// Lecture day, last (lecturer: "remove the unpicked variants on slide 21 and the slides above it, not below"): slides 1–21
+// keep only their picked page figures (as picks.json had them); C6 also keeps its new, simpler figure s1.
+const KEEP: Record<string, string[]> = {
+  '5': ['o'], '6': ['r1'], '10b': ['11m2'], C0: ['b'], C2: ['mr3'], C4: ['m3'], C6: ['m3', 's1'], C10: ['n1c'], C10o: ['w3a'],
+};
+// C6's simpler figure s1 (figs/rf06-s1.ts) joins first
+for (const p of PLATES) if (p.n === 'C6') {
+  const fig0 = p.figure;
+  p.variants = [{ id: 's1', name: 's1 · photorespiration, only the essentials' }, ...p.variants];
+  p.figure = (v: string): string => (v === 's1' ? drawS1() : fig0(v));
+}
+for (const p of PLATES) {
+  const k = KEEP[p.n], kept = k ? p.variants.filter(v => k.includes(v.id)) : [];
+  if (kept.length) p.variants = kept;
 }
 
 /** Each slide's place in the deck, fixed once the deck is assembled (a solo view may trim PLATES later). */

@@ -33,6 +33,7 @@ export const PLATE: PlateText = {
 export const VARIANTS: Variant[] = [
   { id: 'a', name: 'Levels + times' },
   { id: 'b', name: 'Energy × time' },
+  { id: 'a2', name: 'Levels + times on a log-time axis' },
   { id: 'c', name: 'Race lanes' },
   { id: 'd', name: 'Time zoom' },
   { id: 'e', name: 'Tank', anim: true },
@@ -46,6 +47,7 @@ export const VARIANTS: Variant[] = [
 export function draw(id: string): string {
   switch (id) {
     case 'b': return energyTime();
+    case 'a2': return levelsTimeAxis();
     case 'c': return s12('e');
     case 'd': return timeZoom();
     case 'e': return s12('a');
@@ -158,6 +160,58 @@ function energyTime(): string {
 
     ${axis}${t(X(-9), 590, 'time after absorption (log scale)', 'fl12-ax')}
   </g>`);
+}
+
+/* ---------- A2 · pick a's levels with b's log-time axis under them ---------- */
+// Each time pill drops a dotted line to its place on the axis: fs at 3 fs; < 1 ps from the Sₙ→S₁ heat wave at 0.25 ps;
+// ~300 ps at 3 × 10⁻¹⁰ s; "lasts ns" inside the ns decade (3.5 ns, clear of the 300 ps line); µs pill starts at 1 µs.
+
+function levelsTimeAxis(): string {
+  const p = 'fl12a2';
+  const X = (e: number): number => 70 + (e + 15) * 60;
+  const Sn = 96, S1 = 236, T1 = 340, S0 = 440, ay = 530;
+  const named: Record<number, string> = { [-15]: 'fs', [-12]: 'ps', [-9]: 'ns', [-6]: 'µs', [-3]: 'ms' };
+  let axis = `<path class="fl12-axis" d="M${X(-15)},${ay} H${X(-3)}"/>`;
+  for (let e = -15; e <= -3; e++) {
+    const w = named[e] ? 9 : 4;
+    axis += `<path class="fl12-axis" d="M${X(e)},${ay - w} V${ay + w}"/>`;
+    if (named[e]) axis += t(X(e), ay + 30, named[e], 'fl12-ax');
+  }
+  const xF = X(-14.5), xH = X(-12.6), xP = X(Math.log10(3e-10)), xN = X(-8.45), xU = X(-6);
+  const drop = (x: number, y0: number): string => `<path class="fl12-guide" style="stroke:#a9a59a;stroke-width:1.6;stroke-dasharray:2 6;stroke-linecap:round" d="M${x.toFixed(1)},${y0} V${ay}"/>`;
+  return svg('Energy-level diagram of chlorophyll with the time each step takes, above a logarithmic time axis from femtoseconds to milliseconds: absorption in femtoseconds, blue’s extra energy lost as heat in under a picosecond, photochemistry in about 300 picoseconds, the excited state lasting nanoseconds, and a triplet that lasts microseconds and longer and makes singlet oxygen; a dotted line drops from each time to its place on the axis', `
+    ${defs(p)}
+    ${drop(xF, 46)}${drop(xH, S1)}${drop(xP, 182)}${drop(xN, S1 + 34)}${drop(xU, T1 + 46)}
+    ${ar(p, 'ink', 'M28,462 L28,58', 'fl12-axis')}<text class="fl12-ax" transform="translate(18 260) rotate(-90)" text-anchor="middle">energy</text>
+    ${lvl(78, 262, Sn)}${t(66, Sn + 9, 'Sₙ', 'fl12-lv', 'end')}
+    ${lvl(78, 552, S1)}${t(66, S1 + 9, 'S₁', 'fl12-lv', 'end')}
+    ${lvl(78, 656, S0)}${t(66, S0 + 9, 'S₀', 'fl12-lv', 'end')}
+    ${lvl(578, 656, T1)}
+
+    ${ar(p, 'blue', `M${xF},${S0 - 2} L${xF},${Sn + 4}`)}${ar(p, 'red', `M150,${S0 - 2} L150,${S1 + 4}`)}
+    ${t(90, 172, 'blue', 'fl12-l fl12-c-blue', 'end')}${t(160, 358, 'red', 'fl12-l fl12-c-red', 'start')}
+    ${badge(xF, 46, 'fs', 'fs')}${t(xF + 32, 54, 'absorb', 'fl12-h', 'start')}
+
+    ${wv(p, 'grey', xH, Sn + 6, xH, S1 - 4, 6, 5)}
+    ${t(234, 150, 'heat', 'fl12-h', 'start')}${badge(234, 182, '< 1 ps', 'ps', 'start')}
+
+    ${t(xP - 48.5, 150, 'photochemistry', 'fl12-h fl12-c-green', 'start')}${badge(xP, 182, '~300 ps', 'ps')}
+    ${ar(p, 'green', `M556,${S1} L590,${S1}`)}
+    ${rc(596, S1 - 44, 190, 80)}${rcDot(630, S1 - 4)}${t(718, S1 - 8, 'charge', 'fl12-h')}${t(718, S1 + 18, 'separation', 'fl12-h')}
+
+    ${badge(xN, S1 + 34, 'lasts ns', 'ns')}
+    ${wv(p, 'red', 300, S1 + 6, 300, S0 - 4, 6, 7)}
+    ${t(300, S0 + 32, 'fluorescence', 'fl12-h fl12-c-red')}${t(300, S0 + 58, '≈ 685 nm', 'fl12-l')}
+    ${wv(p, 'grey', 536, S1 + 6, 536, S0 - 4, 6, 7)}
+    ${t(536, S0 + 32, 'heat (NPQ)', 'fl12-h')}
+
+    ${ar(p, 'clay', `M554,${S1 + 4} L580,${T1 - 4}`, 'fl12-dash')}${t(596, 296, 'spin flip', 'fl12-l fl12-c-clay', 'start')}
+    ${t(656, T1 - 12, 'T₁', 'fl12-lv', 'end')}${badge(xU, T1 + 46, 'µs and longer', 'us', 'start')}
+    ${ar(p, 'clay', `M662,${T1 - 6} L690,${T1 - 6}`)}${t(652, T1 + 22, '+', 'fl12-s')}${molecule(674, T1 + 16, 'OO', 8)}${o2box(694, T1 - 54, 96, 74)}
+    ${carotenoid(708, T1 + 78, 74)}${t(792, T1 + 108, 'carotenoids', 'fl12-l fl12-c-orange', 'end')}${t(792, T1 + 132, '(antenna)', 'fl12-l fl12-c-orange', 'end')}
+
+    ${axis}${t(X(-9), ay + 56, 'time after absorption (log scale)', 'fl12-ax')}
+  `);
 }
 
 /* ---------- D · zoom in time: each row lasts 1000 times longer than the one above ---------- */

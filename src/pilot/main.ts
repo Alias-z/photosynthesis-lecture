@@ -58,7 +58,8 @@ const hooksButton = (key: string): string => {
   return sets.length ? `<button type="button" class="hook-open" data-hooks="${key}" aria-label="Questions" title="${sets.map(h => h.title).join(' · ').replace(/&/g, '&amp;').replace(/"/g, '&quot;')}">?</button>` : '';
 };
 const frame = (i: number, kind: Kind): string =>
-  `<div class="frame" data-s="${i}" data-kind="${kind}"><div class="plate"></div>${refsButton(pageKey(i, kind))}${hooksButton(pageKey(i, kind))}</div>`;
+  // no reference button on any slide (lecturer, 30 Oct 2026, late: "remove the reference button from all slides")
+  `<div class="frame" data-s="${i}" data-kind="${kind}"><div class="plate"></div>${hooksButton(pageKey(i, kind))}</div>`;
 const noteBox = (key: string, label: string): string =>
   `<textarea class="pick-note" rows="2" data-n="${key}" placeholder="Note for ${label}: what to keep, combine or change"></textarea>`;
 
@@ -67,16 +68,10 @@ const app = document.getElementById('pilot') as HTMLElement;
 // screenshot view ?anim=<key>&v=<id>&beat=<n>&t=<s>.
 const animQuery = new URLSearchParams(location.search).get('anim');
 app.innerHTML = `
-  <header class="top">
-    <h1>Style pilot</h1>
-    <p>A slide with a lead page has a lecture version (the lead page, shown live) and a handout version (the study page, which the PDF keeps). Every other slide is one page, the same live and in the PDF; its play button shows only live.</p>
-    <p>Double-click a page to pick the variant shown; double-click again to unpick. Picked variants get a ✓ on their button. Picks and notes save automatically.</p>
-    <div class="st-sum" aria-live="polite"></div>
-    <div class="bar-r"><span>View</span>${seg('view', VIEWS, 'picking')}<button type="button" class="ref-index" data-refs-index>References</button><button type="button" class="ref-index hook-index" data-hooks-index>Questions</button></div>
-  </header>
+  <!-- nothing above slide 1 (lecturer, 30 Oct 2026, lecture day: "remove everything above slide 1"); the Present button floats -->
+  <button type="button" class="present-open" data-present title="Full screen, one slide at a time (P)">▶ Present</button>
   <span class="pick-status" aria-live="polite"></span>
   <section class="block">
-    <div class="bar"><h2>Slides · Figure first</h2></div>
     <div class="plates">${PLATES.map((p, i) => {
       const lead = LEADS[p.n];
       return `<section class="slide" data-s="${i}" data-mode="handout">
@@ -151,6 +146,8 @@ function showAnim(i: number): void {
 const isShown = (i: number, kind: Kind): boolean => (kind === 'handout') === (state.modes[i] === 'handout');
 
 function render(): void {
+  // while presenting, the page's copies stay empty and the presenter redraws (e.g. when the saved picks arrive)
+  if (document.body.classList.contains('presenting')) { showPresent(); return; }
   app.querySelectorAll<HTMLElement>('.plates .frame').forEach(fr => {
     const i = Number(fr.dataset.s), kind = fr.dataset.kind as Kind, p = PLATES[i];
     const plate = fr.firstElementChild as HTMLElement;
@@ -391,7 +388,8 @@ player.addEventListener('dblclick', e => {
   player.querySelectorAll<HTMLElement>('.player-seg button').forEach(b => b.classList.toggle('picked', store.has(`anim-${a.key}`, b.dataset.v as string)));
 });
 player.addEventListener('mousedown', e => { if (e.detail > 1) e.preventDefault(); });
-addEventListener('keydown', e => { if (e.key === 'Escape' && !player.hidden) closePlayer(); });
+// Esc closes the animation only (not also the presenter under it)
+addEventListener('keydown', e => { if (e.key === 'Escape' && !player.hidden) { closePlayer(); e.stopImmediatePropagation(); } });
 addEventListener('resize', () => { if (!player.hidden) fitPlayer(); });
 
 // References over the page: a page's button opens its boards (tabs when several), the top bar the index of all boards.
@@ -411,3 +409,112 @@ if (query.has('hooks')) hooks.show(hookSet(query.get('hooks') as string) ? query
 applyModes();
 ANIMATIONS.forEach((_, i) => { if (soloAnim < 0 || i === soloAnim) showAnim(i); });
 
+/* ---------------------------------------------------------------- the presenter (lecture day, 30 Oct 2026) */
+// Full screen, one slide at a time (lecturer: "make a full-screen mode for it; in lecture mode I can select between the
+// lecture and the handout view"). ▶ Present (or P, or ?present=<slide number>) opens it on the slide in view; → / Space /
+// PageDown next, ← / PageUp back, Home / End first and last, L lecture view, H handout view, Esc leaves. Each slide shows
+// its picked variant (as on the page). Its ▶ plays the animation over it, without the variant switch (lecture mode);
+// while the animation is open, the keys belong to it. While presenting, the page's own copies are emptied, so the
+// figures' SVG ids exist once.
+const pres = document.createElement('div');
+pres.className = 'present';
+pres.hidden = true;
+// on-screen controls (lecturer: "in presentation mode there is no next button, no play button"): ‹ › at the sides, a bar
+// with the animation's ▶, lecture/handout, the slide number and ×
+pres.innerHTML = `<div class="present-frame"><div class="plate theme-editorial lay-figure paper-bristol"></div></div>
+  <button type="button" class="present-step present-prev" data-step="-1" aria-label="Previous slide">‹</button>
+  <button type="button" class="present-step present-next" data-step="1" aria-label="Next slide">›</button>
+  <div class="present-ui"><button type="button" class="present-play" hidden>▶ Animation</button>
+  <div class="seg present-seg">${MODES.map(m => `<button type="button" data-pm="${m.id}">${m.name}</button>`).join('')}</div>
+  <span class="present-n"></span><button type="button" class="present-close" aria-label="Leave full screen">×</button></div>`;
+document.body.append(pres);
+let pIdx = 0, pMode: Mode = 'lecture';
+const pPlate = pres.querySelector('.present-frame > .plate') as HTMLElement;
+/** The page on show: lecture = the lead page if the slide has one, else the page with its play button; handout = the study page. */
+function presentHtml(i: number): string {
+  const p = PLATES[i], lead = LEADS[p.n];
+  if (lead && (p.leadOnly || pMode === 'lecture')) return leadHtml(p, lead.draw(state.leads[i]));
+  return pMode === 'lecture' ? lectureHtml(p, state.variants[i]) : plateHtml(p, state.variants[i]);
+}
+function fitPresent(): void {
+  const k = Math.min(innerWidth / 1600, innerHeight / 900), fr = pres.querySelector('.present-frame') as HTMLElement;
+  fr.style.width = `${1600 * k}px`;
+  fr.style.height = `${900 * k}px`;
+  pPlate.style.transform = `scale(${k})`;
+}
+function showPresent(): void {
+  pPlate.innerHTML = presentHtml(pIdx);
+  fitPage(pres);
+  (pres.querySelector('.present-n') as HTMLElement).textContent = `${pIdx + 1} / ${PLATES.length}`;
+  // the bar's ▶ plays the slide's animation (the same as the ▶ on the page), in both views
+  const pl = pres.querySelector('.present-play') as HTMLButtonElement, p = PLATES[pIdx];
+  pl.hidden = !p.play && !p.animation;
+  pl.dataset.key = p.play ?? '';
+  (pres.querySelector('.present-prev') as HTMLButtonElement).disabled = pIdx === 0;
+  (pres.querySelector('.present-next') as HTMLButtonElement).disabled = pIdx === PLATES.length - 1;
+  pres.querySelectorAll<HTMLElement>('.present-seg button').forEach(b => b.setAttribute('aria-pressed', `${b.dataset.pm === pMode}`));
+}
+/** The slide whose top is nearest the top of the window. */
+function slideInView(): number {
+  let best = 0, d = Infinity;
+  app.querySelectorAll<HTMLElement>('.plates .slide').forEach(sec => {
+    const y = Math.abs(sec.getBoundingClientRect().top);
+    if (y < d) { d = y; best = Number(sec.dataset.s); }
+  });
+  return best;
+}
+function openPresent(at = slideInView()): void {
+  pIdx = Math.max(0, Math.min(PLATES.length - 1, at));
+  app.querySelectorAll<HTMLElement>('.plates .frame > .plate').forEach(pl => { pl.innerHTML = ''; });
+  lectureMode = true;
+  document.body.classList.add('lecture-mode', 'presenting');
+  pres.hidden = false;
+  fitPresent();
+  showPresent();
+  void document.documentElement.requestFullscreen?.().catch(() => undefined);
+}
+function closePresent(): void {
+  if (!player.hidden) closePlayer();
+  pres.hidden = true;
+  pPlate.innerHTML = '';
+  lectureMode = false;
+  document.body.classList.remove('lecture-mode', 'presenting');
+  if (document.fullscreenElement) void document.exitFullscreen().catch(() => undefined);
+  render();
+  fit();
+  app.querySelector(`.plates .slide[data-s="${pIdx}"]`)?.scrollIntoView({ block: 'start' });
+}
+function stepPresent(d: number): void {
+  const n = Math.max(0, Math.min(PLATES.length - 1, pIdx + d));
+  if (n !== pIdx) { pIdx = n; showPresent(); }
+}
+app.addEventListener('click', e => { if ((e.target as Element).closest('[data-present]')) openPresent(); });
+pres.addEventListener('click', e => {
+  const b = (e.target as Element).closest('button');
+  if (!b) return;
+  if (b.classList.contains('present-close')) { closePresent(); return; }
+  if (b.dataset.step) { stepPresent(Number(b.dataset.step)); return; }
+  if (b.classList.contains('present-play')) { if (b.dataset.key) play(b.dataset.key); else playExcitation(); return; }
+  if (b.dataset.pm) { pMode = b.dataset.pm as Mode; showPresent(); return; }
+  if (b.hasAttribute('data-play-excitation')) { playExcitation(); return; }
+  if (b.dataset.play) play(b.dataset.play);
+});
+addEventListener('keydown', e => {
+  if (!pres.hidden && player.hidden) {
+    const k = e.key;
+    if (k === 'ArrowRight' || k === ' ' || k === 'PageDown') stepPresent(1);
+    else if (k === 'ArrowLeft' || k === 'PageUp') stepPresent(-1);
+    else if (k === 'Home') stepPresent(-PLATES.length);
+    else if (k === 'End') stepPresent(PLATES.length);
+    else if (k === 'l' || k === 'L') { pMode = 'lecture'; showPresent(); }
+    else if (k === 'h' || k === 'H') { pMode = 'handout'; showPresent(); }
+    else if (k === 'Escape') closePresent();
+    else return;
+    e.preventDefault();
+    return;
+  }
+  if (pres.hidden && (e.key === 'p' || e.key === 'P') && !(e.target as Element).closest?.('textarea, input')) openPresent();
+}, { capture: true });  // before the player's own Esc, so one Esc closes only the animation
+// leaving the browser's full screen (its own Esc) keeps the presenter, fitted to the window
+addEventListener('resize', () => { if (!pres.hidden) fitPresent(); });
+if (query.has('present')) openPresent(Math.max(0, Number(query.get('present') || 1) - 1));

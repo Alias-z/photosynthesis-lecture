@@ -1,11 +1,8 @@
 {
-  "savedAt": "2026-10-28T23:28:19.920Z",
+  "savedAt": "2026-10-29T09:06:35.474Z",
   "slides": {
     "1": {
       "picks": [
-        "h",
-        "f",
-        "b",
         "o"
       ],
       "note": ""
@@ -21,7 +18,6 @@
         "a",
         "e",
         "h",
-        "y",
         "x"
       ],
       "note": ""
@@ -31,7 +27,6 @@
         "e",
         "f",
         "h",
-        "x",
         "u"
       ],
       "note": ""
@@ -109,7 +104,6 @@
     },
     "4b": {
       "picks": [
-        "c",
         "m"
       ],
       "note": ""
@@ -255,7 +249,9 @@
     },
     "anim-c2story": {
       "picks": [
-        "s"
+        "s",
+        "evoRc",
+        "evoRh"
       ],
       "note": ""
     },
@@ -282,9 +278,7 @@
       "note": ""
     },
     "anim-cb1": {
-      "picks": [
-        "story"
-      ],
+      "picks": [],
       "note": ""
     },
     "C4": {
@@ -299,7 +293,86 @@
     },
     "C10n": {
       "picks": [
-        "n1"
+        "n1c"
+      ],
+      "note": ""
+    },
+    "anim-lf11a": {
+      "picks": [
+        "c2sb3"
+      ],
+      "note": ""
+    },
+    "C11a": {
+      "picks": [
+        "r1"
+      ],
+      "note": ""
+    },
+    "C10": {
+      "picks": [
+        "r3"
+      ],
+      "note": ""
+    },
+    "anim-lf12": {
+      "picks": [
+        "c4m2"
+      ],
+      "note": ""
+    },
+    "anim-eff": {
+      "picks": [
+        "j"
+      ],
+      "note": ""
+    },
+    "anim-ov": {
+      "picks": [
+        "ove",
+        "ovc"
+      ],
+      "note": ""
+    },
+    "C10o": {
+      "picks": [
+        "w3a"
+      ],
+      "note": ""
+    },
+    "C12": {
+      "picks": [
+        "r1"
+      ],
+      "note": ""
+    },
+    "anim-pp12": {
+      "picks": [
+        "b"
+      ],
+      "note": ""
+    },
+    "C17": {
+      "picks": [
+        "d"
+      ],
+      "note": ""
+    },
+    "anim-lf13": {
+      "picks": [
+        "lf13m"
+      ],
+      "note": ""
+    },
+    "anim-cp9": {
+      "picks": [
+        "r1"
+      ],
+      "note": ""
+    },
+    "C4e": {
+      "picks": [
+        "x1"
       ],
       "note": ""
     }

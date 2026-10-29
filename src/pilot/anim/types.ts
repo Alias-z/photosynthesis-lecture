@@ -2,7 +2,9 @@
 export interface Cite { label: string; url: string }
 
 /** One step: a short tag, the caption (HTML) and the papers it rests on, shown under the caption. */
-export interface Beat { tag: string; say: string; cite: Cite[] }
+/** A beat's caption under the stage; `steps`, when given, replaces it step by step (one per step of the beat's holds;
+ *  lecturer, 30 Oct 2026: "every time the animation changes phase, change the text below: what age, what RuBisCO"). */
+export interface Beat { tag: string; say: string; cite: Cite[]; steps?: Array<{ tag: string; say: string }> }
 
 /** One way of staging an animation's beats on the 1600 × 740 stage. */
 export interface Staging {

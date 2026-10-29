@@ -18,28 +18,42 @@ import { metab } from './carbon-form';
 import { balls } from './cell-schema';
 import { rowG } from './chain';
 import { sceneSvg } from './ce04e-scene';
+import { drawX1, drawX2 } from './ce04e-x';
 import type { PlateText, Variant } from '../types';
 
 export const PLATE: PlateText = {
   n: 'C4e',
   title: 'Efficiency of photosynthesis',
   status: 'draft',
-  lead: 'At most ≈ 4.6 % of the solar energy ends up in biomass in C₃ plants, ≈ 6 % in C₄.',
-  // the slide text of version 2 (EFFICIENCY_V2_BRIEF.md, exact)
+  // lecture day, 29 Oct 2026 (lecturer): a summary of the photosynthesis types, after C₂, C₄ and CAM, before "Improving
+  // photosynthesis". C₃ and C₄: Zhu et al. 2008, Fig. 1 (30 °C, 380 ppm). C₂: Lundgren 2020 (abstract), no published maximum,
+  // so in words. CAM: theoretical maximum 0.045–0.049 for agave, up to 7 % above C₃ (Wang, Smith, Zhu & Long 2023, abstract);
+  // water-use efficiency ≈ 3 × C₄ and ≥ 6 × C₃ (Borland et al. 2009, introduction).
+  lead: 'At most ≈ 4.6 % of the solar energy ends up in biomass in C₃ plants, ≈ 6 % in C₄.<br>C₂ refixes part of the photorespired CO₂; CAM saves water.',
   points: [
-    { claim: 'Light outside PAR and reflection.', text: 'Chlorophyll uses mainly 400–700 nm; the leaf reflects or transmits ≈ 10 % of it', eq: '−51.3 · −4.9 % of solar energy' },
-    { claim: 'Photochemical inefficiency.', text: 'Every absorbed photon drives 1 electron at the energy of a red photon; the excess becomes heat', eq: '−6.6 %' },
-    { claim: 'Carbohydrate synthesis and photorespiration.', text: 'Sugar keeps about a third of the energy of the 8 photons per CO₂; photorespiration and respiration take more', eq: '−24.6 · −6.1 · −1.9 → 4.6 % left' },
+    { claim: 'C₄: photorespiration strongly reduced.', text: 'Concentrating CO₂ at RuBisCO costs 2 more ATP per CO₂, less energy than photorespiration takes from C₃' },
+    { claim: 'C₂: part of the photorespired CO₂ refixed.', text: 'C₂ plants fix more carbon than C₃ plants in heat, bright light and low CO₂' },
+    { claim: 'CAM: the highest water-use efficiency.', text: 'Its maximum conversion of solar energy to biomass is close to that of C₃', eq: 'agave: ≈ 4.5–4.9 %' },
   ],
   refs: [
     { label: 'Zhu, Long & Ort 2008', url: 'https://doi.org/10.1016/j.copbio.2008.02.004' },
     { label: 'Zhu, Long & Ort 2010', url: 'https://doi.org/10.1146/annurev-arplant-042809-112206' },
     { label: 'Björkman & Demmig 1987', url: 'https://doi.org/10.1007/BF00402983' },
+    { label: 'Lundgren 2020', url: 'https://doi.org/10.1111/nph.16494' },
+    { label: 'Borland et al. 2009', url: 'https://doi.org/10.1093/jxb/erp118' },
+    { label: 'Wang et al. 2023', url: 'https://doi.org/10.1111/nph.19128' },
   ],
 };
 
 /** Version 2 (EFFICIENCY_V2_BRIEF.md): the journey of sunlight through a leaf; the earlier charts e1–e4 stay drawable, unlisted. */
+// lecture day, last (lecturer: "redo slide 25 like the summary of slide 20, about efficiency, in 2 layers: the pathways
+// C₃ … CAM compared, and where the energy is lost; remove all the variants")
 export const VARIANTS: Variant[] = [
+  { id: 'x1', name: 'x1 · the 4 pathways and where the energy is lost, one wide summary', wide: true },
+  { id: 'x2', name: 'x2 · the same 2 layers, the losses as one shared stream', wide: true },
+];
+export const VARIANTS_OLD: Variant[] = [
+  { id: 'e5', name: 'The 4 types side by side: C₃, C₂, C₄, CAM, the most solar energy each stores in biomass' },
   { id: 'f1', name: 'The journey of sunlight through a C₃ leaf: each loss where it happens', anim: true },
   { id: 'f2', name: 'The same journey with C₄ as a second stream' },
   { id: 'f3', name: 'Close up: the 3 "why" places, leaf surface, thylakoid and stroma' },
@@ -213,5 +227,36 @@ function e4(): string {
     ${T(786, 578, 'C₃ leaf, 30 °C · mitochondrion: Frederick & Newcomb 1969, J Cell Biol 43:343, Fig. 6', 'ef-cr', 'end')}${T(786, 594, CREDIT, 'ef-cr', 'end')}`, grad);
 }
 
-const DRAW: Record<string, () => string> = { e1, e2, e3, e4, f1: () => sceneSvg('ef5f1', 'f1'), f2: () => sceneSvg('ef5f2', 'f2'), f3: () => sceneSvg('ef5f3', 'f3') };
+/* ---------------------------------------------------------------- e5 · the 4 types side by side (lecture day, 29 Oct 2026) */
+
+/** The most solar energy each type stores in biomass: C₃ 4.6 and C₄ 6.0 (Zhu et al. 2008, 30 °C); C₂ above C₃, no published
+ *  maximum, drawn as a hatched span up to C₄ (Lundgren 2020); CAM 4.5–4.9 for agave (Wang et al. 2023), the span hatched. */
+function e5(): string {
+  const y0 = 440, k = 46, bw = 70, cx = [196, 366, 536, 706];
+  const Y = (v: number): number => y0 - v * k;
+  const bar = (x: number, v0: number, v1: number, fill: string, dash = false): string =>
+    `<rect x="${f(x - bw / 2)}" y="${f(Y(v1))}" width="${bw}" height="${f((v1 - v0) * k)}" style="fill:${fill}${dash ? ';stroke:#76aa58;stroke-width:1.4;stroke-dasharray:4 3' : ''}"/>`;
+  const grid = [0, 2, 4, 6].map(v => `<path class="ef-grid" d="M104,${Y(v)}H790"/>${T(96, Y(v) + 4, String(v), 'ef-tk', 'end')}`).join('');
+  const types: Array<[string, string, [string, string]]> = [
+    ['C₃', '4.6', ['photorespiration', 'takes 6.1 %']],
+    ['C₂', 'above C₃', ['photorespired CO₂', 'partly refixed']],
+    ['C₄', '6.0', ['photorespiration ≈ 0,', '2 more ATP per CO₂']],
+    ['CAM', '4.5–4.9', ['most CO₂ per water:', '≥ 6 × C₃, ≈ 3 × C₄']],
+  ];
+  const top = [4.6, 6.0, 6.0, 4.9];
+  const bars = bar(cx[0], 0, 4.6, '#76aa58') + bar(cx[1], 0, 4.6, '#76aa58') + bar(cx[1], 4.6, 6.0, 'url(#ef5-h)', true)
+    + bar(cx[2], 0, 6.0, '#76aa58') + bar(cx[3], 0, 4.5, '#76aa58') + bar(cx[3], 4.5, 4.9, 'url(#ef5-h)', true);
+  const cols = types.map(([name, val, note], i) => `${T(cx[i], 92, name, 'ef-nb')}
+    ${T(cx[i], Y(top[i]) - 12, val, i === 1 ? 'ef-name' : 'ef-nl')}
+    ${T(cx[i], y0 + 34, note[0], 'ef-det')}${T(cx[i], y0 + 54, note[1], 'ef-det')}`).join('');
+  const defs = `<pattern id="ef5-h" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7" fill="#e3eed9"/><path d="M0,0V7" style="stroke:#76aa58;stroke-width:2.6"/></pattern>`;
+  return svg('The most solar energy each type of photosynthesis stores in biomass, in percent of the solar energy on the leaf. C3: 4.6, with 6.1 lost to photorespiration. C2: above C3, as part of the photorespired CO2 is refixed. C4: 6.0, with photorespiration near 0 and 2 more ATP per CO2. CAM: 4.5 to 4.9 for agave, and the most CO2 fixed per water, at least 6 times C3 and about 3 times C4.', `
+    ${grid}<path class="ef-axis" d="M104,${Y(7)}V${y0}H790"/>
+    ${T(36, Y(3.5), '% of the solar energy in biomass, at most', 'ef-ax', 'middle', ` transform="rotate(-90 36 ${Y(3.5)})"`)}
+    ${bars}${cols}
+    ${T(786, 552, 'C₃, C₄: Zhu, Long & Ort 2008, leaf at 30 °C · CAM: Wang et al. 2023, agave, model', 'ef-crd', 'end')}
+    ${T(786, 572, 'C₂: Lundgren 2020 · water: Borland et al. 2009', 'ef-crd', 'end')}`, defs);
+}
+
+const DRAW: Record<string, () => string> = { e1, e2, e3, e4, e5, f1: () => sceneSvg('ef5f1', 'f1'), f2: () => sceneSvg('ef5f2', 'f2'), f3: () => sceneSvg('ef5f3', 'f3'), x1: drawX1, x2: drawX2 };
 export const draw = (id: string): string => (DRAW[id] ?? DRAW.f1)();

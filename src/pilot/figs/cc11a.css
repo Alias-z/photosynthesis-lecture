@@ -12,3 +12,12 @@
 .theme-editorial .fcca-peak{fill:#f4cc4f;stroke:#b8902a;stroke-width:1.6}
 .theme-editorial .fcca-sw{fill:#a5683a;opacity:.85}
 .theme-editorial .fcca-cpbig{fill:#a6cc8a;stroke:#5a8645;stroke-width:1.6}
+/* page versions p1, p2 (overnight, 29 Oct 2026): labels in the big magnifier */
+.theme-editorial .co2k text.fcca-ml{font-size:19px;font-weight:600;fill:#3d3d3a}
+/* variants q1–q3 of the picked p1 (30 Oct 2026): label pills on photos, magnifier labels, result pills */
+.theme-editorial .fig text.fcca-tg{font-size:14.5px;font-weight:600;fill:#141413}
+.theme-editorial .fcca-tgb{fill:#fffdf8;opacity:.94;stroke:#cfcabb;stroke-width:.8}
+.theme-editorial .co2k text.fcca-il{font-size:14.5px;font-weight:600;fill:#3d3d3a}
+.theme-editorial .fig text.fcca-cap{font-size:13.5px;fill:#6b6a64}
+.theme-editorial .fig text.fcca-res{font-size:16px;font-weight:600;fill:#141413}
+.theme-editorial .fcca-resb{fill:#f3f1ea;stroke:#a9532f;stroke-width:1.4}

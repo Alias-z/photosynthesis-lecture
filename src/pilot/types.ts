@@ -9,6 +9,9 @@ export interface Variant {
   anim?: boolean;
   /** The page shows no title and the figure takes the space; the figure then names the topic itself. */
   noTitle?: boolean;
+  /** The page drops its reading column and the figure spans the full width (a summary table; lecturer, 30 Oct 2026:
+   *  "remove the right-side text, so the table occupies the entire slide"). */
+  wide?: boolean;
 }
 export interface Ref { label: string; url: string }
 

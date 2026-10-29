@@ -283,7 +283,7 @@ export const STAGING: Staging = {
     { beat: 4, text: 'At most 4.6 %', x: 1395, y: 80, size: 40, t0: 3.9 },
     { beat: 4, text: 'in biomass', x: 1395, y: 126, size: 40, t0: 3.9 },
     // the closing question, centred in the free band over the leaf, once the flow has stopped
-    { beat: 4, text: 'What happens to C₃ crops when the air holds more CO₂?', x: 800, y: 52, size: 44, t0: 4.4 },
+    { beat: 4, text: 'Where could we make photosynthesis more efficient?', x: 800, y: 52, size: 44, t0: 4.4 },
   ],
   name: 'j · The journey of sunlight through a leaf',
   note: 'The f1 scene: photon particles coloured by wavelength flow from the sun through the leaf surface, a thylakoid, the stroma, RuBisCO and a mitochondrion to bread; each loss peels away where it happens (51.3, 4.9, 6.6, 24.6, 6.1, 1.9; Zhu et al. 2008, 2010) and the energy left counts down to 4.6',

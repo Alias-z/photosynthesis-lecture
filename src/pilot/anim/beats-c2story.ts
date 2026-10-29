@@ -89,13 +89,24 @@ const BOUVIER24: Cite = { label: 'Bouvier et al. 2024, PNAS', url: 'https://doi.
 const DELWICHE96: Cite = { label: 'Delwiche & Palmer 1996, Mol. Biol. Evol.', url: 'https://doi.org/10.1093/oxfordjournals.molbev.a025647' };
 
 export const C2STORY4: Beat[] = [
-  { tag: 'The first RuBisCO', say: 'RuBisCO began in microbes, in an ocean world, before O₂ was in the air. The oldest form, in archaea, is a ring of 10 subunits that hardly tells CO₂ from O₂.', cite: [INIGUEZ20, CATLING20] },
+  { tag: 'The first RuBisCO', say: 'RuBisCO began in microbes, in an ocean world, before O₂ was in the air. An ancient form, in archaea, is a ring of 10 large subunits that hardly tells CO₂ from O₂.', cite: [INIGUEZ20, CATLING20] },
   { tag: 'New shapes', say: 'Its shape changed: form II has 2 subunits; form I added small subunits, 8 large + 8 small, and rebuilt ancient enzymes show that this raised its preference for CO₂.', cite: [SCHULZ22, INIGUEZ20] },
   { tag: 'O₂ arrives', say: 'Cyanobacteria, with form I, made O₂; from ≈ 2.4 billion years ago it built up in the air, and RuBisCO met O₂.', cite: [POULTON21, CATLING20] },
-  { tag: '2 answers', say: 'In the ocean there were 2 answers: pump CO₂ to RuBisCO, as cyanobacteria and green algae do, or evolve a more selective but slower RuBisCO, as red algae did, with a form taken from bacteria.', cite: [BADGER98, TCHERKEZ06, FLAMHOLZ19, DELWICHE96] },
-  { tag: 'Plants on land', say: 'Land plants, ≈ 500 million years ago, kept the green-algal form: more selective, slow, and mostly without a CO₂ pump. On land the air and the temperature decide: in the Carboniferous, O₂ rose to ≈ 30 % and CO₂ fell.', cite: [MORRIS18, FLAMHOLZ19, JUDD24] },
-  { tag: 'Heat and cold', say: 'Dinosaurs lived with much CO₂ but in great heat; ice-age humans with little CO₂ but in cold. The climate changed a lot; land-plant RuBisCO only slowly.', cite: [MARTINEZ11, JUDD24, BEREITER15, SNYDER16, BOUVIER24] },
-  { tag: 'Today', say: 'Since 1750, CO₂ rose from 278 to ≈ 430 ppm: oxygenation fell. But warming and hot, dry days raise it: most plants’ RuBisCO still suffers.', cite: [IPCC21, NOAA, HADCRUT5, BERNACCHI01S] },
+  { tag: '2 answers', say: 'In the ocean there were 2 answers: pump CO₂ to RuBisCO, as cyanobacteria and green algae do, or a more selective but slower RuBisCO, as in red algae, whose form came from bacteria.', cite: [BADGER98, TCHERKEZ06, FLAMHOLZ19, DELWICHE96] },
+  { tag: 'Plants on land', say: 'Land plants, ≈ 500 million years ago, kept the green-algal form: more selective, slow, and mostly without a CO₂ pump. On land the air and the temperature decide: in the Carboniferous, O₂ rose to ≈ 30 % and CO₂ fell.', cite: [MORRIS18, FLAMHOLZ19, JUDD24, VCF81, BERNACCHI01, TCHERKEZ06] },
+  { tag: 'Heat and cold', say: 'Dinosaurs lived with much CO₂ but in great heat; ice-age humans with little CO₂ but in cold. The climate changed a lot; land-plant RuBisCO only slowly.', cite: [MARTINEZ11, JUDD24, BEREITER15, SNYDER16, BOUVIER24, VCF81, BERNACCHI01, TCHERKEZ06] },
+  { tag: 'Today', say: 'Since 1750, CO₂ rose from 278 to ≈ 430 ppm: oxygenation fell. But warming and hot, dry days raise it: most plants’ RuBisCO still suffers.', cite: [IPCC21, NOAA, HADCRUT5, BERNACCHI01S, VCF81, TCHERKEZ06] },
   { tag: '2 ways out', say: 'Engineer a better RuBisCO for crops, or learn from C₂, C₄ and CAM plants, which concentrate CO₂ around RuBisCO. <b>First: how does the leaf turn 3-PGA into sugar?</b>', cite: [LIN14, MCDONALD26] },
 ];
 
+
+/** Versions tradeoff and record of the evolution story (lecturer, 29 Oct 2026: "why is the red algae so efficient? After
+ *  that, the land plants: did RuBisCO evolve at all?"). C2STORY4 with beats 4–6 answering both questions. Facts:
+ *  research/redo-2026-10-29/RUBISCO_EVOLUTION_FACTS.md (S and kcat medians, Flamholz et al. 2019; rates, Bouvier et al. 2024). */
+export const C2STORY5: Beat[] = [
+  C2STORY4[0], C2STORY4[1], C2STORY4[2],
+  C2STORY4[3],
+  { tag: 'Plants on land', say: 'Land plants, ≈ 500 million years ago, kept the green-algal form, mostly without a CO₂ pump. On land the air and the temperature decide: in the Carboniferous, O₂ rose to ≈ 30 % and CO₂ fell.', cite: [MORRIS18, FLAMHOLZ19, JUDD24, VCF81, BERNACCHI01, TCHERKEZ06] },
+  { tag: 'RuBisCO evolved, slowly', say: 'Land-plant RuBisCO prefers CO₂ more than green-algal RuBisCO but works more slowly. Since the first flowering plants, ≈ 160 million years ago, both its CO₂ preference and its speed rose only a little: its gene is among the slowest-evolving.', cite: [BOUVIER24, MARTINEZ11, JUDD24, SNYDER16, TCHERKEZ06, FLAMHOLZ19] },
+  C2STORY4[6], C2STORY4[7],
+];

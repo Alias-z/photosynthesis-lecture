@@ -282,7 +282,10 @@ export const STAGING: Staging = {
   name: 'Evolution, then climate',
   note: 'In the ocean, RuBisCO itself changes: on v3’s time chart and living scenes, each lineage’s RuBisCO (forms III, II, I, ID; real structures) is a card at its date with its CO₂ preference S, the balance following; then on land the climate decides (v3’s beats); then the 2 ways out.',
   beats: C2STORY4,
-  holds: [[], [], [], [], [], [], (V3.holds ?? [])[6] ?? [], []],
+  // a pause after each new RuBisCO form (lecturer, 29 Oct 2026: "every time RuBisCO changes form, pause so I can click
+  // through; do not play all the way through"): after form II (purple bacteria) and after form I (cyanobacteria), before
+  // the small subunit's step; after form ID (red algae), before the green algae
+  holds: [[], [B1.p1[1] + 0.1, B1.p2[1] + 0.1], [], [B3.p1[1] + 0.1], [], [], (V3.holds ?? [])[6] ?? [], []],
   keys: [
     { beat: 0, text: 'Oldest RuBisCO: a ring, unselective', x: 640, y: 60, size: 40 },
     { beat: 1, text: 'Small subunit: more CO₂ preference', x: 640, y: 60, size: 40 },

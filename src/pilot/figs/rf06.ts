@@ -11,11 +11,12 @@ export const PLATE: PlateText = {
   n: 'C6',
   title: 'Photorespiration',
   status: 'draft',
-  lead: 'Photorespiration recycles the 2-PG made by oxygenation of RuBP.',
+  // lecture day, last (lecturer: "the photorespiration slide is not clear; keep only the most essential information")
+  lead: 'When RuBisCO takes up O₂ instead of CO₂, photorespiration recycles the product, 2-PG.',
   points: [
-    { claim: 'Why “photorespiration”.', text: 'O₂ is taken up and CO₂ released, only in the light: in the dark RuBisCO is inactive and RuBP is not regenerated', eq: 'per 2 oxygenations (2 O₂ at RuBisCO): 1 CO₂ released' },
-    { claim: 'Long seen as a waste.', text: 'It releases CO₂ that RuBisCO had fixed, and spends ATP and reduced ferredoxin to recycle 2-PG', eq: 'released again, per 100 CO₂ fixed: ≈ 21 at 25 °C, ≈ 35 at 35 °C' },
-    { claim: 'In fact a function: recycling toxic 2-PG.', text: '2-PG inhibits enzymes of the cycle: removing it is one of the functions of photorespiration<br>Of every 2 2-PG (4 C), 3 C return as 3-PGA', eq: '2 × 2-PG (4 C) → 3-PGA (3 C) + CO₂ (1 C)' },
+    { claim: 'Why “photorespiration”.', text: 'In the light, the leaf takes up O₂ and gives off CO₂, like respiration' },
+    { claim: 'It costs.', text: 'Part of the carbon already fixed is lost again as CO₂, and the recycling costs energy' },
+    { claim: 'It is needed.', text: '2-PG is toxic to the Calvin–Benson–Bassham cycle; photorespiration returns 3 of every 4 of its carbons as 3-PGA' },
   ],
   refs: [
     { label: 'Flügel et al. 2017', url: 'https://doi.org/10.1105/tpc.17.00256' },

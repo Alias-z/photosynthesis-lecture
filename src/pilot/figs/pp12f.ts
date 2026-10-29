@@ -22,7 +22,8 @@ import {
   sub, svg, T, TV, wv, xan, type Img, type Pt,
 } from './pp-kit';
 
-export const PLATE: PlateText = { ...TEXT, play: 'pp12' };
+// lecture day, last: "slide 28 needs no animation; remove it"
+export const PLATE: PlateText = { ...TEXT };
 
 const PICKS = ['b'];
 export const VARIANTS: Variant[] = [

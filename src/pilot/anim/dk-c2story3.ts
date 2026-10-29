@@ -129,7 +129,9 @@ const TS: V[][] = [
   T_A.map(([ma, d]): V => [ma * 1e6, d]),
   T_B.map(([a, d]): V => [a, d]),
   cut(T_C.map(([a, d]): V => [a, d]), 1.2e4, YA1750),
-  T_D.map(([yr, d]): V => [NOW - yr, d]),
+  // 1750–1850: the LGMR reconstruction (Osman et al. 2021, its last 200-year bins), then HadCRUT5 from 1850 (lecturer,
+  // 30 Oct 2026: the temperature line was missing there, only the dashed zero line showed)
+  [...cut(T_C.map(([a, d]): V => [a, d]), YA1750, NOW - T_D[0][0]), ...T_D.map(([yr, d]): V => [NOW - yr, d])],
 ];
 const segOf = (ya: number): number => (ya >= 1e6 ? 0 : ya <= 8e5 && ya >= 1.2e4 ? 1 : ya < 1.2e4 && ya >= YA1750 - 1e-6 ? 2 : ya < YA1750 ? 3 : -1);
 const co2Drawn = (ya: number): number | null => { const s = segOf(ya); return s < 0 ? null : at(CO2S[s], ya); };
@@ -166,6 +168,8 @@ const xA = (ya: number): number => xIn(0, ya);
 const X_START = SX[0][0], X3G = xA(3e9), XGOE = xA(2.3e9), X500 = xA(5e8), X300 = xA(3e8), X100 = xA(1e8), X20K = xIn(1, 2e4);
 const X1750 = SX[3][0], XNOW = xYr(YR_NOW);
 const X_REC = xA(YA_REC);
+/** The temperature record begins (Judd et al. 2024, ≈ 482 million years ago). */
+const X_T0 = xA(T_A[0][0] * 1e6);
 
 /* ---------------------------------------------------------------- the panel geometry */
 
@@ -178,8 +182,9 @@ const QX = BX + 182, QR = PX + PW - 16, QW = QR - QX;
 const RY_AIR = PY + 46, RY_LEAF = PY + 84, RY_RUB = PY + 122, RY_NAME = PY + 146, RY_S = PY + 180, RY_SB = PY + 190, RY_SP = PY + 230;
 const S_MAX = Math.max(...ENZYMES.map(e => e.s)) * 1.04, K_MAX = Math.max(...ENZYMES.map(e => e.kcat)) * 1.04;
 const SPB_X = QX + 62;
+const NOTE_TOBACCO: [string, string] = ['computed for tobacco RuBisCO at the leaf', 'temperature and CO₂ shown (Bernacchi 2001)'];
 
-function panelSvg(): string {
+function panelSvg(note: [string, string] = NOTE_TOBACCO): string {
   const tray = (k: string, cls: string): string => `<g data-k="c3-tray${k}">
       <path class="c3-tray" d="M${-BW / 2 - 6},0 H${BW / 2 + 6}"/>
       <rect data-k="c3-bar${k}" class="${cls}" x="${-BW / 2}" y="-3" width="${BW}" height="0" rx="3"/>
@@ -211,6 +216,9 @@ function panelSvg(): string {
       <rect class="c3-barbg" x="${QX}" y="${RY_SB}" width="${QW}" height="10" rx="5"/><rect data-k="c3-sbar" class="c3-sbar" x="${QX}" y="${RY_SB}" width="0" height="10" rx="5"/></g>
     <g data-k="c3-r5" opacity="0">${T(QX, RY_SP, 'speed', 'c3-lab2')}
       <rect class="c3-barbg" x="${SPB_X}" y="${RY_SP - 11}" width="${QR - SPB_X}" height="10" rx="5"/><rect data-k="c3-kbar" class="c3-kbar" x="${SPB_X}" y="${RY_SP - 11}" width="0" height="10" rx="5"/></g>
+    <!-- how the balance is computed (lecturer, 29 Oct 2026: "show which plant it is based on, computed from the temperature and CO₂"): c2story-model.ts -->
+    <text class="cs-crd" x="${QX}" y="${PY + PH - 24}" style="font-size:12px">${note[0]}</text>
+    <text class="cs-crd" x="${QX}" y="${PY + PH - 9}" style="font-size:12px">${note[1]}</text>
   </g>`;
 }
 
@@ -361,7 +369,8 @@ function markState(b: number, t: number, pre: boolean): St {
     return st;
   }
   // from 420 million years ago: the records
-  const r = ramp(x, X_REC, X_REC + 8), rec = recAt(b, t);
+  // the readouts fill over the first 16 px of the records (lecturer, 30 Oct 2026: no blinks, slow transitions)
+  const r = ramp(x, X_REC, X_REC + 16), rec = recAt(b, t);
   st.name = enzyme('plant').name; st.wName = 1; st.wS = 1; st.s = enzyme('plant').s;
   if (rec && r > 0) {
     st.ca = rec.ca; st.o2 = rec.o2; st.tl = leafT(rec.dT);
@@ -430,28 +439,38 @@ function statusOf(b: number, t: number, x: number): [string, number] {
   if (b === 2 && t < 0.6) { const [s, o] = statusOf(1, END, XGOE); return [s, o * (1 - ease(t, 0, 0.3))]; }
   if (b === 2 || b === 3) return ['today', b === 2 ? ease(t, 0.3, 0.6) : 1];
   if (b === 4 && t < 0.6) return ['today', 1 - ease(t, 0, 0.3)];
-  if (b === 7) return ['2026 · a hot, dry day', 0.55];
+  if (b === 7) return ['2026 · a hot, dry day', 1 - 0.45 * ease(t, 0, 1.2)];
   if (b === 6) {
     // the year under the marker; after the first stop "a hot day", after the second "a hot, dry day"
     const [h0, h1] = HOLDS6;
-    const yr = String(Math.floor(NOW - yaAt(x) + 1e-6));
-    if (t >= h1 + 0.12) return ['2026 · a hot, dry day', ease(t, h1 + 0.12, h1 + 0.35)];
-    if (t >= h1) return ['2026 · a hot day', 1 - ease(t, h1, h1 + 0.12)];
-    if (t >= h0 + 0.12) return ['2026 · a hot day', ease(t, h0 + 0.12, h0 + 0.35)];
-    if (t >= h0) return [yr, 1 - ease(t, h0, h0 + 0.12)];
-    if (x >= X1750 - 0.5) return [yr, 1];
+    const yr = String(Math.max(1750, Math.floor(NOW - yaAt(x) + 1e-6)));
+    if (t >= h1 + 0.4) return ['2026 · a hot, dry day', ease(t, h1 + 0.4, h1 + 0.9)];
+    if (t >= h1) return ['2026 · a hot day', 1 - ease(t, h1, h1 + 0.4)];
+    if (t >= h0 + 0.4) return ['2026 · a hot day', ease(t, h0 + 0.4, h0 + 0.9)];
+    if (t >= h0) return [yr, 1 - ease(t, h0, h0 + 0.4)];
+    // the year fades in over the second half of the way from the ice age to 1750
+    const yIn = X1750 - 0.5 * (X1750 - (X20K + 4));
+    if (x > yIn) return [yr, ramp(x, yIn, X1750)];
   }
-  // from beat 5 on the marker leaves the Great Oxidation Event without naming it again
-  for (const st of b >= 4 ? STATIONS.slice(2) : STATIONS) if (x > st.a - 3 && x < st.b + 3) return [st.s, ramp(x, st.a - 3, st.a) * (1 - ramp(x, st.b, st.b + 3))];
+  // from beat 5 on the marker leaves the Great Oxidation Event without naming it again; each label fades in over the
+  // second half of the way from the previous station and out over the first half of the way to the next (lecturer, 30
+  // Oct 2026: "no blink between the phases; transit slowly"); after the ice age the next station is 1750
+  const list = b >= 4 ? STATIONS.slice(2) : STATIONS;
+  for (let i = 0; i < list.length; i++) {
+    const st = list[i], prev = list[i - 1], nextA = i + 1 < list.length ? list[i + 1].a : X1750;
+    const a0 = prev ? st.a - 0.5 * (st.a - prev.b) : st.a - 3, b1 = st.b + 0.5 * (nextA - st.b);
+    if (x > a0 && x < b1) return [st.s, ramp(x, a0, st.a) * (1 - ramp(x, st.b, b1))];
+  }
   return [' ', 0];
 }
 
 /* ---------------------------------------------------------------- the scenes (from the marker; the carriers on the dial) */
 
-// the scenes in time order and the x ranges over which each gives way to the next; −1 is no scene (the ice age fades
-// out before industry fades in, as the marker crosses 12,000 years ago → 1750 without a farming scene)
-const SC_SEQ = [0, 1, SC_FIRST_LAND, 2, 3, 4, -1, 6, 7];
-const SC_RAMPS: V[] = [[152, 157], [200, 236], [X_REC, X_REC + 9], [282, 312], [520, 600], [SX[2][0] + 4, SX[2][0] + 90], [SX[2][0] + 110, SX[3][0] - 6], [xYr(1950), xYr(1985)]];
+// the scenes in time order and the x ranges over which each gives way to the next: each cross-fade spans most of the
+// marker's way between 2 stations, so no scene blinks (lecturer, 30 Oct 2026: "no blink; slowly transit"); farming
+// takes over from the ice age over the whole way to 1750 (≈ 1.9 s), industry from farming over 1750 → 1850
+const SC_SEQ = [0, 1, SC_FIRST_LAND, 2, 3, 4, 5, 6, 7];
+const SC_RAMPS: V[] = [[152, 157], [200, 236], [X_REC - 6, X_REC + 16], [270, 318], [380, 780], [X20K + 4, X1750 - 4], [X1750, xYr(1850)], [xYr(1930), xYr(1990)]];
 function sceneW(x: number): number[] {
   const w = new Array<number>(N_SCENES).fill(0);
   const add = (i: number, v: number): void => { if (i >= 0) w[i] += v; };
@@ -472,7 +491,42 @@ const fmtAir = (ca: number, o2: number): string => `CO₂ ${Math.round(ca)} ppm 
 
 const FROZEN = typeof location !== 'undefined' && new URLSearchParams(location.search).has('t');
 
-export const STAGING: Staging = {
+/** A land-plant RuBisCO that changes over time (evoR; lecturer, 30 Oct 2026: "the RuBisCO values must change together
+ *  with the CO₂ and the temperature"). From 4 on, while the balance shows the land plants, its CO₂ preference S and speed
+ *  are read at the marker's time, averaged over the same last 0.3 s of travel as the records (recAt), so all readouts
+ *  move together and stop together. `sAt` is on the scale of `sRef` (today's value): the balance computes with
+ *  S_PLANT × S / sRef, tobacco's Γ* (Bernacchi 2001) scaled by the relative change in S. */
+export interface LandRubisco {
+  sAt(ya: number): number;
+  kAt(ya: number): number;
+  sRef: number;
+  note: [string, string];
+  /** Called every frame with the marker's time (years ago, averaged) and the values shown; ya null before the land plants. */
+  onFrame?(ya: number | null, s: number, k: number): void;
+  /** Text of the shown S at the marker's time (years ago, averaged); default the rounded value. */
+  fmt?(ya: number, s: number): string;
+}
+/** A value under the marker, averaged over its last 0.3 s of travel (as recAt). */
+function blurAt(b: number, t: number, g: (ya: number) => number): number {
+  let v = 0;
+  for (let i = 0; i < BLUR_N; i++) v += g(yaAt(xOf(b, Math.max(0, t - (BLUR_T * i) / (BLUR_N - 1)))));
+  return v / BLUR_N;
+}
+
+/** Years ago under the marker (not averaged), beat b at time t of v3's clock: evoR times the flowering-plant card by it. */
+export const markerYa = (b: number, t: number): number => yaAt(xOf(b, t));
+
+/** Beat 6 (0-based) once the cruise has reached 2026, in place of v3's hot day and hot, dry day (evoR's versions;
+ *  lecturer, 30 Oct 2026: "a hot day cannot show on the graph: project into the future, or make the hot day visible").
+ *  Given, v3 draws beats 6–7 from the marker's state without its own hot and dry day; `at` then replaces the values the
+ *  balance and the readouts use, `status` the status line (v3's time t of beat 6; END in beat 7). */
+export interface Today {
+  at(t: number): { ca?: number; tl?: number; k?: number } | null;
+  status?(t: number): [string, number] | null;
+}
+
+export const STAGING: Staging = makeV3();
+export function makeV3(land?: LandRubisco, today?: Today): Staging { return {
   id: 'v3',
   // the key lines on the stage (lecturer, 29 Oct 2026: "people don't read the text under the animation")
   keys: [
@@ -499,7 +553,7 @@ export const STAGING: Staging = {
       <clipPath id="c3-ground"><rect x="0" y="472" width="1600" height="268"/></clipPath>
       <g data-k="cs-scenes">${SKY.map((sk, i) => `<g data-k="cs-sc${i}" opacity="0" display="none"><g class="cs-sky">${sk}</g><g class="cs-gr" clip-path="url(#c3-ground)">${GROUND[i]}</g></g>`).join('')}</g>
       <g data-k="cs-chart">${chartSvg()}</g>
-      ${panelSvg()}${clipsSvg()}
+      ${panelSvg(land?.note)}${clipsSvg()}
     </g>`,
   bind(stage) {
     const els = new Map<string, Element>();
@@ -520,8 +574,16 @@ export const STAGING: Staging = {
 
     return (beat, t) => {
       const amb = FROZEN ? t : (performance.now() - t0wall) / 1000;
-      const last = beat === 7, st = state(beat, t), x = st.x;
-      const dimLast = last ? 1 - 0.65 * ease(t, 0, 0.6) : 1;
+      const last = beat === 7, tS = beat === 6 ? t : END;
+      const st0 = today && beat >= 6 ? markState(6, tS, false) : state(beat, t), ov = today && beat >= 6 ? today.at(tS) : null;
+      const st: St = ov ? { ...st0, ca: ov.ca ?? st0.ca, tl: ov.tl ?? st0.tl, k: ov.k ?? st0.k } : st0, x = st.x;
+      // the land-plant RuBisCO at the marker's time (evoR only): shown S and speed, and the S the balance computes with
+      const landOn = !!land && beat >= 4 && st.name === enzyme('plant').name;
+      const sShow = landOn ? blurAt(beat, t, land!.sAt) : st.s, kShow = landOn ? blurAt(beat, t, land!.kAt) : st.kcat;
+      const sModel = landOn ? (S_PLANT * sShow) / land!.sRef : st.s;
+      const yaShow = landOn ? blurAt(beat, t, ya => ya) : null;
+      land?.onFrame?.(yaShow, sShow, kShow);
+      const dimLast = last ? 1 - 0.65 * ease(t, 0, 1.2) : 1;
 
       /* ---- the chart: dimmed while the dial runs (beats 3–4) */
       const chartOn = beat === 0 ? 0.35 * ease(t, 0, 0.5) : beat === 1 ? 0.35 + 0.65 * ease(t, 0, 0.6) : 0.3 + 0.7 * st.mark;
@@ -530,23 +592,27 @@ export const STAGING: Staging = {
       set('cs-clip', 'width', f(Math.max(0, x - X0 + 6)));
       op('cs-goe', beat === 1 ? ramp(x, 154, 157) : beat === 2 ? 1 - ease(t, 0, 0.6) : 0);
       op('cs-off', (beat === 0 ? 0 : beat === 1 ? ease(t, 0.2, 0.8) : 0.3 + 0.7 * st.mark) * dimLast);
-      op('cs-clab', (beat < 4 ? 0 : beat === 4 ? ramp(x, X_REC, X_REC + 10) : 1) * dimLast);
-      op('cs-ph', (beat === 0 ? 0 : beat === 1 ? ease(t, 0, 0.4) : st.mark) * (last ? 1 - ease(t, 0, 0.6) : 1));
+      op('cs-clab', (beat < 4 ? 0 : beat === 4 ? ramp(x, X_REC, X_REC + 16) : 1) * dimLast);
+      op('cs-ph', (beat === 0 ? 0 : beat === 1 ? ease(t, 0, 0.4) : st.mark) * (last ? 1 - ease(t, 0, 1.2) : 1));
       set('cs-ph', 'transform', `translate(${f(x)} 0)`);
-      const ya = yaAt(x), c = co2Drawn(ya), tv = tDrawn(ya), arche = ya > 4.2e8;
-      set('cs-pdc', 'cy', f(c !== null ? yC(c) : Y0 + 26)); op('cs-pdc', c !== null || arche ? 1 : 0);
+      // where a drawn line has no point (the axis breaks, the ends of the records) the dots glide on the records instead
+      // of vanishing; the temperature dot fades in where its record starts (lecturer, 30 Oct 2026: no blinks)
+      const ya = yaAt(x), c = co2Drawn(ya) ?? co2Rec(ya), tv = tDrawn(ya) ?? tRec(ya), arche = c === null && ya > YA_REC;
+      // the CO₂ dot glides from "off the scale" onto the record over its first 16 px (it jumped 43 px)
+      set('cs-pdc', 'cy', f(c !== null ? lerp(Y0 + 26, yC(c), ramp(x, X_REC, X_REC + 16)) : Y0 + 26)); op('cs-pdc', c !== null || arche ? 1 : 0);
       if (tv !== null) set('cs-pdt', 'cy', f(yT(tv)));
-      op('cs-pdt', tv !== null ? 1 : 0);
-      const [stt, sto] = statusOf(beat, t, beat === 4 || beat === 5 || beat === 6 ? xBlur(beat, t) : x);
+      op('cs-pdt', tv !== null ? ramp(x, X_T0, X_T0 + 16) : 0);
+      const sv = today?.status && beat >= 6 ? today.status(tS) : null;
+      const [stt, sto] = sv ?? (today && beat >= 6 ? statusOf(6, Math.min(tS, HOLDS6[0] - 0.01), xBlur(6, tS)) : statusOf(beat, t, beat === 4 || beat === 5 || beat === 6 ? xBlur(beat, t) : x));
       set('cs-status', 'text', stt); op('cs-status', sto);
       op('cs-crd', beat === 0 ? 0 : 1);
 
       /* ---- scenes */
       const scOn = beat === 0 ? 0 : beat === 1 ? ease(t, 0, 1.0) : 1;
-      const wm = sceneW(x);
+      const wm = sceneW(beat >= 4 && beat <= 6 ? xBlur(beat, t) : x);   // averaged as the readouts, so a cross-fade is never faster than 0.3 s
       for (let i = 0; i < N_SCENES; i++) {
         let v = st.mark * wm[i] + (i === SC_CARRIERS ? 1 - st.mark : 0);
-        v *= scOn * (last ? 1 - 0.5 * ease(t, 0, 0.6) : 1);
+        v *= scOn * (last ? 1 - 0.5 * ease(t, 0, 1.2) : 1);
         op(`cs-sc${i}`, v);
         if (v > 0.004) animScene(i, amb, beat === 5 ? t : END, io, { walk: B5_WALK, spot: st.spot });
       }
@@ -559,7 +625,7 @@ export const STAGING: Staging = {
       op('c3-rub', st.rubOp);
       op('c3-shell', st.ccm);
       for (let i = 0; i < 3; i++) op(`c3-x${i}`, clamp(st.xco2 * 1.3 - i * 0.1));
-      const ox = oxPer100S(st.s, st.tl, st.ca, st.o2, st.k * st.m);
+      const ox = oxPer100S(sModel, st.tl, st.ca, st.o2, st.k * st.m);
       const L = 100 * st.wBal, Rv = ox * st.wBal;
       const th = (TILT * (L - Rv) * Math.PI) / 180;
       set('c3-beam', 'transform', `translate(${BX} ${YP}) rotate(${f(-TILT * (L - Rv))})`);
@@ -586,16 +652,16 @@ export const STAGING: Staging = {
       set('c3-leaf', 'text', fmtLeaf(st.tl)); op('c3-leaf', st.wT);
       // RuBisCO: its name, its CO₂ preference S, its speed (a bar, beats 3–4)
       set('c3-name', 'text', st.name); op('c3-name', st.wName * st.nameOp);
-      set('c3-s', 'text', String(Math.round(st.s))); op('c3-s', st.wS);
-      set('c3-sbar', 'width', f((QW * st.s * st.wS) / S_MAX));
+      set('c3-s', 'text', landOn && yaShow !== null && land!.fmt ? land!.fmt(yaShow, sShow) : String(Math.round(sShow))); op('c3-s', st.wS);
+      set('c3-sbar', 'width', f((QW * sShow * st.wS) / S_MAX));
       op('c3-r5', st.wK); set('c3-kbar', 'width', f(((QR - SPB_X) * st.kcat * st.wK) / K_MAX));
 
       /* ---- the clippings (beat 8) */
       for (let i = 0; i < CLIPS.length; i++) {
-        const a = last ? ease2(t, 0.5 + i * 0.8, 1.2 + i * 0.8) : 0;
+        const a = last ? ease2(t, 1.2 + i * 0.9, 2.2 + i * 0.9) : 0;
         op(`cs-clip${i}`, a);
         set(`cs-clip${i}`, 'transform', `translate(0 ${f(14 * (1 - a))})`);
       }
     };
   },
-};
+}; }

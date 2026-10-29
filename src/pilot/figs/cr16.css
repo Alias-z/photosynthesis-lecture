@@ -1,0 +1,41 @@
+/* Slide C16 · Improving photosynthesis (figs/cr16.ts): the project cards and the same projects on the efficiency
+   waterfall of slide 23 (figs/ce04e.ts, same inks: sunlight amber, losses warm grey, photorespiration rust,
+   biomass leaf green); c the four directions with real images; d, e the numbered tags on the cell and leaf schemas.
+   Prefix .ip-. */
+.ip-card{fill:#fffdf8;stroke:#d8d5cb;stroke-width:1.2}
+.ip-tab{fill:#e8dcc4}
+.ip-tab-pr{fill:#f0cdbd}
+.ip-box{fill:#fffdf8;stroke:#d8d5cb;stroke-width:1.2}
+.ip-box-pr{fill:#fdf3ef;stroke:#dc9a7f;stroke-width:1.4}
+.ip-ld{fill:none;stroke:#8a877d;stroke-width:1.4}
+.ip-ld-pr{fill:none;stroke:#b5532f;stroke-width:1.6}
+.ip-rule{fill:none;stroke:#e3e0d6;stroke-width:1.2}
+.theme-editorial .fig text.ip-h{font-size:16.5px;font-weight:700;fill:#141413}
+.theme-editorial .fig text.ip-s{font-size:13.5px;font-weight:500;fill:#4a4944}
+.theme-editorial .fig text.ip-num{font-size:25px;font-weight:800;fill:#141413}
+.theme-editorial .fig text.ip-num-pr{font-size:25px;font-weight:800;fill:#9a4426}
+.theme-editorial .fig text.ip-what{font-size:13px;font-weight:600;fill:#3d3d3a}
+.theme-editorial .fig text.ip-src{font-size:12px;font-weight:500;fill:#6b6a64}
+.theme-editorial .fig text.ip-cr{font-size:11.5px;fill:#8a877d}
+.theme-editorial .fig text.ip-t{font-size:13px;font-weight:500;fill:#3d3d3a}
+.theme-editorial .fig text.ip-tk{font-size:12px;font-weight:500;fill:#6b6a64}
+.theme-editorial .fig text.ip-n{font-size:14px;font-weight:700;fill:#141413}
+.theme-editorial .fig text.ip-np{font-size:14px;font-weight:700;fill:#9a4426}
+/* c · four directions, four real images */
+.ip-stroma{fill:#f4f3ea}
+.ip-sb{fill:#fffdf8}
+.ip-sbh{fill:#141413;opacity:.35}
+.theme-editorial .fig text.ip-sbt{font-size:13px;font-weight:700;fill:#fffdf8}
+.theme-editorial .fig text.ip-c-h{font-size:22px;font-weight:700;fill:#141413}
+.theme-editorial .fig text.ip-c-l{font-size:16.5px;font-weight:500;fill:#3d3d3a}
+.theme-editorial .fig text.ip-c-s{font-size:13.5px;font-weight:500;fill:#6b6a64}
+/* d, e · numbered tags and their legend */
+.ip-tag{fill:#2b2a27}
+.ip-tagh{fill:#fffdf8;opacity:.95}
+.ip-ldh{fill:none;stroke:#fffdf8;stroke-width:5;stroke-linecap:round;opacity:.9}
+.ip-ldk{fill:none;stroke:#2b2a27;stroke-width:1.8;stroke-linecap:round}
+.ip-tipd{fill:#2b2a27;stroke:#fffdf8;stroke-width:1.5}
+.theme-editorial .fig text.ip-tagn{font-size:17px;font-weight:800;fill:#fffdf8}
+.theme-editorial .fig text.ip-lg{font-size:16.5px;font-weight:500;fill:#3d3d3a}
+.theme-editorial .fig tspan.ip-lg-b{font-weight:700;fill:#141413}
+.theme-editorial .fig tspan.ip-lg-s{font-size:14px;fill:#6b6a64}

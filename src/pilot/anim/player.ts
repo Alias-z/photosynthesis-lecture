@@ -13,6 +13,14 @@ export interface PlayerOptions {
   freeze?: number;
 }
 
+/** Animations whose molecules are drawn without the white cap behind them (slides 15 and 20 on; slides 1–19 are frozen). */
+const NOCAP_KEYS = ['c2story', 'ov', 'lf11a', 'lf12', 'lf13', 'eff'];
+const NOCAP_IDS = ['lf10bc'];
+/** Animations shown without any closing question, on the stage or in the caption (slides 21 on). */
+const NOQ_KEYS = ['lf11a', 'lf12', 'lf13', 'eff', 'cp9', 'ov', 'pp11', 'pp12'];
+/** A caption without its bold question(s). */
+const noQ = (html: string): string => html.replace(/\s*<b>[^<]*\?\s*<\/b>/g, '').trim();
+
 /** Seconds into a beat that stand for its end state, when Back returns to a beat's end. */
 const END = 3600;
 
@@ -40,8 +48,13 @@ export function mountAnimation(host: HTMLElement, anim: Animation, s: Staging, o
     while (j < run.length - 1 && run[j + 1].y - run[j].y <= 1.6 * (run[j].size ?? 42) && /^[a-z]/.test(run[j + 1].text)) j++;
     return /\?\s*$/.test(run[j].text);
   };
-  const keys = all.filter(partOfQuestion);
-  host.className = `ani theme-editorial paper-bristol ani-${a.key}-${s.id}`;
+  // no closing question on the animations of slide 21 on (lecture day, last: "the animations of C₂, C₄, CAM and every
+  // slide after 21 should not have any questions")
+  const keys = NOQ_KEYS.includes(anim.key) ? [] : all.filter(partOfQuestion);
+  // molecules without their white cap on the slides that are not frozen, and on slide 19's clean variant (lecturer, 30 Oct
+  // 2026, late: "cut the CO₂ and other molecules off cleanly, no white background")
+  const nocap = NOCAP_KEYS.includes(a.key) || NOCAP_IDS.includes(s.id);
+  host.className = `ani theme-editorial paper-bristol ani-${a.key}-${s.id}${nocap ? ' nocap' : ''}`;
   host.tabIndex = 0;
   host.innerHTML = `
     <svg class="ani-stage" viewBox="0 0 1600 740" role="img" aria-label="${a.title}, ${s.name}">${s.svg()}${keys.map((k, i) =>
@@ -103,18 +116,26 @@ export function mountAnimation(host: HTMLElement, anim: Animation, s: Staging, o
     t0 = performance.now();
     at = 1; from = 0; to = holds(beat)[0] ?? Infinity;
     const b = a.beats[beat];
-    say.innerHTML = `<b>${b.tag}</b> ${dedupe(b.say, stageText(beat))}`;
+    caption();
     cite.innerHTML = b.cite.map(c => `<a href="${c.url}" target="_blank" rel="noopener">${c.label}</a>`).join('<span>·</span>');
     dots.forEach((d, k) => d.setAttribute('aria-current', `${k === beat}`));
+  }
+  /** The caption of the step on show (steps begun: at), or the beat's own when it has no steps. */
+  function caption(): void {
+    const b = a.beats[beat], st = b.steps?.[Math.min(at, b.steps.length) - 1];
+    const text = dedupe((st ?? b).say, stageText(beat));
+    say.innerHTML = `<b>${(st ?? b).tag}</b> ${NOQ_KEYS.includes(anim.key) ? noQ(text) : text}`;
   }
   /** Plays step k of the beat: from the hold before it (or the beat's start) to the hold after it (or the end). */
   function play(k: number): void {
     const h = holds(beat);
     at = k + 1; from = k ? h[k - 1] : 0; to = h[k] ?? Infinity; t0 = performance.now();
+    caption();
   }
   /** Shows the still after k steps of the beat: the hold that ends step k, or the beat's end after its last step. */
   function rest(k: number): void {
     at = k; from = to = holds(beat)[k - 1] ?? END;
+    caption();
   }
   /** Next: the beat's next step; after its last step, the next beat. */
   function forward(): void {

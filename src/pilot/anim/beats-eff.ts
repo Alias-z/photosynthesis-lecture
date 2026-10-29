@@ -20,5 +20,5 @@ export const EFF: Beat[] = [
   { tag: 'Reflection and transmission', say: 'The leaf reflects or transmits ≈ 10 % of this light: 4.9 %.', cite: [ZHU10] },
   { tag: 'Photochemical inefficiency', say: 'A blue photon carries more energy than a red one, but both drive 1 electron: the excess, 6.6 %, is lost as heat.', cite: [ZHU10] },
   { tag: 'Carbohydrate synthesis', say: '8 photons drive 3 ATP + 2 NADPH per CO₂, but sugar stores only about a third of their energy: 24.6 % is lost.', cite: [ZHU10] },
-  { tag: 'Photorespiration and respiration', say: 'Photorespiration takes 6.1 % and respiration 1.9 %: at most 4.6 % of sunlight ends up in biomass. <b>What happens to C₃ crops when the air holds more CO₂?</b>', cite: [ZHU08, ZHU10] },
+  { tag: 'Photorespiration and respiration', say: 'Photorespiration takes 6.1 % and respiration 1.9 %: at most 4.6 % of sunlight ends up in biomass. <b>Where could we make photosynthesis more efficient?</b>', cite: [ZHU08, ZHU10] },
 ];

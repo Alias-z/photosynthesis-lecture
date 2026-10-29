@@ -11,6 +11,7 @@
 // Real images: Busch et al. 2024 Box 1 (CC BY); LI-COR LI-6800 manual flow schematic (© LI-COR); Commons absorption panels
 // (CC0); Gaastra 1959 Fig. 1; Walz GFS-3000 photo (Commons, CC BY-SA 3.0); Du et al. 2020 Fig. 1f (CC BY).
 // Credits: assets/SOURCES-cp.md.
+import { draw as drawIr } from './cp09-ir';
 import type { PlateText, Variant } from '../types';
 import * as c11 from './c11';
 import { arr, co2, credit, f, h2o, it, pathSchema, pill, sb, shot, svg, SYM, T, TV, type Img, type Pt } from './cp-kit';
@@ -29,21 +30,26 @@ export const PLATE: PlateText = {
   title: 'Measuring leaf gas exchange',
   status: 'draft',
   lead: 'CO₂ and water vapour absorb infrared light, so an infrared gas analyser measures the CO₂ a leaf takes up and the water vapour it loses.',
+  // lecture day (lecturer: "Cᵢ and the rest are too many concepts; keep transpiration, and explain stomatal conductance
+  // plainly, or it is not clear")
   points: [
-    { claim: 'Infrared gas analyser (IRGA).', text: 'CO₂ and H₂O each absorb their own infrared wavelengths; N₂ and O₂ do not<br>The light absorbed gives each gas’s concentration' },
-    { claim: 'Leaf chamber.', text: 'Air of known flow is analysed before and after it passes the leaf<br>CO₂ drop × flow ÷ leaf area: net CO₂ uptake (<i>A</i>)<br>H₂O rise × flow ÷ leaf area: transpiration (<i>E</i>)' },
-    { claim: `Stomatal conductance and ${v('Ci')}.`, text: `${v('gs')}: from <i>E</i> and the water-vapour difference between leaf and air<br>${v('Ci')}, the CO₂ in the leaf air spaces: from <i>A</i>, ${v('gs')} and ${v('Ca')}` },
+    { claim: 'Infrared gas analyser.', text: 'CO₂ and water vapour absorb different infrared wavelengths<br>How much light is absorbed gives each gas’s concentration' },
+    { claim: 'Reference and leaf chamber.', text: 'The same air, of known CO₂ and water vapour, is measured before and after the leaf<br>CO₂ taken up: net photosynthesis (<i>A</i>)<br>Water vapour added: transpiration (<i>E</i>)' },
+    { claim: `Stomatal conductance (${v('gs')}).`, text: 'How easily gases pass through the stomata<br>Calculated from transpiration and how much drier the air is than the leaf' },
   ],
   refs: [
     { label: 'Busch et al. 2024', url: 'https://doi.org/10.1111/pce.14815' },
     { label: 'Gaastra 1959', url: 'https://edepot.wur.nl/291215' },
     { label: 'von Caemmerer & Farquhar 1981', url: 'https://doi.org/10.1007/BF00384257' },
-    { label: 'LI-COR LI-840A manual', url: 'https://www.licor.com/support/LI-840A/topics/theory.html' },
+    { label: 'LI-COR LI-6800 manual', url: 'https://www.licor.com/support/LI-6800/topics/specifications.html' },
   ],
 };
 
 // No picks for C7 (this slide's pick key). New v1–v9 first, then the earlier unpicked figures of c11.ts.
-export const VARIANTS: Variant[] = [
+// lecturer, 30 Oct 2026, late: "make an illustration in our style of how CO₂ and water absorb differently in the infrared;
+// only that; remove the other illustration variants" (figure ir, cp09-ir.ts); the older ones stay below, unlisted
+export const VARIANTS: Variant[] = [{ id: 'ir', name: 'CO₂ and H₂O absorb different infrared wavelengths (drawn)' }];
+const OLD_VARIANTS: Variant[] = [
   { id: 'v1', name: 'Open system, drawn: reference IRGA → leaf chamber → sample IRGA' },
   { id: 'v2', name: 'How an IRGA works: more CO₂, less infrared at the detector' },
   { id: 'v3', name: 'Infrared absorption bands of H₂O and CO₂ (real panels, CC0)' },
@@ -65,7 +71,7 @@ const FIELD: Img = { href: fieldJpg, w: 442, h: 545 };
 const CR = {
   box: 'Busch et al. 2024, Plant Cell Environ 47:3344, Box 1 figure, CC BY 4.0',
   ir1: 'absorption panels: Wikkiwonkk after R. A. Rohde, Wikimedia Commons, CC0',
-  ir2: 'analyser filter wavelengths: LI-COR LI-840A manual',
+  ir2: 'gas analysers: LI-COR LI-6800 manual',
   licor: 'LI-COR Biosciences, LI-6800 manual, flow schematic (leaf chamber configuration)',
   ga: 'Gaastra 1959, Meded Landbouwhogeschool Wageningen 59(13), Fig. 1',
   gfs: 'Walz GFS-3000 in an orchard: Heinz Walz GmbH, Wikimedia Commons, CC BY-SA 3.0',
@@ -140,7 +146,7 @@ function v2(): string {
     ${row(196, 3, 0.85, 'less CO₂: more light reaches the detector')}
     ${row(380, 8, 0.35, 'more CO₂: less light reaches the detector')}
     ${T(400, 540, `H₂O is read the same way, with a filter at 2.595 µm`, 'fcp-s', 'middle')}
-    ${credit(780, 594, 'filter wavelengths: LI-COR LI-840A manual')}
+    ${credit(780, 594, 'gas analysers: LI-COR LI-6800 manual')}
   `);
 }
 
@@ -293,5 +299,7 @@ function v9(): string {
 const DRAW: Record<string, () => string> = { v1, v2, v3, v4, v5, v6, v7, v8, v9 };
 
 export function draw(id: string): string {
+  if (id === 'ir') return drawIr();
   return DRAW[id] ? DRAW[id]() : c11.draw(id);
 }
+void OLD_VARIANTS;

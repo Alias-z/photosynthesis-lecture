@@ -18,9 +18,10 @@ import {
   TV, wv, type Img, type Pt,
 } from './pp-kit';
 
-export const PLATE: PlateText = { ...TEXT, play: 'pp11' };
+// lecture day, last: "slide 27 needs no animation; remove it"
+export const PLATE: PlateText = { ...TEXT };
 
-const PICKS = ['a', 'b'];
+const PICKS = ['a', 'b', 'a2'];
 export const VARIANTS: Variant[] = [
   ...L12.filter(v => PICKS.includes(v.id)),
   { id: 'v1', name: 'Chain: excess light at photosystem II and its three exits' },

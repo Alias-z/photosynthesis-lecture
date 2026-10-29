@@ -515,10 +515,10 @@ const stageV3 = (): string => V3L.svg().replace('<g data-k="cs-chart">', `${tint
  *  show what age we were in and what RuBisCO was there; not the same text for each phase; only the essentials"). The
  *  beats' own tag and text stay as the fallback; the citations are the beats'. */
 const STEPS: Array<Array<{ tag: string; say: string }>> = [
-  [{ tag: '≈ 3.5 billion years ago', say: 'An ocean world without O₂. The first RuBisCO, form III (archaea), hardly tells CO₂ from O₂.' }],
-  [{ tag: '≈ 3 billion years ago', say: 'Form II (purple bacteria): 2 large subunits; still a low CO₂ preference.' },
+  [{ tag: 'Over 2.5 billion years ago', say: 'An ocean world without O₂. An ancient RuBisCO, form III (archaea), hardly tells CO₂ from O₂.' }],
+  [{ tag: 'Over 2.5 billion years ago', say: 'Form II (purple bacteria): 2 large subunits; still a low CO₂ preference.' },
     { tag: '≈ 2.7 billion years ago', say: 'Form I (cyanobacteria): 8 large + 8 small subunits; a higher CO₂ preference, and fast.' }],
-  [{ tag: '≈ 2.4 billion years ago', say: 'Cyanobacteria fill the air with O₂ (the Great Oxidation Event): RuBisCO now meets O₂.' }],
+  [{ tag: '≈ 2.4 billion years ago', say: 'O₂ from cyanobacteria starts to build up in the air (the Great Oxidation Event): RuBisCO now meets O₂.' }],
   [{ tag: '≈ 1 billion years ago', say: 'Red algae: form ID, very selective for CO₂, but slow.' },
     { tag: '≈ 1 billion years ago', say: 'Green algae: form I, with a CO₂ pump around RuBisCO.' }],
   [{ tag: 'In the ocean, 2 answers', say: 'A more selective but slower RuBisCO (red algae), or a CO₂ pump (cyanobacteria, green algae).' },

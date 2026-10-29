@@ -129,7 +129,7 @@ const CASES8: Case8[] = [
   },
 ];
 const CREDITS8 = [
-  `Images: 2014 Lin et al., ${it('Nature')}, Fig. 3 (© Springer Nature) · 2016 Kromdijk et al., ${it('Science')}: press photo of the field trial, RIPE project · 2019 South et al., ${it('Science')}, Fig. 3A (CC BY 4.0) · 2020 Gunn et al., ${it('PNAS')}, Fig. 2B (© the authors)`,
+  `Images: 2014 Lin et al., ${it('Nature')}, Fig. 3 (© Springer Nature) · 2016 Kromdijk et al., ${it('Science')}: press photo of a RIPE tobacco field trial · 2019 South et al., ${it('Science')}, Fig. 3A (CC BY 4.0) · 2020 Gunn et al., ${it('PNAS')}, Fig. 2B (© the authors)`,
   `2022 De Souza et al., ${it('Science')}: press photo of a soybean canopy, Allie Arp/RIPE project · 2023 Chen et al., ${it('Nat. Commun.')}, Fig. 2d (CC BY 4.0) · 2024 Tian et al., ${it('Nature')}, Fig. 1a (© Springer Nature)`,
   `2025 Lin et al., ${it('Plant Biotechnol. J.')}, Fig. 2c (CC BY 4.0) · images under © shown for teaching only`,
 ];

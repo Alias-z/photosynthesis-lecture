@@ -477,8 +477,8 @@ function readoutSvg(): string {
     ${ptext(RO.x + RO.pad, y0, 'per O₂ (4 e⁻)', 'pm-lgh')}
     <g data-k="ro1" opacity="0" display="none"><text class="pm-lg" data-k="ro1t" x="${RO.x + RO.pad}" y="${y0 + dy}">photosystem I: 4 e⁻ (4 photons)</text></g>
     <g data-k="ro2" opacity="0" display="none"><text class="pm-lg" data-k="ro2t" x="${RO.x + RO.pad}" y="${y0 + 2 * dy}">ferredoxin: 4 e⁻ (4 Fd)</text></g>
-    <g data-k="ro3" opacity="0" display="none"><text class="pm-lg" data-k="ro3a" x="${RO.x + RO.pad}" y="${y0 + 3 * dy}">FNR: 4 e⁻ + 2</text>
-      <g data-k="ro3h">${hring(0, 0, 11.5)}</g><text class="pm-lg" data-k="ro3b" x="0" y="${y0 + 3 * dy}">(stroma) → 2 NADPH</text></g>
+    <g data-k="ro3" opacity="0" display="none"><text class="pm-lg" data-k="ro3a" x="${RO.x + RO.pad}" y="${y0 + 3 * dy}">FNR: 2 NADP⁺ + 4 e⁻ + 2</text>
+      <g data-k="ro3h">${hring(0, 0, 11.5)}</g><text class="pm-lg" data-k="ro3b" x="0" y="${y0 + 3 * dy}">→ 2 NADPH</text></g>
   </g>`;
 }
 

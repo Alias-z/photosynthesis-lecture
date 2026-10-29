@@ -19,7 +19,7 @@ export const LF10K: Beat[] = [
   { tag: 'Stoma', say: 'Then the stoma; water vapour leaves through the same pore.', cite: [BUSCH24, LB14, VERS23] },
   { tag: 'Air spaces and the wet wall', say: 'At the cell wall CO₂ must dissolve in water; in water it diffuses ≈ 10,000 times more slowly than in air.', cite: [TERA11] },
   { tag: 'To RuBisCO', say: 'Dissolved, CO₂ crosses the plasma membrane, the cytosol and the chloroplast envelope to RuBisCO. Each resistance lowers the CO₂ at RuBisCO: CO₂ uptake (<i>A</i>) = conductance (<i>g</i>) × CO₂ drop (Δ<i>C</i>).', cite: [BUSCH24] },
-  { tag: 'Hot, dry day', say: 'In heat and drought the stomata close; less CO₂ reaches RuBisCO, and oxygenation rises. <b>How have plants coped?</b>', cite: [FM02, JO84, SANDER23] },
+  { tag: 'Hot, dry day', say: 'On a hot, dry day the stomata close; less CO₂ reaches RuBisCO, and oxygenation rises. <b>How have plants coped?</b>', cite: [FM02, JO84, SANDER23] },
 ];
 
 const BUSCH13: Cite = { label: 'Busch, Sage, Cousins & Sage 2013, Plant Cell Environ.', url: 'https://doi.org/10.1111/j.1365-3040.2012.02567.x' };

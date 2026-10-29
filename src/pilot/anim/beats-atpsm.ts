@@ -19,5 +19,5 @@ export const ATPSM: Beat[] = [
  *  flow, instead of zooming out to a question. */
 export const ATPSM_C: Beat[] = [
   ...ATPSM.slice(0, 3),
-  { tag: 'Cyclic electron flow', say: 'Per O₂: 2 NADPH but only ≈ 2.6 ATP, while turning 1 CO₂ into sugar uses 2 NADPH and 3 ATP. Cyclic electron flow adds the 2 missing H⁺, without making NADPH.', cite: [KRAMER11, HAHN18] },
+  { tag: 'Cyclic electron flow', say: 'Per O₂: 2 NADPH but only ≈ 2.6 ATP, while turning 1 CO₂ into sugar uses 2 NADPH and 3 ATP. Cyclic electron flow, for example, adds the 2 missing H⁺ without making NADPH.', cite: [KRAMER11, HAHN18] },
 ];

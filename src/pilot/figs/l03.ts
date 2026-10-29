@@ -18,7 +18,7 @@ export const PLATE: PlateText = {
   lead: 'Light is an electromagnetic wave; its wavelength (<i>λ</i>) sets its colour.',
   points: [
     { claim: 'Electromagnetic spectrum.', text: 'Sunlight mixes ultraviolet, visible and infrared light.' },
-    { claim: 'Visible light and PAR.', text: 'Human vision: 380–780 nm<br>PAR (photosynthetically active radiation): 400–700 nm, by convention' },
+    { claim: 'Visible light and PAR.', text: 'Human vision: ≈ 380–780 nm<br>PAR (photosynthetically active radiation): 400–700 nm, by convention' },
     { claim: 'Rayleigh scattering.', text: 'Scattered intensity <span class="math">∝</span> 1/<i>λ</i>⁴<br>Blue is scattered ~4× more than red: blue sky by day, red Sun at sunset.' },
   ],
   play: 'life',

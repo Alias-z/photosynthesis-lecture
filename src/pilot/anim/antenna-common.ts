@@ -421,7 +421,7 @@ const ANT_LAB: V = [190, 275];
 export function labelsSvg(): string {
   return LABS.map(L => `<g data-k="lab-${L.k}"><path class="an-lead-halo" data-k="leadh-${L.k}"/><path class="an-lead" data-k="lead-${L.k}"/><circle class="an-lead-dot" data-k="leadd-${L.k}" r="4"/>${T(0, 0, L.text, `an-lab an-lab-${L.k}`, L.a, `labt-${L.k}`)}</g>`).join('')
     + `<g data-k="lab-psii">${T(60, 42, 'photosystem II · pea', 'an-lab an-lab-psii')}</g>`
-    + `<g data-k="lab-ant">${T(ANT_LAB[0], ANT_LAB[1], 'antenna', 'an-lab an-lab-ant', 'end')}${T(ANT_LAB[0], ANT_LAB[1] + 30, '157 chlorophylls', 'an-lab an-lab-cnt', 'end')}${T(ANT_LAB[0], ANT_LAB[1] + 58, '(108 <tspan font-style="italic">a</tspan> + 49 <tspan font-style="italic">b</tspan>)', 'an-lab an-lab-cnt', 'end')}</g>`;
+    + `<g data-k="lab-ant">${T(ANT_LAB[0], ANT_LAB[1], 'antenna', 'an-lab an-lab-ant', 'end')}${T(ANT_LAB[0], ANT_LAB[1] + 30, '151 chlorophylls', 'an-lab an-lab-cnt', 'end')}${T(ANT_LAB[0], ANT_LAB[1] + 58, '(102 <tspan font-style="italic">a</tspan> + 49 <tspan font-style="italic">b</tspan>)', 'an-lab an-lab-cnt', 'end')}</g>`;
 }
 /** The opacity of every pigment group: each tier of the lit monomer, and the path's pigments on top. */
 export function drawPigments(S: ReturnType<typeof setters>, tier: Record<Tier, number>, path: number, x = -1): void {

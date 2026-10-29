@@ -25,7 +25,7 @@ import type { Beat, Cite, Staging } from './types';
 const PHOTO: Cite = { label: 'Photo: Viséan, Wikimedia Commons, CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Photosynthesis_System_analysing_a_maize_leaf.jpg' };
 const LICOR: Cite = { label: 'LI-COR LI-6800 manual', url: 'https://www.licor.com/support/LI-6800/topics/introduction.html' };
 const NIST: Cite = { label: 'NIST Chemistry WebBook, gas-phase IR spectra', url: 'https://webbook.nist.gov/chemistry/' };
-const LISPEC: Cite = { label: 'LI-COR LI-6800 manual, Specifications', url: 'https://www.licor.com/support/LI-6800/topics/specifications.html' };
+const LISPEC: Cite = { label: 'LI-COR LI-840A manual, Theory of Operation', url: 'https://www.licor.com/support/LI-840A/topics/theory.html' };
 const BUSCH24: Cite = { label: 'Busch et al. 2024, Plant Cell Environ.', url: 'https://doi.org/10.1111/pce.14815' };
 const A = '<i>A</i>', E = '<i>E</i>';
 
@@ -51,7 +51,7 @@ export const BEATS: Beat[] = [
     say: 'Air of known CO₂ and water vapour flows into the reference analyser.',
     steps: [
       { tag: 'Reference', say: 'The instrument sets the CO₂ and water vapour of the incoming air, so they are known: here 10 CO₂ and 5 H₂O reach the reference analyser.' },
-      { tag: 'Sample', say: 'The same air flows over the leaf, then into the sample analyser. The leaf took up 2 CO₂ and gave off 2 H₂O: 8 CO₂ and 7 H₂O come out.' },
+      { tag: 'Sample', say: 'The same air flows over the leaf, then into the sample analyser. The leaf took up 2 CO₂ and gave off 2 H₂O: 8 CO₂ and 7 H₂O come out (not to scale: a leaf loses hundreds of H₂O per CO₂).' },
     ],
   },
   {
@@ -305,7 +305,7 @@ export const STAGING: Staging = {
     <g data-k="ir" opacity="0" display="none">
       <g transform="translate(${FIG[0]} ${FIG[1]})"><clipPath id="${P}-irc"><rect x="0" y="0" width="800" height="445"/></clipPath>
         <g class="fig" clip-path="url(#${P}-irc)">${figInner(irFig(), 'cp09ir', `${P}ir`)}</g></g>
-      ${lab(FIG[0] + 790, FIG[1] + 466, 'spectra: NIST Chemistry WebBook (Sadtler/EPA) · analysers: LI-COR LI-6800 manual', 'end', 'cps-credit')}
+      ${lab(FIG[0] + 790, FIG[1] + 466, 'spectra: NIST Chemistry WebBook (Sadtler/EPA) · filter wavelengths: LI-COR LI-840A manual', 'end', 'cps-credit')}
     </g>
     <g data-k="cell" opacity="0" display="none">${cellSvg(`${P}c`, CELL)}</g>
     <g data-k="flow" opacity="0" display="none">

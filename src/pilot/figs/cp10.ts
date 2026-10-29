@@ -40,7 +40,7 @@ export const PLATE: PlateText = {
   points: [
     { claim: 'In through the stomata.', text: 'Water vapour leaves the same way' },
     { claim: 'Then through water to the chloroplast.', text: 'CO₂ dissolves in the wet cell wall and moves ≈ 10,000 × more slowly' },
-    { claim: 'Each step lowers CO₂ at RuBisCO.', text: 'In heat and drought the stomata close' },
+    { claim: 'Each step lowers CO₂ at RuBisCO.', text: 'On hot, dry days the stomata close' },
   ],
   refs: [
     { label: 'Busch et al. 2024', url: 'https://doi.org/10.1111/pce.14815' },

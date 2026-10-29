@@ -12,7 +12,7 @@ export const PLATE: PlateText = {
   title: 'Photorespiration',
   status: 'draft',
   // lecture day, last (lecturer: "the photorespiration slide is not clear; keep only the most essential information")
-  lead: 'When RuBisCO takes up O₂ instead of CO₂, photorespiration recycles the product, 2-PG.',
+  lead: 'When RuBisCO takes up O₂ instead of CO₂, photorespiration recycles its toxic product, 2-PG.',
   points: [
     { claim: 'Why “photorespiration”.', text: 'In the light, the leaf takes up O₂ and gives off CO₂, like respiration' },
     { claim: 'It costs.', text: 'Part of the carbon already fixed is lost again as CO₂, and the recycling costs energy' },

@@ -44,9 +44,9 @@ export const PLATE: PlateText = {
   // overnight, 29 Oct 2026: bachelor level, as slide 19 (lecturer: "keep the most essential things … do not overwhelm")
   lead: 'CAM plants take up CO₂ at night and give it to RuBisCO by day, behind closed stomata.<br>C₄ separates the two steps in space, CAM in time.',
   points: [
-    { claim: 'Night: stomata open.', text: 'PEPC fixes CO₂ into a C₄ acid, stored as malic acid in the vacuole' },
+    { claim: 'Night: stomata open.', text: 'PEPC fixes HCO₃⁻ into a C₄ acid, stored as malic acid in the vacuole' },
     { claim: 'Day: stomata shut.', text: 'Malic acid leaves the vacuole and releases its CO₂ to RuBisCO in the same cell' },
-    { claim: 'High water-use efficiency.', text: 'Per CO₂ fixed, CAM loses ≈ 6 × less water than C₃' },
+    { claim: 'High water-use efficiency.', text: 'Per CO₂ fixed, CAM loses at least 6 × less water than C₃' },
   ],
   refs: [
     { label: 'Borland et al. 2009', url: 'https://doi.org/10.1093/jxb/erp118' },

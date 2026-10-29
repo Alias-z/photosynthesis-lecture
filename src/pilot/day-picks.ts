@@ -30,7 +30,7 @@ export const DAY_PICKS: Record<string, string[]> = {
   "anim-cyclic": ["s1"],
   "anim-pp11": ["d"],
   "anim-rf6": ["a", "w1"],
-  "anim-psii": ["m2"],
+  "anim-psii": ["pc"],  // lecture day: the two-flask version (lecturer: "should be the double flask one")
   "anim-b6f": ["pb"],
   "10b": ["11m2"],
   "anim-bridge": ["a"],

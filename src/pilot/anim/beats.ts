@@ -36,7 +36,7 @@ export const LIFE: Beat[] = [
   },
   {
     tag: 'On land',
-    say: 'Our ancestors moved onto land. Most mammals see red and green as 1 colour.',
+    say: 'Our ancestors moved onto land. Early mammals, active at night, lost 2 colour receptors: most mammals see red and green as 1 colour.',
     cite: [{ label: 'Daeschler et al. 2006, Nature', url: 'https://doi.org/10.1038/nature04639' }, JACOBS],
   },
   { tag: 'Primates', say: 'Our primate ancestors gained a third colour receptor: red fruit and young leaves stand out against green.', cite: [JACOBS, DOMINY, MELIN] },
@@ -77,7 +77,7 @@ export const FATES: Beat[] = [
 /** Animation 5, played from slide 5: dim vs bright light, side by side at three scales, with no dive (the pigments
  *  animation from slide 4a already zooms from leaf to chloroplast; lecturer, 27 Oct 2026). */
 export const LEAF: Beat[] = [
-  { tag: 'Chloroplasts move', say: '1908, Gustav Senn’s monograph: chloroplasts move within minutes. In dim light they gather on the walls that face the light; in bright light they move to the side walls.', cite: [{ label: 'Chazdon & Pearcy 1991, BioScience', url: 'https://doi.org/10.2307/1311725' }, { label: 'Kataoka 2015, J. Integr. Plant Biol.', url: 'https://doi.org/10.1111/jipb.12311' }] },
+  { tag: 'Chloroplasts move', say: '1908, Gustav Senn’s monograph: chloroplasts move within minutes. In dim light they gather on the walls that face the light; in bright light they move to the side walls.', cite: [{ label: 'Wada 2013, Plant Sci.', url: 'https://doi.org/10.1016/j.plantsci.2013.05.016' }, { label: 'Kataoka 2015, J. Integr. Plant Biol.', url: 'https://doi.org/10.1111/jipb.12311' }] },
   { tag: 'Grana', say: 'Thylakoid membranes stack into grana: up to ≈ 100 thylakoids per granum in deep shade, < 10 in sun leaves.', cite: [{ label: 'Anderson 1986, Annu. Rev. Plant Physiol.', url: 'https://doi.org/10.1146/annurev.pp.37.060186.000521' }] },
   { tag: 'Stacked and unstacked', say: 'The stacks hold photosystem II (PSII) and its antenna. Photosystem I (PSI) and ATP synthase have stroma-side parts too large for the 3–4 nm gap between stacked membranes, so they sit in the unstacked membranes. <b>Do all these chlorophylls do the chemistry?</b>', cite: [{ label: 'Andersson & Anderson 1980, Biochim. Biophys. Acta', url: 'https://doi.org/10.1016/0005-2728(80)90078-X' }] },
 ];

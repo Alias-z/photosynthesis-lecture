@@ -167,7 +167,7 @@ function cellSvg(): string {
   const { cx, cy, rx, ry, gap } = CH;
   const chl = `<ellipse class="cel-stroma" cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}"/>${bil2(ellSeg(cx, cy, rx, ry))}${bil2(ellSeg(cx, cy, rx - gap, ry - gap))}`;
   const grana = `<g data-k="${P}-grana">${GRANA.map(granum).join('')}</g>`;
-  const labels = `${T(64, 662, 'wheat leaf cell', 'cel-zone', 'start')}${T(640, 120, 'cytosol', 'cel-zone')}${T(CH.cx + 20, 280, 'chloroplast', 'cel-zone')}`;
+  const labels = `${T(64, 662, 'leaf cell', 'cel-zone', 'start')}${T(640, 120, 'cytosol', 'cel-zone')}${T(CH.cx + 20, 280, 'chloroplast', 'cel-zone')}`;
   return `${wall}${pm}${chl}${grana}${tptImg(TPT_M, 0.5)}${labels}`;
 }
 function granuleSvg(): string {
@@ -393,5 +393,5 @@ export const STAGING = withKeys(STAGING_BASE, [
   { beat: 1, lines: ['Sucrose: exported to the grain'], x: 1225, y: 690, size: 36, at: 4.4 },
   { beat: 2, lines: ['Starch: stored during the day'], x: 1225, y: 690, size: 36, at: 3.0 },
   { beat: 3, lines: ['At night, starch fuels the plant'], x: 1225, y: 690, size: 36, at: 4.0 },
-  { beat: 4, lines: ['But RuBisCO also adds O₂:', 'what happens to its product, 2-PG?'], x: 800, y: 470, size: 44, at: 1.5 },
+  { beat: 4, lines: ['But RuBisCO also adds O₂:', 'what happens to its toxic product, 2-PG?'], x: 800, y: 470, size: 44, at: 1.5 },
 ]);

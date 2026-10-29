@@ -280,7 +280,7 @@ function hudSvg(): string {
     ${hudMover('g3', glyG, 'glycine', -26)}${hudMover('g2', glyG, 'glycine', -26)}
     ${pill('p3', PILL3, ['C₃: about 1 in 4 recaptured,', 'the rest leaks away'], '#b0431f')}${pill('p2', PILL2, 'C₂: CO₂ in the chloroplasts ≈ 3 × that of C₃', '#2f6f5f')}
     ${T(8, 734, '<tspan font-style="italic">Steinchisma laxum</tspan> (C₃), <tspan font-style="italic">Homolepis aturensis</tspan> (C₂, light micrograph and TEM): Khoshravesh et al. 2016, J. Exp. Bot. (CC BY 3.0)', 'co2k-cr', 'start')}
-    ${T(1592, 734, 'RuBisCO: PDB 8RUC · mitochondrial protein: PDB 4LHC', 'co2k-cr', 'end')}`;
+    ${T(1592, 734, 'RuBisCO: PDB 8RUC · glycine decarboxylase: PDB 4LHC', 'co2k-cr', 'end')}`;
 }
 
 /* ---------------------------------------------------------------- lighting (the strip) */

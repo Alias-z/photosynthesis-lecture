@@ -14,7 +14,7 @@ export const PLATE: PlateText = {
   n: '2',
   status: 'confirmed',
   title: 'Why is the sky blue, and why are leaves green?',
-  lead: 'Light that meets matter is reflected, transmitted, absorbed or scattered, depending on its wavelength.',
+  lead: 'Light that meets matter is reflected, transmitted, absorbed or scattered, depending on the matter and the wavelength.',
   points: [
     { claim: 'Sky: Rayleigh scattering.', text: 'Air redirects short wavelengths most<br>Scattered blue reaches you from the whole sky' },
     { claim: 'Leaf: absorption.', text: 'Chlorophyll removes most blue and red<br>Less green is absorbed, so more is reflected and transmitted' },

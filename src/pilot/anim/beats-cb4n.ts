@@ -28,16 +28,16 @@ export const CB4V2: Beat[] = [
   { tag: 'Sucrose', say: 'In the cytosol, triose phosphates make sucrose, which is exported to growing organs and the grain. Their phosphate is freed and returns to the chloroplast.', cite: [SHARKEY24, SMITH07] },
   { tag: 'Triose-phosphate use (TPU)', say: 'If sucrose is made too slowly, too little Pᵢ returns: the chloroplast lacks phosphate to make ATP, and photosynthesis slows. This is the triose-phosphate use (TPU) limit.', cite: [SHARKEY85] },
   { tag: 'Starch by day, sucrose at night', say: 'By day, part of the triose phosphate stays in the chloroplast and becomes starch. At night, starch is broken down to make sucrose, so the plant keeps growing.', cite: [STREB12, SMITH07] },
-  { tag: 'RuBisCO and O₂', say: 'All this sugar starts with RuBisCO adding CO₂ to RuBP. <b>But RuBisCO also adds O₂: what happens to its product, 2-PG?</b>', cite: [] },
+  { tag: 'RuBisCO and O₂', say: 'All this sugar starts with RuBisCO adding CO₂ to RuBP. <b>But RuBisCO also adds O₂: what happens to its toxic product, 2-PG?</b>', cite: [] },
 ];
 
 /** Version 3 (lecturer, 29 Oct 2026, late): 1 fork, 2 routes, no TPU: triose phosphate stays (starch, stored by day) or
  *  leaves (sucrose, exported to the grain); at night the starch fuels the plant. */
 export const CB4V3: Beat[] = [
-  { tag: '2 ways', say: 'Triose phosphate from the cycle has 2 ways to go: it stays in the chloroplast to make starch, or it leaves to make sucrose.', cite: [SHARKEY24] },
+  { tag: '2 ways', say: 'The triose phosphate the cycle gains has 2 ways to go: it stays in the chloroplast to make starch, or it leaves to make sucrose.', cite: [SHARKEY24] },
   { tag: 'Out: sucrose', say: 'Leaving through the triose phosphate/phosphate translocator (TPT) in exchange for 1 Pᵢ, it makes sucrose in the cytosol, which the phloem carries to growing organs and the grain.', cite: [SHARKEY24, SMITH07] },
   { tag: 'In: starch by day', say: 'The triose phosphate that stays becomes starch: through the day the starch granules grow.', cite: [STREB12] },
   { tag: 'Night', say: 'At night the starch is broken down to soluble sugars: they become sucrose for the rest of the plant and fuel this cell’s own respiration.', cite: [STREB12, SMITH07] },
-  { tag: 'RuBisCO and O₂', say: 'All this sugar starts with RuBisCO adding CO₂ to RuBP. <b>But RuBisCO also adds O₂: what happens to its product, 2-PG?</b>', cite: [] },
+  { tag: 'RuBisCO and O₂', say: 'All this sugar starts with RuBisCO adding CO₂ to RuBP. <b>But RuBisCO also adds O₂: what happens to its toxic product, 2-PG?</b>', cite: [] },
 ];
 

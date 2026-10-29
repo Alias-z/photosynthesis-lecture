@@ -32,7 +32,7 @@ export const PLATE: PlateText = {
   status: 'draft',
   lead: 'C₄ plants pump CO₂ into the bundle sheath.<br>There RuBisCO sits in high CO₂ and hardly reacts with O₂.',
   points: [
-    { claim: 'PEP carboxylase (PEPC) fixes CO₂.', text: 'In the mesophyll it makes a C₄ acid; it does not react with O₂' },
+    { claim: 'PEP carboxylase (PEPC) fixes HCO₃⁻.', text: 'In the mesophyll it makes a C₄ acid; it does not react with O₂' },
     { claim: 'The C₄ acid moves to the bundle sheath.', text: 'There it releases its CO₂ next to RuBisCO' },
     { claim: 'The pump costs extra ATP.', text: 'Regenerating PEP uses ATP, so C₄ pays off mainly in warm climates' },
   ],

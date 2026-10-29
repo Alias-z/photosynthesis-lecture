@@ -428,6 +428,67 @@ pres.innerHTML = `<div class="present-frame"><div class="plate theme-editorial l
   <div class="seg present-seg">${MODES.map(m => `<button type="button" data-pm="${m.id}">${m.name}</button>`).join('')}</div>
   <span class="present-n"></span><button type="button" class="present-close" aria-label="Leave full screen">×</button></div>`;
 document.body.append(pres);
+// a laser pointer while presenting (lecturer, lecture day: "a laser pointer instead of the mouse, so it is clearer"): a red
+// dot follows the mouse over the slide and the animations; the arrow comes back only on the controls; still for 4 s, it fades
+const laser = document.createElement('div');
+laser.className = 'laser';
+document.body.append(laser);
+let laserIdle = 0;
+addEventListener('mousemove', e => {
+  if (!document.body.classList.contains('presenting')) return;
+  const onCtl = !!(e.target as Element).closest('button, .seg, .present-ui, .player-bar');
+  laser.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+  laser.classList.toggle('on', !onCtl);
+  clearTimeout(laserIdle);
+  laserIdle = window.setTimeout(() => laser.classList.remove('on'), 4000);
+});
+document.documentElement.addEventListener('mouseleave', () => laser.classList.remove('on'));
+// drawing while presenting (lecturer, lecture day: "if I hold it, I can draw on the slides; it disappears if I press C, or
+// 30 s after releasing"): hold the mouse button and drag to draw in red over the slide or the animation; C wipes it at once,
+// and it fades by itself 30 s after the last stroke; a drag that drew never counts as a click (no step, no slide change)
+const ink = document.createElement('canvas');
+ink.className = 'ink';
+document.body.append(ink);
+const ictx = ink.getContext('2d') as CanvasRenderingContext2D;
+let inkAt: { x: number; y: number } | null = null, inkDrew = false, inkClear = 0;
+function sizeInk(): void {
+  const r = devicePixelRatio || 1;
+  ink.width = Math.round(innerWidth * r); ink.height = Math.round(innerHeight * r);
+  ictx.setTransform(r, 0, 0, r, 0, 0);
+  ictx.lineCap = 'round'; ictx.lineJoin = 'round'; ictx.lineWidth = 4; ictx.strokeStyle = '#e3120b';
+  ictx.shadowColor = 'rgba(255,45,30,.45)'; ictx.shadowBlur = 6;
+}
+sizeInk();
+addEventListener('resize', sizeInk);
+function wipeInk(now = false): void {
+  clearTimeout(inkClear);
+  if (now) { ictx.clearRect(0, 0, innerWidth, innerHeight); return; }
+  ink.classList.add('fading');
+  setTimeout(() => { ictx.clearRect(0, 0, innerWidth, innerHeight); ink.classList.remove('fading'); }, 400);
+}
+addEventListener('mousedown', e => {
+  inkDrew = false;
+  if (!document.body.classList.contains('presenting') || e.button !== 0) return;
+  if ((e.target as Element).closest('button, .seg, .present-ui, .player-bar')) return;
+  inkAt = { x: e.clientX, y: e.clientY };
+  clearTimeout(inkClear);
+}, true);
+addEventListener('mousemove', e => {
+  if (!inkAt || !(e.buttons & 1)) return;
+  if (!inkDrew && Math.hypot(e.clientX - inkAt.x, e.clientY - inkAt.y) < 4) return;
+  ictx.beginPath(); ictx.moveTo(inkAt.x, inkAt.y); ictx.lineTo(e.clientX, e.clientY); ictx.stroke();
+  inkAt = { x: e.clientX, y: e.clientY }; inkDrew = true;
+});
+addEventListener('mouseup', () => {
+  if (!inkAt) return;
+  inkAt = null;
+  if (inkDrew) { clearTimeout(inkClear); inkClear = window.setTimeout(() => wipeInk(), 30000); }
+}, true);
+addEventListener('click', e => { if (inkDrew) { inkDrew = false; e.stopImmediatePropagation(); e.preventDefault(); } }, true);
+addEventListener('dragstart', e => { if (document.body.classList.contains('presenting')) e.preventDefault(); }, true);
+addEventListener('keydown', e => {
+  if ((e.key === 'c' || e.key === 'C') && document.body.classList.contains('presenting')) { wipeInk(); e.stopImmediatePropagation(); }
+}, true);
 let pIdx = 0, pMode: Mode = 'lecture';
 const pPlate = pres.querySelector('.present-frame > .plate') as HTMLElement;
 /** The page on show: lecture = the lead page if the slide has one, else the page with its play button; handout = the
@@ -482,6 +543,8 @@ function closePresent(): void {
   pres.hidden = true;
   pPlate.innerHTML = '';
   lectureMode = false;
+  laser.classList.remove('on');
+  wipeInk(true);
   document.body.classList.remove('lecture-mode', 'presenting');
   if (document.fullscreenElement) void document.exitFullscreen().catch(() => undefined);
   render();
@@ -503,6 +566,15 @@ pres.addEventListener('click', e => {
   if (b.hasAttribute('data-play-excitation')) { playExcitation(); return; }
   if (b.dataset.play) play(b.dataset.play);
 });
+// A plays the slide's animation, and A again leaves it (lecturer, lecture day: "if I press A, play the animation; A again, exit")
+addEventListener('keydown', e => {
+  if (pres.hidden || (e.key !== 'a' && e.key !== 'A') || e.metaKey || e.ctrlKey || e.altKey) return;
+  e.preventDefault(); e.stopImmediatePropagation();
+  if (!player.hidden) { closePlayer(); return; }
+  const pl = pres.querySelector('.present-play') as HTMLButtonElement;
+  if (pl.hidden) return;
+  if (pl.dataset.key) play(pl.dataset.key); else playExcitation();
+}, { capture: true });
 addEventListener('keydown', e => {
   if (!pres.hidden && player.hidden) {
     const k = e.key;

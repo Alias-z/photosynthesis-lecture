@@ -17,7 +17,7 @@ export interface PlayerOptions {
 const NOCAP_KEYS = ['c2story', 'ov', 'lf11a', 'lf12', 'lf13', 'eff'];
 const NOCAP_IDS = ['lf10bc', 'lf10b'];
 /** Animations shown without any closing question, on the stage or in the caption (slides 21 on). */
-const NOQ_KEYS = ['lf11a', 'lf12', 'lf13', 'eff', 'cp9', 'ov', 'pp11', 'pp12'];
+const NOQ_KEYS = ['lf11a', 'lf12', 'lf13', 'eff', 'cp9', 'ov', 'pp11', 'pp12', 'psii'];  // psii: lecture day, "I don't need the question, I guide the flow myself"
 /** A caption without its bold question(s). */
 const noQ = (html: string): string => html.replace(/\s*<b>[^<]*\?\s*<\/b>/g, '').trim();
 

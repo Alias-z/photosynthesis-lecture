@@ -20,7 +20,7 @@ export const PLATE: PlateText = {
   points: [
     { claim: 'Carboxylation of RuBP.', text: 'Gives 2 3-phosphoglycerate (3-PGA), which make sugar', eq: 'RuBP (5 C) + CO₂ (1 C) → 2 × 3-PGA (3 C)' },
     { claim: 'Oxygenation of RuBP.', text: 'Gives only 1 3-PGA, plus 2-phosphoglycolate (2-PG)', eq: 'RuBP (5 C) + O₂ → 3-PGA (3 C)<br>+ 2-PG (2 C)' },
-    { claim: 'Through Earth’s history.', text: 'RuBisCO evolved when the air held almost no O₂; today rising CO₂ favours carboxylation, warming favours oxygenation', eq: '1750: 278 ppm → September 2026: 429.6 ppm' },
+    { claim: 'Through Earth’s history.', text: 'RuBisCO evolved when the air held almost no O₂; today rising CO₂ favours carboxylation, warming favours oxygenation', eq: '1750: 278 ppm → October 2026: ≈ 427 ppm' },
   ],
   refs: [
     { label: 'Bowes, Ogren & Hageman 1971', url: 'https://doi.org/10.1016/0006-291X(71)90475-X' },

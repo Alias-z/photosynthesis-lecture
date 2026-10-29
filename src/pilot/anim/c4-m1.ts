@@ -274,7 +274,7 @@ export function cmpSvg(tf3: string, tf4: string): string {
     ${CROWD_PX.map((_, i) => kid(`c${i}`)).join('')}${pill(P, 'p4', PILL4, 'C₄: CO₂ concentrated at RuBisCO', '#2f6f5f')}`;
   return `<defs>${flashDefs(P)}</defs><g class="fig dk2 co2k"><g transform="${tf3}">${p3}</g><g transform="${tf4}">${p4}</g>
     <g data-k="${P}-cr" opacity="0">${T(8, 734, '<tspan font-style="italic">Steinchisma laxum</tspan> (C₃): Khoshravesh et al. 2016, J. Exp. Bot. (CC BY 3.0) · maize (C₄): Berkshire Community College Bioscience Image Library (CC0)', 'co2k-cr', 'start')}
-    ${T(1592, 734, 'RuBisCO: PDB 8RUC · PEPC: PDB 3ZGE · mitochondrial protein: PDB 4LHC', 'co2k-cr', 'end')}</g></g>`;
+    ${T(1592, 734, 'RuBisCO: PDB 8RUC · PEPC: PDB 3ZGE · glycine decarboxylase: PDB 4LHC', 'co2k-cr', 'end')}</g></g>`;
 }
 /** Fits the pills to their text, once the stage is in the page. */
 export function cmpBind(stage: SVGSVGElement): void {

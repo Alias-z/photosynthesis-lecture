@@ -114,7 +114,7 @@ const CW = W / 4, cx = (i: number): number => i * CW;
 interface Col { name: string; plant: string; big: string; bigSize: number; why: string[] }
 const COLS: Col[] = [
   { name: 'C₃', plant: 'wheat', big: '4.6 %', bigSize: 44, why: ['loses energy to **photorespiration**'] },
-  { name: 'C₂', plant: '<tspan font-style="italic">Flaveria</tspan>', big: 'between C₃ and C₄', bigSize: 26, why: ['in heat: **refixes part of the**', '**photorespired CO₂**'] },
+  { name: 'C₂', plant: '<tspan font-style="italic">Flaveria</tspan>', big: 'no maximum published', bigSize: 26, why: ['in heat: **refixes part of the**', '**photorespired CO₂**'] },
   { name: 'C₄', plant: 'maize', big: '6.0 %', bigSize: 44, why: ['**almost no photorespiration,**', 'but 2 extra ATP per CO₂'] },
   { name: 'CAM', plant: 'agave, in theory', big: '≈ 4.5–4.9 %', bigSize: 44, why: ['**saves water:** water-use', 'efficiency ≈ 3 × C₄, ≥ 6 × C₃'] },
 ];
@@ -191,7 +191,7 @@ export function drawX2(): string {
   const big = (x: number, y: number, v: string): string => `<text x="${x}" y="${y}" filter="url(#${MK})" style="font-size:42px;font-weight:800;fill:${INK}">${v}</text>`;
   const plants = wheat(1132, 258, 0.62) + TX(1186, 190, 'C₃', 28, INK, 700) + TX(1236, 190, 'wheat', 17, MUTE) + big(1186, 238, '4.6 %')
     + maize(1132, 404, 0.56) + TX(1186, 330, 'C₄', 28, INK, 700) + TX(1236, 330, 'maize', 17, MUTE) + big(1186, 378, '6.0 %');
-  const notes = flaveria(1124, 494, 0.36) + TX(1160, 446, 'C₂', 20, INK, 700) + TX(1160, 468, 'between C₃ and C₄', 16, INK) + TX(1160, 488, 'in heat', 16, INK)
+  const notes = flaveria(1124, 494, 0.36) + TX(1160, 446, 'C₂', 20, INK, 700) + TX(1160, 468, 'no maximum published', 16, INK) + TX(1160, 488, 'in heat', 16, INK)
     + cactus(1124, 572, 0.36) + TX(1160, 528, 'CAM ≈ 4.5–4.9 %', 18, INK, 700) + TX(1160, 549, 'agave, in theory;', 16, INK) + RT(1160, 569, '**saves water**', 16, INK);
   const lanes = TX(xF + 58, TOP + 44, 'C₃', 22, INK, 800) + TX(xb + 30, Y4 + 46, 'C₄', 22, INK, 800);
   const start = TX(14, TOP + 34, 'sunlight', 17, INK, 600) + TX(14, TOP + 68, '100 %', 28, INK, 800);

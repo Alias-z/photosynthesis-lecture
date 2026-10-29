@@ -13,7 +13,7 @@ export const PLATE: PlateText = {
   lead: 'In strong light, leaves absorb more energy than CO₂ fixation can use.',
   points: [
     { claim: 'Light saturation.', text: 'CO₂ fixation saturates below full sunlight; absorbed light keeps rising' },
-    { claim: 'Fates of absorbed energy.', text: 'Photochemistry, heat or fluorescence; their shares add up to 1<br>In strong light, heat rises and photochemistry falls' },
+    { claim: 'Fates of absorbed energy.', text: 'Photochemistry, heat, fluorescence or a triplet; their shares add up to 1<br>In strong light, the heat share rises, the photochemistry share falls' },
     { claim: 'Reactive oxygen species.', text: 'Unused excitation can form singlet oxygen, one cause of damage to the D1 protein of photosystem II' },
   ],
   refs: [

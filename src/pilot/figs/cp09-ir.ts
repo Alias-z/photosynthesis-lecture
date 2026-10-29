@@ -101,6 +101,6 @@ export function draw(): string {
     ${band(X(4.26), co2Stretch(X(4.26), 76, 14), '4.26 µm', 'asymmetric stretch', [X(4.26), YT - 10])}
     ${band(X(6.27), water(X(6.27), 62, 13, 'bend'), '6.3 µm', 'bend', [X(6.27), YT - 10])}
     ${irga()}
-    ${credit(780, 594, 'spectra: NIST Chemistry WebBook, gas phase (Sadtler/EPA) · analysers: LI-COR LI-6800 manual')}
+    ${credit(780, 594, 'spectra: NIST Chemistry WebBook, gas phase (Sadtler/EPA) · filter wavelengths: LI-COR LI-840A manual')}
   `);
 }

@@ -56,7 +56,7 @@ export const PLATE: PlateText = {
     { claim: 'Only bundle-sheath mitochondria release it.', text: 'So glycine moves there from the mesophyll through plasmodesmata' },
     { claim: 'Packed on the vein side.', text: 'The mitochondria sit against the vein-side wall, behind a layer of chloroplasts, so the CO₂ meets RuBisCO before it can leave' },
     // a number, not "most" (lecturer, later 30 Oct); Keerberg et al. 2014: ≈ 3-fold CO₂ in the chloroplasts of C₂ Flaveria pubescens vs its C₃ relative
-    { claim: 'Recaptured, not lost.', text: 'C₃ leaves recapture about a quarter of it; in C₂ leaves CO₂ in the chloroplasts rises about 3-fold' },
+    { claim: 'Recaptured, not lost.', text: 'C₃ leaves recapture about a quarter of it; in C₂ <i>Flaveria</i> CO₂ in the chloroplasts rises about 3-fold' },
   ],
   refs: [
     { label: 'Khoshravesh et al. 2016', url: 'https://doi.org/10.1093/jxb/erw150' },
@@ -628,7 +628,7 @@ function q1(): string {
   const TC: Pt = [400, 168], tr = 68;
   const te = temDisc(`${p}-te`, TC, tr, [180, 450], 180, -90);
   const tl = magnifier(`${p}-tl`, b.at(452, 292), 18, TC, tr, '');
-  return svg('Two leaf cross-sections side by side, light micrographs from Khoshravesh et al. 2016, every part labelled with leader lines. Left, a C3 leaf (Steinchisma laxum): vein, bundle-sheath cells with few organelles, mesophyll cells, air space. A magnifier on a mesophyll cell at an air space: chloroplast with RuBisCO, mitochondrion, and a CO2 character, labelled, that has escaped into the air space and smiles. Right, a C2 leaf (Homolepis aturensis): vein; around it a dark band, labelled chloroplasts and mitochondria packed on the vein side; bundle-sheath cells, mesophyll cells, air space. A magnifier on the vein side of a bundle-sheath cell: the vein side on the left, a mitochondrion against the wall, a chloroplast with RuBisCO in front of it holding the CO2 character, strained and sweating; glycine arrives from the mesophyll through a plasmodesma. Between the two leaves a small round electron micrograph of a C2 bundle-sheath cell, linked by a lens to the light micrograph, labelled chloroplasts, mitochondria and vein', `
+  return svg('Two leaf cross-sections side by side, light micrographs from Khoshravesh et al. 2016, every part labelled with leader lines. Left, a C3 leaf (Steinchisma laxum): vein, bundle-sheath cells with fewer organelles, mesophyll cells, air space. A magnifier on a mesophyll cell at an air space: chloroplast with RuBisCO, mitochondrion, and a CO2 character, labelled, that has escaped into the air space and smiles. Right, a C2 leaf (Homolepis aturensis): vein; around it a dark band, labelled chloroplasts and mitochondria packed on the vein side; bundle-sheath cells, mesophyll cells, air space. A magnifier on the vein side of a bundle-sheath cell: the vein side on the left, a mitochondrion against the wall, a chloroplast with RuBisCO in front of it holding the CO2 character, strained and sweating; glycine arrives from the mesophyll through a plasmodesma. Between the two leaves a small round electron micrograph of a C2 bundle-sheath cell, linked by a lens to the light micrograph, labelled chloroplasts, mitochondria and vein', `
     ${heads(p)}<g class="dk1 co2k">
     ${T(170, 32, 'C₃ leaf: the CO₂ leaks away', 'fcc-b')}${T(630, 32, 'C₂ leaf: the CO₂ is trapped', 'fcc-b')}
     ${a.svg}${ringOn(`${p}-a`, a.at(481, 352), 301 * sa, 348 * sa)}
@@ -638,7 +638,7 @@ function q1(): string {
     ${tag(130, 96, 'bundle-sheath cells', a.at(300, 290))}
     ${tag(270, 200, 'air space', a.at(960, 420))}
     ${tag(120, 232, 'vein', a.at(440, 470))}
-    ${tag(240, 228, 'few organelles', a.at(590, 470))}
+    ${tag(240, 228, 'fewer organelles', a.at(590, 470))}
     ${tag(528, 62, 'air space', b.at(435, 115))}
     ${tag(712, 62, 'mesophyll cells', b.at(860, 170))}
     ${tag(558, 222, 'bundle-sheath cells', b.at(250, 500))}
@@ -671,7 +671,7 @@ function q2(): string {
     const dx = q[0] - L[0], dy = q[1] - L[1], n = Math.hypot(dx, dy);
     return `M${f(L[0] + (lr * dx) / n)},${f(L[1] + (lr * dy) / n)}L${f(q[0])},${f(q[1])}`;
   };
-  return svg('A large electron micrograph of one bundle-sheath cell of a C2 grass (Homolepis aturensis, Khoshravesh et al. 2016) in the centre, labelled: the vein at the lower left; mitochondria, small round bodies in a column on the vein-side wall; long chloroplasts packed around them; the big pale vacuole in the middle; a mesophyll cell at the top right. On the left a small light micrograph of the C2 leaf with a lens on the bundle-sheath cell to the upper right of the vein, lines leading to the electron micrograph. On the right a small light micrograph of a C3 leaf (Steinchisma laxum), labelled: few organelles in the bundle sheath', `
+  return svg('A large electron micrograph of one bundle-sheath cell of a C2 grass (Homolepis aturensis, Khoshravesh et al. 2016) in the centre, labelled: the vein at the lower left; mitochondria, small round bodies in a column on the vein-side wall; long chloroplasts packed around them; the big pale vacuole in the middle; a mesophyll cell at the top right. On the left a small light micrograph of the C2 leaf with a lens on the bundle-sheath cell to the upper right of the vein, lines leading to the electron micrograph. On the right a small light micrograph of a C3 leaf (Steinchisma laxum), labelled: fewer organelles in the bundle sheath', `
     <g class="dk1 co2k">
     ${T(x0 + TW / 2, 42, 'C₂ bundle-sheath cell', 'fcc-b')}
     <path class="co2k-tan" d="${toC([x0, y0])}"/><path class="co2k-tan" d="${toC([x0, y0 + te.h])}"/>
@@ -679,7 +679,7 @@ function q2(): string {
     ${b.svg}<circle class="co2k-lens" cx="${f(L[0])}" cy="${f(L[1])}" r="${f(lr)}"/>
     ${T(8, b.y - 12, 'C₂ leaf', 'fcc-b', 'start')}
     ${a.svg}
-    ${tag(a.x + PW / 2, a.y - 30, ['C₃: few organelles', 'in the bundle sheath'], a.at(610, 470))}
+    ${tag(a.x + PW / 2, a.y - 30, ['C₃: fewer organelles', 'in the bundle sheath'], a.at(610, 470))}
     ${tag(...te.at(300, 440), ['mitochondria', 'on the vein-side wall'], te.at(40, 440))}
     ${tag(...te.at(330, 560), ['chloroplasts', 'packed around them'], te.at(130, 540))}
     ${tag(...te.at(400, 330), 'vacuole')}
@@ -764,7 +764,7 @@ function r1(): string {
   const a = shot(`${p}-a`, STE, X, 330, 200, { win: WIN_STE, r: 8 });
   const L = b.at(576, 252), lr = (88 * b.w) / WIN_HOM[2];
   const air = a.at(900, 440);
-  return svg('Left, two light micrographs of leaf cross-sections from Khoshravesh et al. 2016, stacked. Above, a C2 (C3–C4 intermediate) leaf, Homolepis aturensis, with a lens on the bundle-sheath cell to the upper right of the vein; lines lead from it to the electron micrograph. Pill: most recaptured. Below, a C3 leaf, Steinchisma, labelled few organelles in the bundle sheath; a CO2 character, labelled, has escaped into an air space and smiles. Pill: about 1 in 4 recaptured. Right, large, the electron micrograph of that C2 bundle-sheath cell, labelled: mitochondria on the vein-side wall, chloroplasts packed around them, the vacuole, a mesophyll cell, the vein at the lower left. An arrow leads from a mitochondrion to a CO2 character, labelled, held at a chloroplast, strained and sweating', `
+  return svg('Left, two light micrographs of leaf cross-sections from Khoshravesh et al. 2016, stacked. Above, a C2 (C3–C4 intermediate) leaf, Homolepis aturensis, with a lens on the bundle-sheath cell to the upper right of the vein; lines lead from it to the electron micrograph. Pill: most recaptured. Below, a C3 leaf, Steinchisma, labelled fewer organelles in the bundle sheath; a CO2 character, labelled, has escaped into an air space and smiles. Pill: about 1 in 4 recaptured. Right, large, the electron micrograph of that C2 bundle-sheath cell, labelled: mitochondria on the vein-side wall, chloroplasts packed around them, the vacuole, a mesophyll cell, the vein at the lower left. An arrow leads from a mitochondrion to a CO2 character, labelled, held at a chloroplast, strained and sweating', `
     ${heads(p)}<g class="dk1 co2k">
     ${T(X, 44, 'C₂ (C₃–C₄ intermediate)', 'fcc-b', 'start')}${T(TX + TW / 2, 44, 'bundle-sheath cell', 'fcc-b')}
     ${wedge(L, lr, [[TX, TY], [TX, TY + te.h]])}
@@ -772,7 +772,7 @@ function r1(): string {
     ${resultL(X, b.y + b.h + 26, 'most recaptured')}
     ${T(X, 304, 'C₃', 'fcc-b', 'start')}
     ${a.svg}
-    ${tag(132, 298, ['few organelles', 'in the bundle sheath'], a.at(380, 190))}
+    ${tag(132, 298, ['fewer organelles', 'in the bundle sheath'], a.at(380, 190))}
     ${kidAt(`${p}k3`, air, 6, { face: 'h', lab: 'CO₂', labDy: -17 })}
     ${resultL(X, a.y + a.h + 26, 'about 1 in 4 recaptured')}
     ${temParts(p, te, 8)}
@@ -824,7 +824,7 @@ function sFig(id: 's1' | 's2'): string {
     ${resultL2(X, b.y + b.h + 34, lvl ? ['the trapped CO₂', 'builds up at RuBisCO'] : ['CO₂ in the chloroplasts', '≈ 3 × that of C₃'])}
     ${T(X, 304, 'C₃', 'fcc-b', 'start')}
     ${a.svg}
-    ${tag(132, 298, ['few organelles', 'in the bundle sheath'], a.at(380, 190))}
+    ${tag(132, 298, ['fewer organelles', 'in the bundle sheath'], a.at(380, 190))}
     ${route(p, 'c', `M${f(from[0])},${f(from[1])}L${f(air[0] - 20)},${f(air[1] + 8)}`, 'fcc-thin')}
     ${kidAt(`${p}k3`, air, 6, { face: 'h', lab: 'CO₂', labDy: -17 })}
     ${resultL2(X, a.y + a.h + 34, ['about 1 in 4 recaptured,', 'the rest leaks away'])}

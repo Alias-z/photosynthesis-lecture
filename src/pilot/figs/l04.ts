@@ -14,8 +14,8 @@ export const PLATE: PlateText = {
   lead: 'Light comes in discrete packets of energy: photons.',
   points: [
     { claim: 'Photon energy.', text: '<i>E</i> = <i>hc</i>/<i>λ</i><br><i>h</i>: Planck constant · <i>c</i>: speed of light<br>A blue photon carries ~1.4× the energy of a red one.' },
-    { claim: 'Energy per photon decides the effect.', text: 'Ultraviolet (photodamage): bonds in DNA and proteins break or rearrange<br>Visible (photochemistry): light-driven reactions<br>Infrared: molecular vibration; microwaves: molecular rotation; both only heat' },
-    { claim: 'Light intensity = photon flux.', text: 'Photosynthetic photon flux density (PPFD)<br>Full sun ≈ 2000 µmol m⁻² s⁻¹<br>Office ≈ 10 µmol m⁻² s⁻¹' },
+    { claim: 'Energy per photon decides the effect.', text: 'Ultraviolet (photodamage): bonds in DNA and proteins break or rearrange<br>Visible (photochemistry): light-driven reactions<br>Infrared: mostly heat, yet near-infrared drives purple bacteria; microwaves: only heat' },
+    { claim: 'Light for photosynthesis = photon flux.', text: 'Photosynthetic photon flux density (PPFD)<br>Full sun ≈ 2000 µmol m⁻² s⁻¹<br>Office ≈ 10 µmol m⁻² s⁻¹' },
   ],
   refs: [
     { label: 'Einstein 1905', url: 'https://doi.org/10.1002/andp.19053220607' },

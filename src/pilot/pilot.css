@@ -68,6 +68,7 @@ html,body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--s
 .theme-editorial .p-src a:hover{text-decoration-color:#3d3d3a}
 .theme-editorial .p-src span{margin:0 12px;color:#b0ada3}
 .theme-editorial .p-num{right:96px;top:846px;font:400 20px Inter,sans-serif;color:#8a877d}
+.theme-editorial .p-opt{display:inline-block;vertical-align:middle;position:relative;top:-5px;margin-left:26px;font:500 23px/1 Inter,sans-serif;letter-spacing:.01em;color:#9a4426;background:#f4e8dc;border-radius:999px;padding:10px 20px}
 .theme-editorial .p-anim{font:500 22px/1 Inter,sans-serif;color:#141413;background:#f0eee6;border:0;border-radius:999px;padding:14px 24px;cursor:pointer}
 .theme-editorial .p-anim:hover{background:#e6e3d8}
 .theme-editorial .p-play{right:96px;top:72px;z-index:2;width:68px;height:68px;display:flex;align-items:center;justify-content:center;font:400 26px/1 Inter,sans-serif;color:#fffdf8;background:#a9532f;border:0;border-radius:50%;padding:0 0 0 5px;cursor:pointer;box-shadow:0 6px 18px -8px rgba(60,30,10,.5)}
@@ -300,6 +301,11 @@ body.solo .block{margin:0}
   .slide .frame[data-kind="handout"]{display:block!important}
   .frame{width:1600px!important;height:900px!important;margin:0;box-shadow:none;outline:none!important;break-after:page}
   .frame>*{transform:none!important}
+  /* one slide per sheet, flush: no picking rows, frozen/building rings or wrapper spacing (handout PDF, lecture day) */
+  .var-rows,.present-open,.pick-status,.refs-overlay,.hooks-overlay{display:none!important}
+  #pilot>div,.block,.plates,.slide{margin:0!important;padding:0!important;border:0!important}
+  .frame{box-shadow:none!important;margin:0!important;break-inside:avoid}
+  .slide:last-child .frame:last-of-type{break-after:auto}
 }
 
 /* ---------- playing an animation over the page, as in the lecture ---------- */
@@ -341,7 +347,7 @@ body.solo .present-open,body.presenting .present-open{display:none}
 .present-ui{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);display:flex;align-items:center;gap:14px;padding:6px 10px;border-radius:999px;background:rgba(20,20,19,.72);opacity:.55;transition:opacity .3s}
 .present-ui:hover,.present-ui:focus-within{opacity:1}
 .present-play{padding:8px 14px;border:0;border-radius:999px;font:600 14px/1 Inter,sans-serif;color:#fffdf8;background:#a9532f;cursor:pointer}
-.present-play[hidden]{display:none}
+.present-play[hidden],.present-seg[hidden]{display:none}
 .present-step{position:fixed;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;border:0;background:rgba(20,20,19,.45);color:#f2f3ee;font:400 34px/1 Inter,sans-serif;cursor:pointer;opacity:.5;transition:opacity .3s}
 .present-step:hover{opacity:1}
 .present-step:disabled{display:none}

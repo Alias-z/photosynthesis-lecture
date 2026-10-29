@@ -226,7 +226,7 @@ export function walk(q: V[], seed: number, j = 4): Path {
   return curve(q.map((p, i) => (i === 0 || i === q.length - 1 ? p : [p[0] + (r() * 2 - 1) * j, p[1] + (r() * 2 - 1) * j] as V)));
 }
 /** One CO₂'s state: place, opacity, strained (s) and glad (h) faces. */
-export interface Kid { at: V; o: number; s?: number; h?: number }
+export interface Kid { at: V; o: number; s?: number; h?: number; sweat?: number }
 /** One released CO₂ (C₃ or C₂ style): its walk, release time and end. */
 export interface Run { p: Path; t0: number; end: 'out' | 'caught'; glad: (at: V, u: number) => number; fl?: V }
 export const WALK = 1.6, STEP = 2.3;

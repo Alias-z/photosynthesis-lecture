@@ -429,9 +429,10 @@ function pmU(x0: number, x1: number, y0: number, y1: number, r: number, open: 'l
 function r3(): string {
   const p = 'fcc12r3', y0 = 66, y1 = 546, P1 = 236, P2 = 444;
   const B: Pt = [604, 310], ring = (i: number): Pt => [B[0] + 104 * Math.cos((i * Math.PI) / 4), B[1] + 72 * Math.sin((i * Math.PI) / 4)];
-  // one mood for the crowd waiting round RuBisCO: all calm, neutral, no sweat (lecturer, 30 Oct 2026: moods must mean one thing)
-  const looks: Look[] = Array.from({ length: 8 }, (): Look => ({}));
-  return svg('Two cells drawn side by side, their plasma membranes as lipid bilayers, a cell wall between them crossed by two plasmodesmata. Left, the mesophyll cell, tinted pale green: a CO2 character becomes bicarbonate, HCO3-; PEP carboxylase (PEPC, its real structure) fixes it onto PEP, three carbon balls, making a C4 acid, malate, four carbon balls, which a teal arrow carries through the upper plasmodesma. Right, the bundle-sheath cell, tinted pale teal: the acid enters a large chloroplast and releases its CO2; eight calm CO2 characters, all with the same neutral face, crowd round RuBisCO, under the words CO2 concentrated, about 10 times the air. Pyruvate, three carbon balls, returns through the lower plasmodesma into the mesophyll chloroplast, where PEP is made again for 2 ATP', `
+  // one meaning per face, deck-wide (lecturer, lecture day): the crowd of 8 trapped round RuBisCO, strained and sweating;
+  // no CO₂ outside the bundle sheath ("we don't need to explain the leakiness")
+  const TRAP: Look = { face: 's', sweat: true };
+  return svg('Two cells drawn side by side, their plasma membranes as lipid bilayers, a cell wall between them crossed by two plasmodesmata. Left, the mesophyll cell, tinted pale green: a CO2 character becomes bicarbonate, HCO3-; PEP carboxylase (PEPC, its real structure) fixes it onto PEP, three carbon balls, making a C4 acid, malate, four carbon balls, which a teal arrow carries through the upper plasmodesma. Right, the bundle-sheath cell, tinted pale teal: the acid enters a large chloroplast and releases its CO2; eight CO2 characters, strained and sweating, crowd round RuBisCO, trapped, under the words CO2 concentrated, about 10 times the air. Pyruvate, three carbon balls, returns through the lower plasmodesma into the mesophyll chloroplast, where PEP is made again for 2 ATP', `
     ${heads(p)}<g class="dk1 co2k">
     ${T(200, 44, 'mesophyll cell', 'co2k-zl')}${T(600, 44, 'bundle-sheath cell', 'co2k-zl')}
     <path d="M378,${y0}H54a30,30 0 0 0 -30,30V${y1 - 30}a30,30 0 0 0 30,30H378z" style="fill:${TINT_M}"/>
@@ -449,7 +450,7 @@ function r3(): string {
     <g transform="translate(400 ${P1})">${carbG('CCCC', 9)}</g>
     ${chloroplast(B, 140, 150, '', B, 72)}
     ${route(p, 'm', `M446,${P1} C462,${P1} 476,244 486,258`)}
-    ${Array.from({ length: 8 }, (_, i) => kidAt(`${p}kb${i}`, ring(i), 11, looks[i])).join('')}
+    ${Array.from({ length: 8 }, (_, i) => kidAt(`${p}kb${i}`, ring(i), 11, TRAP)).join('')}
     ${route(p, 'm', `M516,430 C490,${P2} 470,${P2} 448,${P2}`)}
     <g transform="translate(400 ${P2})">${carbG('CCC', 9)}</g>
     ${route(p, 'm', `M354,${P2} H306`)}

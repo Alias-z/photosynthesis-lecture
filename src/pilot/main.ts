@@ -430,11 +430,13 @@ pres.innerHTML = `<div class="present-frame"><div class="plate theme-editorial l
 document.body.append(pres);
 let pIdx = 0, pMode: Mode = 'lecture';
 const pPlate = pres.querySelector('.present-frame > .plate') as HTMLElement;
-/** The page on show: lecture = the lead page if the slide has one, else the page with its play button; handout = the study page. */
+/** The page on show: lecture = the lead page if the slide has one, else the page with its play button; handout = the
+ *  study page, with its play button too (lecturer, lecture day: "if lecture and handout are the same, just show the same,
+ *  and add the play button"), so a slide with an animation shows its ▶ in both views. */
 function presentHtml(i: number): string {
   const p = PLATES[i], lead = LEADS[p.n];
   if (lead && (p.leadOnly || pMode === 'lecture')) return leadHtml(p, lead.draw(state.leads[i]));
-  return pMode === 'lecture' ? lectureHtml(p, state.variants[i]) : plateHtml(p, state.variants[i]);
+  return lectureHtml(p, state.variants[i]);
 }
 function fitPresent(): void {
   const k = Math.min(innerWidth / 1600, innerHeight / 900), fr = pres.querySelector('.present-frame') as HTMLElement;
@@ -452,6 +454,8 @@ function showPresent(): void {
   pl.dataset.key = p.play ?? '';
   (pres.querySelector('.present-prev') as HTMLButtonElement).disabled = pIdx === 0;
   (pres.querySelector('.present-next') as HTMLButtonElement).disabled = pIdx === PLATES.length - 1;
+  // the lecture/handout switch only where the 2 views differ (a slide with a lead page)
+  (pres.querySelector('.present-seg') as HTMLElement).hidden = !twoVersions(p);
   pres.querySelectorAll<HTMLElement>('.present-seg button').forEach(b => b.setAttribute('aria-pressed', `${b.dataset.pm === pMode}`));
 }
 /** The slide whose top is nearest the top of the window. */

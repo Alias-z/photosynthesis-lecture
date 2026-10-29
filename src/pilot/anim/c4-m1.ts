@@ -32,7 +32,7 @@ const { BUSCH13, VCF03, FURB11 } = CITES;
 export const CMP_STEPS: Array<{ tag: string; say: string }> = [
   { tag: 'C₃ and C₄ leaves', say: 'Light micrographs cut across a vein: a C₃ grass (<i>Steinchisma laxum</i>) and maize (C₄). In maize the bundle-sheath cells round the vein are full of chloroplasts with RuBisCO; PEPC sits in the mesophyll.' },
   { tag: 'C₃: the CO₂ escapes', say: 'In a C₃ leaf, photorespiration releases CO₂ in the mesophyll mitochondria, next to the air spaces: only about 1 in 4 is recaptured (24–38 %), the rest escapes. RuBisCO gets only the CO₂ that diffuses in.' },
-  { tag: 'C₄: CO₂ crowds round RuBisCO', say: 'In maize the bundle sheath is crowded with CO₂ at RuBisCO, about 10 times the air’s; only a little leaks back out (about 20–30 % of what is pumped). RuBisCO there carboxylates far more and hardly oxygenates.' },
+  { tag: 'C₄: CO₂ concentrated at RuBisCO', say: 'In maize the CO₂ at bundle-sheath RuBisCO is about 10 times the air’s. RuBisCO there carboxylates far more and hardly oxygenates.' },
 ];
 export const CMP_BEAT: Beat = { tag: 'C₃ and C₄ leaves', say: '', cite: [BUSCH13, VCF03], steps: CMP_STEPS };
 
@@ -45,7 +45,7 @@ export const C4M1: Beat[] = [
     tag: 'The pump keeps running', say: '', cite: [VCF03, FURB11],
     steps: [
       { tag: 'The pump keeps running', say: 'PEPC keeps fixing CO₂ in the mesophyll. One C₄ acid after another moves into the bundle-sheath cell and releases its CO₂ next to RuBisCO.' },
-      { tag: 'CO₂ concentrated', say: 'CO₂ is released faster than RuBisCO fixes it or it leaks out: in the bundle sheath it rises to about 10 times the concentration in air, so RuBisCO there hardly takes up O₂.' },
+      { tag: 'CO₂ concentrated', say: 'CO₂ is released faster than RuBisCO fixes it: in the bundle sheath it rises to about 10 times the concentration in air, so RuBisCO there hardly takes up O₂.' },
     ],
   },
   CMP_BEAT,
@@ -287,7 +287,7 @@ function kidSet(a: Api, key: string, q: Kid | undefined, label: boolean): void {
   a.put(key, q.at, q.o);
   const s = q.s ?? 0, h = q.h ?? 0;
   a.attr(`${key}-fn`, 'opacity', f(Math.max(0, 1 - s - h))); a.attr(`${key}-fs`, 'opacity', f(s)); a.attr(`${key}-fh`, 'opacity', f(h));
-  a.attr(`${key}-sw`, 'opacity', '0'); a.attr(`${key}-sh`, 'opacity', '0'); a.attr(`${key}-l`, 'opacity', label ? '1' : '0');
+  a.attr(`${key}-sw`, 'opacity', f(q.sweat ?? 0)); a.attr(`${key}-sh`, 'opacity', '0'); a.attr(`${key}-l`, 'opacity', label ? '1' : '0');
 }
 /** The comparison at t (s into its beat; times from cmpTimes); `on` false hides it (other beats). */
 export function cmpFrame(a: Api, on: boolean, t: number, C: ReturnType<typeof cmpTimes>): void {
@@ -302,18 +302,16 @@ export function cmpFrame(a: Api, on: boolean, t: number, C: ReturnType<typeof cm
   if (!on) { a.op(`${P}-fl3`, 0); a.op(`${P}-fl4`, 0); a.op('m-o2b', 0); return; }
   // C₃
   const R3 = runs3(C.t3);
-  R3.forEach((r, i) => kidSet(a, `${P}-a${i}`, kidOf(r, t), true));
+  // one meaning per face, deck-wide (lecturer, lecture day): C₃'s escaped CO₂ glad, the refixed one neutral (just fixed);
+  // C₄'s crowd trapped in the bundle sheath, strained and sweating; none leaks out (lecturer, lecture day: "do not put any CO₂
+  // outside the bundle sheath; we don't need to explain the leakiness")
+  R3.forEach((r, i) => { const q = kidOf(r, t); kidSet(a, `${P}-a${i}`, q && { ...q, s: 0 }, true); });
   const f3 = flashOf(R3, t);
   a.op(`${P}-fl3`, f3.o); if (f3.o > 0) a.attr(`${P}-fl3`, 'transform', `translate(${f(f3.at[0])} ${f(f3.at[1])})`);
   a.op(`${P}-fl4`, 0);
-  // C₄: the crowd fades in at once, with one O₂ beside it; then one leaks back out
+  // C₄: the crowd fades in at once, with one O₂ beside it, and stays
   const z = zmap(ZM4), co = ease(t, C.crowd, C.crowd + 1.0);
-  const leak = walk(LEAK_PX.map(p => z(p[0], p[1])), 211, 3 * ZM4.zs), lu = ease(t, C.leak, C.leak + 1.8);
-  CROWD_PX.forEach((p, i) => {
-    const lk = i === LEAK_I;
-    const q: Kid = { at: lk && lu > 0 ? leak(lu) : z(p[0], p[1]), o: co * (lk ? 1 - ease(t, C.leak + 1.8 - FD, C.leak + 1.8) : 1), h: lk ? ease(lu, 0.5, 0.8) : 0 };
-    kidSet(a, `${P}-c${i}`, q, i === LABEL_I);
-  });
+  CROWD_PX.forEach((p, i) => kidSet(a, `${P}-c${i}`, { at: z(p[0], p[1]), o: co, s: 1, sweat: 1 }, i === LABEL_I));
   const o2 = z(O2_PX[0], O2_PX[1]);
   a.op('m-o2b', co); if (co > 0.004) a.attr('m-o2b', 'transform', `translate(${f(o2[0])} ${f(o2[1])})`);
 }

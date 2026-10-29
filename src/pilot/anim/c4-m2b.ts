@@ -32,8 +32,8 @@ export const C4M2B: Beat[] = [
   {
     tag: 'The bundle sheath fills', say: '', cite: [VCF03, FURB11],
     steps: [
-      { tag: 'The bundle sheath fills', say: 'The pump runs all the time: the C₄ acids deliver CO₂ into the bundle sheath faster than RuBisCO fixes it, and little gets out again. CO₂ builds up round RuBisCO.' },
-      { tag: 'About 10 × the air', say: 'In the bundle sheath CO₂ reaches up to about 10 times the concentration in air, so RuBisCO there hardly takes up O₂. About 20–30 % of the pumped CO₂ leaks back out; the price is 2 extra ATP per CO₂.' },
+      { tag: 'The bundle sheath fills', say: 'The pump runs all the time: the C₄ acids deliver CO₂ into the bundle sheath faster than RuBisCO fixes it. CO₂ builds up round RuBisCO.' },
+      { tag: 'About 10 × the air', say: 'In the bundle sheath CO₂ reaches up to about 10 times the concentration in air, so RuBisCO there hardly takes up O₂. The price is 2 extra ATP per CO₂.' },
     ],
   },
   { tag: 'C₃ and C₄ leaves', say: '', cite: [BUSCH13, VCF03], steps: CMP_STEPS },
@@ -97,12 +97,8 @@ function frame(a: Api, beat: number, t: number): void {
   a.op('nm', out); a.op('cam', out); a.op('panel', out);
   if (beat === 5) a.op('conc', out);
   cmpFrame(a, beat === 5, t, CMP);
-  // moods mean one thing each (lecturer, 30 Oct 2026): the crowd round RuBisCO stays neutral; the one that leaks turns
-  // glad only once it is past the bundle-sheath wall (the leak walk's last 28 %, as escaped CO₂ on slide 21); no sweat
-  if (beat === 5) {
-    const h = ease(ease(t, CMP.leak, CMP.leak + 1.8), 0.72, 0.9);
-    a.attr('c4x-c3-fn', 'opacity', (1 - h).toFixed(3)); a.attr('c4x-c3-fh', 'opacity', h.toFixed(3)); a.attr('c4x-c3-fs', 'opacity', '0');
-  }
+  // one meaning per face, deck-wide (lecturer, lecture day): the crowd trapped round RuBisCO is strained and sweating
+  // (cmpFrame); none leaks out ("do not put any CO₂ outside the bundle sheath")
 }
 
 const LIT: LPart[][] = [

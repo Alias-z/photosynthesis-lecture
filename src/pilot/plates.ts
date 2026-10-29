@@ -1,5 +1,6 @@
 // Static study pages for both lectures in the Figure-first layout, one module per slide in figs/.
 // Slides 1–6 rest on confirmed context; later slides are checked drafts awaiting confirmation.
+import { picked } from './day-picks';
 import * as l01 from './figs/l01';
 import * as l02 from './figs/l02';
 import * as l03 from './figs/l03';
@@ -148,7 +149,7 @@ export const PLATES: Plate[] = [
   // C3b · regeneration: its cell figures (PRK lit) join like the other C slides', below
   plate(cb03b, { play: 'regeneration' }),
   // C4e · Efficiency of photosynthesis (EFFICIENCY_BRIEF.md, 29 Oct 2026): after C4, before C6
-  plate(ce04e, { play: 'eff' }),
+  plate(ce04e) /* lecture day, last: "slide 25 needs no animation" */,
   plate(rb5a), plate(rb5b), plate(rb5c),
 ];
 
@@ -191,7 +192,7 @@ for (const p of PLATES) if (LEAF_PLAY[p.n]) p.play = LEAF_PLAY[p.n];
  *  picks.json; a slide whose picks match none of its figures keeps its list. */
 const PICKED: Record<string, string[]> = {
   '1': ['h', 'f', 'b', 'o'], '2': ['k'], '3': ['a', 'e', 'h', 'y', 'x'], '4': ['e', 'f', 'h', 'u', 'x'], '4a': ['s'], '4b': ['c', 'm'],
-  '5': ['o', 'p', 'r3'], '6': ['k', 'r1'], '7': ['wb', '7m1'], '10': ['l', 'k', 'a'], '11': ['a', 'b', 'a2'], '12': ['b'],
+  '5': ['o', 'p', 'r3'], '6': ['k', 'r1'], '7': ['wb', '7m1'], '10': ['l', 'k', 'a'], '11': ['a2'] /* lecture day: slide 27, only the pick */, '12': ['b'],
   // lecture 2: C6 keeps its 2 picked schemas (lecturer, 28 Oct 2026)
   C6: ['a', 'v10'],
 };
@@ -258,8 +259,11 @@ for (const p of PLATES) if (p.n === 'C1') p.variants = p.variants.filter(v => v.
 for (const p of PLATES) if (p.n === 'C15') p.variants = p.variants.filter(v => !['a', 'c', 'f', 'h', 'i', 'j'].includes(v.id));
 for (const p of PLATES) if (p.n === '13') p.variants = p.variants.filter(v => v.id !== 'd');
 
-/** Lead pages for the live lecture, by slide number: the question alone, before the animation that answers it. */
-export const LEADS: Record<string, { VARIANTS: Variant[]; draw: (variant: string) => string }> = { '1': lead01, '2': lead02, '5': lead05 };
+/** Lead pages for the live lecture, by slide number: the question alone, before the animation that answers it (only the
+ *  picked ones, day-picks.ts). */
+const lead = (n: string, m: { VARIANTS: Variant[]; draw: (variant: string) => string }): { VARIANTS: Variant[]; draw: (variant: string) => string } =>
+  ({ VARIANTS: picked(`lead-${n}`, m.VARIANTS), draw: m.draw });
+export const LEADS: Record<string, { VARIANTS: Variant[]; draw: (variant: string) => string }> = { '1': lead('1', lead01), '2': lead('2', lead02), '5': lead('5', lead05) };
 
 /** One page of the pilot: a study page, or a slide's lead page, which comes first and is picked as `lead-<n>`. */
 export interface Page {
@@ -289,7 +293,11 @@ const noTitle = (p: Plate, variant: string): boolean => p.variants.find(v => v.i
 const NOCAP_PAGES = ['C2', 'C10o', 'C11a', 'C12', 'C13', 'C4e', 'C16', 'C17'];
 /** The figure spans the page; no reading column. */
 const wide = (p: Plate, variant: string): boolean => p.variants.find(v => v.id === variant)?.wide ?? false;
-const title = (p: Plate, variant: string): string => (noTitle(p, variant) ? '' : `<h1 class="p-title">${subscripts(p.title)}</h1>`);
+/** Optional slides, for self-study (lecturer, lecture day: "mark slides 27, 28 and 29 as optional"): a soft tag at the end
+ *  of the title line ("above the title is ugly"). */
+const OPTIONAL = ['11', '12', 'C9'];
+const optional = (p: Plate): string => (OPTIONAL.includes(p.n) ? '<span class="p-opt">Optional</span>' : '');
+const title = (p: Plate, variant: string): string => (noTitle(p, variant) ? '' : `<h1 class="p-title">${subscripts(p.title)}${optional(p)}</h1>`);
 /** Each line of a point is one fact: it gets its own block, so a new fact reads apart from a wrapped line. */
 const lines = (s: string): string => s.split(/<br\s*\/?>/).map(l => `<span class="p-line">${l.trim()}</span>`).join('');
 /** A claim stands alone like a small heading, so it drops its full stop. */
@@ -363,4 +371,7 @@ for (const p of PLATES) {
 }
 
 /** Each slide's place in the deck, fixed once the deck is assembled (a solo view may trim PLATES later). */
+// lecture day, last of all the filters above: only the picked figures, deck-wide (day-picks.ts)
+for (const p of PLATES) p.variants = picked(p.pick ?? p.n, p.variants);
+
 const PAGE_NUM = new Map(PLATES.map((p, i) => [p.n, String(i + 1)]));

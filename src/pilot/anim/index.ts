@@ -2,6 +2,7 @@
 // Round 4 (26 Oct 2026): only the two current variants of each are listed, sky E (B, tuned) and D, life F and G (D's
 // windows with C's animals, zoom-in); E and F play 1.15× faster, at the lecturer's request. The earlier variants
 // (sky A–C, life A–D) stay in the code, unlisted.
+import { picked } from '../day-picks';
 import { ANTENNA, CYCLIC, FATES, LEAF, LIFE, PIGMENTS, SKY } from './beats';
 import { STAGING as antennaA } from './antenna-a';
 import { STAGING as antennaB } from './antenna-b';
@@ -250,3 +251,6 @@ export const ANIMATIONS: Animation[] = [
   { key: 'cr14', title: 'Rising CO₂', beats: CR14, stagings: [cr14A, cr14B, cr14C, cr14D] },
   { key: 'cr15', title: 'From leaf to yield', beats: CR15, stagings: [{ ...cr15A, beats: CR15A }, cr15B, cr15C, cr15D] },
 ];
+// lecture day: only the picked stagings, deck-wide (day-picks.ts)
+for (const a of ANIMATIONS) a.stagings = picked(`anim-${a.key}`, a.stagings, true);
+

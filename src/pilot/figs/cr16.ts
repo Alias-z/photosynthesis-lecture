@@ -1,52 +1,51 @@
-// Slide C16 · Improving photosynthesis (slide 26), fourth round, 30 Oct 2026 (lecturer: "Keep only the photorespiration
-// shortcut in potato. Find more research; don't use the ones before, they look ugly"). Four variants, each pairing two
-// 2025–2026 studies from two different approaches; no study appears twice. One big image per study (never stretched: one
-// scale per image; low-resolution photos are not blown up past maxW), a title of ≤ 5 words, at most one number with its
-// measure, a small credit. Every study read on its own full text (PMC / Europe PMC JATS, PMC open-data copy of the
-// figures) on 29 Oct 2026; the figures are the PMC copies (≈ 700–1060 px wide), crops listed per asset.
-//   - Photorespiration shortcut in potato: Lin X … Peng X. Plant Biotechnol J 23:2526–2536 (2 Apr 2025),
-//     doi 10.1111/pbi.70076. GOC bypass; tuber yield per plant +21.3–69.2 % in field trials at several sites.
-//     photos/c16n-potato-goc.jpg (Fig. 2c), window x 12–280, y 28–182. CC BY 4.0.
-//   - Faster stomata: Alvim JC, Alvim MN, Hibberd JM, Harvey M, Blatt MR … Plant Physiol 197:kiaf039 (Feb 2025),
-//     doi 10.1093/plphys/kiaf039. The guard-cell K⁺ channel GROK of the C₄ plant Gynandropsis put into Arabidopsis
-//     speeds stomata; biomass 1.6–1.9-fold under varying light (Results, Fig. 6). c16x-alvim-rosettes.jpg: Fig. 6A, the
-//     varying-light row, GROK and wild type only (x 72–330, y 24–140 of the 750 × 1221 PMC figure). CC BY 4.0.
-//   - Upright leaves: Jaikumar NS … McCoy … Plant Biotechnol J 23:3401 (1 Jun 2025), doi 10.1111/pbi.70150. Down-regulating
-//     the liguleless genes makes sorghum leaves more erect; above-ground biomass ca. +24 % in 2018 and 2020 field plots
-//     (grain ca. +5.5 %). c16x-jaikumar-sorghum.jpg: Fig. 2c (x 0–709, y 640–986). CC BY 4.0.
-//   - More CO₂ channels: Lu … Chen. Plant Biotechnol J 24:4487 (24 Mar 2026), doi 10.1111/pbi.70648. The wheat aquaporins
-//     TaPIP1;6 and TaPIP2;10 carry CO₂ into the cells; overexpression raises photosynthesis and grain yield (abstract,
-//     Fig. 2; no percentage in the text). c16x-lu-wheat.jpg: Fig. 2a, field plots (x 0–709, y 52–305, line labels left
-//     out; groups relabelled: controls, silenced, overexpressed). CC BY-NC-ND 4.0, cropped only.
-//   - Heat-proof RuBisCO activase: Cao … Wang. Plant Biotechnol J (20 Oct 2026, early view), doi 10.1111/pbi.70774. A
-//     heat-inducible activase, RCA1, from a tropical azalea keeps Arabidopsis photosynthesising through heat.
-//     c16x-cao-heat.jpg: Fig. 2B, first two photos (x 48–470, y 502–680 of the 1064 × 1218 figure). CC BY 4.0.
-//   - Light-adapted rice: Li … Deng. Plant Biotechnol J 24:769 (23 Sep 2025), doi 10.1111/pbi.70380. Overexpressing the
-//     thylakoid-lipid enzyme OsMGD1; grain yield +18 % under natural light (+49 % in shade). c16x-li-rice.jpg: Fig. 6A,
-//     natural-light row, WT and three OE lines (x 38–420, y 147–262). CC BY-NC-ND 4.0, cropped only.
-//   - More carboxysomes: Hu … Liu LN. Plant Physiol 201:kiag261 (Jul 2026), doi 10.1093/plphys/kiag261. Overexpressing
-//     β-carboxysome genes in Synechocystis raises carboxysome numbers, photosynthesis and growth. c16x-hu-carboxysomes.jpg:
-//     Fig. 3a, air row, WT and CB OE (green: RuBisCO-GFP in carboxysomes; x 25–535, y 24–275). CC BY 4.0.
-//   - Towards C₄ rice: Cackett L … Hibberd JM. Plant Physiol 197:kiaf108 (2 Apr 2025), doi 10.1093/plphys/kiaf108. Bundle-
-//     sheath-specific OsBZR1 enlarges bundle-sheath chloroplasts by up to 34 % with no growth penalty. c16x-cackett-bs.jpg:
-//     Fig. 4A, bundle-sheath micrographs, null segregant and OE line (x 14–216, y 31–205; the image is small). CC BY 4.0.
-import { shot, type Img, type Shot } from './cr-common';
+// Slide C16 · Improving photosynthesis (slide 26), lecture day, 29 Oct 2026. One wide figure: 8 famous attempts, 2014 →
+// 2025, one window each (lecturer: "way too much example … one sentence each … the picture should be from the
+// publication … not figures and plots … 8 cases throughout the years and most famous one"; then "find better images of
+// those eight famous cases … you can delete all the other variations"). Each window: year, name, one real photo or
+// micrograph from the paper or its press release (never a plot or drawing), one sentence. Every number is the abstract's
+// (Europe PMC records, read 29 Oct 2026). The earlier variants (w2 shelf, w grid, pairs j–m) are in
+// backups/before-c16-w8-only-2026-10-29/cr16.ts.
+//   - 2014 Lin MT … Hanson MR, Nature 513:547, doi 10.1038/nature13776: Synechococcus RuBisCO in tobacco, "higher rates
+//     of CO2 fixation per unit of enzyme"; growth needs elevated CO₂ (full text). c16y-lin-tobacco.jpg (Fig. 3a–c).
+//   - 2016 Kromdijk J … Long SP, Science 354:857, doi 10.1126/science.aai8878: dry matter "about 15%" (abstract), 14–20 %
+//     in the field (Fig. 5A). c16w-kromdijk-field.jpg: RIPE press photo of the same field trial as Fig. 5D, Kromdijk
+//     measuring at lower left (ripe.illinois.edu/node/433, 1280 × 853; crop x 150–1060, y 120–640).
+//   - 2019 South PF … Ort DR, Science 363:eaat9077, doi 10.1126/science.aat9077: biomass ">40% in replicated field
+//     trials" (abstract). cr-south-f3.jpg, Fig. 3A photo only (x 22–770, y 8–316). CC BY 4.0.
+//   - 2020 Gunn LH, Martin Avila E, Birch R, Whitney SM, PNAS 117:25890, doi 10.1073/pnas.2011641117: red-type RuBisCO of
+//     Rhodobacter sphaeroides in tobacco plastids; with its activase RsRca, photosynthesis and growth ">twofold" those of
+//     plants without it (abstract), grown in air + 1 % CO₂ (Fig. 2 legend). c16w-gunn-tobacco.jpg: Fig. 2B photos (x 4–673,
+//     y 141–449 of the 677 × 1259 PMC figure, PMC7568259); shown: the two 34-day photos, without and with the activase,
+//     their lettering cut off. © the authors, for teaching.
+//   - 2022 De Souza AP … Long SP, Science 377:851, doi 10.1126/science.adc9831: the same VPZ genes in soybean, seed yield
+//     "increased by up to 33%" in replicated field trials (abstract). Science figures are bot-checked; c16w-desouza-
+//     canopy.jpg is the RIPE press photo of the soybean canopy (ripe.illinois.edu/node/668, "Allie Arp/RIPE project").
+//   - 2023 Chen T … Liu LN, Nat Commun 14:2118, doi 10.1038/s41467-023-37490-0: α-carboxysomes in tobacco chloroplasts
+//     "support autotrophic growth … at elevated CO2" (abstract). c16-chen-cbx.jpg (Fig. 2d, TEM, red arrows; the full-size
+//     panel of the 1501 × 1524 figure). CC BY 4.0.
+//   - 2024 Tian J … Tian F, Nature (2024), doi 10.1038/s41586-024-07669-6: lac1, upright upper leaves; field trials at
+//     four locations over four years: more grain at high planting density (abstract, Results; no % in the text).
+//     c16w-tian-maize.jpg: Fig. 1a, upper part (x 32–552, y 3–353 of the 2120 × 1153 figure). © Springer Nature.
+//   - 2025 Lin X … Peng X, Plant Biotechnol J 23:2526, doi 10.1111/pbi.70076: GOC bypass in potato, "yield per plant
+//     increased by 21.3%-69.2%" in field trials (abstract). c16n-potato-goc.jpg, Fig. 2c, WT and GOC-1 (the PMC figure,
+//     709 px wide, is the largest copy; the paper has no plant photo). CC BY 4.0.
+// Not used: Wei S … Zhou W 2022, Science 377:eabi8455 (OsDREB1C rice, yield +41.3–68.3 %) and Shao N … 2026, Cell,
+// doi 10.1016/j.cell.2026.05.042 (MBS1 "sunscreen" rice): their figure pages are bot-checked.
+import { shot, type Box, type Img } from './cr-common';
 import type { PlateText, Variant } from '../types';
 import potJpg from '../../assets/photos/c16n-potato-goc.jpg';
-import alvJpg from '../../assets/photos/c16x-alvim-rosettes.jpg';
-import sorJpg from '../../assets/photos/c16x-jaikumar-sorghum.jpg';
-import wheJpg from '../../assets/photos/c16x-lu-wheat.jpg';
-import caoJpg from '../../assets/photos/c16x-cao-heat.jpg';
-import riceJpg from '../../assets/photos/c16x-li-rice.jpg';
-import cbxJpg from '../../assets/photos/c16x-hu-carboxysomes.jpg';
-import bsJpg from '../../assets/photos/c16x-cackett-bs.jpg';
+import lin14Jpg from '../../assets/photos/c16y-lin-tobacco.jpg';
+import kroJpg from '../../assets/photos/c16w-kromdijk-field.jpg';
+import souJpg from '../../assets/photos/cr-south-f3.jpg';
+import cheJpg from '../../assets/photos/c16-chen-cbx.jpg';
+import gunnJpg from '../../assets/photos/c16w-gunn-tobacco.jpg';
+import soyJpg from '../../assets/photos/c16w-desouza-canopy.jpg';
+import tianJpg from '../../assets/photos/c16w-tian-maize.jpg';
 
 export const PLATE: PlateText = {
   n: 'C16',
   title: 'Improving photosynthesis',
   status: 'draft',
-  // 30 Oct 2026 (lecturer: "recent research, after 2024"; "give the impression that it can be done in multiple ways"):
-  // 1 lead, 3 points naming approaches, no method detail, no numbers
   lead: 'There are many ways to improve photosynthesis.',
   points: [
     { claim: 'More light and CO₂ into the leaf.', text: 'Upright leaves, faster stomata and extra CO₂ channels' },
@@ -54,187 +53,137 @@ export const PLATE: PlateText = {
     { claim: 'A sturdier chloroplast, less waste.', text: 'A heat-proof RuBisCO activase, membranes tuned to light, and a photorespiration shortcut' },
   ],
   refs: [
+    { label: 'Lin 2014', url: 'https://doi.org/10.1038/nature13776' },
+    { label: 'Kromdijk 2016', url: 'https://doi.org/10.1126/science.aai8878' },
+    { label: 'South 2019', url: 'https://doi.org/10.1126/science.aat9077' },
+    { label: 'Gunn 2020', url: 'https://doi.org/10.1073/pnas.2011641117' },
+    { label: 'De Souza 2022', url: 'https://doi.org/10.1126/science.adc9831' },
+    { label: 'Chen 2023', url: 'https://doi.org/10.1038/s41467-023-37490-0' },
+    { label: 'Tian 2024', url: 'https://doi.org/10.1038/s41586-024-07669-6' },
     { label: 'Lin 2025', url: 'https://doi.org/10.1111/pbi.70076' },
-    { label: 'Alvim 2025', url: 'https://doi.org/10.1093/plphys/kiaf039' },
-    { label: 'Jaikumar 2025', url: 'https://doi.org/10.1111/pbi.70150' },
-    { label: 'Lu 2026', url: 'https://doi.org/10.1111/pbi.70648' },
-    { label: 'Cao 2026', url: 'https://doi.org/10.1111/pbi.70774' },
-    { label: 'Li 2025', url: 'https://doi.org/10.1111/pbi.70380' },
-    { label: 'Hu 2026', url: 'https://doi.org/10.1093/plphys/kiag261' },
-    { label: 'Cackett 2025', url: 'https://doi.org/10.1093/plphys/kiaf108' },
   ],
 };
 
-// lecture day, last (lecturer: "make slide 26 like slide 20: it is meant to show more cases; no text on the right, each
-// one a display window, a case study"): one wide page, 8 windows; the pairs j–m stay below, unlisted
 export const VARIANTS: Variant[] = [
-  { id: 'w', name: 'w · 8 case studies, one window each, across the page', wide: true },
-];
-export const VARIANTS_PAIRS: Variant[] = [
-  { id: 'j', name: 'j · photorespiration shortcut in potato + faster stomata' },
-  { id: 'k', name: 'k · upright sorghum leaves + more CO₂ channels in wheat' },
-  { id: 'l', name: 'l · heat-proof RuBisCO activase + light-adapted rice' },
-  { id: 'm', name: 'm · more carboxysomes + bigger bundle-sheath chloroplasts' },
+  { id: 'w8', name: 'w8 · 8 famous cases, 2014 → 2025, one line each', wide: true },
 ];
 
 /* ---------------------------------------------------------------- helpers */
 
 type A = 'start' | 'middle' | 'end';
-type Box = [number, number, number, number];
 const f = (v: number): string => (Math.round(v * 10) / 10).toString();
 const T = (x: number, y: number, s: string, cls: string, a: A = 'start'): string =>
   `<text class="${cls}" x="${f(x)}" y="${f(y)}" text-anchor="${a}">${s}</text>`;
+const it = (s: string): string => `<tspan font-style="italic">${s}</tspan>`;
 
-const STYLE = `<style>
-.theme-editorial .fig text.ipx-t{font-size:24px;font-weight:700;fill:#141413}
-.theme-editorial .fig text.ipx-n{font-size:40px;font-weight:800;fill:#141413}
-.theme-editorial .fig text.ipx-m{font-size:16px;font-weight:500;fill:#3d3d3a}
-.theme-editorial .fig text.ipx-c{font-size:12px;font-weight:500;fill:#6b6a64}
-.theme-editorial .fig text.ipx-k{font-size:15px;font-weight:700;fill:#141413}
-.ipx-rule{fill:none;stroke:#d8d5cb;stroke-width:1.2}
-</style>`;
+/* ---------------------------------------------------------------- the 8 cases */
 
-/* ---------------------------------------------------------------- the studies */
-
-interface Paper {
+interface Case8 {
+  year: string;
+  name: string;
   im: Img;
   win?: Box;
-  fig?: boolean;
-  /** Widest the image may be shown (figure units), so low-resolution photos are not blown up. */
-  maxW?: number;
-  title: string[];
-  num?: string;
-  measure: string[];
-  credit: string[];
-  /** Labels set just above the image, at image-pixel x positions. */
-  above?: Array<[number, string]>;
-  say: string;
+  /** Instead of one window: windows of the same image stacked in a column, each with its label (lines) on the right. */
+  panes?: Array<{ win: Box; label: string[] }>;
+  /** The one sentence, broken by hand into lines that fit the window (checked in the browser). */
+  line: string[];
+  /** Labels on the image: [u, v] in image pixels, then the text. */
+  labels?: Array<[number, number, string]>;
 }
+const CASES8: Case8[] = [
+  {
+    year: '2014', name: 'Cyanobacterial RuBisCO', im: { href: lin14Jpg, w: 1051, h: 740 },
+    line: ['Tobacco ran on a faster RuBisCO from', 'cyanobacteria, but the plants grew', 'only in CO₂-rich air.'],
+    labels: [[250, 40, 'wild type'], [800, 245, 'new RuBisCO']],
+  },
+  {
+    year: '2016', name: 'Faster NPQ relaxation', im: { href: kroJpg, w: 910, h: 520 },
+    line: ['Tobacco that relaxes NPQ faster when', 'shade falls made about 15 % more dry', 'matter in field trials.'],
+  },
+  {
+    year: '2019', name: 'Photorespiration bypass', im: { href: souJpg, w: 775, h: 743 }, win: [22, 8, 748, 308],
+    line: ['Rerouting photorespiration inside the', 'chloroplast gave tobacco over 40 %', 'more biomass in field trials.'],
+    labels: [[115, 40, 'wild type'], [450, 40, 'bypass lines']],
+  },
+  {
+    year: '2020', name: 'Red-type RuBisCO', im: { href: gunnJpg, w: 669, h: 308 },
+    panes: [{ win: [0, 42, 332, 124], label: ['RuBisCO', 'alone'] }, { win: [343, 42, 326, 124], label: ['+ its own', 'activase'] }],
+    line: ['Tobacco made a purple bacterium’s', 'RuBisCO; adding its own activase more', 'than doubled growth (in 1 % CO₂).'],
+  },
+  {
+    year: '2022', name: 'Faster NPQ in soybean', im: { href: soyJpg, w: 1000, h: 562 },
+    line: ['The same three genes as in 2016', 'raised soybean seed yield by up to', '33 % in field trials.'],
+  },
+  {
+    year: '2023', name: 'Carboxysomes in tobacco', im: { href: cheJpg, w: 743, h: 624 },
+    line: ['Tobacco chloroplasts packed RuBisCO', 'into bacterial protein shells (red', 'arrows); the plants grew in high CO₂.'],
+  },
+  {
+    year: '2024', name: 'Smart-canopy maize', im: { href: tianJpg, w: 520, h: 350 },
+    line: ['Upright upper leaves let light reach', 'the lower ones, so maize gave more', 'grain when planted densely.'],
+    labels: [[105, 28, 'wild type'], [435, 28, it('lac1')]],
+  },
+  {
+    year: '2025', name: 'Bypass, now in potato', im: { href: potJpg, w: 707, h: 182 }, win: [12, 28, 268, 154],
+    line: ['A photorespiration shortcut in potato', 'chloroplasts raised tuber yield per', 'plant by 21–69 % in field trials.'],
+  },
+];
+const CREDITS8 = [
+  `Images: 2014 Lin et al., ${it('Nature')}, Fig. 3 (© Springer Nature) · 2016 Kromdijk et al., ${it('Science')}: press photo of the field trial, RIPE project · 2019 South et al., ${it('Science')}, Fig. 3A (CC BY 4.0) · 2020 Gunn et al., ${it('PNAS')}, Fig. 2B (© the authors)`,
+  `2022 De Souza et al., ${it('Science')}: press photo of a soybean canopy, Allie Arp/RIPE project · 2023 Chen et al., ${it('Nat. Commun.')}, Fig. 2d (CC BY 4.0) · 2024 Tian et al., ${it('Nature')}, Fig. 1a (© Springer Nature)`,
+  `2025 Lin et al., ${it('Plant Biotechnol. J.')}, Fig. 2c (CC BY 4.0) · images under © shown for teaching only`,
+];
 
-const LIN: Paper = {
-  im: { href: potJpg, w: 707, h: 182 }, win: [12, 28, 268, 154], maxW: 400,
-  title: ['Photorespiration', 'shortcut in potato'],
-  num: '+21.3–69.2 %', measure: ['tuber yield per plant,', 'field trials'],
-  credit: ['Lin et al. 2025, Plant Biotechnol J · Fig. 2c', 'CC BY 4.0'],
-  say: 'Photorespiration shortcut in potato: the tubers of wild-type plants beside the larger harvest of plants with a GOC bypass in the chloroplast; tuber yield per plant up 21.3 to 69.2 percent in field trials. Lin and colleagues 2025, Plant Biotechnology Journal',
-};
-const ALV: Paper = {
-  im: { href: alvJpg, w: 258, h: 116 }, fig: true, maxW: 400,
-  title: ['Faster stomata'],
-  num: '1.6–1.9 ×', measure: ['biomass in varying light,', 'Arabidopsis'],
-  credit: ['Alvim et al. 2025, Plant Physiol · Fig. 6A', 'CC BY 4.0'],
-  above: [[53, 'C₄-plant K⁺ channel'], [190, 'wild type']],
-  say: 'Faster stomata: an Arabidopsis rosette whose guard cells carry a potassium channel from a C4 plant, beside a smaller wild-type rosette; 1.6 to 1.9 times the biomass in varying light. Alvim and colleagues 2025, Plant Physiology',
-};
-const SOR: Paper = {
-  im: { href: sorJpg, w: 709, h: 346 },
-  title: ['Upright leaves', 'share the light'],
-  num: '≈ +24 %', measure: ['above-ground biomass,', 'sorghum field plots'],
-  credit: ['Jaikumar et al. 2025, Plant Biotechnol J · Fig. 2c', 'CC BY 4.0'],
-  above: [[84, 'wild type'], [441, 'upright-leaf lines']],
-  say: 'Upright leaves share the light: wild-type sorghum with drooping leaves beside three lines with more upright leaves; above-ground biomass about 24 percent higher in field plots. Jaikumar and colleagues 2025, Plant Biotechnology Journal',
-};
-const WHE: Paper = {
-  im: { href: wheJpg, w: 709, h: 253 },
-  title: ['More CO₂ channels', 'in wheat'],
-  measure: ['Aquaporins carry CO₂ into the cells;', 'more of them, more grain in the field'],
-  credit: ['Lu et al. 2026, Plant Biotechnol J · Fig. 2a', 'CC BY-NC-ND 4.0'],
-  above: [[118, 'control'], [355, 'silenced'], [591, 'boosted']],
-  say: 'More CO2 channels in wheat: field plots of control wheat, wheat with two aquaporins silenced and wheat with them overexpressed; the aquaporins carry CO2 into the cells and more of them raised grain yield. Lu and colleagues 2026, Plant Biotechnology Journal',
-};
-const CAO: Paper = {
-  im: { href: caoJpg, w: 422, h: 178 },
-  title: ['A heat-proof', 'RuBisCO activase'],
-  measure: ['Arabidopsis after 80 h at 45 °C;', 'WT/RCA1 carries the extra activase'],
-  credit: ['Cao et al. 2026, Plant Biotechnol J · Fig. 2B', 'CC BY 4.0'],
-  say: 'A heat-proof RuBisCO activase: after 80 hours at 45 degrees, an Arabidopsis plant carrying the heat-inducible activase RCA1 from a tropical azalea is still flowering, beside a wilted wild type. Cao and colleagues 2026, Plant Biotechnology Journal',
-};
-const RICE: Paper = {
-  im: { href: riceJpg, w: 382, h: 115 },
-  title: ['Rice tuned to', 'changing light'],
-  num: '+18 %', measure: ['grain yield in natural light;', 'OE: extra thylakoid-lipid enzyme'],
-  credit: ['Li et al. 2025, Plant Biotechnol J · Fig. 6A', 'CC BY-NC-ND 4.0'],
-  say: 'Rice tuned to changing light: wild-type rice beside three lines overexpressing the thylakoid-lipid enzyme OsMGD1; grain yield up 18 percent under natural light. Li and colleagues 2025, Plant Biotechnology Journal',
-};
-const CBX: Paper = {
-  im: { href: cbxJpg, w: 510, h: 251 },
-  title: ['More carboxysomes,', 'the CO₂ traps'],
-  measure: ['green: RuBisCO in carboxysomes,', 'cyanobacterium Synechocystis'],
-  credit: ['Hu et al. 2026, Plant Physiol · Fig. 3a', 'CC BY 4.0'],
-  above: [[124, 'wild type'], [382, 'more carboxysomes']],
-  say: 'More carboxysomes, the CO2 traps: fluorescence images of wild-type cyanobacteria beside cells that build more carboxysomes, the green dots of RuBisCO; photosynthesis and growth improved. Hu and colleagues 2026, Plant Physiology',
-};
-const BS: Paper = {
-  im: { href: bsJpg, w: 202, h: 174 }, maxW: 300,
-  title: ['Bigger bundle-sheath', 'chloroplasts'],
-  num: '+34 %', measure: ['chloroplast area, rice:', 'a step towards C₄ rice'],
-  credit: ['Cackett et al. 2025, Plant Physiol · Fig. 4A', 'CC BY 4.0'],
-  above: [[50, 'control'], [152, 'engineered']],
-  say: 'Bigger bundle-sheath chloroplasts: micrographs of rice bundle-sheath cells, the outlined chloroplasts larger in the engineered line; chloroplast area up to 34 percent larger, a step towards C4 rice. Cackett and colleagues 2025, Plant Physiology',
-};
+/* ---------------------------------------------------------------- 8 windows on one wide page (1340 × 590) */
 
-/* ---------------------------------------------------------------- one study per row, two rows */
-
-/** Image box (figure units) and the text column. */
-const IW = 470, IH = 250, TX = 498, ROW = 306;
-
-function row(p: Paper, y0: number, id: string): string {
-  const [, , uw, vh] = p.win ?? [0, 0, p.im.w, p.im.h];
-  const w = Math.min(IW, p.maxW ?? IW, (IH * uw) / vh), h = (w * vh) / uw;
-  const x = (IW - w) / 2, y = y0 + 32 + (IH - h) / 2;
-  const s = shot(id, p.im, x, y, w, { win: p.win, fig: p.fig });
-  const above = (p.above ?? []).map(([u, l]) => T(s.at(u, 0)[0], y - 8, l, 'ipx-k', 'middle')).join('');
-  const title = p.title.map((l, i) => T(TX, y0 + 62 + i * 30, l, 'ipx-t')).join('');
-  const yN = y0 + 62 + p.title.length * 30 + 34;
-  const yM = p.num ? yN + 28 : yN - 16;
-  return `${s.svg}${above}${title}${p.num ? T(TX, yN, p.num, 'ipx-n') : ''}
-    ${p.measure.map((l, i) => T(TX, yM + i * 20, l, 'ipx-m')).join('')}
-    ${p.credit.map((l, i) => T(TX, y0 + 262 + i * 16, l, 'ipx-c')).join('')}`;
-}
-
-function pair(v: string, a: Paper, b: Paper): string {
-  return `<svg class="fig-svg ip" viewBox="0 0 800 600" role="img" aria-label="Two of the many ways to improve photosynthesis. ${a.say}. ${b.say}.">${STYLE}${row(a, 0, `ipx-${v}-a`)}<path class="ipx-rule" d="M0,${ROW - 10}H800"/>${row(b, ROW, `ipx-${v}-b`)}</svg>`;
-}
-
-/* ---------------------------------------------------------------- w · 8 windows on one wide page (1340 × 590) */
-
-const GW = 1340, GH = 590, COLS = 4, GAP = 12, CW = (GW - (COLS - 1) * GAP) / COLS, CH = (GH - GAP) / 2;
-const WSTYLE = `<style>
-.theme-editorial .fig text.ipw-t{font-size:18px;font-weight:700;fill:#141413}
-.theme-editorial .fig text.ipw-n{font-size:28px;font-weight:800;fill:#a9532f}
-.theme-editorial .fig text.ipw-m{font-size:13.5px;font-weight:500;fill:#3d3d3a}
-.theme-editorial .fig text.ipw-c{font-size:11px;font-weight:500;fill:#6b6a64}
-.theme-editorial .fig text.ipw-k{font-size:12.5px;font-weight:700;fill:#141413;paint-order:stroke;stroke:#fffdf8;stroke-width:4px;stroke-linejoin:round}
-.ipw-card{fill:#fffdf8;stroke:#d9d4c6;stroke-width:1.3}
+const GW = 1340, GH = 590, COLS = 4, GAP = 12, CW = (GW - (COLS - 1) * GAP) / COLS, CH8 = 262, RG8 = 10;
+const ZSTYLE = `<style>
+.theme-editorial .fig text.ipz-y{font-size:21px;font-weight:800;fill:#a9532f}
+.theme-editorial .fig text.ipz-t{font-size:17px;font-weight:700;fill:#141413}
+.theme-editorial .fig text.ipz-s{font-size:15px;font-weight:500;fill:#2f2e2b}
+.theme-editorial .fig text.ipz-c{font-size:12px;font-weight:500;fill:#6b6a64}
+.theme-editorial .fig text.ipz-k{font-size:15px;font-weight:700;fill:#141413;paint-order:stroke;stroke:#fffdf8;stroke-width:4px;stroke-linejoin:round}
+.theme-editorial .fig text.ipz-p{font-size:15px;font-weight:700;fill:#141413}
+.ipz-card{fill:#fffdf8;stroke:#d9d4c6;stroke-width:1.3}
 </style>`;
-/** One case window: the image on top (fitted, never stretched), the approach, its number, what it was measured on. */
-function windowCard(p: Paper, x0: number, y0: number, id: string): string {
-  const PAD = 10, BW = CW - 2 * PAD, BH = 118, TOP = 24;
-  const [, , uw, vh] = p.win ?? [0, 0, p.im.w, p.im.h];
-  const w = Math.min(BW, (p.maxW ?? BW) * 0.8, (BH * uw) / vh), h = (w * vh) / uw;
-  const x = x0 + PAD + (BW - w) / 2, y = y0 + TOP + (BH - h) / 2;
-  const sh = shot(id, p.im, x, y, w, { win: p.win, fig: p.fig });
-  const above = (p.above ?? []).map(([u, l]) => T(sh.at(u, 0)[0], y0 + 18, l, 'ipw-k', 'middle')).join('');
-  const one = p.title.join(' '), title = one.length <= 28 ? [one] : p.title;
-  const yT = y0 + TOP + BH + 24;
-  const tt = title.map((l, i) => T(x0 + PAD + 4, yT + i * 21, l, 'ipw-t')).join('');
-  let yy = yT + (title.length - 1) * 21;
-  const num = p.num ? T(x0 + PAD + 4, (yy += 32), p.num, 'ipw-n') : '';
-  const meas = p.measure.map((l, i) => T(x0 + PAD + 4, yy + 22 + i * 17, l, 'ipw-m')).join('');
-  return `<rect class="ipw-card" x="${f(x0)}" y="${f(y0)}" width="${f(CW)}" height="${f(CH)}" rx="14"/>${sh.svg}${above}${tt}${num}${meas}
-    ${T(x0 + PAD + 4, y0 + CH - 10, p.credit.map(c => c.replace(/\s·\sFig\.\s\S+$/, '')).join(' · '), 'ipw-c')}`;
-}
-function grid(): string {
-  const cases = [LIN, SOR, ALV, WHE, CAO, RICE, CBX, BS];
-  const cards = cases.map((p, i) => windowCard(p, (i % COLS) * (CW + GAP), Math.floor(i / COLS) * (CH + GAP), `ipw-${i}`)).join('');
-  return `<svg class="fig-svg ip" viewBox="0 0 ${GW} ${GH}" role="img" aria-label="Eight recent ways to improve photosynthesis, one window each. ${cases.map(c => c.say).join('. ')}.">${WSTYLE}${cards}</svg>`;
+const PAD = 12, BW = CW - 2 * PAD, BH = 150, TOP = 40;
+
+/** Panes of one image stacked in a column at one scale (never stretched), each with its label to the right. */
+function paneColumn(c: Case8, x0: number, y0: number, id: string): string {
+  const ps = c.panes ?? [], PG = 6, LW = 96;
+  const s = Math.min((BH - PG * (ps.length - 1)) / ps.reduce((a, p) => a + p.win[3], 0), (BW - LW) / Math.max(...ps.map(p => p.win[2])));
+  const totalH = ps.reduce((a, p) => a + p.win[3] * s, 0) + PG * (ps.length - 1), wMax = Math.max(...ps.map(p => p.win[2] * s));
+  const xl = x0 + PAD + (BW - wMax - LW) / 2;
+  let y = y0 + TOP + (BH - totalH) / 2;
+  return ps.map((p, i) => {
+    const w = p.win[2] * s, h = p.win[3] * s;
+    const sh = shot(`${id}-${i}`, c.im, xl, y, w, { win: p.win });
+    const lab = p.label.map((l, k) => T(xl + wMax + 12, y + h / 2 + 5 + (k - (p.label.length - 1) / 2) * 19, l, 'ipz-p')).join('');
+    y += h + PG;
+    return sh.svg + lab;
+  }).join('');
 }
 
-const DRAW: Record<string, () => string> = {
-  w: grid,
-  j: () => pair('j', LIN, ALV),
-  k: () => pair('k', SOR, WHE),
-  l: () => pair('l', CAO, RICE),
-  m: () => pair('m', CBX, BS),
-};
-export const draw = (id: string): string => (DRAW[id] ?? DRAW.w)();
+/** One case window: year and name, the image (fitted, never stretched), the sentence. */
+function caseCard(c: Case8, x0: number, y0: number, id: string): string {
+  let pic: string;
+  if (c.panes) pic = paneColumn(c, x0, y0, id);
+  else {
+    const [, , uw, vh] = c.win ?? [0, 0, c.im.w, c.im.h];
+    const w = Math.min(BW, (BH * uw) / vh), h = (w * vh) / uw;
+    const sh = shot(id, c.im, x0 + PAD + (BW - w) / 2, y0 + TOP + (BH - h) / 2, w, { win: c.win });
+    pic = sh.svg + (c.labels ?? []).map(([u, v, l]) => { const [lx, ly] = sh.at(u, v); return T(lx, ly + 5, l, 'ipz-k', 'middle'); }).join('');
+  }
+  const lines = c.line.map((l, i) => T(x0 + PAD + 2, y0 + TOP + BH + 24 + i * 19, l, 'ipz-s')).join('');
+  return `<rect class="ipz-card" x="${f(x0)}" y="${f(y0)}" width="${f(CW)}" height="${CH8}" rx="14"/>${T(x0 + PAD + 2, y0 + 29, c.year, 'ipz-y')}${T(x0 + 78, y0 + 28, c.name, 'ipz-t')}${pic}${lines}`;
+}
+
+function famous8(): string {
+  const cards = CASES8.map((c, i) => caseCard(c, (i % COLS) * (CW + GAP), Math.floor(i / COLS) * (CH8 + RG8), `ipz-${i}`)).join('');
+  const yc = 2 * CH8 + RG8 + 18;
+  const cr = CREDITS8.map((l, i) => T(0, yc + i * 15, l, 'ipz-c')).join('');
+  const say = CASES8.map(c => `${c.year}, ${c.name}: ${c.line.join(' ')}`).join(' ');
+  return `<svg class="fig-svg ip" viewBox="0 0 ${GW} ${GH}" role="img" aria-label="Eight famous attempts to improve photosynthesis, 2014 to 2025, one window each with a photo from the study. ${say}">${ZSTYLE}${cards}${cr}</svg>`;
+}
+
+export const draw = (_id: string): string => famous8();

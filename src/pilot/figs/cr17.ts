@@ -38,11 +38,11 @@ const COL: Record<string, string> = {
 
 export const PLATE: PlateText = {
   n: 'C17',
-  title: 'Stomata open at night',
+  title: 'Some stomata still open at night',
   status: 'draft',
-  lead: 'Not every plant closes its stomata at night.',
+  lead: 'Not every C₃ plant closes its stomata at night.',
   points: [
-    { claim: 'Stomata ready for the day.', text: 'Some plants open their stomata at night or before dawn' },
+    { claim: 'Stomata ready for the day.', text: 'Some C₃ plants open their stomata at night or before dawn' },
     { claim: 'More CO₂ for RuBisCO.', text: 'Their stomata are already open when the light comes, so CO₂ enters at once' },
     { claim: 'Better photosynthesis during the day.', text: 'They reach full photosynthesis sooner: a benefit prepared overnight (a trend so far)' },
   ],

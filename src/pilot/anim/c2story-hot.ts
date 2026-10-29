@@ -13,11 +13,11 @@
 //     closes the stoma halfway (pore half-width 10 → 5; the CO₂ arrow through the pore thins, 1 of the 4 CO₂ inside fades),
 //     with the sun and a warm tint; the panel's leaf temperature and the balance follow in the same frames (C꜀/Cₐ 0.468 →
 //     0.35, as v3's dry day: 46 → 94); a hold;
-//   3 evening: the status line fades to "2026" while the same driver runs back (3 s): the balance returns to 46. The
-//     thermometer and the lens fade with beat 7's dimming.
+//   no evening: the hot day is the end (lecturer, lecture day: "do not show it cool down back; the end should be RuBisCO
+//     on a hot day, losing carboxylation efficiency"); in beat 7 it stays hot, the thermometer and the lens dim with v3.
 // - The caption changes with every step (STEPS): the age and the RuBisCO of that phase.
 // - Numbers (oxPer100S as v3 calls it; tobacco Γ*, Bernacchi 2001; land-plant S at today's 87.1 = S_PLANT): 2026, 429.55
-//   ppm, leaf 26.5 °C → 46; leaf 35 °C with C꜀/Cₐ 0.35 → 94; evening → 46.
+//   ppm, leaf 26.5 °C → 46; leaf 35 °C with C꜀/Cₐ 0.35 → 94.
 import './c2story-evo.css';
 import { C2STORY5 } from './beats-c2story';
 import { makeV3, markerYa, type LandRubisco, type Today } from './dk-c2story3';
@@ -192,20 +192,18 @@ const BIG = 99;
  *  late: "show the stomata and the temperature meter together, change them in parallel, not sequentially; only the normal
  *  and the high temperature, nothing in between"): after the hold at 2026 both fade in, at today's values (1.2 s); the
  *  status line fades to "2026 · a hot, dry day" while one driver (3 s) heats the leaf and half-closes the stoma at once;
- *  a hold; then the evening: the status line fades back to "2026" while the same driver runs back (3 s). */
+ *  that hot day is the end (no evening). */
 const HD = {
   h0: 8.3,
   inst: [8.4, 9.6] as V,
   st1: [9.8, 10.4, 11.0] as [number, number, number], hot: [10.4, 13.4] as V,
-  h1: 13.5,
-  st2: [13.6, 14.2, 14.8] as [number, number, number], eve: [14.2, 17.2] as V,
 };
 /** Today's air and leaf (v3's state at rest on 2026: the last CO₂ and temperature points); the hot day's leaf; the dry
  *  day's C꜀/Cₐ (as v3's). */
 const CA_TODAY = CO2_D[CO2_D.length - 1][1], TL_TODAY = leafT(T_D[T_D.length - 1][1]), TL_HOT = 35, K_DRY = 0.35;
-/** The one driver at beat-6 time t (s): heat and dryness rise together and fall together in the evening. */
+/** The one driver at beat-6 time t (s): heat and dryness rise together, and stay. */
 function hotAt(t: number): { heat: number; dry: number } {
-  const u = ease2(t, ...HD.hot) * (1 - ease2(t, ...HD.eve));
+  const u = ease2(t, ...HD.hot);
   return { heat: u, dry: u };
 }
 /** The staging's beat and time, set each frame before v3 draws (beat 7's status dims with v3's). */
@@ -217,14 +215,13 @@ const TODAY: Today = {
     return ts < HD.h0 ? null : { ca: CA_TODAY, tl: lerp(TL_TODAY, TL_HOT, heat), k: lerp(CC_CA, K_DRY, dry) };
   },
   status: tv => {
-    if (cur.b >= 7) return ['2026', 1 - 0.45 * ease(cur.t, 0, 1.2)];
+    if (cur.b >= 7) return ['2026 · a hot, dry day', 1 - 0.45 * ease(cur.t, 0, 1.2)];
     const ts = tv * SLOW;
     // each change: the old line fades out, the new one in
     const step = (s: [number, number, number], a: string, b: string): [string, number] =>
       ts < s[1] ? [a, 1 - ease(ts, s[0], s[1])] : [b, ease(ts, s[1], s[2])];
     if (ts < HD.st1[0]) return null;
-    if (ts < HD.st2[0]) return step(HD.st1, '2026', '2026 · a hot, dry day');
-    return step(HD.st2, '2026 · a hot, dry day', '2026');
+    return step(HD.st1, '2026', '2026 · a hot, dry day');
   },
 };
 
@@ -298,12 +295,12 @@ const hotSvg = (): string => `<g class="c2s c3s" data-k="hd">
 const tintSvg = (): string => `<linearGradient id="hd-tg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2a640" stop-opacity="0"/><stop offset=".45" stop-color="#f2a640" stop-opacity=".2"/><stop offset="1" stop-color="#e98a2c" stop-opacity=".26"/></linearGradient>
   <rect data-k="hd-tint" x="0" y="420" width="1600" height="320" style="fill:url(#hd-tg)" opacity="0" display="none"/>`;
 
-/** Draws the day at the staging's beat b, time t (beat 6 only; beat 7: the thermometer and the lens fade with v3's dimming). */
+/** Draws the day at the staging's beat b, time t (beat 6; beat 7 keeps the hot day, the thermometer and the lens dim with v3's status). */
 function bindHot(root: Element, tint: Element): (b: number, t: number) => void {
   const { set, op } = setter(root), tn = setter(tint);
   return (b, t) => {
-    const { heat, dry } = b === 6 ? hotAt(t) : { heat: 0, dry: 0 };
-    const out = b === 7 ? 1 - ease(t, 0, 1.2) : b === 6 ? 1 : 0;
+    const { heat, dry } = b === 6 ? hotAt(t) : b === 7 ? hotAt(Infinity) : { heat: 0, dry: 0 };
+    const out = b === 7 ? 1 - 0.45 * ease(t, 0, 1.2) : b === 6 ? 1 : 0;
     op('hd-th', (b === 6 ? ease(t, ...HD.inst) : 1) * out);
     op('hd-ln', (b === 6 ? ease(t, ...HD.inst) : 1) * out);
     op('hd-sun', heat);
@@ -530,8 +527,7 @@ const STEPS: Array<Array<{ tag: string; say: string }>> = [
   [{ tag: '≈ 100 million years ago', say: 'Dinosaurs: much CO₂, but great heat. Flowering plants (from ≈ 160 million years ago): their RuBisCO improves only slowly.' },
     { tag: '≈ 20,000 years ago', say: 'Ice age: little CO₂, but cold. RuBisCO almost as today.' }],
   [{ tag: '1750 → 2026', say: 'CO₂ rose from 278 to ≈ 430 ppm: with the same RuBisCO, oxygenation fell.' },
-    { tag: 'A hot, dry day', say: 'Leaf at 35 °C, stomata half closed: oxygenation about doubles.' },
-    { tag: 'Evening', say: 'The leaf cools and the stomata open again: back to normal.' }],
+    { tag: 'A hot, dry day', say: 'Leaf at 35 °C, stomata half closed: oxygenation about doubles, so RuBisCO fixes CO₂ less efficiently.' }],
 ];
 const HOT_BEATS = C2STORY5.map((bt, i) => (STEPS[i] ? { ...bt, steps: STEPS[i] } : bt));
 
@@ -546,11 +542,11 @@ const learnSvg = (): string => `<g data-k="learn" opacity="0" class="ce">
 export const STAGING: Staging = {
   id: 'evoRh',
   name: 'evoRh · evoR with a visible hot day',
-  note: 'EvoR, with the 2026 hot day made visible: after 2026, a leaf thermometer rises from 26.5 to 35 °C under a summer sun (oxygenations 46 → 70 per 100 carboxylations); then a stoma in a leaf section closes halfway and less CO₂ gets in (→ 94); in the evening everything returns (→ 46). One step per click.',
+  note: 'EvoR, with the 2026 hot day made visible: after 2026, a leaf thermometer rises from 26.5 to 35 °C under a summer sun (oxygenations 46 → 70 per 100 carboxylations); then a stoma in a leaf section closes halfway and less CO₂ gets in (→ 94); it ends on that hot day. One step per click.',
   beats: HOT_BEATS,
   // a pause after each new RuBisCO form (form II, form I before the small subunit's step, form ID), at the dinosaurs
   // (v3's walk to 100 million years ago ends at 1.8 s), and v3's own in beat 7; v3's times × SLOW
-  holds: [[], [B1.m1[1] + 0.1] /* the beat's end is the stop at cyanobacteria (a second hold there was an empty click) */, [], [B3.m1[1] + 0.1], [B4.fi[1] + 0.1, B4.xf[1] + 0.1], [2.0 * SLOW],  /* beat 5: pauses before leaving the ocean and as land plants arrive (lecturer, 30 Oct 2026) */ [HD.h0, HD.h1], []],
+  holds: [[], [B1.m1[1] + 0.1] /* the beat's end is the stop at cyanobacteria (a second hold there was an empty click) */, [], [B3.m1[1] + 0.1], [B4.fi[1] + 0.1, B4.xf[1] + 0.1], [2.0 * SLOW],  /* beat 5: pauses before leaving the ocean and as land plants arrive (lecturer, 30 Oct 2026) */ [HD.h0], []],
   // only the closing question, centred between the record and the clippings
   keys: [{ beat: 7, text: 'First: how does the leaf turn 3-PGA into sugar?', x: 800, y: 115, size: 42 }],
   svg: () => `${layer('a', stageA())}${layer('v3', stageV3())}${hotSvg()}${recordSvg()}${learnSvg()}`,

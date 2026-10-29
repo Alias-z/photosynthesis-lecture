@@ -35,19 +35,34 @@ function faceG(r: number, k?: string): string {
     + p(`M${R(-0.14)},${R(0.36)}Q0,${R(0.46)} ${R(0.14)},${R(0.36)}`);
   return `<g data-k="${k}-aw">${awake}</g><g data-k="${k}-as" display="none">${asleep}</g>`;
 }
+/** One meaning per face, deck-wide (lecturer, lecture day; co2-kit.ts kidG's faces): neutral (dissolved, as HCO₃⁻ in the
+ *  cytosol) and strained with a sweat drop (trapped: by day, released behind the shut stoma, round RuBisCO). */
+function neutralG(r: number): string {
+  const R = (v: number): string => f(v * r), w = f(Math.max(1.4, r * 0.12)), er = f(Math.max(1.5, r * 0.13));
+  return `<circle cx="${R(-0.36)}" cy="${R(-0.14)}" r="${er}" style="fill:${INK}"/><circle cx="${R(0.36)}" cy="${R(-0.14)}" r="${er}" style="fill:${INK}"/>`
+    + `<path d="M${R(-0.3)},${R(0.36)}Q0,${R(0.5)} ${R(0.3)},${R(0.36)}" style="fill:none;stroke:${INK};stroke-linecap:round;stroke-width:${w}px"/>`;
+}
+function strainedG(r: number): string {
+  const R = (v: number): string => f(v * r), w = f(Math.max(1.4, r * 0.12));
+  const p = (d: string): string => `<path d="${d}" style="fill:none;stroke:${INK};stroke-linecap:round;stroke-linejoin:round;stroke-width:${w}px"/>`;
+  return p(`M${R(-0.56)},${R(-0.34)}L${R(-0.22)},${R(-0.14)}L${R(-0.56)},${R(0.04)}M${R(0.56)},${R(-0.34)}L${R(0.22)},${R(-0.14)}L${R(0.56)},${R(0.04)}`)
+    + p(`M${R(-0.42)},${R(0.42)}l${R(0.14)},${R(-0.12)}l${R(0.14)},${R(0.12)}l${R(0.14)},${R(-0.12)}l${R(0.14)},${R(0.12)}l${R(0.14)},${R(-0.12)}l${R(0.14)},${R(0.12)}`)
+    + `<path d="M${R(0.62)},${R(-1.58)}C${R(0.86)},${R(-1.24)} ${R(0.86)},${R(-1.02)} ${R(0.62)},${R(-1.0)}C${R(0.38)},${R(-1.02)} ${R(0.38)},${R(-1.24)} ${R(0.62)},${R(-1.58)}Z" style="fill:#9cc3dd;stroke:#4f7cac;stroke-width:1.2px"/>`;
+}
 /** Two small z's up and right of a sleeping face (`${k}-z`). */
 const zzG = (k: string, r: number): string => {
   const z = (x: number, y: number, s: number): string => `<text x="${f(x)}" y="${f(y)}" text-anchor="start" style="font-size:${s}px;font-style:italic;font-weight:600;fill:#5d6a8f">z</text>`;
   return `<g data-k="${k}-z" display="none">${z(r * 1.15, -r * 0.7, 14)}${z(r * 1.85, -r * 1.45, 17)}</g>`;
 };
 const C_BALL = (r: number): string => `<circle class="atom atom-C" r="${f(r)}"/>`;
-/** CO₂ with the face on its C (the balls of GLYPH.co2, the C's letter left off). */
-const co2FaceG = (): string => {
+/** CO₂ with the face on its C (the balls of GLYPH.co2, the C's letter left off): awake (smiling, entering through the open
+ *  stoma at night) or strained and sweating (trapped by day). */
+const co2FaceG = (trapped = false): string => {
   const r = 11, d = r * 1.7, o = (x: number): string => `<circle class="atom atom-O" cx="${f(x)}" cy="0" r="${r}"/><text class="cel-att cel-att-O" x="${f(x)}" y="${f(r * 0.42)}" text-anchor="middle">O</text>`;
-  return `${cap(5.4 * r, r)}<g class="chn-g">${o(-d)}${C_BALL(r)}${o(d)}${faceG(r)}</g>`;
+  return `${cap(5.4 * r, r)}<g class="chn-g">${o(-d)}${C_BALL(r)}${o(d)}${trapped ? strainedG(r) : faceG(r)}</g>`;
 };
 /** HCO₃⁻ with the face on its C. */
-const hcoFaceG = (): string => `<circle class="dk-cap" r="30"/>${hco3G(0, 0)}<g class="chn-g">${C_BALL(10.5 * 0.9)}${faceG(10.5 * 0.9)}</g>`;
+const hcoFaceG = (): string => `<circle class="dk-cap" r="30"/>${hco3G(0, 0)}<g class="chn-g">${C_BALL(10.5 * 0.9)}${neutralG(10.5 * 0.9)}</g>`;
 /** Malic acid (C–C–C–C) with the face on its fourth carbon, the one that came from CO₂ (its letter left off). */
 const AR = 11, AW = rowWidth(4, AR), AX3 = -AW / 2 + AR + 3 * AR * 2.15;
 const acidFaceG = (k: string): string => {
@@ -63,13 +78,15 @@ const ACTORS: Actor[] = [
   ...N3.map(i => ({ k: `hco${i}`, g: hcoFaceG(), lab: `HCO₃⁻ ${i}`, dy: 48 })),
   ...N3.map(i => ({ k: `pep${i}`, g: GLYPH.carbon('CCCP'), lab: `PEP ${i}`, dy: 34 })),
   ...N3.map(i => ({ k: `mal${i}`, g: acidFaceG(`mal${i}`), lab: `${i}`, dx: 74, dy: 6, an: 'start' as const })),
-  ...N3.map(i => ({ k: `dco${i}`, g: co2FaceG(), lab: 'CO₂', dy: 32 })),
+  ...N3.map(i => ({ k: `dco${i}`, g: co2FaceG(true), lab: 'CO₂', dy: 32 })),
   ...N3.map(i => ({ k: `pyr${i}`, g: GLYPH.carbon('CCC'), lab: 'pyruvate', dy: 34 })),
   { k: 'h2o', g: `${cap(36)}${h2oG(0, -2)}`, lab: 'H₂O 1', dy: 34 },
   { k: 'h2oL', g: `<g transform="scale(.7)">${h2oG(0, -2)}</g>`, lab: '', dy: 26 },
   { k: 'hp', g: `<g class="chn-g">${hring(0, 0, 12)}</g>` },
   { k: 'starchA', g: starchG(0, 0, 1), lab: 'starch', dy: 6 },
   { k: 'atp', g: GLYPH.atp() }, { k: 'nadph', g: GLYPH.nadph() },
+  // what RuBisCO's carbon becomes: 3 CO₂ fixed, 1 triose phosphate (3 C) out of the chloroplast
+  { k: 'tp', g: GLYPH.carbon('CCCP'), lab: 'triose phosphate', dy: 34 },
 ];
 
 /* ---------------------------------------------------------------- ways (panorama units) */
@@ -82,6 +99,10 @@ const ACID_IN = (i: number): V[] => [add(S.pepc, [20, 30]), ...CAM.acidIn.slice(
 const ACID_OUT = (i: number): V[] => [ACID_AT(i), add(ACID_AT(i), [30, -40]), add(S.camMe, [18, 30])];
 const ME_CO2: V[] = [add(S.camMe, [-34, -8]), ...CAM.meCo2.slice(1, -1), add(S.mRub, [24, 0])];
 const PYR: V[] = [add(S.camMe, [-24, 26]), ...CAM.pyrToStarch.slice(1, -1), add(S.starch, [20, 0])];
+/** The triose phosphate from RuBisCO out through the chloroplast envelope into the cytosol (upper right, clear of the
+ *  vacuole and of the night's PEPC), so the starch is plainly the pyruvate's (lecturer, lecture day: "confusing: does the
+ *  pyruvate make starch, or RuBisCO too?"). */
+const TP_OUT: V[] = [add(S.mRub, [18, -26]), [360, 250], [400, 214], [436, 190]];
 const WATER_OUT: V[] = [...H2O_PATH.slice(0, 5), [20, 396]];
 /** The light's energy: the granum of the mesophyll chloroplast; ATP and NADPH made there wait above it, then go to the
  *  cycle at RuBisCO. */
@@ -121,21 +142,22 @@ const BEATS: Beat[] = [
   { ...LF13[0], steps: [
     { tag: 'Night: stomata open', say: 'At night, CAM plants open their stomata; a little water escapes.' },
     { tag: 'CO₂ into the vacuole', say: 'CO₂ 1 enters; carbonic anhydrase makes HCO₃⁻, and PEPC fixes it to PEP from starch. The C₄ acid goes into the vacuole as malic acid.' },
-    { tag: 'The CO₂ sleeps', say: 'At night there is no light, so no ATP and NADPH for the Calvin–Benson–Bassham cycle: the CO₂ is stored in malic acid until the light supplies the energy.' },
+    { tag: 'Stored as malic acid', say: 'At night there is no light, so no ATP and NADPH for the Calvin–Benson–Bassham cycle: the CO₂ is stored in malic acid until the light supplies the energy.' },
   ] },
-  { ...LF13[1], say: 'Through the night, malic acid builds up in the vacuole: 1 malic acid per CO₂ taken up, its CO₂ asleep. Less water evaporates through the open stomata into the cooler, more humid night air.' },
+  { ...LF13[1], say: 'Through the night, malic acid builds up in the vacuole: 1 malic acid per CO₂ taken up. Less water evaporates through the open stomata into the cooler, more humid night air.' },
   { ...LF13[2], steps: [
     { tag: 'Day: stomata closed', say: 'By day the sun is up and the stomata close, to save water.' },
     { tag: 'Light: ATP and NADPH', say: 'Light now drives the thylakoids: they make ATP and NADPH, the energy that the Calvin–Benson–Bassham cycle needs.' },
-    { tag: 'The CO₂ wakes', say: 'With that energy at hand, the CO₂ stored overnight wakes up.' },
-    { tag: 'Fixed behind closed stomata', say: 'Malic acid leaves the vacuole; malic enzyme releases its CO₂, and RuBisCO fixes it. The cycle uses the ATP and NADPH.' },
-    { tag: 'Back to starch', say: 'Pyruvate goes back to starch, and the light keeps making ATP and NADPH.' },
+    { tag: 'Energy for the stored CO₂', say: 'With ATP and NADPH at hand, the CO₂ stored overnight can now be fixed.' },
+    { tag: 'Fixed behind closed stomata', say: 'All the malic acid leaves the vacuole; malic enzyme releases its CO₂, and RuBisCO fixes it with the ATP and NADPH: 3 CO₂ give 1 triose phosphate, a sugar, which leaves the chloroplast.' },
+    { tag: 'Pyruvate back to starch', say: 'The vacuole is empty. The pyruvate is made back into starch, the store that gives PEP for the next night.' },
   ] },
-  { ...LF13[3], say: 'Over the day the vacuole empties: with ATP and NADPH from the light, RuBisCO fixes the CO₂ taken up the night before.' },
+  // the stored malic acid is spent in one go, in beat 2 (lecturer, lecture day: "spend all the stored malate in one go,
+  // not one by one after each click"): LF13's "the vacuole empties" beat is dropped
   { ...LF13[4], say: 'Per mol of water lost, CAM plants fix 4–10 mmol CO₂; C₃ crops 0.5–1.5, C₄ crops 1–2. About 6–7 % of vascular plants use CAM.' },
 ];
-/** Holds: beat 1 (stoma | CO₂ 1 in | asleep), beat 3 (day | light | wake | fixed | starch). */
-const HOLDS: number[][] = [[4.2, 12.4], [], [2.7, 6.2, 7.3, 13.0], [], []];
+/** Holds: beat 1 (stoma | CO₂ 1 in | stored), beat 3 (day | light | energy | all 3 fixed | starch). */
+const HOLDS: number[][] = [[4.2, 12.4], [], [2.7, 6.2, 7.3, 13.0], []];
 
 /* ---------------------------------------------------------------- the frame */
 /** The CO₂ in malic acid i: asleep s (0 awake … 1 asleep), its z's z. */
@@ -165,7 +187,7 @@ const asleep = (a: Api, i: number): void => { a.put(`mal${i}`, ACID_AT(i - 1), 1
 /** Day release of malic acid i from t0 (it woke before): to malic enzyme, the CO₂ to RuBisCO, pyruvate to starch; slow:
  *  one after another, with ATP and NADPH used once the CO₂ is fixed. Returns when the CO₂ is fixed and when the pyruvate
  *  reaches the starch. */
-function day(a: Api, t: number, i: number, t0: number, slow: boolean): { ru: number; st: number } {
+function day(a: Api, t: number, i: number, t0: number, slow: boolean, lab = slow): { ru: number; st: number } {
   const k = (s: number): number => t0 + s * (slow ? 1 : 0.62);
   const me = k(1.8), ru = k(3.4), st = slow ? ru + 3.6 : k(3.6), p0 = slow ? ru + 2.3 : me + 0.05;
   face(a, i, 0, 0);
@@ -174,10 +196,10 @@ function day(a: Api, t: number, i: number, t0: number, slow: boolean): { ru: num
   a.op(`mal${i}-l`, 1 - ease(t, t0, t0 + 0.8));
   flash(a, t, me, S.camMe);
   if (t > me && t < ru + 0.3) a.put(`dco${i}`, glide(ME_CO2, t, me + 0.05, ru), ease(t, me, me + 0.2) * (1 - ease(t, ru, ru + 0.2)));
-  a.op(`dco${i}-l`, slow ? ease(t, me + 0.4, me + 1.2) : 0);
+  a.op(`dco${i}-l`, lab ? ease(t, me + 0.4, me + 1.2) : 0);
   flash(a, t, ru + 0.1, S.mRub, 'fl2');
   if (t > me && t < st + 0.3) a.put(`pyr${i}`, glide(PYR, t, p0, st), ease(t, me, me + 0.2) * (1 - ease(t, st, st + 0.2)));
-  a.op(`pyr${i}-l`, slow ? ease(t, me + 0.5, me + 1.3) : 0);
+  a.op(`pyr${i}-l`, lab ? ease(t, me + 0.5, me + 1.3) : 0);
   return { ru, st };
 }
 /** ATP and NADPH: made at the lit granum (from t0, one after the other) and waiting there. */
@@ -195,7 +217,7 @@ function frame(a: Api, beat: number, t: number): void {
   a.op('clk', 1); a.op('moon', nightU); a.op('sun', 1 - nightU);
   a.txt('clk-t', nightU > 0.5 ? 'night' : 'day'); a.txt('clk-s', open > 0.5 ? 'stomata open' : 'stomata closed');
   // the starch granule: full at dusk, smaller after the night, full again by the end of the day
-  const st = beat === 0 ? lerp(1, 0.75, ease(t, 6.7, 7.7)) : beat === 1 ? lerp(0.75, 0.35, ease(t, 0.2, 4.0)) : beat === 2 ? lerp(0.35, 0.6, ease(t, 14.4, 15.2)) : beat === 3 ? lerp(0.6, 1, ease(t, 2.4, 5.0)) : 1;
+  const st = beat === 0 ? lerp(1, 0.75, ease(t, 6.7, 7.7)) : beat === 1 ? lerp(0.75, 0.35, ease(t, 0.2, 4.0)) : beat === 2 ? lerp(0.35, 1, ease(t, 14.4, 16.0)) : 1;
   a.put('starchA', S.starch, 1, 0.45 + 0.55 * st);
   // the light's energy: by day the thylakoids lit, ATP and NADPH made there (beat 3), used for CO₂ 3, made again
   a.op('thyl', beat < 2 ? 0 : beat === 2 ? ease(t, 2.8, 3.6) : 1);
@@ -206,34 +228,35 @@ function frame(a: Api, beat: number, t: number): void {
   }
   if (beat === 1) { asleep(a, 1); night(a, t, 2, 0.2, false); night(a, t, 3, 1.4, false); }
   if (beat === 2) {
-    asleep(a, 1); asleep(a, 2);
     tags(a, t, 3.8);
-    // the CO₂ in malic acid 3 wakes, then leaves
-    if (t < 7.4) { a.put('mal3', ACID_AT(2), 1); a.op('mal3-l', 1); face(a, 3, 1 - ease(t, 6.3, 7.1), 1 - ease(t, 6.3, 7.1)); }
-    else {
-      const d = day(a, t, 3, 7.4, true);
-      // the Calvin–Benson–Bassham cycle uses the ATP and NADPH; the light makes new ones once the pyruvate is in
-      if (t > d.ru + 0.3) {
-        const u0 = d.ru + 0.4, used = 1 - ease(t, u0 + 0.8, u0 + 1.6);
-        if (t < d.st + 0.9) { a.put('atp', glide(ATP_USE, t, u0, u0 + 1.2), used, TAG); a.put('nadph', glide(NADPH_USE, t, u0, u0 + 1.2), used, TAG); }
-        else tags(a, t, d.st + 1.0, 0);
-      }
+    // all 3 stored CO₂ get their faces back at once, then all 3 malic acids leave together (0.3 s apart, so they read as
+    // one stream; malic acid 3 carries the labels; the flashes are its, the first)
+    const T0 = 7.4, GAP = 0.3, ds = [1, 2, 3].map(i => {
+      const t0 = T0 + (3 - i) * GAP;
+      if (t < t0) { a.put(`mal${i}`, ACID_AT(i - 1), 1); a.op(`mal${i}-l`, 1); face(a, i, 1 - ease(t, 6.3, 7.1), 1 - ease(t, 6.3, 7.1)); return null; }
+      return day(a, t, i, t0, true, i === 3);
+    });
+    // the Calvin–Benson–Bassham cycle uses the ATP and NADPH as it fixes the CO₂, in the same window (lecturer, lecture day:
+    // "why do ATP and NADPH go after the CO₂ is fixed? They go at the same time"): they leave the granum as the first CO₂
+    // leaves malic enzyme, reach RuBisCO with it, and are used up while the 3 CO₂ are fixed; the light makes new ones
+    // once the last pyruvate is in
+    const go = T0 + 1.8, fix0 = T0 + 3.4, fix1 = T0 + 2 * GAP + 3.4, last = fix1 + 3.6;
+    // the 3 CO₂ fixed give 1 triose phosphate, which leaves the chloroplast before the pyruvate goes back to starch
+    if (t > fix1) { a.put('tp', glide(TP_OUT, t, fix1 + 0.2, fix1 + 1.5), ease(t, fix1, fix1 + 0.8)); a.op('tp-l', ease(t, fix1 + 0.6, fix1 + 1.4)); }
+    if (ds[2] && t > go) {
+      const used = 1 - ease(t, fix0, fix1 + 0.5);
+      if (t < last + 0.9) { a.put('atp', glide(ATP_USE, t, go, fix0), used, TAG); a.put('nadph', glide(NADPH_USE, t, go, fix0), used, TAG); }
+      else tags(a, t, last + 1.0, 0);
     }
   }
-  if (beat === 3) {
-    tags(a, t, -10);
-    face(a, 2, 1 - ease(t, 0.2, 1.0), 1 - ease(t, 0.2, 1.0)); face(a, 1, 1 - ease(t, 0.2, 1.0), 1 - ease(t, 0.2, 1.0));
-    if (t < 1.2) { a.put('mal2', ACID_AT(1), 1); a.op('mal2-l', 1); } else day(a, t, 2, 1.2, false);
-    if (t < 1.2) { a.put('mal1', ACID_AT(0), 1); a.op('mal1-l', 1); } else day(a, t, 1, 2.5, false);
-  }
-  if (beat === 4) tags(a, t, -10);
+  if (beat === 3) tags(a, t, -10);
   // the ledger
   const vis = (b: number, t0: number): number => (beat > b ? 1 : beat === b ? ease(t, t0, t0 + 0.8) : 0);
   panelShow(a, 'panel', ROWS, { r0: vis(0, 0.2), r1: vis(0, 10.0), r2: vis(2, 9.2), r3: vis(0, 11.4) });
-  const nm = beat === 0 ? Number(t > 11.8) : beat === 1 ? 1 + Number(t > 0.2 + 4.4 * 0.62 + 0.2) + Number(t > 1.4 + 4.4 * 0.62 + 0.2) : beat === 2 ? 3 - Number(t > 7.7) : beat === 3 ? 2 - Number(t > 1.5) - Number(t > 2.8) : 0;
+  const nm = beat === 0 ? Number(t > 11.8) : beat === 1 ? 1 + Number(t > 0.2 + 4.4 * 0.62 + 0.2) + Number(t > 1.4 + 4.4 * 0.62 + 0.2) : beat === 2 ? 3 - Number(t > 7.7) - Number(t > 8.0) - Number(t > 8.3) : 0;
   a.txt('n-mal', String(nm));
-  a.op('malL', nm > 0 && beat < 4 ? 1 : 0);
-  a.op('card', beat === 4 ? ease(t, 0.2, 1.0) : 0);
+  a.op('malL', nm > 0 && beat < 3 ? 1 : 0);
+  a.op('card', beat === 3 ? ease(t, 0.2, 1.0) : 0);
 }
 
 const NIGHT: LPart[] = ['stoma', 'cam-n', 'ca', 'pepc', 'pep-starch', 'vac', 'm-cp'];
@@ -242,8 +265,8 @@ const DAY: LPart[] = ['stoma', 'vac', 'cam-d', 'cam-me', 'm-cp', 'm-rub'];
 export const STAGING: Staging = {
   ...makeLeafStaging({
     id: 'lf13m2',
-    name: 'm2 · One cell, night and day: the CO₂ sleeps in the vacuole; by day light makes ATP and NADPH first',
-    note: 'lf13m polished: by night CO₂ 1–3 → HCO₃⁻ → PEPC → malic acid 1–3 into the vacuole, where each CO₂ falls asleep; by day the thylakoids light up and make ATP and NADPH, then the CO₂ wakes, malic acid → malic enzyme → CO₂ → RuBisCO, the ATP and NADPH used; water-use efficiency card',
+    name: 'm2 · One cell, night and day: CO₂ stored as malic acid in the vacuole; by day light makes ATP and NADPH first',
+    note: 'lf13m polished: by night CO₂ 1–3 → HCO₃⁻ → PEPC → malic acid 1–3 into the vacuole (drawn asleep); by day the thylakoids light up and make ATP and NADPH, then all 3 malic acids leave at once: malic enzyme → CO₂ → RuBisCO, the ATP and NADPH used; water-use efficiency card',
     beats: BEATS,
     holds: HOLDS,
     leaf: { noGuard: true, acid: 2, hide: ['m-perox', 'm-mito', 'ppdk', 'me', 'bs-rub', 'bs-mito', 'starch'] },
@@ -252,7 +275,7 @@ export const STAGING: Staging = {
     hud: () => `${panelSvg('panel', PX, PY, PW, ROWS)}${clock()}${card()}`,
     cam: { s: 1.16, c: [0, 20], at: [10, 6] },
     clip: [0, 0, 712, 740],
-    lit: [NIGHT, NIGHT, DAY, DAY, DAY],
+    lit: [NIGHT, NIGHT, DAY, DAY],
     frame,
   }),
   // no key lines: no closing question on the animations of slide 21 on (player.ts NOQ_KEYS)

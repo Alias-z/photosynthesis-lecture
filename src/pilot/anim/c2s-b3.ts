@@ -13,9 +13,10 @@
 // - The essence (lecturer, 30 Oct 2026: "in C₃ only about a quarter is recaptured; in C₂ it bounces around, cannot
 //   escape, a little leaks out"): 4 CO₂ characters (slide 19's, co2-kit.ts kidG, each labelled "CO₂") per leaf, released
 //   by the mitochondria one after the other; each takes a fixed, seeded bouncing walk (eased; one moves at a time).
-//   C₃: 3 reach the air space and leave (glad), 1 touches the chloroplast and is caught (flash at RuBisCO, strained).
+//   C₃: 3 reach the air space and leave (glad), 1 touches the chloroplast and is caught (flash at RuBisCO; neutral: just fixed).
 //   C₂: the walks bounce between the vein-side wall and the real chloroplasts; 3 are caught on a chloroplast (flash,
-//   strained, they stay), the last slips out through the gap at the cell's corner (glad). Then each leaf's pill, the
+//   they stay), the last slips out through the gap at the cell's corner; trapped in the bundle sheath they are strained and
+//   sweating from their release, the one that slips out turns glad as it leaves (one meaning per face, lecture day). Then each leaf's pill, the
 //   C₂ chloroplast band glows, then the question (anim/player.ts, after the motion).
 // - Glycine is dk-rf6's glyph (R = 11), at the strip's scale; in C₂ it comes from the mesophyll cell (top right) through
 //   the wall and along the cell's rim to the mitochondria (it travels in the cytoplasm, not across the vacuole).
@@ -229,7 +230,7 @@ const RUN3: Run[] = [
   { p: walk([[1088, 196], [1120, 222], [1070, 230], [1150, 232], [1196, 238], [1232, 244]], 73), t0: 3.0 + 3 * STEP, end: 'out', glad: () => 1 },
 ];
 /** C₂: released among the real mitochondria on the vein-side wall; each bounces between the wall and the chloroplasts
- *  beside it and stays there, caught at a chloroplast (flash, strained): a crowd of CO₂ at the mitochondria, trapped.
+ *  beside it and stays there, caught at a chloroplast (flash): a crowd of CO₂ at the mitochondria, trapped (strained, sweating).
  *  The last slips out through the gap at the cell's lower corner. Crowd spots: 2 staggered columns, the first on the
  *  mitochondria (x 1040), the second on the chloroplasts beside them (x 1084), 36 px apart so no name covers a CO₂. */
 const T4 = 4.0;
@@ -242,16 +243,18 @@ const RUN2: Run[] = [
   }),
   { p: walk([[1040, 532], [1058, 546], [1046, 558], [1060, 572], [1066, 596]], 97, 3), t0: T4 + SPOT.length * STEP, end: 'out', glad: () => 1 },
 ];
-/** The CO₂'s state at t (s into its beat): place, opacity, face. Caught ones turn strained as they stop; escaped ones
- *  turn glad over their last second. In C₂ the one that slips out fades as it leaves the view (FADE s). */
-interface Kid { at: V; o: number; s?: number; h?: number }
+/** The CO₂'s state at t (s into its beat): place, opacity, face. C₃ (fadeOut false): escaped ones turn glad over their
+ *  last second, the refixed one stays neutral. C₂ (fadeOut true): trapped in the bundle sheath, strained and sweating from
+ *  the release; the one that slips out turns glad as it leaves and fades as it leaves the view (FADE s). */
+interface Kid { at: V; o: number; s?: number; h?: number; sweat?: number }
 const walkT = (r: Run): number => r.t0 + FADE;
 const catchT = (r: Run): number => walkT(r) + WALK;
 function kidOf(r: Run, t: number, fadeOut = false): Kid | undefined {
   if (t < r.t0) return undefined;
   const tc = catchT(r), at = r.p(ease(t, walkT(r), tc));
   const o = ease(t, r.t0, r.t0 + FADE) * (fadeOut && r.end === 'out' ? 1 - ease(t, tc - FADE, tc) : 1);
-  return { at, o, h: r.end === 'out' ? ease(t, tc - 0.9, tc + 0.1) * r.glad(at, 1) : 0, s: r.end === 'caught' ? ease(t, tc - 0.2, tc + 0.6) : 0 };
+  if (fadeOut) { const h = r.end === 'out' ? ease(t, tc - 0.9, tc - 0.45) : 0; return { at, o, h, s: 1 - h, sweat: 1 - h }; }
+  return { at, o, h: r.end === 'out' ? ease(t, tc - 0.9, tc + 0.1) * r.glad(at, 1) : 0, s: 0 };
 }
 
 /** c2sb3 draws no build-up (c2sb4 adds the CO₂ level in the C₂ bundle sheath). */
@@ -419,7 +422,7 @@ export const STAGING: Staging = {
         const s = q.s ?? 0, h = q.h ?? 0;
         A(key, 'transform', `translate(${f(q.at[0])} ${f(q.at[1])})`);
         A(`${key}-fn`, 'opacity', Math.max(0, 1 - s - h)); A(`${key}-fs`, 'opacity', s); A(`${key}-fh`, 'opacity', h);
-        A(`${key}-sw`, 'opacity', 0); A(`${key}-sh`, 'opacity', 0); A(`${key}-l`, 'opacity', 1);
+        A(`${key}-sw`, 'opacity', q.sweat ?? 0); A(`${key}-sh`, 'opacity', 0); A(`${key}-l`, 'opacity', 1);
       }
       // the catch flashes, on the chloroplast where RuBisCO takes the CO₂
       RUN3.forEach((r, i) => { if (r.end === 'caught') A(`${P}-fa${i}`, 'opacity', beat === 2 ? flashO(r, t) : 0); });

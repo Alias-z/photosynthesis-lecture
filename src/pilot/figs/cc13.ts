@@ -62,7 +62,7 @@ export const VARIANTS: Variant[] = [
   { id: 'p1', name: 'Succulent leaf section: one cell magnified at night and by day' },
   { id: 'p2', name: 'C₄ in space (maize, 2 cells) beside CAM in time (1 cell, night and day)' },
   // 29 Oct 2026, from the picked animation lf13m (lecturer: "make more variants of the slide as well")
-  { id: 'r1', name: 'The animation\'s cell, night | day: CO₂ asleep in the vacuole; light energy, then RuBisCO' },
+  { id: 'r1', name: 'The animation\'s cell, night | day: CO₂ stored as malic acid in the vacuole; light energy, then RuBisCO' },
   { id: 'r2', name: 'The animation\'s cell under a 24-hour band: night steps 1–2, day steps 3–4' },
   { id: 'v1', name: 'Day–night CO₂ uptake of Kalanchoë with the four CAM phases (Borland 2009)', anim: true },
   { id: 'v2', name: 'Agave: young leaf (C₃) vs mature leaf (CAM) over 24 h (Abraham 2016)' },
@@ -287,10 +287,11 @@ const pepcImg = (c: Pt, w: number, idle = false): string =>
 const rubImg = (c: Pt, w: number, idle = false): string =>
   `<image href="${idle ? rubGPng : rubPng}" x="${f(c[0] - w / 2)}" y="${f(c[1] - (w * RUB_AR) / 2)}" width="${f(w)}" height="${f(w * RUB_AR)}"${idle ? ' opacity=".55"' : ''}/>`;
 
-/** The CO₂ character of slide 19 standing still: one face (n neutral, h glad), its name above unless lab is ''. */
-function kidAt(k: string, at: Pt, r: number, face: 'n' | 'h', lab = 'CO₂'): string {
+/** The CO₂ character of slide 19 standing still: one face (n neutral, h glad: moving freely, s strained and sweating:
+ *  trapped), its name above unless lab is ''. */
+function kidAt(k: string, at: Pt, r: number, face: 'n' | 'h' | 's', lab = 'CO₂'): string {
   let s = kidG(k, r, lab, -r - 12).replace(' data-actor="1" display="none"', ` transform="translate(${f(at[0])} ${f(at[1])})"`);
-  const off = ['fn', 'fs', 'fh', 'sw', 'sh'].filter(q => q !== (face === 'n' ? 'fn' : 'fh'));
+  const off = ['fn', 'fs', 'fh', 'sw', 'sh'].filter(q => q !== `f${face}` && !(face === 's' && q === 'sw'));
   for (const q of off) s = s.replace(`<g data-k="${k}-${q}">`, `<g data-k="${k}-${q}" display="none">`);
   return s;
 }
@@ -428,7 +429,7 @@ function p2(): string {
       ${badge(bs, rubImg(bs, 50))}${badge(ms, pepcImg(ms, 54))}
       ${acid([(bs[0] + ms[0]) / 2 + 2, ms[1] + 30])}${lab((bs[0] + ms[0]) / 2 + 2, ms[1] + 58, 'C₄ acid', 'cel-mn cel-halo')}
       ${lab(bs[0], bs[1] - 44, 'RuBisCO')}${lab(ms[0], ms[1] - 44, 'PEPC')}
-      ${kidAt(`${p}-ka`, [ms[0] + 70, ms[1] - 80], 9, 'n')}
+      ${kidAt(`${p}-ka`, [ms[0] + 70, ms[1] - 80], 9, 'h')}
       ${ring(cell, 128 * kb, 134 * kb, TEAL)}
       ${routeOnPhoto(p, 'c', `M${f(cp[0] - 82)},${f(cp[1] - 66)} L${f(cp[0] - 28)},${f(cp[1] - 24)}`)}
       ${routeOnPhoto(p, 'm', `M${f(cp[0] + 4)},${f(cp[1] + 36)} Q${f(cp[0] + 10)},${f(ca[1] - 10)} ${f(ca[0] - 34)},${f(ca[1])}`)}
@@ -436,7 +437,7 @@ function p2(): string {
       ${badge(cp, pepcImg(cp, 54))}${badge(cr, rubImg(cr, 50))}
       ${acid(ca)}${lab(ca[0], ca[1] + 34, 'malic acid', 'cel-mn cel-halo')}${lab(ca[0], ca[1] + 58, 'vacuole')}
       ${lab(cp[0], cp[1] - 44, 'PEPC')}${lab(cr[0], cr[1] - 44, 'RuBisCO')}
-      ${kidAt(`${p}-kb`, [cp[0] - 96, cp[1] - 80], 9, 'n')}
+      ${kidAt(`${p}-kb`, [cp[0] - 96, cp[1] - 80], 9, 'h')}
     </g>
     ${pill(200, 508, 'C₄: 2 cells, separated in <tspan font-weight="700">space</tspan>', undefined, { tint: true })}
     ${pill(600, 508, 'CAM: 1 cell, separated in <tspan font-weight="700">time</tspan>', undefined, { tint: true })}
@@ -514,7 +515,7 @@ function nightLabels(P: (q: Pt) => Pt, p: string): string {
   const v0 = P([VCX, VAC[1]])[1];
   const vx = P([VCX - 10, 0])[0];
   return `${lab(P([PORE[0], 272])[0], P([0, 272])[1], 'stoma')}
-    ${kidAt(`${p}-kn`, P([200, 214]), 9, 'n')}
+    ${kidAt(`${p}-kn`, P([200, 214]), 9, 'h')}
     ${at(P([452, 96]), `<circle class="dk-cap" r="28"/>${hco3G(0, 0)}`)}${lab(P([452, 96])[0], P([452, 96])[1] + 40, 'HCO₃⁻', 'cel-mn cel-halo')}
     ${lab(P([484, 0])[0], P([0, 190])[1], 'PEPC', 'co2k-il cel-halo', 'end')}
     ${at(P([508, 300]), GLYPH.carbon('CCCC'))}${lab(P([508, 0])[0], P([0, 300])[1] - 24, 'C₄ acid', 'cel-mn cel-halo')}
@@ -528,7 +529,7 @@ function dayLabels(P: (q: Pt) => Pt, p: string): string {
   const tags = `<g transform="translate(-34 0)">${GLYPH.atp()}</g>${T(0, 6, '+', 'co2k-il')}<g transform="translate(48 0)">${GLYPH.nadph()}</g>`;
   return `${lab(P([PORE[0], 286])[0], P([0, 286])[1], 'stoma')}
     ${acidFace([P([VCX, 0])[0], v0 - 6], 9.6, false)}${lab(P([VCX, 0])[0], v0 + 26, 'malic acid', 'cel-mn cel-halo')}
-    ${kidAt(`${p}-kd`, P([438, 334]), 9, 'h')}
+    ${kidAt(`${p}-kd`, P([438, 334]), 9, 's')}
     ${acidFace([vx, v0 + 54], 9.6, false)}${lab(P([VCX, 0])[0], v0 + 96, 'vacuole', 'co2k-il cel-halo')}
     ${lab(P([CPX, 0])[0], P([0, 290])[1], 'RuBisCO', 'co2k-il cel-halo')}
     ${at(P([CPX + 6, 446]), tags, 0.86)}${lab(P([CPX, 0])[0], P([0, 446])[1] + 30, 'light energy', 'cel-mn cel-halo')}
@@ -540,7 +541,7 @@ function r1(): string {
   const p = 'fcc13r1', s = 388 / LWIN[2], y0 = 92;
   const n = lfCell(`${p}-n`, true, 8, y0, s, `${granaL(false, p)}${NIGHT_ARROWS}`);
   const d = lfCell(`${p}-d`, false, 404, y0, s, `${granaL(true, p)}${DAY_ARROWS}`);
-  return svg('The same mesophyll cell of a CAM plant twice, as in the animation: the epidermis with a stoma on the left, the air space, the cell with its chloroplast, the cytosol and the vacuole. Left, night, darker, a moon: the stoma is open; CO2 enters, becomes HCO3- and is fixed by PEPC into a C4 acid, which goes into the vacuole as malic acid; there the CO2 sleeps, a sleeping face with small z on the acid. RuBisCO is grey, idle. Right, day, a sun: the stoma is shut; the thylakoids in the chloroplast glow with light and give ATP and NADPH; the CO2 wakes, its malic acid leaves the vacuole and releases it, and it goes to RuBisCO. PEPC is grey, idle.', `
+  return svg('The same mesophyll cell of a CAM plant twice, as in the animation: the epidermis with a stoma on the left, the air space, the cell with its chloroplast, the cytosol and the vacuole. Left, night, darker, a moon: the stoma is open; CO2 enters, becomes HCO3- and is fixed by PEPC into a C4 acid, which goes into the vacuole as malic acid, drawn with a sleeping face and small z. RuBisCO is grey, idle. Right, day, a sun: the stoma is shut; the thylakoids in the chloroplast glow with light and give ATP and NADPH; its malic acid leaves the vacuole and releases the CO2, which goes to RuBisCO. PEPC is grey, idle.', `
     ${heads(p)}<defs>${glowDefs(p)}</defs>
     <g class="dk1 co2k">
       ${moonG([30, 58], 14)}${T(54, 68, 'night', 'fcc-h', 'start')}${T(126, 68, 'stoma open', 'fcc-l', 'start')}
@@ -566,7 +567,7 @@ function r2(): string {
   const step = (x: number, k: number, night: boolean, l1: string, l2: string): string =>
     `${num([x, by + 54], k, night)}${T(x + 20, by + 59, l1, 'co2k-il', 'start').replace('<text', '<text style="font-size:14px"')}${T(x + 20, by + 79, l2, 'co2k-il', 'start').replace('<text', '<text style="font-size:14px"')}`;
   const tags = `<g transform="translate(-34 0)">${GLYPH.atp()}</g>${T(0, 6, '+', 'co2k-il')}<g transform="translate(48 0)">${GLYPH.nadph()}</g>`;
-  return svg('A band above one mesophyll cell of a CAM plant shows 24 hours: the night half on the left, darker, with a moon; the day half on the right with a sun; an arrow runs from dusk through the night to dawn and through the day to dusk, then back to the next night. Night: 1, the stoma is open and CO2 enters; 2, PEPC fixes it into a C4 acid, stored as malic acid in the vacuole, where the CO2 sleeps. Day: 3, the stoma is shut and light gives the thylakoids the energy, ATP and NADPH; 4, the CO2 wakes, leaves the vacuole and is fixed by RuBisCO. The numbers sit on the cell where each step happens.', `
+  return svg('A band above one mesophyll cell of a CAM plant shows 24 hours: the night half on the left, darker, with a moon; the day half on the right with a sun; an arrow runs from dusk through the night to dawn and through the day to dusk, then back to the next night. Night: 1, the stoma is open and CO2 enters; 2, PEPC fixes it into a C4 acid, stored as malic acid in the vacuole (drawn with a sleeping face). Day: 3, the stoma is shut and light gives the thylakoids the energy, ATP and NADPH; 4, the malic acid leaves the vacuole and releases its CO2, which RuBisCO fixes. The numbers sit on the cell where each step happens.', `
     ${heads(p)}<defs>${glowDefs(p)}</defs>
     <g class="dk1 co2k">
       <rect x="${bx0}" y="${by}" width="${bm - bx0}" height="${bh}" rx="12"${sty(`fill:${NIGHT}`)}/><rect x="${bm}" y="${by}" width="${bx1 - bm}" height="${bh}" rx="12"${sty(`fill:${DAY}`)}/>
@@ -575,16 +576,16 @@ function r2(): string {
       ${sun([bm + 26, by + 22], 10)}${T(bm + 52, by + 29, 'day', 'co2k-ilb', 'start')}
       ${T(bx0 + 10, by + bh + 22, 'dusk', 'co2k-il', 'start')}${T(bm, by + bh + 22, 'dawn', 'co2k-il')}${T(bx1 - 10, by + bh + 22, 'dusk', 'co2k-il', 'end')}
       ${arrow([[bx0 + 56, by + bh + 16], [bm - 30, by + bh + 16]], 'c', { thin: true })}${arrow([[bm + 30, by + bh + 16], [bx1 - 50, by + bh + 16]], 'c', { thin: true })}
-      ${step(bx0 + 18, 1, true, 'stoma open:', 'CO₂ in → PEPC')}${step(bx0 + 196, 2, true, 'malic acid stored;', 'CO₂ asleep')}
-      ${step(bm + 18, 3, false, 'stoma shut; light:', 'ATP + NADPH')}${step(bm + 196, 4, false, 'CO₂ wakes:', 'vacuole → RuBisCO')}
+      ${step(bx0 + 18, 1, true, 'stoma open:', 'CO₂ in → PEPC')}${step(bx0 + 196, 2, true, 'malic acid stored', 'in the vacuole')}
+      ${step(bm + 18, 3, false, 'stoma shut; light:', 'ATP + NADPH')}${step(bm + 196, 4, false, 'malic acid → CO₂', '→ RuBisCO')}
       ${c.svg}
       ${lab(P([PORE[0], 272])[0], P([0, 272])[1], 'stoma')}
-      ${kidAt(`${p}-kn`, P([200, 214]), 9, 'n')}
+      ${kidAt(`${p}-kn`, P([200, 214]), 9, 'h')}
       ${lab(P([484, 0])[0], P([0, 190])[1], 'PEPC', 'co2k-il cel-halo', 'end')}
       ${acidFace([P([464, 0])[0], v0 - 6], 9.6, false)}
       ${lab(P([VCX, 0])[0], v0 + 26, 'malic acid', 'cel-mn cel-halo')}${acidFace([P([VCX - 10, 0])[0], v0 + 58], 9.6, true)}
       ${lab(P([VCX, 0])[0], v0 + 98, 'vacuole', 'co2k-il cel-halo')}
-      ${kidAt(`${p}-kd`, P([430, 330]), 9, 'h')}
+      ${kidAt(`${p}-kd`, P([430, 330]), 9, 's')}
       ${lab(P([CPX, 0])[0], P([0, 290])[1], 'RuBisCO', 'co2k-il cel-halo')}
       ${at(P([CPX + 6, 446]), tags, 0.86)}${lab(P([CPX, 0])[0], P([0, 566])[1], 'chloroplast', 'co2k-il cel-halo')}
       ${num([P([PORE[0], 0])[0] + 30, P([0, 380])[1]], 1, true)}${num([P([VAC[0], 0])[0] - 4, v0 + 58], 2, true)}
